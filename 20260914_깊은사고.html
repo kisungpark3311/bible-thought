@@ -1,128 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기도가 내 삶의 증명서가 아닐 때</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 20px;
-            color: #333333;
-            line-height: 1.7;
-            word-break: keep-all;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>기도가 내 삶의 증명서가 아닐 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        .card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 32px 24px;
-            max-width: 480px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    * { box-sizing: border-box; }
 
-        .category {
-            font-size: 13px;
-            color: #7b8898;
-            font-weight: 600;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 12px;
-            padding: 4px 12px;
-            background: #f0f4f8;
-            border-radius: 20px;
-        }
+    html { scroll-behavior: smooth; }
 
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a202c;
-            margin: 0 0 16px 0;
-            line-height: 1.4;
-            word-break: keep-all;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .divider {
-            width: 40px;
-            height: 3px;
-            background-color: #5a67d8;
-            margin: 0 auto;
-            border-radius: 2px;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        p {
-            font-size: 16px;
-            margin-bottom: 24px;
-            color: #4a5568;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .highlight {
-            background: linear-gradient(180deg, rgba(255,255,255,0) 60%, #e2e8f0 40%);
-            font-weight: 600;
-            color: #2d3748;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        .quote {
-            background-color: #f8fafc;
-            border-left: 4px solid #5a67d8;
-            padding: 16px 20px;
-            margin: 28px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 15px;
-            color: #4a5568;
-            font-style: italic;
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
 
-        .footer {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid #e2e8f0;
-            text-align: center;
-            font-size: 14px;
-            color: #718096;
-        }
-    </style>
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 34em;
+      color: #edf4f0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 24px;
+      color: #c8d9d2;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="header">
-            <div class="category">일상의 깊은 사고</div>
-            <h1>기도가 내 삶의<br>증명서가 아닐 때</h1>
-            <div class="divider"></div>
-        </div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 쨌 2026년 09월 14일</p>
+      <h1>기도가 내 삶의 증명서가 아닐 때</h1>
+    </header>
 
-        <p>우리는 종종 삶의 가치를 '응답받은 기도의 개수'로 증명하려 합니다. 원하는 결과를 얻고 기적을 경험할 때, 비로소 하나님께 사랑받고 있다고 느낍니다. 반대로 오랜 기도에도 침묵만 돌아오고 여전히 삶의 통증이 가라앉지 않을 때면 <span class="highlight">'내 믿음이 부족한가'</span> 자책하곤 합니다.</p>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">가게</button>
+      <button onclick="resizeText(-1)">가작게</button>
+    </div>
 
-        <p>성경 역대상에는 끝없이 이어지는 족보 사이에 잠시 걸음을 멈추게 하는 한 사람이 등장합니다. 바로 '야베스'입니다. 그는 수많은 이름 사이에서 응답받은 기도의 주인공으로 빛납니다. 그래서 우리는 야베스처럼 기도하면 성공할 수 있다는 '공식'을 찾으려 합니다.</p>
+    <article id="sermon" class="content">
+      
 
-        <p>하지만 성경의 시선은 우리의 예상과 다릅니다. 야베스가 기도를 통해 존귀해진 것이 아니라, 성경은 그가 기도하기 전부터 "그의 형제보다 귀중한 자"였다고 선언합니다. <span class="highlight">존귀함이 기도를 낳은 것이지, 기도가 존귀함을 벌어들인 것이 아닙니다.</span> 하나님 앞에서의 당신의 가치는 기도를 얼마나 근사하게 해내느냐는 '실적'에 달려 있지 않습니다.</p>
-
-        <p>더 놀라운 것은 그의 기도에는 "만일 이렇게 해 주시면, 제가 무엇을 바치겠습니다"라는 조건이 없다는 사실입니다. 그는 그저 엎드렸고, 하나님은 그저 이루셨습니다. 기도의 응답은 우리의 열심이나 협상 능력에 기대어 있지 않습니다.</p>
-
-        <div class="quote">
-            "구한 것이 이루어진 날에 그것을 내 실력으로 자랑하지 않기를,<br>
+<p>우리는 종종 삶의 가치를 '응답받은 기도의 개수'로 증명하려 합니다. 원하는 결과를 얻고 기적을 경험할 때, 비로소 하나님께 사랑받고 있다고 느낍니다. 반대로 오랜 기도에도 침묵만 돌아오고 여전히 삶의 통증이 가라앉지 않을 때면 <span class="highlight">'내 믿음이 부족한가'</span> 자책하곤 합니다.</p>
+<p>성경 역대상에는 끝없이 이어지는 족보 사이에 잠시 걸음을 멈추게 하는 한 사람이 등장합니다. 바로 '야베스'입니다. 그는 수많은 이름 사이에서 응답받은 기도의 주인공으로 빛납니다. 그래서 우리는 야베스처럼 기도하면 성공할 수 있다는 '공식'을 찾으려 합니다.</p>
+<p>하지만 성경의 시선은 우리의 예상과 다릅니다. 야베스가 기도를 통해 존귀해진 것이 아니라, 성경은 그가 기도하기 전부터 "그의 형제보다 귀중한 자"였다고 선언합니다. <span class="highlight">존귀함이 기도를 낳은 것이지, 기도가 존귀함을 벌어들인 것이 아닙니다.</span> 하나님 앞에서의 당신의 가치는 기도를 얼마나 근사하게 해내느냐는 '실적'에 달려 있지 않습니다.</p>
+<p>더 놀라운 것은 그의 기도에는 "만일 이렇게 해 주시면, 제가 무엇을 바치겠습니다"라는 조건이 없다는 사실입니다. 그는 그저 엎드렸고, 하나님은 그저 이루셨습니다. 기도의 응답은 우리의 열심이나 협상 능력에 기대어 있지 않습니다.</p>
+<div class="quote">
+            "구한 것이 이루어진 날에 그것을 내 실력으로 자랑하지 않기를,<br/>
             이루어지지 않은 날에 내가 버려졌다고 절망하지 않기를."
         </div>
+<p>때로는 성경 속에 야베스처럼 응답받은 이들도 있지만, 아무 잘못도 없이 "번성하지 못하였더라"고 남겨진 이들도 있습니다. 이는 우리에게 깊은 위로를 줍니다. 내 삶이 응답의 연속이라고 영원한 안일이 보장되는 것도 아니고, 미처 응답받지 못한 기도가 쌓여 있다고 버림받은 것도 아닙니다. 응답도, 시련도 모두 선하신 하나님의 주권 아래 있습니다.</p>
+<p>혹시 당신의 삶에 지워지지 않는 아픔이 있나요? 출산과 양육의 흉터, 줄지 않는 약봉지, 잠 못 이루는 밤들이 여전할지 모릅니다. 그러나 고통이 남아있는 상태가 결코 '응답 없음'의 증거는 아닙니다. 그 아픔을 안은 채로 드리는 투박한 기도조차 하나님 앞에서는 결코 미완성이 아닙니다.</p>
+<p>우리의 자리는 기도의 응답 횟수로 매겨지지 않습니다. 우리를 위해 이 땅에 오신 예수 그리스도, 그분이 이미 우리를 가장 존귀한 자리로 품으셨습니다. 당신은 이미, 당신의 어떠함과 상관없이 <span class="highlight">가장 귀중한 자</span>입니다.</p>
 
-        <p>때로는 성경 속에 야베스처럼 응답받은 이들도 있지만, 아무 잘못도 없이 "번성하지 못하였더라"고 남겨진 이들도 있습니다. 이는 우리에게 깊은 위로를 줍니다. 내 삶이 응답의 연속이라고 영원한 안일이 보장되는 것도 아니고, 미처 응답받지 못한 기도가 쌓여 있다고 버림받은 것도 아닙니다. 응답도, 시련도 모두 선하신 하나님의 주권 아래 있습니다.</p>
 
-        <p>혹시 당신의 삶에 지워지지 않는 아픔이 있나요? 출산과 양육의 흉터, 줄지 않는 약봉지, 잠 못 이루는 밤들이 여전할지 모릅니다. 그러나 고통이 남아있는 상태가 결코 '응답 없음'의 증거는 아닙니다. 그 아픔을 안은 채로 드리는 투박한 기도조차 하나님 앞에서는 결코 미완성이 아닙니다.</p>
+    </article>
 
-        <p>우리의 자리는 기도의 응답 횟수로 매겨지지 않습니다. 우리를 위해 이 땅에 오신 예수 그리스도, 그분이 이미 우리를 가장 존귀한 자리로 품으셨습니다. 당신은 이미, 당신의 어떠함과 상관없이 <span class="highlight">가장 귀중한 자</span>입니다.</p>
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 09월 14일
+    </footer>
+  </main>
 
-        <div class="footer">
-            역대상 4:1~6:81 묵상 중에서
-        </div>
-    </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `기도가 내 삶의 증명서가 아닐 때\n2026년 09월 14일\n\n${article}\n\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '기도가 내 삶의 증명서가 아닐 때',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>
