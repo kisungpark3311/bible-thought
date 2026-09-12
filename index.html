@@ -119,6 +119,17 @@
             <p>일상의 깊은 사고와 성경적 인격 형성<br>나를 채우는 묵상 에세이 모음</p>
         </div>
 
+        <h2 class="section-title">최근 설교문</h2>
+        <div class="list-group">
+            <a href="./20260913_설교문_역대상_1_1-3_24.html" class="list-item">
+                <div class="item-info">
+                    <h3>2026년 9월 13일 주일 설교</h3>
+                    <p>역대상 1:1-3:24</p>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+        </div>
+
         <h2 class="section-title">새로운 일상의 깊은 사고 (역대상)</h2>
         <div class="list-group" id="recent-list">
             <!-- 자바스크립트로 리스트 렌더링 -->
@@ -158,8 +169,6 @@
         for (let i = 1; i <= 40; i++) {
             const numStr = String(i).padStart(2, '0');
             const link = document.createElement('a');
-            // 파일명이 01_일상의깊은사고.html 형태인지 01.html 형태인지
-            // 이전에 bible-thought에는 01_일상의깊은사고.html 형태로 올렸다!
             link.href = `./${numStr}_일상의깊은사고.html`;
             link.className = 'list-item';
             

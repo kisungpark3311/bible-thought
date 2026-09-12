@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="역대상 1장 1절부터 3장 24절까지의 족보를 통해 하나님의 신실하심과 그리스도의 복음을 전하는 설교문">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="지워지지 않은 목록 | 역대상 1:1–3:24">
+  <meta property="og:description" content="하나님은 파열이 기록된 목록을 버리지 않으시고, 저주가 걸린 마디를 지나 그리스도께 이르게 하십니다.">
+  <title>지워지지 않은 목록 | 역대상 1:1–3:24</title>
+  <style>
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Nanum Myeongjo", "Batang", serif;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 34em;
+      color: #edf4f0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 24px;
+      color: #c8d9d2;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    .lead {
+      margin: 0 0 34px;
+      padding: 23px 24px;
+      color: #173f35;
+      background: var(--green-soft);
+      border-left: 5px solid var(--green);
+      border-radius: 0 14px 14px 0;
+      font-family: Georgia, "Nanum Myeongjo", "Batang", serif;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-family: Georgia, "Nanum Myeongjo", "Batang", serif;
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    h2 .number {
+      display: inline-grid;
+      width: 33px;
+      height: 33px;
+      margin-right: 8px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--gold);
+      font: 700 16px/1 sans-serif;
+      vertical-align: 4px;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .scripture {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-family: Georgia, "Nanum Myeongjo", "Batang", serif;
+      font-size: 19px;
+      line-height: 1.75;
+    }
+
+    .scripture cite {
+      display: block;
+      margin-top: 9px;
+      color: #756345;
+      font: 700 14px/1.5 sans-serif;
+      font-style: normal;
+    }
+
+    .gospel {
+      margin: 48px -10px 36px;
+      padding: 30px 28px;
+      color: #fff;
+      background: var(--green);
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(23, 63, 53, .16);
+    }
+
+    .gospel h2 {
+      margin: 0 0 18px;
+      color: #f1dcae;
+    }
+
+    .gospel p:last-child { margin-bottom: 0; }
+
+    .response {
+      margin: 34px 0;
+      padding: 26px;
+      background: #f6f5f0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .response h2 { margin-top: 0; }
+
+    .response ol {
+      margin: 0;
+      padding-left: 1.35em;
+    }
+
+    .response li {
+      margin: 12px 0;
+      padding-left: .3em;
+      font-size: var(--body-size);
+      line-height: 1.75;
+    }
+
+    .prayer {
+      margin: 38px 0 0;
+      padding: 28px 26px;
+      text-align: center;
+      color: #3e3528;
+      background: linear-gradient(180deg, #fbf5e8, #f7efdf);
+      border-top: 3px solid var(--gold);
+      border-bottom: 1px solid #e4d2ad;
+    }
+
+    .prayer h2 { margin-top: 0; }
+    .prayer p { line-height: 2; }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      .lead { padding: 19px 18px; font-size: 19px; }
+      h2 { font-size: 24px; }
+      .scripture { padding: 19px 18px; }
+      .gospel { margin-inline: 0; padding: 25px 21px; }
+      .response, .prayer { padding: 23px 20px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; box-shadow: none; }
+      .toolbar, .toast { display: none; }
+      .hero, .gospel { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">주일 설교문 · 역대상 1:1–3:24</p>
+      <h1>지워지지 않은 목록</h1>
+      <p class="subtitle">하나님은 파열이 기록된 목록을 버리지 않으시고, 저주가 걸린 마디를 지나 그리스도께 이르게 하십니다.</p>
+      <div class="meta">
+        <span>2026년 9월 13일</span>
+        <span>본문: 역대상 1장 1절–3장 24절</span>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="읽기와 공유 도구">
+      <button class="primary" type="button" onclick="shareSermon()">공유하기</button>
+      <button type="button" onclick="copySermon()">설교문 복사</button>
+      <button type="button" onclick="resizeText(1)">글자 크게</button>
+      <button type="button" onclick="resizeText(-1)">글자 작게</button>
+    </nav>
+
+    <article class="content" id="sermon">
+      <p class="lead">사랑하는 성도 여러분, 하나님은 깨끗하게 정리된 이력서만 받으시는 분이 아닙니다. 그분은 상실과 실패가 적힌 우리의 실제 역사를 붙드시고, 그 길을 그리스도께로 이끄십니다.</p>
+
+      <p>우리는 긴 족보를 만나면 대개 빨리 넘기고 싶어집니다. 낯선 이름이 쉼 없이 이어지고, 사건도 설명도 별로 없기 때문입니다. 그러나 포로 생활을 마치고 돌아온 이스라엘 백성에게 이 명단은 지루한 부록이 아니었습니다. 나라를 잃고, 성전을 잃고, 왕을 잃은 사람들에게 “우리는 누구인가”를 다시 알려 주는 생명의 기록이었습니다.</p>
+
+      <p>우리도 마음속에 각자의 명단을 가지고 살아갑니다. 자랑하고 싶은 이름도 있지만 지우고 싶은 이름도 있습니다. 잘한 일도 있지만, 중단된 사역과 회복되지 않은 관계와 아무 열매 없이 끝난 것처럼 보이는 시간도 있습니다. 그래서 우리는 좋은 항목만 남은 이력서가 되어야 하나님 앞에 설 수 있다고 생각합니다. 하지만 오늘 본문은 그 생각을 무너뜨립니다. 역대상 1장부터 3장까지의 목록에는 영광만 아니라 죽음과 죄, 빼앗김과 포로가 함께 기록되어 있습니다. 그런데 하나님은 그 목록을 버리지 않으셨습니다.</p>
+
+      <h2><span class="number">1</span>언약의 선은 세상 한가운데를 지나갑니다</h2>
+
+      <div class="scripture">“아담, 셋, 에노스”<cite>역대상 1:1</cite></div>
+
+      <p>역대상은 단 세 이름으로 문을 엽니다. 동사도 설명도 없이 “아담, 셋, 에노스”라고 시작합니다. 그리고 곧 야벳과 함과 셈의 후손, 곧 여러 민족의 이름을 먼저 펼쳐 놓습니다. 하나님의 언약 백성은 세상 밖에 따로 떨어진 사람들이 아니었습니다. 수많은 민족과 세대 속에서 하나님이 불러 세우신 백성이었습니다.</p>
+
+      <p>이 사실은 우리의 시선을 바로잡습니다. 교회는 세상과 상관없는 사람들만 모아 놓은 깨끗한 명부가 아닙니다. 우리는 믿지 않는 이웃과 같은 동네에 살고, 다른 생각을 가진 동료와 같은 일터에서 일하며, 상처와 죄가 얽힌 가족 안에서 살아갑니다. 그 자리가 부끄러워 도망칠 이유는 없습니다. 하나님의 언약은 세상 한가운데를 지나기 때문입니다.</p>
+
+      <p>그러므로 그리스도인은 사람을 쉽게 목록 밖으로 밀어내지 않습니다. 내 기준에 맞지 않는 이웃을 지우지 않고, 이름조차 기억되지 않는 사람을 한 인격으로 대합니다. 하나님께서 열국을 먼저 기록하신 뒤 이스라엘의 선을 좁혀 오셨다면, 우리도 하나님의 넓은 시선을 배워야 합니다.</p>
+
+      <h2><span class="number">2</span>하나님은 목록의 파열을 감추지 않으십니다</h2>
+
+      <div class="scripture">“유다의 맏아들 에르는 여호와 보시기에 악하였으므로 여호와께서 죽이셨고”<cite>역대상 2:3</cite></div>
+
+      <p>이름이 차분히 이어지던 목록을 갑자기 하나의 동사가 깨뜨립니다. “여호와께서 죽이셨다.” 유다 지파라고 해서 죄가 감추어지지 않았습니다. 하나님은 악을 악이라 판단하셨고, 심판의 흔적을 족보 안에 그대로 남기셨습니다. 은혜는 죄를 없었던 일처럼 지우는 값싼 망각이 아닙니다.</p>
+
+      <p>조금 뒤에는 또 다른 동사가 목록을 깨뜨립니다. 그술과 아람이 야일의 성읍들과 그낫과 그 마을들을 “빼앗았습니다.” 본문은 잃은 땅이 곧바로 돌아왔다고 말하지 않습니다. 회복되지 않은 손실을 성공담으로 포장하지도 않습니다. 이어진 것은 모든 소유와 형편이 아니라 이름의 선 하나였습니다.</p>
+
+      <p>장부를 정직하게 기록하려면 이익만 아니라 손실도 남겨야 합니다. 결손과 대손을 지우면 장부는 보기 좋아질지 몰라도 진실하지 않습니다. 우리의 신앙 고백도 마찬가지입니다. 실패를 성급히 미화하거나 아직 아픈 상처를 억지 간증으로 바꾸지 않아도 됩니다. “주님, 이것은 아직 회복되지 않았습니다. 이것은 제가 잘못한 일입니다. 이것은 제 힘으로 고칠 수 없습니다.” 이렇게 사실대로 아뢰는 것이 믿음입니다.</p>
+
+      <p>놀라운 점은 죄와 상실이 기록되어 있는데도 목록이 끝나지 않는다는 것입니다. 하나님은 심판하시는 거룩한 분이시며, 동시에 심판의 자리를 지나 약속의 선을 보존하시는 신실한 분이십니다. 우리를 살리는 것은 흠 없는 과거가 아니라, 죄인을 포기하지 않으시는 하나님의 은혜입니다.</p>
+
+      <h2><span class="number">3</span>열린 목록은 참된 왕을 기다립니다</h2>
+
+      <p>3장에 들어오면 다윗의 아들들과 왕들의 계보가 이어집니다. 그러나 나라가 무너지고 포로 시대에 이르자 분위기가 달라집니다. 여고냐 이후에는 왕이라는 칭호도, 통치 기간도 사라집니다. 본문은 그저 “그의 아들”이라는 말을 이어 갑니다. 그리고 3장 24절은 결론다운 결론 없이 “일곱 사람”이라는 수에서 멈춥니다.</p>
+
+      <p>이 족보는 자기 힘으로 새 왕을 만들어 내지 못합니다. 다윗 왕조가 스스로 영광을 되찾았다는 선언도 없습니다. 끝은 열려 있고, 백성은 기다려야 합니다. 바로 여기에 포로에서 돌아온 공동체의 현실이 담겨 있습니다. 고향으로 돌아왔지만 왕은 없었고, 약속은 아직 완성되지 않았습니다.</p>
+
+      <p>우리 인생에도 결론이 나지 않은 장이 있습니다. 기도했지만 상황은 그대로이고, 충성했지만 성과가 보이지 않으며, 다음 세대가 어떻게 될지 알 수 없는 때가 있습니다. 우리는 그런 시간을 실패라고 부르기 쉽습니다. 그러나 성경은 열린 끝을 지우지 않습니다. 아직 결론이 나지 않았다는 것과 하나님이 일하지 않으신다는 것은 같은 말이 아닙니다. 믿음은 내가 결론을 만들어 내는 힘이 아니라, 하나님이 쓰실 다음 문장을 기다리는 인내입니다.</p>
+
+      <section class="gospel">
+        <h2>복음: 그리스도께서 저주받은 마디를 통과해 오셨습니다</h2>
+
+        <p>여고냐의 이름에는 무거운 긴장이 걸려 있습니다. 예레미야 22장 30절은 그의 자손 가운데 다윗의 왕위에 앉아 유다를 다스릴 사람이 다시는 없을 것이라고 선언합니다. 역대상은 그 저주를 지우지 않은 채 여고냐의 아들들을 기록합니다. 왕호는 사라지고 이름만 계속됩니다.</p>
+
+        <p>그런데 마태복음 1장 12절은 바로 그 여고냐의 이름을 지나 예수 그리스도의 계보를 이어 갑니다. 신약은 이 족보의 가장 빛나는 부분만 골라 오지 않습니다. 저주가 걸린 바로 그 마디를 집어 들고 그리스도께 나아갑니다. 역대상 자체는 이 긴장이 어떻게 풀릴지 모두 설명하지 않습니다. 그러나 갈라디아서 3장 13절은 그리스도께서 우리를 위하여 저주를 받으셨다고 선포하고, 히브리서 7장은 죽음으로 끊어지지 않는 그리스도의 영원한 구원을 증언합니다.</p>
+
+        <p>사랑하는 여러분, 우리는 우리 목록을 고쳐서 구원받는 것이 아닙니다. 지우고 싶은 과거를 완벽하게 정리한 뒤 주님께 가는 것도 아닙니다. 예수 그리스도께서 저주와 실패가 걸린 우리의 자리로 들어오셨고, 십자가에서 그 저주를 담당하셨으며, 부활하셔서 우리에게 새로운 결말을 열어 주셨습니다. 그래서 우리의 소망은 더 나은 가문이나 더 깨끗한 이력서가 아니라 예수 그리스도입니다.</p>
+      </section>
+
+      <p>하나님은 파열이 기록된 목록을 버리지 않으십니다. 그 목록 속의 죄를 죄가 아니라고 하시지도 않습니다. 상실을 회복된 것처럼 꾸미시지도 않습니다. 오히려 죄를 심판하시고, 상실을 사실대로 기록하시며, 그 모든 자리에서 약속의 선을 붙들어 마침내 그리스도께 이르게 하십니다.</p>
+
+      <section class="response">
+        <h2>말씀 앞에서 드리는 두 가지 응답</h2>
+        <ol>
+          <li><strong>지우려던 항목 하나를 하나님 앞에 그대로 가져오십시오.</strong> 변명하거나 미화하지 말고, 실패와 상실의 이름을 정직하게 불러 보십시오. 그 항목이 여러분의 최종 결론은 아닙니다.</li>
+          <li><strong>이름만 남은 한 사람을 실제로 불러 기도하십시오.</strong> 오래 연락하지 못한 가족, 교회에서 보이지 않는 성도, 일터에서 소외된 동료의 이름을 불러 주십시오. 하나님이 이름을 지우지 않으셨듯 우리도 사람을 지우지 맙시다.</li>
+        </ol>
+      </section>
+
+      <p>혹시 오늘 여러분의 삶이 역대상 3장 24절처럼 미완성의 문장으로 멈춰 있습니까? 두려워하지 마십시오. 열린 끝은 버림받았다는 증거가 아닙니다. 그리스도 안에서 하나님은 아직 마지막 문장을 쓰지 않으셨습니다. 지워지지 않은 우리의 이름을 은혜로 붙드시고, 마침내 하나님 나라의 완성으로 이끄실 주님을 신뢰합시다.</p>
+
+      <section class="prayer">
+        <h2>기도</h2>
+        <p>신실하신 하나님 아버지,<br>
+        우리가 감추고 싶은 죄와 상실까지 아시는 주님 앞에<br>
+        꾸미지 않은 모습으로 서게 하소서.<br>
+        회복되지 않은 일을 성급히 포장하지 않게 하시고,<br>
+        결론이 보이지 않는 시간에도 주님의 손을 신뢰하게 하소서.<br>
+        우리의 저주를 대신 지시고 영원한 소망이 되신<br>
+        예수 그리스도만 붙들게 하시며,<br>
+        우리도 잊힌 한 사람의 이름을 기억하고 사랑하게 하소서.<br>
+        예수님의 이름으로 기도드립니다. 아멘.</p>
+      </section>
+    </article>
+
+    <footer>
+      #역대상 #지워지지않은목록 #강해설교 #복음 #예수그리스도<br>
+      본문 흐름: 역대상 1:1–3:24 · 함께 읽을 말씀: 렘 22:30, 마 1:12, 갈 3:13, 히 7:23–25
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `지워지지 않은 목록\n본문: 역대상 1:1–3:24\n\n${article}\n\n#역대상 #강해설교 #복음`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('설교문을 복사했습니다. 카카오톡에 붙여 넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('설교문을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '지워지지 않은 목록 | 역대상 1:1–3:24',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
