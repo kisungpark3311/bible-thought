@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일상의 깊은 사고 | 요한복음 묵상 에세이</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f7f6f2;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --accent-color: #2c5530;
+            --card-bg: #ffffff;
+            --border-color: #e2dfd6;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.8rem;
+            color: var(--title-color);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .list-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .list-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .list-item:hover, .list-item:active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: #c9c5b9;
+        }
+
+        .item-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            font-family: 'Noto Serif KR', serif;
+            color: var(--title-color);
+        }
+
+        .item-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .arrow {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>일상의 깊은 사고</h1>
+            <p>요한복음을 관통하는 40일간의 묵상 에세이<br>매일 한 편씩 읽으며 삶을 되돌아보세요.</p>
+        </div>
+
+        <div class="list-group" id="essay-list">
+            <!-- 자바스크립트로 리스트 렌더링 -->
+        </div>
+
+        <div class="footer">
+            &copy; 일상의 깊은 사고. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        const listContainer = document.getElementById('essay-list');
+        for (let i = 1; i <= 40; i++) {
+            const numStr = String(i).padStart(2, '0');
+            const link = document.createElement('a');
+            link.href = `./${numStr}_일상의깊은사고.html`;
+            link.className = 'list-item';
+            
+            link.innerHTML = `
+                <div class="item-info">
+                    <h3>에세이 ${numStr}편</h3>
+                    <p>요한복음 묵상</p>
+                </div>
+                <div class="arrow">→</div>
+            `;
+            listContainer.appendChild(link);
+        }
+    </script>
+</body>
+</html>
