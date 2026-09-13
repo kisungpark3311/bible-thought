@@ -130,7 +130,12 @@
             </a>
         </div>
 
-        <h2 class="section-title">새로운 일상의 깊은 사고 (역대상)</h2>
+        <h2 class="section-title">일상의 깊은 사고 (에베소서)</h2>
+        <div class="list-group" id="ephesians-list">
+            <!-- 자바스크립트로 리스트 렌더링 -->
+        </div>
+
+        <h2 class="section-title">일상의 깊은 사고 (역대상)</h2>
         <div class="list-group" id="recent-list">
             <!-- 자바스크립트로 리스트 렌더링 -->
         </div>
@@ -146,7 +151,25 @@
     </div>
 
     <script>
-        // 새로운 에세이 (역대상 9월 13일~30일)
+        // 에베소서 에세이 (16개)
+        const ephContainer = document.getElementById('ephesians-list');
+        for (let i = 1; i <= 16; i++) {
+            const numStr = String(i).padStart(2, '0');
+            const link = document.createElement('a');
+            link.href = `./ephesians/${numStr}_깊은사고.html`;
+            link.className = 'list-item';
+            
+            link.innerHTML = `
+                <div class="item-info">
+                    <h3>일상의 깊은 사고 (${i}편)</h3>
+                    <p>에베소서 묵상 에세이</p>
+                </div>
+                <div class="arrow">→</div>
+            `;
+            ephContainer.appendChild(link);
+        }
+
+        // 역대상 9월 13일~30일
         const recentContainer = document.getElementById('recent-list');
         for (let i = 13; i <= 30; i++) {
             const dateStr = `202609${String(i).padStart(2, '0')}`;

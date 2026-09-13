@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 13편</p>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div class="title">요구마다 자가 붙어 있는데,<br/>그 자가 상대편이 아닙니다</div>
+<div class="verse">
+    "이 비밀이 크도다 나는 그리스도와 교회에 대하여 말하노라" (엡 5:32)
+  </div>
+<div class="content">
+<p>우리는 종종 사람과의 관계, 특히 가장 가까운 부부나 가족 관계 속에서 보이지 않는 저울과 자를 들고 살아갑니다. '당신이 이만큼 했으니 나도 이만큼 하겠다', 혹은 '당신이 먼저 변하면 나도 변하겠다'는 식입니다. 성경의 에베소서 5장 부부 권면을 읽을 때도 우리는 이 습관을 버리지 못하고, 누가 더 무거운 요구를 받았는지, 상대가 그 요구를 다하고 있는지를 먼저 따지곤 합니다.</p>
+<p>그러나 이 본문을 가만히 들여다보면 놀라운 사실을 발견하게 됩니다. 남편과 아내를 향한 묵직한 요구마다 각각 무언가를 재는 <span class="highlight">'자(尺)'</span>가 붙어 있는데, 그 자의 눈금은 결코 상대편을 향해 있지 않다는 것입니다. 아내에게는 '주께 하듯', '교회가 그리스도에게 하듯' 하라고 쓰여 있고, 남편에게는 '그리스도께서 교회를 사랑하시고 자신을 주심 같이', '자기 몸같이' 하라고 적혀 있습니다. 총 여섯 번이나 기준이 제시되지만, 그 어디에도 '상대방이 하는 것만큼'이라는 조건은 없습니다.</p>
+<p>우리는 너무나 쉽게 기준을 상대에게 넘겨버립니다. 내가 사랑하지 못하는 이유, 헌신하지 못하는 이유를 상대의 부족함에서 찾습니다. 하지만 성경이 우리 손에 쥐여주는 자는 전혀 다릅니다. 다루기 쉬운 '상대의 이행 여부'라는 자를 내려놓고, 그리스도께서 우리에게 먼저 보여주신 사랑과 내어줌이라는 무겁고도 영광스러운 자를 들라고 초청합니다. 내가 감당할 만한 수준이나 내 형편을 따라 해마다 조용히 내려가는 자가 아니라, 결코 변하지 않는 은혜의 기준입니다.</p>
+<p>때로는 이 말씀 앞에 서는 것 자체가 힘겨운 분들도 계실 것입니다. 홀로 되셨거나, 관계의 깨어짐으로 아파하시거나, 안전이 위협받는 자리에 계신 분들에게 이 말씀은 또 다른 짐처럼 느껴질 수 있습니다. 하지만 본문은 우리에게 어떤 이상적인 모델을 억지로 처방하지 않습니다. 이 열두 절의 중심에서 먼저 일하시고, 씻어주시고, 거룩하게 세워주시는 주어는 바로 <span class="highlight">'그리스도'</span>이십니다. 오늘 우리가 아무것도 할 수 없는 자리에 주저앉아 있다 해도, 우리를 영광스럽게 세우시는 그리스도의 사랑은 변함없이 그 자리에 있습니다.</p>
+<p>오늘 하루, 내가 가까운 이에게 무언가를 미루고 있다면 그 이유를 적어 보십시오. 만약 그 문장의 주어가 '저 사람이 먼저 하지 않아서'라면, 우리는 다시 한번 성경이 원래 적어 둔 진짜 기준을 꺼내 들어야 합니다. 우리가 서로를 잴 때 사용하는 자가 그리스도의 은혜와 자기 내어줌의 척도로 변화될 때, 우리의 평범하고 팍팍한 일상 속에서도 크고 신비로운 그리스도의 사랑이 마침내 피어날 것입니다.</p>
+</div>
+<div class="footer">
+    일상의 깊은 사고 | 에베소서 5:22-33
+  </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 13편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `묵상 에세이\\n에베소서 제 13편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '묵상 에세이',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

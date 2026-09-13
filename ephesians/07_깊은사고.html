@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>우리가 만들어야 할 것은 없습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 07편</p>
+      <h1>우리가 만들어야 할 것은 없습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>우리가 만들어야 할 것은 없습니다</h1>
+<div class="subtitle">부르심에 합당하게 — 에베소서 4:1-6</div>
+<p>
+    우리는 종종 '하나 됨'이라는 단어 앞에서 깊은 무력감과 무거운 짐을 느낍니다. 교회에서, 가정에서, 직장에서 평화가 깨질 때마다 '내가 더 참지 못해서', '내 사랑이 부족해서' 하나 됨을 만들어내지 못했다고 자책하곤 합니다. 하지만 에베소서를 통해 들려주시는 성경의 메시지는 우리의 짐을 덜어주는 뜻밖의 위로를 건넵니다.
+  </p>
+<blockquote>
+    "평안의 매는 줄로 성령이 하나 되게 하신 것을 힘써 지키라" (엡 4:3)
+  </blockquote>
+<h2>만들라가 아니라 지키라</h2>
+<p>
+    사도 바울은 에베소서 4장에서 우리의 삶을 향한 권면을 시작합니다. 그런데 놀랍게도 그 자리에 '명령형'이 없습니다. 바울은 우리에게 "하나 됨을 억지로 만들어내라"고 다그치지 않습니다. 그저 <strong>"성령이 하나 되게 하신 것을 힘써 지키라"</strong>고 다정하게 부탁할 뿐입니다.
+  </p>
+<p>
+    지키는 일에는 사실 겉으로 표가 나지 않습니다. 아무 일 없이 조용히 갱신된 계약처럼, 큰 고장 없이 미리 고쳐둔 기계처럼, 잘 지켜진 것은 마치 아무 일도 일어나지 않은 것처럼 보입니다. 그래서 우리는 늘 눈에 띄게 무언가를 새롭게 '만드는' 쪽에만 박수를 보냅니다.
+  </p>
+<p>
+    그러나 하나님 나라의 장부에는 우리가 남모르게 눈물로 '지켜낸' 시간들이 가장 값진 자산으로 기록됩니다. 관계의 회복이 더딘 것은 당신이 무언가를 충분히 만들어내지 못해서가 아닙니다. 평화의 값은 십자가에서 예수 그리스도께서 이미 다 치르셨습니다. 우리의 몫은 새로운 화평을 창조하는 것이 아니라, 그분이 이미 이루신 평안을 가만히 유지하는 것입니다.
+  </p>
+<h2>'서로'가 가진 다정한 무게</h2>
+<p>
+    "모든 겸손과 온유로 하고 오래 참음으로 사랑 가운데서 서로 용납하고." (엡 4:2)
+  </p>
+<p>
+    우리는 갈등이 생길 때마다 이 구절을 떠올립니다. 하지만 가만히 돌아보면 이 '참으라'는 무거운 권면은 늘 한쪽에게만 주어지는 경향이 있습니다. 항상 참아왔던 사람, 늘 양보하는 사람에게만 또다시 짐이 지워집니다.
+  </p>
+<p>
+    하지만 원어에 담긴 <strong>'서로(알렐론)'</strong>라는 단어는 결코 어느 한쪽만의 일방적인 인내를 요구하지 않습니다. 양쪽 모두가 주체이자 대상이 되어야 성립하는 단어입니다. 그러니 만약 지금 도저히 견딜 수 없는 누군가 때문에 아파하고 있다면, 무조건 참지 못하는 자신을 탓하며 스스로를 실패라 여기지 마세요.
+  </p>
+<p>
+    거리는 마음의 문제가 아니라 때로는 물리적인 한계이자 피할 수 없는 동선의 문제일 수 있습니다. 본문은 누구 하나를 억눌러 평화를 유지하라는 진단서가 아닙니다. 참음의 경계선이 한쪽으로만 그어질 수는 없습니다.
+  </p>
+<h2>은혜 안에서 숨 고르기</h2>
+<p>
+    우리는 아직 완전한 하나 됨에 이르지 못했습니다. 그러나 다 이룬 척할 필요도, 이미 있는 것을 없는 것처럼 여길 필요도 없습니다. 하나 됨의 목록 마지막에 '한 분 하나님'이 계신다는 것은, 이 말씀이 우리의 인내심을 평가하는 자격 심사표가 아니라는 뜻입니다. 모든 것의 끝이자 시작이신 주님께서 우리를 품고 계십니다.
+  </p>
+<p>
+    오늘 하루, 관계 속에서 무언가를 억지로 만들어내려 애쓰던 무거운 손을 잠시 내려놓으세요. 당신은 주님께서 주신 평안의 매는 줄을 이미 훌륭하게 지켜내고 있습니다. 참된 평화이신 예수 그리스도께서 당신의 지친 어울림 속에 다정한 위로가 되어주시기를 소망합니다.
+  </p>
+<div class="footer">
+    일상의 깊은 사고 | 묵상 에세이
+  </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 07편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `우리가 만들어야 할 것은 없습니다\\n에베소서 제 07편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '우리가 만들어야 할 것은 없습니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

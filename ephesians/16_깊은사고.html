@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>편지의 끝에서 발견한 우리의 진짜 이름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 16편</p>
+      <h1>편지의 끝에서 발견한 우리의 진짜 이름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="background-color: #ffffff; border-radius: 20px; padding: 32px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px;">
+<header style="text-align: center; margin-bottom: 30px;">
+<h1 style="font-size: 1.5rem; color: #1a202c; margin-bottom: 12px; font-weight: 800; line-height: 1.4; word-break: keep-all;">편지의 끝에서 발견한<br/>우리의 진짜 이름</h1>
+<p style="font-size: 0.85rem; color: #a0aec0; letter-spacing: 0.5px;">에베소서 6:21-24 묵상</p>
+</header>
+<div style="font-size: 1rem; color: #4a5568;">
+<p style="margin-bottom: 20px;">누군가에게 길고 깊은 편지를 써본 적이 있으신가요? 보통 편지의 마지막 줄에는 가장 짙은 진심이 담기기 마련입니다.</p>
+<p style="margin-bottom: 20px;">에베소서라는 위대한 편지의 끝자락은 뜻밖에도 소박하고 따뜻합니다. 창세 전부터 시작된 우주적인 구원의 계획을 웅장하게 선포하던 바울은, 마지막 네 절에 이르러 아주 일상적이고 개인적인 이야기를 꺼냅니다. 바로 <strong>'두기고'라는 한 사람이 걸어서 소식을 전하는 일</strong>과, 마음을 다한 <strong>두 문장의 축복</strong>입니다.</p>
+<h2 style="font-size: 1.2rem; color: #2b6cb0; margin-top: 40px; margin-bottom: 16px; font-weight: 700;">소식을 나르는 발걸음, 위로가 되다</h2>
+<p style="margin-bottom: 20px;">바울은 로마의 감옥에 갇혀 있었습니다. 그는 바로 앞 구절에서 "내 입을 열어 복음을 담대히 전하게 해달라"고 기도를 부탁했습니다. 그런데 정작 자신의 사정을 에베소 교회에 전하는 것은 바울의 입이 아니라, 두기고의 입이었습니다.</p>
+<p style="margin-bottom: 20px;">하나님의 편지는 결코 저절로 도착하지 않습니다. 누군가의 땀과 수고, 수많은 걷는 날들이 필요했습니다. 두기고는 단순히 서류만 배달한 것이 아니었습니다. 바울은 그를 보낸 가장 큰 목적이 <strong>"너희 마음을 위로하게 하려는 것"</strong>이라고 말합니다. 나의 입이 막혀 답답하고 막막한 그 순간조차, 하나님은 누군가의 발걸음을 통해 기어코 위로의 소식을 우리에게 닿게 하십니다.</p>
+<h2 style="font-size: 1.2rem; color: #2b6cb0; margin-top: 40px; margin-bottom: 16px; font-weight: 700;">자리가 아닌 '방향'을 부르다</h2>
+<p style="margin-bottom: 20px;">이 편지의 가장 놀라운 반전은 맨 마지막 호칭에 있습니다. 바울은 여섯 장의 편지 내내 수신자들을 향해 '너희'라고 불렀습니다. 그런데 마지막 축복의 문장에 이르러 그 익숙한 대명사가 자취를 감춥니다.</p>
+<blockquote style="margin: 0 0 20px 0; background-color: #f8fafc; padding: 20px; border-left: 4px solid #cbd5e0; border-radius: 4px; font-style: italic; color: #4a5568; line-height: 1.6;">
+        "우리 주 예수 그리스도를 변함 없이 사랑하는 모든 자에게 은혜가 있을지어다" (엡 6:24)
+      </blockquote>
+<p style="margin-bottom: 20px;">마지막 순간, 바울은 그들을 '너희'라는 틀에 가두지 않고 <strong>'그리스도를 사랑하는 자'</strong>라고 부릅니다. 이름표가 바뀌었습니다. 대명사는 '우리가 지금 어떤 자리에 있는지'를 묻지만, 이 서술어는 <strong>'우리가 지금 누구를 향하고 있는지'</strong>를 묻습니다.</p>
+<h2 style="font-size: 1.2rem; color: #2b6cb0; margin-top: 40px; margin-bottom: 16px; font-weight: 700;">사랑의 크기가 아닌, 사랑의 시선</h2>
+<p style="margin-bottom: 20px;">때로 우리는 스스로의 신앙이 초라하게 느껴질 때가 있습니다. "나는 과연 하나님을 온전히 사랑하고 있는가?" 질문하며 나의 부족함에 실망하기도 합니다. 하지만 바울은 이 마지막 문장에서 우리의 사랑이 '얼마나 대단한지' 그 정도를 재지 않았습니다.</p>
+<p style="margin-bottom: 20px;">바로 앞 23절에서 평안과 사랑은 "하나님 아버지로부터 온다"고 선언했습니다. 위에서 아래로 흘러내리는 그 거대한 사랑을 맞으며, 그저 고개를 들어 주님을 바라보는 사람들. 내 사랑의 크기가 어떠하든 그 시선이 주님을 향해 열려 있는 모든 이들에게 은혜가 임한다고 축복하는 것입니다.</p>
+<div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #e2e8f0; text-align: center;">
+<p style="color: #718096; font-size: 1.05rem; margin-bottom: 12px; font-weight: 600;">오늘 하루, 당신의 마음은 어디를 향하고 있나요?</p>
+<p style="color: #718096; font-size: 0.95rem; line-height: 1.7;">당신의 이름을 '너희'가 아니라<br/>'주를 사랑하는 자'로 다시 불러주시는<br/>그분의 따뜻한 음성에 귀 기울여 보시길 바랍니다.</p>
+</div>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 16편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `편지의 끝에서 발견한 우리의 진짜 이름\\n에베소서 제 16편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '편지의 끝에서 발견한 우리의 진짜 이름',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

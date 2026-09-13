@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>그가 주신 것은 사람이었습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 08편</p>
+      <h1>그가 주신 것은 사람이었습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1 class="title">그가 주신 것은 사람이었습니다</h1>
+<div class="subtitle">우리의 자리가 종점이 되지 않도록</div>
+<div class="content">
+<p>우리 삶에는 끊임없이 자신을 증명해야 하는 순간들이 찾아옵니다. 내가 어떤 자리에 있는지, 어떤 직분을 맡고 있는지가 나를 설명하는 전부인 것처럼 느껴질 때가 있습니다. 그러나 에베소서 4장의 말씀은 우리에게 전혀 다른 시각을 열어줍니다.</p>
+<div class="quote">
+      "그가 어떤 사람은 사도로, 어떤 사람은 선지자로, 어떤 사람은 복음 전하는 자로, 어떤 사람은 목사와 교사로 삼으셨으니" (엡 4:11)
+    </div>
+<p>우리는 이 말씀을 읽으며 종종 '내 자리는 어디인가', '내가 빠진 목록은 무엇인가'를 세어보곤 합니다. 직분과 자리가 주어지지 않으면 뒤로 물러나거나 위축되기도 하죠. 하지만 성경은 하나님이 교회에 주신 선물이 '직분' 자체가 아니라, 바로 <span class="highlight">'사람'</span>이라고 말합니다. 주신 선물이 사람이라는 것은, 앞서 이끄는 이들조차 먼저 은혜를 받은 자라는 사실을 일깨워줍니다. 주는 자와 받는 자의 경계가 허물어지는 지점입니다.</p>
+<p>은혜의 크기를 재는 척도는 우리의 그릇이 아닙니다. 하나님은 우리 각 사람에게 "그리스도의 선물의 분량대로" 은혜를 주셨습니다. 때로는 교대 근무로 주일 저녁이 늘 비어 있는 분들, 아픈 가족을 돌보느라 시간을 낼 수 없는 분들, 건강의 문제로 오랜 시간 앉아있지 못하는 분들이 있습니다. 어떤 직분이나 자리를 맡지 못하는 것이 결코 헌신이 부족해서가 아님을 본문은 우리에게 위로처럼 건넵니다. 시간표와 거리, 그리고 통증의 문제로 자리를 비울 수밖에 없는 이들도 모두 그가 주신 은혜의 분량 안에 머물고 있습니다.</p>
+<p>또한 성경은 우리에게 주신 은혜와 사람들의 최종 목적지가 '나 자신'이 아니라 '그리스도의 몸'이라고 말합니다.</p>
+<div class="quote">
+      "그에게서 온 몸이 각 마디를 통하여 도움을 받음으로 연결되고 결합되어... 스스로 세우느니라." (엡 4:16)
+    </div>
+<p>누군가를 온전하게 준비시키고, 다른 이들이 일할 수 있도록 돕는 시간은 비록 내 실적이나 눈에 띄는 성과로 잡히지 않을지 모릅니다. 하지만 다른 사람이 일할 수 있게 만드는 데 쓴 그 숨은 시간들이 모여 비로소 공동체가 자라납니다. 서로를 세워가는 연결부를 통해 흐르는 생명력이 바로 여기에 있습니다.</p>
+<p>우리는 흔히 '주셨다'에서 마침표를 찍고 싶어 합니다. 받은 것을 내 자리로 삼아 지키려 합니다. 하지만 은혜는 우리에게서 멈추지 않고 흘러가야 합니다. 도착해야 할 곳은 내가 아니라 '우리'라는 몸이며, 그 자람의 힘조차 우리 자신이 아니라 오직 주님에게서 나옵니다.</p>
+<p>아무 자리도 맡지 못했다고 느끼는 이들에게 이 위로가 닿기를 바랍니다. 내가 남긴 수고가 어디에도 기록되지 않는 것 같아 허무할 때, 우리가 서로를 세워가는 그 보이지 않는 연결부를 통해 그리스도의 몸이 생명력 있게 자라나고 있음을 기억하십시오.</p>
+</div>
+<div class="footer">
+    일상의 깊은 사고 | 에베소서 4:7-16
+  </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 08편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `그가 주신 것은 사람이었습니다\\n에베소서 제 08편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '그가 주신 것은 사람이었습니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

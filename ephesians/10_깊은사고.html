@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>명령의 뒤 절반, 그리고 비어있는 한 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 10편</p>
+      <h1>명령의 뒤 절반, 그리고 비어있는 한 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>명령의 뒤 절반,<br/>그리고 비어있는 한 자리</h1>
+<span class="subtitle">에베소서 4:25-5:2 묵상</span>
+<p>성경을 읽다 보면 가끔 숨이 턱 막힐 때가 있습니다. "거짓을 버리라", "도둑질하지 말라", "더러운 말을 입 밖에도 내지 말라", "사랑 가운데서 행하라"…. 에베소서 4장 후반부부터 5장 초반에 이르는 말씀은 마치 우리가 철저히 지켜내야 할 무거운 '행동 수칙표'처럼 다가옵니다. 그래서 우리는 흔히 내가 오늘 얼마나 화를 참았는지, 얼마나 선한 말을 했는지 그 목록을 채점하며 하루를 돌아보곤 합니다.</p>
+<p>하지만 이 말씀들을 한 문장씩 끝까지 천천히 읽어보면, 아주 따뜻하고 놀라운 사실을 발견하게 됩니다. 바울이 전하는 명령들에는 반드시 <span class="emp">'뒤 절반'</span>이 붙어 있습니다.</p>
+<div class="quote">
+        "참된 것을 말하라, <strong>이는 우리가 서로 지체가 됨이라.</strong>"<br/>
+        "선한 일을 하라, <strong>가난한 자에게 구제할 수 있도록.</strong>"<br/>
+        "선한 말을 하여, <strong>듣는 자들에게 은혜를 끼치게 하라.</strong>"
+    </div>
+<p>성경이 요구하는 행동은 단순히 내 인격을 갈고닦기 위한 것이 아닙니다. 그 모든 말과 행위는 언제나 <span class="emp">'누구에게 닿는가'</span>를 가리키고 있습니다. 우리의 혀와 손끝을 거쳐 나온 삶의 조각들이 이웃에게, 가난한 자에게, 말씀을 듣는 자들에게 가 닿아야 한다는 것입니다. 기독교 신앙은 홀로 산에서 도를 닦는 것이 아니라, 누군가를 향해 손을 뻗고 체온을 나누는 관계의 언어이기 때문입니다.</p>
+<p>그런데 이 길고 아름다운 목록 가운데, <strong>딱 한 곳 '뒤 절반'이 없는 자리</strong>가 있습니다. 바로 분노를 다루는 구절입니다.</p>
+<div class="quote">
+        "모든 악독과 노함과 분냄과 떠드는 것과 비방하는 것을 모든 악의와 함께 <strong>너희에게서</strong> 버리고…" (엡 4:31)
+    </div>
+<p>다른 모든 구절이 '누구에게 닿는지' 도착지를 명시하고 있다면, 이 구절은 오직 '어디에서 떠나야 하는가'라는 출처만 적어두었습니다. 우리의 진실한 말과 수고로운 노동은 결국 타인에게 닿아 은혜를 피워내지만, 분노만큼은 타인과의 관계로 돌아오지 못합니다. 분노는 우리 마음의 방에 머물러서는 안 되며, 그저 우리에게서 떠나보내야 할 감정인 것입니다.</p>
+<hr/>
+<p>명령의 뒤 절반을 따라가던 바울의 시선은 마침내 사람을 넘어 더 높고 깊은 곳을 향합니다. 서른두 번째 절에 이르러, 빈자리를 채우는 이름이 바뀝니다.</p>
+<div class="quote">
+        "서로 용서하기를, <strong>하나님이 그리스도 안에서 너희를 용서하심과 같이</strong> 하라." (엡 4:32)
+    </div>
+<p>지금껏 이웃과 가난한 자로 채워졌던 자리에, 마침내 '하나님'과 '그리스도'가 들어옵니다. 우리가 누군가를 용서해야 하는 이유는 내 마음의 평화를 위해서도, 내가 훌륭한 사람이 되기 위해서도 아닙니다. 그것은 하나님이 그리스도 안에서 우리를 이미 용서하셨기 때문입니다.</p>
+<p>때로는 용서해야 한다는 것을 알면서도 도저히 용서가 되지 않는 이름이 있습니다. 그 이름만 들어도 몸이 굳고, 성경의 명령을 읽을 때마다 또다시 실패하는 자신을 보며 한없이 좌절하게 되는 순간들 말입니다. 그러나 오늘 본문은 우리의 실패로 섣불리 마침표를 찍지 않습니다. 본문은 우리가 용서할 수 있는 자격을 완벽히 갖춰서 용서하라고 말하지 않습니다.</p>
+<p>우리의 삶이라는 장부의 마지막 칸은, 우리가 피나는 노력으로 채워 자격을 얻어내는 빈칸이 아닙니다. 우리를 위해 자신을 내어주신 분, 하나님께 향기로운 제물로 드려진 <strong>예수 그리스도로 이미 가득 채워져 있는 자리</strong>입니다. 우리는 그저 이미 채워진 그 사랑의 자리를 따라 서툴게나마 그려 나가는 사람들일 뿐입니다.</p>
+<p>오늘 하루, 도저히 용서할 수 없는 마음 앞에 서 있다면 성경의 거대한 요구 뒤에 숨겨진 그분의 십자가 용서를 먼저 바라보시길 바랍니다. 분노가 마음을 어지럽힌다면, 그것을 조용히 내게서 떠나보내시길 바랍니다. 우리의 모든 삶의 방향이, 마침내 나를 위해 자신을 버리신 그분에게 온전히 가 닿기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 10편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `명령의 뒤 절반, 그리고 비어있는 한 자리\\n에베소서 제 10편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '명령의 뒤 절반, 그리고 비어있는 한 자리',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>일상의 깊은 사고 눈금 아래에서 시작된 은혜, 하늘을 수놓다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 05편</p>
+      <h1>일상의 깊은 사고 눈금 아래에서 시작된 은혜, 하늘을 수놓다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>
+<span>일상의 깊은 사고</span>
+      눈금 아래에서 시작된 은혜,<br/>하늘을 수놓다
+    </h1>
+<p>살다 보면 불현듯 나 자신의 자격이나 위치를 저울질하게 될 때가 있습니다. '나는 겨우 이 정도밖에 안 되는 사람인데', '남들보다 한참 뒤처져 있는데' 하며 자조 섞인 한숨이 새어 나올 때 말입니다. 위대한 사도라 불리는 바울 역시 이와 비슷한, 아니 더 처절한 고백을 한 적이 있습니다. 그는 에베소서 3장에서 자신을 <span class="emphasis">“모든 성도 중에 지극히 작은 자보다 더 작은 나”</span>라고 부릅니다.</p>
+<p>이 고백에 쓰인 헬라어 원문은 퍽 흥미롭습니다. 이 단어는 단순히 작다는 뜻을 넘어, 이미 '가장 작다'고 표시된 저울의 눈금이 끝난 자리에서 한 칸 더 밑으로 떨어져 버린 낯선 상태를 의미합니다. 그런데 놀랍게도 하나님의 은혜는 자격을 갖춘 번듯하고 높은 자리가 아니라, 이토록 철저히 낮아진 눈금 아래의 자리에 가장 먼저 도착했습니다. 참된 은혜는 우리가 애써 올라간 높이가 아니라, 우리가 한없이 내려간 깊이를 찾아옵니다.</p>
+<p>그렇다면 그렇게 가장 낮은 곳에 임한 은혜는 과연 어디를 향해 흘러갈까요? 바울은 복음의 메시지가 도착하는 마지막 목적지로 우리가 상상하지 못했던 뜻밖의 대상을 지목합니다. 바로 '하늘에 있는 통치자들과 권세들', 즉 눈에 보이지 않는 영적인 존재들입니다.</p>
+<div class="quote">
+      "이는 이제 교회로 말미암아 하늘에 있는 통치자들과 권세들에게 하나님의 각종 지혜를 알게 하려 하심이니" (엡 3:10)
+    </div>
+<p>하나님은 당신의 교회와 우리 각 사람의 삶을 통해 하늘의 관객들에게 그분의 지혜를 보여주기를 원하십니다. 우리는 때로 쳇바퀴 돌듯 반복되는 일상을 지루해하고 스스로를 초라하다고 여길지 모르지만, 사실 우리의 삶은 하늘의 천사들조차 숨죽여 지켜보는 위대한 영적 무대인 셈입니다.</p>
+<p>이 무대 위에서 하나님께서 보여주고자 하시는 지혜는 원어로 <span class="emphasis">'여러 빛깔의(폴뤼포이킬로스)'</span> 지혜입니다. 그것은 단색의 밋밋한 지혜가 아닙니다. 전혀 다른 색깔의 실들이 얽히고설켜 하나의 아름다운 융단을 만들어 내듯, 상처투성이인 우리의 일상과 때로는 끊어지고 미완성된 것만 같은 우리의 굽은 시간들을 엮어 눈부신 작품으로 빚어내시는 분이 바로 우리 하나님이십니다.</p>
+<p>그러니 지금 당장 손발이 묶인 것 같고, 인생이 멈춰 서 있는 것만 같은 자리에 놓여 있다 해도 괜찮습니다. 아무것도 할 수 없을 것 같았던 감옥 속에서 바울이 쓴 편지가 하늘의 비밀을 전하는 놀라운 통로가 되었듯, 당신의 그 묶인 시간조차 하나님께는 하늘을 향한 아름다운 통로가 될 수 있습니다. 우리 삶의 무늬를 짜는 것은 내 얄팍한 솜씨가 아니라, 여러 빛깔의 실을 하나로 엮어내시는 전능하신 분의 손길이기 때문입니다.</p>
+<p>오늘 우리가 해야 할 일은 단 하나입니다. 내 서투른 솜씨를 의지하거나 자격을 탓하는 대신, 나를 빚으시는 분을 신뢰하며 내게 주어진 삶의 끊긴 자리를 묵묵히 다시 잡아 매는 것입니다. 가장 작은 자보다 더 작은 자를 기꺼이 왕의 어전으로 부르시는 분, 그 그리스도 예수 안에서 오늘 하루도 담대함과 확신을 가지고 은혜의 보좌 앞으로 나아가기를 소망합니다.</p>
+<div class="footer">
+      에베소서 3:1-13 묵상 중에서
+    </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 05편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `일상의 깊은 사고 눈금 아래에서 시작된 은혜, 하늘을 수놓다\\n에베소서 제 05편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '일상의 깊은 사고 눈금 아래에서 시작된 은혜, 하늘을 수놓다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

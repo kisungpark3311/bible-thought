@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>빛이 되라 하지 않으시고, 이미 빛이라 부르시는 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 11편</p>
+      <h1>빛이 되라 하지 않으시고, 이미 빛이라 부르시는 은혜</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<header style="text-align: center; margin-bottom: 30px;">
+<h1 style="font-size: 24px; color: #2c3e50; font-weight: 700; margin-bottom: 10px; word-break: keep-all;">빛이 되라 하지 않으시고,<br/>이미 빛이라 부르시는 은혜</h1>
+<p style="font-size: 14px; color: #7f8c8d; margin: 0;">에베소서 5:3-14</p>
+</header>
+<div style="font-size: 16px; color: #4a4a4a; word-break: keep-all;">
+<p style="margin-bottom: 20px;">
+        어두운 방에서 눈이 트이기를 기다려 본 적이 있으신가요? 어둠 속에 오래 앉아 있으면 서서히 윤곽이 보이기 시작하지만, 오늘 성경이 들려주는 이야기는 내 눈이 어둠에 적응하는 이야기가 아닙니다. 누군가 내 방에 들어와 환하게 불을 켜주는 이야기입니다.
+      </p>
+<p style="margin-bottom: 20px;">
+        우리는 자주 성경을 읽으며 스스로를 평가하는 점검표를 만듭니다. '나는 얼마나 부족한가?'라며 자책하곤 하죠. 에베소서 5장 역시 여러 책망과 명령으로 시작하는 것처럼 보입니다. 그러나 그 깊은 문장들 사이에는, 우리를 무너지게 하는 정죄가 아니라 다시 일어서게 하는 따뜻한 약속이 숨어 있습니다.
+      </p>
+<div style="background-color: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 25px 0; border-radius: 4px;">
+<p style="margin: 0; font-weight: 600; color: #2980b9;">"너희가 전에는 어둠이더니 이제는 주 안에서 빛이라." (엡 5:8)</p>
+</div>
+<p style="margin-bottom: 20px;">
+        우리는 흔히 '빛처럼 살아내야 비로소 빛이 될 수 있다'고 생각합니다. 내 행위가 훌륭해야 빛이라는 자격을 얻는다고 믿습니다. 그러나 성경은 '빛이 되라'고 요구하기 전에, <strong>"너희가 빛이다"</strong>라고 먼저 선언하십니다. 우리의 상태나 자격을 묻지 않으시고, 이미 변화된 우리의 신분을 든든한 반석처럼 깔아두십니다. 나의 행위가 빛을 만들어내는 것이 아니라, 나를 이미 빛으로 불러주신 그 사랑 안에서 비로소 우리는 빛의 자녀다운 걸음을 떼게 됩니다.
+      </p>
+<p style="margin-bottom: 20px;">
+        때로는 내 삶의 어둠을 직면하거나 누군가의 잘못을 바로잡아야 할 때 큰 부담을 느낍니다. 하지만 성경은 이 과정을 온전히 우리 손에만 맡겨두지 않습니다.
+      </p>
+<div style="background-color: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 25px 0; border-radius: 4px;">
+<p style="margin: 0; font-weight: 600; color: #2980b9;">"책망을 받는 모든 것은 빛으로 말미암아 드러나나니" (엡 5:13)</p>
+</div>
+<p style="margin-bottom: 20px;">
+        어둠을 몰아내고 진실을 드러내는 것은 나의 매서운 의지가 아니라 '빛'이십니다. 내가 모든 것을 바로잡아야 한다는 무거운 짐을 내려놓으십시오. 빛이신 주님께서 친히 일하시며, 덮여 있던 것들을 그분의 선하신 섭리 안에서 치유하실 것입니다. 직장에서도, 가정에서도, 우리는 그저 빛 가운데 머물며 정직한 한 걸음을 내딛으면 됩니다.
+      </p>
+<div style="background-color: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 25px 0; border-radius: 4px;">
+<p style="margin: 0; font-weight: 600; color: #2980b9;">"잠자는 자여 깨어서 죽은 자들 가운데서 일어나라 그리스도께서 너에게 비추이시리라." (엡 5:14)</p>
+</div>
+<p style="margin-bottom: 20px;">
+        때론 이 말씀이 벅찬 명령처럼 들립니다. 삶의 무게와 우울에 짓눌려 아침에 몸을 일으키기조차 버거운 날, "일어나라"는 말씀은 차라리 아픈 판결문 같습니다.
+      </p>
+<p style="margin-bottom: 30px;">
+        하지만 기억하십시오. 성경은 이미 일어나 있는 자가 아니라, <strong>"잠자는 자"</strong>를 부르고 있습니다. 나의 무력함 한가운데를 찾아오시는 음성입니다. 더 놀라운 것은 명령 뒤에 이어지는 약속입니다. <em>"그리스도께서 너에게 비추이시리라."</em> 내 힘으로 일어나는 것이 아닙니다. 내가 할 수 없는 바로 그 자리에, 그리스도께서 친히 생명의 빛을 비추어 주십니다.
+      </p>
+<hr style="border: 0; height: 1px; background-color: #eaeaea; margin: 30px 0;"/>
+<p style="margin-bottom: 15px; font-weight: 500;">
+        오늘, 나의 부족함을 세며 자책하던 마음을 내려놓기를 소망합니다.
+      </p>
+<p style="margin-bottom: 15px; font-weight: 500;">
+        주님은 "빛이 되라"는 버거운 숙제 대신, "너희는 이미 빛이다"라는 따뜻한 품을 내어주십니다.
+      </p>
+<p style="margin-bottom: 15px; font-weight: 500;">
+        일어날 힘조차 없어 주저앉아 있는 나에게, 비난 대신 생명의 빛을 비추시는 주님을 바라보십시오.
+      </p>
+<p style="margin-bottom: 0; font-weight: 500; color: #2c3e50;">
+        그 찬란한 빛이 오늘 당신의 지친 일상을 따뜻하게 녹이고, 다시 걸어갈 힘을 주실 것입니다.
+      </p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 11편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `빛이 되라 하지 않으시고, 이미 빛이라 부르시는 은혜\\n에베소서 제 11편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '빛이 되라 하지 않으시고, 이미 빛이라 부르시는 은혜',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

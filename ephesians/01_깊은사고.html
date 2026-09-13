@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>세 낱말이 지탱하는 이백 단어의 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 01편</p>
+      <h1>세 낱말이 지탱하는 이백 단어의 은혜</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="text-align: center; margin-bottom: 35px;">
+<h1 style="font-size: 26px; color: #2c3e50; font-weight: 700; margin: 0; padding-bottom: 15px; border-bottom: 2px solid #f0f3f5;">세 낱말이 지탱하는 이백 단어의 은혜</h1>
+<p style="font-size: 15px; color: #7f8c8d; margin-top: 15px;">에베소서 1장 1-14절을 묵상하며</p>
+</div>
+<div style="font-size: 16px; color: #444444;">
+<p style="margin-bottom: 24px;">에베소서 1장 1절에서 14절은 헬라어 원문으로 보면 마침표 하나 없는 약 이백 단어의 아주 긴 문장입니다. 신약성경에서 가장 긴 호흡을 가진 이 문장 속에서 주된 절은 단 하나, 오직 세 낱말에 불과합니다. <strong>"찬송하리로다, 하나님."</strong></p>
+<p style="margin-bottom: 24px;">이백 단어라는 거대한 문장의 무게를 단 세 낱말이 지탱하고 있습니다. 나머지 수많은 단어와 문장들은 전부 "그리스도 안에서"라는 고리에 매달려 있습니다. 바울은 이 긴 문장 속에서 복의 목록을 하나하나 세지 않았습니다. 대신 우리가 받은 복이 '무엇'인지보다, 그 복이 '어디에' 있는지를 거듭 반복해서 가리킵니다. 바로 <strong>"그리스도 안에서"</strong>입니다.</p>
+<p style="margin-bottom: 24px;">우리의 삶은 어떨까요? 우리는 자주 복의 목록을 세며 살아갑니다. 남보다 무엇을 더 가졌는지 헤아리고, 부족한 항목을 찾아내어 불평하기도 합니다. 형편이 조금 나빠지면 삶의 문장을 스스로 멈춰 세우려 합니다. 내 삶의 주어가 '나'일 때, 우리의 하루는 흔들릴 수밖에 없습니다.</p>
+<p style="margin-bottom: 24px; padding: 20px; background-color: #f8fbfd; border-radius: 12px; border-left: 5px solid #5a9bd4;">하지만 성경은 우리에게 다르게 말합니다. 성령이 우리를 <strong>'인치셨다'</strong>고 선언합니다. 고대 사회에서 인장을 찍는다는 것은 목적지에 도착할 때까지 아무도 열지 못하게 단단히 봉한다는 뜻이었습니다. 하나님이 우리에게 찍으신 인장은 우리의 매일매일의 상태를 검사하기 위한 장치가 아니라, 우리가 무사히 도착할 때까지 안전하게 보호해 주시는 은혜의 장치입니다.</p>
+<p style="margin-bottom: 24px;">게다가 성경은 성령을 우리 기업의 <strong>'보증(아라본)'</strong>이라고 부릅니다. 이 단어는 단순한 맛보기나 담보가 아니라, 상거래에서 쓰이던 <strong>'계약금'</strong>입니다. 계약금은 치러야 할 대금의 일부이며, 이 돈을 낸 쪽이 남은 잔금을 치를 의무를 지게 됩니다. 즉, 하나님께서 친히 우리에게 계약금을 지불하셨고, 남은 구원의 잔금 역시 그분이 끝까지 책임지시겠다는 든든한 약속입니다.</p>
+<p style="margin-bottom: 24px;">혹시 오늘, 몸과 마음이 지쳐 찬송이 나오지 않으시나요? 질병으로, 경제적인 어려움으로, 혹은 알 수 없는 삶의 무게로 인해 깊은 한숨만 내쉬고 계실지도 모르겠습니다.</p>
+<p style="margin-bottom: 24px;">그렇다면 애써 찬송을 쥐어짜 내지 않아도 괜찮습니다. <strong>"찬송하리로다 하나님"</strong>이라는 이 선언의 주어는 당신이 아니기 때문입니다. 그분은 우리의 형편과 무관하게, 스스로 홀로 찬송받으시기에 합당하신 분입니다.</p>
+<p style="margin-bottom: 0; font-weight: 500; color: #2c3e50; padding-top: 10px; border-top: 1px dashed #e0e0e0;">오늘 아침 당신의 우울함과 피로가 하나님께서 찍어두신 인장을 결코 지우지 못합니다. 당신이 지금 어떤 상태이든, 우리는 여전히 "그리스도 안에" 머물고 있습니다. <strong>복은 우리가 세어야 할 항목이 아니라, 우리가 안전하게 머물러 있는 '자리'입니다.</strong> 우리를 끝까지 포기하지 않으시고 책임지시는 그 크신 은혜 안에서, 오늘 하루도 평안히 기대어 쉬시기를 소망합니다.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 01편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `세 낱말이 지탱하는 이백 단어의 은혜\\n에베소서 제 01편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '세 낱말이 지탱하는 이백 단어의 은혜',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

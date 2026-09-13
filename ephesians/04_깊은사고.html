@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>화평은 합의가 아니라 '창조' 였습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 에베소서 제 04편</p>
+      <h1>화평은 합의가 아니라 '창조' 였습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<header style="text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #f1f5f9;">
+<div style="font-size: 14px; color: #3b82f6; font-weight: 600; margin-bottom: 8px; letter-spacing: 1px;">일상의 깊은 사고</div>
+<h1 style="font-size: 26px; color: #1e293b; font-weight: 800; margin: 0 0 12px 0; line-height: 1.4;">화평은 합의가 아니라<br/><span style="color: #2563eb;">'창조'</span>였습니다</h1>
+<p style="font-size: 15px; color: #64748b; margin: 0;">에베소서 2:11-22</p>
+</header>
+<div style="font-size: 16px; color: #334155; font-weight: 400;">
+<p style="margin-bottom: 24px;">
+      우리는 관계 속에서 갈등이 생길 때마다 자연스럽게 ‘화해’를 떠올립니다. 양쪽이 조금씩 양보하고, 서로 타협점을 찾아 가운데서 만나는 것을 평화라고 생각합니다. 하지만 현실에서 이런 식의 화해는 종종 실패합니다. 타협과 양보의 비용은 언제나 힘이 약한 쪽, 늘 참아오던 사람에게 더 많이 청구되기 때문입니다. 마음 깊은 곳에 그어진 선은 적당한 타협으로 지워지지 않습니다.
+    </p>
+<p style="margin-bottom: 24px;">
+      놀랍게도 에베소서 2장은 갈등하는 우리에게 "화해하라"고 명령하지 않습니다. 본문이 요구하는 유일한 명령은 <strong>"생각하라(기억하라)"</strong>는 것입니다. 무엇을 기억해야 할까요? 바로 우리 자신이 과거에 그리스도 밖에 있었고, 소망도 없고 하나님도 없던 <strong>‘철저한 이방인’</strong>이었음을 기억하라는 것입니다.
+    </p>
+<blockquote style="background-color: #f8fafc; padding: 20px 24px; border-radius: 12px; border-left: 5px solid #3b82f6; margin: 32px 0; font-size: 17px; font-weight: 600; color: #0f172a; line-height: 1.6; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+      "그는 우리의 화평이신지라 둘로 하나를 만드사 원수 된 것 곧 중간에 막힌 담을 자기 육체로 허시고" <span style="display: block; text-align: right; font-size: 14px; font-weight: 400; color: #64748b; margin-top: 8px;">(엡 2:14)</span>
+</blockquote>
+<p style="margin-bottom: 24px;">
+      우리는 살아가면서 끊임없이 손으로 선을 긋습니다. 나와 너를 가르고, 나와 수준이 맞는 사람과 아닌 사람을 나눕니다. 세무나 회계에서 서류에 선을 긋듯, 우리의 일상에서도 사람의 가치를 등급 매기고 조용히 응대 수준을 다르게 합니다. 몸과 삶으로 뚜렷하게 그어진 이 차별의 선은 단순히 마음을 고쳐먹는다고 지워지지 않습니다.
+    </p>
+<p style="margin-bottom: 24px;">
+      성경은 그 단단한 가름의 선을 부순 도구가 바로 예수님의 <strong>'육체'</strong>였다고 말합니다. 우리가 화해를 위해 애쓴 양보나 희생이 아니라, 그분이 자신의 몸을 직접 허무심으로 막힌 담을 부수셨습니다. 평화는 웃으며 악수하는 평화로운 방식으로 오지 않았습니다. 자기 몸을 찢으신 십자가라는 철저한 파괴를 통과해 우리에게 왔습니다.
+    </p>
+<p style="margin-bottom: 24px;">
+      나아가 하나님은 원수 된 둘을 적당히 이어 붙이신 것이 아닙니다. <strong>"한 새 사람을 지어"</strong> 화평하게 하셨습니다. 화평은 사람 간의 협상이나 절충안이 아니라, 이전에 없던 것을 무에서 유로 만들어 내신 하나님의 <strong>'창조'</strong>였습니다. 우리가 쥐어짜서 만들어 내야 할 숙제가 아니라, 하나님이 이미 지어 놓으신 완전한 결과물입니다.
+    </p>
+<p style="margin-bottom: 24px; padding: 20px; background-color: #fffbeb; border-radius: 12px; color: #92400e;">
+      혹시 지금 누군가와 도저히 좁혀지지 않는 거리 때문에 아파하고 계신가요?<br/>
+      억지로 화해를 시도하려다 오히려 상처만 덧나서 좌절한 적이 있으신가요?
+    </p>
+<p style="margin-bottom: 24px;">
+      본문은 담을 헐고 새 사람을 지으신 일을 <strong>'이미 끝난 사건'</strong>으로 선언합니다. 그러나 동시에 우리는 지금 성령 안에서 <strong>'함께 지어져 가고 있다'</strong>고 말합니다. 하나 됨이 당장 내 삶에서 완벽하게 보이지 않는다고 해서, 하나님이 이루신 평화가 취소된 것은 아닙니다. 우리는 아직 공사 중이며, 지어져 가는 성전일 뿐입니다.
+    </p>
+<p style="margin-bottom: 24px;">
+      내가 은혜 안에 있다는 사실이 너무 익숙해진 나머지, 내가 본래 은혜 밖에 있던 존재였음을 잊어버린 것은 아닐까요? <strong>기억이 흐려질 때 우리는 또다시 손으로 담을 쌓기 시작합니다.</strong>
+</p>
+<div style="margin-top: 40px; padding-top: 24px; border-top: 1px dashed #cbd5e1; text-align: center;">
+<p style="font-size: 17px; font-weight: 600; color: #1e293b; margin-bottom: 8px;">
+        내가 억지로 평화를 만들어 내야 한다는 무거운 짐을 내려놓으십시오.
+      </p>
+<p style="font-size: 15px; color: #475569; margin: 0;">
+        하나님이 이미 창조해 놓으신 그 화평 안으로 그저 겸손히 걸어 들어가기를,<br/>
+        그리고 아직 덜 지어진 나와 우리의 모습을 보면서도 조급해하지 않고 견뎌낼 수 있기를 소망합니다.
+      </p>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      에베소서 제 04편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `화평은 합의가 아니라 '창조' 였습니다\\n에베소서 제 04편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '화평은 합의가 아니라 '창조' 였습니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
