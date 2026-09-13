@@ -251,14 +251,19 @@
         try {
           await navigator.share({
             title: '정확한 절망을 넘어, 내 곁에 계신 분을 바라보다',
-            text: sermonText()
+            url: window.location.href
           });
           return;
         } catch (error) {
           if (error.name === 'AbortError') return;
         }
       }
-      await copySermon();
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
     }
 
     function resizeText(delta) {
