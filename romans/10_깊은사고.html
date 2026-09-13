@@ -272,7 +272,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다',
+            title: document.title,
             url: window.location.href
           });
           return;

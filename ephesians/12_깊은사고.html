@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '눈금을 주지 않으시고, 걸릴 이름을 주셨다',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -275,7 +275,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '옳음이 화해보다 중요해질 때',
+            title: document.title,
             url: window.location.href
           });
           return;

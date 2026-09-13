@@ -248,7 +248,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '끝점이 다음 걸음의 주인이 될 때',
+            title: document.title,
             url: window.location.href
           });
           return;

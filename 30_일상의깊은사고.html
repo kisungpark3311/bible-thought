@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '잘려 나가는 아픔이 찾아올 때, 그것은 실패가 아니라 '인정'입니다',
+            title: document.title,
             url: window.location.href
           });
           return;

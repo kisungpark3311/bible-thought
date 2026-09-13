@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '겸손이 내 이름 옆에 적힐 때',
+            title: document.title,
             url: window.location.href
           });
           return;

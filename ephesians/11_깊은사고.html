@@ -281,7 +281,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '빛이 되라 하지 않으시고, 이미 빛이라 부르시는 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

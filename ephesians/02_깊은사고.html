@@ -268,7 +268,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '이미 받은 것을 보지 못하면, 받지 않은 것과 같습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

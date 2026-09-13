@@ -253,7 +253,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '일상의 깊은 사고 맡겨진 것과 맡기신 분',
+            title: document.title,
             url: window.location.href
           });
           return;

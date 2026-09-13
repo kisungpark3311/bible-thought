@@ -264,7 +264,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '어제의 정답이 오늘은 틀릴 수 있음을 인정할 때',
+            title: document.title,
             url: window.location.href
           });
           return;

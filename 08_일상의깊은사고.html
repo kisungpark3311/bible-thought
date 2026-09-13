@@ -255,7 +255,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '이미 이루어진 은혜를 향해 걷는 길',
+            title: document.title,
             url: window.location.href
           });
           return;

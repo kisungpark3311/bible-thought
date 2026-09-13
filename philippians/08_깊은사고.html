@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '장부는 그대로 두고 정산자를 바꾸십시오',
+            title: document.title,
             url: window.location.href
           });
           return;

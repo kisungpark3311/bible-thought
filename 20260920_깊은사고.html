@@ -263,7 +263,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '갇힌 시간 속에서 듣는 ‘이미 도우셨다’는 위로',
+            title: document.title,
             url: window.location.href
           });
           return;

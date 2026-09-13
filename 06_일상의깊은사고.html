@@ -250,7 +250,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '정오의 우물가, 그곳에 앉아 계셨던 분',
+            title: document.title,
             url: window.location.href
           });
           return;

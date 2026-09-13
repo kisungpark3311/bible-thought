@@ -260,7 +260,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '던질 자격이 있는 유일한 분이 던지지 않으셨습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

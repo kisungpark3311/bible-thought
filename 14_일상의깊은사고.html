@@ -288,7 +288,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '다 알고 난 뒤에 하겠다는 순서를 뒤집으십니다',
+            title: document.title,
             url: window.location.href
           });
           return;

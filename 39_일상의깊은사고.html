@@ -251,7 +251,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '실패의 냄새가 맴도는 자리에서',
+            title: document.title,
             url: window.location.href
           });
           return;

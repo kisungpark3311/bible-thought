@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '일상의 깊은 사고 눈금 아래에서 시작된 은혜, 하늘을 수놓다',
+            title: document.title,
             url: window.location.href
           });
           return;

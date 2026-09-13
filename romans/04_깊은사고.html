@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '마지막에 꺼내드신 자의 이름, 복음',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -252,7 +252,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '고난의 한가운데, 홀로 남겨진 것 같은 당신에게',
+            title: document.title,
             url: window.location.href
           });
           return;

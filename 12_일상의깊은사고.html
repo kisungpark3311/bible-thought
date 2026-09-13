@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '목록에 지친 당신에게 건네는 단 하나의 초대',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -260,7 +260,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '값으로 치러진 것은 마실 수 없고, 부어짐이 그 행위를 지우지 않는다',
+            title: document.title,
             url: window.location.href
           });
           return;

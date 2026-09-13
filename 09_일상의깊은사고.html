@@ -255,7 +255,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '오래된 자리에서 일어나기',
+            title: document.title,
             url: window.location.href
           });
           return;

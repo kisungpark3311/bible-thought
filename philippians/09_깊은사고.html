@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '사슬을 뚫고 피어난 복음의 꽃',
+            title: document.title,
             url: window.location.href
           });
           return;

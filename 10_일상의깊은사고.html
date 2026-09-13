@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '아름다운 불가능, 그리고 이미 건너간 사람들의 이야기',
+            title: document.title,
             url: window.location.href
           });
           return;

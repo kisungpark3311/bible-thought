@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '내 이름 앞의 수식어',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -253,7 +253,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '내 삶의 빈칸에 무엇이 들어 있습니까?',
+            title: document.title,
             url: window.location.href
           });
           return;

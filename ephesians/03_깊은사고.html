@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '우리는 아무것도 하지 않아도 문장 안에 있습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

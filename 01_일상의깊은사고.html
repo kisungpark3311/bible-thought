@@ -247,7 +247,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '계셨던 분이 우리 곁으로 오신 이야기',
+            title: document.title,
             url: window.location.href
           });
           return;

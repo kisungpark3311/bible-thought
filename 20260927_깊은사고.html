@@ -258,7 +258,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '텐트 아래 세워진 영원한 일상',
+            title: document.title,
             url: window.location.href
           });
           return;

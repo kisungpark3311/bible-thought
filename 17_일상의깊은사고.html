@@ -262,7 +262,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '없애려고 든 그 자리가, 높이는 자리였습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

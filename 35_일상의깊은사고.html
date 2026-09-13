@@ -250,7 +250,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '아는 것과 살아내는 것의 거리',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -258,7 +258,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '편지의 끝에서 발견한 우리의 진짜 이름',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -241,7 +241,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '내려가심, 그 아름다운 역설',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -264,7 +264,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '계산기 없는 은혜, 그리고 임재',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -260,7 +260,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '완벽하지 않아도 괜찮은, 우리의 자리',
+            title: document.title,
             url: window.location.href
           });
           return;

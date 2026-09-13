@@ -252,7 +252,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '그가 주신 것은 사람이었습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

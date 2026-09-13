@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '세 낱말이 지탱하는 이백 단어의 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

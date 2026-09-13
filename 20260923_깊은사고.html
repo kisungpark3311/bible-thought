@@ -259,7 +259,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '설명되지 않는 시간 앞에 설 때',
+            title: document.title,
             url: window.location.href
           });
           return;

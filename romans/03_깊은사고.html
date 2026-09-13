@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '가장 무서운 형벌, 그리고 가장 놀라운 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

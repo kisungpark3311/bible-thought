@@ -251,7 +251,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '당신이 배운 것은 규칙이 아니라, ‘한 분’입니다',
+            title: document.title,
             url: window.location.href
           });
           return;

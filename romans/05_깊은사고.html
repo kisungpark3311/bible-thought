@@ -251,7 +251,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '불리는 이름과 은밀한 데 칭찬이 어디서 오는가',
+            title: document.title,
             url: window.location.href
           });
           return;

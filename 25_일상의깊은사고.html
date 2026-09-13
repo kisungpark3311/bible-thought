@@ -268,7 +268,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '흔들림 속에서 피어나는 생명',
+            title: document.title,
             url: window.location.href
           });
           return;

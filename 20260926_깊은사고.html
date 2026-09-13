@@ -266,7 +266,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '은혜라는 배경 위에 쓰인 우리의 수고',
+            title: document.title,
             url: window.location.href
           });
           return;

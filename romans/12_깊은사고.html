@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '같지 않기에 주어지는 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

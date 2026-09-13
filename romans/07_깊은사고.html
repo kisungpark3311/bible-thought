@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '모든 입이 다물어지는 자리에서 시작되는 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

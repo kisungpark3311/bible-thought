@@ -275,7 +275,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '우리의 물음이 향하는 곳, 그리고 곁에 머무는 사랑',
+            title: document.title,
             url: window.location.href
           });
           return;

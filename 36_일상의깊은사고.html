@@ -253,7 +253,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '가장 큰 일을 하시며, 가장 작은 자를 돌아보신 사랑',
+            title: document.title,
             url: window.location.href
           });
           return;

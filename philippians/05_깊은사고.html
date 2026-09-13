@@ -252,7 +252,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '내 인생의 장부를 다시 쓰는 시간',
+            title: document.title,
             url: window.location.href
           });
           return;

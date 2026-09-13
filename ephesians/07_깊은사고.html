@@ -273,7 +273,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '우리가 만들어야 할 것은 없습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -250,7 +250,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '부인이 세 번이었으므로 물음도 세 번이었습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -276,7 +276,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '아픔을 통과해 피어나는 찬란한 기쁨',
+            title: document.title,
             url: window.location.href
           });
           return;

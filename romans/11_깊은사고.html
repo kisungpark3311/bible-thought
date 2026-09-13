@@ -249,7 +249,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '우리를 붙드는 것은 '나의 진도'가 아닙니다',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -263,7 +263,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '나의 것, 그 한 마디가 전부였던 시간들',
+            title: document.title,
             url: window.location.href
           });
           return;

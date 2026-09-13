@@ -261,7 +261,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '공로가 등급을 정하지는 못할지라도 우리에겐 설 자리가 있습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

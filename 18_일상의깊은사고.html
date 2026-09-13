@@ -250,7 +250,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '믿음은 결심이 아니라, 머무는 것입니다',
+            title: document.title,
             url: window.location.href
           });
           return;

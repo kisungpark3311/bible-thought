@@ -247,7 +247,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '새벽에 별이 사라지는 이유',
+            title: document.title,
             url: window.location.href
           });
           return;

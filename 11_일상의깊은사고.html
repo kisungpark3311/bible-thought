@@ -250,7 +250,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '정확한 절망을 넘어, 내 곁에 계신 분을 바라보다',
+            title: document.title,
             url: window.location.href
           });
           return;

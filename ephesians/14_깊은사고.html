@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '이름은 남고, 표지가 붙습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

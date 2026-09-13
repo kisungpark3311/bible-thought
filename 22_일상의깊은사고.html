@@ -248,7 +248,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '결말을 아시면서도 우셨던 그분처럼',
+            title: document.title,
             url: window.location.href
           });
           return;

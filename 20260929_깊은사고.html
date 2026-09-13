@@ -261,7 +261,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '찬양은 완성된 자들의 노래가 아닙니다',
+            title: document.title,
             url: window.location.href
           });
           return;

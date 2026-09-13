@@ -264,7 +264,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '당신의 여권은 어느 나라 것입니까?',
+            title: document.title,
             url: window.location.href
           });
           return;

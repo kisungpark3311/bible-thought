@@ -256,7 +256,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '아름다운 버팀, 일상 속 하나님의 전신 갑주를 입다',
+            title: document.title,
             url: window.location.href
           });
           return;

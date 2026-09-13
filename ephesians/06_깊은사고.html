@@ -280,7 +280,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '무릎을 꿇고 앎에서 멈추지 않는 기도',
+            title: document.title,
             url: window.location.href
           });
           return;

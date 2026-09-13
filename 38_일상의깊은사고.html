@@ -247,7 +247,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '상흔을 지닌 채, 다시 찾아오신 사랑',
+            title: document.title,
             url: window.location.href
           });
           return;

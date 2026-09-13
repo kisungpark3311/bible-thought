@@ -254,7 +254,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '완성의 책임자가 내가 아니라는 위로',
+            title: document.title,
             url: window.location.href
           });
           return;

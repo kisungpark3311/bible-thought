@@ -252,7 +252,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '당신의 인생 장부에는 무엇이 적혀 있습니까?',
+            title: document.title,
             url: window.location.href
           });
           return;

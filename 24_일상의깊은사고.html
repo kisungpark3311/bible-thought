@@ -246,7 +246,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '계산되지 않은 사랑만이 향기가 되어 퍼집니다',
+            title: document.title,
             url: window.location.href
           });
           return;

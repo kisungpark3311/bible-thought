@@ -265,7 +265,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '부끄러워하지 않을 수 있는 진짜 이유',
+            title: document.title,
             url: window.location.href
           });
           return;

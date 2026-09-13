@@ -263,7 +263,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '어깨로 메는 수고, 그리고 스스로 걸어오신 은혜',
+            title: document.title,
             url: window.location.href
           });
           return;

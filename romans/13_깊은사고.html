@@ -253,7 +253,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '무너진 밤에도 우리를 붙드는 단단한 약속',
+            title: document.title,
             url: window.location.href
           });
           return;

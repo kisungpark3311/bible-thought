@@ -254,7 +254,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '조건 없는 사랑, 그리고 '함께' 걷는 길',
+            title: document.title,
             url: window.location.href
           });
           return;

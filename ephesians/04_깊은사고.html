@@ -276,7 +276,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '화평은 합의가 아니라 '창조' 였습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

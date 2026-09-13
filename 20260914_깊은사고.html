@@ -260,7 +260,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '기도가 내 삶의 증명서가 아닐 때',
+            title: document.title,
             url: window.location.href
           });
           return;

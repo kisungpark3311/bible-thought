@@ -257,7 +257,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '우리를 붙드시는 두 손에 관하여',
+            title: document.title,
             url: window.location.href
           });
           return;

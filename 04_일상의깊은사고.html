@@ -254,7 +254,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '씻던 그릇에 담긴 가장 좋은 포도주',
+            title: document.title,
             url: window.location.href
           });
           return;

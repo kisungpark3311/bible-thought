@@ -262,7 +262,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '그 밤, 십자가를 앞둔 예수님의 기도에는 당신이 있었습니다',
+            title: document.title,
             url: window.location.href
           });
           return;

@@ -422,7 +422,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '지워지지 않은 목록 | 역대상 1:1–3:24',
+            title: document.title,
             url: window.location.href
           });
           return;

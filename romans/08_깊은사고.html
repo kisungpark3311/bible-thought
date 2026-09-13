@@ -262,7 +262,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '말로 해명하지 않으시고, 한 사람을 세우시다',
+            title: document.title,
             url: window.location.href
           });
           return;

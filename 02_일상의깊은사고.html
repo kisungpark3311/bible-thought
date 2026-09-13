@@ -247,7 +247,7 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: '아니라고 말한 자리에만 손가락이 설 수 있습니다',
+            title: document.title,
             url: window.location.href
           });
           return;
