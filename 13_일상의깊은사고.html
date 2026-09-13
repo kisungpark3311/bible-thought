@@ -1,147 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>갈 곳이 없어서 남은 사람들</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f8f9fa;
-            color: #333333;
-            line-height: 1.7;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .card {
-            background-color: #ffffff;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px 30px;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>갈 곳이 없어서 남은 사람들</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        h1 {
-            font-size: 1.5rem;
-            color: #1a1a1a;
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: 700;
-            word-break: keep-all;
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #718096;
-            text-align: center;
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
+    * { box-sizing: border-box; }
 
-        .quote {
-            background-color: #f1f5f9;
-            border-left: 4px solid #4a5568;
-            padding: 15px 20px;
-            border-radius: 0 10px 10px 0;
-            margin: 25px 0;
-            font-size: 0.95rem;
-            color: #4a5568;
-            font-style: italic;
-        }
+    html { scroll-behavior: smooth; }
 
-        p {
-            font-size: 1.05rem;
-            margin-bottom: 22px;
-            text-align: justify;
-            word-break: keep-all;
-            color: #444444;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .highlight {
-            color: #2b6cb0;
-            font-weight: 600;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        .footer-prayer {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid #e2e8f0;
-            font-size: 1rem;
-            color: #2d3748;
-            font-weight: 500;
-            text-align: center;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .author-note {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #a0aec0;
-            margin-top: 20px;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 1.35rem;
-            }
-            p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>갈 곳이 없어서 남은 사람들</h1>
-        <div class="subtitle">요한복음 6장에 담긴 역설적 은혜</div>
-        
-        <p>요한복음 6장에는 예수님의 공생애 중 가장 많은 사람이 모였던 날과, 가장 많은 사람이 그분의 곁을 떠나간 날이 함께 기록되어 있습니다.</p>
-        
-        <p>장의 시작은 참으로 화려합니다. 보리떡 다섯 개와 물고기 두 마리로 오천 명이 배불리 먹었고, 기적에 열광한 무리는 예수님을 억지로 자신들의 왕으로 삼으려 했습니다. 그러나 같은 장의 마지막은 너무나도 쓸쓸합니다.</p>
-        
-        <div class="quote">
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 13편</p>
+      <h1>갈 곳이 없어서 남은 사람들</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<div class="subtitle">요한복음 6장에 담긴 역설적 은혜</div>
+<p>요한복음 6장에는 예수님의 공생애 중 가장 많은 사람이 모였던 날과, 가장 많은 사람이 그분의 곁을 떠나간 날이 함께 기록되어 있습니다.</p>
+<p>장의 시작은 참으로 화려합니다. 보리떡 다섯 개와 물고기 두 마리로 오천 명이 배불리 먹었고, 기적에 열광한 무리는 예수님을 억지로 자신들의 왕으로 삼으려 했습니다. 그러나 같은 장의 마지막은 너무나도 쓸쓸합니다.</p>
+<div class="quote">
             "그때부터 그의 제자 중에서 많은 사람이 떠나가고 다시 그와 함께 다니지 아니하더라" (요 6:66)
         </div>
-
-        <p>불과 며칠 사이에 벌어진 일입니다. 그 사이에 어떤 큰 사고나 갈등이 있었던 것이 아닙니다. 단지 <span class="highlight">'설교'</span>가 있었을 뿐입니다. 예수님은 사람들이 듣고 싶어 하는 위로나 기적 대신, "내 살을 먹고 내 피를 마셔야 영생을 얻는다"는 무겁고 어려운 진리를 선포하셨습니다.</p>
-
-        <p>사람들이 수군거리며 불평했지만, 예수님은 사람들을 붙잡기 위해 말씀을 부드럽게 다듬거나 타협하지 않으셨습니다. 오히려 짐승이 여물을 씹는다는 뜻의 거친 단어를 사용하시며 복음의 본질을 더 선명하고 무겁게 드러내셨습니다. 사람들은 말씀을 오해해서 떠난 것이 아닙니다. 오히려 그 말씀의 무게—죽음까지 함께 가야 한다는 참된 제자도—를 너무나 정확히 알아들었기에, 감당하기 버거워 떠나간 것입니다.</p>
-
-        <p>많은 무리가 썰물처럼 빠져나간 텅 빈 자리, 예수님은 남은 열두 제자에게 물으십니다. <strong>"너희도 가려느냐?"</strong> 그때 베드로가 대답합니다.</p>
-
-        <div class="quote">
+<p>불과 며칠 사이에 벌어진 일입니다. 그 사이에 어떤 큰 사고나 갈등이 있었던 것이 아닙니다. 단지 <span class="highlight">'설교'</span>가 있었을 뿐입니다. 예수님은 사람들이 듣고 싶어 하는 위로나 기적 대신, "내 살을 먹고 내 피를 마셔야 영생을 얻는다"는 무겁고 어려운 진리를 선포하셨습니다.</p>
+<p>사람들이 수군거리며 불평했지만, 예수님은 사람들을 붙잡기 위해 말씀을 부드럽게 다듬거나 타협하지 않으셨습니다. 오히려 짐승이 여물을 씹는다는 뜻의 거친 단어를 사용하시며 복음의 본질을 더 선명하고 무겁게 드러내셨습니다. 사람들은 말씀을 오해해서 떠난 것이 아닙니다. 오히려 그 말씀의 무게—죽음까지 함께 가야 한다는 참된 제자도—를 너무나 정확히 알아들었기에, 감당하기 버거워 떠나간 것입니다.</p>
+<p>많은 무리가 썰물처럼 빠져나간 텅 빈 자리, 예수님은 남은 열두 제자에게 물으십니다. <strong>"너희도 가려느냐?"</strong> 그때 베드로가 대답합니다.</p>
+<div class="quote">
             "주여, 영생의 말씀이 주께 있사오니 우리가 누구에게로 가오리이까?" (요 6:68)
         </div>
-
-        <p>우리는 흔히 베드로의 이 고백을 위대한 믿음의 결단으로 읽습니다. 그러나 가만히 묵상해 보면, 이 대답은 흔들림 없는 찬란한 확신이라기보다 차라리 가난한 실토에 가깝습니다. "그들은 다 떠나갔습니다. 하지만 주님, 우리가 여기서 주님을 떠난다면 도대체 어디로 간단 말입니까?"</p>
-
-        <p>베드로 역시 그 어려운 말씀을 다 이해하지는 못했을 것입니다. 앞날에 대한 완벽한 확신도 없었을 것입니다. 그저 생명의 근원 되신 분을 떠나서는 세상 그 어디에도 갈 곳이 없음을, 다른 정답이 없음을 알았을 뿐입니다.</p>
-
-        <p>우리의 신앙 여정에도 종종 이런 순간이 찾아옵니다. 주님의 뜻이 내 기대와 달라서 마음이 무거울 때, 삶의 고난 앞에서 말씀이 버겁게 느껴질 때, 뜨거운 열정이나 확신이 메말라버린 날들이 있습니다. 하지만 괜찮습니다. 신앙은 우리의 굳은 결단으로만 유지되는 것이 아니기 때문입니다.</p>
-
-        <p>예수님은 <strong>"아버지께서 이끌지 아니하시면 아무도 내게 올 수 없다"</strong>고 하셨습니다. 여기서 '이끈다'는 것은 물고기가 가득한 무거운 그물을 힘껏 끌어올릴 때 쓰는 단어입니다. 내가 주님의 손을 꽉 잡고 있는 것 같아도, 실은 거센 파도 속에서 주님이 나를 힘껏 끌어당겨 안고 계신 것입니다.</p>
-
-        <div class="footer-prayer">
-            오늘 당신의 마음속에 대단한 확신이 없어도 괜찮습니다.<br>
-            모든 것이 이해되지 않아도 좋습니다.<br>
-            그저 가만히 엎드려 이렇게 고백해 보십시오.<br><br>
-            <span style="color: #2b6cb0;">"주님, 제가 다 이해할 수는 없지만, 주님밖에 갈 곳이 없습니다."</span><br><br>
-            가장 초라해 보이는 그 고백이,<br>
+<p>우리는 흔히 베드로의 이 고백을 위대한 믿음의 결단으로 읽습니다. 그러나 가만히 묵상해 보면, 이 대답은 흔들림 없는 찬란한 확신이라기보다 차라리 가난한 실토에 가깝습니다. "그들은 다 떠나갔습니다. 하지만 주님, 우리가 여기서 주님을 떠난다면 도대체 어디로 간단 말입니까?"</p>
+<p>베드로 역시 그 어려운 말씀을 다 이해하지는 못했을 것입니다. 앞날에 대한 완벽한 확신도 없었을 것입니다. 그저 생명의 근원 되신 분을 떠나서는 세상 그 어디에도 갈 곳이 없음을, 다른 정답이 없음을 알았을 뿐입니다.</p>
+<p>우리의 신앙 여정에도 종종 이런 순간이 찾아옵니다. 주님의 뜻이 내 기대와 달라서 마음이 무거울 때, 삶의 고난 앞에서 말씀이 버겁게 느껴질 때, 뜨거운 열정이나 확신이 메말라버린 날들이 있습니다. 하지만 괜찮습니다. 신앙은 우리의 굳은 결단으로만 유지되는 것이 아니기 때문입니다.</p>
+<p>예수님은 <strong>"아버지께서 이끌지 아니하시면 아무도 내게 올 수 없다"</strong>고 하셨습니다. 여기서 '이끈다'는 것은 물고기가 가득한 무거운 그물을 힘껏 끌어올릴 때 쓰는 단어입니다. 내가 주님의 손을 꽉 잡고 있는 것 같아도, 실은 거센 파도 속에서 주님이 나를 힘껏 끌어당겨 안고 계신 것입니다.</p>
+<div class="footer-prayer">
+            오늘 당신의 마음속에 대단한 확신이 없어도 괜찮습니다.<br/>
+            모든 것이 이해되지 않아도 좋습니다.<br/>
+            그저 가만히 엎드려 이렇게 고백해 보십시오.<br/><br/>
+<span style="color: #2b6cb0;">"주님, 제가 다 이해할 수는 없지만, 주님밖에 갈 곳이 없습니다."</span><br/><br/>
+            가장 초라해 보이는 그 고백이,<br/>
             실은 우리를 살게 하는 가장 튼튼한 은혜의 줄입니다.
         </div>
-        
-        <div class="author-note">
+<div class="author-note">
             일상의 깊은사고 | 요한복음 6:41-71 묵상에서
         </div>
-    </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 13편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `갈 곳이 없어서 남은 사람들\\n요한복음 제 13편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '갈 곳이 없어서 남은 사람들',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

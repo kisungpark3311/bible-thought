@@ -1,133 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>씻던 그릇에 담긴 가장 좋은 포도주</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px 15px;
-            word-break: keep-all;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
-            padding: 40px 25px;
-            box-sizing: border-box;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-        .header h1 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin: 0 0 12px 0;
-            font-weight: 800;
-            line-height: 1.4;
-        }
-        .header p {
-            font-size: 0.95rem;
-            color: #7f8c8d;
-            margin: 0;
-            font-weight: 500;
-        }
-        .content p {
-            margin-bottom: 26px;
-            font-size: 1.05rem;
-            color: #4a4a4a;
-        }
-        .content p:last-child {
-            margin-bottom: 0;
-        }
-        .highlight {
-            background-color: #f8f9fa;
-            padding: 24px;
-            border-radius: 16px;
-            margin: 35px 0;
-            border-left: 5px solid #6c5ce7;
-            text-align: center;
-        }
-        .highlight p {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2d3436;
-            line-height: 1.6;
-        }
-        .prayer {
-            background-color: #fff9f0;
-            padding: 30px 20px;
-            border-radius: 20px;
-            margin-top: 45px;
-            text-align: center;
-        }
-        .prayer h3 {
-            font-size: 1.1rem;
-            color: #d35400;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .prayer p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #5c4d3c;
-            line-height: 1.9;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.85rem;
-            color: #b2bec3;
-        }
-        .divider {
-            height: 1px;
-            background: #f1f2f6;
-            margin: 35px 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>씻던 그릇에 담긴 가장 좋은 포도주</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>씻던 그릇에 담긴<br>가장 좋은 포도주</h1>
-            <p>요한복음 2장이 건네는 일상의 위로</p>
-        </div>
-        
-        <div class="content">
-            <p>당신의 삶은 지금 어떤 기분인가요?</p>
-            <p>어쩌면 좋았던 시절은 이미 다 지나가 버렸고, 이제는 밍밍하고 남은 것들만 들이켜야 하는 시간처럼 느껴질지도 모릅니다. 세상의 잔치는 늘 그런 식입니다. 처음에는 가장 좋은 것을 내어놓지만, 시간이 갈수록 취기가 오르고 나면 그저 그런 것들로 상을 채웁니다.</p>
-            <p>하지만 성경이 들려주는 하나님의 방식은 조금 다릅니다. 가나의 혼인 잔치에서, 하나님은 사람들이 상상하지 못한 방법으로 개입하십니다. 예수님은 잔치의 기쁨이 끊어질 위기에서, 엉뚱하게도 한 구석에 놓여 있던 <strong>'돌항아리 여섯'</strong>을 가리키십니다.</p>
-            <p>그 항아리는 마실 물을 담는 곳이 아니었습니다. 밖에서 돌아오면 손발의 먼지를 씻어내기 위해 놓아둔, '정결 예식'을 위한 그릇이었습니다. 손을 씻고, 그릇을 씻고, 아무리 씻어내도 내일이면 또다시 부정해져서 씻어야만 하는… 끝나지 않는 고단한 노동과 의무의 상징이었습니다.</p>
-            
-            <div class="highlight">
-                <p>세상은 가장 좋은 것을 먼저 주지만,<br>주님은 가장 좋은 것을<br>언제나 뒤에 남겨두십니다.</p>
-            </div>
-            
-            <p>놀랍게도 예수님은 그 의무의 그릇을 치우지 않으셨습니다. 대신 그 빈 그릇에 물을 채우게 하시고, 그것을 붉고 진한 '가장 좋은 포도주'로 바꾸셨습니다.</p>
-            <p>이것이 복음이 우리 삶에 일하는 방식입니다. 예수님은 우리의 지루하고 반복되는 일상, 의무감으로 짊어지고 있는 삶의 그릇들을 내다 버리라고 하지 않으십니다. 오히려 그 똑같은 그릇 안에 <strong>'잔치의 기쁨'</strong>을 채워 주십니다. 무거운 의무가 섬김의 기쁨으로 바뀌고, 메마른 버티기가 누군가를 살리는 생명수로 변하는 기적이 일어나는 것입니다.</p>
-            <p>우리는 때때로 삶의 어떤 부분들이 속절없이 무너져 내리는 것을 경험합니다. 공들였던 계획, 소중했던 관계, 혹은 나침반 같던 신념이 흔들릴 때가 있습니다. 성전을 헐라는 예수님의 말씀처럼, 우리의 힘으로는 도저히 붕괴를 막을 수 없는 순간이 찾아옵니다.</p>
-            <p>그러나 무너지는 자리가 곧 인생의 끝이 아닌 이유는, <strong>'다시 일으키시는 분'</strong>의 손이 따로 있기 때문입니다. 혼자 붕괴를 막아보려고 애쓰던 두 손을 이제는 잠시 내려놓아도 괜찮습니다. 헐리는 일은 사람의 손에서 비롯될지 몰라도, 무너진 것을 사흘 만에 일으켜 세우시는 분은 바로 주님이십니다.</p>
-            <p>당신의 신앙이, 그리고 당신의 삶이 그저 매일 먼지를 털어내야 하는 피곤한 의무로만 남지 않기를 바랍니다. 그저 기적에 감탄만 하고 돌아서는 구경꾼의 자리에 머물지 않고, 그분이 남겨두신 가장 좋은 포도주를 깊이 맛보는 당신이 되기를 소망합니다.</p>
-        </div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 04편</p>
+      <h1>씻던 그릇에 담긴 가장 좋은 포도주</h1>
+    </header>
 
-        <div class="prayer">
-            <h3>오늘의 기도</h3>
-            <p>주님, 제 삶이 씻어야 할 의무로만 남지 않게 하시고<br>그 일상의 그릇에 잔치의 기쁨을 채워 주옵소서.<br><br>무너지는 자리를 혼자 붙들고 있던<br>손을 이제 내려놓습니다.<br>나의 무너짐을 다시 일으켜 세우실 분이<br>오직 주님이심을 신뢰하게 하소서.<br>아멘.</p>
-        </div>
-
-        <div class="footer">
-            일상의 깊은 사고 | 요한복음 2:1-25
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+
+<div class="content">
+<p>당신의 삶은 지금 어떤 기분인가요?</p>
+<p>어쩌면 좋았던 시절은 이미 다 지나가 버렸고, 이제는 밍밍하고 남은 것들만 들이켜야 하는 시간처럼 느껴질지도 모릅니다. 세상의 잔치는 늘 그런 식입니다. 처음에는 가장 좋은 것을 내어놓지만, 시간이 갈수록 취기가 오르고 나면 그저 그런 것들로 상을 채웁니다.</p>
+<p>하지만 성경이 들려주는 하나님의 방식은 조금 다릅니다. 가나의 혼인 잔치에서, 하나님은 사람들이 상상하지 못한 방법으로 개입하십니다. 예수님은 잔치의 기쁨이 끊어질 위기에서, 엉뚱하게도 한 구석에 놓여 있던 <strong>'돌항아리 여섯'</strong>을 가리키십니다.</p>
+<p>그 항아리는 마실 물을 담는 곳이 아니었습니다. 밖에서 돌아오면 손발의 먼지를 씻어내기 위해 놓아둔, '정결 예식'을 위한 그릇이었습니다. 손을 씻고, 그릇을 씻고, 아무리 씻어내도 내일이면 또다시 부정해져서 씻어야만 하는… 끝나지 않는 고단한 노동과 의무의 상징이었습니다.</p>
+<div class="highlight">
+<p>세상은 가장 좋은 것을 먼저 주지만,<br/>주님은 가장 좋은 것을<br/>언제나 뒤에 남겨두십니다.</p>
+</div>
+<p>놀랍게도 예수님은 그 의무의 그릇을 치우지 않으셨습니다. 대신 그 빈 그릇에 물을 채우게 하시고, 그것을 붉고 진한 '가장 좋은 포도주'로 바꾸셨습니다.</p>
+<p>이것이 복음이 우리 삶에 일하는 방식입니다. 예수님은 우리의 지루하고 반복되는 일상, 의무감으로 짊어지고 있는 삶의 그릇들을 내다 버리라고 하지 않으십니다. 오히려 그 똑같은 그릇 안에 <strong>'잔치의 기쁨'</strong>을 채워 주십니다. 무거운 의무가 섬김의 기쁨으로 바뀌고, 메마른 버티기가 누군가를 살리는 생명수로 변하는 기적이 일어나는 것입니다.</p>
+<p>우리는 때때로 삶의 어떤 부분들이 속절없이 무너져 내리는 것을 경험합니다. 공들였던 계획, 소중했던 관계, 혹은 나침반 같던 신념이 흔들릴 때가 있습니다. 성전을 헐라는 예수님의 말씀처럼, 우리의 힘으로는 도저히 붕괴를 막을 수 없는 순간이 찾아옵니다.</p>
+<p>그러나 무너지는 자리가 곧 인생의 끝이 아닌 이유는, <strong>'다시 일으키시는 분'</strong>의 손이 따로 있기 때문입니다. 혼자 붕괴를 막아보려고 애쓰던 두 손을 이제는 잠시 내려놓아도 괜찮습니다. 헐리는 일은 사람의 손에서 비롯될지 몰라도, 무너진 것을 사흘 만에 일으켜 세우시는 분은 바로 주님이십니다.</p>
+<p>당신의 신앙이, 그리고 당신의 삶이 그저 매일 먼지를 털어내야 하는 피곤한 의무로만 남지 않기를 바랍니다. 그저 기적에 감탄만 하고 돌아서는 구경꾼의 자리에 머물지 않고, 그분이 남겨두신 가장 좋은 포도주를 깊이 맛보는 당신이 되기를 소망합니다.</p>
+</div>
+<div class="prayer">
+<h3>오늘의 기도</h3>
+<p>주님, 제 삶이 씻어야 할 의무로만 남지 않게 하시고<br/>그 일상의 그릇에 잔치의 기쁨을 채워 주옵소서.<br/><br/>무너지는 자리를 혼자 붙들고 있던<br/>손을 이제 내려놓습니다.<br/>나의 무너짐을 다시 일으켜 세우실 분이<br/>오직 주님이심을 신뢰하게 하소서.<br/>아멘.</p>
+</div>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 04편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `씻던 그릇에 담긴 가장 좋은 포도주\\n요한복음 제 04편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '씻던 그릇에 담긴 가장 좋은 포도주',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

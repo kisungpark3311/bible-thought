@@ -1,110 +1,267 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>계산되지 않은 사랑만이 향기가 되어 퍼집니다</title>
-    <style>
-        :root {
-            --bg-color: #f7f9fc;
-            --card-bg: #ffffff;
-            --text-main: #2d3748;
-            --text-muted: #718096;
-            --accent: #4a5568;
-            --highlight: #e2e8f0;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px 16px;
-            word-break: keep-all;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            padding: 40px 24px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 1.5rem;
-            color: #1a202c;
-            margin-top: 10px;
-            margin-bottom: 8px;
-            line-height: 1.4;
-            letter-spacing: -0.5px;
-            font-weight: 700;
-        }
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-        p {
-            font-size: 1.05rem;
-            margin-bottom: 24px;
-            color: #4a5568;
-            letter-spacing: -0.3px;
-        }
-        .highlight {
-            background: linear-gradient(180deg, rgba(255,255,255,0) 65%, #cbd5e0 65%);
-            font-weight: 600;
-            color: #2d3748;
-        }
-        .quote {
-            border-left: 4px solid #a0aec0;
-            background-color: #f7fafc;
-            padding: 16px 20px;
-            margin: 30px 0;
-            color: #4a5568;
-            font-style: italic;
-            font-size: 1.05rem;
-            border-radius: 0 12px 12px 0;
-        }
-        .footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #a0aec0;
-            border-top: 1px solid #edf2f7;
-            padding-top: 25px;
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>계산되지 않은 사랑만이 향기가 되어 퍼집니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>계산되지 않은 사랑만이<br>향기가 되어 퍼집니다</h1>
-        <div class="subtitle">일상의 깊은 사고 | 요한복음 12장 1-19절</div>
-        
-        <p>우리는 참으로 똑똑해진 세상을 살고 있습니다. 매 순간을 가성비로 따지고, 자원을 가장 효율적으로 배분하는 것이 미덕이 된 시대입니다. 누군가의 호의나 헌신 앞에서도 <span class="highlight">"굳이 그렇게까지 할 필요가 있었을까?"</span>라며 서둘러 계산기를 두드리곤 합니다.</p>
-        
-        <p>유월절 엿새 전, 베다니의 한 집에서도 잔치가 열렸습니다. 그곳에서 놀라운 사건이 벌어집니다. 마리아가 노동자의 일 년 치 품삯에 맞먹는 값비싼 향유를 예수님의 발에 부은 것입니다. 그때 가룟 유다가 나섭니다. "이 향유를 팔아 가난한 자들에게 주지 그랬느냐." 유다의 말은 틀린 곳이 없습니다. 그의 계산은 정확했고, 논리는 지극히 합리적이었습니다.</p>
-        
-        <div class="quote">"향유 냄새가 집에 가득하더라" (요 12:3)</div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 24편</p>
+      <h1>계산되지 않은 사랑만이 향기가 되어 퍼집니다</h1>
+    </header>
 
-        <p>그러나 성경은 그날 그 공간을 채운 것이 유다의 '합리적인 셈법'이 아니라 마리아의 '계산되지 않은 낭비'였다고 기록합니다. 마리아가 의도적으로 집안에 향기를 채우려 했던 것이 아닙니다. 원문을 보면 이 문장은 수동태로 쓰였습니다. 그녀는 그저 사랑하는 주님께 자신의 가장 귀한 것을 쏟아부었을 뿐인데, <span class="highlight">그 낭비된 사랑이 온 집안을 향기로 가득 채운 것입니다.</span> 유능한 사람들의 효율적인 언어는 날카로웠지만, 사람의 마음을 적시고 공간을 채운 것은 낭비처럼 보이는 맹목적인 사랑이었습니다.</p>
-        
-        <p>이해할 수 없는 헌신 앞에서 우리는 종종 이유를 묻습니다. 하지만 예수님은 마리아를 다그치지 않으십니다. 그저 <b>"가만 두어라"</b> 하시며 그녀를 지켜주십니다. 사랑의 표현이 늘 논리적으로 설명 가능한 것은 아닙니다. 누군가의 진심이 담긴 행동 앞에서는, 섣불리 설명을 요구하기 전에 묵묵히 받아 주어야 할 자리가 필요합니다.</p>
-        
-        <p>때로는 우리의 삶에서도 숫자와 효율로는 설명되지 않는 순간들을 만납니다. 손해를 감수하면서도 오랜 인연을 지키려는 마음, 조건이 불리해도 곁에 남으려는 선택들. 그것을 단순히 '비합리적'이라고 치부하기 전에, 그 안에 담긴 계산되지 않은 사랑의 무게를 바라볼 수 있어야 합니다.</p>
-        
-        <p>요한복음은 마리아가 향유를 부은 곳이 예수님의 '발'이었다고 기록합니다. 왕의 자리인 머리가 아니라 종의 자리인 발이었습니다. 흥미롭게도 바로 다음 장에서 예수님은 제자들의 '발'을 씻겨 주십니다. 마리아의 헌신과 예수님의 사랑은 모두 가장 낮은 곳에서 만납니다. <span class="highlight">참된 사랑은 언제나 아래로 흐릅니다.</span></p>
-
-        <p>지금 당장은 왜 이런 희생이 필요한지, 왜 이 힘든 시간을 지나야 하는지 이해되지 않을 수 있습니다. 주님이 예루살렘에 입성하실 때, 제자들도 처음에는 그 의미를 알지 못했습니다. 그러나 "영광을 얻으신 후에야" 비로소 깨달았습니다. 순종하며 그 자리에 머무를 때, 마침내 이해의 순간이 찾아옵니다.</p>
-
-        <p>오늘, 우리의 팍팍한 일상에도 계산기 전원을 잠시 끄는 시간이 있었으면 좋겠습니다. 손익을 따지는 대신 누군가의 발을 씻기는 낭비를 선택할 때, 우리 삶의 공간에도 비로소 지워지지 않는 짙은 향기가 피어날 것입니다.</p>
-
-        <div class="footer">
-            당신의 일상에 스며드는 깊은 묵상<br>
-            © 2026
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+
+<div class="subtitle">일상의 깊은 사고 | 요한복음 12장 1-19절</div>
+<p>우리는 참으로 똑똑해진 세상을 살고 있습니다. 매 순간을 가성비로 따지고, 자원을 가장 효율적으로 배분하는 것이 미덕이 된 시대입니다. 누군가의 호의나 헌신 앞에서도 <span class="highlight">"굳이 그렇게까지 할 필요가 있었을까?"</span>라며 서둘러 계산기를 두드리곤 합니다.</p>
+<p>유월절 엿새 전, 베다니의 한 집에서도 잔치가 열렸습니다. 그곳에서 놀라운 사건이 벌어집니다. 마리아가 노동자의 일 년 치 품삯에 맞먹는 값비싼 향유를 예수님의 발에 부은 것입니다. 그때 가룟 유다가 나섭니다. "이 향유를 팔아 가난한 자들에게 주지 그랬느냐." 유다의 말은 틀린 곳이 없습니다. 그의 계산은 정확했고, 논리는 지극히 합리적이었습니다.</p>
+<div class="quote">"향유 냄새가 집에 가득하더라" (요 12:3)</div>
+<p>그러나 성경은 그날 그 공간을 채운 것이 유다의 '합리적인 셈법'이 아니라 마리아의 '계산되지 않은 낭비'였다고 기록합니다. 마리아가 의도적으로 집안에 향기를 채우려 했던 것이 아닙니다. 원문을 보면 이 문장은 수동태로 쓰였습니다. 그녀는 그저 사랑하는 주님께 자신의 가장 귀한 것을 쏟아부었을 뿐인데, <span class="highlight">그 낭비된 사랑이 온 집안을 향기로 가득 채운 것입니다.</span> 유능한 사람들의 효율적인 언어는 날카로웠지만, 사람의 마음을 적시고 공간을 채운 것은 낭비처럼 보이는 맹목적인 사랑이었습니다.</p>
+<p>이해할 수 없는 헌신 앞에서 우리는 종종 이유를 묻습니다. 하지만 예수님은 마리아를 다그치지 않으십니다. 그저 <b>"가만 두어라"</b> 하시며 그녀를 지켜주십니다. 사랑의 표현이 늘 논리적으로 설명 가능한 것은 아닙니다. 누군가의 진심이 담긴 행동 앞에서는, 섣불리 설명을 요구하기 전에 묵묵히 받아 주어야 할 자리가 필요합니다.</p>
+<p>때로는 우리의 삶에서도 숫자와 효율로는 설명되지 않는 순간들을 만납니다. 손해를 감수하면서도 오랜 인연을 지키려는 마음, 조건이 불리해도 곁에 남으려는 선택들. 그것을 단순히 '비합리적'이라고 치부하기 전에, 그 안에 담긴 계산되지 않은 사랑의 무게를 바라볼 수 있어야 합니다.</p>
+<p>요한복음은 마리아가 향유를 부은 곳이 예수님의 '발'이었다고 기록합니다. 왕의 자리인 머리가 아니라 종의 자리인 발이었습니다. 흥미롭게도 바로 다음 장에서 예수님은 제자들의 '발'을 씻겨 주십니다. 마리아의 헌신과 예수님의 사랑은 모두 가장 낮은 곳에서 만납니다. <span class="highlight">참된 사랑은 언제나 아래로 흐릅니다.</span></p>
+<p>지금 당장은 왜 이런 희생이 필요한지, 왜 이 힘든 시간을 지나야 하는지 이해되지 않을 수 있습니다. 주님이 예루살렘에 입성하실 때, 제자들도 처음에는 그 의미를 알지 못했습니다. 그러나 "영광을 얻으신 후에야" 비로소 깨달았습니다. 순종하며 그 자리에 머무를 때, 마침내 이해의 순간이 찾아옵니다.</p>
+<p>오늘, 우리의 팍팍한 일상에도 계산기 전원을 잠시 끄는 시간이 있었으면 좋겠습니다. 손익을 따지는 대신 누군가의 발을 씻기는 낭비를 선택할 때, 우리 삶의 공간에도 비로소 지워지지 않는 짙은 향기가 피어날 것입니다.</p>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 24편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `계산되지 않은 사랑만이 향기가 되어 퍼집니다\\n요한복음 제 24편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '계산되지 않은 사랑만이 향기가 되어 퍼집니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

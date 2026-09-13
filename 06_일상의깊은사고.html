@@ -1,129 +1,271 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정오의 우물가, 그곳에 앉아 계셨던 분</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
-            letter-spacing: -0.02em;
-            word-break: keep-all;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>정오의 우물가, 그곳에 앉아 계셨던 분</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 32px 24px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+    * { box-sizing: border-box; }
 
-        .title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
+    html { scroll-behavior: smooth; }
 
-        .subtitle {
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: #6366f1;
-            margin: 0;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .content {
-            font-size: 1.05rem;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        .content p {
-            margin-bottom: 1.6rem;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .content p:last-child {
-            margin-bottom: 0;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        .highlight {
-            font-weight: 600;
-            color: #4338ca;
-            background-color: #e0e7ff;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
 
-        .quote {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #312e81;
-            margin: 2.5rem 0;
-            padding: 1.2rem;
-            background-color: #eef2ff;
-            border-radius: 12px;
-        }
-        
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 20px;
-        }
-    </style>
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 class="title">정오의 우물가,<br>그곳에 앉아 계셨던 분</h1>
-            <p class="subtitle">인생의 가장 뜨거운 시간, 가장 외로운 자리에 찾아온 기적</p>
-        </div>
-        
-        <div class="content">
-            <p>누구나 마음속에 피하고 싶은 <span class="highlight">'정오'</span>의 시간이 있습니다. 삶의 무게가 너무 무거워서, 혹은 감추고 싶은 상처와 부끄러움 때문에 사람들의 시선을 피해 걷게 되는 막막한 시간들 말입니다.</p>
-            
-            <p>요한복음 4장에 등장하는 사마리아 여인에게도 남들이 모두 쉬는 뜨거운 한낮의 정오가 바로 그런 시간이었습니다. 쏟아지는 뙤약볕을 뚫고 아무도 없는 우물가로 홀로 물을 길으러 온 여인. 그런데 그날따라 그 인적 드문 우물 곁에, 낯선 한 분이 땀방울을 흘리며 지친 모습으로 먼저 와 앉아 계셨습니다.</p>
-            
-            <div class="quote">"내게 마실 물을 좀 주겠습니까?"</div>
-            
-            <p>우리를 가장 깊이 울리는 것은 예수님의 이 첫마디입니다. 세상을 구원하실 메시아가, 삶의 무게에 짓눌린 여인에게 다가가 가장 연약한 모습으로 도움을 청하십니다. 정답을 쥐어주며 훈계하는 대신, "당신의 도움이 필요합니다"라며 기꺼이 자신을 낮추어 여인의 닫힌 마음을 두드리신 것입니다.</p>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 06편</p>
+      <h1>정오의 우물가, 그곳에 앉아 계셨던 분</h1>
+    </header>
 
-            <p>하늘의 주인이 땅의 사람에게 먼저 손을 내미는 이 놀라운 역전. 목마른 분이 목마른 자에게 다가와 주셨기에, 비로소 우리는 영원히 목마르지 않을 생수를 구할 용기를 얻게 됩니다.</p>
-            
-            <p>우리는 종종 신앙의 여정을 높은 산을 오르는 고단한 일처럼 생각하곤 합니다. 이곳이 맞는지 저곳이 맞는지 장소를 따지고, 내 정성과 열심을 얼마나 모아야 그분께 닿을 수 있을까 고민하며 무거운 짐을 집니다. 조금이라도 내 노력이 부족한 날이면 하나님께서 멀리 떠나신 것만 같아 불안해합니다. 그러나 예수님은 웅크린 우리를 향해 완전히 다른 이야기를 들려주십니다.</p>
-
-            <div class="quote">"아버지께서는 이렇게 자기에게 예배하는 자들을 찾으시느니라."</div>
-
-            <p>예배는 우리가 하나님을 찾아 높은 산을 힘겹게 오르는 등정이 아닙니다. 우리를 사랑하시는 하나님이 <strong>지금 이 순간에도 애타게 나를 찾고 계신다는 눈부신 선언</strong>입니다. 내가 닿으려 애쓰기 전에 먼저 나를 찾아 내려오신 그분의 따뜻한 시선 앞에, 나의 상처받고 남루한 모습 그대로를 조용히 드러내어 서는 일입니다.</p>
-
-            <p>우리는 살아남기 위해 수많은 '웅덩이'를 파며 살아갑니다. 돈이라는 웅덩이, 사람의 인정이라는 웅덩이, 성공이라는 웅덩이에 기대를 겁니다. 여인에게 있었던 다섯 남편처럼 말입니다. 하지만 그 웅덩이들은 밑빠진 독처럼 이내 말라버리고, 우리는 더 지독한 갈증에 시달립니다. 그런 우리에게 주님은 더 튼튼한 웅덩이를 주겠다고 말씀하지 않으십니다. <strong>주님 자신이 아예 영원히 마르지 않는 생수의 근원이 되어 주겠다</strong>고 하십니다.</p>
-
-            <p>그 생수를 맛본 여인은 어떻게 했을까요? 그녀는 생명줄처럼 쥐고 있던 물동이를 우물가에 미련 없이 내버려 둡니다. 그리고 그토록 피하고 싶었던 사람들을 향해, 마을로 기쁘게 달려갑니다. 진짜 은혜는 내 안에만 고여 있는 저수지가 아니라, 내 영혼을 흠뻑 적시고 튀어 올라 이웃에게까지 흘러넘치는 생명수이기 때문입니다.</p>
-
-            <p>오늘도 내 마음속 가장 뜨겁고 외로운 정오의 우물가를 향해 묵묵히 걸어오시는 분이 계십니다. 우리가 오기도 전에 먼저 지친 몸을 이끌고 와 앉아 계시는 주님. 그분이 오늘, 조용하고 다정한 목소리로 당신에게 말을 건네십니다.</p>
-
-            <p>그 애틋한 부르심 앞에 우리의 무거운 물동이를 내려놓고, 영원히 목마르지 않는 넉넉한 은혜의 품으로 나아가기를 소망합니다.</p>
-        </div>
-        
-        <div class="footer">
-            일상의 깊은 사고 | 요한복음 4:1-26 묵상
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+
+<div class="content">
+<p>누구나 마음속에 피하고 싶은 <span class="highlight">'정오'</span>의 시간이 있습니다. 삶의 무게가 너무 무거워서, 혹은 감추고 싶은 상처와 부끄러움 때문에 사람들의 시선을 피해 걷게 되는 막막한 시간들 말입니다.</p>
+<p>요한복음 4장에 등장하는 사마리아 여인에게도 남들이 모두 쉬는 뜨거운 한낮의 정오가 바로 그런 시간이었습니다. 쏟아지는 뙤약볕을 뚫고 아무도 없는 우물가로 홀로 물을 길으러 온 여인. 그런데 그날따라 그 인적 드문 우물 곁에, 낯선 한 분이 땀방울을 흘리며 지친 모습으로 먼저 와 앉아 계셨습니다.</p>
+<div class="quote">"내게 마실 물을 좀 주겠습니까?"</div>
+<p>우리를 가장 깊이 울리는 것은 예수님의 이 첫마디입니다. 세상을 구원하실 메시아가, 삶의 무게에 짓눌린 여인에게 다가가 가장 연약한 모습으로 도움을 청하십니다. 정답을 쥐어주며 훈계하는 대신, "당신의 도움이 필요합니다"라며 기꺼이 자신을 낮추어 여인의 닫힌 마음을 두드리신 것입니다.</p>
+<p>하늘의 주인이 땅의 사람에게 먼저 손을 내미는 이 놀라운 역전. 목마른 분이 목마른 자에게 다가와 주셨기에, 비로소 우리는 영원히 목마르지 않을 생수를 구할 용기를 얻게 됩니다.</p>
+<p>우리는 종종 신앙의 여정을 높은 산을 오르는 고단한 일처럼 생각하곤 합니다. 이곳이 맞는지 저곳이 맞는지 장소를 따지고, 내 정성과 열심을 얼마나 모아야 그분께 닿을 수 있을까 고민하며 무거운 짐을 집니다. 조금이라도 내 노력이 부족한 날이면 하나님께서 멀리 떠나신 것만 같아 불안해합니다. 그러나 예수님은 웅크린 우리를 향해 완전히 다른 이야기를 들려주십니다.</p>
+<div class="quote">"아버지께서는 이렇게 자기에게 예배하는 자들을 찾으시느니라."</div>
+<p>예배는 우리가 하나님을 찾아 높은 산을 힘겹게 오르는 등정이 아닙니다. 우리를 사랑하시는 하나님이 <strong>지금 이 순간에도 애타게 나를 찾고 계신다는 눈부신 선언</strong>입니다. 내가 닿으려 애쓰기 전에 먼저 나를 찾아 내려오신 그분의 따뜻한 시선 앞에, 나의 상처받고 남루한 모습 그대로를 조용히 드러내어 서는 일입니다.</p>
+<p>우리는 살아남기 위해 수많은 '웅덩이'를 파며 살아갑니다. 돈이라는 웅덩이, 사람의 인정이라는 웅덩이, 성공이라는 웅덩이에 기대를 겁니다. 여인에게 있었던 다섯 남편처럼 말입니다. 하지만 그 웅덩이들은 밑빠진 독처럼 이내 말라버리고, 우리는 더 지독한 갈증에 시달립니다. 그런 우리에게 주님은 더 튼튼한 웅덩이를 주겠다고 말씀하지 않으십니다. <strong>주님 자신이 아예 영원히 마르지 않는 생수의 근원이 되어 주겠다</strong>고 하십니다.</p>
+<p>그 생수를 맛본 여인은 어떻게 했을까요? 그녀는 생명줄처럼 쥐고 있던 물동이를 우물가에 미련 없이 내버려 둡니다. 그리고 그토록 피하고 싶었던 사람들을 향해, 마을로 기쁘게 달려갑니다. 진짜 은혜는 내 안에만 고여 있는 저수지가 아니라, 내 영혼을 흠뻑 적시고 튀어 올라 이웃에게까지 흘러넘치는 생명수이기 때문입니다.</p>
+<p>오늘도 내 마음속 가장 뜨겁고 외로운 정오의 우물가를 향해 묵묵히 걸어오시는 분이 계십니다. 우리가 오기도 전에 먼저 지친 몸을 이끌고 와 앉아 계시는 주님. 그분이 오늘, 조용하고 다정한 목소리로 당신에게 말을 건네십니다.</p>
+<p>그 애틋한 부르심 앞에 우리의 무거운 물동이를 내려놓고, 영원히 목마르지 않는 넉넉한 은혜의 품으로 나아가기를 소망합니다.</p>
+</div>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 06편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `정오의 우물가, 그곳에 앉아 계셨던 분\\n요한복음 제 06편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '정오의 우물가, 그곳에 앉아 계셨던 분',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

@@ -1,129 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>계셨던 분이 우리 곁으로 오신 이야기</title>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>계셨던 분이 우리 곁으로 오신 이야기</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-        margin: 0;
-        padding: 0;
-        background-color: #f7f9fc;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", sans-serif;
-        color: #333333;
-        line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
-    .container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 0 15px;
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
     }
-    .card {
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-        padding: 30px 20px;
-        overflow: hidden;
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
     }
-    .header {
-        text-align: center;
-        margin-bottom: 30px;
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
     }
-    .subtitle {
-        font-size: 0.95rem;
-        color: #636e72;
-        margin-bottom: 8px;
-        font-weight: 600;
-        letter-spacing: -0.5px;
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
     }
-    .title {
-        font-size: 1.6rem;
-        color: #2d3436;
-        margin: 0;
-        font-weight: 800;
-        word-break: keep-all;
-        letter-spacing: -1px;
-        line-height: 1.3;
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-    .divider {
-        width: 40px;
-        height: 3px;
-        background-color: #74b9ff;
-        margin: 20px auto;
-        border-radius: 2px;
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
     }
-    .content p {
-        font-size: 1.05rem;
-        margin-bottom: 22px;
-        word-break: keep-all;
-        text-align: justify;
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
     }
-    .content p:last-child {
-        margin-bottom: 0;
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
     }
-    .highlight {
-        background: linear-gradient(180deg, rgba(255,255,255,0) 60%, #e0f2fe 40%);
-        font-weight: 600;
-        color: #0c4a6e;
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
     }
-    .quote-box {
-        background-color: #f8fafc;
-        border-left: 4px solid #3b82f6;
-        padding: 15px 20px;
-        margin: 25px 0;
-        border-radius: 0 12px 12px 0;
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
     }
-    .quote-box p {
-        margin: 0;
-        font-size: 1rem;
-        color: #475569;
-        font-style: italic;
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
     }
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #edf2f7;
-        font-size: 0.9rem;
-        color: #a0aec0;
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
     }
-</style>
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="header">
-                <div class="subtitle">일상의 깊은 사고 — 요한복음 1:1-18</div>
-                <h1 class="title">계셨던 분이<br>우리 곁으로 오신 이야기</h1>
-                <div class="divider"></div>
-            </div>
-            
-            <div class="content">
-                <p>우리의 삶에는 때로 도저히 건널 수 없을 것 같은 깊은 강이 흐릅니다. 이상과 현실 사이, 바라는 내 모습과 한없이 초라한 내 모습 사이의 아득한 거리감 속에서 우리는 종종 주저앉고 맙니다. 창조주이신 하나님과 피조물인 우리 사이의 거리도 그러했습니다. 영원과 유한이라는 건널 수 없는 거대한 경계가 존재했습니다.</p>
-                
-                <p>그러나 요한복음의 서문은 이 경계가 무너진 기적 같은 이야기를 들려줍니다. <span class="highlight">신앙은 우리가 애써 그 강을 건너 하나님께로 올라간 이야기가 아닙니다. 오히려 하나님이 친히 그 강을 건너 우리 곁으로 찾아오신 이야기입니다.</span></p>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 01편</p>
+      <h1>계셨던 분이 우리 곁으로 오신 이야기</h1>
+    </header>
 
-                <p>요한은 말씀이신 예수님이 만물이 생겨나기 이전, 태초부터 <strong>'계셨다'</strong>고 말합니다. 창조주와 피조물 사이의 확고한 선입니다. 그런데 이 선을 넘는 경이로운 사건이 일어납니다. 영원히 계시던 분이 스스로 육신이 <strong>'되신'</strong> 것입니다. 우리가 단 한 뼘도 하늘로 올라갈 수 없었기에, 그분이 기꺼이 신성의 영광을 내려놓고 가장 낮은 곳으로 건너오셨습니다.</p>
-
-                <div class="quote-box">
-                    <p>"말씀이 육신이 되어 우리 가운데 거하시매 우리가 그의 영광을 보니 아버지의 독생자의 영광이요 은혜와 진리가 충만하더라"</p>
-                </div>
-
-                <p>그분은 우리 곁에 오셔서 무엇을 하셨을까요? 성경은 "우리 가운데 거하시매"라고 표현하지만, 그 원어의 숨은 뜻은 <strong>'장막을 치셨다(텐트를 치셨다)'</strong>입니다. 화려하고 완벽한 성전에 머물기를 택하지 않으시고, 흔들리고 찢어지기 쉬운 유목민의 텐트를 우리 삶의 한복판에 치셨습니다.</p>
-
-                <p>완벽하게 준비된 거룩한 장소가 아니라, 질병과 실패, 무너진 관계와 잠 못 이루는 걱정으로 <span class="highlight">어수선한 우리의 일상 속에 당신의 주소를 두셨습니다.</span> 하나님의 임재는 웅장한 건물 안에 갇혀 있지 않습니다. 오늘 우리가 눈물 흘리는 바로 그 어두운 자리가, 주님이 텐트를 치고 곁에 앉아주시는 은혜의 자리입니다.</p>
-                
-                <p>우리는 종종 하나님이 어떤 분이신지 몰라 방황합니다. 그러나 하나님은 복잡한 교리나 문서를 하늘에서 뚝 떨어뜨리지 않으셨습니다. 대신 '예수 그리스도'라는 한 인격을 우리에게 보내주셨습니다. 예수님의 삶, 그분의 눈물, 약한 자들을 향한 따뜻한 손길이 곧 하나님이 어떤 분인지를 낱낱이 풀어 설명해 주는 완벽한 번역이자 해설서였습니다.</p>
-
-                <p>그러므로 내 성과와 평판이 흔들리는 날, 어설픈 나의 성취에 기대지 마십시오. 내 존재가 시작되기 전부터 계셨던 그분의 변함없는 사랑과 긍휼 위에 굳게 서십시오. 그리고 은혜와 진리가 충만하신 그분이 내 곁에 다가오셨듯, 우리도 오늘 누군가의 곁으로 다가가 작은 텐트를 쳐주는 하루가 되기를 소망합니다.</p>
-
-                <p><span class="highlight">매몰찬 진실로 사람을 베지 않고, 맹목적인 친절로 불의를 덮지 않는 삶.</span> 은혜와 진리가 다정하게 손잡고 걷는 따뜻한 일상을 오늘, 당신의 자리에서 시작해 보시길 바랍니다.</p>
-            </div>
-
-            <div class="footer">
-                일상의 깊은 사고 | 요한복음 1:1-18 묵상
-            </div>
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+
+<div class="content">
+<p>우리의 삶에는 때로 도저히 건널 수 없을 것 같은 깊은 강이 흐릅니다. 이상과 현실 사이, 바라는 내 모습과 한없이 초라한 내 모습 사이의 아득한 거리감 속에서 우리는 종종 주저앉고 맙니다. 창조주이신 하나님과 피조물인 우리 사이의 거리도 그러했습니다. 영원과 유한이라는 건널 수 없는 거대한 경계가 존재했습니다.</p>
+<p>그러나 요한복음의 서문은 이 경계가 무너진 기적 같은 이야기를 들려줍니다. <span class="highlight">신앙은 우리가 애써 그 강을 건너 하나님께로 올라간 이야기가 아닙니다. 오히려 하나님이 친히 그 강을 건너 우리 곁으로 찾아오신 이야기입니다.</span></p>
+<p>요한은 말씀이신 예수님이 만물이 생겨나기 이전, 태초부터 <strong>'계셨다'</strong>고 말합니다. 창조주와 피조물 사이의 확고한 선입니다. 그런데 이 선을 넘는 경이로운 사건이 일어납니다. 영원히 계시던 분이 스스로 육신이 <strong>'되신'</strong> 것입니다. 우리가 단 한 뼘도 하늘로 올라갈 수 없었기에, 그분이 기꺼이 신성의 영광을 내려놓고 가장 낮은 곳으로 건너오셨습니다.</p>
+<div class="quote-box">
+<p>"말씀이 육신이 되어 우리 가운데 거하시매 우리가 그의 영광을 보니 아버지의 독생자의 영광이요 은혜와 진리가 충만하더라"</p>
+</div>
+<p>그분은 우리 곁에 오셔서 무엇을 하셨을까요? 성경은 "우리 가운데 거하시매"라고 표현하지만, 그 원어의 숨은 뜻은 <strong>'장막을 치셨다(텐트를 치셨다)'</strong>입니다. 화려하고 완벽한 성전에 머물기를 택하지 않으시고, 흔들리고 찢어지기 쉬운 유목민의 텐트를 우리 삶의 한복판에 치셨습니다.</p>
+<p>완벽하게 준비된 거룩한 장소가 아니라, 질병과 실패, 무너진 관계와 잠 못 이루는 걱정으로 <span class="highlight">어수선한 우리의 일상 속에 당신의 주소를 두셨습니다.</span> 하나님의 임재는 웅장한 건물 안에 갇혀 있지 않습니다. 오늘 우리가 눈물 흘리는 바로 그 어두운 자리가, 주님이 텐트를 치고 곁에 앉아주시는 은혜의 자리입니다.</p>
+<p>우리는 종종 하나님이 어떤 분이신지 몰라 방황합니다. 그러나 하나님은 복잡한 교리나 문서를 하늘에서 뚝 떨어뜨리지 않으셨습니다. 대신 '예수 그리스도'라는 한 인격을 우리에게 보내주셨습니다. 예수님의 삶, 그분의 눈물, 약한 자들을 향한 따뜻한 손길이 곧 하나님이 어떤 분인지를 낱낱이 풀어 설명해 주는 완벽한 번역이자 해설서였습니다.</p>
+<p>그러므로 내 성과와 평판이 흔들리는 날, 어설픈 나의 성취에 기대지 마십시오. 내 존재가 시작되기 전부터 계셨던 그분의 변함없는 사랑과 긍휼 위에 굳게 서십시오. 그리고 은혜와 진리가 충만하신 그분이 내 곁에 다가오셨듯, 우리도 오늘 누군가의 곁으로 다가가 작은 텐트를 쳐주는 하루가 되기를 소망합니다.</p>
+<p><span class="highlight">매몰찬 진실로 사람을 베지 않고, 맹목적인 친절로 불의를 덮지 않는 삶.</span> 은혜와 진리가 다정하게 손잡고 걷는 따뜻한 일상을 오늘, 당신의 자리에서 시작해 보시길 바랍니다.</p>
+</div>
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 01편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `계셨던 분이 우리 곁으로 오신 이야기\\n요한복음 제 01편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '계셨던 분이 우리 곁으로 오신 이야기',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

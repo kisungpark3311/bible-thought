@@ -1,174 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일상의 깊은 사고: 던질 자격이 있는 유일한 분</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&display=swap');
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Noto Serif KR', serif;
-            color: #333;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .container {
-            background-color: #ffffff;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px 30px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>던질 자격이 있는 유일한 분이 던지지 않으셨습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #8c7e6c;
-            margin-bottom: 10px;
-            display: block;
-            letter-spacing: 1px;
-        }
+    * { box-sizing: border-box; }
 
-        .title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin: 0;
-            line-height: 1.4;
-            word-break: keep-all;
-        }
+    html { scroll-behavior: smooth; }
 
-        .divider {
-            width: 40px;
-            height: 2px;
-            background-color: #d1c4e9;
-            margin: 30px auto;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .content-section {
-            margin-bottom: 35px;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        .content-section p {
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-            text-align: justify;
-            word-break: keep-all;
-            color: #4a4a4a;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .quote-box {
-            background-color: #fdfbf7;
-            border-left: 4px solid #bcaaa4;
-            padding: 20px;
-            border-radius: 0 10px 10px 0;
-            margin: 35px 0;
-            font-style: italic;
-            color: #5d4037;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        .quote-box p {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 400;
-            text-align: center;
-            line-height: 1.6;
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
 
-        .highlight {
-            background: linear-gradient(to top, #fff3e0 40%, transparent 40%);
-            font-weight: 700;
-            color: #3e2723;
-        }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
 
-        .footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #9e9e9e;
-            border-top: 1px solid #f0f0f0;
-            padding-top: 25px;
-        }
-        
-        /* Mobile optimization */
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            .container {
-                padding: 30px 20px;
-                border-radius: 15px;
-            }
-            .title {
-                font-size: 1.5rem;
-            }
-            .content-section p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 16편</p>
+      <h1>던질 자격이 있는 유일한 분이 던지지 않으셨습니다</h1>
+    </header>
 
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
 <div class="container">
-    <div class="header">
-        <span class="subtitle">일상의 깊은 사고 | 요한복음 7:53-8:11</span>
-        <h1 class="title">던질 자격이 있는 유일한 분이 던지지 않으셨습니다</h1>
-    </div>
 
-    <div class="content-section">
-        <p>날카로운 정죄와 분노가 가득한 세상입니다. 뉴스의 댓글창, SNS 피드, 그리고 때로는 우리의 평범한 일상 속에서도 다른 이의 허물을 향해 손에 쥔 '돌'을 만지작거리는 순간들을 마주합니다. 요한복음 8장에는 율법이라는 이름의 날 선 돌을 든 채 거친 숨을 몰아쉬는 사람들의 이야기가 등장합니다. 간음하다 잡힌 여인을 한가운데 세워 두고, 그들은 묻습니다. <strong>"모세는 율법에 이러한 여자를 돌로 치라 명하였거니와, 선생은 어떻게 말하겠나이까?"</strong> 놓아주면 율법을 어기는 것이고, 돌로 치라 하면 로마의 권위를 거스르는 아찔한 함정이었습니다.</p>
-        
-        <div class="quote-box">
-            <p>"너희 중에 죄 없는 자가 먼저 돌로 치라."</p>
-        </div>
-
-        <p>이 팽팽한 긴장 속에서 예수님은 돌을 던지지 말라고 하지 않으셨습니다. 대신 이렇게 말씀하셨습니다. 처형을 금하신 것이 아니라, 형 집행자의 <span class="highlight">자격</span>을 물으신 것입니다.</p>
-        
-        <p>이 한마디에 광장의 공기는 일순간 얼어붙습니다. 그리고 참으로 묵직하고도 놀라운 장면이 이어집니다. 어른들부터 시작하여 젊은이까지, 사람들은 하나둘씩 손에 쥔 돌을 바닥에 떨구고 그 자리를 떠나기 시작합니다. 왜 나이가 많은 어른들부터 먼저 돌을 내려놓았을까요? 삶의 연륜이 쌓이고 지나온 세월이 길어질수록, 우리는 자신의 연약함과 감추어진 죄성을 더 깊이 마주하게 되기 때문입니다. 스스로의 민낯을 정직하게 들여다본 사람은 결코 남을 향해 돌을 던질 수 없습니다. 시간이 지날수록, 신앙의 경력이 쌓일수록 타인에 대한 단정과 정죄가 늘어난다면 우리는 지금 방향을 잘못 걷고 있는 것입니다. 가장 정직한 침묵 속에서 돌이 떨어지는 소리만이 광장을 채웠습니다.</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="content-section">
-        <p>모두가 떠난 뒤, 광장에 짙게 깔린 적막 속에는 마침내 단 두 사람만이 남게 되었습니다. 죄인인 여인, 그리고 그녀에게 돌을 던질 수 있는 유일하고도 합법적인 자격을 갖추신 분. 사실 그 순간은 세상에서 가장 두려운 자리였습니다. 율법의 온전한 잣대를 들이대어도 한 점 흠결이 없는, 진정 <strong>'죄 없는 자'</strong>께서 서 계셨으니까요.</p>
-
-        <p>하지만 유일하게 자격 있는 그분은 돌을 던지지 않으셨습니다.</p>
-        
-        <div class="quote-box">
-            <p>"나도 너를 정죄하지 아니하노니 가서 다시는 죄를 범하지 말라."</p>
-        </div>
-
-        <p>이 따뜻한 선언은 우리의 굳어진 상식을 뒤집습니다. 우리는 흔히 '먼저 뼈저리게 회개하고 결심해야만 하나님께 나아가 용서받을 수 있다'고 생각합니다. 그러나 예수님의 순서는 완전히 다릅니다. <span class="highlight">아무런 조건 없는 용서와 덮어주심이 먼저 주어집니다.</span> 그 벅찬 은혜를 품에 안은 자에게, 비로소 사랑의 명령이 주어집니다. 정죄하지 않으심(은혜)이 먼저이고, 거룩한 삶으로의 초대(진리)가 뒤따릅니다. 이 순서를 바꾸면 복음은 조건부 거래가 되어버립니다. 예수님은 은혜와 진리를 한 문장 안에 나란히 두시며 그녀를 살려내셨습니다.</p>
-
-        <p>예수님께서 그녀의 죄를 결코 가볍게 여겨 방임하신 것이 아닙니다. 그녀를 향해 날아와 꽂혀야만 했던 그 정죄의 돌들은 사실 허공에서 사라진 것이 아닙니다. 훗날 골고다 언덕 십자가 위에서, 아무 죄 없으신 예수님 자신에게 그 모든 심판의 돌이 쏟아졌기 때문입니다. 유일하게 돌을 던질 자격이 있으신 분께서, 친히 돌을 맞으심으로 우리를 살리신 사건. 그것이 바로 십자가입니다.</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="content-section">
-        <p>오늘, 당신의 손에는 어떤 돌이 들려 있습니까?</p>
-        <p>나 자신을 용서하지 못해 움켜쥔 자책의 돌일 수도 있고, 내게 상처 준 누군가를 향해 벼르고 있는 분노의 돌일 수도 있습니다. 혹은 내가 남보다 의롭다는 교만의 돌일지도 모릅니다. 오늘, 나를 예외로 두지 않는 정직함으로 그 돌을 십자가 앞에 조용히 내려놓기를 소망합니다.</p>
-        <p>완벽하게 준비된 마음이 아니어도 괜찮습니다. 정리되지 않은 상한 마음 그대로 주님 앞에 나아가십시오. 먼저 우리를 덮어주시는 그 크고 따뜻한 용서를 딛고 일어설 때, 우리는 비로소 다시는 그 길로 가지 않을 새로운 힘을 얻게 됩니다. <span class="highlight">우리에게 돌을 던지지 않으신 그분의 다함 없는 사랑이</span>, 오늘 당신의 팍팍한 일상을 포근하고 눈부시게 감싸 안기를 간절히 기도합니다.</p>
-    </div>
-
-    <div class="footer">
-        📝 일상의 깊은 사고 에세이
-    </div>
+<div class="content-section">
+<p>날카로운 정죄와 분노가 가득한 세상입니다. 뉴스의 댓글창, SNS 피드, 그리고 때로는 우리의 평범한 일상 속에서도 다른 이의 허물을 향해 손에 쥔 '돌'을 만지작거리는 순간들을 마주합니다. 요한복음 8장에는 율법이라는 이름의 날 선 돌을 든 채 거친 숨을 몰아쉬는 사람들의 이야기가 등장합니다. 간음하다 잡힌 여인을 한가운데 세워 두고, 그들은 묻습니다. <strong>"모세는 율법에 이러한 여자를 돌로 치라 명하였거니와, 선생은 어떻게 말하겠나이까?"</strong> 놓아주면 율법을 어기는 것이고, 돌로 치라 하면 로마의 권위를 거스르는 아찔한 함정이었습니다.</p>
+<div class="quote-box">
+<p>"너희 중에 죄 없는 자가 먼저 돌로 치라."</p>
+</div>
+<p>이 팽팽한 긴장 속에서 예수님은 돌을 던지지 말라고 하지 않으셨습니다. 대신 이렇게 말씀하셨습니다. 처형을 금하신 것이 아니라, 형 집행자의 <span class="highlight">자격</span>을 물으신 것입니다.</p>
+<p>이 한마디에 광장의 공기는 일순간 얼어붙습니다. 그리고 참으로 묵직하고도 놀라운 장면이 이어집니다. 어른들부터 시작하여 젊은이까지, 사람들은 하나둘씩 손에 쥔 돌을 바닥에 떨구고 그 자리를 떠나기 시작합니다. 왜 나이가 많은 어른들부터 먼저 돌을 내려놓았을까요? 삶의 연륜이 쌓이고 지나온 세월이 길어질수록, 우리는 자신의 연약함과 감추어진 죄성을 더 깊이 마주하게 되기 때문입니다. 스스로의 민낯을 정직하게 들여다본 사람은 결코 남을 향해 돌을 던질 수 없습니다. 시간이 지날수록, 신앙의 경력이 쌓일수록 타인에 대한 단정과 정죄가 늘어난다면 우리는 지금 방향을 잘못 걷고 있는 것입니다. 가장 정직한 침묵 속에서 돌이 떨어지는 소리만이 광장을 채웠습니다.</p>
 </div>
 
+<div class="content-section">
+<p>모두가 떠난 뒤, 광장에 짙게 깔린 적막 속에는 마침내 단 두 사람만이 남게 되었습니다. 죄인인 여인, 그리고 그녀에게 돌을 던질 수 있는 유일하고도 합법적인 자격을 갖추신 분. 사실 그 순간은 세상에서 가장 두려운 자리였습니다. 율법의 온전한 잣대를 들이대어도 한 점 흠결이 없는, 진정 <strong>'죄 없는 자'</strong>께서 서 계셨으니까요.</p>
+<p>하지만 유일하게 자격 있는 그분은 돌을 던지지 않으셨습니다.</p>
+<div class="quote-box">
+<p>"나도 너를 정죄하지 아니하노니 가서 다시는 죄를 범하지 말라."</p>
+</div>
+<p>이 따뜻한 선언은 우리의 굳어진 상식을 뒤집습니다. 우리는 흔히 '먼저 뼈저리게 회개하고 결심해야만 하나님께 나아가 용서받을 수 있다'고 생각합니다. 그러나 예수님의 순서는 완전히 다릅니다. <span class="highlight">아무런 조건 없는 용서와 덮어주심이 먼저 주어집니다.</span> 그 벅찬 은혜를 품에 안은 자에게, 비로소 사랑의 명령이 주어집니다. 정죄하지 않으심(은혜)이 먼저이고, 거룩한 삶으로의 초대(진리)가 뒤따릅니다. 이 순서를 바꾸면 복음은 조건부 거래가 되어버립니다. 예수님은 은혜와 진리를 한 문장 안에 나란히 두시며 그녀를 살려내셨습니다.</p>
+<p>예수님께서 그녀의 죄를 결코 가볍게 여겨 방임하신 것이 아닙니다. 그녀를 향해 날아와 꽂혀야만 했던 그 정죄의 돌들은 사실 허공에서 사라진 것이 아닙니다. 훗날 골고다 언덕 십자가 위에서, 아무 죄 없으신 예수님 자신에게 그 모든 심판의 돌이 쏟아졌기 때문입니다. 유일하게 돌을 던질 자격이 있으신 분께서, 친히 돌을 맞으심으로 우리를 살리신 사건. 그것이 바로 십자가입니다.</p>
+</div>
+<div class="divider"></div>
+<div class="content-section">
+<p>오늘, 당신의 손에는 어떤 돌이 들려 있습니까?</p>
+<p>나 자신을 용서하지 못해 움켜쥔 자책의 돌일 수도 있고, 내게 상처 준 누군가를 향해 벼르고 있는 분노의 돌일 수도 있습니다. 혹은 내가 남보다 의롭다는 교만의 돌일지도 모릅니다. 오늘, 나를 예외로 두지 않는 정직함으로 그 돌을 십자가 앞에 조용히 내려놓기를 소망합니다.</p>
+<p>완벽하게 준비된 마음이 아니어도 괜찮습니다. 정리되지 않은 상한 마음 그대로 주님 앞에 나아가십시오. 먼저 우리를 덮어주시는 그 크고 따뜻한 용서를 딛고 일어설 때, 우리는 비로소 다시는 그 길로 가지 않을 새로운 힘을 얻게 됩니다. <span class="highlight">우리에게 돌을 던지지 않으신 그분의 다함 없는 사랑이</span>, 오늘 당신의 팍팍한 일상을 포근하고 눈부시게 감싸 안기를 간절히 기도합니다.</p>
+</div>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 16편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `던질 자격이 있는 유일한 분이 던지지 않으셨습니다\\n요한복음 제 16편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '던질 자격이 있는 유일한 분이 던지지 않으셨습니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

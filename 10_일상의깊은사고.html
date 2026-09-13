@@ -1,136 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>아름다운 불가능, 그리고 이미 건너간 사람들의 이야기</title>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아름다운 불가능, 그리고 이미 건너간 사람들의 이야기</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
     :root {
-        --bg-color: #f7f9fa;
-        --card-bg: #ffffff;
-        --text-main: #333333;
-        --text-muted: #666666;
-        --accent: #4a6fa5;
-        --highlight: #e8f0fe;
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
     }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        line-height: 1.7;
-        margin: 0;
-        padding: 20px 16px;
-        word-break: keep-all;
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
     }
-    .card {
-        background-color: var(--card-bg);
-        border-radius: 20px;
-        padding: 32px 24px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        margin-bottom: 24px;
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
     }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
     h1 {
-        font-size: 1.5rem;
-        color: var(--accent);
-        margin-top: 0;
-        margin-bottom: 24px;
-        line-height: 1.4;
-        text-align: center;
-        font-weight: 700;
-        word-break: keep-all;
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
     }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
     h2 {
-        font-size: 1.15rem;
-        color: var(--text-main);
-        margin-top: 32px;
-        margin-bottom: 12px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
     }
-    h2::before {
-        content: '';
-        display: inline-block;
-        width: 4px;
-        height: 16px;
-        background-color: var(--accent);
-        margin-right: 8px;
-        border-radius: 2px;
-    }
+
     p {
-        margin-bottom: 16px;
-        font-size: 1.05rem;
-        color: var(--text-main);
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
     }
-    .quote-box {
-        background-color: var(--highlight);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 24px 0;
-        font-style: italic;
-        color: var(--accent);
-        text-align: center;
-        font-size: 1.1rem;
-        font-weight: 500;
-        line-height: 1.5;
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
     }
-    .divider {
-        height: 1px;
-        background-color: #eaeaea;
-        margin: 32px 0;
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
     }
-    .footer-msg {
-        text-align: center;
-        font-size: 0.95rem;
-        color: var(--text-muted);
-        margin-top: 40px;
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
     }
-</style>
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <div class="card">
-        <h1>아름다운 불가능, 그리고<br>이미 건너간 사람들의 이야기</h1>
-        
-        <div class="quote-box">
-            "아들이 아버지께서 하시는 일을 보지 않고는<br>아무것도 스스로 할 수 없나니..."
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 10편</p>
+      <h1>아름다운 불가능, 그리고 이미 건너간 사람들의 이야기</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<div class="quote-box">
+            "아들이 아버지께서 하시는 일을 보지 않고는<br/>아무것도 스스로 할 수 없나니..."
         </div>
-        
-        <p><strong>"스스로 아무것도 할 수 없다."</strong></p>
-        <p>이 말을 들으면 우리는 흔히 무능력이나 한계를 떠올립니다. 치열한 경쟁 사회에서 스스로 할 수 없다는 고백은 곧 도태를 의미하기 때문입니다. 그런데 요한복음에는 이 문장을 가장 눈부시고 아름답게 선언하신 분이 등장합니다. 바로 예수님입니다.</p>
-        
-        <h2>순종이라는 이름의 완전한 하나 됨</h2>
-        <p>예수님은 "아들이 아버지께서 하시는 일을 보지 않고는 아무것도 스스로 할 수 없다"고 말씀하십니다. 얼핏 자신을 낮추는 열등의 고백 같지만, 이어지는 말씀은 놀랍습니다. "아버지께서 행하시는 그것을 아들도 그와 같이 행하느니라."</p>
-        <p>종은 주인의 일 중 위임받은 일부만 할 수 있습니다. 하지만 전부를 똑같이 행하는 분은 종이 아니라 아들입니다. 이 '할 수 없음'은 능력이 부족해서가 아닙니다. 아버지와 의지가 완벽하게 일치하여, 아버지와 어긋나게 행동하는 일 자체가 아예 일어날 수 없음을 의미합니다. 우리는 흔히 순종을 억지로 나를 꺾고 낮아지는 것으로만 이해하지만, 예수님은 순종이야말로 하나님과 완전하게 하나가 되는 영광스러운 자리임을 보여주십니다.</p>
+<p><strong>"스스로 아무것도 할 수 없다."</strong></p>
+<p>이 말을 들으면 우리는 흔히 무능력이나 한계를 떠올립니다. 치열한 경쟁 사회에서 스스로 할 수 없다는 고백은 곧 도태를 의미하기 때문입니다. 그런데 요한복음에는 이 문장을 가장 눈부시고 아름답게 선언하신 분이 등장합니다. 바로 예수님입니다.</p>
+<h2>순종이라는 이름의 완전한 하나 됨</h2>
+<p>예수님은 "아들이 아버지께서 하시는 일을 보지 않고는 아무것도 스스로 할 수 없다"고 말씀하십니다. 얼핏 자신을 낮추는 열등의 고백 같지만, 이어지는 말씀은 놀랍습니다. "아버지께서 행하시는 그것을 아들도 그와 같이 행하느니라."</p>
+<p>종은 주인의 일 중 위임받은 일부만 할 수 있습니다. 하지만 전부를 똑같이 행하는 분은 종이 아니라 아들입니다. 이 '할 수 없음'은 능력이 부족해서가 아닙니다. 아버지와 의지가 완벽하게 일치하여, 아버지와 어긋나게 행동하는 일 자체가 아예 일어날 수 없음을 의미합니다. 우리는 흔히 순종을 억지로 나를 꺾고 낮아지는 것으로만 이해하지만, 예수님은 순종이야말로 하나님과 완전하게 하나가 되는 영광스러운 자리임을 보여주십니다.</p>
 
-        <div class="divider"></div>
+<h2>이미 건너간 국경, 짐을 푸는 신앙</h2>
+<p>이 놀라운 아들의 음성은 우리 삶에 기적을 일으킵니다. <strong>"사망에서 생명으로 옮겼느니라."</strong></p>
+<p>'옮겼다'는 말은 본래 장소의 이동을 뜻합니다. 사망이라는 어두운 땅에서 생명이라는 빛의 땅으로 국경을 넘어갔다는 뜻입니다. 중요한 것은 이 이주가 이미 완료되어 그 효력이 지금까지 이어지고 있다는 점입니다.</p>
+<p>우리의 신앙생활은 사망에서 벗어나려 발버둥 치는 몸부림이 아닙니다. 이 이주를 성공시킨 것은 우리의 얄팍한 결심이나 노력이 아니라, 생명을 주시는 아들의 음성이었습니다. 그렇기에 우리는 강제로 송환될 위험이 없는 영원한 생명의 이주민입니다. 오늘 우리의 신앙은 다시 강을 건너려는 불안한 몸부림이 아니라, 이미 도착한 약속의 땅에서 평안히 짐을 푸는 감사의 시간이어야 합니다.</p>
+<div class="divider"></div>
+<h2>방향 잃은 열심과 진정한 영광</h2>
+<p>하지만 우리는 종종 표지판 앞에서 길을 잃곤 합니다. 예수님 시대의 사람들은 성경을 샅샅이 뒤질 정도로 집요하게 연구했지만, 정작 성경이 가리키는 예수님 앞에서는 딱 멈춰 섰습니다. 표지판을 소유하고 분석하는 데 몰두하느라 정작 목적지에는 가지 않아도 되는 핑계로 삼아버린 것입니다.</p>
+<p>왜 그들은 예수님을 믿지 못했을까요? 증거가 부족해서가 아니었습니다. <strong>"너희가 서로 영광을 취하고 유일하신 하나님께로부터 오는 영광은 구하지 아니하니 어찌 나를 믿을 수 있느냐."</strong></p>
+<p>이 말씀은 오늘날 우리의 일상을 아프게 찌릅니다. 우리는 하루 동안 누구의 인정을 수집하며 살아갈까요? 사람들의 칭찬, 직장에서의 평판, SNS의 반응에 길들여지면, 정작 하나님으로부터 오는 영광을 구하는 영적 감각은 마비되고 맙니다. 믿음은 지식이나 정보의 문제가 아니라, 내 마음이 향하는 영광의 방향 문제입니다.</p>
+<div class="divider"></div>
+<h2>두 개의 '할 수 없음' 사이에서</h2>
+<p>우리의 삶은 두 가지 '할 수 없음' 사이에 놓여 있습니다. 예수님은 하나님과 너무나 하나이시기에 스스로 하실 수 없고, 우리는 사람들의 시선과 인정에 너무 익숙해져 스스로 믿을 수 없는 존재입니다.</p>
+<p>그러나 정반대를 가리키는 이 두 불가능 사이에 은혜의 문이 열렸습니다. 오직 하나님의 영광만 구하신 그 아들 예수님께서, 스스로는 결코 국경을 넘을 수 없는 우리를 업고 사망에서 생명으로 건네주셨습니다.</p>
+<p>오늘 하루, 사람들의 인정이라는 무거운 짐을 내려놓고, 우리를 이미 옮겨주신 생명의 땅에서 평안히 숨을 쉬어보는 것은 어떨까요? 우리는 이미, 충분히 안전한 곳에 도착해 있습니다.</p>
 
-        <h2>이미 건너간 국경, 짐을 푸는 신앙</h2>
-        <p>이 놀라운 아들의 음성은 우리 삶에 기적을 일으킵니다. <strong>"사망에서 생명으로 옮겼느니라."</strong></p>
-        <p>'옮겼다'는 말은 본래 장소의 이동을 뜻합니다. 사망이라는 어두운 땅에서 생명이라는 빛의 땅으로 국경을 넘어갔다는 뜻입니다. 중요한 것은 이 이주가 이미 완료되어 그 효력이 지금까지 이어지고 있다는 점입니다.</p>
-        <p>우리의 신앙생활은 사망에서 벗어나려 발버둥 치는 몸부림이 아닙니다. 이 이주를 성공시킨 것은 우리의 얄팍한 결심이나 노력이 아니라, 생명을 주시는 아들의 음성이었습니다. 그렇기에 우리는 강제로 송환될 위험이 없는 영원한 생명의 이주민입니다. 오늘 우리의 신앙은 다시 강을 건너려는 불안한 몸부림이 아니라, 이미 도착한 약속의 땅에서 평안히 짐을 푸는 감사의 시간이어야 합니다.</p>
+    </article>
 
-        <div class="divider"></div>
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 10편
+    </footer>
+  </main>
 
-        <h2>방향 잃은 열심과 진정한 영광</h2>
-        <p>하지만 우리는 종종 표지판 앞에서 길을 잃곤 합니다. 예수님 시대의 사람들은 성경을 샅샅이 뒤질 정도로 집요하게 연구했지만, 정작 성경이 가리키는 예수님 앞에서는 딱 멈춰 섰습니다. 표지판을 소유하고 분석하는 데 몰두하느라 정작 목적지에는 가지 않아도 되는 핑계로 삼아버린 것입니다.</p>
-        <p>왜 그들은 예수님을 믿지 못했을까요? 증거가 부족해서가 아니었습니다. <strong>"너희가 서로 영광을 취하고 유일하신 하나님께로부터 오는 영광은 구하지 아니하니 어찌 나를 믿을 수 있느냐."</strong></p>
-        <p>이 말씀은 오늘날 우리의 일상을 아프게 찌릅니다. 우리는 하루 동안 누구의 인정을 수집하며 살아갈까요? 사람들의 칭찬, 직장에서의 평판, SNS의 반응에 길들여지면, 정작 하나님으로부터 오는 영광을 구하는 영적 감각은 마비되고 맙니다. 믿음은 지식이나 정보의 문제가 아니라, 내 마음이 향하는 영광의 방향 문제입니다.</p>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        <div class="divider"></div>
+  <script>
+    let currentSize = 18;
 
-        <h2>두 개의 '할 수 없음' 사이에서</h2>
-        <p>우리의 삶은 두 가지 '할 수 없음' 사이에 놓여 있습니다. 예수님은 하나님과 너무나 하나이시기에 스스로 하실 수 없고, 우리는 사람들의 시선과 인정에 너무 익숙해져 스스로 믿을 수 없는 존재입니다.</p>
-        <p>그러나 정반대를 가리키는 이 두 불가능 사이에 은혜의 문이 열렸습니다. 오직 하나님의 영광만 구하신 그 아들 예수님께서, 스스로는 결코 국경을 넘을 수 없는 우리를 업고 사망에서 생명으로 건네주셨습니다.</p>
-        <p>오늘 하루, 사람들의 인정이라는 무거운 짐을 내려놓고, 우리를 이미 옮겨주신 생명의 땅에서 평안히 숨을 쉬어보는 것은 어떨까요? 우리는 이미, 충분히 안전한 곳에 도착해 있습니다.</p>
-    </div>
-    <div class="footer-msg">
-        일상의 깊은 사고 | 요한복음 5:19-47 묵상
-    </div>
-</div>
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `아름다운 불가능, 그리고 이미 건너간 사람들의 이야기\\n요한복음 제 10편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '아름다운 불가능, 그리고 이미 건너간 사람들의 이야기',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

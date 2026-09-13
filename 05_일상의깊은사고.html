@@ -1,102 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>새벽에 별이 사라지는 이유</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f7f6f2;
-            color: #333333;
-            line-height: 1.8;
-            margin: 0;
-            padding: 30px 15px;
-            word-break: keep-all;
-        }
-        .container {
-            max-width: 540px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px 30px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        h2 {
-            font-size: 1.05rem;
-            color: #7f8c8d;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 35px;
-            letter-spacing: -0.3px;
-        }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 26px;
-            color: #444444;
-        }
-        .quote {
-            background-color: #f8f9fa;
-            border-left: 4px solid #8e9eab;
-            padding: 18px 20px;
-            margin: 35px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 1.15rem;
-            font-style: italic;
-            color: #555;
-            font-weight: 500;
-        }
-        .highlight {
-            font-weight: 600;
-            color: #2c3e50;
-            background: linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(200,220,240,0.4) 60%);
-        }
-        .footer {
-            margin-top: 45px;
-            padding-top: 20px;
-            border-top: 1px solid #eeeeee;
-            font-size: 0.95rem;
-            color: #999999;
-            text-align: center;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>새벽에 별이 사라지는 이유</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>새벽에 별이 사라지는 이유</h1>
-        <h2>요한복음 3장이 들려주는 은혜의 문법</h2>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 05편</p>
+      <h1>새벽에 별이 사라지는 이유</h1>
+    </header>
 
-        <p>자신이 태어난 날을 기억하는 사람은 아무도 없습니다. 우리는 그저 어느 날 눈을 떠보니 이미 생명을 얻어 호흡하고 있음을 알게 될 뿐입니다. 생명이란 결코 나의 결심이나 노력으로 쟁취하는 것이 아니라, 온전히 누군가로부터 '주어지는' 것이기 때문입니다.</p>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
 
-        <p>예수님께서 니고데모에게 "거듭나야 한다"고 말씀하셨을 때, 원래 성경에 쓰인 이 단어는 명령이 아니라 '수동태'였습니다. '위로부터 태어나야 한다'는 그 말씀 앞에서 니고데모는 당황했습니다. 인간의 힘으로는 다시 태어나는 것이 불가능함을 직관적으로 알았기 때문입니다. 그의 당황은 참으로 정확했습니다. 우리 쪽에서는 생명을 만들어낼 수 없습니다. 하지만 절망할 필요는 없습니다. <span class="highlight">위로부터 오신 분이 먼저 내려오셨기에, 우리에게 위로부터 태어나는 은혜가 주어졌기 때문입니다.</span></p>
+    <article id="sermon" class="content">
+      
+<div class="container">
 
-        <div class="quote">
+<h2>요한복음 3장이 들려주는 은혜의 문법</h2>
+<p>자신이 태어난 날을 기억하는 사람은 아무도 없습니다. 우리는 그저 어느 날 눈을 떠보니 이미 생명을 얻어 호흡하고 있음을 알게 될 뿐입니다. 생명이란 결코 나의 결심이나 노력으로 쟁취하는 것이 아니라, 온전히 누군가로부터 '주어지는' 것이기 때문입니다.</p>
+<p>예수님께서 니고데모에게 "거듭나야 한다"고 말씀하셨을 때, 원래 성경에 쓰인 이 단어는 명령이 아니라 '수동태'였습니다. '위로부터 태어나야 한다'는 그 말씀 앞에서 니고데모는 당황했습니다. 인간의 힘으로는 다시 태어나는 것이 불가능함을 직관적으로 알았기 때문입니다. 그의 당황은 참으로 정확했습니다. 우리 쪽에서는 생명을 만들어낼 수 없습니다. 하지만 절망할 필요는 없습니다. <span class="highlight">위로부터 오신 분이 먼저 내려오셨기에, 우리에게 위로부터 태어나는 은혜가 주어졌기 때문입니다.</span></p>
+<div class="quote">
             "그는 흥하여야 하겠고 나는 쇠하여야 하리라" (요 3:30)
         </div>
+<p>이러한 '수동태의 은혜'는 우리의 삶과 태도에도 깊은 울림을 줍니다. 세례 요한은 자신에게 쏠리던 사람들의 시선이 예수님께로 향할 때, 위대한 고백을 남깁니다. 놀랍게도 성경 원어를 보면 여기서 '흥하다'는 능동태지만, '쇠하다'는 수동태로 기록되어 있습니다.</p>
+<p>우리는 종종 겸손해지기 위해 스스로를 깎아내리려 무던히도 애를 씁니다. 나를 작게 만들고, 나의 욕망을 억누르며 끊임없이 자기를 검열합니다. 그러나 참된 겸손은 나를 향한 몰두가 아닙니다. <span class="highlight">새벽에 별이 사라지는 것은 별이 애써 뒤로 물러나서가 아닙니다. 단지 눈부신 태양이 떠올랐기 때문입니다.</span></p>
+<p>내가 나를 억지로 줄이려 애쓸 필요가 없습니다. 내 안에서 그분이 더 커지실 때, 나의 작아짐은 그저 자연스럽고 평안한 결과로 찾아옵니다. 겸손은 자기를 깎는 고단한 기술이 아니라, 그분이 내 삶에 온전히 떠오르실 때 일어나는 아름다운 현상입니다.</p>
+<p>오늘 하루, 나를 작게 만들려 애쓰는 대신 내 안에 계신 그분을 한 번 더 크게 말해보는 건 어떨까요? 삶의 크고 작은 성취 앞에서도, 혹은 예기치 못한 실패 앞에서도 우리는 덜 흔들릴 수 있습니다. 이 모든 것이 나의 능동적인 성과가 아니라 위로부터 주어진 은혜임을 아는 까닭입니다.</p>
+<p>광야에서 상처 입은 이들이 장대에 달린 놋뱀을 그저 바라보기만 했던 것처럼, 오늘 우리가 할 수 있는 가장 선한 일은 그저 십자가에 달리신 그분을 고요히 바라보는 것입니다. 빛나는 태양이 떠오르면, 작은 별은 기꺼이 그 빛 속으로 스며들며 안식합니다.</p>
 
-        <p>이러한 '수동태의 은혜'는 우리의 삶과 태도에도 깊은 울림을 줍니다. 세례 요한은 자신에게 쏠리던 사람들의 시선이 예수님께로 향할 때, 위대한 고백을 남깁니다. 놀랍게도 성경 원어를 보면 여기서 '흥하다'는 능동태지만, '쇠하다'는 수동태로 기록되어 있습니다.</p>
+</div>
 
-        <p>우리는 종종 겸손해지기 위해 스스로를 깎아내리려 무던히도 애를 씁니다. 나를 작게 만들고, 나의 욕망을 억누르며 끊임없이 자기를 검열합니다. 그러나 참된 겸손은 나를 향한 몰두가 아닙니다. <span class="highlight">새벽에 별이 사라지는 것은 별이 애써 뒤로 물러나서가 아닙니다. 단지 눈부신 태양이 떠올랐기 때문입니다.</span></p>
+    </article>
 
-        <p>내가 나를 억지로 줄이려 애쓸 필요가 없습니다. 내 안에서 그분이 더 커지실 때, 나의 작아짐은 그저 자연스럽고 평안한 결과로 찾아옵니다. 겸손은 자기를 깎는 고단한 기술이 아니라, 그분이 내 삶에 온전히 떠오르실 때 일어나는 아름다운 현상입니다.</p>
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 05편
+    </footer>
+  </main>
 
-        <p>오늘 하루, 나를 작게 만들려 애쓰는 대신 내 안에 계신 그분을 한 번 더 크게 말해보는 건 어떨까요? 삶의 크고 작은 성취 앞에서도, 혹은 예기치 못한 실패 앞에서도 우리는 덜 흔들릴 수 있습니다. 이 모든 것이 나의 능동적인 성과가 아니라 위로부터 주어진 은혜임을 아는 까닭입니다.</p>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        <p>광야에서 상처 입은 이들이 장대에 달린 놋뱀을 그저 바라보기만 했던 것처럼, 오늘 우리가 할 수 있는 가장 선한 일은 그저 십자가에 달리신 그분을 고요히 바라보는 것입니다. 빛나는 태양이 떠오르면, 작은 별은 기꺼이 그 빛 속으로 스며들며 안식합니다.</p>
+  <script>
+    let currentSize = 18;
 
-        <div class="footer">
-            일상의 깊은 사고 | 요한복음 3장 묵상
-        </div>
-    </div>
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `새벽에 별이 사라지는 이유\\n요한복음 제 05편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '새벽에 별이 사라지는 이유',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

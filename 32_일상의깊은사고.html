@@ -1,68 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>일상의 깊은 사고</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아픔을 통과해 피어나는 찬란한 기쁨</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 20px; background-color: #f8f9fa; font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; line-height: 1.8; color: #333; word-break: keep-all;">
-    <div style="max-width: 480px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;">
-        
-        <!-- Header -->
-        <div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 40px 20px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px; color: #1a365d; font-weight: 700; letter-spacing: -0.5px;">아픔을 통과해 피어나는<br>찬란한 기쁨</h1>
-        </div>
-        
-        <!-- Body -->
-        <div style="padding: 30px 25px;">
-            <p style="margin-top: 0; font-size: 16px; color: #444;">
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 32편</p>
+      <h1>아픔을 통과해 피어나는 찬란한 기쁨</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="max-width: 480px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;">
+<!-- Header -->
+<div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 40px 20px; text-align: center;">
+
+</div>
+<!-- Body -->
+<div style="padding: 30px 25px;">
+<p style="margin-top: 0; font-size: 16px; color: #444;">
                 우리는 종종 삶의 근심과 고통이 그저 마술처럼 사라지기만을 바랍니다. 고통은 지우고, 그 자리에 기쁨이라는 새로운 조각을 끼워 넣고 싶어 합니다. 하지만 예수님께서 말씀하신 위로는 우리의 기대와 조금 다릅니다.
             </p>
-            
-            <p style="font-size: 16px; color: #444;">
-                <strong>“너희 근심이 기쁨이 되리라.”</strong> (요 16:20)
+<p style="font-size: 16px; color: #444;">
+<strong>“너희 근심이 기쁨이 되리라.”</strong> (요 16:20)
             </p>
-
-            <p style="font-size: 16px; color: #444;">
+<p style="font-size: 16px; color: #444;">
                 이 말씀은 근심이 사라지고 다른 기쁨이 온다는 뜻이 아닙니다. ‘근심 그 자체’가 변화하여 ‘기쁨 안으로’ 들어간다는 놀라운 선언입니다. 마치 새 생명을 잉태한 여인이 겪는 해산의 고통과 같습니다. 아이를 품에 안은 여인은 고통이 없었다고 부정하지 않습니다. 다만, 그 고통을 통과해 탄생한 생명의 기쁨이 너무 크기에 아픔을 다시 기억하지 않을 뿐입니다. 주님이 주시는 기쁨은 고통과 무관한 온실 속의 기쁨이 아니라, 우리의 아픔과 눈물을 통과해 마침내 피어나는 생명의 기쁨입니다.
             </p>
-
-            <hr style="border: 0; height: 1px; background-color: #eee; margin: 30px 0;">
-
-            <p style="font-size: 16px; color: #444;">
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 30px 0;"/>
+<p style="font-size: 16px; color: #444;">
                 때로 우리는 하나님을 향해 무언가를 애타게 증명해야 한다고 생각합니다. 내 눈물과 열심으로 그분을 ‘설득해야만’ 나를 도와주실 것 같은 두려움에 빠집니다. 하지만 성경은 말합니다. <strong>“아버지께서 친히 너희를 사랑하심이라.”</strong> 하나님은 우리가 매달리고 설득해야만 마지못해 마음을 여시는 분이 아닙니다. 그분은 이미 우리를 깊은 애정으로 친밀하게 사랑하고 계십니다. 
             </p>
-
-            <p style="font-size: 16px; color: #444;">
+<p style="font-size: 16px; color: #444;">
                 이 사랑을 아는 사람은 세상의 성취나 평판처럼 '언제든 빼앗길 수 있는 것들' 위에 자신의 정체성을 세우지 않습니다. 아무도 빼앗을 수 없는 하나님의 그 단단한 사랑 위에 두 발을 내딛습니다.
             </p>
-
-            <hr style="border: 0; height: 1px; background-color: #eee; margin: 30px 0;">
-            
-            <p style="font-size: 16px; color: #444;">
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 30px 0;"/>
+<p style="font-size: 16px; color: #444;">
                 십자가를 지시기 전날 밤, 모두가 뿔뿔이 흩어져 주님을 홀로 버려둘 그 참담한 실패의 밤에 주님은 선언하셨습니다.
             </p>
-
-            <p style="font-size: 16px; color: #2c3e50; text-align: center; padding: 20px 15px; background-color: #f4f6f9; border-radius: 12px; font-weight: 600;">
-                “세상에서는 너희가 환난을 당하나 담대하라<br>내가 세상을 이기었노라”
+<p style="font-size: 16px; color: #2c3e50; text-align: center; padding: 20px 15px; background-color: #f4f6f9; border-radius: 12px; font-weight: 600;">
+                “세상에서는 너희가 환난을 당하나 담대하라<br/>내가 세상을 이기었노라”
             </p>
-
-            <p style="font-size: 16px; color: #444;">
+<p style="font-size: 16px; color: #444;">
                 우리의 실패와 연약함 앞에서도, 주님의 승리는 이미 완료되었습니다. 환난은 여전히 우리 삶에 현재진행형으로 남아있지만, 우리는 다가올 결과를 두려워할 필요가 없습니다. 이미 결정된 승리 안에서 오늘을 걸어가기 때문입니다.
             </p>
-
-            <p style="font-size: 16px; color: #444; margin-bottom: 0;">
+<p style="font-size: 16px; color: #444; margin-bottom: 0;">
                 오늘, 당신의 근심이 기쁨으로 변화되는 은혜가 있기를 바랍니다. 설득할 필요 없는 아버지의 다정한 사랑이 당신의 마음을 덮고, 이미 세상을 이기신 주님의 평안이 당신의 걸음을 담대하게 이끌어 주시기를 축복합니다.
             </p>
-        </div>
-        
-        <!-- Footer -->
-        <div style="background-color: #f1f5f9; padding: 20px; text-align: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-            <p style="margin: 0; font-size: 13px; color: #888;">
+</div>
+<!-- Footer -->
+<div style="background-color: #f1f5f9; padding: 20px; text-align: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+<p style="margin: 0; font-size: 13px; color: #888;">
                 🌿 일상의 깊은 사고 | 요한복음 16:16-33
             </p>
-        </div>
-        
-    </div>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 32편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `아픔을 통과해 피어나는 찬란한 기쁨\\n요한복음 제 32편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '아픔을 통과해 피어나는 찬란한 기쁨',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

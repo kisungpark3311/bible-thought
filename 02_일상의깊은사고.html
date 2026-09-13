@@ -1,125 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일상의 깊은 사고</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f7f9fa;
-            color: #333;
-            line-height: 1.7;
-            margin: 0;
-            padding: 20px;
-            word-break: keep-all;
-        }
-        
-        .card {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            max-width: 500px;
-            margin: 20px auto;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아니라고 말한 자리에만 손가락이 설 수 있습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        h1 {
-            font-size: 1.5rem;
-            color: #1a202c;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.45;
-            letter-spacing: -0.5px;
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #90cdf4;
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+    * { box-sizing: border-box; }
 
-        p {
-            font-size: 1.05rem;
-            color: #4a5568;
-            margin-bottom: 24px;
-            text-align: justify;
-            letter-spacing: -0.3px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .highlight {
-            background-color: #ebf4ff;
-            color: #3182ce;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .quote {
-            font-style: italic;
-            color: #4a5568;
-            border-left: 3px solid #bee3f8;
-            padding-left: 18px;
-            margin: 35px 0;
-            font-size: 1rem;
-            background: #fbfdff;
-            padding: 18px;
-            border-radius: 0 12px 12px 0;
-            line-height: 1.6;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: #edf2f7;
-            margin: 40px 0 30px 0;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #a0aec0;
-            line-height: 1.5;
-        }
-    </style>
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="subtitle">일상의 깊은 사고</div>
-        <h1>아니라고 말한 자리에만<br>손가락이 설 수 있습니다</h1>
-        
-        <p>우리는 끊임없이 "너는 누구냐"는 질문을 받으며 살아갑니다. 이력서의 빈칸부터 누군가와의 첫인사까지, 내가 얼마나 유능하고 쓸모 있는 사람인지 증명해야만 하는 세상입니다. 그래서 우리는 나를 설명하는 문장들을 필사적으로 수집하며 살아갑니다.</p>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 02편</p>
+      <h1>아니라고 말한 자리에만 손가락이 설 수 있습니다</h1>
+    </header>
 
-        <p>어느 날 예루살렘에서 사람들이 내려와 세례 요한에게 물었습니다. "네가 누구냐." 그가 가진 영향력이라면 얼마든지 자신을 근사하게 포장할 수 있었습니다. 그러나 그는 단호하게 세 번을 <span class="highlight">"나는 아니다"</span>라고 대답합니다. 그리스도도, 엘리야도, 선지자도 아니라고 말입니다. 자기에 대해 그가 내놓은 유일한 긍정은 그저 "나는 소리다"라는 고백뿐이었습니다.</p>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
 
-        <p>그런데 이 길고 긴 부정의 연쇄는 결코 무능의 고백이 아니었습니다. 그것은 기꺼이 자기가 서 있던 자리를 비우는 아름다운 행위였습니다. 요한이 자기를 설명하는 문장들을 지워냈기 때문에, 비로소 참된 빛이신 분의 자리가 온전히 드러날 수 있었습니다.</p>
+    <article id="sermon" class="content">
+      
+<div class="subtitle">일상의 깊은 사고</div>
 
-        <p>우리는 흔히 겸손을 나를 깎아내리는 것이라 생각합니다. 하지만 진정한 겸손은 조명이 비추는 방향을 바꾸는 일입니다. 나를 설명하는 화려한 수식어가 줄어들 때, 비로소 그분을 가리키는 손이 자유로워집니다.</p>
-
-        <div class="quote">
+<p>우리는 끊임없이 "너는 누구냐"는 질문을 받으며 살아갑니다. 이력서의 빈칸부터 누군가와의 첫인사까지, 내가 얼마나 유능하고 쓸모 있는 사람인지 증명해야만 하는 세상입니다. 그래서 우리는 나를 설명하는 문장들을 필사적으로 수집하며 살아갑니다.</p>
+<p>어느 날 예루살렘에서 사람들이 내려와 세례 요한에게 물었습니다. "네가 누구냐." 그가 가진 영향력이라면 얼마든지 자신을 근사하게 포장할 수 있었습니다. 그러나 그는 단호하게 세 번을 <span class="highlight">"나는 아니다"</span>라고 대답합니다. 그리스도도, 엘리야도, 선지자도 아니라고 말입니다. 자기에 대해 그가 내놓은 유일한 긍정은 그저 "나는 소리다"라는 고백뿐이었습니다.</p>
+<p>그런데 이 길고 긴 부정의 연쇄는 결코 무능의 고백이 아니었습니다. 그것은 기꺼이 자기가 서 있던 자리를 비우는 아름다운 행위였습니다. 요한이 자기를 설명하는 문장들을 지워냈기 때문에, 비로소 참된 빛이신 분의 자리가 온전히 드러날 수 있었습니다.</p>
+<p>우리는 흔히 겸손을 나를 깎아내리는 것이라 생각합니다. 하지만 진정한 겸손은 조명이 비추는 방향을 바꾸는 일입니다. 나를 설명하는 화려한 수식어가 줄어들 때, 비로소 그분을 가리키는 손이 자유로워집니다.</p>
+<div class="quote">
             "너희 가운데 너희가 알지 못하는 한 사람이 섰으니..."
         </div>
+<p>사람들이 요한을 붙들고 신원을 캐묻던 바로 그 시간, 그 무리 가운데 이미 예수님께서 서 계셨습니다. 아무도 알아보지 못했지만, 그분은 이미 거기에 계셨습니다. 우리가 삶의 막막함 속에서 "하나님은 어디 계시는가" 탄식할 때, 대개 그것은 그분이 안 계신 것이 아니라 우리의 눈이 다른 곳을 향하고 있기 때문입니다. 그분의 임재는 우리의 얕은 인식을 기다리지 않고 늘 우리 곁에 머물러 있습니다.</p>
+<p>독일의 화가 마티스 그뤼네발트가 그린 '이젠하임 제단화'를 보면, 십자가 곁에 선 세례 요한의 검지 손가락이 기이할 정도로 길게 늘어나 예수님을 가리키고 있습니다. 화가는 요한이라는 사람 전체를 오직 '가리키는 손가락' 하나로 만들어 버렸습니다.</p>
+<p>이것이 어쩌면 오늘 우리에게 필요한 가장 자유롭고 평안한 자화상일지 모릅니다. 세상의 무거운 짐을 내가 다 짊어지려 애쓸 필요가 없습니다. 세상 죄를 지고 가는 일은 온전히 어린 양의 몫이었습니다. 우리의 몫은 그저 나의 작음을 인정하고, 그분이 계신 방향을 향해 조용히 손을 들어 가리키는 것뿐입니다. 우리는 가리키는 자이며, 그것으로 충분합니다.</p>
+<p>오늘, 무언가를 증명하려는 피곤한 애씀을 잠시 내려놓아 봅니다. 반짝이는 감동보다, 매일 같은 자리에 앉아 주님의 머무심을 구하는 조용하고 깊은 일상이 되기를 소망합니다.</p>
+<hr/>
 
-        <p>사람들이 요한을 붙들고 신원을 캐묻던 바로 그 시간, 그 무리 가운데 이미 예수님께서 서 계셨습니다. 아무도 알아보지 못했지만, 그분은 이미 거기에 계셨습니다. 우리가 삶의 막막함 속에서 "하나님은 어디 계시는가" 탄식할 때, 대개 그것은 그분이 안 계신 것이 아니라 우리의 눈이 다른 곳을 향하고 있기 때문입니다. 그분의 임재는 우리의 얕은 인식을 기다리지 않고 늘 우리 곁에 머물러 있습니다.</p>
 
-        <p>독일의 화가 마티스 그뤼네발트가 그린 '이젠하임 제단화'를 보면, 십자가 곁에 선 세례 요한의 검지 손가락이 기이할 정도로 길게 늘어나 예수님을 가리키고 있습니다. 화가는 요한이라는 사람 전체를 오직 '가리키는 손가락' 하나로 만들어 버렸습니다.</p>
+    </article>
 
-        <p>이것이 어쩌면 오늘 우리에게 필요한 가장 자유롭고 평안한 자화상일지 모릅니다. 세상의 무거운 짐을 내가 다 짊어지려 애쓸 필요가 없습니다. 세상 죄를 지고 가는 일은 온전히 어린 양의 몫이었습니다. 우리의 몫은 그저 나의 작음을 인정하고, 그분이 계신 방향을 향해 조용히 손을 들어 가리키는 것뿐입니다. 우리는 가리키는 자이며, 그것으로 충분합니다.</p>
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 02편
+    </footer>
+  </main>
 
-        <p>오늘, 무언가를 증명하려는 피곤한 애씀을 잠시 내려놓아 봅니다. 반짝이는 감동보다, 매일 같은 자리에 앉아 주님의 머무심을 구하는 조용하고 깊은 일상이 되기를 소망합니다.</p>
-        
-        <hr>
-        
-        <div class="footer">
-            당신의 일상에 평안이 깃들기를 기도합니다.<br>
-            - 요한복음 1:19-34 묵상 중에서 -
-        </div>
-    </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `아니라고 말한 자리에만 손가락이 설 수 있습니다\\n요한복음 제 02편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '아니라고 말한 자리에만 손가락이 설 수 있습니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

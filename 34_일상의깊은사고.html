@@ -1,111 +1,272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>칼은 뽑았지만 대답은 하지 못했던 밤</title>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-        background-color: #f4f6f8;
-        color: #333333;
-        font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-        line-height: 1.8;
-        margin: 0;
-        padding: 20px;
-        word-break: keep-all;
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
-    .card {
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 40px 24px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-        max-width: 600px;
-        margin: 0 auto;
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
     }
-    .title {
-        font-size: 24px;
-        font-weight: 700;
-        color: #2c3e50;
-        margin-bottom: 12px;
-        text-align: center;
-        line-height: 1.4;
-        word-break: keep-all;
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
     }
-    .subtitle {
-        font-size: 14px;
-        color: #888888;
-        text-align: center;
-        margin-bottom: 32px;
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
     }
-    .content p {
-        font-size: 16px;
-        margin-bottom: 24px;
-        color: #444444;
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
     }
-    .content .highlight {
-        color: #d35400;
-        font-weight: 600;
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-    .divider {
-        height: 1px;
-        background-color: #f0f0f0;
-        margin: 32px 0;
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
     }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
     .quote {
-        background-color: #fdfaf6;
-        border-left: 4px solid #d35400;
-        padding: 16px 20px;
-        font-size: 15px;
-        color: #666666;
-        font-style: italic;
-        margin-bottom: 32px;
-        border-radius: 0 12px 12px 0;
-        line-height: 1.6;
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
     }
-    .footer {
-        text-align: center;
-        font-size: 13px;
-        color: #aaaaaa;
-        margin-top: 40px;
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
     }
-</style>
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-<div class="card">
-    <div class="title">칼은 뽑았지만<br>대답은 하지 못했던 밤</div>
-    <div class="subtitle">일상을 깊게 생각하다 — 요한복음 18:1-27</div>
-    
-    <div class="quote">
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 34편</p>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div class="title">칼은 뽑았지만<br/>대답은 하지 못했던 밤</div>
+<div class="subtitle">일상을 깊게 생각하다 — 요한복음 18:1-27</div>
+<div class="quote">
         "문 지키는 여종이 베드로에게 말하되 너도 이 사람의 제자 중 하나가 아니냐 하니 그가 말하되 나는 아니라 하고... 베드로도 함께 서서 (불을) 쬐더라" (요 18:17-18)
     </div>
+<div class="content">
+<p>가장 극적인 위기의 순간, 무장한 군대 앞에서 호기롭게 칼을 뽑아 들었던 베드로. 그러나 불과 몇 시간 뒤, 그는 한낱 문지기 여종의 사소한 질문 앞에서 무너져 내립니다. <em>"너도 그 사람의 제자가 아니냐?"</em> 대답은 비겁했습니다. <em>"나는 아니라."</em></p>
+<p>예수님의 모습은 그와 달랐습니다. 십자가를 향해 억지로 끌려가신 것이 아니었습니다. 횃불과 무기를 든 무리 앞에서 오히려 먼저 나아가 <strong>"내가 그니라"</strong> 하고 말씀하셨습니다. 그 한 마디에 무리가 뒤로 물러나 땅에 엎드러집니다. 예수님은 하나님이 주신 고난의 잔을 결코 피하지 않으셨습니다.</p>
+<p>반면, 큰 위기 앞에서는 목숨마저 걸겠다던 베드로는 일상의 작고 사소한 질문 앞에서 처절하게 실패합니다. 우리의 모습도 이와 닮아 있지 않은가요? 우리는 종종 거창한 헌신을 다짐하지만, 정작 우리를 넘어뜨리는 것은 매일 마주하는 작고 평범한 유혹과 두려움입니다. 열심의 방향이 어긋날 때, 우리는 엉뚱한 곳에서 칼만 빼들 뿐 정작 대답해야 할 믿음의 자리에서는 침묵하고 맙니다.</p>
 
-    <div class="content">
-        <p>가장 극적인 위기의 순간, 무장한 군대 앞에서 호기롭게 칼을 뽑아 들었던 베드로. 그러나 불과 몇 시간 뒤, 그는 한낱 문지기 여종의 사소한 질문 앞에서 무너져 내립니다. <em>"너도 그 사람의 제자가 아니냐?"</em> 대답은 비겁했습니다. <em>"나는 아니라."</em></p>
-        
-        <p>예수님의 모습은 그와 달랐습니다. 십자가를 향해 억지로 끌려가신 것이 아니었습니다. 횃불과 무기를 든 무리 앞에서 오히려 먼저 나아가 <strong>"내가 그니라"</strong> 하고 말씀하셨습니다. 그 한 마디에 무리가 뒤로 물러나 땅에 엎드러집니다. 예수님은 하나님이 주신 고난의 잔을 결코 피하지 않으셨습니다.</p>
-        
-        <p>반면, 큰 위기 앞에서는 목숨마저 걸겠다던 베드로는 일상의 작고 사소한 질문 앞에서 처절하게 실패합니다. 우리의 모습도 이와 닮아 있지 않은가요? 우리는 종종 거창한 헌신을 다짐하지만, 정작 우리를 넘어뜨리는 것은 매일 마주하는 작고 평범한 유혹과 두려움입니다. 열심의 방향이 어긋날 때, 우리는 엉뚱한 곳에서 칼만 빼들 뿐 정작 대답해야 할 믿음의 자리에서는 침묵하고 맙니다.</p>
-
-        <div class="divider"></div>
-
-        <p>베드로가 예수님을 모른다고 세 번이나 부인하던 그 춥고 시린 밤, 그는 뜰에서 사람들이 피워놓은 <span class="highlight">'숯불'</span> 곁에서 언 몸을 녹이고 있었습니다. 요한복음 전체에서 이 '숯불(안트라키아)'이라는 단어는 딱 두 번 등장합니다.</p>
-
-        <p>부활하신 예수님이 디베랴 바닷가에서 베드로를 다시 찾아오셨을 때, 그곳에는 또 다른 숯불이 피워져 있었습니다. 아침 공기 속에 퍼지는 숯불 냄새를 맡으며 베드로는 무슨 생각을 했을까요? 주님은 가장 뼈아픈 실패의 기억이 서려 있는 그 냄새 속으로 베드로를 부르셨습니다.</p>
-
-        <p>정죄하고 내치기 위해서가 아니었습니다. <em>"네가 나를 사랑하느냐."</em> 세 번 물으시며, 베드로의 세 번의 부인을 세 번의 사랑 고백으로 덮어주셨습니다. 도망치고 싶은 실패의 자리를 다시 지나가게 하심으로써, 가장 완전한 회복을 주신 것입니다.</p>
-
-        <div class="divider"></div>
-
-        <p>우리는 종종 실패한 자리를 도망치려 합니다. 내 연약함이 드러난 기억, 상처받고 넘어진 사람과 상황을 덮어두고만 싶어 합니다. 하지만 주님의 회복은 우리가 도망쳤던 바로 그 자리, 부인의 냄새가 나는 숯불 곁으로 우리를 다시 부르시는 데서 시작됩니다.</p>
-        
-        <p>오늘, 실패와 무력감 속에 웅크리고 계신가요? 사소한 일상에서 또 한 번 넘어졌음에 자책하고 계신가요? 주님은 겟세마네의 잔을 끝까지 마셨고, 지금 당신의 가장 아픈 기억의 숯불 곁에 서서 따뜻한 아침을 준비하고 계십니다.</p>
-
-        <p>도망치지 않으셔도 됩니다. 그분이 피워두신 은혜의 숯불 곁으로, 그저 다시 나아가기만 하면 됩니다.</p>
-    </div>
-
-    <div class="footer">
-        © 2026 묵상 노트 | 일상의 깊은 사고
-    </div>
+<p>베드로가 예수님을 모른다고 세 번이나 부인하던 그 춥고 시린 밤, 그는 뜰에서 사람들이 피워놓은 <span class="highlight">'숯불'</span> 곁에서 언 몸을 녹이고 있었습니다. 요한복음 전체에서 이 '숯불(안트라키아)'이라는 단어는 딱 두 번 등장합니다.</p>
+<p>부활하신 예수님이 디베랴 바닷가에서 베드로를 다시 찾아오셨을 때, 그곳에는 또 다른 숯불이 피워져 있었습니다. 아침 공기 속에 퍼지는 숯불 냄새를 맡으며 베드로는 무슨 생각을 했을까요? 주님은 가장 뼈아픈 실패의 기억이 서려 있는 그 냄새 속으로 베드로를 부르셨습니다.</p>
+<p>정죄하고 내치기 위해서가 아니었습니다. <em>"네가 나를 사랑하느냐."</em> 세 번 물으시며, 베드로의 세 번의 부인을 세 번의 사랑 고백으로 덮어주셨습니다. 도망치고 싶은 실패의 자리를 다시 지나가게 하심으로써, 가장 완전한 회복을 주신 것입니다.</p>
+<div class="divider"></div>
+<p>우리는 종종 실패한 자리를 도망치려 합니다. 내 연약함이 드러난 기억, 상처받고 넘어진 사람과 상황을 덮어두고만 싶어 합니다. 하지만 주님의 회복은 우리가 도망쳤던 바로 그 자리, 부인의 냄새가 나는 숯불 곁으로 우리를 다시 부르시는 데서 시작됩니다.</p>
+<p>오늘, 실패와 무력감 속에 웅크리고 계신가요? 사소한 일상에서 또 한 번 넘어졌음에 자책하고 계신가요? 주님은 겟세마네의 잔을 끝까지 마셨고, 지금 당신의 가장 아픈 기억의 숯불 곁에 서서 따뜻한 아침을 준비하고 계십니다.</p>
+<p>도망치지 않으셔도 됩니다. 그분이 피워두신 은혜의 숯불 곁으로, 그저 다시 나아가기만 하면 됩니다.</p>
 </div>
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 34편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `묵상 에세이\\n요한복음 제 34편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '묵상 에세이',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

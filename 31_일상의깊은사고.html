@@ -1,125 +1,272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일상의 깊은 사고 - 요한복음 15:18-16:15</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-            background-color: #f7f9fa;
-            color: #333333;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
-            word-break: keep-all;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px 30px;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이유 없는 미움 속에서 발견하는 까닭 없는 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        h1 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 700;
-            line-height: 1.4;
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-            margin-top: -15px;
-        }
+    * { box-sizing: border-box; }
 
-        p {
-            font-size: 1.05rem;
-            margin-bottom: 24px;
-            color: #4a4a4a;
-        }
+    html { scroll-behavior: smooth; }
 
-        .highlight {
-            background: linear-gradient(to top, #ffeaa7 30%, transparent 40%);
-            font-weight: 600;
-            color: #2d3436;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .quote-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #74b9ff;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
-            color: #555;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        .quote-box p {
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .divider {
-            height: 1px;
-            background-color: #eee;
-            margin: 40px 0;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        .footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #999;
-            margin-top: 30px;
-        }
-    </style>
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>이유 없는 미움 속에서 발견하는<br>까닭 없는 은혜</h1>
-        <div class="subtitle">일상의 깊은 사고</div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 31편</p>
+      <h1>이유 없는 미움 속에서 발견하는 까닭 없는 은혜</h1>
+    </header>
 
-        <p>살아가다 보면 때때로 우리는 세상의 차가운 시선이나 알 수 없는 미움과 마주하게 됩니다. 그럴 때면 우리는 반사적으로 내 안에서 이유를 찾기 시작합니다. "내가 무엇을 잘못했을까?", "내 말투가 문제였을까?", "내가 부족해서 그런 걸까?" 깊은 성찰처럼 보이지만, 끝없는 자기 검열과 학대로 이어지기 일쑤입니다.</p>
-        
-        <p>하지만 예수님은 우리에게 전혀 다른 위로를 건네십니다. 세상이 우리를 미워하는 데에는 <span class="highlight">"이유가 없다"</span>는 것입니다. 예수님은 시편의 말씀을 빌려 "그들이 까닭 없이 나를 미워하였다"고 말씀하십니다.</p>
-
-        <p>놀랍게도 성경에서 이 '까닭 없이'라는 단어는 로마서에서 우리가 "값없이(까닭 없이) 의롭다 하심을 얻었다"고 할 때 쓰인 단어와 같습니다. 즉, 우리가 세상으로부터 받는 미움이 까닭 없는 것처럼, 우리가 하나님께 받은 은혜와 사랑 역시 까닭 없는 맹목적인 사랑입니다. 내가 못나서 미움받는 것이 아니라, 내가 주님께 속해 있기에 겪는 자연스러운 편입의 과정인 것입니다. 이 사실을 깨달을 때, 우리는 미움의 이유를 찾느라 지쳐가는 내 영혼을 다독일 수 있습니다.</p>
-
-        <div class="divider"></div>
-
-        <p>한편, 본문은 누군가를 강하게 미워하고 핍박하는 이들의 심리도 조명합니다. 예수님은 "너희를 죽이는 자가 생각하기를 이것이 하나님을 섬기는 일이라 하리라"고 경고하십니다. 박해자들은 스스로를 악하다고 여기지 않습니다. 오히려 자신이 하나님 편에 서서 무언가 옳은 일을 하고 있다고 굳게 믿습니다.</p>
-
-        <p>이는 타인을 향한 진단인 동시에 우리 자신을 향한 서늘한 경고입니다. 무언가를 강하게 확신하며 밀어붙이고 누군가를 정죄하고 있다면, 우리는 멈추어서 그 '확신'이 어디서 왔는지 물어야 합니다. 끓어오르는 열심이 곧 옳음의 증거는 아니기 때문입니다.</p>
-
-        <div class="divider"></div>
-
-        <div class="quote-box">
-            <p>"내가 아직도 너희에게 이를 것이 많으나 지금은 너희가 감당하지 못하리라." (요 16:12)</p>
-        </div>
-
-        <p>마지막으로, 예수님은 불안해하는 제자들을 향해 말씀을 아끼십니다. 다 알려주실 수 있었지만, 그들의 작은 용량을 아시고 멈추어 주셨습니다.</p>
-
-        <p>우리는 자주 삶의 모든 문제를 한꺼번에 다 이해하고 싶어 합니다. 내게 일어난 일의 의미를 당장 깨닫지 못하면 믿음이 부족한 것이라 자책하기도 합니다. 하지만 예수님은 <span class="highlight">"지금은 네가 다 감당하지 못하는 것이 당연하다"</span>며 우리의 한계를 따뜻하게 품어주십니다.</p>
-        
-        <p>그리고 약속하십니다. 때가 이르면, 진리의 성령께서 우리를 그 길로 인도하시어 스스로를 드러내지 않는 겸손함으로 모든 것을 알게 하실 것이라고요. </p>
-
-        <p>오늘 하루, 이유 없는 미움에 상처받고 계시나요? 혹은 이해되지 않는 삶의 문제 앞에서 버거워하고 계시나요? 억지로 이유를 찾으려 애쓰지 않으셔도 괜찮습니다. 당장 모든 것을 다 감당하려 하지 않으셔도 좋습니다. 그저 내 감정을 아시고, 내 용량을 아시며, 까닭 없는 은혜로 우리를 안으시는 그분의 사랑 안에 조용히 머무르는 하루가 되기를 소망합니다.</p>
-
-        <div class="footer">
-            당신의 일상에 깊은 평안이 깃들기를 기도합니다.
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+
+<div class="subtitle">일상의 깊은 사고</div>
+<p>살아가다 보면 때때로 우리는 세상의 차가운 시선이나 알 수 없는 미움과 마주하게 됩니다. 그럴 때면 우리는 반사적으로 내 안에서 이유를 찾기 시작합니다. "내가 무엇을 잘못했을까?", "내 말투가 문제였을까?", "내가 부족해서 그런 걸까?" 깊은 성찰처럼 보이지만, 끝없는 자기 검열과 학대로 이어지기 일쑤입니다.</p>
+<p>하지만 예수님은 우리에게 전혀 다른 위로를 건네십니다. 세상이 우리를 미워하는 데에는 <span class="highlight">"이유가 없다"</span>는 것입니다. 예수님은 시편의 말씀을 빌려 "그들이 까닭 없이 나를 미워하였다"고 말씀하십니다.</p>
+<p>놀랍게도 성경에서 이 '까닭 없이'라는 단어는 로마서에서 우리가 "값없이(까닭 없이) 의롭다 하심을 얻었다"고 할 때 쓰인 단어와 같습니다. 즉, 우리가 세상으로부터 받는 미움이 까닭 없는 것처럼, 우리가 하나님께 받은 은혜와 사랑 역시 까닭 없는 맹목적인 사랑입니다. 내가 못나서 미움받는 것이 아니라, 내가 주님께 속해 있기에 겪는 자연스러운 편입의 과정인 것입니다. 이 사실을 깨달을 때, 우리는 미움의 이유를 찾느라 지쳐가는 내 영혼을 다독일 수 있습니다.</p>
+
+<p>한편, 본문은 누군가를 강하게 미워하고 핍박하는 이들의 심리도 조명합니다. 예수님은 "너희를 죽이는 자가 생각하기를 이것이 하나님을 섬기는 일이라 하리라"고 경고하십니다. 박해자들은 스스로를 악하다고 여기지 않습니다. 오히려 자신이 하나님 편에 서서 무언가 옳은 일을 하고 있다고 굳게 믿습니다.</p>
+<p>이는 타인을 향한 진단인 동시에 우리 자신을 향한 서늘한 경고입니다. 무언가를 강하게 확신하며 밀어붙이고 누군가를 정죄하고 있다면, 우리는 멈추어서 그 '확신'이 어디서 왔는지 물어야 합니다. 끓어오르는 열심이 곧 옳음의 증거는 아니기 때문입니다.</p>
+<div class="divider"></div>
+<div class="quote-box">
+<p>"내가 아직도 너희에게 이를 것이 많으나 지금은 너희가 감당하지 못하리라." (요 16:12)</p>
+</div>
+<p>마지막으로, 예수님은 불안해하는 제자들을 향해 말씀을 아끼십니다. 다 알려주실 수 있었지만, 그들의 작은 용량을 아시고 멈추어 주셨습니다.</p>
+<p>우리는 자주 삶의 모든 문제를 한꺼번에 다 이해하고 싶어 합니다. 내게 일어난 일의 의미를 당장 깨닫지 못하면 믿음이 부족한 것이라 자책하기도 합니다. 하지만 예수님은 <span class="highlight">"지금은 네가 다 감당하지 못하는 것이 당연하다"</span>며 우리의 한계를 따뜻하게 품어주십니다.</p>
+<p>그리고 약속하십니다. 때가 이르면, 진리의 성령께서 우리를 그 길로 인도하시어 스스로를 드러내지 않는 겸손함으로 모든 것을 알게 하실 것이라고요. </p>
+<p>오늘 하루, 이유 없는 미움에 상처받고 계시나요? 혹은 이해되지 않는 삶의 문제 앞에서 버거워하고 계시나요? 억지로 이유를 찾으려 애쓰지 않으셔도 괜찮습니다. 당장 모든 것을 다 감당하려 하지 않으셔도 좋습니다. 그저 내 감정을 아시고, 내 용량을 아시며, 까닭 없는 은혜로 우리를 안으시는 그분의 사랑 안에 조용히 머무르는 하루가 되기를 소망합니다.</p>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 31편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `이유 없는 미움 속에서 발견하는 까닭 없는 은혜\\n요한복음 제 31편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '이유 없는 미움 속에서 발견하는 까닭 없는 은혜',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>

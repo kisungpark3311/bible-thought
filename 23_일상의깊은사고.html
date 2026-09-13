@@ -1,178 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>합리성이라는 이름의 폭력</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #333333;
-            line-height: 1.8;
-            word-break: keep-all;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>합리성이라는 이름의 잔혹한 계산</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
 
-        .container {
-            background-color: #ffffff;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            box-sizing: border-box;
-        }
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    * { box-sizing: border-box; }
 
-        .subtitle {
-            font-size: 14px;
-            color: #74808a;
-            margin-bottom: 10px;
-            display: block;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .title {
-            font-size: 26px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin: 0;
-            line-height: 1.4;
-            word-break: keep-all;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
 
-        .quote-box {
-            background-color: #f1f3f5;
-            border-left: 4px solid #4dabf7;
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 30px;
-            font-style: italic;
-            color: #495057;
-            font-size: 16px;
-        }
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
 
-        .content {
-            font-size: 16px;
-            color: #444444;
-        }
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
 
-        .content p {
-            margin-bottom: 24px;
-            text-align: justify;
-        }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
 
-        .highlight {
-            background-color: #e7f5ff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #1c7ed6;
-            font-weight: 600;
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
 
-        .divider {
-            height: 1px;
-            background-color: #e9ecef;
-            margin: 40px 0;
-            border: none;
-        }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
 
-        .prayer {
-            background-color: #fdfbf7;
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid #f0ece1;
-        }
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-        .prayer p {
-            margin-bottom: 10px;
-            color: #5d564a;
-            text-align: center;
-            font-size: 15px;
-        }
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
 
-        .prayer p:last-child {
-            margin-bottom: 0;
-        }
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
 
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 13px;
-            color: #adb5bd;
-        }
+    .content { padding: 38px 36px 52px; }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            .container {
-                padding: 30px 20px;
-                border-radius: 16px;
-            }
-            .title {
-                font-size: 22px;
-            }
-            .content, .quote-box {
-                font-size: 15px;
-            }
-        }
-    </style>
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <span class="subtitle">일상의 깊은 사고</span>
-            <h1 class="title">합리성이라는 이름의<br>잔혹한 계산</h1>
-        </div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 요한복음 제 23편</p>
+      <h1>합리성이라는 이름의 잔혹한 계산</h1>
+    </header>
 
-        <div class="quote-box">
-            "한 사람이 죽어서 전체가 사는 편이 유익하다."<br>
-            <span style="font-size: 13px; display: block; margin-top: 10px; color: #868e96;">- 요한복음 11장 50절 中</span>
-        </div>
-
-        <div class="content">
-            <p>기원후 1세기, 이스라엘의 최고 종교 지도자 대제사장 가야바가 내뱉은 이 문장은 논리적으로 아무런 흠이 없습니다. 국가의 안보와 공동체의 평화를 위해 한 사람의 불안 요소를 제거하자는 제안. 그것은 로마 제국의 압제 아래서 민족의 피해를 최소화하고 질서를 유지하기 위한 지극히 현실적이고 이성적인 계산이었습니다. 그리고 이 한마디는 곧 예수 그리스도의 십자가 처형을 확정 짓는 결정적 명분이 되었습니다.</p>
-
-            <p>이 장면이 이천 년이 지난 오늘날까지 우리에게 서늘한 두려움으로 다가오는 이유는, 가야바의 말이 결코 '악당의 언어'처럼 들리지 않기 때문입니다. 그것은 오히려 시대를 막론하고 통용되는 <span class="highlight">합리적인 경영자의 언어</span>에 가깝습니다.</p>
-            
-            <p>우리가 일상에서 마주하는 폭력과 악은 대개 어리석음이나 광기의 모습을 하고 나타나지 않습니다. 놀랍게도 그것은 '효율'과 '질서', 그리고 '전체를 위해서'라는 아주 그럴듯하고 합리적인 얼굴을 하고 찾아옵니다.</p>
-
-            <p>교회나 직장, 심지어 가족 안에서도 우리는 종종 이런 계산을 마주합니다. 다수의 평안을 지킨다는 명목 아래 억울함을 호소하는 한 사람의 목소리를 덮어버리고, 조직의 속도를 높이기 위해 조금 느리고 서툰 한 사람을 차갑게 배제해 버리는 결정들. 완벽하게 합리적으로 들리기 때문에, 우리는 양심의 저항조차 느끼지 못한 채 누군가를 희생시키고 스스로 옳은 일을 했다고 굳게 믿습니다. 가야바의 진짜 비극은 그가 악했다는 사실보다, 자신이 옳다고 확신하는 그 차가운 이성에 있었습니다. 누군가 치러야 할 희생의 무게를 묻지 않는 합리성은 필연적으로 잔혹해집니다.</p>
-
-            <p>하지만 성경의 이야기는 인간의 악한 계산에서 멈추지 않습니다. 요한복음의 저자는 가야바의 이 철저한 정치적 발언이 실은 인류를 구원하기 위한 대속의 예언이었다고 선언합니다. 가야바는 '유대 민족'이라는 좁고 배타적인 울타리를 지키기 위해 예수를 희생양으로 삼았습니다.</p>
-            
-            <p>그러나 예수님의 죽음은 오히려 그 울타리 자체를 완전히 허물어 버리고, 흩어진 모든 사람을 한 가족으로 품어내는 위대한 사랑의 사건이 되었습니다. 인간은 누군가를 희생시켜 자신들의 경계를 지키려 했으나, 하나님은 스스로 십자가에서 희생하심으로써 세상을 향한 구원의 문을 활짝 여셨습니다. 지키려 했던 죽음이 오히려 모두를 살리는 생명으로 피어난 것입니다.</p>
-
-            <p>오늘 우리의 삶과 내면을 가만히 들여다보기를 원합니다. 우리는 혹시 '다수를 위한다'는 명분 아래, 소외되고 상처받은 누군가의 눈물을 외면하고 있지는 않습니까? 내가 가진 직분이나 자리가 주는 힘을 마치 나의 인격과 옳음인 것처럼 착각하며 누군가를 함부로 평가하고 있지는 않은지요. 결정의 순간마다 우리는 그 합리성의 이면에서 누가 비용을 치르고 고통받고 있는지 살피는 따뜻한 시선과 멈춤이 필요합니다.</p>
-
-            <p>하나님의 사랑은 세상의 계산법과 다릅니다. 세상은 전체를 위해 한 사람을 버리라고 말하지만, 예수님은 아흔아홉 마리의 양을 두고서라도 길 잃은 한 마리를 찾아 험한 산길을 오르십니다. 합리성이라는 이름의 차가운 칼날을 거두고, 한 사람을 천하보다 귀하게 여기시는 그 십자가의 온기를 품는 하루가 되기를 소망합니다.</p>
-        </div>
-
-        <hr class="divider">
-
-        <div class="prayer">
-            <p>나의 작은 판단이</p>
-            <p>누군가를 베는 칼이 되지 않기를,</p>
-            <p>우리가 세운 높은 울타리가 허물어져</p>
-            <p>누군가를 따뜻하게 품어내는 넓은 품이 되기를</p>
-            <p>간절히 기도합니다.</p>
-        </div>
-
-        <div class="footer">
-            묵상 노트: 요한복음 11장 45-57절
-        </div>
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
     </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+
+<div class="quote-box">
+            "한 사람이 죽어서 전체가 사는 편이 유익하다."<br/>
+<span style="font-size: 13px; display: block; margin-top: 10px; color: #868e96;">- 요한복음 11장 50절 中</span>
+</div>
+<div class="content">
+<p>기원후 1세기, 이스라엘의 최고 종교 지도자 대제사장 가야바가 내뱉은 이 문장은 논리적으로 아무런 흠이 없습니다. 국가의 안보와 공동체의 평화를 위해 한 사람의 불안 요소를 제거하자는 제안. 그것은 로마 제국의 압제 아래서 민족의 피해를 최소화하고 질서를 유지하기 위한 지극히 현실적이고 이성적인 계산이었습니다. 그리고 이 한마디는 곧 예수 그리스도의 십자가 처형을 확정 짓는 결정적 명분이 되었습니다.</p>
+<p>이 장면이 이천 년이 지난 오늘날까지 우리에게 서늘한 두려움으로 다가오는 이유는, 가야바의 말이 결코 '악당의 언어'처럼 들리지 않기 때문입니다. 그것은 오히려 시대를 막론하고 통용되는 <span class="highlight">합리적인 경영자의 언어</span>에 가깝습니다.</p>
+<p>우리가 일상에서 마주하는 폭력과 악은 대개 어리석음이나 광기의 모습을 하고 나타나지 않습니다. 놀랍게도 그것은 '효율'과 '질서', 그리고 '전체를 위해서'라는 아주 그럴듯하고 합리적인 얼굴을 하고 찾아옵니다.</p>
+<p>교회나 직장, 심지어 가족 안에서도 우리는 종종 이런 계산을 마주합니다. 다수의 평안을 지킨다는 명목 아래 억울함을 호소하는 한 사람의 목소리를 덮어버리고, 조직의 속도를 높이기 위해 조금 느리고 서툰 한 사람을 차갑게 배제해 버리는 결정들. 완벽하게 합리적으로 들리기 때문에, 우리는 양심의 저항조차 느끼지 못한 채 누군가를 희생시키고 스스로 옳은 일을 했다고 굳게 믿습니다. 가야바의 진짜 비극은 그가 악했다는 사실보다, 자신이 옳다고 확신하는 그 차가운 이성에 있었습니다. 누군가 치러야 할 희생의 무게를 묻지 않는 합리성은 필연적으로 잔혹해집니다.</p>
+<p>하지만 성경의 이야기는 인간의 악한 계산에서 멈추지 않습니다. 요한복음의 저자는 가야바의 이 철저한 정치적 발언이 실은 인류를 구원하기 위한 대속의 예언이었다고 선언합니다. 가야바는 '유대 민족'이라는 좁고 배타적인 울타리를 지키기 위해 예수를 희생양으로 삼았습니다.</p>
+<p>그러나 예수님의 죽음은 오히려 그 울타리 자체를 완전히 허물어 버리고, 흩어진 모든 사람을 한 가족으로 품어내는 위대한 사랑의 사건이 되었습니다. 인간은 누군가를 희생시켜 자신들의 경계를 지키려 했으나, 하나님은 스스로 십자가에서 희생하심으로써 세상을 향한 구원의 문을 활짝 여셨습니다. 지키려 했던 죽음이 오히려 모두를 살리는 생명으로 피어난 것입니다.</p>
+<p>오늘 우리의 삶과 내면을 가만히 들여다보기를 원합니다. 우리는 혹시 '다수를 위한다'는 명분 아래, 소외되고 상처받은 누군가의 눈물을 외면하고 있지는 않습니까? 내가 가진 직분이나 자리가 주는 힘을 마치 나의 인격과 옳음인 것처럼 착각하며 누군가를 함부로 평가하고 있지는 않은지요. 결정의 순간마다 우리는 그 합리성의 이면에서 누가 비용을 치르고 고통받고 있는지 살피는 따뜻한 시선과 멈춤이 필요합니다.</p>
+<p>하나님의 사랑은 세상의 계산법과 다릅니다. 세상은 전체를 위해 한 사람을 버리라고 말하지만, 예수님은 아흔아홉 마리의 양을 두고서라도 길 잃은 한 마리를 찾아 험한 산길을 오르십니다. 합리성이라는 이름의 차가운 칼날을 거두고, 한 사람을 천하보다 귀하게 여기시는 그 십자가의 온기를 품는 하루가 되기를 소망합니다.</p>
+</div>
+
+<div class="prayer">
+<p>나의 작은 판단이</p>
+<p>누군가를 베는 칼이 되지 않기를,</p>
+<p>우리가 세운 높은 울타리가 허물어져</p>
+<p>누군가를 따뜻하게 품어내는 넓은 품이 되기를</p>
+<p>간절히 기도합니다.</p>
+</div>
+
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      요한복음 제 23편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `합리성이라는 이름의 잔혹한 계산\\n요한복음 제 23편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '합리성이라는 이름의 잔혹한 계산',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
 </body>
 </html>
