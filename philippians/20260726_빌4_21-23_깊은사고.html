@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>사슬을 뚫고 피어난 복음의 꽃</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 07월 26일</p>
+      <h1>사슬을 뚫고 피어난 복음의 꽃</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="background: linear-gradient(135deg, #f5f7fa 0%, #e4ebf5 100%); padding: 40px 30px; text-align: center;">
+<h1 style="font-size: 26px; font-weight: 800; color: #2c3e50; margin: 0 0 15px 0; letter-spacing: -0.5px; line-height: 1.3;">사슬을 뚫고 피어난<br/>복음의 꽃</h1>
+<p style="font-size: 15px; color: #636e72; margin: 0; font-weight: 500;">빌립보서 4:21-23</p>
+</div>
+<div style="padding: 40px 30px; font-size: 16px; color: #444444; letter-spacing: -0.3px;">
+<p style="margin: 0 0 24px 0;">바위 틈새를 비집고 피어난 들꽃을 본 적이 있으신가요? 차갑고 단단한 콘크리트마저 밀어 올리는 생명의 힘은 경이롭습니다. 바울이 빌립보 교회에 보낸 편지의 마지막 인사는 바로 그 강인한 들꽃을 닮았습니다.</p>
+<blockquote style="margin: 0 0 24px 0; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #74b9ff; border-radius: 4px; font-size: 15px; font-style: italic; color: #2d3436;">
+                "모든 성도들이 너희에게 문안하되 특히 가이사의 집 사람들 중 몇이니라"<br/>
+<span style="font-size: 13px; color: #636e72; display: block; margin-top: 8px;">- 빌립보서 4:22</span>
+</blockquote>
+<p style="margin: 0 0 24px 0;">바울은 감옥에 갇혀 있었습니다. 안타깝게도 그의 사슬은 끝내 풀리지 않았습니다. 상황은 조금도 나아지지 않았고, 아마도 그는 그곳에서 생을 마감했을 것입니다. 하지만 <strong style="color: #0984e3;">바울이 묶여 있다고 해서 복음까지 묶인 것은 아니었습니다.</strong></p>
+<h3 style="font-size: 19px; color: #2d3436; margin: 36px 0 16px 0; font-weight: 700; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px;">가장 척박한 자리에서 핀 꽃</h3>
+<p style="margin: 0 0 24px 0;">'가이사의 집'은 당시 로마 제국의 황실을 의미합니다. 황제를 '주님'이요 '신'으로 떠받들던 제국의 심장부였습니다. 신앙을 지키기에 그보다 불리하고 위험한 곳이 있었을까요? 세속의 권력과 우상숭배가 가득한 그곳은 생명이 자랄 수 없는 차가운 시멘트 바닥과 같았습니다.</p>
+<p style="margin: 0 0 24px 0;">그러나 놀랍게도 그곳에서 '성도'가 나왔습니다. 황실의 서류를 만지고 관료 조직에서 일하던 사람들 중 몇몇이 황제가 아닌 예수 그리스도를 진정한 주님으로 고백하게 된 것입니다.</p>
+<p style="margin: 0 0 24px 0;">때로 우리는 "내 직장은 너무 치열해서", "내 삶의 자리는 너무 여유가 없어서"라며 환경을 핑계 삼곤 합니다. 하지만 환경은 신앙을 미룰 변명이 될 수 없음을, 가이사의 집에서 온 안부가 우리에게 증명해 줍니다. 어둠이 짙은 곳일수록 작은 불빛은 더욱 선명하게 빛나는 법입니다.</p>
+<h3 style="font-size: 19px; color: #2d3436; margin: 36px 0 16px 0; font-weight: 700; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px;">무리에서 '한 사람'으로</h3>
+<p style="margin: 0 0 24px 0;">바울은 편지를 마무리하며 "그리스도 예수 안에 있는 성도에게 <strong style="color: #0984e3;">각각</strong> 문안하라"고 당부합니다. 그는 교회를 단순히 큰 덩어리로 보지 않았습니다. 한 사람, 한 사람의 이름을 부르며 눈을 맞추기를 원했습니다.</p>
+<p style="margin: 0 0 24px 0;">단체 대화방의 공지로 수십 명의 안부를 쉽게 대신할 수 있는 오늘날, 이 말씀은 소중한 울림을 줍니다. 누군가를 무리의 일부가 아닌, 고귀한 이름과 사연을 가진 한 사람으로 대하는 것. 그것이 진정한 사랑의 시작입니다.</p>
+<h3 style="font-size: 19px; color: #2d3436; margin: 36px 0 16px 0; font-weight: 700; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px;">과장하지 않는 정직한 '몇 명'</h3>
+<p style="margin: 0 0 24px 0;">또 하나 눈에 띄는 것은 바울의 투명함입니다. 그는 "가이사의 집 사람들 중 몇"이라고 솔직하게 썼습니다. 궁정 전체가 뒤집혔다며 결과를 부풀리지 않았습니다. 성과를 포장하려는 유혹 앞에서도 정직했습니다. 부풀려진 거창한 숫자보다, 작지만 진실한 생명의 열매가 역사 속에 더 강인하게 남는다는 것을 알았던 것입니다.</p>
+<h3 style="font-size: 19px; color: #2d3436; margin: 36px 0 16px 0; font-weight: 700; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px;">일상의 자리로</h3>
+<p style="margin: 0 0 24px 0;">우리의 삶도 때로는 풀리지 않는 사슬에 매인 것처럼 답답하고 고단합니다. 상황이 조금 나아져야 비로소 제대로 된 신앙생활을 시작할 수 있을 것만 같습니다. 하지만 주님은 우리가 서 있는 바로 그 척박한 자리에서, 이미 조용히 생명의 역사를 시작하고 계십니다.</p>
+<p style="margin: 0;">오늘 하루, 거창한 계획 대신 내 곁에 있는 한 사람의 이름을 따뜻하게 불러주면 어떨까요? 가장 차가운 곳에서도 싹을 틔웠던 그 복음의 생명력이, 오늘 우리의 평범하고도 고단한 일상 속에서 조용히 아름답게 꽃피우기를 소망합니다.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 07월 26일
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `사슬을 뚫고 피어난 복음의 꽃\\n2026년 07월 26일\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '사슬을 뚫고 피어난 복음의 꽃',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

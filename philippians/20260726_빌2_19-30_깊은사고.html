@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>겸손이 내 이름 옆에 적힐 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 07월 26일</p>
+      <h1>겸손이 내 이름 옆에 적힐 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>겸손이 내 이름 옆에 적힐 때</h1>
+<div class="intro-quote">
+            "가장 위대한 노래가 끝난 자리에는,<br/>가장 평범한 사람들의 이름이 적혀 있습니다."
+        </div>
+<p>바울은 빌립보서 2장에서 하늘의 보좌를 버리고 종의 형체를 취하여 십자가까지 내려가신 예수님의 '자기 비움'을 장엄하게 노래합니다. 그리고 그 위대한 신학의 찬가가 끝나는 바로 그 자리에, 디모데와 에바브로디도라는 두 사람의 이름을 가만히 올려놓습니다. <span class="highlight">하늘의 웅장한 진리가, 먼지 나는 우리의 일상 속에서 과연 어떤 모양으로 살아 숨 쉬어야 하는지</span> 보여주기 위해서입니다.</p>
+<h2>혼이 같은 사람, 디모데</h2>
+<p>모두가 저마다 자기 살길을 찾고 자기 삶의 무게에 짓눌려 있을 때, 디모데는 참으로 드물게도 타인의 사정을 깊이 헤아릴 줄 아는 사람이었습니다. 바울은 그를 가리켜 '연단된 사람'이라 부릅니다. 불순물을 걸러내는 뜨거운 풀무불의 시간을 묵묵히 견뎌냈다는 뜻입니다. 사람을 살리고 세우는 힘은 화려한 직함이나 어느 날 번쩍이는 한 번의 헌신에서 오지 않습니다. <span class="highlight">묵묵히 자리를 지켜낸 견고한 시간의 이력</span>, 그것만이 우리를 누군가의 곁에 끝까지 머물게 합니다.</p>
+<h2>일상의 심부름을 예배로 만든, 에바브로디도</h2>
+<p>에바브로디도가 한 일은 교회가 모은 헌금을 감옥에 갇힌 바울에게 전달하고, 그의 곁에서 수발을 드는 지극히 실무적인 일이었습니다. 화려한 강단에 서는 일도 아니었고, 사람들의 박수를 받는 일도 아니었습니다. </p>
+<p>그런데 놀랍게도 성경은 이 소박한 심부름에 '예배를 돕는 자(레이투르고스)'라는 성전 제사장의 거룩한 호칭을 붙여줍니다. 무엇이 거룩한 일인지를 결정하는 것은 업무의 종류가 아니라, 그 일이 향하고 있는 방향이라는 뜻입니다. 반복되는 회계 장부를 맞추고, 지루한 서류를 검토하고, 누군가의 뒤처리를 돕는 우리의 피곤한 일상도, <span class="highlight">그것이 누군가를 보호하고 섬기는 방향으로 놓여 있다면 그 자리는 이미 가장 거룩한 예배의 처소</span>가 됩니다.</p>
+<div class="divider">•••</div>
+<p>심지어 에바브로디도는 이 작은 심부름을 위해 자기 목숨을 '판돈처럼(파라볼류사메노스)' 걸었습니다. 십자가에서 자신을 아낌없이 내어주신 그리스도를 깊이 만났기에, 그의 헌신은 무거운 대가 지불이나 희생이 아니라 벅찬 응답이었고 자유였습니다. 목적 없는 소진은 우리를 갉아먹지만, 분명한 사랑의 대상을 향한 수고는 우리를 도리어 살게 합니다. </p>
+<p>신약성경 전체를 통틀어 한 구석에 단 한 번 이름이 등장하는 사람, 에바브로디도. 그는 평생 설교 한 편 남기지 않은 무명의 성도였지만, 성경은 그의 이름을 가장 영광스러운 그리스도 찬가 곁에 나란히 새겨두었습니다. 노래가 끝난 곳에 그 삶이 이어짐으로써, 위대한 찬가는 마침내 완성되었습니다.</p>
+<h2>당신의 오늘이 가장 위대한 신학입니다</h2>
+<p>오늘, 당신의 일상은 안녕하신가요?<br/>
+        반복되는 출퇴근, 끝없는 집안일, 아무도 알아주지 않는 작고 초라한 수고처럼 보일지 모릅니다. 하지만 오늘 하루, 누군가의 짐을 덜어주기 위해 나의 시간을 조금 떼어주고, 지루한 일에 정성을 다해 생기를 불어넣는다면, 우리의 이름 역시 하늘의 그 아름다운 노래 끝자락에 조용히 덧붙여질 것입니다. 거창하지 않아도 좋습니다. 사랑으로 버텨낸 당신의 오늘이, 곧 가장 위대한 신학입니다.</p>
+<div class="prayer">
+<strong>기도</strong>
+            이름을 아시는 하나님.<br/>
+            아름다운 말씀에 감동하면서도, 막상 그 말씀이<br/>제 삶이 되는 것은 부담스러워했던 저를 돌아봅니다.<br/>
+            눈에 띄지 않는 작은 일조차 누군가를 살리는<br/>거룩한 봉사로 감당하게 하시고,<br/>
+            화려한 인상보다 오래 견디는<br/>진실한 이력을 남기는 사람이 되게 하옵소서.<br/>
+            예수님의 이름으로 기도합니다. 아멘.
+        </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 07월 26일
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `겸손이 내 이름 옆에 적힐 때\\n2026년 07월 26일\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '겸손이 내 이름 옆에 적힐 때',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

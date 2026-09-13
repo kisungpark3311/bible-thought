@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>장부는 그대로 두고 정산자를 바꾸십시오</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 07월 26일</p>
+      <h1>장부는 그대로 두고 정산자를 바꾸십시오</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="background-color: #ffffff; border-radius: 20px; padding: 40px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+<h1 style="font-size: 1.6rem; color: #222; margin-top: 0; margin-bottom: 12px; text-align: center; line-height: 1.4; font-weight: 700; word-break: keep-all;">장부는 그대로 두고<br/>정산자를 바꾸십시오</h1>
+<p style="text-align: center; color: #888; font-size: 0.95rem; margin-bottom: 36px; font-weight: 500;">빌립보서 4:10-20 묵상</p>
+<div style="font-size: 1.05rem; word-break: keep-all; color: #444;">
+<p style="margin-bottom: 24px;">우리가 누군가에게 도움을 받을 때, 마음 한구석에는 고마움과 함께 '언젠가 갚아야 한다'는 마음의 빚이 자리 잡곤 합니다. 사도 바울 역시 감옥에 갇혀 있을 때 빌립보 교회로부터 재정적인 후원을 받았습니다. 그런데 그가 보낸 감사 편지인 빌립보서 4장의 표현들은 꽤 낯설고 독특합니다. 영적이고 거룩한 언어로 가득할 것 같은 이 편지에는 놀랍게도 '계정, 수입과 지출, 불어나는 열매, 전액 수령' 같은 당시 상인들이 쓰던 회계 장부의 용어들이 등장합니다.</p>
+<p style="margin-bottom: 24px;">바울은 돈 이야기를 어설프게 포장하지 않았습니다. 장부의 언어를 그대로 가져다 쓰면서도, 그 안에서 세 가지 결정적인 요소를 바꾸어 버립니다. 바로 열매가 적립될 <b style="color: #2c3e50;">계정</b>, 헌금의 <b style="color: #2c3e50;">수취인</b>, 그리고 <b style="color: #2c3e50;">최종 정산자</b>입니다.</p>
+<p style="margin-bottom: 24px;">먼저 바울은 빌립보 교회가 보낸 헌금을 자신의 수입 계정에 적어 넣지 않았습니다. 대신 그는 "너희 계정으로 불어나는 열매"를 구한다고 말합니다. 헌금을 한 사람들의 장부에 영적인 열매가 차곡차곡 적립되는 놀라운 회계를 보여준 것입니다.</p>
+<p style="margin-bottom: 24px;">나아가 18절에 이르면 회계 장부의 언어가 갑자기 제단의 언어로 바뀝니다. "이는 받으실 만한 향기로운 제물이요 하나님을 기쁘시게 한 것이라." 바울에게 전달된 돈의 최종 수취인이 바울 자신이 아니라 하나님으로 바뀌는 순간입니다. 누군가를 돕는 우리의 재정이 단순한 구제 활동을 넘어, 흠 없는 제물 되신 그리스도 안에서 하나님께 올려지는 아름다운 예배가 됨을 선포한 것입니다.</p>
+<p style="margin-bottom: 24px;">그리고 가장 감동적인 대목은 19절에 등장합니다. "나의 하나님이 그리스도 예수 안에서 영광 가운데 그 풍성한 대로 너희 모든 쓸 것을 채우시리라." 고대 사회에서 후원을 받는 것은 곧 후원자에게 얽매이는 종속을 의미했습니다. 바울은 갚을 길 없는 이 은혜의 채무를 자신이 짊어지는 대신, 최종 정산자를 '하나님'으로 지정합니다. 무거운 빚의 사슬을 끊어내고 정산을 하나님께 맡긴 채, 오직 순전한 감사만을 전하는 통쾌한 선언입니다.</p>
+<p style="margin-bottom: 24px;">이 편지에서 바울은 스토아 철학의 최고 이상이었던 '자족(스스로 족함)'이라는 단어를 가져와 완전히 뒤집어 버립니다. 그의 자족은 자기 수양이나 굳은 결심에서 오는 것이 아니었습니다. 풍부와 궁핍이라는 삶의 양극단을 실제로 통과하며, "내게 능력 주시는 자 안에서"만 가능한 것임을 온몸으로 배운 결과였습니다.</p>
+<p style="margin-bottom: 28px;">오늘 우리의 마음속 장부를 들여다봅니다. 우리는 늘 준 것을 기억하고 받은 것을 꼼꼼히 계산하며 스스로를 관계의 채무자로, 혹은 채권자로 묶어두곤 합니다. 그러나 바울은 우리에게 제안합니다. 삶의 회계 장부를 없애지 않되, 그 계정과 정산자를 바꾸어 보라고 말입니다.</p>
+<div style="background-color: #f8f9fa; padding: 24px; border-radius: 16px; margin-top: 36px; font-size: 1rem; color: #555; line-height: 1.8; border-left: 4px solid #748da6;">
+<p style="margin-top: 0; margin-bottom: 12px;">갚을 수 없는 은혜의 정산을 주님께 온전히 맡겨 보십시오.</p>
+<p style="margin-bottom: 0;">그리하여 우리의 재정과 나눔이 향기로운 제물이 되고, 내 힘이 아닌 주님의 능력 안에서 참된 자족을 누리는 오늘 하루가 되기를 소망합니다.</p>
+</div>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 07월 26일
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `장부는 그대로 두고 정산자를 바꾸십시오\\n2026년 07월 26일\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '장부는 그대로 두고 정산자를 바꾸십시오',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

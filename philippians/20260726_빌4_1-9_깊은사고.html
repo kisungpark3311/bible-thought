@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>옳음이 화해보다 중요해질 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 07월 26일</p>
+      <h1>옳음이 화해보다 중요해질 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="background: #ffffff; border-radius: 20px; padding: 40px 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.04); margin-bottom: 24px;">
+<!-- Header -->
+<h1 style="font-size: 26px; color: #1a1a1a; margin-top: 0; margin-bottom: 12px; font-weight: 800; word-break: keep-all; letter-spacing: -0.5px;">옳음이 화해보다<br/>중요해질 때</h1>
+<p style="font-size: 15px; color: #8b95a1; margin-bottom: 32px; font-weight: 500;">📖 빌립보서 4:1-9 묵상</p>
+<!-- Body -->
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      우리가 누군가와 화해하지 못하는 이유는 대개 진리를 몰라서가 아닙니다. 내가 <strong>'옳기'</strong> 때문입니다. 그리고 그 옳음 때문에 우리는 종종 한 발짝도 물러서지 못합니다.
+    </p>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      빌립보서 4장에는 한때 바울과 함께 복음을 위해 치열하게 싸웠던 두 동역자, 유오디아와 순두게가 등장합니다. 두 사람 사이에는 깊은 갈등이 있었던 것 같습니다. 하지만 바울은 놀랍게도 누가 옳은지 판정하지 않습니다. 대신 두 사람의 이름을 각각 부르며 <strong>"주 안에서 같은 마음을 품으라"</strong>고 간곡히 권면합니다.
+    </p>
+<div style="background-color: #f2f4f6; border-left: 4px solid #3182f6; padding: 20px; border-radius: 8px; margin: 32px 0;">
+<p style="margin: 0; font-size: 16px; color: #191f28; font-weight: 600; line-height: 1.6; word-break: keep-all;">
+        "너희 관용을 모든 사람에게 알게 하라 주께서 가까우시니라" (빌 4:5)
+      </p>
+</div>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      여기서 말하는 '관용'은 헬라어로 <strong>에피에이케스(ἐπιεικές)</strong>입니다. 이는 '규정대로 하면 내가 옳지만, 내 권리를 끝까지 주장하지 않는 태도'를 뜻합니다. 성경은 우리에게 옳음을 포기하라고 하지 않습니다. 다만, <strong>옳음을 끝까지 밀어붙이지 말라</strong>고 당부합니다.
+    </p>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      내가 옳다는 확신이 들면 우리는 상대를 굴복시키고 싶어집니다. 하지만 중재자가 판정자가 되는 순간 평화는 깨집니다. <strong>옳음이 화해보다 중요해지는 순간, 우리는 결국 그 옳음조차 잃어버리고 맙니다.</strong>
+</p>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      갈등과 염려 속에 있는 우리에게 바울은 이렇게 말합니다. <br/>
+<em>"아무것도 염려하지 말고 모든 일에 기도와 간구로, 너희 구할 것을 감사함으로 하나님께 아뢰라."</em>
+</p>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      염려는 애써 지운다고 사라지지 않습니다. 염려는 제거하는 것이 아니라 <strong>'이동시키는'</strong> 것입니다. 내 손에 꽉 쥐고 있던 문제를 내려놓아 하나님의 손에 올려두는 행위입니다. 그때 비로소 "하나님의 평강이 너희 마음과 생각을 지키시리라"는 약속이 이루어집니다.
+    </p>
+<p style="font-size: 17px; margin-bottom: 24px; color: #333d4b; word-break: keep-all;">
+      여기서 '지킨다(φρουρήσει)'는 말은 성을 방어하기 위해 수비대를 배치한다는 군사 용어입니다. 평강은 내 주변 상황이 갑자기 좋아지는 것이 아닙니다. 성벽 밖은 여전히 적들로 포위된 상태일지 모릅니다. <strong>다만, 내 마음의 성벽만큼은 하나님의 군대가 단단히 지켜주시는 것.</strong> 그것이 성경이 말하는 진짜 평강입니다.
+    </p>
+<p style="font-size: 17px; margin-bottom: 32px; color: #333d4b; word-break: keep-all;">
+      하루의 끝, 무엇을 기억하며 장부를 마감하시겠습니까? 나의 실수나 누군가의 잘못을 곱씹으며 잠들 수도 있지만, 오늘 내게 주신 참되고 옳고 감사한 일들을 마음에 새길 수도 있습니다. 오늘 밤, 옳음의 칼날을 잠시 내려놓고 주님이 주시는 평강의 수비대에게 내 마음을 맡겨보는 것은 어떨까요?
+    </p>
+<hr style="border: 0; height: 1px; background: #e5e8eb; margin: 32px 0;"/>
+<!-- Prayer / Conclusion -->
+<div style="text-align: center; background-color: #f9fafb; padding: 24px; border-radius: 12px;">
+<p style="font-size: 15px; color: #4e5968; margin: 0; line-height: 1.8; word-break: keep-all; font-style: italic;">
+        "주님, 옳음이 화해보다 중요해지지 않게 하옵소서.<br/>상황이 변하지 않아도 마음이 지켜지는<br/>평강을 제게 허락하여 주옵소서."
+      </p>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 07월 26일
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `옳음이 화해보다 중요해질 때\\n2026년 07월 26일\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '옳음이 화해보다 중요해질 때',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
