@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>무리 속 당신을 향한 단 하나의 부름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 17편</p>
+      <h1>무리 속 당신을 향한 단 하나의 부름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>무리 속 당신을 향한<br/>단 하나의 부름</h1>
+<div class="subtitle">로마서 8:1-11 | 일상의 깊은 사고</div>
+<p>우리는 수많은 공지와 안내 방송 속에서 살아갑니다. "여러분", "모두들"이라는 불특정 다수를 향한 말들 속에서, 정작 내 이름을 정확히 부르며 다가오는 따뜻한 목소리를 만날 때면 멈칫하며 마음이 흔들립니다. 로마서 8장의 장엄한 구원 선언 속에도 바로 이런 특별한 순간이 숨어 있습니다.</p>
+<div class="highlight">
+<span class="quote">"생명의 성령의 법이 죄와 사망의 법에서 너를 해방하였음이라"</span>
+      (로마서 8:2)
+    </div>
+<p>"그러므로 이제 그리스도 예수 안에 있는 자에게는 결코 정죄함이 없나니"라는 위대한 선언으로 시작된 이 말씀은, 이내 방향을 틀어 단 한 사람을 찾아갑니다. 복음은 결코 무리를 향해 흩뿌려지는 공문이 아닙니다. 그 장대한 구원의 서사는 바로 '당신'이라는 한 사람의 삶에 닿기 위해 흘러옵니다.</p>
+<p>수백 년 전 성경을 필사하던 이들은 이 구절을 두고 깊이 고민했습니다. 어떤 사본은 '너를'이라 적었고, 어떤 사본은 '나를'이라고 기록했습니다. 그 치열했던 갈등의 흔적이 오늘날 성경의 각주에도 고스란히 남아 있습니다. 하지만 이 수많은 갈라짐 속에서도 결코 변하지 않는 단 하나의 사실이 있습니다. 바로 이 말씀이 '단 한 사람'을 간절히 부르고 있다는 점입니다. 매일 수많은 선택지 앞에서 흔들리고, 뜻대로 풀리지 않는 문제들 속에서 방황하는 우리의 일상. 하지만 우리 삶의 결론을 짓는 것은 요동치는 상황이 아닙니다. 결코 흔들리지 않는 굳건한 '그리스도의 구원'만이 우리 삶의 진짜 결론을 안고 있습니다.</p>
+<p>나아가 이 말씀은 우리의 마음과 영혼만을 위로하는 데 그치지 않습니다. "너희 죽을 몸도 살리시리라"(롬 8:11). 오늘 하루 일터에서 지치고, 스트레스로 병들고, 시간의 흐름 속에 연약해져 가는 우리의 '몸'을 성경은 결코 신앙 밖의 일로 밀어내지 않으십니다. 몸을 가진 인간의 현실을 외면하지 않으시는 분이 바로 우리 주님이십니다.</p>
+<p>어쩌면 오늘, 병상에 누워 계시거나 늦은 밤 교대 근무로 인한 피로에 지쳐 성경 한 장 펼칠 힘조차 없을지 모릅니다. 하지만 괜찮습니다. 말씀의 해방은 당신이 오늘 무엇을 해냈는지 묻지 않습니다. 구원은 당신의 노력 밖인 '그리스도 예수 안에서' 이미 일어난 완벽한 사건이기 때문입니다.</p>
+<p>오늘 하루, 거창한 신앙의 의무감에 짓눌려 있다면 잠시 내려놓으셔도 좋습니다. 그저 수많은 걱정과 멍에에서 '너를' 해방하셨다는 그 한마디에 조용히 기대어 보십시오. 다투어지고 흔들리는 세상의 평가가 아니라, 결코 다투어지지 않는 영원한 사실이 오늘 당신의 피곤한 몸과 마음을 어루만집니다. 복음은 오늘도 수많은 무리를 지나, 정확히 당신 한 사람 앞에 멈춰 서 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 17편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `무리 속 당신을 향한 단 하나의 부름\\n로마서 제 17편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '무리 속 당신을 향한 단 하나의 부름',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

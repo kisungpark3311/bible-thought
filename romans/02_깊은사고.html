@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>부끄러워하지 않을 수 있는 진짜 이유</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 02편</p>
+      <h1>부끄러워하지 않을 수 있는 진짜 이유</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1 style="font-size: 24px; color: #1a202c; text-align: center; margin-bottom: 25px; line-height: 1.4;">부끄러워하지 않을 수 있는<br/>진짜 이유</h1>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      우리는 종종 누군가에게 복음을 전하거나 사랑을 나눌 때, 내 안에 충분한 '열심'과 '용기'가 없다고 자책하곤 합니다. 마음이 뜨거울 때는 당당하지만, 지치고 식어버린 날에는 한없이 부끄러워하며 주저앉습니다.
+    </p>
+<div style="background-color: #f8f9fc; border-left: 4px solid #4a90e2; padding: 15px 20px; margin: 25px 0; border-radius: 0 10px 10px 0;">
+<p style="margin: 0; font-size: 15px; color: #4a5568; font-style: italic;">
+        "내가 복음을 부끄러워하지 아니하노니 이 복음은 모든 믿는 자에게 구원을 주시는 하나님의 능력이 됨이라" (롬 1:16)
+      </p>
+</div>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      사도 바울은 "내가 복음을 부끄러워하지 않는다"고 선언합니다. 이 말씀은 우리에게 "부끄러워하지 마라, 억지로라도 용기를 내라!"고 다그치는 명령이 아닙니다. 바울이 당당할 수 있었던 이유는 그의 굳은 결심이나 강인한 멘탈 때문이 아니었습니다.
+    </p>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      그가 댄 근거는 단 하나입니다. <strong>소식 그 자체에 하나님의 능력이 있기 때문</strong>입니다. 구원을 주시는 놀라운 능력은 나의 말주변이나 뜨거운 감정에 있지 않고, 내가 전하려는 '예수 그리스도'라는 소식 안에 이미 온전히 담겨 있습니다. 그러니 내 안에서 억지로 능력을 쥐어짜 낼 필요가 없습니다.
+    </p>
+<h2 style="font-size: 20px; color: #2d3748; margin-top: 35px; margin-bottom: 15px;">감정이 아니라, 변함없는 상태입니다</h2>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      바울은 자신을 로마 사람들에게 '빚진 자'라고 불렀습니다. 로마 사람들이 바울에게 무언가를 빌려준 적도 없는데 말이지요. 사실 우리에게 이 빚을 지우신 분은 다름 아닌 그리스도이십니다.
+    </p>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      '빚(채무)'은 기분의 문제가 아닙니다. 피곤하다고 해서 통장의 마이너스 잔고가 사라지지 않는 것처럼, 우리가 받은 은혜의 빚 역시 우리의 감정과 무관하게 명확한 사실로 존재합니다. 내가 열심이 날 때만 은혜에 빚진 자가 되는 것이 아닙니다. 지치고 넘어진 날에도, 은혜의 잔고는 변함없이 우리 삶에 기록되어 있습니다. 그저 그 사실을 조용히 인정하는 것만으로 충분합니다.
+    </p>
+<h2 style="font-size: 20px; color: #2d3748; margin-top: 35px; margin-bottom: 15px;">주러 갔다가 위로를 받아 오는 길</h2>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      때로는 누군가를 도우려 나섰다가 오히려 내가 더 큰 위로를 받고 돌아오는 날이 있습니다. 바울 역시 로마 교회에 무언가를 '나누어 주려' 한다고 편지를 쓰다가, 곧바로 방향을 바꾸어 <strong>"피차 안위함을 얻으려 함이라"</strong>며 서로 위로를 주고받는 것으로 문장을 고쳐 썼습니다.
+    </p>
+<p style="font-size: 16px; margin-bottom: 20px;">
+      우리의 일상도 이와 같습니다. 완벽하게 준비해서 일방적으로 베푸는 것이 아닙니다. 불완전한 내 모습 그대로 나아갈 때, 우리는 서로의 연약함과 믿음을 통해 뜻밖의 위로를 경험하게 됩니다. 
+    </p>
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 30px 0;"/>
+<p style="font-size: 16px; color: #4a5568; margin-bottom: 0;">
+      오늘 하루, 내 안의 부족한 용기를 탓하기보다 변함없는 복음의 능력을 의지해 보세요. 무언가를 해내야 한다는 무거운 열심의 짐은 내려놓고, 내 삶에 고스란히 남겨진 은혜의 잔액을 가만히 들여다보는 하루가 되기를 소망합니다. 그곳에서부터 다시 사랑할 힘이 조용히 차오를 것입니다.
+    </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 02편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `부끄러워하지 않을 수 있는 진짜 이유\\n로마서 제 02편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '부끄러워하지 않을 수 있는 진짜 이유',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

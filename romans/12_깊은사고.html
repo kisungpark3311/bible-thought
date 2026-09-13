@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>같지 않기에 주어지는 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 12편</p>
+      <h1>같지 않기에 주어지는 은혜</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>같지 않기에 주어지는 은혜</h1>
+<p>우리는 종종 세상을 원인과 결과, 혹은 대차대조표의 칸을 채우듯 이해하려 합니다. 잘못한 만큼 벌을 받고, 잘한 만큼 상을 받는다는 대칭적인 사고는 우리에게 안정감을 줍니다. 그러나 성경이 말하는 은혜는 우리가 정성스레 그려놓은 이 표를 단숨에 찢어버립니다.</p>
+<h2>표가 채워지기 전에 오는 선언</h2>
+<p>로마서 5장은 인류의 첫 사람 아담과 구원자 예수 그리스도를 나란히 세워놓은 본문으로 유명합니다. 사람들은 흔히 한쪽에 아담의 죄와 사망을, 다른 한쪽에 그리스도의 은혜와 생명을 적어 넣으며 완벽한 대칭 구조를 만들려 합니다. 그러나 바울은 그 비교를 완성하기도 전에 뜻밖의 말을 두 번이나 던집니다.</p>
+<div class="quote">
+    "그러나 이 은사는 그 범죄와 같지 아니하니..."<br/>
+    "또 이 선물은 범죄한 한 사람으로 말미암은 것과 같지 아니하니..."
+  </div>
+<p>복음은 죄의 반대편에 놓인 단순한 대칭항이 아닙니다. 심판은 한 사람의 잘못에서 비롯되어 우리를 옭아맸지만, 은혜는 수많은 범죄와 실패를 뚫고 나와 우리를 의롭다 하심으로 이끕니다. 출발점부터가 다릅니다. 은혜는 우리의 잘못과 1:1로 교환되는 것이 아니라, 모든 것을 덮고도 남는 압도적인 크기로 다가옵니다.</p>
+<h2>설명할 수 없는 고난의 자리에서</h2>
+<p>우리의 일상에는 '내가 무엇을 잘못했나?' 아무리 되짚어봐도 답이 나오지 않는 고난이 있습니다. 물려받은 병, 불우하게 태어난 환경, 내 잘못이 아닌데 떠안게 된 빚. 세상은 가혹하게도 우리가 짓지 않은 죄책마저 우리에게 묻곤 합니다. 성경은 이런 우리의 현실을 외면하지 않습니다. 본문은 <span class="highlight">"아담의 범죄와 같은 죄를 짓지 아니한 자들"</span>에게도 사망이 덮쳤음을 묵묵히 기록합니다. 성경은 억울하게 고통받는 이들을 결코 셈에서 빼지 않았습니다.</p>
+<p>우리는 이 불합리한 세상의 모순을 다 풀지 못합니다. 본문 역시 무리하게 논리를 봉합하려 하지 않습니다. 대신 위대한 해답 하나를 제시합니다. <strong>"한 사람이 순종하심으로 많은 사람이 의인이 되리라."</strong> 우리의 고통과 상처를 설명하는 복잡한 신학적 계산이 끝나기 전에, 예수 그리스도라는 이름 하나가 이미 모든 것을 덮고 남을 은혜로 선언된 것입니다.</p>
+<h2>생명 안에서 왕 노릇 하는 삶</h2>
+<p>이 은혜가 우리에게 미친 결과는 놀랍습니다. 사망이 지배하던 자리에 그저 생명이 대신 들어서는 것이 아니라, 넘치는 은혜를 받은 <span class="highlight">'우리'</span>가 생명 안에서 직접 왕 노릇 하게 됩니다. 왕좌에 앉는 것은 사람인데, 그 근거는 전적으로 우리 밖, 즉 예수 그리스도께 있습니다. 자리는 우리의 것이되, 그 자리를 마련하신 분은 주님이십니다.</p>
+<div class="conclusion">
+<p>우리가 스스로 만든 칸에 우리 자신과 타인을 가두려 할 때마다, "같지 아니하니"라고 말씀하시는 주님을 바라봅니다. 완벽한 논리로 삶의 고난을 다 해석할 수 없어도 괜찮습니다. 무너진 자리, 이유 모를 아픔 속에 있는 당신을 하나님은 셈에서 빼지 않으셨습니다. 압도적으로 부어지는 은혜 안에서, 우리는 그저 '넘치게 받는 자'로 서서 생명을 누리면 됩니다. 그것이 복음이 우리에게 건네는 가장 따뜻한 초대입니다.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 12편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `같지 않기에 주어지는 은혜\\n로마서 제 12편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '같지 않기에 주어지는 은혜',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

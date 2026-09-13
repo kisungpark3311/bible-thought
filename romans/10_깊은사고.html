@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 10편</p>
+      <h1>내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 24px;">
+<h1 style="font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; line-height: 1.4; word-break: keep-all;">내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다</h1>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            우리는 자주 내 안을 들여다보며 스스로에게 묻습니다. <em>'나는 지금 잘 믿고 있는 걸까?', '내 믿음은 왜 이렇게 작고 초라할까?'</em> 이런 질문을 마주할 때마다 우리는 쉽게 좌절하곤 합니다. 믿음을 점검할수록, 마치 내 신앙의 성적표가 낙제점인 것만 같아 불안해지기 때문입니다.
+        </p>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            하지만 로마서 4장은 우리의 시선을 전혀 다른 곳으로 옮겨 줍니다. 성경은 아브라함의 믿음을 칭찬하기에 앞서, <strong>그가 믿은 분이 어떤 분이신지</strong>를 먼저 기록합니다. 
+            <br/><br/>
+<span style="display: block; padding: 16px; background-color: #f4f6f8; border-radius: 8px; font-style: italic; color: #555;">
+                "그가 믿은 바 하나님은 죽은 자를 살리시며 없는 것을 있는 것으로 부르시는 이시니라" (로마서 4:17)
+            </span>
+</p>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            본문은 '얼마나 강하게 믿었느냐'고 묻지 않습니다. <strong>'누구를 믿고 있느냐'</strong>고 묻습니다. 내 믿음의 크기가 흔들려도 괜찮습니다. 신앙의 진짜 무게는 나의 결심이 아니라, 내가 붙들고 있는 그분, 곧 <strong>'죽은 자를 살리시는 분'의 변함없으심</strong>에 달려 있기 때문입니다.
+        </p>
+</div>
+<div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 24px;">
+<h2 style="font-size: 20px; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">현실을 감추지 않는 위로</h2>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            아브라함은 100세였습니다. 사라의 태는 죽은 것 같았습니다. 놀랍게도 성경은 이 절망적인 몸의 상태를 굳이 감추지 않고 있는 그대로 적어 둡니다. 나이가 들어버린 몸, 이미 기회를 놓쳐버린 것 같은 인생의 시간들, 도저히 되돌릴 수 없는 그 뼈아픈 현실을 성경은 모른 척하지 않습니다.
+        </p>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            심지어 아브라함은 하나님의 약속을 듣고 '엎드려 웃으며' 의심하기도 했습니다(창 17:17). 그런데 하나님은 그의 웃음을 성경에서 지워버리지 않으십니다. 완벽한 위인전이 아니라, 흔들리고 넘어지는 사람의 이야기를 그대로 남겨두신 것입니다.
+        </p>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            여기에 깊은 위로가 있습니다. 병상에 누워계신 분, 삶의 무게에 짓눌려 웃음조차 잃어버린 분, 내 모습이 너무나 초라하게 느껴지는 분에게 성경은 말합니다. <strong>"너의 그 연약함과 현실을 숨기지 않아도 된다."</strong>
+</p>
+</div>
+<div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+<h2 style="font-size: 20px; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">나를 위해 쓰여진 이야기</h2>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            바울은 아브라함의 이야기를 끝맺으며 이렇게 선언합니다. 이 모든 기록은 아브라함만을 위한 것이 아니라, <strong>"예수 우리 주를 죽은 자 가운데서 살리신 이를 믿는 자"</strong> 곧 우리를 위한 것이라고 말입니다(롬 4:24).
+        </p>
+<p style="font-size: 16px; margin-bottom: 20px; word-break: keep-all;">
+            내 안에 있는 확신이 흔들리고, 스스로에 대한 실망감이 밀려올 때면 나를 보지 말고 성경을 펴보십시오. 나를 칭의하시기 위해 십자가에 내어주심이 되고, 나를 위해 부활하신 예수님을 보십시오. 
+        </p>
+<p style="font-size: 16px; margin-bottom: 0; font-weight: 600; color: #1a1a1a; word-break: keep-all;">
+            우리의 구원은 내 믿음의 이행 성적에 달린 것이 아니라, 오직 신실하게 약속을 지키시는 하나님의 은혜에 달려 있습니다. 오늘 하루, 내 믿음의 크기를 자책하는 대신, 변함없이 나를 사랑하시고 살리시는 크신 하나님을 바라보는 평안이 우리 모두에게 임하기를 소망합니다.
+        </p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 10편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다\\n로마서 제 10편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '내 믿음의 크기가 아니라, 내가 믿는 분의 크기입니다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

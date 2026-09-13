@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>부인은 주어를 바꾼다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 16편</p>
+      <h1>부인은 주어를 바꾼다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 24px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', 'Malgun Gothic', sans-serif; color: #333333; line-height: 1.75; letter-spacing: -0.3px;">
+<header style="text-align: center; margin-bottom: 40px;">
+<h1 style="font-size: 26px; font-weight: 800; color: #1a1a1a; margin-bottom: 12px; line-height: 1.4;">
+        부인은 주어를 바꾼다
+      </h1>
+<p style="font-size: 16px; font-weight: 500; color: #737373; margin: 0;">
+        밀려난 자리에 다시 세워진 '나'
+      </p>
+</header>
+<p style="font-size: 16px; margin-bottom: 24px; color: #4a4a4a;">
+      살다 보면 마음 원대로 되지 않는 날들이 있습니다. "왜 나는 이것밖에 안 될까?" 스스로를 탓하게 되는 짙은 패배감의 순간들. 로마서 7장은 우리의 그런 곤고하고 갈라진 마음을 거울처럼 비춥니다. 바울은 깊은 탄식 속에서, 우리의 행위를 지우지 않으면서도 주어를 바꾸는 놀라운 성경의 문법을 보여줍니다.
+    </p>
+<h2 style="font-size: 19px; font-weight: 700; color: #2c3e50; margin-top: 40px; margin-bottom: 16px; display: flex; align-items: center;">
+<span style="display: inline-block; width: 4px; height: 18px; background-color: #3498db; margin-right: 10px; border-radius: 2px;"></span>
+      밀려나는 주어, "내가 아니요"
+    </h2>
+<p style="font-size: 16px; margin-bottom: 24px; color: #4a4a4a;">
+      "내가 원하는 것은 행하지 아니하고 도리어 미워하는 것을 행함이라." (롬 7:15)<br/><br/>
+      바울은 이 아픈 현실을 서둘러 부정하지 않습니다. 실패한 행위의 조건은 그대로 남아 있습니다. 그러나 성경은 그 행동의 주어 자리에서 '나'를 빼고 '죄'를 앉힙니다. "행하는 자가 내가 아니요 내 속에 거하는 죄니라." (롬 7:17)<br/><br/>
+      이는 단순한 책임 회피가 아닙니다. 치열한 영적 현실 속에서 나를 압도하는 힘의 실체를 똑바로 짚어내는 진술입니다. 우리가 절망의 늪에서 허우적거릴 때, 성경은 우리 존재 전체를 죄와 동일시하는 대신 '나'를 피고석에서 잠시 밀어냅니다.
+    </p>
+<h2 style="font-size: 19px; font-weight: 700; color: #2c3e50; margin-top: 40px; margin-bottom: 16px; display: flex; align-items: center;">
+<span style="display: inline-block; width: 4px; height: 18px; background-color: #3498db; margin-right: 10px; border-radius: 2px;"></span>
+      "누가?" 절망의 끝에서 부르는 이름
+    </h2>
+<p style="font-size: 16px; margin-bottom: 24px; color: #4a4a4a;">
+      스스로 내어준 그 빈자리에서 한탄은 정점에 달하며 거대한 물음표로 바뀝니다. "오호라 나는 곤고한 사람이로다 이 사망의 몸에서 누가 나를 건져내랴?" (롬 7:24)<br/><br/>
+      본문은 무능을 선언하는 데서 끝나지 않고, 나를 건져낼 '누군가'를 찾습니다. 그리고 비워진 주어의 자리에 '우리 주 예수 그리스도'라는 호칭이 찾아옵니다. 나를 사로잡던 억압적인 '죄의 법'을 뚫고 들어오시는 다른 주(主)의 이름이 불려질 때, 비로소 우리의 입술에서는 깊은 감사가 터져 나옵니다.
+    </p>
+<h2 style="font-size: 19px; font-weight: 700; color: #2c3e50; margin-top: 40px; margin-bottom: 16px; display: flex; align-items: center;">
+<span style="display: inline-block; width: 4px; height: 18px; background-color: #3498db; margin-right: 10px; border-radius: 2px;"></span>
+      긴장을 안고 살아가는 정직한 일상
+    </h2>
+<p style="font-size: 16px; margin-bottom: 32px; color: #4a4a4a;">
+      하지만 놀랍게도 성경은 우리에게 값싼 해피엔딩을 쥐여주지 않습니다. 감사가 선포된 바로 다음 문장, 바울은 다시 이렇게 적습니다. "그런즉 내 자신이 마음으로는 하나님의 법을 육신으로는 죄의 법을 섬기노라." (롬 7:25)<br/><br/>
+      세 번이나 밀려났던 주어 자리에 마침내 '내 자신'이 되돌아옵니다. 이제 그 '나'는, 갈라진 현실을 정직하게 짊어지고 살아가는 주체입니다. 여전히 우리는 일상 속에서 무너지고, 한계에 부딪히며, 마음과 육신의 싸움을 겪습니다. 수면 부족, 피로, 삶의 무게라는 구체적인 '사망의 몸' 속에서 말입니다.
+    </p>
+<div style="background-color: #f8f9fa; padding: 28px 24px; border-radius: 16px; margin-top: 40px; border-top: 3px solid #e0e0e0;">
+<h3 style="margin: 0 0 16px 0; font-size: 18px; font-weight: 700; color: #2c3e50;">오늘 하루, 뜻대로 살지 못해 무너지셨습니까?</h3>
+<p style="margin: 0; font-size: 15px; color: #555555; line-height: 1.7;">
+        괜찮습니다. "곤고한 사람이로다"라는 탄식은 믿음이 약해서 나오는 것이 아니라, 성경 한가운데 이미 깊이 새겨진 진실한 고백입니다. 원함은 있으나 행하지 못하는 나를, 성경은 그저 탓하지만은 않습니다.<br/><br/>
+        갈라진 현실을 딛고 서서, 정직한 일상의 한복판에서 묵묵히 그분의 이름을 부르는 당신은 이미 건져냄을 받은 사람입니다. 아픈 현실을 섣부른 위로로 덮으려 하지 마십시오. 그 팽팽한 긴장 속에서도 하나님을 향한 원함을 포기하지 않고 묵묵히 살아가는 당신의 오늘을 깊이 응원합니다.
+      </p>
+</div>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 16편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `부인은 주어를 바꾼다\\n로마서 제 16편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '부인은 주어를 바꾼다',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

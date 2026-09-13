@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>불리는 이름과 은밀한 데 칭찬이 어디서 오는가</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 로마서 제 05편</p>
+      <h1>불리는 이름과 은밀한 데 칭찬이 어디서 오는가</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h1>불리는 이름과 은밀한 데<br/><span style="font-size: 1.1rem; color: #7f8c8d; font-weight: 400;">칭찬이 어디서 오는가</span></h1>
+<p>우리는 살아가면서 수많은 '이름'으로 불립니다. 직장에서의 직함, 사회적인 지위, 혹은 교회 안에서의 직분까지. 로마서 2장에서 바울은 "유대인이라 불리는 네가"라는 말로 이야기를 시작합니다. 그들은 율법을 가졌고, 하나님을 자랑하며, 스스로를 맹인의 인도자요 빛이라고 확신했습니다. 흥미롭게도 성경은 그들의 화려한 이력과 이름들을 조금도 부인하지 않습니다.</p>
+<p>하지만 바울은 곧이어 날카로운 질문으로 방향을 돌립니다. "다른 사람을 가르치는 네가 네 자신은 가르치지 아니하느냐." 앞서 열거한 명찰들이 얼마나 화려한가가 아니라, 그 이름에 걸맞은 '행위'와 '삶의 자리'가 있는지를 묻는 것입니다. 이름은 주어지는 것이지만, 삶은 결국 내가 몸으로 살아내고 증명하는 것이기 때문입니다.</p>
+<div class="section-title">보이지 않는 곳, 은밀한 데</div>
+<p>본문은 참된 가치가 표면이 아닌 이면에 있다고 말합니다. 여기서 '이면적'이라는 단어는 원어로 '엔 토 크륍토(ἐν τῷ κρυπτῷ)', 즉 <strong>'감추어진 데서'</strong>라는 뜻입니다. 사람의 눈에 띄지 않는 은밀한 곳, 누구도 보지 못하는 마음의 깊은 자리입니다.</p>
+<p>우리는 종종 이 말씀을 '겉모습만 꾸미지 말고 더 깊이 수련하라'는 무거운 채찍으로 읽곤 합니다. 속마음까지 완벽해야 한다는 압박감에 시달리며 스스로를 가짜라고 자책하기도 합니다. 그러나 바울은 은밀한 곳을 '하나님이 사람들의 은밀한 것을 심판하시는 그 날'과 연결합니다. 은밀한 곳은 나의 얄팍함이 폭로되는 두려운 자리이지만, 주님이 다루시는 자리이기도 합니다. "네 마음에 할례를 베푸사"(신 30:6)라는 말씀처럼, 그곳은 내가 애써 파내야 할 곳이 아니라 하나님이 친히 만지시고 빚어가시는 은혜의 영역입니다.</p>
+<div class="section-title">누가 나를 채점하고 있는가</div>
+<p>바울은 이 긴 논증의 끝을 '칭찬'이라는 단어로 맺습니다.</p>
+<div class="highlight">
+    "오직 이면적 유대인이 유대인이며 … 그 칭찬이 사람에게서가 아니요 다만 하나님에게서니라" (롬 2:29)
+  </div>
+<p>우리의 일상은 끊임없이 사람들의 인정과 칭찬을 구하는 쳇바퀴와 같습니다. 가정에서 아무도 알아주지 않는 수고를 할 때, 직장에서 남몰래 정직을 선택할 때 우리는 종종 깊은 허무함을 느낍니다. 하지만 본문은 우리에게 삶의 '채점자'가 바뀌었음을 선언합니다. 기준을 더 높게 잡으라는 가혹한 요구가 아니라, 나의 은밀한 삶에 상을 주시고 칭찬하시는 분이 다름 아닌 하나님이심을 기억하라는 따뜻한 초청입니다.</p>
+<div class="divider"></div>
+<p>이 말씀은 결코 남을 향해 "당신은 무늬만 신자야"라고 정죄하기 위해 주어진 무기가 아닙니다. 바울은 자기 동족을 향해 저주라도 받겠다는 끓어오르는 눈물로 이 편지를 썼습니다.</p>
+<p>오늘 하루, 나의 이름과 내가 실제로 보낸 시간들을 나란히 놓아봅니다. 아무도 보지 않는 곳에서 묵묵히 해낸 설거지, 먼저 건넨 사과의 말, 꿀꺽 삼켜버린 불평의 한마디. 그 은밀한 시간들을 온전히 지켜보시고 인정해 주시는 주님이 계십니다. 사람의 칭찬에 목말라하던 시선을 거두어, 오직 하나님께서 주시는 참된 위로와 칭찬 앞에 온전히 머무는 하루가 되기를 소망합니다.</p>
+<div class="footer-prayer">
+<p><strong>주님,</strong></p>
+<p>참된 것을 은밀한 데 두셨다 하셨는데, 그 자리를 친히 빚으시고 만지시겠다 약속하시니 감사합니다. 사람 앞에 저를 증명하려 애쓰는 마음을 내려놓고, 은밀한 데를 보시며 칭찬하시는 주님 한 분만으로 만족하게 하옵소서. 아멘.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      로마서 제 05편
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `불리는 이름과 은밀한 데 칭찬이 어디서 오는가\\n로마서 제 05편\\n\\n${article}\\n\\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '불리는 이름과 은밀한 데 칭찬이 어디서 오는가',
+            text: sermonText()
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      await copySermon();
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
