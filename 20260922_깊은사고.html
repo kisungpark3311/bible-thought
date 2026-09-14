@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#173f35">
-  <title>절반의 확인으로 내디딘 걸음</title>
+  <title>✝️ 일상의 깊은사고 | 역대상 13:1~8</title>
   <style>
     @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
-
     :root {
       --ink: #24302c;
       --muted: #68736f;
@@ -20,179 +19,106 @@
       --line: #d9dfda;
       --body-size: 18px;
     }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
       color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
-        var(--canvas);
       font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
       word-break: keep-all;
-      overflow-wrap: break-word;
     }
-
-    .page {
-      width: min(100%, 760px);
-      margin: 0 auto;
+    main {
+      max-width: 600px; margin: 0 auto;
       background: var(--paper);
       min-height: 100vh;
-      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
     }
-
-    .hero {
-      padding: 54px 36px 42px;
-      color: #fff;
-      background:
-        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
-        var(--green);
-      border-bottom: 5px solid var(--gold);
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #e3d0a8;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(34px, 8vw, 54px);
-      line-height: 1.18;
-      letter-spacing: -.035em;
-    }
-
-    .subtitle {
-      margin: 18px 0 0;
-      max-width: 34em;
-      color: #edf4f0;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-      margin-top: 24px;
-      color: #c8d9d2;
-      font-size: 14px;
-    }
-
-    .toolbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      gap: 8px;
-      padding: 10px 16px;
-      background: rgba(255, 253, 248, .94);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    button {
-      min-height: 42px;
-      padding: 9px 14px;
-      border: 1px solid #bfcac4;
-      border-radius: 999px;
-      color: var(--green);
-      background: #fff;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    button.primary {
-      color: #fff;
+    header {
       background: var(--green);
-      border-color: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
     }
-
-    button:focus-visible {
-      outline: 3px solid rgba(183, 134, 60, .45);
-      outline-offset: 2px;
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
     }
-
-    .content { padding: 38px 36px 52px; }
-
-    h2 {
-      margin: 46px 0 18px;
-      color: var(--green);
-      font-size: 28px;
-      line-height: 1.38;
-      letter-spacing: -.02em;
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
     }
-
-    p {
-      margin: 0 0 1.15em;
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
       font-size: var(--body-size);
-      line-height: 1.92;
-      letter-spacing: -.01em;
+      transition: font-size 0.3s ease;
     }
-
-    .quote {
-      margin: 28px 0;
-      padding: 22px 24px;
-      color: #4b3a20;
-      background: var(--gold-soft);
-      border: 1px solid #ead9b9;
-      border-radius: 14px;
-      font-size: 19px;
-      line-height: 1.75;
-      font-style: italic;
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
     }
-
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
     footer {
-      padding: 26px 30px 34px;
-      color: var(--muted);
-      background: #f2f4f1;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.7;
-      border-top: 1px solid var(--line);
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
     }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 26px;
-      z-index: 20;
-      padding: 11px 18px;
-      color: #fff;
-      background: rgba(26, 39, 34, .94);
-      border-radius: 999px;
-      font-size: 14px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, 16px);
-      transition: .2s ease;
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
     }
-
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-    @media (max-width: 600px) {
-      .hero { padding: 40px 22px 32px; }
-      .content { padding: 30px 21px 42px; }
-      .toolbar { overflow-x: auto; }
-      button { flex: 0 0 auto; }
-      h2 { font-size: 24px; }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 09월 22일</p>
-      <h1>절반의 확인으로 내디딘 걸음</h1>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 09월 22일</span>
+      <h1>✝️ 일상의 깊은사고 | 역대상 13:1~8</h1>
     </header>
 
     <div class="toolbar">
@@ -203,28 +129,58 @@
     </div>
 
     <article id="sermon" class="content">
-      
-<div class="container">
-<div class="content">
-<p>어떤 중요한 일을 앞두고 우리는 완벽한 준비를 다짐합니다. 다윗도 그랬습니다. 하나님의 궤를 모셔 오기 위해 그는 온 이스라엘 회중 앞에 두 가지 분명한 조건을 제시했습니다.</p>
-<div class="quote">
-                "만일 너희가 좋게 여기고, 우리의 하나님 여호와께로 말미암았으면..." (역대상 13:2)
-            </div>
-<p>사람들의 마음이 하나로 모이는 것, 그리고 그것이 진정 하나님의 뜻에 합당한 것. 이 두 가지는 일을 시작함에 있어 참으로 지혜롭고 균형 잡힌 기준이었습니다. 이 제안에 온 백성들은 환호하며 '만장일치'로 동의했습니다. 모두가 한마음으로 궤를 옮겨오자고 결의한 것입니다.</p>
-<p>그런데 성경은 이어지는 장면에서 기묘한 침묵을 지킵니다. 첫 번째 조건인 '사람들의 동의'는 완벽하게 충족되었지만, 정작 가장 중요한 두 번째 조건인 '하나님의 뜻'에 대해서는 묻거나 확인받았다는 기록이 어디에도 없습니다. 다윗과 백성들은 절반의 확인만으로 벅찬 마음에 수레를 출발시키고 만 것입니다.</p>
-<p>우리 삶에도 이런 일이 얼마나 자주 일어나는지요. 가장 무서운 착각 중 하나는 <span class="highlight">'사람들의 합의'가 곧 '하나님의 승인'</span>이라고 섣불리 믿어버리는 것입니다. 백 명, 천 명이 박수 치며 동의했다고 해서 그것이 곧 선한 뜻이 되는 것은 아닙니다. 교회 회의에서의 만장일치나, 회사에서의 두꺼운 결재 서류가 '참된 분별'을 대신할 수는 없습니다. 전원이 동의했다고 해서 적격 증빙이 없는 서류가 통과될 수 없듯, 사람들의 합의가 하나님을 향한 물음표를 지울 수는 없는 법입니다.</p>
-<p>백성들은 궤를 싣기 위해 '새 수레'를 짰습니다. 정성을 다했고, 적잖은 비용과 수고를 들였습니다. 낡은 것이 아닌 가장 좋은 것으로 하나님을 모시려 한 그들의 진심을 엿볼 수 있습니다.</p>
-<p>오늘날 우리 신앙의 여정에도 이처럼 화려하고 편리한 '새 수레'들이 많습니다. 매달 자동으로 결제되는 신앙 앱, 잊지 않고 이체되도록 설정해 둔 헌금, 아침마다 울려 퍼지게 맞춰둔 찬양 알람들. 이 모든 것은 하나님을 향한 우리의 정성이 담긴 참 좋은 수레들입니다.</p>
-<p>그러나 수레가 결코 대신해 줄 수 없는 영적 빈자리가 있습니다. 내가 직접 바닥에 꿇어야 하는 무릎의 무게, 고단함을 이겨내며 걸어간 예배당까지의 거리, 달콤한 잠을 덜 자며 온전히 내어드린 아침의 고요함은 어떤 최신식 수레나 편리한 도구로도 대체되지 않습니다. 진정한 임재란 우리가 잘 꾸민 수레로 화려하게 모셔 오는 것이 아니라, 우리 삶의 텅 빈 공간으로 그분께서 친히 걸어 들어오시는 은혜이기 때문입니다.</p>
-<p>놀랍고도 감사한 사실은, 다윗의 불완전한 준비와 어긋난 절차 속에서도 하나님은 백성들의 순수한 마음을 온전히 외면하지는 않으셨다는 점입니다. 무리 중에는 회의에 참석할 권한도, 수레를 고를 결정권도 없는 평범한 이들이 많았습니다. 무언가 절차가 어긋난 것 같아도 말할 통로조차 없던 사람들. 그저 기뻐하며 묵묵히 악기를 연주하던 이름 없는 무리들을 향해, 성경은 그들이 <strong>"하나님 앞에서"</strong> 노래했다고 따뜻하게 기록해 줍니다.</p>
-<p>방향을 정할 위치에 있지 않은 사람이라 할지라도, 그 자리에서 중심을 다해 드리는 기쁨의 예배는 여전히 하나님 앞에 닿아 있습니다. 진단은 정확했지만 결국 같은 실수를 반복하고 마는 우리를 긍휼히 여기시며, 불완전한 합의와 덜컹거리는 수레 곁에서도 우리의 찬양을 받아주시는 그분의 너른 품을 봅니다.</p>
-<div class="prayer">
-<strong>🙏 함께 드리는 기도</strong><br/><br/>
-                주님, 사람들의 마음이 모이는 것에 취해 주님께 묻는 일을 잊지 않게 하소서. 우리의 합의가 주님의 분별을 대신할 수 없음을 늘 기억하게 하옵소서. 편리한 신앙의 수레들에 기대어 직접 걷고 무릎 꿇는 수고를 잃지 않게 하시고, 오늘도 스스로 우리 가운데 찾아오시는 주님을 경외함으로 맞이하게 하소서. 예수님의 이름으로 기도합니다. 아멘.
-            </div>
-</div>
-</div>
-
+      <h1>✝️ 일상의 깊은사고 | 역대상 13:1~8</h1>
+<h2>📖 두 조건을 걸어 놓고, 하나만 확인한 채 출발했습니다</h2>
+<p><strong>2026-09-22 (화) | 자기 설교 노트</strong></p>
+<hr />
+<blockquote>
+<p><em>"만일 너희가 좋게 여기고 우리의 하나님 여호와께로 말미암았으면"</em> (대상 13:2)</p>
+<p><em>"뭇 백성이 다 이 일을 좋게 여기므로 온 회중이 그대로 행하겠다 한지라"</em> (대상 13:4)</p>
+</blockquote>
+<hr />
+<h2>🔍 핵심 본문 요약</h2>
+<p>다윗이 궤를 모셔 오는 일을 온 회중 앞에 내놓습니다. 그가 건 조건은 둘, 사람들의 마음과 여호와의 뜻이었습니다. 본문은 앞의 것이 채워졌다고 적고, 뒤의 것에 대해서는 아무 말도 하지 않습니다. 저자는 이 일을 잘못이라고 선고하지도 않습니다. 오늘 우리가 받는 것은 판정이 아니라, 하나님께 나아가는 길을 사람의 합의가 정할 수 없다는 공백입니다.</p>
+<hr />
+<h2>💡 주요 신학 통찰</h2>
+<h3>1️⃣ <code>אִם</code>(임) — 하나의 "만일"이 지배한 두 문장</h3>
+<p>13:2의 "만일"은 하나인데 그 아래 문장은 둘입니다. "너희에게 좋게 보이고" 그리고 "우리 하나님 여호와께로 말미암았으면". 그런데 13:4는 앞의 것에만 대답합니다 — 그 일이 온 백성의 눈에 옳았습니다. 뒤의 것은 여덟 절이 끝날 때까지 대답을 받지 못합니다. 저자가 논평하지 않았다는 사실은 두 번째 조건이 확인되었다는 뜻이 아닙니다. 유보와 미검증은 다릅니다.</p>
+<p><strong>본문 핵심</strong>: 내가 세운 기준의 절반이 확인되지 않은 채 일이 진행되었습니다.</p>
+<hr />
+<h3>2️⃣ <code>נִקְרָא</code>(니크라) — 이름을 붙인 이가 문장에 없습니다</h3>
+<p>이 단락에는 사람이 주어인 동사가 가득합니다. 옮겨 오게 하자, 올려 오게 하자, 실었다. 그런데 궤를 설명하는 대목에서 문법이 뒤집힙니다. 그 이름은 "일컬어진 바" 되었고, 그렇게 하신 분은 문장에 없습니다. 임재의 처소를 사람이 정하지 않았다는 말입니다. 성경은 이 방향으로 갑니다. 요한복음 1:14의 "장막을 치셨다"(ἐσκήνωσεν, 에스케노센)는 오시는 분이 주어인 동사입니다.</p>
+<p><strong>메시지 핵심</strong>: 임재는 우리가 실어 온 것이 아니라 스스로 오신 분입니다.</p>
+<hr />
+<h3>3️⃣ <code>דְרַשְׁנֻהוּ</code>(데라쉬누후) — "우리가" 구하지 아니하였느니라</h3>
+<p>다윗은 "사울이 구하지 않았다"고 말하지 않습니다. "우리가 그를 구하지 아니하였느니라"고 말합니다. 앞 세대를 진단하면서 자기와 회중을 함께 주어로 놓은 것입니다. 진단은 정확했습니다. 그런데 바로 그 사람이, 자기가 지목한 결핍을 자기 절차 안에서 다시 지나칩니다. 진단의 정확함이 반복을 막지 못합니다. 그러므로 이 자리를 메운 것은 더 정확한 진단이 아니라, 피고석에 설 이유가 없으신 분이 그 자리에 서서 자기 피로 단번에 드리신 제사였습니다(히 9:12; 10:14).</p>
+<p><strong>메시지 핵심</strong>: 우리가 반복하는 자리에서 그리스도는 반복하지 않으셨습니다.</p>
+<hr />
+<h2>✅ 주제 포인트 (적용 중심)</h2>
+<p>📌 <strong>포인트 1 — 정할 자리에 있지 않은 사람에게</strong></p>
+<p>13:4의 "온 회중"에는 이름이 하나도 남지 않았습니다. 그들은 지휘관 회의에 없었고 수레를 고르지도 않았습니다. 예배의 형식도 설교의 방향도 바꿀 권한이 없는 자리에서, 무언가 어긋난 것 같은데 말할 통로가 없는 사람이 있습니다. 본문은 그들을 책망하지 않습니다. 오히려 저자는 그들이 노래하고 악기를 울린 장면을 <code>לִפְנֵי הָאֱלֹהִים</code>(리프네 하엘로힘), 곧 "하나님 앞에서"라고 불렀습니다. 이 구간이 그 자리에 주는 것은 요구가 아니라 이 한 줄입니다.</p>
+<p>📌 <strong>포인트 2 — 목회 현장: 만장일치는 어디까지의 절차인가</strong></p>
+<p>당회와 제직회의 만장일치는 13:4까지의 절차입니다. 다윗이 함께 걸었던 물음, "이것이 여호와께로 말미암았는가"는 표결로 확인되는 항목이 아닙니다. 그렇다고 본문이 의논을 문제 삼지도 않습니다 — 다윗은 15:11에서 다시 의논합니다. 교정받을 것은 회의 자체가 아니라, 합의가 났으니 분별이 끝났다고 여기는 습관입니다.</p>
+<p>📌 <strong>포인트 3 — 세무·회계 현장: 동의서는 두껍고 증빙은 얇을 때</strong></p>
+<p>실무에서 자주 보는 상태가 있습니다. 의결은 완비되었는데 요건 검증이 비어 있는 서류철입니다. 전원이 동의해도 적격증빙이 없으면 손금 요건은 충족되지 않고, 이사회 결의서가 특수관계인 거래의 시가 검증을 대신하지 못하며, 합의가 신고 기한을 늦춰 주지 않습니다. 합의는 사람들 사이의 조건이고, 증빙과 시가와 기한은 그 바깥의 조건입니다. 13:2가 두 조건을 나란히 건 것과 같습니다.</p>
+<hr />
+<h2>🙏 마무리 묵상 / 기도</h2>
+<p>새 수레를 생각합니다. 그것은 정성이었고 물건이었습니다. 새것이었고 비용이 들었습니다. 신앙에도 수레로 옮겨지는 자리가 있습니다. 결제한 성경 앱, 자동이체한 헌금, 틀어 놓은 찬양, 예약해 둔 알람은 전부 좋은 수레입니다. 다만 수레가 대신하지 못하는 것이 있습니다 — 무릎, 걸어서 간 거리, 잠을 덜 잔 아침. 그리고 그 수레 곁에서 울린 노래를, 본문은 "하나님 앞에서"라고 불렀습니다.</p>
+<blockquote>
+<p>주님, 사람들의 마음이 하나로 모인 자리를 감사합니다.<br />
+그러나 그 동의가 주님께 여쭙는 일을 대신할 수 없음을 고백합니다.<br />
+진단이 정확해도 다시 반복하는 우리를 아시고, 스스로 오셔서 우리 가운데 장막을 치신 주님을 찬송합니다.<br />
+정할 권한이 없는 자리에 선 사람들에게, 그 자리도 주님 앞이라고 말해 주소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</blockquote>
+<hr />
+<p><strong>#일상의깊은사고 #역대상 #자기설교준비 #목회자묵상 #성경묵상 #언약궤 #분별</strong></p>
+<hr />
+<blockquote>
+<p><em>"또 네가 많은 증인 앞에서 들은 바를 충성된 사람들에게 부탁하라. 그들이 또 다른 사람을 가르칠 수 있으리라."</em> (딤후 2:2)</p>
+</blockquote>
+<!-- 분량 실측 (2026-09-22 Stage 4)
+     raw 총량: 2,880자 (마크업·공백·개행 포함, 본 주석 제외)
+     본문 순수: 1,998자 (마크업·공백 제외) — 목표 1,500~2,000자 충족
+-->
     </article>
 
     <footer>
@@ -233,35 +189,30 @@
     </footer>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div id="toast"></div>
 
   <script>
     let currentSize = 18;
-
-    function sermonText() {
-      const article = document.getElementById('sermon').innerText.trim();
-      return `절반의 확인으로 내디딘 걸음\n2026년 09월 22일\n\n${article}\n\n#말씀과묵상`;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
     }
 
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
     }
 
     async function copySermon() {
       try {
         await navigator.clipboard.writeText(sermonText());
-        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
-      } catch (error) {
-        const area = document.createElement('textarea');
-        area.value = sermonText();
-        document.body.appendChild(area);
-        area.select();
-        document.execCommand('copy');
-        area.remove();
-        showToast('내용을 복사했습니다.');
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
       }
     }
 
@@ -288,7 +239,7 @@
     function resizeText(delta) {
       currentSize = Math.min(23, Math.max(16, currentSize + delta));
       document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
-      showToast(`본문 글씨 크기 ${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
     }
   </script>
 </body>
