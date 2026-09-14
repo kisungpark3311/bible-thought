@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>✝️ 일상의 깊은사고 | 요한복음 6:1-21</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 제 11 편</span>
+      <h1>✝️ 일상의 깊은사고 | 요한복음 6:1-21</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>✝️ 일상의 깊은사고 | 요한복음 6:1-21</h1>
+<h2>📖 주시는 것이 아니라 주시는 분이 답이다</h2>
+<p><strong>2026-09-04 (금요일) | 자기 설교 노트</strong></p>
+<hr />
+<blockquote>
+<p><em>"이렇게 말씀하심은 친히 어떻게 하실지를 아시고 빌립을 시험하고자 하심이라"</em> (요 6:6)</p>
+<p><em>"이르시되 내니 두려워하지 말라 하신대"</em> (요 6:20)</p>
+</blockquote>
+<hr />
+<h2>🔍 핵심 본문 요약</h2>
+<p>유월절이 가까운 때, 큰 무리가 예수님을 따라왔습니다. 예수님은 빌립에게 먹일 방도를 물으셨지만 이미 하실 일을 알고 계셨습니다. 빌립은 이백 데나리온으로도 부족하다고 계산했고, 안드레는 한 아이의 보리떡 다섯 개와 물고기 두 마리를 찾아왔습니다. 예수님은 떡을 손에 드시고 감사하신 후 앉은 사람들에게 직접 나누어 주셨고, 남은 조각이 열두 바구니였습니다. 그런데 무리가 그분을 억지로 임금 삼으려 하자 홀로 산으로 물러가셨고, 그날 밤 어두운 바다 위를 걸어오시며 "내니 두려워하지 말라" 하셨습니다. 두 표적은 한 가지를 가리킵니다 — 문제는 그분이 무엇을 주실 수 있느냐가 아니라 주시는 그분이 누구시냐입니다.</p>
+<hr />
+<h2>💡 주요 신학 통찰</h2>
+<h3>1️⃣ 에데이(ᾔδει) — 물으시기 전에 이미 아셨습니다</h3>
+<p>요한은 예수님의 질문 바로 다음 줄에 "친히 어떻게 하실지 아셨더라"를 적어 두었습니다. 이 한 줄이 이야기 전체의 성격을 바꿉니다. 질문은 정보를 얻기 위한 것이 아니었습니다. 하나님이 우리를 시험하실 때, 그것은 결과를 알아보시려는 탐색이 아니라 우리 자신을 우리에게 보여 주시는 거울입니다. 빌립의 계산은 틀리지 않았습니다. 다만 그의 목록에 눈앞에 서 계신 분이 빠져 있었습니다. 저도 자주 정확하게 계산하고 정확하게 절망합니다. 문제는 계산이 아니라 계산 바깥을 보지 못하는 눈입니다.</p>
+<p><strong>본문 핵심</strong>: 하나님의 시험은 답을 모르는 분의 질문이 아닙니다.</p>
+<hr />
+<h3>2️⃣ 디에도켄(διέδωκεν) — 감사가 먼저, 나눔이 나중입니다</h3>
+<p>예수님은 떡을 손에 드신 다음 계산이 아니라 감사를 하셨습니다. 다섯 개가 오천 명 앞에 놓인 상황에서 감사가 먼저 나온다는 것, 이것이 이 표적의 문법입니다. 그리고 나눔의 분량을 정한 것은 남은 재고가 아니라 "그들이 원하는 만큼"이었습니다. 부족에서 시작해 열두 바구니로 끝나는 그 거리 전체가 감사와 나눔 사이에 놓여 있습니다. 그런데 넉넉히 주신 그분이 곧바로 남은 조각을 거두게 하셨다는 점도 함께 보아야 합니다. 넉넉함을 믿는 믿음은 부주의와 다릅니다.</p>
+<p><strong>메시지 핵심</strong>: 손에 있는 것을 세기 전에 손에 있는 것에 감사하십시오.</p>
+<hr />
+<h3>3️⃣ 에고 에이미(ἐγώ εἰμι) — 어둠 위에서 밝히신 이름</h3>
+<p>무리는 표적을 보고 왕을 만들려 했고, 제자들은 표적 앞에서 떨었습니다. 오해와 공포 사이에서 예수님은 논증하지 않으시고 자신을 밝히십니다. "내니." 이 말은 어둠 속에서 "나야"라고 하는 평범한 신원 확인으로도 충분히 읽힙니다. 그러나 바다 물결을 밟으시는 하나님을 노래한 성경의 언어(욥 9:8; 시 77:19)와 "나는 스스로 있는 자"(출 3:14)의 울림을 여기서 완전히 지우기는 어렵습니다. 요한이 이 어구를 8장 끝까지 끌고 간다는 점을 생각하면 더욱 그렇습니다. 단정하지는 않겠습니다. 다만 그 밤에 필요했던 것이 설명이 아니라 이름이었다는 사실만은 분명합니다.</p>
+<p><strong>메시지 핵심</strong>: 두려움을 그치게 하는 것은 상황 설명이 아니라 그분의 자기 진술입니다.</p>
+<hr />
+<h2>✅ 주제 포인트 (적용 중심)</h2>
+<p>📌 <strong>포인트 1 — 목회 현장: 부족 목록의 마지막 줄</strong></p>
+<p>목회는 늘 이백 데나리온이 모자라는 자리에서 시작합니다. 사람이 없고 재정이 없고 시간이 없습니다. 그 진단은 대개 정확합니다. 그러나 정확한 진단이 곧 결론은 아닙니다. 사역 계획서를 덮기 전에 한 줄을 더 적어야 합니다 — "그리고 주님이 계신다." 이것은 낙관이 아니라 이미 아시는 분께 목록을 맡기는 행위입니다.</p>
+<p>📌 <strong>포인트 2 — 세무·회계 현장: 넉넉함과 정확함은 대립하지 않습니다</strong></p>
+<p>숫자를 다루는 자리는 빌립의 자리와 가장 닮았습니다. 그런데 이 본문은 계산을 폄하하지 않습니다. 예수님은 남은 조각을 거두게 하셨고 그 결과가 열두 바구니라는 정확한 숫자로 기록되었습니다. 하나님의 공급을 믿는 것과 한 조각도 흘리지 않는 것은 충돌하지 않습니다. 오히려 절세와 탈세의 경계에서, 넉넉함을 믿는 신앙이 부주의나 편법의 핑계가 되지 않도록 장부는 더 정확해야 합니다.</p>
+<p>📌 <strong>포인트 3 — 개인 경건과 가정: 순종한 뒤에 부는 바람</strong></p>
+<p>제자들은 순종해서 배를 탔는데 어두워졌고 바람이 불었습니다. 순종의 결과가 늘 순탄함은 아닙니다. 가정에서, 병상에서, 자녀 문제 앞에서 우리가 붙들 것도 상황 설명이 아니라 그분의 이름입니다. 그리고 그분을 배로 영접했을 때 배는 곧 가려던 땅에 이르렀습니다. 영접한 순간이 곧 도착의 시작입니다.</p>
+<hr />
+<h2>🙏 마무리 묵상 / 기도</h2>
+<p>한 아이의 도시락과 오천 명의 배고픔 사이에는 건널 수 없는 거리가 있습니다. 그 거리를 건넌 것은 우리의 계산이 아니라 그분의 손이었습니다. 그리고 그 손은 감사를 드린 손이었고, 머지않아 자기 살을 떼어 주실 손이었습니다. 오늘 저에게 필요한 것은 부족을 더 정확히 세는 능력이 아니라, 부족한 것을 그 손에 올려 드리는 용기입니다. 그리고 밤이 오면, 설명을 구하기 전에 그 음성을 먼저 기억하는 것입니다.</p>
+<blockquote>
+<p>주님, 저는 늘 부족한 것부터 셉니다.<br />
+계산은 정확했지만 주님을 셈에 넣지 않았음을 고백합니다.<br />
+제가 주님께 씌우려 했던 왕관을 내려놓습니다.<br />
+주님이 주시는 것보다 주님 자신을 구하게 하소서.<br />
+어둡고 바람 부는 밤에는 설명이 아니라<br />
+"내니 두려워하지 말라" 하신 음성을 붙들게 하소서.<br />
+이 작은 손의 것을 주님 손에 올려 드립니다.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</blockquote>
+<hr />
+<p><strong>#일상의깊은사고 #요한복음 #자기설교준비 #목회자묵상 #성경묵상 #오병이어 #에고에이미</strong></p>
+<hr />
+<blockquote>
+<p><em>"또 네가 많은 증인 앞에서 들은 바를 충성된 사람들에게 부탁하라. 그들이 또 다른 사람을 가르칠 수 있으리라."</em> (딤후 2:2)</p>
+</blockquote>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 11 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
