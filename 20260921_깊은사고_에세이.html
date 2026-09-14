@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>완벽하지 않아도 괜찮은, 우리의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(183, 134, 60, .09), transparent 28rem),
+        var(--canvas);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 14px 50px rgba(23, 63, 53, .12);
+    }
+
+    .hero {
+      padding: 54px 36px 42px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(23, 63, 53, .97), rgba(35, 83, 70, .96)),
+        var(--green);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e3d0a8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.035em;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 34em;
+      color: #edf4f0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 24px;
+      color: #c8d9d2;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid #bfcac4;
+      border-radius: 999px;
+      color: var(--green);
+      background: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    button:focus-visible {
+      outline: 3px solid rgba(183, 134, 60, .45);
+      outline-offset: 2px;
+    }
+
+    .content { padding: 38px 36px 52px; }
+
+    h2 {
+      margin: 46px 0 18px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+      font-size: var(--body-size);
+      line-height: 1.92;
+      letter-spacing: -.01em;
+    }
+
+    .quote {
+      margin: 28px 0;
+      padding: 22px 24px;
+      color: #4b3a20;
+      background: var(--gold-soft);
+      border: 1px solid #ead9b9;
+      border-radius: 14px;
+      font-size: 19px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    footer {
+      padding: 26px 30px 34px;
+      color: var(--muted);
+      background: #f2f4f1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 20;
+      padding: 11px 18px;
+      color: #fff;
+      background: rgba(26, 39, 34, .94);
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: .2s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 22px 32px; }
+      .content { padding: 30px 21px 42px; }
+      .toolbar { overflow-x: auto; }
+      button { flex: 0 0 auto; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">일상의 깊은 사고 &middot; 2026년 09월 21일</p>
+      <h1>완벽하지 않아도 괜찮은, 우리의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+<p>우리는 종종 '하나 된 마음'을 가져야 한다는 강박에 시달립니다. 공동체 안에서 튀지 않고 모두와 같은 마음을 품어야 비로소 자격이 생기는 것처럼 느끼기도 하죠. 마음이 나뉘어 갈등하거나 여전히 과거의 습관과 미련에 발목 잡혀 있을 때면, 스스로가 한없이 부족하게만 여겨집니다.</p>
+<p>하지만 역대상 12장에 기록된 헤브론의 명단은 우리에게 뜻밖의 위로를 건넵니다. 다윗을 왕으로 세우기 위해 모인 사람들의 이름을 적어 내려가는 이 웅장한 기록 속에는, 놀랍게도 '아직 온전히 마음을 열지 못한' 사울 친족들의 이름(역대상 12:29)도 묵묵히 자리를 지키고 있습니다.</p>
+<div class="quote">
+            성경은 이 불완전한 모습을 굳이 지우거나 포장하지 않았습니다. 아직 주저하고 있는 그들의 상태마저 있는 그대로 명단에 품어냅니다.
+        </div>
+<p>그 명단 위에는 <span class="highlight">"여호와의 말씀대로"</span>라는 은혜의 덮개가 얹혀 있습니다. 이는 우리가 애써 완벽한 일치를 쥐어짜 내야 하는 것이 아니라, 우리의 불완전함조차도 하나님의 크신 섭리 안에 안겨 있다는 사실을 말해줍니다. "두 마음을 품지 않고"라는 구절은 대단하고 열정적인 신앙을 요구하는 것이 아닙니다. 겉과 속이 다른 이중 잣대를 내려놓고, 흔들리면 흔들리는 대로 투명하게 주님 앞에 서 있는 정직함을 의미합니다.</p>
+<p>나아가 성경은 우리에게 '하나 된 마음'을 강요하지 않습니다. 그저 그들이 한 마음으로 모였다는 사실을 담담히 목격할 뿐입니다. 구약의 사람들은 왕을 세우기 위해 애써 모였지만, 은혜 아래 사는 우리는 다릅니다. 이미 우리의 영원한 왕이 되신 예수님께서 성령을 부어 주시며, 그 안에서 자연스럽게 하나 되는 기쁨을 누리게 하십니다. 일치와 연합은 우리가 만들어내야 할 무거운 숙제가 아니라, <strong>이미 주님이 이루신 일 아래로 들어갈 때 주어지는 선물</strong>입니다.</p>
+<p>참된 기쁨은 감정의 고조나 화려한 행사가 아니라, 누군가의 수고로움 뒤에 찾아왔습니다. 사흘 동안 누군가는 시간을 내어 먼 길을 걸었고, 누군가는 자신의 곡식과 짐승을 기꺼이 내어놓았습니다. 땀 흘린 수고와 일상의 구체적인 헌신 뒤에 비로소 '큰 기쁨'이 임했습니다. 사랑은 언제나 손발의 수고로 증명되는 법입니다.</p>
+<p>오늘, 혹시라도 아직 마음이 다듬어지지 않아 옛 자리를 서성이고 계시나요? 억지로 그럴듯한 신앙의 합계를 맞추려 애쓰지 마세요. 하나님은 텅 빈 주석란 같은 당신의 망설임과 부족함을 지우지 않으십니다. 부족한 모습 그대로, 투명하고 정직하게 주님 앞에 서십시오. 우리의 왕 되신 주님이 여러분을 은혜의 자리로 초대하고 계십니다.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 09월 21일
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    let currentSize = 18;
+
+    function sermonText() {
+      const article = document.getElementById('sermon').innerText.trim();
+      return `완벽하지 않아도 괜찮은, 우리의 자리\n2026년 09월 21일\n\n${article}\n\n#말씀과묵상`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('내용을 복사했습니다. 카카오톡에 붙여넣으세요.');
+      } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = sermonText();
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('내용을 복사했습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
