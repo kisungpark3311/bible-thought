@@ -303,6 +303,20 @@
                     <div class="arrow" style="color:#b7863c">→</div>
                 `;
                 recentContainer.appendChild(linkEssay);
+
+                if (i >= 16) {
+                    const linkBlog = document.createElement('a');
+                    linkBlog.href = `./${dateStr}_블로그.html`;
+                    linkBlog.className = 'list-item';
+                    linkBlog.innerHTML = `
+                        <div class="item-info">
+                            <h3 style="color:#2c5530">일상의 깊은 사고 블로그 (${i}일)</h3>
+                            <p>역대상 묵상 블로그 버전</p>
+                        </div>
+                        <div class="arrow" style="color:#2c5530">→</div>
+                    `;
+                    recentContainer.appendChild(linkBlog);
+                }
             }
         }
 
