@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 5:12-21</h1><article id="sermon">
+<hr/>
+<p>date: 2026-09-09
+day: 수요일
+tags: [설교스케치, 로마서, 강해설교, 개혁주의]
+unit: 12/37
+본문: 로마서 5:12-21
+제목: 나란히 놓기 전에 두 번 「같지 아니하니」
+master_title: 한 사람으로 말미암아 — 아담과 그리스도
+status: 완료</p>
+<hr/>
+<h1>🎤 설교 스케치 | 로마서 5:12-21</h1>
+<p><strong>2026-09-09 | 설교 제목(안): 표를 그리기 전에</strong></p>
+<blockquote>
+<p><strong>일러두기</strong> — 본문은 <strong>낭독 가능한 연속 산문</strong>으로 썼다. <strong>강단에서 쓰지 않기로 한 것과 그 이유는 말미 부록에 모았다.</strong> 대지 안의 ⚠ 표시는 <strong>설교자에게 하는 말</strong>이며 회중 앞에서 읽는 문장이 아니다.</p>
+</blockquote>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 로마서 5:12-21은 아담과 그리스도를 「~같이 … 그와 같이」로 나란히 놓는 짝을 세 번(18·19·21절) 긍정으로 완성하는데, <strong>그 셋보다 먼저 오는 두 자리(15·16절)에서 그 짝을 부정한다.</strong> 그리고 16절에서 두 「~로부터」를 어긋나게 적고(하나 ↔ 많은 범죄), 17절 귀결절에서 임금의 자리를 사망에서 <strong>사람</strong>으로 바꾸며, 그 부정을 통과한 뒤 19절에서 「한 사람이 순종하심으로 많은 사람이 의인이 되리라」를 세운다.</p>
+<p><strong>설교적 명제</strong>: <strong>하나님은 우리가 표를 다 채우기 전에, 그 표로는 담기지 않는 한 분의 순종 위에 우리를 세우십니다.</strong></p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 이해하려고 표를 그립니다. 좌우로 칸을 만들고 빈칸을 채우면 안심이 됩니다. 그런데 채운 것이 본문의 것인지 내 것인지는 그다음에 잊힙니다.</p>
+<p>그리고 그 표가 감당하지 못하는 자리가 있습니다 — <strong>내가 한 일로 설명되지 않는 고통.</strong> 물려받은 병, 태어난 자리, 부모가 남긴 빚. 「내가 무엇을 잘못했나」를 아무리 되짚어도 답이 나오지 않는 종류가 있습니다. <strong>표는 거기서 멈춥니다.</strong></p>
+<hr/>
+<h2>서론 방향</h2>
+<p><strong>질문형</strong>을 권합니다. 「여러분은 아담과 예수님을 어떻게 정리해 두셨습니까」라고 물으면 대개 두 칸이 떠오릅니다. 한쪽엔 죄와 죽음, 다른 쪽엔 은혜와 생명. 깔끔합니다.</p>
+<p>그런데 오늘 본문은 그 표를 그리기 전에 <strong>두 번 멈춰 섭니다.</strong> 15절과 16절이 각각 <strong>「같지 아니하니」</strong>로 시작합니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — 「빈칸이 있는 양식을 앞에 두면 사람은 반드시 채운다」는 경험. 설문지·서류·시험지 어느 것이든. 채우고 나면 채운 것이 사실인지 묻지 않게 된다)</p>
+<hr/>
+<h2>대지 1 — 본문은 「같지 아니하니」를 먼저 말합니다 (5:15-16)</h2>
+<ul>
+<li>
+<p><strong>주해 요점</strong>: 이 단락에서 「~같이 … 그와 같이」라는 비교의 짝이 <strong>긍정으로 완성되는 것은 18절·19절·21절</strong>입니다. 그런데 그 짝이 온전한 모습으로 <strong>처음 나타나는 자리는 15절이고, 거기서 짝은 부정됩니다</strong> — <em>"이 은사는 그 범죄와 같지 아니하니."</em> 16절도 같습니다 — <em>"이 선물은 범죄한 한 사람으로 말미암은 것과 같지 아니하니."</em>
+  그리고 <strong>16절 뒷부분이 어디가 어긋나는지를 낱말로 짚습니다</strong> — <em>"심판은 한 사람으로 말미암아 정죄에 이르렀으나 은사는 </em><em>많은 범죄로 말미암아</em><em> 의롭다 하심에 이름이니라."</em> 한쪽은 <strong>하나</strong>에서, 다른 쪽은 <strong>많은 범죄</strong>에서 나옵니다. <strong>출발점의 짝이 맞지 않습니다.</strong>
+  ⚠ <strong>설교자 주의 1</strong> — <strong>「부정이 먼저 온다」는 배열에서 규범을 끌어내지 마십시오.</strong> 그런 배열이 그 시대 헬라어 글쓰기의 기본이었는지 저는 확인하지 못했습니다. <strong>설교에서 쓸 것은 배열이 아니라 부정의 내용입니다</strong> — 본문이 「같지 아니하니」라고 적었다는 사실.
+  ⚠ <strong>설교자 주의 2</strong> — 16절 앞부분의 「하나」가 <strong>사람인지 범죄인지 원문은 형태로 정해 주지 않습니다.</strong> 우리말 성경은 「한 사람으로 말미암아」로 옮겼습니다. <strong>어느 쪽으로 읽어도 두 출발점이 짝이 맞지 않는다는 것은 같으므로, 강단에서는 그 어긋남만 말하고 「하나」의 정체를 결정하지 마십시오.</strong></p>
+</li>
+<li>
+<p><strong>신학 명제</strong>: 복음은 죄의 반대편에 놓인 대칭항이 아닙니다. <strong>본문 자신이 그 대칭을 두 번 부인합니다.</strong></p>
+</li>
+<li>
+<p><strong>적용</strong></p>
+</li>
+<li><strong>목회 현장</strong>: 새신자반이나 교리반에서 아담-그리스도를 칠판 좌우에 적고 항목을 맞춰 가는 방식은 가르치기에 편합니다. 그런데 <strong>표를 만들면 반드시 빈칸이 생기고 우리는 그것을 채웁니다.</strong> 이번 주에는 표를 그리기 전에 <strong>15절과 16절을 먼저 소리 내어 읽히십시오.</strong></li>
+<li><strong>일터 현장</strong>: 비교표는 의사결정의 기본 도구입니다. 그런데 <strong>항목이 맞아떨어지도록 만든 표는 이미 결론을 정해 놓은 표입니다.</strong> 두 안(案)의 「출발점」이 같은 종류인지부터 확인하십시오.</li>
+</ul>
+<h2>대지 2 — 기입되지 않았는데 사망은 왕 노릇 했습니다 (5:13-14)</h2>
+<ul>
+<li>
+<p><strong>주해 요점</strong>: 13절은 <strong>율법 이전에도 죄가 세상에 있었으나 「죄를 죄로 여기지 아니하였다」</strong>고 말합니다. 「여기다」에 해당하는 낱말은 신약에 두 번뿐인데, <strong>다른 한 자리가 「그것을 내 앞으로 계산하라」</strong>(몬 1:18)로 셈을 넘기는 문맥입니다.
+  그런데 14절이 곧바로 <strong>「그러나 아담으로부터 모세까지 … 사망이 왕 노릇 하였나니」</strong>로 잇습니다. <strong>기입되지 않았는데 사망은 왕 노릇 했습니다.</strong> 본문은 두 문장을 <strong>「그러나」 하나로만</strong> 잇고 <strong>설명하지 않습니다.</strong>
+  그리고 14절이 한 걸음 더 갑니다 — <strong>「아담의 범죄와 같은 죄를 짓지 아니한 자들까지도」.</strong> ⚠ 이 어구는 <strong>12절의 「모든 사람이 죄를 지었으므로」와 정면으로 부딪칩니다.</strong>
+  ⚠ <strong>설교자 주의 3</strong> — <strong>이 두 문장을 화해시키지 마십시오.</strong> 해소안이 여럿 있으나 <strong>본문이 그중 어느 것도 적지 않았습니다.</strong> 강단에서 봉합하면 회중은 본문에 없는 설명을 본문으로 듣습니다.
+  ⚠ <strong>설교자 주의 4</strong> — 「여기다」의 뜻을 <strong>회계 용어로 확정해 설교하지 마십시오.</strong> 용례가 두 자리뿐이라 그 하나로 뜻을 정할 수 없습니다. <strong>본문이 두 문장을 나란히 둔 방식</strong>만 쓰십시오.</p>
+</li>
+<li>
+<p><strong>신학 명제</strong>: 하나님의 셈에 오르지 않은 시기에도 사망은 다스렸습니다. <strong>죄의 문제는 장부의 문제보다 깊습니다.</strong></p>
+</li>
+<li>
+<p><strong>적용</strong></p>
+</li>
+<li><strong>목회 현장</strong>: 자기 잘못으로 설명되지 않는 고통 앞에 선 성도에게, 14절은 <strong>그를 셈에서 빼지 않고 문장 안에 넣습니다.</strong> 「당신도 어딘가 잘못했을 것」이라는 말을 하지 마십시오. <strong>본문이 그렇게 말하지 않습니다.</strong></li>
+<li><strong>일터 현장</strong>(세무·회계): <strong>미신고와 부존재는 다릅니다.</strong> 신고서에 오르지 않은 매출, 장부에 없는 채무, 처리하지 않은 가지급금 — <strong>기입되지 않았다는 사실이 사건을 없애지 못합니다.</strong> 이 구분이 흐려지는 순간 실무의 정직이 무너집니다.</li>
+</ul>
+<h2>대지 3 — 왕좌에 앉되 왕좌의 근거는 밖에 있습니다 (5:17-19)</h2>
+<ul>
+<li>
+<p><strong>주해 요점</strong>: 17절 앞 문장의 임금은 <strong>사망</strong>입니다. 대칭이라면 뒤의 임금은 <strong>생명</strong>이어야 합니다. <strong>본문은 그렇게 쓰지 않았습니다</strong> — 뒤의 임금은 <strong>사람</strong>이고, 생명은 임금이 아니라 「생명 안에서」라는 <strong>자리</strong>로 옵니다. 그리고 그 사람은 <strong>「넘치게 받는 자들」</strong>로 규정되며, 본문이 그 근거를 <strong>「한 분 예수 그리스도를 통하여」</strong>라고 적습니다.
+  18절이 상관어의 짝을 <strong>처음으로 긍정형</strong>으로 씁니다 — <em>"한 범죄로 … 정죄에 이른 것 같이 한 의로운 행위로 말미암아 … 생명에 이르렀느니라."</em> ★ <strong>여기서 비교되는 것은 두 사람이 아니라 두 행위입니다.</strong>
+  19절이 주절의 동사를 공급합니다 — <strong>「많은 사람이 의인이 되리라」</strong>, 그 근거는 <strong>「한 사람이 순종하심으로」</strong>입니다.
+  ⚠ <strong>설교자 주의 5</strong> — <strong>「본문이 은혜를 임금으로 세우지 않는다」고 말하면 거짓입니다.</strong> <strong>21절이 「은혜도 또한 … 왕 노릇 하여」라고 적습니다.</strong> 17절 <strong>안에서</strong> 주어가 갈린다는 것만 말하십시오.
+  ⚠ <strong>설교자 주의 6</strong> — 18절의 「하나」가 사람이 아니라 행위라는 것은 <strong>원문의 형태 위에 선 판단이며 완전히 확정되지는 않습니다.</strong> 다만 <strong>18절이 사람의 이름을 부르지 않고 행위를 든다는 것은 우리말 본문에서도 그대로 보입니다.</strong> 그 선에서 말하십시오.</p>
+</li>
+<li>
+<p><strong>신학 명제</strong>: 신자는 왕좌에 앉되 <strong>받은 자로</strong> 앉습니다. <strong>자리는 우리 것이고 근거는 우리 밖에 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>적용</strong></p>
+</li>
+<li><strong>목회 현장</strong>: 「내가 얼마나 자랐는가」를 확인하려는 성도에게 17절은 <strong>자란 정도를 묻지 않고 받은 사실을 묻습니다.</strong></li>
+<li><strong>일터 현장</strong>: 성과가 곧 자격이 되는 곳에서 일합니다. <strong>본문은 자격의 근거를 성과 밖에 둡니다</strong> — 그러면서도 <strong>우리를 자리에서 지우지 않습니다.</strong> 왕 노릇 하는 것은 사람입니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p><strong>경로는 예표도 유비도 아닙니다. 본문이 이름을 부릅니다</strong> — <em>"한 사람 예수 그리스도"</em>(15절) · <em>"한 분 예수 그리스도"</em>(17절) · <em>"우리 주 예수 그리스도"</em>(21절). <strong>세 번입니다.</strong></p>
+<p><strong>여기서는 본문이 적어 놓은 것을 그대로 선포합니다.</strong></p>
+<p>19절이 말합니다 — <strong>「한 사람이 순종하심으로 많은 사람이 의인이 되리라.」</strong> 본문이 근거로 든 것은 <strong>한 분의 순종</strong>입니다.</p>
+<p>⚠ <strong>그 앞에 우리의 무능을 덧붙이지 마십시오.</strong> 이 본문은 「우리는 순종할 수 없다」를 <strong>말하지 않습니다.</strong> 본문이 적은 것은 <strong>누가 무엇을 하셨는가</strong>이고, 그것으로 충분합니다. <strong>「우리는 할 수 없으나 그리스도께서 하셨다」는 이 본문이 주지 않은 전반부를 덧대는 구조입니다.</strong></p>
+<p><strong>그리고 반대 방향도 조심하십시오.</strong> 무능을 만들지 않으려다 <strong>본문이 사람을 세운 자리까지 지우면 같은 왜곡입니다.</strong> 17절은 <strong>사람이 왕 노릇 하리라</strong>고 적었고, 그들을 <strong>「받는 자들」</strong>이라 불렀습니다. <strong>행위자 자리에서 지우지 마십시오.</strong></p>
+<p><strong>선포의 착지점</strong>: 여러분이 그 자리에 놓인 것도 여러분이 한 일이 아니었고, 거기서 나오는 것도 여러분이 할 일이 아닙니다. <strong>그 일을 하신 분의 이름을 본문이 세 번 불렀습니다.</strong></p>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — 「내가 서명하지 않은 문서가 나를 구속한 경험」과 그 반대편, 「내가 서명하지 않았는데 나에게 유익이 온 경험」. 상속·보증·연대 어느 쪽이든. 단 <strong>비유를 전가 교리의 설명으로 쓰지 말고 정서적 접근로로만</strong> 쓸 것)</p>
+<hr/>
+<h2>결론과 결단 촉구</h2>
+<p><strong>세 가지를 요청합니다.</strong></p>
+<p><strong>첫째, 이번 주에 표 하나를 지우십시오.</strong> 아담과 그리스도를 좌우로 정리해 둔 그 표에서, <strong>본문이 채우지 않은 칸이 어느 것인지</strong> 찾아보십시오. 15절과 16절이 「같지 아니하니」라고 두 번 말했습니다.</p>
+<p><strong>둘째, 설명되지 않는 고통을 설명하려 들지 마십시오.</strong> 13절이 「여기지 아니하였느니라」 하고 14절이 「그러나 사망이 왕 노릇 하였나니」 한 그 사이를 <strong>성경도 메우지 않았습니다.</strong> 우리가 메우면 그것은 위로가 아니라 요구가 됩니다.</p>
+<p><strong>셋째, 오늘 「받는 자」로 서십시오.</strong> 이것은 「더 열심히 하라」는 요청이 아닙니다. 19절이 이미 하신 일에 응답하는 것입니다 — <strong>한 사람이 순종하셨고, 많은 사람이 의인이 됩니다.</strong></p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「나 같은 죄인 살리신」(305장) · 「주 예수 내가 알기 전」(90장)</li>
+<li><strong>참고 교리문답</strong>: ⚠ <strong>이 스케치는 신앙고백서·요리문답 조문을 원문 대조하지 않았으므로 조문 번호를 적지 않는다.</strong> 원죄와 전가를 다루는 대목을 인용하려면 <strong>설교자가 직접 조문을 열어 확인하고 인용하라.</strong></li>
+</ul>
+<hr/>
+<h2>📎 부록 — 강단에서 쓰지 않기로 한 것과 그 이유</h2>
+<blockquote>
+<p><strong>본문에 넣지 않고 여기 모았다.</strong> 각 항목은 위 대지의 ⚠ 표시와 대응한다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>쓰지 않는 것</th>
+<th>이유</th>
+<th>대응</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>5:12 「~하였으므로」(<code>ἐφ' ᾧ</code>)의 뜻을 정해 선포하기</strong></td>
+<td>「~때문에」·「그 안에서」·「~라는 조건에서」로 갈리고 <strong>형태가 셋을 가르지 않는다.</strong> 그리고 <strong>정해도 전가의 방식은 나오지 않으며, 본문이 필요한 진술을 19절에서 갈릴 데 없이 적어 두었다</strong></td>
+<td>대지 3</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>라틴역 「in quo」를 근거로 「아담 안에서」를 선포하기</strong></td>
+<td>라틴역은 <strong>번역이며 이미 한 독법을 택한 결과</strong>다. 게다가 <strong>노바 불가타는 그 자리를 「~때문에」로 옮겼다</strong></td>
+<td>서론</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>「아우구스티누스가 헬라어를 그렇게 읽었다」</strong></td>
+<td>그는 <strong>라틴 본문 위에서</strong> 논증했고, 「in quo, 곧 아담」이라는 못박음은 <strong>그가 인용한 다른 저자의 말</strong>이며, 그 자신은 지시 대상을 <strong>셋으로 열어 두었다</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>「칼뱅도 그렇게 읽었다」</strong></td>
+<td><strong>칼뱅의 라틴역은 「모두가 죄를 지었으므로」이고 그의 본문에 「in quo」가 한 번도 없다.</strong> 흔히 인용되는 그 문장은 <strong>역자 각주</strong>다</td>
+<td>–</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>「부정이 먼저 오는 순서」에서 규범 끌어내기</strong></td>
+<td>그 배열이 <strong>그 시대 수사의 기본값일 가능성을 배제하지 못했다.</strong> 쓸 것은 배열이 아니라 <strong>부정의 내용</strong></td>
+<td>대지 1 주의 1</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>16절 「하나」의 정체를 정해 선포하기</strong></td>
+<td><strong>형태가 사람인지 범죄인지 정해 주지 않는다.</strong> 어느 쪽이든 <strong>출발점의 짝이 맞지 않는다</strong>는 결론은 같다</td>
+<td>대지 1 주의 2</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>12절과 14절을 화해시키기</strong></td>
+<td><strong>본문이 해소안을 적지 않았다</strong></td>
+<td>대지 2 주의 3</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>「여기다」를 회계 용어로 확정하기</strong></td>
+<td><strong>신약 용례가 두 자리뿐</strong>이라 뜻을 정할 표본이 없다</td>
+<td>대지 2 주의 4</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>「본문이 은혜를 임금으로 세우지 않는다」</strong></td>
+<td><strong>21절이 반증</strong>이다</td>
+<td>대지 3 주의 5</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>18절 「하나 = 행위」를 확정 사실로 선포하기</strong></td>
+<td><strong>형태 관찰 위의 통사 판단</strong>이다. 우리말 본문에서 보이는 선까지만</td>
+<td>대지 3 주의 6</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>「우리는 할 수 없으나 그리스도께서 하셨다」</strong></td>
+<td><strong>이 본문이 그 무능을 진술하지 않는다.</strong> 없는 결핍을 만들어 채우는 구조</td>
+<td>복음 클라이맥스</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>5:18의 「모든 사람」 범위를 계산해 닫기</strong></td>
+<td>원문은 <strong>두 번 다 「모든 사람에게」</strong>이고 <strong>본문이 구별을 적지 않았다.</strong> ⚠ <strong>뒤엣것만 조용히 좁혀 읽는 것도 같은 오용이다</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>14절 「모형」에서 예표론 일반 원리 끌어내기</strong></td>
+<td>그 낱말의 뜻을 <strong>사전으로 확정하지 못했다</strong>(등급 F). 본문이 그렇게 부른 것은 <strong>아담 한 사람과 오실 자 한 분뿐</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>5:20을 「율법은 나쁜 것」으로 읽기</strong></td>
+<td><strong>율법의 성격 논의는 7장 단위의 자리</strong>다</td>
+<td>결론</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>📎 부록 — 자체 검증</h2>
+<ul>
+<li>[x] 각 대지가 본문의 실제 단락 구분과 일치하는가 — 대지 1(15-16) · 대지 2(13-14) · 대지 3(17-19). ⚠ <strong>본문 순서와 대지 순서가 다르다</strong>(15-16을 먼저 둔다). <strong>의도적이며 설교 명제가 「부정이 먼저」이기 때문이다. 서론에서 그 사실을 밝히고 시작하라.</strong></li>
+<li>[x] 적용이 명령만이 아니라 은혜의 직설법에 뿌리내렸는가 — 결론 셋째가 19절의 직설법에 정박한다</li>
+<li>[x] 복음 클라이맥스 없이 도덕 강연으로 끝나지 않았는가</li>
+<li>[x] 원어 언급이 회중 눈높이로 번역되었는가 — <strong>파싱 용어를 한 번도 쓰지 않았다.</strong> 원어 표기도 부록 1행의 <code>ἐφ' ᾧ</code> 하나뿐이다</li>
+<li>[x] <strong>복음 클라이맥스가 본문에 없는 결핍을 만들어 내지 않았는가 (R29)</strong> — 명시 차단 + <strong>반대 방향(행위자 지우기)도 차단</strong></li>
+<li>[x] <strong>감축하지 않았다</strong>(Stage 3 분량 상한은 2026-09-08 폐지). <strong>유보의 앞 절반이 사라져 남은 절반이 「위반 아님」처럼 보이는 사고</strong>가 발생할 자리가 없다</li>
+</ul>
+<h2>📎 부록 — 재진술 계수 (R17 · 한 논지 3회 이하 · <strong>이 수치는 하한이다</strong>)</h2>
+<table>
+<thead>
+<tr>
+<th>논지</th>
+<th>회수</th>
+<th>위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「같지 아니하니」가 긍정보다 먼저 온다</td>
+<td><strong>3회</strong></td>
+<td>Big Idea · 대지 1 · 결론 첫째</td>
+</tr>
+<tr>
+<td>기입되지 않았는데 사망은 왕 노릇 했다</td>
+<td><strong>3회</strong></td>
+<td>FCF 인접 · 대지 2 · 결론 둘째</td>
+</tr>
+<tr>
+<td>17절 귀결절의 주어가 사람이다</td>
+<td><strong>2회</strong></td>
+<td>대지 3 · 복음 클라이맥스</td>
+</tr>
+<tr>
+<td>본문에 없는 무능을 덧붙이지 않는다</td>
+<td><strong>2회</strong></td>
+<td>복음 클라이맥스 · 부록 11행</td>
+</tr>
+<tr>
+<td>표를 그리면 빈칸을 채우게 된다</td>
+<td><strong>3회</strong></td>
+<td>FCF · 서론 · 대지 1 적용</td>
+</tr>
+</tbody>
+</table>
+<p>⚠ <strong>분류를 어디까지 했는지 적는다</strong> — <strong>다섯 논지는 히트를 전부 열어 확인했다. 그 밖의 문장에 대해서는 후보 목록을 만들지 않았으므로, 정확한 신고는 「이 다섯은 상한 안이다」이지 「전부 상한 안이다」가 아니다.</strong></p>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

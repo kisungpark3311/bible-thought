@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 8:12-17</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 8:12-17</h1>
+<p><strong>2026-09-09 | 설교 제목(안): 조건은 「그리스도와 함께 한 상속자」 뒤에 붙어 있습니다</strong></p>
+<blockquote>
+<p>⚠️ <strong>일러두기 (서두에 모아 둡니다 — 본문은 낭독 가능한 연속 산문으로 둡니다)</strong>
+① 이 스케치의 한국어 성경 인용은 <strong>전부 「개역개정」</strong>이며, 개역한글과 갈리는 자리는 말미 부록에 모았습니다.
+② 이 본문에는 <strong>강단에서 확정해서는 안 되는 자리가 셋</strong> 있습니다 — 8:14 「인도함을 받는」의 태, 8:16 「우리 영과 더불어」의 여격, 8:17의 조건절이 <strong>무엇에 걸리는가</strong>. 셋 다 <strong>원문의 형태가 갈라 주지 않습니다.</strong> 이 스케치는 셋을 확정하지 않고, 그 사실을 회중에게 밝히는 자리를 대지 안에 두었습니다.
+③ <strong>본문에 없는 무능을 만들어 그리스도로 채우지 않습니다</strong>(R29). 이 단락은 사람의 무능을 진술하지 않습니다. 진술하는 것은 빚·조건문 둘·수령·증언·상속입니다.</p>
+</blockquote>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 로마 교회에 「너희는 빚진 자다」로 시작해, 성령으로 인도받는 자가 하나님의 아들이며 양자의 영을 받아 「아빠 아버지」(개역개정)라 부르고 성령이 그 신분을 증언한다고 진술한 뒤, 마지막 문장에서 상속자를 <strong>「하나님의 상속자」와 「그리스도와 함께 한 상속자」라는 한 쌍</strong>으로 놓고 <strong>그 뒤 항 뒤에 조건절을 붙였다.</strong></p>
+<p><strong>설교적 명제</strong>: <strong>하나님은 당신의 신분을 조건 없이 진술하셨고, 조건은 그 신분이 그리스도와 함께 가는 마지막 자리에 붙어 있습니다.</strong></p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 신분을 성과로 바꿔 읽는 데 익숙합니다. 그래서 「함께 고난받으면」이라는 말을 들으면 곧바로 <strong>자격 심사</strong>로 읽고, 지금 고난 중이지 않은 사람은 불안해지고 고난 중인 사람은 자기 고통을 점수로 셉니다. 반대로 그 말이 불편하면 아예 지웁니다. <strong>둘 다 본문을 우리 필요에 맞춘 것입니다.</strong></p>
+<hr/>
+<h2>서론 방향</h2>
+<p>① <strong>질문형</strong> — 「여러분의 자녀 됨에는 조건이 붙어 있습니까?」로 열고, 본문에서 조건절이 <strong>어디에 붙어 있고 어디에 붙어 있지 않은지</strong>를 함께 세어 보게 한다.
+② <strong>상황형</strong> — 상속 서류를 앞에 둔 가족. 지분을 계산하기 전에 상속인 확인부터 한다는 실무.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — 「자격 심사를 통과해야 받는 것」과 「이미 그 집 사람이라서 받는 것」의 차이를 겪은 경험)</p>
+<hr/>
+<h2>대지 1 — 조건절이 붙지 않은 세 문장이 먼저 옵니다 (8:12-16)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 이 단락에서 <strong>조건절이 붙는 자리는 8:13과 8:17의 끝, 둘입니다.</strong> 그런데 <strong>8:13의 두 조건은 신분이 아니라 결과에 걸립니다</strong>(「반드시 죽을 것이로되」 / 「살리니」). <strong>회중이 무엇인지를 말하는 문장들에는 조건이 붙어 있지 않습니다.</strong> 8:14의 「무릇 하나님의 영으로 인도함을 받는 사람」은 <strong>누가 그러한지를 규정하는 관계절</strong>이지 신분에 조건을 거는 절이 아닙니다. 8:15는 <strong>이미 받은 일</strong>로, 8:16은 <strong>성령이 하시는 증언</strong>으로 적힙니다.
+  ⚠ <strong>다만 8:13에는 사람이 하는 일이 있습니다</strong> — 「영으로써 몸의 행실을 죽이면」. <strong>요구가 없는 단락이 아니라, 요구가 조건절 안에 있는 단락입니다.</strong> 이 구별을 지우지 마십시오.
+  <strong>본문을 그대로 읽어 주십시오.</strong> 8:12은 우리를 <strong>「빚진 자로되 육신에게 져서 육신대로 살 것이 아니니라」</strong>로 규정합니다 — <strong>빚의 상대가 부정형으로만 적힙니다.</strong> 8:15은 <strong>「너희는 다시 무서워하는 종의 영을 받지 아니하고 양자의 영을 받았으므로 우리가 아빠 아버지라고 부르짖느니라」</strong>입니다 — <strong>받지 않은 것과 받은 것이 한 문장에 있고, 그 뒤에 부르짖음이 옵니다.</strong> 그리고 8:16은 <strong>「성령이 친히 우리의 영과 더불어 우리가 하나님의 자녀인 것을 증언하시나니」</strong>입니다 — <strong>증언의 주어가 성령</strong>이고 <strong>우리가 하나님의 자녀라는 것이 그 증언의 내용</strong>입니다.
+  ⚠ <strong>강단에서 8:15의 「무서워하는」을 지우지 마십시오.</strong> 본문은 두려움을 낱말로 적어 두었고, <strong>받지 않은 것은 두려움 자체가 아니라 그리로 데려가는 영</strong>이라고 말합니다.</li>
+<li><strong>신학 명제</strong>: 하나님은 신분을 먼저 진술하시고, 그 진술을 지탱하는 증언을 성령께 맡기셨습니다.</li>
+<li><strong>적용</strong>: (목회) 오늘 아무 일도 할 수 없는 자리에 있는 성도에게 먼저 읽어 줄 문장이 이 셋입니다. / (일터) 자격 요건을 먼저 묻는 자리에서, 신분이 요건보다 앞선다는 순서를 기억합니다.</li>
+</ul>
+<h2>대지 2 — 마지막 문장은 상속자를 한 쌍으로 놓습니다 (8:17a)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 개역개정은 <strong>「자녀이면 또한 상속자 곧 하나님의 상속자요 그리스도와 함께 한 상속자니」</strong>로 옮깁니다. <strong>원문에서 「하나님의 상속자」와 「그리스도와 함께 한 상속자」는 대등한 한 쌍</strong>이고(헬라어가 「한편으로 … 다른 한편 …」이라는 짝 표지를 답니다), <strong>그 쌍의 뒤 항에서만 낱말 자체가 「함께한 상속자」(쉰클레로노모이)로 바뀌면서 상대가 「하나님의」에서 「그리스도의」로 바뀝니다.</strong> <strong>접두사가 붙는 자리와 상대가 바뀌는 자리가 같습니다.</strong>
+  그리고 그 전개가 출발하는 낱말 「자녀」는 새로 세운 가정이 아니라 <strong>바로 앞 절에서 성령이 증언한 그 낱말</strong>입니다.
+  ⚠ <strong>강단에서 「계단」·「단계」로 설교하지 마십시오.</strong> 이 노트의 초판이 그렇게 적었다가 <strong>본문의 배열이 아님을 확인하고 고쳤습니다.</strong> 조건과 귀결이 한 번, 대등한 한 쌍이 한 번입니다.</li>
+<li><strong>신학 명제</strong>: 상속은 지분의 크기가 아니라 <strong>누구와 함께 받는가</strong>로 규정됩니다.</li>
+<li><strong>적용</strong>: (목회) 「내 몫이 얼마인가」를 묻던 자리에서 「누구와 함께인가」로 질문을 바꿉니다. / (일터·세무) 상속인 확인이 지분 계산보다 앞선다는 순서.</li>
+</ul>
+<h2>대지 3 — 조건은 그 뒤 항 뒤에서 시작합니다 (8:17b)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 「우리가 그와 함께 영광을 받기 위하여 고난도 함께 받아야 할 것이니라」(개역개정)가 <strong>앞 항 뒤가 아니라 뒤 항 뒤에</strong> 옵니다. <strong>원문은 이 자리에 조건절을 씁니다.</strong> 그리고 그 조건절의 동사(함께 고난받다)와 목적절의 동사(함께 영광을 받다)가 <strong>뒤 항과 같은 「함께」를 앞에 답니다.</strong> 뒤 항부터 절 끝까지가 「함께」의 구역이고, 조건절이 그 구역 안에서 시작합니다. <strong>그리고 본문은 그 「함께」의 상대를 그 자리에 이름으로 적어 두었습니다 — 「그리스도와 함께 한 상속자」입니다.</strong>
+  ⚠ <strong>그런데 그 조건이 뒤 항에만 걸리는지 문장 전체에 걸리는지는 원문의 형태가 갈라 주지 않습니다.</strong> 강단에서 확정하지 마십시오. <strong>확정하는 순간 둘 중 하나를 하게 됩니다</strong> — 고난을 자격으로 만들거나, 본문이 쓴 낱말을 지우거나.</li>
+<li><strong>신학 명제</strong>: 본문은 고난과 영광을 <strong>같은 「함께」로 묶어</strong> 두었고, 그 「함께」의 상대를 이름으로 적어 두었습니다.</li>
+<li><strong>적용</strong>: (목회) 고난 중인 성도에게 「이것이 당신의 자격 증명입니다」라고 말하지 않습니다. 동시에 「이건 조건이 아닙니다」라고 지우지도 않습니다. <strong>본문이 놓은 자리를 그대로 보여 줍니다.</strong> / (일터) 함께 지는 손해가 관계의 증명서가 아니라 관계의 결과라는 순서.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p><strong>경로: 대조도 예표도 아니고 「동참」입니다.</strong>
+이 본문에서 그리스도는 무엇을 이루신 분으로 등장하지 않습니다. <strong>상속의 공동 소유자로, 곧 이름으로 등장합니다</strong> — 「그리스도와 함께한 상속자」.</p>
+<p>⚠ <strong>본문이 말하지 않은 결핍을 만들지 않습니다.</strong> 이 단락은 「우리는 할 수 없었으나 그리스도께서 하셨다」고 말하지 않습니다. 이 여섯 절에 사람의 무능에 대한 진술이 없습니다. <strong>그러므로 그리스도 연결을 「채움」이 아니라 「더함」으로 선포합니다</strong> — 본문이 상속자를 말한 뒤, 그 상속을 <strong>누구와 함께</strong> 갖는지를 더 적었습니다.</p>
+<p>⚠ <strong>그리고 이 자리에서 「고난이 자격이다」로 가지 마십시오.</strong> <strong>칼뱅은 이 조건절을 「원인」이 아니라 「순서」로 읽습니다.</strong> 다만 그것도 <strong>하나의 독법</strong>이며, 조건절이 무엇에 걸리는지는 원문의 형태가 갈라 주지 않습니다.</p>
+<p>그리고 한 자리가 더 있습니다. 8:15가 적어 둔 부름 「아빠 아버지」(개역개정)는 <strong>겟세마네에서 예수께서 부르신 말과 같은 두 낱말</strong>입니다(막 14:36). <strong>우리가 낼 수 있는 소리가 그 한 마디뿐인 자리에서, 그 한 마디는 이미 그분이 쓰신 말입니다.</strong>
+⚠ <strong>다만 이것을 8:17의 조건에 대한 답으로 이어 붙이지 마십시오.</strong> 본문은 두 문장을 잇지 않았습니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — 같은 이름으로 불리는 자리에 뒤늦게 들어간 사람이, 앞서 그 이름을 부른 이의 목소리를 듣게 되는 장면)</p>
+<h2>결론과 결단 촉구</h2>
+<p>「더 고난받읍시다」가 아닙니다. <strong>오늘 이 본문이 요청하는 반응은 순서를 바꾸는 것입니다</strong> — 자격을 먼저 세고 신분을 나중에 확인하던 순서를, 신분을 먼저 듣고 그다음을 보는 순서로.
+그리고 지금 고난 중이신 분께는 한 문장만 남깁니다. <strong>본문은 그 고난을 당신의 증명서로 만들지 않았고, 없는 셈 치지도 않았습니다. 그 고난 앞에 「함께」라는 말을 붙여 두었습니다.</strong></p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li>추천 찬송: (양자 됨·아버지 되심 주제 / 고난과 영광 주제 각 1곡 — 회중 찬송집에서 택함)</li>
+<li>참고 교리문답: <strong>하이델베르크 요리문답 제33문</strong>(롬 8:14-17을 증거구절로 싣는다). ⚠ <strong>한국어 문안은 확보하지 못했으므로 문장을 인용하지 않고 문항만 가리킨다.</strong></li>
+</ul>
+<hr/>
+<h2>📎 부록 — 강단에서 확정하지 않은 자리와 판본 차이</h2>
+<p><strong>① 확정하지 않은 자리 셋</strong> (원문의 형태가 갈라 주지 않는다)
+- <strong>8:14 「인도함을 받는」의 태</strong> — 현재형이라 중간태와 수동태가 같은 꼴이다. 「이끌림을 당한다」로도 「이끌려 간다」로도 확정할 수 없다.
+- <strong>8:16 「우리의 영과 더불어」</strong> — 「우리 영<strong>에게</strong> 증언한다」로도 「우리 영<strong>과 함께</strong> 증언한다」로도 읽힌다. 증인이 하나인지 둘인지가 갈린다. <strong>두 한국어 판본은 「더불어」 쪽으로 옮겼다.</strong>
+- <strong>8:17의 조건절이 무엇에 걸리는가</strong> — 뒤 항에만인지 문장 전체인지 갈라 주지 않는다.</p>
+<p><strong>② 개역개정 ↔ 개역한글이 갈리는 자리 넷</strong> (8:12·8:13은 두 판본이 글자까지 같다)</p>
+<table>
+<thead>
+<tr>
+<th>절</th>
+<th>개역개정</th>
+<th>개역한글</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8:14</td>
+<td>인도함을 받는 <strong>사람은</strong></td>
+<td>인도함을 받는 <strong>그들은</strong></td>
+</tr>
+<tr>
+<td>8:15</td>
+<td><strong>아빠</strong> 아버지<strong>라고</strong> / 받지 <strong>아니하고</strong> / <strong>우리가</strong></td>
+<td><strong>아바</strong> 아버지<strong>라</strong> / 받지 <strong>아니하였고</strong> / (주어 없음)</td>
+</tr>
+<tr>
+<td>8:16</td>
+<td><strong>우리의 영과</strong> 더불어 / <strong>증언</strong>하시나니</td>
+<td><strong>우리 영으로</strong> 더불어 / <strong>증거</strong>하시나니</td>
+</tr>
+<tr>
+<td>8:17</td>
+<td><strong>상속자</strong> (3회) / 받아야 <strong>할</strong> 것이니라</td>
+<td><strong>후사</strong> (3회) / 받아야 <strong>될</strong> 것이니라</td>
+</tr>
+</tbody>
+</table>
+<p><strong>③ ★ 강단에서 반드시 밝힐 것 — 원문의 조건절이 우리말에서 당위로 온다</strong>
+<strong>개역개정도 개역한글도 8:17의 조건절을 조건으로 옮기지 않았다.</strong> 목적절을 앞으로 당기고 조건절을 <strong>당위</strong>로 바꾼다 — 「고난도 함께 받아야 <strong>할/될</strong> 것이니라」.
+→ <strong>곧 회중이 든 성경은 원문보다 한 걸음 요구 쪽에 가 있다.</strong> 이 사실을 알려 주지 않으면 <strong>회중은 본문보다 무거운 짐을 지고 돌아간다.</strong>
+→ ⛔ <strong>그렇다고 「번역이 틀렸다」로 가지 마라.</strong> 조건절이 무엇에 걸리는지가 미결이므로 역자의 선택을 오역으로 판정할 근거가 없다.</p>
+<p><strong>④ 확보한 것과 확보하지 못한 것</strong></p>
+<p><strong>확보함</strong> — <strong>칼뱅은 롬 8:17의 이 조건절을 「원인」이 아니라 「순서」로 읽는다</strong>(본문 블록에서 확보, 축자 <em>"He denotes the </em><em>order</em><em> … </em><em>rather than the cause</em><em>"</em>). <strong>하이델베르크 요리문답 제33문이 롬 8:14-17을 증거구절로 싣는다</strong>(제120문은 싣지 않는다 · 한국어 문안은 미확보라 문장을 인용하지 않는다).
+→ ⚠ <strong>이 인용이 미결을 없애지 않는다.</strong> 칼뱅의 독법도 <strong>하나의 독법</strong>이고, 조건절이 무엇에 걸리는지는 형태가 갈라 주지 않는다. <strong>다만 「고난이 자격이다」가 개혁주의 전통의 표준 독법이 아니라는 것</strong>은 보여 준다.</p>
+<p><strong>확보하지 못함 (F)</strong> — 조건절 걸림 범위에 대한 <strong>주석가 귀속</strong>과 <strong>한 교부의 해당 대목</strong>은 확보 실패다. ⛔ <strong>확보하지 못한 전통은 이름을 쓰지 않는다.</strong> 요지만 적고 출처를 지시하지 않는 방식으로 전통을 끌어오지 않는다.</p>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

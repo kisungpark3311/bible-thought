@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 16:1-16</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 16:1-16</h1>
+<p><strong>2026-09-16 | 설교 제목(안): 논증이 끝나는 자리, 이름들</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 가 본 적 없는 교회에 스물여섯 이름을 적으면서 같은 명령을 열여섯 번 반복했고, 이름마다 다른 수식어를 붙였으며, 그 수식어 대부분을 "주 안에서"로 매고, 지치도록 수고했다는 말은 네 여성에게 붙였다.</p>
+<p><strong>설교적 명제</strong>: 복음이 만든 것은 교리 체계만이 아니라 이름으로 부를 수 있는 사람들이며, 그 이름들을 잇는 것은 혈연도 지역도 아니라 "주 안에서"다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 사람을 <strong>묶어서</strong> 다룹니다. "성도님들", "우리 부서", "그 세대." 묶으면 편하지만 얼굴이 사라집니다. 그리고 수고의 기억도 한쪽으로만 남습니다 — 앞에 선 사람, 직분을 가진 사람의 이름만 기록에 남고 실제로 지친 사람의 이름은 흐려집니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>상황형으로 엽니다. 성경을 통독하다가 이런 목록을 만나면 대개 빠르게 넘깁니다. 그런데 <strong>로마서의 위대한 논증이 도달한 마지막 그림이 바로 이 명단</strong>이라는 점을 짚으며 들어갑니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: 오래된 기록이나 사진 뒷면의 이름들을 발견했을 때의 느낌.</p>
+<hr/>
+<h2>대지 1 — 명단이 논증의 증거물이다 (16:1-5)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 이 목록에는 유대인 이름(브리스가, 아굴라, 안드로니고, 헤로디온 — "내 친척")과 이방인 이름, 노예의 이름으로 흔했던 것들과 귀족 가문 소속("아리스도불로의 권속", "나깃수의 가족")이 <strong>한데 섞여 있습니다.</strong> 10장 12절의 "유대인이나 헬라인이나 차별이 없다"가 여기서 <strong>명단으로</strong> 존재합니다. 그리고 놀라운 사실 하나 — <strong>바울은 이 교회에 가 본 적이 없습니다</strong>(1:10-13). 가 보지 않은 도시의 스물여섯 이름을 적는다는 것은, 그가 이들을 <strong>다른 곳에서 만났다</strong>는 뜻입니다.</li>
+<li><strong>신학 명제</strong>: 교리의 진실성은 그 교리가 만들어 낸 명단에서 검증된다.</li>
+<li><strong>적용</strong>: (목회) 우리 교회의 명단이 누구를 담고 있고 누구를 빠뜨리는지 봅니다. (일터) 협업의 공로를 정리할 때 이름을 빠뜨리지 않습니다.</li>
+</ul>
+<h2>대지 2 — 반복되지 않는 것이 정보다 (16:6-13)</h2>
+<ul>
+<li><strong>주해 요점</strong>: "문안하라"는 명령이 <strong>열여섯 번</strong> 반복되는데, 이름마다 붙는 수식어는 매번 다릅니다. 그리고 그중 <strong>열한 자리가 "주 안에서" 혹은 "그리스도 안에서"</strong>입니다. 특히 눈여겨볼 것이 있습니다. <strong>"지치도록 수고하였다"</strong>는 동사가 붙은 사람이 넷인데 — 마리아, 드루배나, 드루보사, 버시 — <strong>전부 여성</strong>입니다. 12절의 경우 헬라어 분사가 <strong>여성 복수 형태</strong>라 성이 문법으로 확정됩니다. 그리고 이 동사는 바울이 <strong>자기 사도적 수고</strong>를 말할 때 쓰는 바로 그 동사입니다.</li>
+<li><strong>신학 명제</strong>: 교회의 기억은 자리가 아니라 수고를 따라 남아야 한다.</li>
+<li><strong>적용</strong>: (목회) 감사와 기록이 특정 직분에만 몰려 있지 않은지 점검합니다. (일터) 실제로 일한 사람의 이름을 보고서에 남깁니다.</li>
+</ul>
+<h2>대지 3 — 교리가 얼굴을 얻는다 (16:13-16)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 13절은 루포를 <strong>"주 안에서 택하심을 입은"</strong> 자라고 부릅니다. 8장부터 11장까지 논증의 무게를 지던 그 "택하심"이, 여기서는 <strong>한 사람의 수식어</strong>가 됩니다. 그리고 곧바로 <strong>"그의 어머니는 곧 내 어머니니라"</strong>가 이어집니다 — 언약 공동체가 <strong>새 가족 언어</strong>를 만듭니다. 마지막으로 16절에서 명령의 방향이 바뀝니다. 열다섯 번의 "저 사람에게 문안하라" 뒤에 <strong>"서로 문안하라"</strong>가 오고, 이어서 <strong>"그리스도의 모든 교회가 너희에게 문안하느니라"</strong> — <strong>명단이 회중으로, 회중이 세계 교회로 열립니다.</strong></li>
+<li><strong>신학 명제</strong>: 선택 교리는 추상 명제가 아니라 얼굴 있는 사람에게 붙는다.</li>
+<li><strong>적용</strong>: (목회) 교리를 가르칠 때 그 교리가 붙을 사람의 이름을 함께 떠올립니다. (일터) 원칙을 말할 때 그 원칙이 보호할 구체적 사람을 생각합니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>소속의 제시</strong>입니다. 이 목록에서 그리스도는 논제가 아니라 <strong>소속</strong>입니다. "그리스도 예수 안에서 나의 동역자들", "그리스도께 처음 맺은 열매", "나보다 먼저 그리스도 안에 있는 자", "그리스도의 모든 교회." 사람들의 이름을 부르는데 <strong>그 이름마다 붙는 것이 그분의 이름</strong>입니다. 1장부터 11장까지 논증으로 설명된 "그리스도 안에"가 여기서는 <strong>명함의 형식</strong>으로 나타납니다. 우리가 서로의 이름을 부를 수 있는 이유는 우리가 서로를 잘 알아서가 아닙니다. <strong>한 분이 우리 모두의 이름을 먼저 부르셨기 때문입니다.</strong></p>
+<p>💬 <strong>예화 슬롯 ②</strong>: 누군가 내 이름을 기억하고 불러 주었을 때의 경험.</p>
+<h2>결론과 결단 촉구</h2>
+<p>이번 주 기도에서 <strong>묶어 부르던 것을 이름으로 풀어 봅시다.</strong> "우리 교회", "우리 가족" 대신 이름 하나씩. 그리고 본문이 한 그대로, <strong>그 이름 옆에 한 마디씩 적어 봅시다.</strong> 한 마디를 쓰려면 그 사람을 실제로 보아야 합니다. 마지막으로 16절의 명령을 오늘 실행합시다 — <strong>"서로 문안하라."</strong> 인사는 예배의 부속이 아니라 <strong>본문이 명령한 행위</strong>입니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「사랑하는 주님 앞에」(220장) · 「우리 다시 만날 때까지」(222장)</li>
+<li><strong>참고 교리문답</strong>: 사도신경 「성도가 서로 교통하는 것」 · 하이델베르크 요리문답 제55문(성도의 교제)</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

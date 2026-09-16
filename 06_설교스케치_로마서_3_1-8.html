@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 3:1-8</h1><article id="sermon">
+<hr/>
+<p>date: 2026-09-08
+day: 화요일
+tags: [설교스케치, 강해설교, 로마서]
+unit: 6/37
+본문: 로마서 3:1-8
+제목: 맡겨진 것과 맡기신 분 — 「하나님은 참되시다 할지어다」
+master_title: 그런즉 유대인의 나음이 무엇이냐
+status: 완료</p>
+<hr/>
+<h1>🎤 설교 스케치 | 로마서 3:1-8</h1>
+<p><strong>2026-09-08 | 설교 제목(안): 셈해 보라는 물음에 수령증으로 답하다</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 앞 단락이 만들어 낸 반론을 자기 입으로 물음으로 옮겨 적고, 「유대인의 나음」을 부인하는 대신 <strong>「범사에 많으니」</strong>로 답하되 그 첫 항목을 소유가 아니라 <strong>맡겨진 것</strong>으로 대었으며, 맡은 자의 불신실이 하나님의 신실하심을 폐하지 못한다고 끊은 뒤, 이 여덟 절에서 서법이 명령인 문장을 <strong>3인칭</strong>으로, 그 문법적 주어가 <strong>하나님</strong>이 되게 세웠다.</p>
+<p><strong>설교적 명제</strong>: 우리가 무엇을 가졌는지 셈하는 자리에서, 본문은 목록을 지우지 않고 <strong>목록의 첫 줄을 「맡았음」으로 바꿔 놓습니다.</strong> 그리고 마지막에 세우는 것은 우리의 행동이 아니라 <strong>판정 하나</strong>입니다 — 「하나님은 참되시다.」</p>
+<blockquote>
+<p>⚠ <strong>강단 유보 여섯 — 지키지 않으면 이 본문은 반드시 미끄러집니다</strong>
+① <strong>구두점은 편집자의 것입니다.</strong> 3:5의 대괄호도, 3:7-8에서 어디까지가 반론자의 말인지도 <strong>원문이 표시하지 않습니다.</strong> 편집본마다 다르게 찍힙니다. <strong>「여기서부터는 반론자의 말입니다」를 대지의 근거로 삼지 않습니다.</strong> 어느 편집본을 골랐느냐에 따라 결론이 바뀌는 논거는 본문의 논거가 아니라 편집의 논거입니다
+② <strong>3:4의 「판단 받으실 때에」로 「하나님이 피고석에 서신다」를 설교하지 않습니다.</strong> 그 낱말은 두 방향이 <strong>같은 형태</strong>여서 갈리지 않고, <strong>히브리어 원문은 능동</strong>이며, 개역개정 자신이 시 51:4에서는 「주께서 <strong>심판하실 때에</strong>」로 옮겼습니다. 강단에서 드는 것은 <strong>「우리말 성경 두 자리가 반대 방향으로 서 있다」</strong>는 사실까지입니다
+③ <strong>「범사에 많으니」(3:2)와 「우리는 나으냐 결코 아니라」(3:9)를 둘 다 듭니다.</strong> 일곱 절 거리이고 같은 사람이 썼습니다. 한쪽만 골라 설교하면 회중은 다른 한쪽을 성경에서 지우게 됩니다
+④ <strong>「이 단락에 명령형이 하나뿐이다」를 강조의 근거로 쓰지 않습니다.</strong> 로마서 논증부의 명령형 빈도를 확인하지 못했습니다. 강단에서 드는 것은 「하나뿐」이 아니라 <strong>「3인칭이고 문법적 주어가 하나님」</strong>입니다
+⑤ ★ <strong>「그러므로 이 명령은 너희를 향한 것이 아니다」로도, 「너희는 판정하라」로도 설교하지 않습니다.</strong> <strong>3인칭 명령은 수신자를 문법으로 지정하지 않습니다.</strong> 형태가 주는 것은 <strong>명령의 주어</strong>뿐이고, 회중이 그 판정 앞에 선다는 것은 <strong>문맥에서 오는 목회적 적용</strong>이지 문법이 준 것이 아닙니다. 적용할 때 그 경계를 밝히고 넘어갑니다
+⑥ <strong>3:8의 반론은 여기서 답을 받지 못합니다.</strong> 답은 6:1-2에 있고 <strong>세 장을 걸어야</strong> 거기 닿습니다. 그 거리를 당겨 와 매끄럽게 닫지 않습니다</p>
+</blockquote>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 <strong>가진 것을 세어서 자기 자리를 확인합니다.</strong> 신앙의 유산, 직분, 배운 것, 지켜 온 습관. 그리고 그 목록이 흔들리면 곧바로 다음 계산이 따라옵니다 — <strong>「그렇다면 내가 지키지 못한 시기는 다 무효인가.」</strong></p>
+<p>본문의 대화자가 정확히 그 자리에 서 있습니다. 앞 단락이 그의 표를 무효화했고, 그는 「그러면 남는 게 뭐냐」고 묻습니다. 그리고 이 물음은 곧 <strong>하나님 쪽으로 넘어갑니다</strong> — 「내가 신실하지 못했으니 그분의 약속도 흔들리는 것 아닌가.」</p>
+<p><strong>본문이 다루는 것은 그 계산의 착지점입니다.</strong> 문제를 부인하지 않고, 문제의 하중이 걸리는 쪽을 바꿉니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p><strong>① 질문형</strong> — 「내가 신앙에서 가진 것을 적어 보라고 하면 몇 줄이 나옵니까. 본문도 그 물음으로 시작합니다. 그런데 답의 첫 줄이 <strong>가진 것이 아니었습니다.</strong>」
+<strong>② 상황형</strong> — 물건을 맡아 본 경험. 열쇠, 통장, 회사 인감. 맡은 물건에는 늘 <strong>두 이름</strong>이 적힙니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — 「내 이름으로 되어 있으나 내 것이 아닌 것을 다뤄 본 경험」. 보관, 인수인계, 반환 기한. 잃어버렸을 때 누구에게 갚아야 하는가)</p>
+<hr/>
+<h2>대지 1 — 답의 첫 줄이 「가진 것」이 아니라 「맡았음」입니다 (3:1-2)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 3:1이 묻는 것은 「나음」과 「유익」입니다. <strong>셈해 보라는 물음</strong>입니다. 그런데 3:2의 답이 「범사에 많으니」로 열고 첫 항목을 이렇게 답니다 — 「<strong>그들이 하나님의 말씀을 맡았음이니라.</strong>」 여기 쓰인 동사는 「믿다」로 익숙한 낱말인데, 이 형태에서는 사전이 뜻을 따로 싣습니다 — <strong>「맡아 두다·위탁받다」</strong>입니다. 신약에 여섯 자리가 있고 그중 다섯이 <strong>직무의 위탁</strong>입니다. 그리고 맡겨진 것이 「말씀들」, 곧 <strong>문서</strong>입니다. 두 절 뒤에 「<strong>기록된 바</strong>」로 그 문서가 실제로 인용됩니다.</li>
+<li><strong>신학 명제</strong>: 하나님이 주신 것은 소유가 아니라 직무이고, 직무에는 <strong>맡기신 분</strong>이 함께 온다.</li>
+<li><strong>적용</strong>:</li>
+<li><em>목회</em> — 직분자 훈련에서 「무엇을 가졌는가」를 먼저 세게 하지 말고, <strong>같은 목록을 「누가 맡기셨는가」로 다시 읽게 하기</strong></li>
+<li><em>일터</em> — 위임장·증빙·원장은 전부 「맡은 것」입니다. <strong>보관 기한과 반환 의무가 있는 물건</strong>과 내 물건을 이번 주에 한 건만 갈라 보기</li>
+<li>⚠ <strong>여기서 멈춥니다.</strong> 바울은 「우선은」이라 해 놓고 둘째를 여기에 쓰지 않습니다. <strong>목록이 미완이므로 「나음 = 위탁」이라는 등식을 강단에서 세우지 않습니다.</strong></li>
+</ul>
+<h2>대지 2 — 맡은 자가 실패해도 판정의 주어는 하나님이십니다 (3:3-4)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 3:3이 반론을 세웁니다 — 「어떤 자들이 믿지 아니하였으면 어찌하리요.」 <strong>본문은 이 사실을 부인하지 않습니다.</strong> 부인하는 것은 그 사실의 <strong>결과 범위</strong>입니다 — 「그 믿지 아니함이 하나님의 <strong>미쁘심</strong>을 폐하겠느냐.」 여기서 「믿지 아니함」과 「미쁘심」이 <strong>같은 어근</strong>입니다. 우리말로는 갈라져 보이는데 원문에서는 한 낱말 가족이고, 두 절 안에서 <strong>맡겨짐 → 신실하지 못함 → 불신실 → 신실하심</strong>으로 돌면서 <strong>마지막 자리의 주인이 하나님으로 바뀝니다.</strong> 그리고 3:4에 이 단락에서 서법이 명령인 문장이 옵니다 — 「<strong>하나님은 참되시다 할지어다.</strong>」 <strong>3인칭 명령</strong>이라 우리말에 대응 형태가 없어 「할지어다」가 되었고, <strong>명령의 문법적 주어가 「하나님」</strong>입니다. 한 가지 더 — <strong>원문은 어순이 반대</strong>입니다. 「하나님은 참되시다 — 사람은 다 거짓되다」이고, 개역개정이 사람을 앞에 놓았습니다. <strong>명령이 걸리는 절은 앞쪽</strong>입니다.</li>
+<li><strong>신학 명제</strong>: 언약의 존속은 맡은 자의 성실에 걸려 있지 않다. 그러므로 이 명령이 세우는 것은 우리의 변호가 아니라 <strong>하나님이 참되시다는 판정 자체</strong>다.</li>
+<li><strong>적용</strong>:</li>
+<li><em>목회</em> — 「내가 믿지 못한 시기가 다 망쳤다」에서 멈춘 성도에게. <strong>그 시기를 없던 일로 만들지 말고</strong>, 결과가 걸린 자리가 그가 아님을 보이기. <em>"우리는 미쁨이 없을지라도 </em><em>주는 항상 미쁘시니</em><em>"</em>(딤후 2:13)</li>
+<li><em>일터</em> — 수임인이 잘못해도 위임인의 권리는 남습니다. <strong>실수한 담당자를 지우는 방식으로 사건을 처리하지 않기</strong></li>
+<li>⚠ <strong>두 가지를 밝히고 갑니다.</strong> ⓐ 「하나님의 미쁘심」인지 「하나님을 향한 믿음」인지는 <strong>형태가 정해 주지 않습니다.</strong> 앞쪽으로 읽는 근거는 문법이 아니라 <strong>바로 앞에 「불신실」이 마주 서 있고 다음 절이 「참되시다」로 답한다는 문맥</strong>입니다. ⓑ <strong>누구에게 명해지는지는 형태가 말하지 않습니다</strong>(강단 유보 ⑤).</li>
+</ul>
+<h2>대지 3 — 재판의 자리가 옮겨 다니고, 마지막 물음은 열린 채 남습니다 (3:5-8)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 3:5에서 물음이 위험해집니다 — 「진노를 내리시는 하나님이 <strong>불의하시냐.</strong>」 이것은 <strong>하나님에 대한 기소</strong>입니다. 그런데 3:6은 그 기소를 조목조목 반박하지 않고 <strong>그 기소가 서 있는 법정을 무너뜨립니다</strong> — 「만일 그러하면 하나님께서 어찌 세상을 심판하시리요.」 하나님이 피고이면 <strong>재판장이 없습니다.</strong> 그리고 「재판」을 뜻하는 낱말이 다섯 절 안에 <strong>네 자리</strong>에 있는데 서는 사람이 계속 바뀝니다 — 3:6은 세상, 3:7은 <strong>「나」</strong>, 3:8은 「그들」. ⚠ 다만 3:4의 그 낱말은 <strong>방향이 형태로 갈리지 않고</strong>, 3:8의 것은 동사가 아니라 명사입니다. 그러니 <strong>「네 번 반복된다」가 아니라 「네 자리에 있다」</strong>로만 말하고, <strong>바울이 그렇게 구성했다는 의도까지는 말하지 않습니다.</strong> 그리고 마지막 물음(3:8)에 <strong>본문이 답하지 않습니다.</strong> 논증 대신 판정 한 줄로 끊고, 형태로도 그것은 <strong>곁가지 문장</strong>입니다.</li>
+<li><strong>신학 명제</strong>: 하나님을 피고석에 세우는 논리는 반박당하기 전에 <strong>자기가 설 자리를 잃는다.</strong> 그리고 본문은 자기가 연 물음 하나를 <strong>닫지 않은 채</strong> 넘어간다.</li>
+<li><strong>적용</strong>:</li>
+<li><em>목회</em> — 「하나님이 공평하시냐」는 물음을 받았을 때 즉답으로 봉하지 않기. 본문은 <strong>답을 미룬 채로도</strong> 다음 문장으로 갑니다</li>
+<li><em>일터</em> — 「선을 이루려고 이 정도는」이 실무에서 가장 흔한 유혹의 문장입니다. 본문은 이 논리에 <strong>반박하지 않고 판결만 내립니다.</strong> 반박이 없다는 것이 약한 것이 아니라 <strong>논의 대상이 아니라는 뜻</strong>입니다</li>
+<li>⚠ 3:7-8의 <strong>화자 배분은 대지의 근거로 쓰지 않았습니다</strong>(강단 유보 ①). 대지 3은 「누가 말하는가」가 아니라 <strong>「누가 재판정에 서는가」</strong> 위에 서 있습니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p><strong>경로: 결핍의 채움이 아니라 — 같은 편지가 자기 물음에 답합니다.</strong></p>
+<p>이 여덟 절에 <strong>그리스도의 이름이 없습니다.</strong> 그러니 없는 자리를 만들어 복음을 밀어 넣지 않습니다. 대신 <strong>이 단락이 열어 놓고 닫지 않은 물음이 어디서 답을 받는지</strong>를 보여 줍니다.</p>
+<p>3:5가 물었습니다 — 「진노를 내리시는 하나님이 불의하시냐.」 3:6은 그 물음의 법정을 무너뜨릴 뿐 <strong>하나님의 의가 어떻게 유지되는지는 말하지 않습니다.</strong> 그 대답이 <strong>같은 장 안에</strong> 있습니다.</p>
+<blockquote>
+<p><em>"이 예수를 하나님이 그의 피로써 믿음으로 말미암는 </em><em>화목제물</em><em>로 세우셨으니 … 곧 이 때에 자기의 의로우심을 나타내사 </em><em>자기도 의로우시며 또한 예수 믿는 자를 의롭다 하려 하심이라</em><em>"</em> (롬 3:25-26)</p>
+</blockquote>
+<p><strong>그리고 낱말이 이어집니다.</strong> 3:4에서 하나님은 「의롭다 함을 <strong>얻으시는</strong>」 자리에 계셨습니다. 스물두 절 뒤 3:26에서 <strong>같은 동사의 주어</strong>가 되십니다 — 「의롭다 <strong>하시는</strong>」 분. 그리고 그 두 자리 사이에 <strong>화목제물</strong>이 놓여 있습니다.</p>
+<p><strong>이것이 복음입니다.</strong> 하나님이 의로우시면서 동시에 의롭다 하시는 일 — 이 단락은 그것을 <strong>묻기만 하고 답하지 못했습니다.</strong> 우리도 그 답을 만들어 낼 수 없습니다. <strong>그 답이 십자가에서 놓였습니다.</strong></p>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — 「판결을 내려야 하는 사람이 동시에 값을 치른 경우」. 자기가 매긴 벌금을 자기 주머니에서 낸 재판장, 손해를 확정하고 그 손해를 자기가 떠안은 대표)</p>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지만 요청합니다.</p>
+<p><strong>첫째, 목록의 첫 줄을 고쳐 적으십시오.</strong> 「나에게 있는 것」이 아니라 「나에게 맡겨진 것」으로. 무엇을 더 하라는 말이 아니라 <strong>같은 목록을 다른 이름으로 읽으라</strong>는 말입니다.</p>
+<p><strong>둘째, 하루가 끝날 때 오늘 하나님에 대해 내린 판정을 한 줄로 적으십시오.</strong> 고치겠다는 결심은 붙이지 마십시오. 본문의 명령은 <strong>무엇을 하라는 명령이 아니기 때문</strong>입니다. 3인칭 명령이 하는 일은 하나입니다 — <strong>사안을 어느 쪽으로 고정할 것인가.</strong> (이 요청은 그 형태에서 자동으로 나오는 것이 아니라 <strong>문맥에서 오는 목회적 적용</strong>입니다. 강단에서 그 경계를 밝히고 권합니다.)</p>
+<p><strong>「더 신실해집시다」로 끝내지 않습니다.</strong> 본문이 그렇게 끝나지 않기 때문입니다. 본문이 세우는 판정의 주어는 <strong>우리가 아니라 하나님</strong>입니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「주 하나님 지으신 모든 세계」(79장) · 「내 주는 강한 성이요」(585장)</li>
+<li><strong>참고 교리문답</strong>: 웨스트민스터 신앙고백 2장 1-2절(하나님의 진실하심) · 7장(하나님과 사람 사이의 언약) · 하이델베르크 요리문답 제26문(창조주 아버지를 신뢰함) · 제52문(재판장으로 오심)</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교 #하나님의미쁘심 #맡겨진말씀</strong></p>
+</article></body>
+</html>

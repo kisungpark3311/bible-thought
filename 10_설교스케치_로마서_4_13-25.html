@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 4:13-25</h1><article id="sermon">
+<hr/>
+<p>date: 2026-09-09
+day: 수요일
+tags: [설교스케치, 강해설교, 로마서]
+unit: 10/37
+본문: 로마서 4:13-25
+제목: 「그가 믿은 바 하나님은」 — 성경이 규정어를 붙이는 쪽
+master_title: 약속은 믿음으로 말미암아
+status: 완료</p>
+<hr/>
+<h1>🎤 설교 스케치 | 로마서 4:13-25</h1>
+<p><strong>2026-09-09 | 설교 제목(안): 그가 믿은 바 하나님은</strong></p>
+<blockquote>
+<p><strong>강단에 서기 전 일러두기 (작성자용 · 낭독하지 않는다)</strong>
+이 스케치는 원어 논증 위에 서 있으나 <strong>회중은 원어를 검증할 수 없다.</strong> 그래서 네 가지를 강단에서 쓰지 않기로 미리 정했다 — ⓐ <strong>「믿음은 현실을 직시합니다」</strong> ⓑ <strong>「수동태이므로 하나님이 하신 것입니다」</strong> ⓒ <strong>25절 두 전치사의 한쪽 확정</strong> ⓓ <strong>「죽음 어휘가 이 단락에 몰려 있습니다」.</strong> 이유는 <strong>말미 부록</strong>에 적었다.
+본문 안의 <strong>⚠ 「강단 유보」 블록도 낭독하지 않는다.</strong> 쓰지 않기로 한 것을 <strong>쓰게 되는 바로 그 자리</strong>에 표시해 두려고 거기 둔 것이며, 근거는 말미 부록의 같은 기호로 찾을 수 있다. <strong>낭독하는 것은 대지의 주해 요점·신학 명제·적용과 클라이맥스 본문뿐이다.</strong></p>
+</blockquote>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 로마서 4:13-25는 아브라함을 사례로 들면서, 두 번 다 규정어를 붙이는 대상을 아브라함이 아니라 <strong>그가 믿은 분</strong>으로 삼았고, 마지막에 그 기록의 수신자를 「그를 위하여만」에서 <strong>「우리도」</strong>로 넓혔다.</p>
+<p><strong>설교적 명제</strong>: <strong>성경이 이름표를 붙여 주는 쪽은 우리의 믿음이 아니라 우리가 붙든 분이며, 이 기록은 우리를 위하여 쓰였습니다.</strong></p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 믿음을 <strong>내 안의 온도</strong>로 잽니다. 오늘은 뜨거웠고 어제는 식었다고, 그래서 오늘은 되고 어제는 안 되었다고 셈합니다. 그러면 신앙은 매일 자기를 측정하는 일이 되고, <strong>측정이 나쁘게 나온 날에는 하나님께 나아갈 근거가 사라집니다.</strong></p>
+<p>그리고 우리는 성경을 <strong>남의 이야기</strong>로 읽습니다. 아브라함은 아브라함이고 나는 나라고. 그래서 아무리 읽어도 그 문장이 나를 향해 돌아서지 않습니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p><strong>질문형</strong>: 「당신의 믿음이 어떻습니까」라는 질문을 받으면 우리는 대개 자기 상태를 점검합니다. 그런데 오늘 본문은 그 질문에 다른 방식으로 답합니다. 아브라함을 소개하면서 <strong>아브라함을 설명하지 않고 그가 믿은 분을 설명합니다.</strong></p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — 보증서·계약서에서 「조건」이 하나 붙는 순간 그 문서의 효력이 어떻게 달라지는지. 일상에서 「무조건」과 「조건부」를 구분해 본 경험)</p>
+<hr/>
+<h2>대지 1 — 조건이 하나 붙으면 약속은 약속이기를 그칩니다 (4:13-16)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 13절부터 16절 사이에 <strong>문서의 효력을 다루는 낱말이 셋</strong> 나옵니다. ※ <strong>「이 대목의 낱말이 전부 문서 어휘다」라고는 말하지 않습니다</strong> — 세어 보면 셋이고, 나머지는 율법·약속·후손·의·믿음 같은 이 서신의 일반 어휘입니다. 14절의 <strong>「헛것이 되고」</strong>와 <strong>「파기되었느니라」</strong>, 16절의 <strong>「굳게 하려」</strong>가 그렇습니다. 특히 「굳게 하려」에 해당하는 헬라어 <code>베바이오스</code>는 <strong>증서가 유효하다고 할 때 쓰는 낱말</strong>입니다. 그리고 15절이 그 사이에 한 문장을 끼워 넣습니다 — <em>"율법은 진노를 이루게 하나니."</em></li>
+<li><strong>신학 명제</strong>: <strong>약속의 확실성이 받는 쪽의 이행에 걸리면, 그 확실성은 이행의 정도만큼만 남습니다.</strong> 그래서 16절이 「이는 은혜에 속하기 위하여」라고 적습니다.</li>
+<li><strong>적용(목회)</strong>: 「내가 이만큼 했으니 하나님이 이만큼 하시겠지」라는 셈이 마음에 들어올 때, 그것은 겸손이 아니라 <strong>약속을 조건부 문서로 고쳐 쓰는 일</strong>입니다.</li>
+<li><strong>적용(일터)</strong>: 계약과 세무를 다루는 분들은 이 구조를 매일 봅니다. 같은 문서라도 단서 조항 하나가 효력을 통째로 바꿉니다. <strong>그 눈으로 자기 확신의 근거를 한 번 읽어 보십시오.</strong></li>
+</ul>
+<blockquote>
+<p>⚠ <strong>강단 유보 ①</strong>: 15절의 「율법은 진노를 이루게 하나니」를 <strong>「율법은 나쁜 것」</strong>으로 옮기지 않습니다. 바로 앞 단락의 마지막 문장이 <em>"도리어 율법을 굳게 세우느니라"</em>(3:31)입니다. <strong>두 문장 사이에 다리를 놓지 않고 그대로 둡니다.</strong></p>
+</blockquote>
+<h2>대지 2 — 성경이 규정어를 붙이는 쪽은 믿는 사람이 아닙니다 (4:17-21)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 17절이 아브라함의 믿음을 묘사할 차례에 이렇게 씁니다 — <em>"그가 믿은 바 하나님은 죽은 자를 살리시며 없는 것을 있는 것으로 부르시는 이시니라."</em> <strong>주어가 바뀐 것이 아니라 설명 대상이 바뀐 것입니다.</strong> 그리고 19절이 몸의 사실 둘을 적습니다. <strong>백 세, 그리고 죽은 것 같은 태.</strong> 성경이 그것을 지우거나 미화하지 않습니다.</li>
+<li><strong>신학 명제</strong>: <strong>믿음의 무게는 믿는 자의 강도가 아니라 믿어지는 분의 정체에 실립니다.</strong></li>
+<li><strong>적용(목회)</strong>: 심방과 상담의 물음을 바꾸어 봅시다. 「당신의 믿음이 어떻습니까」에서 <strong>「당신이 믿는 분이 어떤 분이라고 성경이 말합니까」</strong>로. 앞의 물음은 대답할 수 없는 날이 있지만, 뒤의 물음은 성경을 펴면 대답이 있습니다.</li>
+<li><strong>적용(일터)</strong>: 일이 되돌릴 수 없게 어그러진 날, 우리는 상황을 축소해서 말하고 싶어집니다. <strong>19절은 축소하지 않습니다.</strong> 사실을 사실대로 두고 그 옆에 다른 사실 하나를 나란히 놓습니다.</li>
+</ul>
+<blockquote>
+<p>⚠ <strong>강단 유보 ②</strong>: <strong>본문이 아브라함의 믿음을 서술하지 않는 것이 아닙니다.</strong> 20-21절은 그가 의심하지 않고 견고하여져 하나님께 영광을 돌리고 확신했다고 분명히 적고, <strong>「영광을 돌리며」는 원문에서 능동입니다 — 행위자가 아브라함입니다.</strong> 이 대지는 그 서술을 지우지 않습니다. 다만 <strong>그 서술을 회중에게 요구로 돌리지 않습니다.</strong>
+⚠ <strong>강단 유보 ③</strong>: 19절의 「알고도」는 <strong>사본에 따라 「알지 못하고」로도 읽힙니다.</strong> 한국어 성경과 KJV가 정반대입니다. 그래서 <strong>「믿음은 현실을 직시합니다」를 이 절의 가르침으로 선포하지 않습니다.</strong> 이 대지가 쓰는 것은 <strong>본문이 두 사실을 적어 두었다</strong>는 것이며, 그것은 어느 사본에서도 그대로입니다.</p>
+</blockquote>
+<h2>대지 3 — 이 기록은 그를 위하여만 쓰인 것이 아닙니다 (4:22-25)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 23절에서 문장의 방향이 돕니다 — <em>"그에게 의로 여겨졌다 기록된 것은 아브라함만 위한 것이 아니요 의로 여기심을 받을 우리도 위함이니."</em> <strong>「아브라함이 아니라 우리」가 아니라 「아브라함만이 아니라 우리도」입니다.</strong> 그리고 24절이 그 「우리」를 규정하는데, <strong>17절에서 하나님을 불렀던 바로 그 형식으로 부릅니다</strong> — <em>"예수 우리 주를 죽은 자 가운데서 살리신 이를 믿는 자."</em></li>
+<li><strong>신학 명제</strong>: <strong>아브라함이 믿은 하나님과 우리가 믿는 하나님은 같은 말로 규정되며, 달라진 것은 그 규정 안에 한 이름이 들어왔다는 것입니다.</strong></li>
+<li><strong>적용(목회)</strong>: 성경 인물을 「본받을 위인」으로만 가르치면 성도는 매번 자기가 그 사람이 아니라는 것을 확인하고 끝납니다. <strong>23절은 그 읽기를 정면으로 막습니다.</strong></li>
+<li><strong>적용(일터)</strong>: 월요일 아침의 자리에서도 이 문장은 유효합니다. 「이 기록이 나를 위한 것이다」는 감정이 아니라 <strong>본문이 자기에 대해 한 진술</strong>입니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p><strong>경로: 성취.</strong> 예표도 유비도 아닙니다. <strong>본문이 이름을 부릅니다.</strong></p>
+<p>25절이 관계대명사 하나로 앞 절의 이름을 받아 두 문장을 나란히 놓습니다 — <em>"예수는 우리가 범죄한 것 때문에 내줌이 되고 또한 우리를 의롭다 하시기 위하여 살아나셨느니라."</em></p>
+<p><strong>여기서 본문이 말한 것을 그대로 선포합니다.</strong> 하나님이 예수를 죽은 자 가운데서 살리셨고, 그분이 우리의 범과 때문에 내줌이 되셨으며, 우리의 의롭다 하심과 관련하여 살아나셨습니다. <strong>17절이 「죽은 자를 살리시는 이」라고 불렀던 그 이름이 24절에서 한 번 더 불리는데, 이번에는 그 안에 예수의 이름이 들어 있습니다.</strong></p>
+<p>칼뱅이 이 절을 주석하며 이렇게 적었습니다 — <strong>「칭의의 효력이 그의 부활에 돌려진다」</strong>, 그리고 <strong>「그리스도의 부활은 우리의 칭의에 필수적이었다」</strong>. 그는 이 둘째 구절을 「새 생명」으로 옮겨 읽는 독법을 거절하고 <strong>여전히 전가적 칭의를 말하는 것</strong>이라고 했습니다.</p>
+<blockquote>
+<p>⚠ <strong>강단 유보 ④ (R29)</strong>: <strong>여기에 「우리는 할 수 없으나 그리스도께서 하셨습니다」를 붙이지 않습니다.</strong> 본문이 우리의 무능을 진술하지 않기 때문입니다. 19절이 말한 무능은 <strong>아브라함의 몸</strong>이지 회중의 믿음이 아닙니다. <strong>본문이 말한 것이 「누가 무엇을 하셨다」이므로 그대로 선포합니다.</strong>
+⚠ <strong>강단 유보 ⑤</strong>: 25절의 「때문에」와 「위하여」는 <strong>원문에서 같은 전치사</strong>이고, 주석 전통이 셋으로 갈립니다. <strong>한쪽을 확정해 선포하지 않습니다.</strong> 확정하지 않아도 남는 것 — <strong>내주심과 살아나심이 한 문장에 묶여 있다</strong>는 것 — 만 선포합니다.</p>
+</blockquote>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — 이름표·명찰이 사람을 규정하는 자리. 또는 오래된 문서에 적힌 수신자 이름을 뒤늦게 자기 이름으로 확인한 경험. 창작 예화를 강요하지 않는다)</p>
+<hr/>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지를 요청합니다.</p>
+<p><strong>첫째, 이번 주에 물음 하나를 바꾸어 보십시오.</strong> 「내 믿음이 어떤가」 대신 <strong>「내가 믿는 분이 어떤 분이라고 성경이 말하는가」</strong>를 물으십시오. 성경을 펴서 그 문장을 그대로 옮겨 적어 보십시오. 17절과 24절이 오늘 그 답을 두 번 적어 주었습니다.</p>
+<p><strong>둘째, 되돌릴 수 없는 자리 하나를 감추지 말고 기도로 가져오십시오.</strong> 백 세는 백 세였습니다. 본문이 그것을 지우지 않고, 그 옆에 「죽은 자를 살리시는 이」를 적었습니다.</p>
+<p><strong>이것은 「더 열심히 믿으라」는 요청이 아닙니다.</strong> 23절이 이미 하신 말씀에 응답하는 것입니다 — <strong>이 기록은 당신을 위하여 쓰였습니다.</strong></p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「주 예수 크신 사랑」 · 「나의 갈 길 다 가도록」 계열(약속의 신실하심을 다루는 곡)
+  ⚠ <strong>곡 번호를 확인하지 않았다. 주보에 싣기 전 찬송가 번호를 대조할 것</strong>(등급 C — 기억에 의한 제목 지시)</li>
+<li><strong>참고 교리문답</strong>: 칭의와 부활을 함께 다루는 항목이 있으나 <strong>문항 번호를 원문으로 확인하지 않았다.</strong> ⚠ <strong>번호를 적지 않는다.</strong> 강단·주보에 싣기 전 원문을 열어 확인할 것</li>
+</ul>
+<hr/>
+<details>
+<summary>📎 말미 부록 (작성자용 — 낭독하지 않는다)</summary>
+
+### 강단에서 쓰지 않기로 한 것과 그 이유
+
+| # | 쓰지 않는 것 | 이유 | 근거 위치 |
+|---|---|---|---|
+| ⓐ | **「믿음은 현실을 직시합니다」** | 19절 `κατενόησεν`은 **사본에 따라 `οὐ κατενόησεν`(생각하지 아니하고)**이 되어 뜻이 정반대가 된다. Metzger 위원회의 판정 등급이 **{C}**이고 축자로 **"양쪽 다 뜻이 통한다"**고 적었다 | Stage 1 §1 이문 · 봉합7 |
+| ⓑ | **「수동태이므로 하나님이 하신 것입니다」** | 20절에 같은 형태 둘이 `그러나`로 묶여 있는데 **앞엣것(「의심하지 않고」)은 행위자를 함의하지 않는다.** 형태만으로 「하나님이 하셨다」를 읽어 낼 수 없다. 그 내용이 참일 수 있으나 **근거가 형태가 아니다** | Stage 1 §3④ · §5 봉쇄ⓑ |
+| ⓒ | **25절 두 전치사의 한쪽 확정** | 원문에서 같은 전치사이며 주석 전통이 셋으로 갈린다(둘 다 이유 / 앞이유·뒤목적 / 둘 다 목적). **개역개정은 이미 하나를 골랐다** | Stage 1 §3⑤ · 봉합8 |
+| ⓓ | **「죽음 어휘가 이 단락에 몰려 있습니다」** | 실측 결과 이 어군은 **로마서 전체에 18회**이고 6장 4회·8장 3회가 있다. **이 단락의 넷은 특별히 많지 않다.** 말할 수 있는 것은 계수가 아니라 **순서**다 | Stage 1 §4① · §5 유보2 |
+| ⓔ | **「바울이 창세기를 바꿔 인용했습니다」** | 창 17:5·15:5 대조 결과 **변경점 0**(등급 A). 주장할 근거가 없다 | Stage 1 §3②·③ |
+
+### 승계 확인 (감축 전후 대조)
+
+**이 스케치는 감축하지 않았다**(Stage 3 분량 상한은 2026-09-08 폐지). 그러므로 **유보의 앞 절반이 사라져 남은 절반이 「위반 아님」처럼 보이는 사고**가 발생할 자리가 없다.
+다만 종료 전에 **강단 유보 ①~⑤가 전부 본문에 살아 있는지** 기계 검색으로 확인했다 — **5건 전부 존재.**
+
+### 자체 검증
+
+- [x] 각 대지가 본문의 실제 단락 구분과 일치하는가 → 13-16 / 17-21 / 22-25
+- [x] 적용이 명령만이 아니라 은혜의 직설법에 뿌리내렸는가 → 결론이 「더 열심히」를 명시적으로 배제하고 23절의 직설법에 착지한다
+- [x] 복음 클라이맥스 없이 도덕 강연으로 끝나지 않았는가
+- [x] 원어 언급이 회중 눈높이로 번역되었는가 → `βέβαιος`를 「증서가 유효하다고 할 때 쓰는 낱말」로만 풀었고 파싱 용어를 쓰지 않았다
+- [x] **복음 클라이맥스가 본문에 없는 결핍을 만들어 내지 않았는가(R29)** → 강단 유보 ④가 **「우리는 할 수 없으나」를 명시적으로 배제**한다
+- [ ] ⚠ **미달 1건 — 예배 연결의 찬송 제목·교리문답 항목을 원문으로 확인하지 않았다.** 번호를 적지 않고 확인 지시를 남겼으나, **확인하지 않은 것을 실은 것 자체는 미달로 계상한다**
+
+### 재진술 계수 (R17 · 한 논지 3회 이하)
+
+| 논지 | 횟수 | 위치 |
+|---|---|---|
+| 성경이 규정어를 붙이는 쪽은 믿어지는 분이다 | **3회** | 설교적 명제 · 대지 2 신학명제 · 대지 3 신학명제 |
+| 이 기록은 우리를 위하여 쓰였다 | **3회** | 대지 3 주해요점 · 대지 3 적용(목회) · 결론 |
+| 조건이 붙으면 확실성이 이행에 걸린다 | **2회** | 대지 1 신학명제 · 대지 1 적용(일터) |
+| 본문이 두 사실을 지우지 않는다 | **3회** | 대지 2 주해요점 · 대지 2 적용(일터) · 결론 |
+
+⚠ **이 수치도 하한이다.** 서론과 FCF의 문장들이 위 논지들을 예고 형태로 담고 있어 계수 경계가 걸린다.
+
+### 분량
+
+**상한 없음**(2026-09-08 개정). 실측치는 Stage 1 말미 표에 함께 기록한다.
+
+</details>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

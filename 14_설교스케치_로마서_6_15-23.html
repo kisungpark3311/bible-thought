@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 6:15-23</h1><article id="sermon">
+<hr/>
+<p>date: 2026-09-09
+day: 수요일
+book: 로마서
+passage: 6:15-23
+unit: 14/37
+stage: 3
+status: 완료</p>
+<hr/>
+<h1>🎤 설교 스케치 | 로마서 6:15-23</h1>
+<p><strong>2026-09-09 | 설교 제목(안): 마주 세웠는데 저울이 아닙니다</strong></p>
+<hr/>
+<h2>📎 설교자 일러두기 (본문 전에 읽을 것)</h2>
+<p><strong>아래 본문은 낭독 가능한 연속 산문으로 썼다. 강단에서 쓰면 안 되는 것과 등급 표시는 본문에 섞지 않고 말미 「부록 — 강단 유보」에 모았다.</strong> 준비 단계에서 부록을 먼저 읽고, 그 다음 본문을 읽기를 권한다. <strong>부록에는 이 본문에서 흔히 쓰이지만 근거가 갈리는 항목 다섯이 있다.</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 「은혜 아래 있으니 죄를 지어도 되느냐」는 반론에 두 주인을 세워 답했는데, 그 두 편을 같은 무게로 놓지 않았다 — 한쪽은 도착지가 계속 사망으로 돌아왔고, 다른 쪽은 도착지가 다음 자리의 주인이 되어 하나님께로, 그리고 그리스도 예수 우리 주 안에 있는 영생으로 옮겨 갔다.</p>
+<p><strong>설교적 명제</strong>: <strong>여러분이 서 있는 자리는 저울의 어느 한쪽이 아니라, 누구에게 매여 어디로 옮겨 가고 있는가입니다.</strong></p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 신앙을 저울로 잽니다. 이만큼 죄를 줄였는가, 이만큼 거룩해졌는가. 그렇게 재는 사람은 잰 결과가 나쁠 때 자리를 의심합니다. <strong>본문은 저울을 주지 않고 자리를 말합니다.</strong> 그리고 그 자리의 마지막 칸에 성적이 아니라 한 분의 이름을 적어 두었습니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p><strong>① 질문형</strong>: "여러분은 오늘 아침 자기 신앙을 어떻게 확인하셨습니까? 무엇을 재 보셨습니까?"
+<strong>② 상황형</strong>: 결산기의 장부. 받을 값으로 들어온 것과 값 없이 들어온 것을 같은 난에 적으면 장부가 틀립니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — <strong>자기 상태를 수치로 확인하려다 오히려 무너진 경험</strong>. 성적표·건강검진·실적표 등 회중이 실제로 재는 것 하나. 종교적 예화보다 일상의 계측이 낫다.)</p>
+<hr/>
+<h2>대지 1 — 두 주인을 세우는데, 두 편의 무게가 다릅니다 (6:15-16)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 15절은 두 번째 반론입니다. <em>"우리가 법 아래에 있지 아니하고 은혜 아래에 있으니 죄를 지으리요"</em> — 그리고 <em>"그럴 수 없느니라"</em>로 끊습니다. 기각의 근거가 16절인데, 여기 쓰인 접속사(<strong>에토이</strong>)는 헬라어에서 둘을 가장 뚜렷하게 갈라 세우는 말입니다. 그런데 갈라 세운 넷이 짝이 맞지 않습니다 — 주인 쪽은 「죄」와 <strong>「순종」</strong>이고, 도착지 쪽은 「사망」과 <strong>「의」</strong>입니다. 우리가 기대하는 「죄 대 의」, 「사망 대 생명」이 아닙니다.</li>
+<li><strong>신학 명제</strong>: <strong>본문은 저울을 그리지 않았습니다. 갈라 세우되 같은 무게로 놓지 않았습니다.</strong></li>
+<li><strong>적용</strong>: (목회) 성도가 "제가 지금 어느 쪽인지 모르겠습니다"라고 할 때, 우리는 대개 저울을 하나 더 쥐여 줍니다. 본문은 저울 대신 <strong>누구에게 순종하고 있는지</strong>를 묻습니다. / (일터) 자기 평가표를 만들 때 「도달 목표」와 「지금 매여 있는 것」을 같은 칸에 적지 마십시오. 그 둘은 다른 항목입니다.</li>
+</ul>
+<h2>대지 2 — 도착지였던 것이 주인이 되고, 그 주인이 바뀝니다 (6:17-20, 22)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 17절이 먼저 놓는 것은 순종의 확인이 아니라 <strong>감사</strong>입니다 — <em>"하나님께 감사하리로다 너희가 본래 죄의 종이더니."</em> 그리고 18절에서 자리가 움직입니다. 16절에서 <strong>가 닿는 곳</strong>이던 「의」가 18절에서는 <strong>매이는 상대</strong>가 됩니다 — <em>"죄로부터 해방되어 의에게 종이 되었느니라."</em> 우리말 성경이 이 차이를 조사로 갈라 놓았습니다. 「의<strong>에</strong> 이르느니라」와 「의<strong>에게</strong> 종이 되었느니라」입니다. 20절도 같은 자리입니다 — <em>"죄의 종이 되었을 때에는 의에 대하여 자유로웠느니라."</em> 자유조차 「누구에 대하여」인지로 말합니다. 그리고 22절에서 그 주인의 자리가 다시 바뀝니다 — 18절은 「의에게」인데 22절은 <strong>「하나님께」</strong>입니다.</li>
+<li><strong>신학 명제</strong>: <strong>성화는 도달한 높이가 아니라 매인 자리의 이동입니다. 그리고 그 자리의 끝에는 원리가 아니라 한 분이 계십니다.</strong></li>
+<li><strong>적용</strong>: (목회) 심방에서 "요즘 얼마나 나아지셨습니까"를 첫 질문으로 두지 마십시오. <strong>본문의 첫 낱말은 감사이고 순종은 그 다음에 나옵니다.</strong> / (일터) 우리가 매여 있는 것은 대개 목표가 아니라 관계입니다. 거래처, 상사, 마감. <strong>그 목록을 한 번 적어 보는 것이 이 대지의 실물입니다.</strong></li>
+</ul>
+<h2>대지 3 — 마지막 문장은 대구가 아닙니다 (6:21, 23)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 21절이 과거를 묻습니다 — <em>"무슨 열매를 얻었느냐 이제는 너희가 그 일을 부끄러워하나니 이는 그 마지막이 사망임이라."</em> 그리고 23절이 두 결말을 나란히 놓습니다. 가장 대칭적으로 들리는 문장인데 <strong>원문에서 두 낱말이 다릅니다.</strong> 앞의 것은 <strong>일한 값으로 받는 것</strong>을 가리키고, 뒤의 것은 <strong>공로 없이 받는 것</strong>을 가리킵니다. 개역개정은 「은사」로 옮기고 각주에 「선물」을 달았고, 새번역은 본문에서 「선물」이라 옮깁니다. <strong>그리고 뒤쪽에만 붙은 말이 하나 더 있습니다</strong> — 「그리스도 예수 우리 주 안에 있는」. 앞쪽에는 여기에 대응하는 말이 없습니다.</li>
+<li><strong>신학 명제</strong>: <strong>두 결말은 같은 종류가 아닙니다. 하나는 받을 값이고 하나는 값 없이 주어진 것입니다.</strong></li>
+<li><strong>적용</strong>: (목회) 이 구절을 좌우 대칭으로 선포하면 문장이 균형 잡혀 들립니다. 그런데 그 균형이 지우는 것이 정확히 복음입니다. / (일터) 급여와 증여는 근거가 다르고 근거가 다르면 처리가 다릅니다. <strong>본문이 먼저 두 항목을 갈라 적었습니다.</strong></li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>성취</strong>가 아니라 <strong>본문 자체의 진술</strong>입니다. 이 아홉 절에서 그리스도는 한 번 나오고, 그 자리가 마지막 낱말 묶음입니다 — <em>"그리스도 예수 우리 주 안에 있는 영생"</em>(6:23).</p>
+<p><strong>여기서 없는 결핍을 만들지 않습니다.</strong> 본문은 "우리가 영생을 벌 수 없었다"고 말하지 않습니다. 본문이 실제로 한 말은 <strong>두 낱말을 갈라 쓴 것</strong>이고, <strong>한쪽에만 「우리 주 안에」를 붙인 것</strong>입니다. 그 배열이 이미 복음입니다.</p>
+<p>칼뱅이 이 문장을 두고 적었습니다 — <em>"바울은 「의의 삯은 영생이다」라고 쓸 수도 있었다. 그랬다면 두 절이 대응했을 것이다. 그러나 그는 우리가 그것을 하나님의 선물로 얻는 것임을 알았다."</em></p>
+<p><strong>그러나 본문이 실제로 말한 연약함은 있습니다.</strong> 19절이 명령에 이유를 붙였습니다 — <em>"너희 육신이 연약하므로."</em> <strong>바울이 비유를 낮춘 까닭이 듣는 이의 연약함이었습니다.</strong> 본문은 강한 회중을 상정하고 말하지 않습니다. 그리고 그 연약한 이들에게 마지막에 건넨 것이 성적이 아니라 <strong>자리</strong>였습니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — <strong>값을 치르고 받은 것과 값 없이 받은 것을 혼동했을 때 벌어지는 일</strong>. 선물을 받고 갚아야 한다고 여겨 관계가 뒤틀린 경험이면 충분하다. 상거래 비유는 뒤 문장에서 반드시 은혜 쪽으로 넘겨야 한다.)</p>
+<h2>결론과 결단 촉구</h2>
+<p><strong>요청은 하나입니다.</strong> 이번 주에 두 줄을 적으십시오 — <strong>내가 바라는 것</strong>과 <strong>내가 매여 있는 것.</strong></p>
+<p>둘이 같은 낱말이면 19절 앞부분이 말하는 자리입니다. 둘이 다르면, 18절과 22절이 말하는 방향으로 이미 옮겨진 것입니다. <strong>어느 쪽이든 오늘 여러분의 성적을 매기려고 적는 것이 아닙니다.</strong> 23절이 그 끝에 적어 둔 것이 성적이 아니기 때문입니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「주 없이 살 수 없네」 · 「나 같은 죄인 살리신」</li>
+<li><strong>참고 교리문답</strong>: 하이델베르크 요리문답 제1문(「나는 나의 것이 아니요 … 예수 그리스도의 것이니이다」) — <strong>본문의 「누구에게 매였는가」와 직접 맞닿는다</strong></li>
+</ul>
+<hr/>
+<h2>📌 부록 — 강단 유보 (본문에 섞지 않고 여기 모았다)</h2>
+<p><strong>① 「삯」을 군인의 급료 그림으로 풀지 마십시오.</strong>
+흔히 쓰이는 예화인데 <strong>칼뱅은 그 독법을 소개하고 물렸습니다</strong> — <em>"「삯」으로 옮기는 편이 더 단순할 것이다."</em> 채택한 쪽은 19세기 영어권 주석 전통이고, <strong>전통이 갈리는 자리입니다.</strong> 그리고 이 낱말의 신약 네 자리 중 <strong>군역 문맥은 둘뿐</strong>입니다.</p>
+<p><strong>② 「이 단락의 명령은 하나뿐」이라고 말하지 마십시오.</strong>
+19절의 「내주어(드려)」가 원문에서 형태상 분명한 명령형인 것은 맞습니다. <strong>그러나 22절의 「너희가 … 열매를 맺었으니」의 동사는 원문에서 진술과 명령이 같은 글자입니다.</strong> 「하나뿐」은 형태가 보증하지 않습니다.</p>
+<p><strong>③ 「우리말 성경으로도 확인된다」에는 판본을 붙이십시오.</strong>
+이 단락에서 개역개정과 개역한글이 여섯 곳에서 갈립니다. 특히 <strong>개역개정은 13절에서 「죄에게 내주다 ↔ 하나님께 드리다」로 낱말을 가르는데 개역한글은 전부 「드리다」</strong>입니다. 그리고 <strong>21-22절의 「열매」에 붙은 동사는 개역한글이 원문 반복을 더 잘 보존합니다</strong>(「얻었느뇨/얻었으니」). <strong>어느 판본이 낫다는 말이 아니라, 대비를 근거로 삼을 때는 판본을 밝혀야 참이 된다는 뜻입니다.</strong></p>
+<p><strong>④ ★ 회중이 든 성경으로는 이 단락의 주동사를 볼 수 없습니다.</strong>
+<strong>개역개정과 개역한글 둘 다 19절에서 원문의 명령형 동사를 연결형(「내주어」/「드려」)으로 내려앉히고, 명령의 무게를 문말 「거룩함에 이르라」에 실었습니다.</strong> 그런데 <strong>「이르라」에 해당하는 원문은 동사가 아니라 전치사구</strong>입니다. 어느 판본의 잘못이 아니라 두 언어의 구조 차이입니다. <strong>강단에서 "여기 명령이 있습니다" 하고 「이르라」를 가리키면 회중의 눈에는 맞지만 원문에는 어긋납니다.</strong> 19절 전체를 읽어 주고 넘어가는 편이 안전합니다.</p>
+<p><strong>⑤ 6:23의 「우리 주 안에 있는」이 어디까지 걸리는지는 확정하지 마십시오.</strong>
+「영생」에 걸린다는 독법은 확보했으나 다른 독법을 주장하는 이름을 특정하지 못했습니다. <strong>「학자들이 갈린다」고 말하지 마십시오.</strong> 말할 수 있는 것은 <strong>「그 말이 뒤쪽 짝에만 붙어 있다」</strong>까지입니다.</p>
+<p><strong>⑥ 8:15는 다음 자리입니다.</strong>
+6:18·6:22의 「하나님께 종이 되어」와 8:15의 「종의 영을 받지 아니하고」가 한 편지 안에 있습니다. <strong>이 설교에서 그 둘을 화해시키지 마십시오.</strong> 본문이 19절에 표지를 달아 둔 것까지만 전하면 충분합니다.</p>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

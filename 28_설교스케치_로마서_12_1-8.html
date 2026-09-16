@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 12:1-8</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 12:1-8</h1>
+<p><strong>2026-09-16 | 설교 제목(안): 드리라고 하기 전에</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 로마 교회에 명령을 내리지 않고, 1-11장에서 드러난 하나님의 자비하심을 근거로 몸을 산 제물로 드릴 것을 권했고, 그 드림의 몫은 하나님이 각 사람에게 나누어 주신 분량이 정한다고 말했다.</p>
+<p><strong>설교적 명제</strong>: 하나님이 먼저 하신 일을 듣고 난 사람만이 자기 몸을 선물로 드릴 수 있고, 그 사람은 자기 분량을 크게도 작게도 부르지 않는다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 헌신을 두 가지 방식으로 망칩니다. 하나는 <strong>근거 없이 요구받는 것</strong> — 왜 드려야 하는지 모른 채 드리다가 지칩니다. 다른 하나는 <strong>자기 분량을 잘못 재는 것</strong> — 과대평가해서 무너지거나, 과소평가해서 숨습니다. 이 본문은 두 가지를 한 단락 안에서 함께 다룹니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>질문형으로 엽니다. "여러분은 '헌신하라'는 말을 들을 때 선물처럼 들립니까, 청구서처럼 들립니까?" 그 차이가 어디서 생기는지를 본문이 첫 낱말 하나로 알려 준다고 예고합니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: 같은 부탁인데 앞에 붙은 한 문장 때문에 전혀 다르게 들렸던 경험 — 직장이나 가정에서.</p>
+<hr/>
+<h2>대지 1 — 권면은 명령 이전에 근거를 먼저 놓는다 (12:1-2)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 헬라어에서 "드리라"는 명령형이 아닙니다. 바울이 쓴 첫 동사는 <strong>파라칼로</strong>("내가 권하노니")이고, "드리라"는 거기 매달린 부정사입니다. 그리고 그 앞에 "<strong>하나님의 모든 자비하심으로</strong>"가 먼저 놓입니다. 문장 첫머리의 "그러므로"는 앞 한두 절이 아니라 <strong>로마서 1장부터 11장 전체</strong>를 받습니다.</li>
+<li><strong>신학 명제</strong>: 복음의 직설법이 먼저이고 윤리의 명령법이 나중이다. 이 순서가 뒤집히면 같은 문장이 율법이 된다.</li>
+<li><strong>적용</strong>: (목회) 헌신을 요청하기 전에 무엇 때문에 요청하는지를 먼저 말합니다. (일터) 지시를 내리기 전에 이유를 한 문장으로 붙입니다. 같은 요구가 다르게 도착합니다.</li>
+</ul>
+<h2>대지 2 — 제물이 살아 있으므로 예배가 예배당을 넘는다 (12:1하-2)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 제물에 붙은 첫 형용 성분이 "<strong>살아 있는</strong>"입니다. 구약 제사에서는 죽어야 제물이 되었는데, 여기서는 살아 있어야 제물입니다. 그래서 개역개정이 "영적 예배"로 옮긴 <strong>로기켄 라트레이안</strong>은 예배당 안의 시간이 아니라 <strong>몸이 놓인 모든 자리</strong>를 가리킵니다. 12:2가 "마음을 새롭게 함"을 붙인 것도 같은 방향입니다 — 생각이 바뀌지 않으면 몸이 놓인 자리는 바뀌지 않습니다.</li>
+<li><strong>신학 명제</strong>: 그리스도의 단번의 제사가 끝났기 때문에, 남은 제사는 죽이는 제사가 아니라 사는 제사다.</li>
+<li><strong>적용</strong>: (목회) 주일 봉사 시간만 헌신으로 세지 않습니다. (일터) 월요일 오전 아홉 시의 책상이 예배의 자리인지 묻습니다.</li>
+</ul>
+<h2>대지 3 — 자기를 재는 자는 내 느낌 밖에 있다 (12:3-8)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 이 여덟 절에서 <strong>이미 끝난 일을 진술하는 동사는 단 하나</strong>인데, 그 주어가 "<strong>하나님</strong>"입니다 — "하나님께서 각 사람에게 믿음의 분량대로 <strong>나누어 주신</strong> 대로". 자기 평가의 자가 내 판단보다 먼저 이미 놓여 있다는 뜻입니다. 그리고 본문이 금한 것은 "마땅한 것 <strong>이상으로</strong>" 생각하는 일입니다. 마땅한 만큼 생각하는 것은 금지되지 않았습니다. 그래서 12:4-8이 뒤따릅니다 — 내 분량은 혼자서 잴 수 없고, 지체는 다른 지체와의 관계에서만 제 기능을 갖기 때문입니다.</li>
+<li><strong>신학 명제</strong>: 겸손은 자기를 깎는 것이 아니라 정확히 재는 것이며, 그 자는 공동체 안에서만 읽힌다.</li>
+<li><strong>적용</strong>: (목회) 은사 목록에 등급을 매기지 않습니다. 작아 보이는 자리에 서 있는 성도에게 "당신의 분량"이라는 말을 돌려줍니다. (일터) 감당할 수 있는 일의 양을 숫자로 적어 두고, 느낌이 아니라 그 기록으로 수임과 일정을 판단합니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>성취</strong>입니다. 우리 몸이 "하나님이 기뻐하시는" 제물이 될 수 있는 근거는 제물의 품질에 있지 않습니다. 로마서는 이미 3:25에서 그 근거를 말했습니다 — 하나님이 그리스도를 화목제물로 세우셨습니다. <strong>우리는 스스로를 받으실 만하게 만들 수 없었으나, 그리스도께서 이미 받으실 만한 제사를 드리셨습니다.</strong> 그래서 12:1은 속죄를 되풀이하는 자리가 아니라 속죄 위에 서는 자리입니다. 그리고 12:5는 그 사실을 한 마디로 굳힙니다 — 우리 많은 사람이 "<strong>그리스도 안에서</strong>" 한 몸입니다. 되어야 할 일이 아니라 이미 된 일입니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: 값이 이미 치러진 뒤에 받은 선물 — 갚아야 할 것이 아니라 누려야 할 것으로 건네진 경험.</p>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지를 요청합니다. 첫째, 이번 주 내 몸이 실제로 머무는 자리 세 곳을 적고 그중 하나를 예배의 자리로 다시 정합니다. 둘째, 내 분량을 크게 부르고 있는지 작게 부르고 있는지 한 사람에게 물어봅니다. 더 열심히 하라는 요청이 아닙니다. <strong>이미 주어진 것을 정확히 재고, 그 자리에 몸을 두라는 요청입니다.</strong></p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「내 진정 사모하는」(88장) · 「주 안에 있는 나에게」(370장)</li>
+<li><strong>참고 교리문답</strong>: 하이델베르크 요리문답 제1문("살아서나 죽어서나 나의 유일한 위로는… 나는 나 자신의 것이 아니요") — 12:1의 소유권 이전과 정면으로 맞물립니다.</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

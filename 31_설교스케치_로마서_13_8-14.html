@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 13:8-14</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 13:8-14</h1>
+<p><strong>2026-09-16 | 설교 제목(안): 벗기려고 온 말씀이 아닙니다</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 계명들이 "네 이웃을 사랑하라" 안에 합산된다고 말했고, 그 사랑을 "이웃에게 악을 행하지 않음"이라는 최소치로 규정했으며, 밤이 깊었으므로 벗고 입자고 권한 뒤 마지막에 입을 대상을 그리스도라고 밝혔다.</p>
+<p><strong>설교적 명제</strong>: 사랑은 계명을 면제하는 원리가 아니라 계명을 모으는 합계이며, 우리가 입어야 할 것은 규칙의 갑옷이 아니라 한 인격이다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 신앙을 <strong>빼기로</strong> 계산합니다. 무엇을 끊었는지, 무엇을 안 하는지로 자신을 잽니다. 그러다 두 가지 오류에 빠집니다. 하나는 "사랑이 중요하지"라며 구체적인 것을 면제하는 것, 다른 하나는 반대로 끊기만 하다가 <strong>입을 것이 없어 지치는 것</strong>입니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>이야기형으로 엽니다. 아우구스티누스가 정원에서 "집어서 읽으라"는 소리를 듣고 펼친 자리가 <strong>바로 이 본문</strong>이었습니다. 그런데 그가 금지 목록에서 멈추지 않고 마지막 문장까지 읽었다는 점을 짚으며 들어갑니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: 끊는 데는 성공했는데 채울 것이 없어 다시 돌아간 경험 — 금연, 다이어트, 미디어 절제 등.</p>
+<hr/>
+<h2>대지 1 — 사랑은 면제가 아니라 합계다 (13:8-9)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 바울은 십계명 넷을 나열한 뒤 "이 말씀 가운데 <strong>다 들었느니라</strong>"고 합니다. 여기 쓰인 헬라어는 회계에서 <strong>합계를 낼 때</strong>, 연설에서 <strong>요점을 총괄할 때</strong> 쓰는 말입니다. 신약에 두 번뿐인데, 나머지 한 번이 에베소서 1장 10절 — <strong>만물이 그리스도 안에서 통일되는</strong> 자리입니다. 게다가 "네 이웃을 사랑하라"는 <strong>앞의 네 계명과 똑같은 문법 형태</strong>로 놓여 있습니다.</li>
+<li><strong>신학 명제</strong>: 사랑은 계명들 위에 있는 원리가 아니라 계명들을 모으는 합계이며, 합계는 항목을 지우지 않는다.</li>
+<li><strong>적용</strong>: (목회) "사랑으로 덮자"가 책임 회피의 언어가 되지 않도록 합니다. (일터) 관계가 좋다는 이유로 계약·기한·기록을 느슨하게 하지 않습니다.</li>
+</ul>
+<h2>대지 2 — 사랑의 하한선이 먼저 주어진다 (13:10)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 사랑의 위대함을 말할 자리에서 본문이 고른 문장은 뜻밖에도 <strong>소극적</strong>입니다. "사랑은 이웃에게 <strong>악을 행하지 아니하나니</strong>." 이것은 사랑을 작게 만드는 것이 아니라 <strong>확인할 수 있게 만드는 것</strong>입니다. 마음은 잴 수 없지만, 내가 상대에게 해를 끼쳤는지는 잴 수 있습니다. 13절의 금지 목록 마지막 쌍이 <strong>"다투거나 시기하지 말고"</strong> — 관계의 죄인 것도 같은 방향입니다.</li>
+<li><strong>신학 명제</strong>: 사랑은 감정의 크기가 아니라 이웃이 입은 피해의 유무로 먼저 검증된다.</li>
+<li><strong>적용</strong>: (목회) 사랑한다고 말하면서 상처를 주고 있는 자리를 점검합니다. (일터) 내 편의 때문에 상대가 위험이나 부담을 지게 된 건이 있는지 이번 달 처리 목록에서 확인합니다.</li>
+</ul>
+<h2>대지 3 — 벗기는 것이 목적이 아니라 입히는 것이 목적이다 (13:11-14)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 12절과 13절의 동사는 모두 <strong>"우리가 ~하자"</strong>입니다. 바울이 자기를 포함시켜 말합니다. 그런데 14절에서 갑자기 <strong>"너희는 ~하라"</strong>로 바뀝니다. 그리고 바로 그 자리에 그리스도의 이름이 옵니다. 더 중요한 것은 <strong>같은 동사가 두 번 쓰였다</strong>는 점입니다. 12절은 "빛의 <strong>갑옷</strong>을 입자", 14절은 "주 예수 그리스도로 <strong>옷 입으라</strong>." <strong>빛의 갑옷이 무엇이냐는 물음에 본문 자신이 두 절 뒤에서 답한 것입니다.</strong> 장비가 아니라 한 분입니다.</li>
+<li><strong>신학 명제</strong>: 그리스도인의 윤리는 제거의 목록이 아니라 한 인격을 걸쳐 입는 일이다.</li>
+<li><strong>적용</strong>: (목회) 죄를 다루는 설교마다 "그러면 무엇을 입는가"를 같은 설교 안에서 말합니다. (일터) 하루를 시작할 때 오늘 피할 것이 아니라 오늘 누구로 일할지를 정합니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>성취</strong>입니다. 14절의 "옷 입으라"는 명령을 갈라디아서 3장 27절과 함께 읽어야 합니다. 거기서는 같은 동사가 <strong>이미 일어난 일의 진술</strong>입니다 — "누구든지 그리스도와 합하여 세례를 받은 자는 그리스도로 <strong>옷 입었느니라</strong>." 그러니까 14절은 없는 옷을 지어 입으라는 말이 아닙니다. <strong>이미 입혀진 옷을 입으라는 말입니다.</strong> 우리는 스스로를 갈아입힐 수 없었으나 그리스도께서 우리를 입히셨고, 이제 그 입혀진 대로 살라는 부름을 받습니다. 아우구스티누스가 그 정원에서 멈추지 않고 마지막 문장까지 읽었을 때 바뀐 것도 결단의 강도가 아니라 <strong>입을 대상</strong>이었습니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: 누군가 먼저 입혀 준 옷 때문에 태도가 달라진 경험 — 제복, 유니폼, 물려받은 옷.</p>
+<h2>결론과 결단 촉구</h2>
+<p>이번 주 계획을 <strong>"입을 것"으로 시작합시다.</strong> 무엇을 끊을지가 아니라 누구를 입을지로. 그리고 한 가지를 점검합시다 — 지난 한 달, 내 편의 때문에 누군가 부담을 진 자리가 있었는지. 그 자리를 고치는 것이 13장 10절이 말한 사랑의 하한선입니다. 더 열심히 끊으라는 요청이 아닙니다. <strong>이미 입혀졌으니 그대로 입고 나서라는 요청입니다.</strong></p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「주 예수보다 더 귀한 것은 없네」(94장) · 「날 대속하신 예수께」(321장)</li>
+<li><strong>참고 교리문답</strong>: 하이델베르크 요리문답 제32문(그리스도인이라 불리는 이유 — 그리스도의 기름 부으심에 참여함)</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

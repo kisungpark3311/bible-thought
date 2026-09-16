@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 15:1-13</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 15:1-13</h1>
+<p><strong>2026-09-16 | 설교 제목(안): 아는 사람이 지고 갑니다</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 강한 자의 자리를 권리가 아니라 빚으로 규정하며 약한 자의 약함을 짊어지라 명했고, 그 근거를 자기를 기쁘게 하지 않으시고 우리를 받으신 그리스도께 두었으며, 마지막 말을 자기 논증이 아니라 네 개의 구약 인용과 두 번의 기도에 맡겼다.</p>
+<p><strong>설교적 명제</strong>: 아는 사람이 이기는 것이 아니라 아는 사람이 지고 가며, 그 힘은 우리를 먼저 지고 가신 분에게서 온다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 <strong>아는 것을 우위로 환산합니다.</strong> 성경을 더 알고 신앙 연조가 길면 그만큼 발언권이 커진다고 생각합니다. 그래서 교회 안의 갈등은 대개 "누가 더 옳은가"의 싸움이 되고, 옳은 쪽이 이겨도 공동체는 무너집니다. 본문은 그 셈법 자체를 뒤집습니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>질문형으로 엽니다. "여러분이 무언가를 더 잘 알게 되었을 때, 그 앎은 여러분에게 무엇을 주었습니까? 권한입니까, 책임입니까?" 본문의 첫 동사가 <strong>"우리가 빚졌다"</strong>라는 사실을 알려 주며 들어갑니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: 전문가가 설명을 포기하고 "알아서 하세요"라고 했을 때의 막막함 — 병원, 관공서, 계약.</p>
+<hr/>
+<h2>대지 1 — 강함은 권리가 아니라 빚이다 (15:1-2)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 이 단락의 첫 동사는 <strong>"우리가 빚졌다"</strong>입니다. 13장 8절의 "사랑의 빚" 그 어근입니다. 그리고 "담당하고"로 옮겨진 낱말은 <strong>바스타조</strong>, "짊어지다"입니다. 견디는 것이 아니라 <strong>무게를 들어 내 어깨에 얹는 것</strong>입니다. 요한복음 19장 17절, 예수께서 <strong>자기 십자가를 지시고</strong> 나가실 때 쓰인 그 동사입니다. 그리고 2절의 "이웃을 기쁘게 하되"에는 반드시 <strong>"선을 이루고 덕을 세우도록"</strong>이 붙습니다.</li>
+<li><strong>신학 명제</strong>: 앎과 자유가 늘어날수록 권한이 아니라 짐이 늘어난다.</li>
+<li><strong>적용</strong>: (목회) 오래 믿은 성도에게 발언권이 아니라 짐을 맡깁니다. (일터) 전문성의 용도는 우위 확인이 아니라 상대의 부담을 대신 지는 것입니다.</li>
+</ul>
+<h2>대지 2 — 근거는 자기를 기쁘게 하지 않으신 분이다 (15:3-7)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 3절은 그리스도께서 <strong>"자기를 기쁘게 하지 아니하셨다"</strong>고 말한 뒤 시편 69편을 인용합니다 — <strong>"주를 비방하는 자들의 비방이 내게 미쳤나이다."</strong> 수난 시편입니다. 자기를 기쁘게 하지 않으신 일의 구체적 내용이 <strong>남이 하나님께 던진 비방을 대신 맞으신 일</strong>로 제시됩니다. 그리고 7절이 논의를 닫습니다 — "그리스도께서 우리를 <strong>받으신</strong> 것같이 너희도 서로 <strong>받으라</strong>." 이 두 낱말은 원문에서 같은 동사입니다. 14장 3절에서는 받으신 분이 <strong>하나님</strong>이었는데, 여기서는 <strong>그리스도</strong>로 구체화됩니다.</li>
+<li><strong>신학 명제</strong>: 우리가 서로를 받는 근거는 서로가 받을 만해서가 아니라 우리가 먼저 받아들여졌기 때문이다.</li>
+<li><strong>적용</strong>: (목회) 서로 받는 일의 목적이 "하나님께 영광"임을 붙여 말합니다. (일터) 동료를 대하는 기준을 그의 자격이 아니라 내가 받은 것에 둡니다.</li>
+</ul>
+<h2>대지 3 — 마지막 말을 성경에 맡긴다 (15:8-13)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 8-9절이 그리스도의 사역을 두 방향으로 요약하는데 <strong>전치사가 다릅니다.</strong> 유대인 쪽은 "하나님의 <strong>진실하심</strong>을 위하여"(약속의 신실함), 이방인 쪽은 "<strong>긍휼하심</strong>으로 말미암아." 9장부터 11장까지의 긴 논증이 한 문장에 담깁니다. 그리고 곧바로 구약 인용이 <strong>넷</strong> 쌓이는데, 넷 모두에 <strong>"열방"</strong>이 나옵니다. 결정적인 것은 마지막 인용의 마지막 낱말이 <strong>"소망을 두리라"</strong>이고, 바로 다음 문장이 <strong>"소망의 하나님"</strong>으로 그 말을 받는다는 점입니다. 4절이 "성경이 소망을 준다"고 말한 것을 <strong>이 단락의 구조가 그대로 보여 줍니다.</strong></li>
+<li><strong>신학 명제</strong>: 하나 됨의 목표는 취향의 통일이 아니라 한 입으로 드리는 찬양이다.</li>
+<li><strong>적용</strong>: (목회) 일치를 균질화로 오해하지 않습니다 — 본문은 먹는 자와 먹지 않는 자를 <strong>그대로 둔 채</strong> 이 결론에 도달했습니다. (일터) 결론을 내 말로 닫지 않고 기준과 근거로 닫습니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>성취</strong>입니다. 15장 8절이 그리스도를 부르는 이름이 <strong>"일꾼"</strong>인데, 이 낱말은 13장 4절에서 로마의 관원에게 붙었던 바로 그 낱말입니다. 칼을 든 일꾼과 할례의 일꾼이 같은 이름으로 불리지만, <strong>한쪽은 악을 억제하고 다른 쪽은 약속을 견고하게 합니다.</strong> 우리가 약한 자의 짐을 질 수 있는 이유는 우리가 강해서가 아닙니다. <strong>먼저 우리의 짐이 져졌기 때문입니다.</strong> 시편 69편의 그 비방은 원래 우리에게 향한 것이 아니었습니다. 그분이 대신 맞으셨습니다. 그러니 우리가 서로를 견디는 일은 도덕적 성취가 아니라 <strong>이미 받은 것의 연장</strong>입니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: 누군가 대신 맞아 준 덕분에 서 있게 된 경험.</p>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지를 요청합니다. 첫째, 이번 주에 <strong>내가 아는 것 때문에 누군가 편해진 자리</strong>를 하나 만듭시다. 설명을 대신 감당하는 것, 복잡한 절차를 내 쪽으로 당기는 것이면 충분합니다. 둘째, 지금 버티고 있는 일이 있다면 그 상황에 맞닿는 <strong>성경 본문 하나를 정해 반복해 읽읍시다.</strong> 버팀이 저절로 소망이 되지는 않습니다. 본문이 그 사이에 성경을 놓았습니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「주의 친절한 팔에 안기세」(405장) · 「만복의 근원 하나님」(1장 — 15:6 「한 입으로 영광」과 연결)</li>
+<li><strong>참고 교리문답</strong>: 하이델베르크 요리문답 제1문 · 웨스트민스터 신앙고백 제1장(성경)</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>

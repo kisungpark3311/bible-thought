@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 6:1-14</h1><article id="sermon">
+<hr/>
+<p>date: 2026-09-09
+day: 수요일
+tags: [설교스케치, 강해설교, 로마서]
+unit: 13/37
+status: 완료</p>
+<hr/>
+<h1>🎤 설교 스케치 | 로마서 6:1-14</h1>
+<p><strong>2026-09-09 | 설교 제목(안): 죄가 주어인 두 문장</strong></p>
+<hr/>
+<blockquote>
+<p><strong>일러두기 (강단에 서기 전에 읽고, 본문에서는 잊어도 되는 것)</strong>
+아래 본문은 <strong>낭독 가능한 연속 산문</strong>으로 썼다. 강단에서 지켜야 할 유보와 사실 한정은 <strong>말미 부록</strong>에 모았고, 본문에는 표시를 달지 않았다.
+<strong>부록을 먼저 읽고 본문으로 들어가라.</strong> 그 순서가 아니면 본문의 몇 문장이 실제보다 세게 들린다.</p>
+</blockquote>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 은혜가 죄를 부추기느냐는 반론에 대해 바울은 열 절을 들여 이미 일어난 일들을 진술한 뒤, 열한째 절에서 말을 「우리」에서 「너희」로 바꾸어 명령을 주고, 그 명령 곁에 죄를 주어로 하는 약속을 나란히 놓았다.</p>
+<p><strong>설교적 명제</strong>: 성화는 내가 얼마나 나아졌는가의 문제가 아니라 누가 왕인가의 문제입니다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 성화를 성적표로 바꿉니다. 얼마나 나아졌는지를 세고, 세다가 지치고, 지치면 아예 세기를 그만둡니다. 그리고 잘 되는 날은 내가 해냈다고 여기고 안 되는 날은 내가 실패했다고 여깁니다. 두 판단 모두 주어가 나입니다. 본문의 두 핵심 문장은 주어가 내가 아닙니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>질문형 도입을 권합니다. 「여러분은 신앙이 자라는 것을 무엇으로 잽니까?」 대개 빈도로 잽니다. 기도한 날수, 참은 횟수, 넘어진 횟수. 그렇게 재기 시작하면 신앙이 곧 실적이 되고, 실적이 되면 은혜는 격려사로 밀려납니다.</p>
+<p>바울이 상대하는 반론이 정확히 그 지점에서 나옵니다. 「은혜를 더하게 하려고 죄에 거하겠느냐.」 이 물음은 조롱이 아니라 논리적으로 따라 나오는 물음이고, 바울은 그것을 남에게서 들은 적이 있습니다. 세 장 앞에서 그는 같은 반론을 인용하고 논증 없이 끊었습니다. 여기서는 열네 절을 들여 답합니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: (방향성 — 오래 재다가 재기를 그만둔 경험. 체중계·가계부·운동 기록처럼 숫자가 동기를 죽인 이야기)</p>
+<hr/>
+<h2>대지 1 — 대답이 전부 이미 일어난 일입니다 (6:1-10)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 반론에 대한 바울의 첫 대답은 논증이 아니라 차단입니다 — <em>"그럴 수 없느니라 죄에 대하여 죽은 우리가 어찌 그 가운데 더 살리요"</em>(6:2). 그리고 그 뒤 열 절 동안 명령을 하나도 하지 않습니다. 그가 하는 말은 전부 이미 일어난 일입니다. 함께 장사되었고, 옛 사람이 함께 못 박혔고, 그리스도께서 다시 죽지 아니하십니다. 특히 6절의 「못 박혔다」는 우리가 한 일이 아니라 우리에게 일어난 일로 적혀 있습니다. 누가 못 박았는지는 적혀 있지 않습니다. 7절이 그 이유를 답니다 — <em>"이는 죽은 자가 죄에서 벗어나 의롭다 하심을 얻었음이라."</em> 그리고 8절이 그 위에 미래를 얹습니다 — <em>"만일 우리가 그리스도와 함께 죽었으면 또한 그와 함께 살 줄을 믿노니."</em> 그리고 이 열 절 내내 말이 「우리」입니다. 바울이 자기를 빼지 않습니다. 3절에서 「너희가 알지 못하느냐」고 물어 놓고, 그 물음의 답을 「우리가 세례를 받은 줄」로 말합니다.</li>
+<li><strong>신학 명제</strong>: 성화의 명령은 무에서 시작하지 않고 이미 일어난 사건 위에서 시작합니다.</li>
+<li><strong>적용</strong>: (목회) 무너진 성도에게 진단보다 먼저 이미 일어난 일을 말합니다. (일터) 실적 이전에 자격이 어디서 왔는지를 셉니다.</li>
+</ul>
+<h2>대지 2 — 열한째 절에서 말이 바뀝니다 (6:11-13)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 열 절 동안 「우리」였던 말이 11절에서 「너희」로 바뀝니다. 그리고 바뀌는 자리에 대명사가 따로 붙습니다. 원문은 동사만으로도 「너희」가 되는데 굳이 「너희도」를 씁니다. 4절에도 같은 자리에 「우리도」가 있었습니다. 같은 틀을 두 번 쓰면서 사람만 바꾼 것입니다. 그리고 명령이 여기서 옵니다. 드리지 말라, 드리라. 13절의 「드리라」는 명령이고 그 행위자는 너희이며, 드리는 대상은 너희 자신입니다. 6절에서 당한 쪽이었던 사람이 13절에서는 하는 쪽입니다. 본문은 그 둘을 잇는 문장을 쓰지 않았습니다.</li>
+<li><strong>신학 명제</strong>: 본문은 우리를 행위자 자리에서 지우지 않습니다. 동시에 6절에서 우리가 무엇을 당했는지도 지우지 않습니다.</li>
+<li><strong>적용</strong>: (목회) 「가만히 있으라」와 「네가 하라」 중 하나만 가르치지 않습니다. (일터) 내가 한 일과 내게 일어난 일을 문서에서 갈라 적습니다.</li>
+</ul>
+<h2>대지 3 — 죄가 주어로 다시 서는데 이번엔 약속입니다 (6:12·6:14)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 이 열네 절에서 죄가 문장의 주어로 서는 자리는 둘뿐입니다. 12절과 14절입니다. 나머지는 「죄에 대하여」, 「죄에게」처럼 관계를 표시하는 자리에 있습니다. 그런데 그 두 자리의 어조가 다릅니다. 12절은 명령이고 14절은 약속입니다. 하나는 우리에게 맡겨졌고 하나는 이미 정해졌습니다. 그리고 14절의 「주장하지 못하리라」에 쓰인 동사가 다섯 절 앞 9절에 이미 나왔습니다. 거기서는 사망이 주어였고 그리스도가 목적어였습니다. 개역개정이 두 자리를 같은 낱말로 옮겨서, 개역개정을 펴신 분은 그 반복을 눈으로 보실 수 있습니다. 개역한글은 뒤엣것을 다른 낱말로 옮겼으니, 같은 동사라는 것은 우리말이 아니라 원문의 사실입니다.</li>
+<li><strong>신학 명제</strong>: 명령과 약속이 같은 주어를 두고 나란히 서 있습니다. 본문은 둘을 잇지 않았습니다.</li>
+<li><strong>적용</strong>: (목회) 약속을 점검표로 바꾸지 않습니다. (일터) 「~되었다」와 「누가 했다」를 구별해 적는 습관을 들입니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>성취</strong>입니다.</p>
+<p>본문이 진술한 것을 그대로 씁니다. 9절이 말하는 것은 그리스도께서 죽은 자 가운데서 살아나셨고 다시 죽지 아니하시며 사망이 다시 그를 주장하지 못한다는 것입니다. 주어는 사망이고 목적어는 그리스도이며, 부정되는 것은 사망의 지배입니다.</p>
+<p>그리고 10절이 그 죽으심의 성격을 한 낱말로 못박습니다 — <em>"그가 죽으심은 죄에 대하여 </em><em>단번에</em><em> 죽으심이요."</em> 반복되지 않는 죽음이라는 뜻입니다. 이 편지가 여기서 쓰는 그 말이 히브리서에서 대제사장의 단 한 번 드림을 가리키는 데 쓰이는 그 말입니다. 그러니 이 단락의 그리스도는 본을 보이신 분이 아니라 <strong>한 번으로 끝내신 분</strong>입니다.</p>
+<p>다섯 절 뒤 9절의 동사가 다시 나옵니다. 이번에는 주어가 죄이고 목적어가 여러분입니다.</p>
+<p>그러니 14절의 약속은 여러분의 형편을 살펴보고 내린 진단이 아닙니다. 먼저 그리스도에게서 끝난 지배를 같은 말로 말하는 것입니다.</p>
+<p>여기서 한 가지를 정직하게 말하고 넘어가겠습니다. 본문은 두 절을 잇는 접속사를 쓰지 않았습니다. 「14절이 9절에 기대고 있다」는 것은 성경이 한 말이 아니라 제가 그렇게 읽는 것입니다. 저는 그렇게 읽고 여러분에게도 그렇게 권합니다. 다만 성경이 한 말과 제가 읽은 것을 섞어 드리지는 않겠습니다.</p>
+<p>그리고 본문이 하지 않은 말도 하지 않겠습니다. 본문은 「너희가 죄를 이길 수 없으니 그리스도께서 대신 이기셨다」고 말하지 않습니다. 본문이 말한 것은 「사망이 그를 주장하지 못한다」이고 「죄가 너희를 주장하지 못하리라」입니다. 우리의 무능은 이 단락의 진술이 아니라 제가 덧붙이고 싶어지는 말입니다. 덧붙이지 않겠습니다. 본문이 한 말만으로도 복음입니다.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: (방향성 — 소유권이나 관할이 바뀌어 이전 채권자가 더 이상 요구할 수 없게 된 이야기. 빚이 사라진 것이 아니라 권한이 사라진 구조)</p>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지를 요청합니다.</p>
+<p>첫째, 이번 주에 신앙을 재던 자를 한 번 내려놓으십시오. 본문의 두 핵심 문장은 주어가 여러분이 아닙니다. 여러분이 얼마나 나아졌는지가 아니라 누가 왕인지를 묻는 문장입니다.</p>
+<p>둘째, 그렇다고 손을 놓지는 마십시오. 13절의 명령은 여러분에게 주어졌고 그 행위자는 여러분입니다. 본문은 여러분을 행위자 자리에서 지우지 않았습니다. 성경이 두 가지를 함께 두었으니 우리도 함께 둡니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「내 주 되신 주를 참 사랑하고」 / 「죄에서 자유를 얻게 함은」 / 「주의 진리 위해 십자가 군기」</li>
+<li><strong>참고 교리문답</strong>: 하이델베르크 요리문답 제43문(옛 사람이 함께 못 박힘) · 제70문(그리스도의 피로 씻음) / 웨스트민스터 신앙고백 13장(성화)</li>
+</ul>
+<hr/>
+<h2>📎 말미 부록 — 강단 유보 (본문 낭독에서는 읽지 않는다)</h2>
+<ol>
+<li><strong>「명령법이 여기서 처음 나온다」고 말하지 마라.</strong> 사실이 아니다. 로마서 3:4에 명령형이 하나 있다. 2인칭 명령법으로 한정하면 6:11이 처음이 맞으나, 바울 서신 열셋 가운데 로마서는 여섯 번째로 이르며 갈라디아서·골로새서·고린도후서가 같거나 더 늦다. <strong>「처음」을 유표적인 사실로 설교하면 틀린다.</strong></li>
+<li><strong>「죄가 주어로 서는 자리가 둘뿐」을 희소성으로 말하지 마라.</strong> 로마서 전체에서는 「죄」가 절반 가까이 주어로 나오고 이 단락은 오히려 평균보다 적다. 요점은 횟수가 아니라 <strong>그 두 자리가 어디에 놓였는가</strong>다.</li>
+<li><strong>6:9와 6:14가 같은 낱말이라는 것은 개역개정에서만 눈에 보인다.</strong> 개역한글은 14절을 「주관치」로 옮긴다. 회중이 개역한글을 들고 있으면 「같은 말입니다」가 틀린 진술이 된다. <strong>판본을 확인하고 말하라.</strong></li>
+<li><strong>12절의 「왕 노릇」은 개역개정 문면이 아니다.</strong> 개역개정은 「지배하지」이고 왕 은유가 없다. 개역한글이 「왕노릇하지」다. 왕권 이미지로 설교하려면 <strong>원어나 개역한글을 근거로 대라.</strong></li>
+<li><strong>「수동태이므로 내가 하는 것이 아니다」로 6:6을 설교하지 마라.</strong> 형태가 수동이고 행위자가 명시되지 않았다는 것이 「우리는 행위자가 아니다」를 뜻하지 않는다. 그리고 13절이 곧바로 반대 방향으로 간다.</li>
+<li><strong>세례의 양식(침례/관수)을 이 본문에서 끌어내지 마라.</strong> 본문은 양식을 말하지 않는다. 「장사되었다」는 그림에서 잠기는 방식을 추론하는 것은 본문의 진술이 아니라 이미지에서 나온 추론이다. <strong>어느 편도 들지 마라.</strong></li>
+<li><strong>「칼뱅이 여기서 침례를 논한다」고 말하지 마라.</strong> 칼뱅 로마서 주석 전권에서 그 낱말은 한 번 나오고 그것도 본문이 아니라 역자 각주다.</li>
+<li><strong>6:5의 「연합한 자」에 무게를 싣지 마라.</strong> 그 낱말은 신약에 한 번뿐이고, 사전들이 뜻을 배열하는 방식과 통사가 다투며, 「함께 심긴」이라는 흔한 풀이는 용례로 입증되지 않은 번역어다. <strong>이 단락에서 가장 설교하기 좋아 보이는 절이지만 근거가 가장 약하다.</strong></li>
+<li><strong>14절로 완전주의를 말하지 마라.</strong> 본문의 말은 「주장하지 못하리라」이고 지배의 종식과 존재의 소멸은 다른 진술이다. 같은 편지 한 장 뒤에서 같은 사도가 「내 지체 속에서 한 다른 법이 나를 사로잡는 것을 보는도다」라고 쓴다. <strong>성경이 두 문장을 함께 두었고 뒤엣것을 지우지 않았다.</strong></li>
+<li><strong>부활의 시제를 흐리지 마라.</strong> 이 본문에서 장사됨은 과거형이고 함께 사는 것은 미래형이다. 같은 사도가 골로새서 2:12에서는 일으키심도 과거형으로 쓴다. 「이미와 아직」이라 이름 붙일 수는 있으나 <strong>이름을 붙이는 것과 푸는 것은 다르다.</strong></li>
+<li><strong>6:11의 「여길지어다」를 명령으로 단정하지 마라.</strong> 그 형태는 「너희가 여긴다」와 글자가 완전히 같고 부정어도 붙지 않아, 명령인지 진술인지 형태가 결정하지 않는다. 12절과 13절은 다르다 — 그 둘은 결정된다.</li>
+<li><strong>6:14의 「법 아래」를 곧바로 「율법 대 은혜」 도식으로 올리지 마라.</strong> 이 문장의 주어는 「너희」이고, 두 원리의 관계가 아니라 <strong>수신자의 위치</strong>에 대한 진술이다. 그리고 이 절은 주절이 아니라 근거절이다.</li>
+</ol>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교 #성화 #은혜아래</strong></p>
+</article></body>
+</html>

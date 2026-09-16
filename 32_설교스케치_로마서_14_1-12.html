@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>말씀과 묵상을 아내에게</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body><h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #1e293b;">🎤 설교 스케치 | 로마서 14:1-12</h1><article id="sermon">
+<h1>🎤 설교 스케치 | 로마서 14:1-12</h1>
+<p><strong>2026-09-16 | 설교 제목(안): 남의 집 종</strong></p>
+<hr/>
+<h2>설교 한 문장 (Big Idea)</h2>
+<p><strong>주해적 명제</strong>: 바울은 음식과 날을 두고 갈라진 로마 교회에 서로 판단하지 말 것을 명하면서, 같은 동사로 각 사람이 자기 마음에 확정할 것을 명했고, 그 구별의 근거를 그리스도께서 죽고 사심으로 확보하신 주 되심에 두었다.</p>
+<p><strong>설교적 명제</strong>: 그리스도인은 확신 없이 관대해지는 것이 아니라, 확신을 가지고도 남을 판결하지 않는다. 그가 내 종이 아니기 때문이다.</p>
+<h2>FCF (타락한 상태에의 초점)</h2>
+<p>우리는 두 방향으로 실패합니다. 하나는 <strong>자기 확신을 남의 성적표로 바꾸는 것</strong> — 내가 옳다고 정한 것을 상대의 신앙 등급으로 환산합니다. 다른 하나는 반대로 <strong>확신을 포기하는 것</strong> — 다투기 싫어서 아무 입장도 갖지 않습니다. 본문은 두 길을 다 막고 좁은 길 하나를 냅니다.</p>
+<hr/>
+<h2>서론 방향</h2>
+<p>질문형으로 엽니다. "여러분이 교회에서 속으로 '저 사람은 아직 멀었다'고 생각한 적이 있습니까? 그리고 반대로 '저 사람은 너무 빡빡하다'고 여긴 적은요?" 본문이 <strong>그 둘을 나란히 금한다</strong>는 점을 예고합니다.</p>
+<p>💬 <strong>예화 슬롯 ①</strong>: 같은 공동체 안에서 기준이 달라 부딪힌 경험 — 주일 문화, 자녀 교육, 미디어, 절기.</p>
+<hr/>
+<h2>대지 1 — 이 말씀은 분별을 금하지 않는다 (14:1-5)</h2>
+<ul>
+<li><strong>주해 요점</strong>: "비판하다"로 옮겨진 헬라어 <strong>크리노</strong>는 이 단락에 여섯 번 나옵니다. 1절, 3절, 4절, 10절은 금지입니다. 그런데 <strong>5절은 금지가 아닙니다.</strong> "어떤 사람은 이 날을 저 날보다 낫게 <strong>여기고</strong>" — 같은 동사입니다. 그리고 곧바로 명령이 이어집니다. "각각 <strong>자기 마음으로 확정할지니라</strong>." 여기 쓰인 낱말은 "가득 차게 하다"에서 온 말로, <strong>충분한 확신</strong>을 뜻합니다. 로마서 4장 21절에서 아브라함의 믿음에 쓰인 바로 그 동사입니다.</li>
+<li><strong>신학 명제</strong>: 본문이 금하는 것은 판단 자체가 아니라, 사람을 목적어로 삼는 판단이다.</li>
+<li><strong>적용</strong>: (목회) 갈리는 사안에서 "각자 알아서"로 끝내지 말고, 각자가 자기 확신을 세우도록 돕습니다. (일터) 재량이 허용된 영역에서 자기 판단을 분명히 하되, 동료의 다른 선택을 실력 문제로 바꾸지 않습니다.</li>
+</ul>
+<h2>대지 2 — 판단이 금지되는 이유는 소유권이다 (14:4, 6-8)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 4절이 상대를 부르는 이름이 결정적입니다. <strong>"남의 하인"</strong> — 원문은 "다른 사람에게 속한 집 종"입니다. 내가 그를 판단할 수 없는 이유는 그의 행동이 사소해서가 아니라 <strong>그가 내 종이 아니기 때문</strong>입니다. 그래서 열두 절 안에 "주"라는 낱말이 <strong>열 번</strong> 나옵니다. 그리고 8절이 1인칭으로 맺습니다 — <strong>"사나 죽으나 우리가 주의 것이로다."</strong> 삶과 죽음을 네 번 반복한 끝에 나오는 것이 소유의 진술입니다.</li>
+<li><strong>신학 명제</strong>: 형제를 판단할 수 없는 이유는 그가 옳아서가 아니라 그가 다른 분의 소유이기 때문이다.</li>
+<li><strong>적용</strong>: (목회) 성도를 "내 사람"으로 셈하는 습관을 점검합니다. (일터) 부하 직원이나 후배의 삶 전체를 내 관할로 여기지 않습니다.</li>
+</ul>
+<h2>대지 3 — 그 소유권이 생긴 자리 (14:9-12)</h2>
+<ul>
+<li><strong>주해 요점</strong>: 9절이 근거입니다. "이를 위하여 그리스도께서 <strong>죽었다가 다시 살아나셨으니</strong> 곧 죽은 자와 산 자의 <strong>주가 되려 하심이라</strong>." 이 단락에서 그리스도를 주어로 한 완료된 동작은 이 둘뿐이고, 그 목적절이 <strong>주 되심</strong>입니다. 그리고 결론이 수미상관을 이룹니다 — 5절의 "<strong>각 사람</strong>이 자기 마음으로 확정하라"와 12절의 "<strong>각 사람</strong>이 자기 일을 직고하리라"가 같은 낱말입니다. <strong>확정도 각자의 몫이고 직고도 각자의 몫이며, 그 사이에 남을 판결할 자리가 없습니다.</strong></li>
+<li><strong>신학 명제</strong>: 심판대가 없어진 것이 아니라 심판석에 앉을 분이 정해져 있고, 나도 그 앞에 선다.</li>
+<li><strong>적용</strong>: (목회) 판단을 내려놓는 것이 무책임이 아님을 분명히 합니다. (일터) 내 처리에 대한 최종 책임이 내게 있다는 것을 무겁게 받습니다.</li>
+</ul>
+<hr/>
+<h2>✝️ 복음 클라이맥스</h2>
+<p>경로는 <strong>근거 제공</strong>입니다. 1절의 "받으라"와 3절의 "하나님이 그를 <strong>받으셨음이라</strong>"는 원문에서 <strong>같은 동사</strong>입니다. 우리의 받아들임은 원본이 아니라 <strong>사본</strong>입니다. 그리고 15장 7절이 그 원본을 명시합니다 — <strong>"그리스도께서 우리를 받아 하나님께 영광을 돌리심과 같이 너희도 서로 받으라."</strong> 우리가 서로를 견디는 근거는 서로가 견딜 만해서가 아닙니다. <strong>그분이 먼저 우리를 곁으로 데려오셨기 때문입니다.</strong> 그리고 그 데려오심의 값이 9절에 있습니다 — 죽으심과 다시 사심.</p>
+<p>💬 <strong>예화 슬롯 ②</strong>: 자격을 따지기 전에 먼저 받아들여진 경험.</p>
+<h2>결론과 결단 촉구</h2>
+<p>두 가지를 요청합니다. 첫째, 지금 마음속에서 쓰고 있던 판결문 하나를 접고, <strong>그 자리에 내가 직고할 항목을 대신 적읍시다.</strong> 둘째, 갈리는 사안 하나를 골라 <strong>내 입장을 분명히 정합시다.</strong> 본문은 애매해지라고 하지 않았습니다. 확신하라고 했습니다. 다만 그 확신은 <strong>내 마음 안에 서는 것</strong>이지 형제의 이마에 붙이는 표가 아닙니다.</p>
+<hr/>
+<h2>예배 연결 (선택)</h2>
+<ul>
+<li><strong>추천 찬송</strong>: 「내 평생에 가는 길」(413장) · 「주 안에 있는 나에게」(370장)</li>
+<li><strong>참고 교리문답</strong>: 웨스트민스터 신앙고백 제20장(그리스도인의 자유와 양심의 자유)</li>
+</ul>
+<hr/>
+<p><strong>#설교스케치 #로마서 #강해설교 #개혁주의설교</strong></p>
+</article></body>
+</html>
