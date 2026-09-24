@@ -129,7 +129,11 @@
 <div class="arrow">→</div>
 </a>
 </div>
-<h2 class="section-title">일상의 깊은 사고 (역대상)</h2>
+<h2 class="section-title">일상의 깊은 사고 (10월: 역대상, 아가)</h2>
+<div class="list-group" id="october-list">
+<!-- 자바스크립트로 리스트 렌더링 -->
+</div>
+<h2 class="section-title">일상의 깊은 사고 (9월: 역대상)</h2>
 <div class="list-group" id="recent-list">
 <!-- 자바스크립트로 리스트 렌더링 -->
 </div>
@@ -251,6 +255,36 @@
                 <div class="arrow">→</div>
             `;
             ephContainer.appendChild(link);
+        }
+
+        // 10월 1일~31일
+        const octContainer = document.getElementById('october-list');
+        for (let i = 1; i <= 31; i++) {
+            const dateStr = `202610${String(i).padStart(2, '0')}`;
+            
+            const linkOrig = document.createElement('a');
+            linkOrig.href = `./${dateStr}_깊은사고.html`;
+            linkOrig.className = 'list-item';
+            linkOrig.innerHTML = `
+                <div class="item-info">
+                    <h3>일상의 깊은 사고 (${i}일)</h3>
+                    <p>10월 묵상 (마크다운 원본)</p>
+                </div>
+                <div class="arrow">→</div>
+            `;
+            octContainer.appendChild(linkOrig);
+            
+            const linkBlog = document.createElement('a');
+            linkBlog.href = `./${dateStr}_블로그.html`;
+            linkBlog.className = 'list-item';
+            linkBlog.innerHTML = `
+                <div class="item-info">
+                    <h3 style="color:#2c5530">블로그 버전 (${i}일)</h3>
+                    <p>10월 묵상 블로그</p>
+                </div>
+                <div class="arrow" style="color:#2c5530">→</div>
+            `;
+            octContainer.appendChild(linkBlog);
         }
 
         // 역대상 9월 13일~30일
