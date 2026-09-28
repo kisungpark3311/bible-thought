@@ -265,18 +265,45 @@
         const markContainer = document.getElementById('mark-list');
         for (let i = 1; i <= 30; i++) {
             const numStr = String(i).padStart(2, '0');
-            const link = document.createElement('a');
-            link.href = `./mark/${numStr}_깊은사고.html`;
-            link.className = 'list-item';
             
-            link.innerHTML = `
+            // 일상의 깊은 사고
+            const linkOrig = document.createElement('a');
+            linkOrig.href = `./mark/${numStr}_깊은사고.html`;
+            linkOrig.className = 'list-item';
+            linkOrig.innerHTML = `
                 <div class="item-info">
                     <h3>일상의 깊은 사고 (${i}편)</h3>
                     <p>마가복음 묵상</p>
                 </div>
                 <div class="arrow">→</div>
             `;
-            markContainer.appendChild(link);
+            markContainer.appendChild(linkOrig);
+            
+            // 생각의 탄생
+            const linkThought = document.createElement('a');
+            linkThought.href = `./mark/${numStr}_생각의탄생.html`;
+            linkThought.className = 'list-item';
+            linkThought.innerHTML = `
+                <div class="item-info">
+                    <h3 style="color:#2c5530">생각의 탄생 13단계 (${i}편)</h3>
+                    <p>마가복음 깊은 분석</p>
+                </div>
+                <div class="arrow" style="color:#2c5530">→</div>
+            `;
+            markContainer.appendChild(linkThought);
+
+            // 블로그
+            const linkBlog = document.createElement('a');
+            linkBlog.href = `./mark/${numStr}_블로그.html`;
+            linkBlog.className = 'list-item';
+            linkBlog.innerHTML = `
+                <div class="item-info">
+                    <h3 style="color:#b7863c">블로그 버전 (${i}편)</h3>
+                    <p>마가복음 블로그</p>
+                </div>
+                <div class="arrow" style="color:#b7863c">→</div>
+            `;
+            markContainer.appendChild(linkBlog);
         }
 
         // 10월 1일~31일

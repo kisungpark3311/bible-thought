@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱→🔥 13단계 사고 확장 노트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 15 편</span>
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+<h2>씨앗: 마가복음 8:17 「페포로메넨 에케테 텐 카르디안 — 굳어진 마음과 마른 손이 같은 구문틀로 적힌다」</h2>
+<hr />
+<h2>[원문] — 씨앗 아이디어</h2>
+<blockquote>
+<p><strong>"어찌 떡이 없음으로 수군거리느냐 아직도 알지 못하며 깨닫지 못하느냐 너희 마음이 둔하냐 너희가 눈이 있어도 보지 못하며 귀가 있어도 듣지 못하느냐 또 기억하지 못하느냐"</strong></p>
+<p><code>καὶ γνοὺς λέγει αὐτοῖς· Τί διαλογίζεσθε ὅτι ἄρτους οὐκ ἔχετε; οὔπω νοεῖτε οὐδὲ συνίετε; πεπωρωμένην ἔχετε τὴν καρδίαν ὑμῶν;</code><br />
+<code>ὀφθαλμοὺς ἔχοντες οὐ βλέπετε καὶ ὦτα ἔχοντες οὐκ ἀκούετε; καὶ οὐ μνημονεύετε</code></p>
+<p>(막 8:17-18 / 단위 15 = 8:1-21 · 원어 근거는 [[15_구문묵상_마가복음_8_1-21]])</p>
+<p><strong>"한쪽 손 마른 사람이 거기 있더라"</strong></p>
+<p><code>καὶ ἦν ἐκεῖ ἄνθρωπος ἐξηραμμένην ἔχων τὴν χεῖρα·</code></p>
+<p>(막 3:1 · 원어 근거는 [[05_구문묵상_마가복음_2_18-3_6]])</p>
+</blockquote>
+<p>단위 15는 세 장면이 한 덩이로 묶여 있다 — <strong>칠병이어</strong>(8:1-10) · <strong>표적 요구</strong>(8:11-13) · <strong>배 안의 떡 문답</strong>(8:14-21). 세 장면 전부에 의문부호가 있고, 단위의 마지막 정동사는 8:21 <code>συνίετε</code>(쉬니에테)다. 씨앗은 그 마지막 장면의 첫 물음 뭉치 한가운데, 8:17의 세 번째 물음에 놓여 있다.</p>
+<hr />
+<h2>[씨앗 선정] — 세 통찰 중 왜 이것인가</h2>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>통찰</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td><code>κόφινος</code>(6:43·8:19) / <code>σπυρίς</code>(8:8·8:20) — 그릇이 두 낱말이다</td>
+<td><strong>보류</strong> — 이 단위 <strong>본문의 핵심</strong>이지만 「열둘과 일곱」이라는 <strong>계수와 어휘 대조를 기둥으로 삼는 논법</strong>이라 이 배치가 봉쇄한 형식에 걸린다. 13단계 본문의 <strong>관찰</strong>(1·3단계)로 흡수한다</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td><code>ἔκλασα</code>(8:19) — 「내가 떼었다」가 14:22의 <code>ἔκλασεν</code>으로 이어진다</td>
+<td><strong>보류</strong> — 귀하지만 <strong>떡을 떼는 손이 언약의 식탁으로 이어지는 축은 #25(14:1-25) 소관</strong>이다. 여기서는 9단계에서 <strong>한 문장 예고</strong>로만 둔다</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td><code>πεπωρωμένην ἔχετε τὴν καρδίαν</code>(8:17) ≡ <code>ἐξηραμμένην ἔχων τὴν χεῖρα</code>(3:1)</td>
+<td><strong>채택</strong> — 셋 중 유일하게 <strong>통사 형틀 자체</strong>를 묻는다. 계수도 아니고 두 낱말의 뜻 대조도 아니며, <strong>같은 틀이 다른 신체 부위에 걸린다</strong>는 배치를 본다. ★ 마스터가 <code>πωρόω</code> 축을 <strong>#15에 전담 배정</strong>했고, 이 구문 평행은 마스터 「추적 대상 어휘 실」에 <strong>★★ 실측 발견</strong>으로 기재되어 있다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>선택 이유</strong>: 세 통찰 중 이 씨앗만이 <strong>낱말이 아니라 형틀을 본다</strong>. 1️⃣은 그릇 두 이름을 견주고 2️⃣는 동사 세 자리를 견주는데, 둘 다 「어느 낱말이 몇 번 어디에」라는 계수·대조의 형식이다. 3️⃣은 다르다 — 여기서 겹치는 것은 어휘가 아니라 <strong>완료 수동 분사 + <code>ἔχω</code> + 대격 단수 여성 목적어</strong>라는 통사 배열이고, 그 배열에 걸린 두 목적어가 <code>τὴν χεῖρα</code>(손)와 <code>τὴν καρδίαν</code>(마음)으로 갈린다. 둘째, 이것은 마가의 <strong>편집 결정</strong>과 맞물린다. 3:1-6 한 단락 안에 <code>ἐξηραμμένην ἔχων τὴν χεῖρα</code>(3:1)와 <code>τῇ πωρώσει τῆς καρδίας αὐτῶν</code>(3:5)이 함께 있고, 8:15-17이 그 단락의 세 요소를 차례로 되짚는다(바리새인과 헤롯 → 같은 구문 → 같은 어근). 셋째, 확장 잠재력이 크다. 이 형틀은 8:18에서 <code>ὀφθαλμοὺς ἔχοντες</code> · <code>ὦτα ἔχοντες</code>로 <strong>눈과 귀까지 두 번 더 반복</strong>되고, 겔 12:2·렘 5:21의 고발 어법과 <code>ἔχω</code> + 대격 기관에서 겹친다. 한 절의 구문이 한 단락 밖으로, 다시 예언서 어법으로 뻗는다. (번호는 [[15_일상의깊은사고_마가복음_8_1-21]] 기준.)</p>
+<blockquote>
+<p>[!warning] 씨앗에 붙어 다니는 한정 — 13단계 전부에 따라다닌다. 지우지 않는다<br />
+① <strong>동일 형태코드라는 사실이 마가의 의도를 증명하지 않는다.</strong> <code>ἔχω</code> + 완료 수동 분사 + 대격은 헬라어에서 상태를 적는 <strong>상용 구문</strong>일 수 있다. 더구나 구문묵상노트는 마스터의 「동일 형태코드」 기재가 <strong>분사·목적어 층위에서만 성립하고 <code>ἔχω</code> 자체에서는 성립하지 않는다</strong>고 정정했다 — 3:1은 분사 <code>-PAPNSM-</code>(에콘), 8:17은 <code>2PAI-P--</code>(에케테)다. <strong>그러므로 이 씨앗이 지는 무게는 「같은 형틀」이 아니라 「그 형틀이 걸린 두 대상이 마가복음 안에서 마주 선다는 배치」다.</strong><br />
+② <strong>그 두 대상을 정확히 적는다.</strong> 3:1의 손은 <strong>반대자의 손이 아니라 회당에서 고침받는 사람의 손</strong>이다. 반대자에게 걸린 것은 3:5의 명사 <code>πώρωσις</code>(굳음)이고, 8:17에서 그 <strong>어근이 열둘 쪽으로 옮겨 온다</strong>. 선정표의 약칭을 그대로 쓰면 3:1의 인물을 오기하게 되므로 여기서 고쳐 쓴다.<br />
+③ <strong><code>πωρ-</code> 어근은 마가 3회이고 표제어가 갈린다</strong> — 3:5 <code>πώρωσις</code>(명사) · 6:52 · 8:17 <code>πωρόω</code>(동사). 동사는 2회뿐이므로 「동사 3회」로 세면 오류다. ⛔ <strong>4:12에는 <code>πωρόω</code>가 없다.</strong> 4:12↔6:52↔8:17을 잇는 어휘는 <code>συνίημι</code>(마가 5회 — 4:12·6:52·7:14·8:17·8:21)다.<br />
+④ <strong>6:52와 8:17을 한 진술로 합치지 않는다.</strong> 6:52는 우언법 <code>ἦν … πεπωρωμένη</code>(주격 · 화자의 3인칭 논평), 8:17은 <code>πεπωρωμένην ἔχετε</code>(대격 · 예수의 2인칭 질문)다. 같은 분사, 다른 구문, 다른 화자.<br />
+⑤ <strong>씨앗이 기대는 낱말 자체에 이문 진입점이 있다.</strong> SBLGNT 장치는 8:17에 진입점 둘을 둔다 — <code>⸀γνούς</code> · <strong><code>⸀πεπωρωμένην</code></strong>. 8:18에는 0개다. NA28 장치는 이 배치에서 <strong>미확인</strong>이며, 「갈림 없음」이 아니라 「확인하지 않음」이다.<br />
+⑥ <strong>8:21 <code>συνίετε</code>에는 목적어가 없다.</strong> 무엇을 이해해야 하는지 통사가 정하지 않는다. 13단계 어느 지점에서도 그 빈자리를 채우지 않는다.</p>
+</blockquote>
+<hr />
+<h2>[이 노트의 자리] — 인접 단위와 무엇이 다른가</h2>
+<table>
+<thead>
+<tr>
+<th>노트</th>
+<th>그 단위의 축</th>
+<th>구별선</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직전 #14 · 7:24-37</strong> ([[14_구문묵상_마가복음_7_24-37]])</td>
+<td><code>κυνάριον</code> — 「되받은 낱말은 개 하나뿐이다」</td>
+<td><strong>누구의 말인가가 다르다.</strong> 7:37의 「다 잘하였도다」와 8:21의 「아직도 깨닫지 못하느냐」가 마주 서지만, #14는 <strong>한 여인의 논증</strong>(낱말을 되받아 쓰는 법)을, #15는 <strong>열둘의 진단</strong>(무엇이 굳어 있는가)을 맡는다</td>
+</tr>
+<tr>
+<td><strong>직후 #16 · 8:22-9:1</strong> ([[16_구문묵상_마가복음_8_22-9_1]])</td>
+<td><code>διέβλεψεν</code> · <code>ἀπεκατέστη</code>(8:24-25) — 「한 번에 낫지 않았다는 사실 자체가 본문이다」</td>
+<td>⚠ <strong>8:18의 「보고도 보지 못하느냐」와 8:22-26의 두 단계 회복이 붙어 있다.</strong> #15는 <strong>진단</strong>(무엇이 굳어 있는가), #16은 <strong>회복의 단계성</strong>(어떻게 열리는가)을 맡는다. ⛔ 이 노트는 8:22-26을 「진단에 대한 응답」으로 끌어와 논지로 세우지 않는다 — <strong>9단계에서 한 문단 예고까지만</strong></td>
+</tr>
+<tr>
+<td><strong>#12 · 6:30-56</strong> ([[12_구문묵상_마가복음_6_30-56]])</td>
+<td><code>ἐσπλαγχνίσθη</code>(6:34) — 「긍휼이 가르침이라는 형태를 가졌다」</td>
+<td><strong>#12가 6:52의 <code>πεπωρωμένη</code>를 관찰로만 지나가고 이 축을 #15에 양보했다.</strong> 두 급식의 대조(6:30-44 ↔ 8:1-10)도 #15가 8:14-21의 심문 안에서 맡는다</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!warning] 인접 노트의 문구를 가져오지 않기 위한 선<br />
+이 단위는 「제자들의 둔함」·「마음이 완악하여」·「깨닫지 못하는 제자들」의 <strong>전담 단위</strong>다. 그러나 전담 단위에서도 <strong>그 관용구를 그대로 쓰지 않는다.</strong> 본문의 낱말(<code>πωρόω</code> · <code>συνίημι</code> · <code>ἔχω</code>)과 이 씨앗 고유의 표현(<strong>굳음을 지니고 있음 · 형틀이 옮겨 걸림 · 응답 칸이 비어 있음</strong>)으로만 적는다. 「완악」은 본문이 쓰지 않은 도덕 판정어이므로 이 노트 전체에서 쓰지 않는다.</p>
+</blockquote>
+<hr />
+<h2>사고 지도</h2>
+<pre><code class="language-mermaid">mindmap
+  root((&quot;같은 틀에 걸린 손과 마음&quot;))
+    &quot;관찰·형상화&quot;
+      &quot;굳음이 목적어 자리에 온다&quot;
+      &quot;배 안 떡 한 개와 보이지 않는 마음&quot;
+    추상화
+      &quot;보유&quot;
+    &quot;패턴·유추&quot;
+      &quot;결함이 보유로 적힌다&quot;
+      &quot;손상차손누계액과 가공경화&quot;
+    &quot;체화·감정이입&quot;
+      &quot;펴지는 손 펴지지 않는 가슴&quot;
+    &quot;차원·모형&quot;
+      &quot;밖에서 안으로 옮겨 앉은 낱말&quot;
+      &quot;보유 점검 카드&quot;
+    &quot;놀이·변형&quot;
+      &quot;가지고 있음과 하고 있음의 분리&quot;
+    통합
+      &quot;응답 칸을 비워 둔 진단&quot;
+</code></pre>
+<hr />
+<h2>[1~13단계 사고 과정 연대기]</h2>
+<blockquote>
+<p>각 단계는 앞 단계의 산물을 이어받아 유기적으로 변모한다.</p>
+</blockquote>
+<h3>1. 관찰 (Observing) — "굳음이 주어가 아니라 목적어 자리에 온다"</h3>
+<p>배열만 적는다. 8:17의 세 번째 물음은 <code>πεπωρωμένην ἔχετε τὴν καρδίαν ὑμῶν;</code>이다. <strong>분사가 문장 맨 앞</strong>에 나오고, 마음은 <strong>주어가 아니라 대격 목적어</strong>다. 「너희 마음이 굳었다」가 아니라 「너희가 굳어진 마음을 <strong>가지고 있다</strong>」로 적힌 것이다. 3:1도 같은 순서다 — <code>ἐξηραμμένην ἔχων τὴν χεῖρα</code>, 분사가 앞이고 손이 대격이다. 두 분사 모두 <code>-XPPASF-</code>(완료 수동 대격 단수 여성)이고, <strong>수동이므로 굳힌 이가 표시되지 않는다.</strong> 그리고 8:18이 같은 소유동사를 두 번 더 얹는다 — <code>ὀφθαλμοὺς ἔχοντες</code> · <code>ὦτα ἔχοντες</code>. 한 물음 뭉치 안에서 <code>ἔχω</code>가 <strong>네 번</strong>(8:17 <code>ἔχετε</code>가 둘, 8:18 <code>ἔχοντες</code>가 둘) 나오고, 그 목적어가 떡 → 마음 → 눈 → 귀로 바뀐다. 한편 8:19-20의 그릇은 <code>κοφίνους</code>(남성)와 <code>σπυρίδων</code>(여성)으로 <strong>이름과 성이 다르게</strong> 적힌다 — 두 급식이 한 사건의 중복 보고가 아니라는 표지다.</p>
+<blockquote>
+<p>[!insight] 목록의 첫 항목이 떡이다<br />
+<code>ἄρτους οὐκ ἔχετε</code>(8:17 첫 물음)에서 시작한 「가지고 있다」가 그대로 마음·눈·귀로 이어진다. <strong>떡 계산의 동사가 신체 기관 계산의 동사로 미끄러진다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 결함을 「~이다」가 아니라 「~을 가지고 있다」로 적으면 무엇이 달라지는가?<br />
+- 수동 분사가 행위자를 감출 때, 감춰진 것은 원인인가 책임인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 격과 분사로만 적힌 이 배열을 형상화가 두 개의 방으로 세운다.</p>
+<h3>2. 형상화 (Imaging) — "회당의 마른 손, 배 안의 보이지 않는 마음"</h3>
+<p>첫 번째 방은 회당이다(3:1). 사람들이 앉아 있고 한 남자가 있다. 그의 손은 <strong>보인다.</strong> 오그라든 손가락, 얇아진 살, 다른 손보다 작은 부피. 예수는 그를 가운데로 불러 세우고, 그 손을 향해 명령한다 — <code>Ἔκτεινον τὴν χεῖρα</code>(엑테이논 텐 케이라, 손을 내밀라). 그리고 <code>ἀπεκατεστάθη</code>, 회복되었다는 보고가 따라온다.</p>
+<p>두 번째 방은 배 안이다(8:14). 좁고 기울고 짠내가 난다. 떡은 한 개뿐이고 열둘은 <strong>수군거린다</strong>(8:16 <code>διελογίζοντο</code>). 예수가 그것을 <code>γνούς</code>(그누스, 알아채고) 하고 묻는다. 그런데 여기서는 아무것도 보이지 않는다. 마른 손처럼 들어 보일 수 있는 것이 없다. 같은 문장틀에 걸린 목적어가 <strong>꺼낼 수 없는 것</strong>으로 바뀌자, 문장 끝에 오는 것도 명령에서 물음표로 바뀐다.</p>
+<pre><code>회당(3:1)   [보인다]   마른 손  →  Ἔκτεινον(명령)  →  ἀπεκατεστάθη(회복 보고)
+배 안(8:17) [안 보인다] 굳은 마음 →  πεπωρωμένην ἔχετε;(물음) →  (      )
+</code></pre>
+<blockquote>
+<p>[!insight] 형틀이 같아서, 달라진 것이 드러난다<br />
+두 문장이 다른 틀이었다면 비교가 안 된다. <strong>틀이 같기 때문에</strong> 무엇이 바뀌었는지 — 목적어의 가시성과 문장 끝의 어법 — 가 정확히 보인다.</p>
+<p>[!question] 연결 질문<br />
+- 손처럼 들어 보일 수 있는 결함과, 마음처럼 꺼낼 수 없는 결함에 같은 처방이 가능한가?<br />
+- 회복 보고 칸이 비어 있다는 것은 회복이 없었다는 뜻인가, 적지 않았다는 뜻인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 두 장면에서 군더더기를 걷어 내면 한 낱말만 남는다.</p>
+<h3>3. 추상화 (Abstracting) — "보유"</h3>
+<p><strong>남는 개념: 「보유」.</strong> 마가는 굳음을 사건으로도 성질로도 적지 않고 <strong>소지품처럼</strong> 적는다.</p>
+<p><strong>한 문장 압축: 굳음은 「그렇게 되었다」가 아니라 「그것을 가지고 있다」로 적힌다.</strong></p>
+<p>버린 것 셋. ① <strong>누룩의 지시</strong>(8:15) — <code>ζύμη</code>는 8:15 두 번뿐이고 8:16 이후 다시 나오지 않으며, 마가는 그것이 무엇을 가리키는지 적지 않는다. 씨앗은 이 미결을 건드리지 않는다. ② <strong>표적 요구의 결말</strong>(8:11-13) — <code>εἰ δοθήσεται</code>는 주절 없이 끝나고, 8:12의 <code>ἀναστενάξας</code>(아나스테낙사스, 깊이 탄식하시며)는 신약에 한 번뿐인 낱말이다. 이 탄식은 예수의 감정 축에 속하므로 여기서는 <strong>한 문장 관찰</strong>로만 지나간다. ③ <strong>그릇의 수</strong>(8:19-20의 열둘과 일곱) — 두 급식이 구별된다는 관찰은 1단계에서 이미 받았고, 숫자 자체는 씨앗의 논거가 아니다.</p>
+<blockquote>
+<p>[!insight] 버린 것이 전부 「내용」이고 남은 것이 「형식」이다<br />
+누룩이 무엇인지, 표적을 주시는지, 그릇이 몇인지는 전부 <strong>내용</strong>이다. 남은 「보유」는 그 내용들이 담겨 오는 <strong>통사 형식</strong>이다.</p>
+<p>[!question] 연결 질문<br />
+- 내용이 미결인 본문에서 형식만 확정될 때, 확정된 것은 무엇인가?<br />
+- 「가지고 있다」로 적힌 것은 언젠가 내려놓을 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 「보유」가 성경 밖 다른 영역에서도 같은 꼴로 반복되는지 본다.</p>
+<h3>4. 패턴 인식 (Recognizing Patterns) — "결함이 보유로 적히는 곳들"</h3>
+<table>
+<thead>
+<tr>
+<th>도메인</th>
+<th>패턴 발현</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>임상 기록</strong></td>
+<td>「환자가 구축(拘縮)을 <strong>보유</strong>한다」 · 「병력을 가지고 있다」</td>
+<td>환자와 결함이 분리되어 기록된다. 환자는 결함 <strong>그 자체</strong>가 아니다</td>
+</tr>
+<tr>
+<td><strong>세무·회계</strong></td>
+<td>이월결손금, 손상차손누계액 — 손상이 <strong>차감계정으로 자산 옆에 붙어</strong> 계속 보고된다</td>
+<td>손상이 자산을 소멸시키지 않고 <strong>장부에 남아 이월된다</strong></td>
+</tr>
+<tr>
+<td><strong>한국어 어법</strong></td>
+<td>「병이다」가 아니라 「병을 <strong>앓고 있다</strong>」 · 「빚을 지고 있다」</td>
+<td>상태를 주어의 정체가 아니라 <strong>소지 목록</strong>으로 옮긴다</td>
+</tr>
+<tr>
+<td><strong>야금·재료</strong></td>
+<td>가공경화한 금속이 <strong>잔류응력을 가진다</strong></td>
+<td>굳어짐이 재료의 본성이 아니라 <strong>겪은 일의 흔적</strong>으로 기록된다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>공통 패턴 한 문장</strong>: 결함을 상태술어가 아니라 <strong>소유술어</strong>로 적으면, 그 결함은 「그 사람의 정체」에서 분리되어 <strong>내놓거나 이월할 수 있는 항목</strong>이 된다.</p>
+<blockquote>
+<p>[!insight] 형식이 정체를 보호한다<br />
+「너희는 굳은 자들이다」와 「너희가 굳어진 마음을 가지고 있다」는 같은 사태를 가리키지만, 뒤의 문장만이 <strong>사람과 결함 사이에 틈</strong>을 남긴다. 마가가 쓴 것은 뒤의 문장이다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 사람을 평가할 때 쓰는 문장은 상태술어인가 소유술어인가?<br />
+- 이월되는 결함과 소멸되는 결함을 무엇이 가르는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 네 도메인에서 확인된 이 패턴을 한 장의 격자로 정제한다.</p>
+<h3>5. 패턴 형성 (Forming Patterns) — 프레임워크 「보유-호명 격자」</h3>
+<p>같은 보유 구문에 무엇이 오고, 그다음 칸에 무엇이 적히는지를 본문 그대로 배열한다.</p>
+<table>
+<thead>
+<tr>
+<th>자리</th>
+<th>보유된 것(목적어)</th>
+<th>가시성</th>
+<th>오는 것</th>
+<th>본문이 그다음에 적는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3:1 → 3:5</td>
+<td><code>τὴν χεῖρα</code>(마른 손)</td>
+<td>보인다</td>
+<td><strong>명령</strong> <code>Ἔκτεινον</code> (2AAD-S)</td>
+<td><code>ἐξέτεινεν</code> → <code>ἀπεκατεστάθη</code>(수동, 행위자 무표기)</td>
+</tr>
+<tr>
+<td>3:5</td>
+<td><code>τῆς καρδίας αὐτῶν</code>(노려보던 자들의 굳음)</td>
+<td>안 보인다</td>
+<td><strong>탄식</strong> <code>συλλυπούμενος</code></td>
+<td>3:6 죽이려는 모의</td>
+</tr>
+<tr>
+<td>8:17</td>
+<td><code>τὴν καρδίαν ὑμῶν</code>(열둘의 굳은 마음)</td>
+<td>안 보인다</td>
+<td><strong>물음</strong> <code>πεπωρωμένην ἔχετε;</code></td>
+<td>(없음)</td>
+</tr>
+<tr>
+<td>8:18</td>
+<td><code>ὀφθαλμούς</code> · <code>ὦτα</code></td>
+<td>기관은 보인다</td>
+<td><strong>물음</strong> <code>οὐ βλέπετε;</code> · <code>οὐκ ἀκούετε;</code></td>
+<td>(없음)</td>
+</tr>
+<tr>
+<td>8:21</td>
+<td>─ (목적어 없음)</td>
+<td>─</td>
+<td><strong>물음</strong> <code>Οὔπω συνίετε;</code></td>
+<td>(없음 · 8:22 새 장면)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>이 프레임워크의 법칙</strong>: <strong>같은 보유 구문에 명령이 오면 본문은 회복을 적고, 물음이 오면 본문은 응답 칸을 비워 둔다.</strong> 그리고 명령이 오는 자리는 결함이 <strong>밖에서 확인되는</strong> 자리다.</p>
+<blockquote>
+<p>[!insight] 비어 있는 칸이 네 개 연속이다<br />
+8:17·8:18·8:19-20의 두 물음을 지나 8:21까지, 응답이 적히는 것은 <strong>셀 수 있는 것을 물은 두 자리뿐</strong>이다(<code>Δώδεκα</code> · <code>Ἑπτά</code>). 마지막 물음에는 아무것도 오지 않는다.</p>
+<p>[!question] 연결 질문<br />
+- 응답 칸을 비워 두는 것과 부정적 응답을 적는 것은 어떻게 다른가?<br />
+- 셀 수 있는 물음에만 답이 온다면, 답을 얻는 능력은 무엇의 증거인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 격자를 성경 밖의 전혀 다른 제도와 겹쳐 본다.</p>
+<h3>6. 유추 (Analogizing) — "자산에 붙어 이월되는 손상"</h3>
+<p><strong>유추 ① 세무·회계 (신학↔세무 교차)</strong> — <code>πεπωρωμένην ἔχετε</code>는 회계의 <strong>차감계정</strong> 어법과 같은 꼴이다. 손상차손누계액은 자산을 장부에서 지우지 않고 자산 옆에 붙어 매기 보고된다. 자산은 남고 손상도 남는다. <strong>새 통찰</strong>: 마가는 열둘을 명부에서 지우지 않는다 — 8:19-20에서 그들은 여전히 답할 수 있는 자리에 있고, 다음 절에서도 배에 함께 타고 있다. 굳음은 제명 사유가 아니라 <strong>이월 항목</strong>으로 적힌다. <strong>깨지는 지점</strong>: 회계의 손상에는 상각 스케줄과 환입 규정이 있지만, 8:21 뒤에는 <strong>아무 일정도 적혀 있지 않다.</strong> 본문은 언제 어떻게 풀리는지 말하지 않는다.</p>
+<p><strong>유추 ② 재료공학</strong> — 금속은 반복 변형을 겪으면 딱딱해진다(가공경화). 굳어짐이 결함이 아니라 <strong>겪은 이력의 결과</strong>다. <strong>새 통찰</strong>: 완료 수동 분사는 바로 그 이력을 가리킨다 — 지금 굳어 있고, 그 굳음은 과거 어느 작용의 결과이며, <strong>작용한 이가 표시되지 않는다.</strong> <strong>깨지는 지점</strong>: 야금학은 원인을 안다(변형량과 온도). 마가는 원인을 적지 않는다. 6:52는 굳음을 급식을 깨닫지 못한 일 <strong>곁에</strong> 두지만, 그것이 원인이라고 말하지 않는다.</p>
+<p><strong>유추 ③ 문진(問診)</strong> — 의사는 보이는 병변에는 지시를 내리고(팔을 들어 보세요), 보이지 않는 증상에는 질문을 한다(언제부터 그러셨나요). <strong>새 통찰</strong>: 질문은 진단의 포기가 아니라 <strong>보이지 않는 것에 접근하는 유일한 도구</strong>다. <strong>깨지는 지점</strong>: 문진의 질문은 답을 수집하려고 던지지만, 8:21의 물음에는 수집된 답이 적혀 있지 않다.</p>
+<blockquote>
+<p>[!insight] 세 유추 모두 같은 자리에서 깨진다<br />
+회계의 일정표, 야금학의 원인, 문진의 답 — 셋 다 본문에는 없다. <strong>유추가 깨지는 지점이 본문의 침묵과 정확히 겹친다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 일정도 원인도 답도 적지 않은 진단은 무엇을 위한 진단인가?<br />
+- 이월되는 항목을 안고 다니는 공동체는 무엇으로 유지되는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 머리로 따라온 이 격자를 몸에 넣어 확인한다.</p>
+<h3>7. 몸으로 생각하기 (Body Thinking) — "펴지는 손과 펴지지 않는 가슴"</h3>
+<p><strong>실천 프로토콜.</strong> 눈을 감고 한 손을 30초간 힘껏 주먹 쥔다. 손가락 마디가 뻣뻣해지고 손바닥에 열이 오른다. 그다음 마음속으로 「펴라」고 한 번 말하고 편다. <strong>편다.</strong> 명령과 실행 사이에 아무것도 끼어들지 않는다 — 3:5가 적은 그대로다(<code>Ἔκτεινον</code> → <code>ἐξέτεινεν</code>, 같은 표제어, 같은 시상, 목적어조차 반복되지 않는다).</p>
+<p>이제 같은 자세로 가슴에 손을 얹고 「마음을 펴라」고 말해 본다. <strong>대응하는 근육이 없다.</strong> 힘을 줄 데가 없고, 폈는지 확인할 방법도 없다. 그 막막함이 몸으로 가르치는 것이 있다 — 8:17에 명령이 아니라 물음이 오는 것은 어법의 선택이 아니라 <strong>대상의 성질</strong>에 걸린 일이라는 것.</p>
+<p><strong>설교 전달</strong>: 손을 크게 폈다가 그 손을 가슴에 얹고 <strong>2초 멈춘다.</strong> 그 정지가 3:5와 8:17 사이의 거리다. 멈춘 채로 8:21을 읽는다.</p>
+<blockquote>
+<p>[!insight] 무능이 문장 형식을 결정했다<br />
+마음에는 명령을 수행할 근육이 없다. 그래서 <strong>명령 자리에 물음이 들어왔다.</strong> 이것은 관용이 아니라 정확성이다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 사람에게 요구하는 것 중에 「대응하는 근육이 없는」 항목은 무엇인가?<br />
+- 몸이 할 수 없는 일을 명령받았을 때 그 명령은 무엇으로 기능하는가(3:1의 남자를 보라)?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 무능의 자리에 1인칭으로 들어가 본다.</p>
+<h3>8. 감정이입 (Empathizing) — "떡을 세던 사람의 마음, 노려보던 사람의 마음"</h3>
+<p><strong>① 배 안의 열둘 중 하나</strong></p>
+<blockquote>
+<p><em>떡이 한 개다. 나는 그걸 세고 있었다. 세는 일이 나쁜 줄 몰랐다 — 오히려 성실이라고 생각했다. 그런데 선생님이 우리 속을 알아채시고 물으신다. 눈이 있어도 보지 못하느냐고. 나는 눈이 있다. 방금도 광주리 일곱을 이 손으로 거뒀다. 그런데 물음이 끝나고 나서 내 입에서 나온 것은 열둘과 일곱, 숫자뿐이었다. 마지막 물음에는 아무 말도 하지 못했다. 나는 아직도 내가 무엇을 못 하고 있는지 모른다.</em></p>
+</blockquote>
+<p>감정의 전환: <strong>성실감 → 숫자로만 대답할 수 있는 무력감.</strong></p>
+<p><strong>② 3:5에서 노려보던 사람 — 이 물음을 가장 불편해할 이</strong></p>
+<blockquote>
+<p><em>그 낱말은 우리 것이었다. 안식일에 그가 우리를 둘러보며 탄식하실 때, 그 탄식의 대상은 우리 마음의 굳음이었다. 우리는 그 자리에서 나와 사람을 죽일 의논을 했다. 그런데 지금 그 낱말이 배 안으로 건너갔다. 그의 제자들에게 걸렸다. 그러면 그 낱말은 우리를 가리키는 표지가 아니었던 것인가. 밖과 안을 가르는 선이 그 낱말에는 없었던 것인가.</em></p>
+</blockquote>
+<p>감정의 전환: <strong>구별의 안도감 → 선이 사라진 당혹.</strong></p>
+<blockquote>
+<p>[!insight] 낱말이 진영을 배신한다<br />
+<code>πωρ-</code>는 3:5에서 반대자에게, 8:17에서 열둘에게 걸린다. <strong>어근은 진영을 가리지 않는다.</strong> 두 시점 모두 이 사실 앞에서 흔들린다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 상대를 지목하려고 쓰는 낱말이 내 쪽으로 넘어올 가능성을 나는 셈에 넣는가?<br />
+- 성실하게 세는 일이 못 보는 일과 겹칠 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 낱말의 이동을 시간과 규모의 축 위에 올려놓는다.</p>
+<h3>9. 차원적 사고 (Dimensional Thinking) — "밖에서 안으로 옮겨 앉은 낱말"</h3>
+<p><strong>확대 — 언약사의 축으로.</strong> 8:18의 대구는 겔 12:2 LXX(그리고 렘 5:21)와 <strong><code>ἔχω</code> + 대격 기관</strong>에서 겹친다. 겔 12:2에서 그 고발을 발하는 이는 「인자야」라 부르는 분이고, 향하는 곳은 <strong>패역한 족속</strong>, 곧 언약 백성이다. 8:18에서 같은 어법이 <strong>예수의 입</strong>에서 나오고, 3인칭 관계절이 <strong>2인칭 현재 직설 의문</strong>으로 바뀌며, 받는 자리가 <strong>열둘</strong>이 된다. ⚠ 다만 8:18 전후에 <strong>인용 표지가 없다</strong>(<code>γέγραπται</code>·<code>καθώς</code>·<code>προφήτης</code>가 이 단위에 0회이고 8:18은 접속사 없이 시작한다). 마가는 7:6에서 표지를 둘 줄 안다. 그러므로 「마가가 겔 12:2를 인용했다」고 적지 않고 <strong>어법이 겹친다는 사실까지만</strong> 적는다. 그리고 ⛔ <strong>8:18은 사 6:9-10과 겹치지 않는다</strong> — 사 6:10의 심장은 <code>ἐπαχύνθη</code>이고 <code>πωρόω</code>가 아니며, 사 6:9-10과 겹치는 마가 본문은 <strong>4:12</strong>다.</p>
+<p><strong>축소 — 한 절 안으로.</strong> 8:17에서 <code>νοεῖτε</code>와 <code>συνίετε</code>는 <strong>시상·법·태·인칭·수가 완전히 같고 표제어만 다르다</strong>(둘 다 <code>2PAI-P--</code>). 그리고 <code>συνίημι</code>의 법이 마가 안에서 갈린다 — 4:12는 <code>συνιῶσιν</code>(접속법 목적절, 「밖의 사람들」), 6:52는 <code>συνῆκαν</code>(부정과거, 사건으로 닫힘), 7:14는 <code>σύνετε</code>(명령), 8:17·8:21은 <code>συνίετε</code>(현재 직설 의문). <strong>밖에는 선언이 걸리고 안에는 물음이 걸린다.</strong></p>
+<p><strong>핵심 전복</strong>: 굳음의 어근과 깨달음의 어휘가 <strong>둘 다 바깥에서 안쪽으로 이동한다.</strong> 3:5(노려보던 자들)→8:17(열둘), 4:12(밖의 사람들)→8:17·8:21(배 안). 언약 공동체 안에 있다는 것이 보는 일과 듣는 일을 <strong>보장하지 않는다.</strong></p>
+<blockquote>
+<p>[!note] 인접 축 예고 — 여기서 전개하지 않는다<br />
+① 8:19의 <code>ἔκλασα</code>(1인칭 부정과거 「내가 떼었다」)는 14:22 <code>ἔκλασεν</code>으로 이어지지만, <strong>떡을 떼는 손이 언약의 식탁으로 이어지는 축은 #25(14:1-25) 소관</strong>이다. ② 8:18의 「보고도 보지 못하느냐」 바로 뒤에 8:22-26의 <strong>두 단계 회복</strong>(<code>διέβλεψεν</code> · <code>ἀπεκατέστη</code>)이 붙어 있다. 그 단계성은 <strong>#16 소관</strong>이다. 이 노트는 진단까지만 맡고 회복의 방식은 다음 단위에 넘긴다.</p>
+<p>[!insight] 안과 밖을 가르는 것은 낱말이 아니라 법(法)이다<br />
+같은 어휘소가 양쪽에 다 걸린다. 갈리는 것은 <strong>접속법이냐 직설 의문이냐</strong>다.</p>
+<p>[!question] 연결 질문<br />
+- 선언 대신 물음을 받는다는 것은 특권인가 유예인가?<br />
+- 예언자의 고발 어법을 자기 입에 올릴 수 있는 자리는 어떤 자리인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 이동과 격자를 오늘 쓸 수 있는 한 장으로 접는다.</p>
+<h3>10. 모형 만들기 (Modeling) — 「보유 점검 카드」</h3>
+<p>진단을 내리기 직전에 손에 쥐는 한 장.</p>
+<pre><code>┌─ 보유 점검 카드 ────────────────────────────────┐
+│ ① 나는 이 결함을 어떻게 적었는가                  │
+│    □ 상태술어 「그는 ~하다」                       │
+│    □ 소유술어 「그는 ~을 가지고 있다」  ← 본문의 형식 │
+│                                                  │
+│ ② 이 결함은 밖에서 확인되는가                     │
+│    □ 확인된다(마른 손) → 지시를 줄 수 있다         │
+│    □ 확인되지 않는다(굳은 마음) → 물음만 줄 수 있다 │
+│                                                  │
+│ ③ 내가 지금 물으려는 것은 셀 수 있는 것인가        │
+│    □ 셀 수 있다 → 답이 온다(열둘·일곱)            │
+│    □ 셀 수 없다 → 답이 오지 않을 수 있다           │
+│                                                  │
+│ ④ 응답 칸을 비워 둘 용의가 있는가                 │
+│    □ 있다   □ 없다(→ 물을 자격이 아직 없다)        │
+└──────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>모형이 예측하는 것</strong>: 보이지 않는 결함에 <strong>지시</strong>를 주면 돌아오는 것은 회복이 아니라 <strong>수행의 외형</strong>이다. 마음을 펴는 근육이 없으므로, 폈다는 보고는 만들어진다.</p>
+<p><strong>모형이 설명하지 못하는 것</strong>: 8:19-20에서는 <strong>왜 답이 왔는가</strong>. 셀 수 있는 것에는 답이 온다는 관찰까지는 되지만, 답이 온 뒤에도 8:21이 다시 물어야 했던 이유는 이 카드가 설명하지 못한다. 정확한 숫자를 대는 능력과 깨닫는 일 사이의 관계를 본문은 밝히지 않는다.</p>
+<blockquote>
+<p>[!insight] ④가 나머지 셋을 지배한다<br />
+응답 칸을 비워 둘 수 없는 사람은 결국 ①에서 상태술어를 고르고 ②에서 지시를 준다. <strong>견딜 수 있는 공백의 크기가 진단의 정직성을 정한다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 내 조직의 진단서에 비어 있는 칸이 하나라도 있는가?<br />
+- 답이 온 것과 이해가 온 것을 나는 구별해 기록하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이제 이 카드를 손에서 놓고, 규칙을 뒤집어 논다.</p>
+<h3>11. 놀이 (Playing) — "자리 바꾸기 놀이"</h3>
+<p><strong>게임 ① 명령을 옮겨 본다.</strong> 3:5의 명령을 8:17 자리에 넣어 본다 — <code>Ἔκτεινον τὴν καρδίαν</code>(마음을 내밀라). 목적어만 바꾸면 문법은 성립한다. 그런데 <strong>본문에 없다.</strong> 마가는 이 문장을 쓸 수 있었는데 쓰지 않았다.</p>
+<p><strong>게임 ② 물음을 옮겨 본다.</strong> 8:17의 물음을 3:1 자리에 넣어 본다 — 「너는 마른 손을 가지고 있느냐?」 문법은 성립하고, 문장은 <strong>우스워진다.</strong> 그는 알고 있고 모두가 보고 있다. <strong>보이는 것에는 물을 것이 없다.</strong></p>
+<p><strong>게임 ③ 목록을 극단까지 늘려 본다.</strong> 8:18의 <code>ἔχοντες</code>를 계속 이어 본다 — 입이 있어도, 발이 있어도, 손이 있어도. 마가는 <strong>눈과 귀에서 멈춘다.</strong> 왜 손을 넣지 않았을까. 손은 3:1에서 이미 썼다.</p>
+<p><strong>예상치 못한 발견</strong>: 8:18에서 갈라지는 것은 <strong>가지고 있음</strong>과 <strong>하고 있음</strong>이다 — <code>ὀφθαλμοὺς ἔχοντες οὐ βλέπετε</code>(눈을 가지고 있으면서 보지 않는다). 3:1의 마른 손은 <strong>가지고 있음과 하고 있음이 함께 무너져</strong> 있었다(못 편다). 8:18은 다르다. <strong>기관은 온전히 보유되어 있는데 기능이 나오지 않는다.</strong> 그렇다면 8:17의 마음도 없어진 것이 아니라 <strong>있는 채로 굳어 있는 것</strong>이다. 여기서 왜 회복 보고 칸이 비는지가 한 번 더 설명된다 — 없는 것을 주는 일은 보고할 수 있지만, <strong>있는 것이 일하기 시작하는 일은 밖에서 관찰되지 않는다.</strong></p>
+<blockquote>
+<p>[!insight] 결핍이 아니라 정지다<br />
+이 단락이 적는 것은 눈·귀·마음의 <strong>부재</strong>가 아니라 <strong>보유된 채의 정지</strong>다. 그래서 문장이 소유동사를 놓지 않는다.</p>
+<p>[!question] 연결 질문<br />
+- 있는 것이 일하지 않는 상태를 무엇이 다시 움직이게 하는가 — 본문은 말하지 않는다. 나는 그 침묵을 견딜 수 있는가?<br />
+- 조직에서 「없어서 못 한다」와 「있는데 안 한다」를 나는 같은 문장으로 적고 있지 않은가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 발견을 다른 매체로 옮겨 무엇이 살아남는지 본다.</p>
+<h3>12. 변형 (Transforming) — 「가지고 있는데 하지 않는다」 (설교 제목 + 3대지)</h3>
+<p><strong>설교 제목</strong>: 「가지고 있는데 하지 않는다」</p>
+<ul>
+<li><strong>1대지 · 손은 보이고 마음은 보이지 않는다</strong> (막 3:1 / 8:17)<br />
+  같은 틀에 걸린 두 목적어 — <code>τὴν χεῖρα</code>와 <code>τὴν καρδίαν</code>. 갈리는 것은 그 결함을 들어 보일 수 있는가다.</li>
+<li><strong>2대지 · 보이는 것에는 명령이, 보이지 않는 것에는 물음이 온다</strong> (막 3:5 / 8:17-18)<br />
+<code>Ἔκτεινον</code>에는 <code>ἐξέτεινεν</code>이 이어지고 회복이 적힌다. <code>πεπωρωμένην ἔχετε;</code>에는 아무것도 이어지지 않는다.</li>
+<li><strong>3대지 · 본문은 응답 칸을 비워 둔다</strong> (막 8:21)<br />
+<code>Οὔπω συνίετε;</code>에는 목적어도 없고 대답도 없다. 8:22는 새 장면을 연다. 우리는 그 빈칸에 들어와 앉아 있다.</li>
+</ul>
+<p><strong>한 줄 잠언</strong></p>
+<blockquote>
+<p><strong>펼 수 없는 손에는 명령이 왔고, 꺼내 보일 수 없는 마음에는 물음이 왔다.</strong></p>
+</blockquote>
+<p><strong>변환에서 살아남은 것</strong>: 설교 3대지로 접어도, 잠언 한 줄로 줄여도 사라지지 않은 것은 <strong>「보이는가」와 「무엇이 오는가」의 짝</strong>이다. 헬라어 형태코드는 잠언에서 사라졌지만 그 짝은 남았다. 그것이 이 씨앗의 진짜 알맹이다.</p>
+<blockquote>
+<p>[!insight] 형태코드는 증거였고, 짝은 내용이었다<br />
+13단계 내내 형태코드는 <strong>두 자리를 나란히 놓게 해 준 도구</strong>였다. 옮겨 적힌 뒤에 남은 것은 그 도구가 아니라 도구가 드러낸 대조다.</p>
+<p>[!question] 연결 질문<br />
+- 내 설교에서 회중에게 오는 것은 명령인가 물음인가 — 무엇을 보고 그것을 정하는가?<br />
+- 잠언으로 줄였을 때 사라진 것(수동태, 행위자 무표기)은 정말 버려도 되는 것인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 1~12단계의 관찰·장면·격자·놀이를 하나로 접는다.</p>
+<h3>13. 통합 (Synthesizing) — "응답 칸을 비워 둔 진단"</h3>
+<p>관찰은 작았다 — 굳음이 주어가 아니라 목적어 자리에 온다는 것. 형상화가 그 목적어를 두 방에 나눠 세웠고(회당의 보이는 손, 배 안의 보이지 않는 마음), 추상화가 「보유」 하나만 남겼다. 패턴 인식은 그 보유가 임상 기록과 차감계정과 한국어 어법과 잔류응력에서 반복됨을 확인했고, 5단계의 격자는 본문 자체가 이미 그 배열을 다섯 줄로 적어 놓았음을 보여 주었다 — 명령이 오는 칸에는 회복이 적히고, 물음이 오는 칸은 비어 있다.</p>
+<p>유추는 세 번 깨졌고 <strong>깨진 자리가 전부 본문의 침묵과 겹쳤다</strong>(일정 없음·원인 없음·답 없음). 몸은 마음을 펴는 근육이 없다는 것을 30초 만에 가르쳤고, 감정이입은 그 낱말이 진영을 넘어가는 순간의 당혹을 양쪽에서 들었다. 차원을 넓히자 굳음의 어근과 <code>συνίημι</code>가 <strong>둘 다 밖에서 안으로 옮겨 앉았다</strong>는 것이 보였고, 축소하자 8:17 한 절 안에서 <code>νοεῖτε</code>와 <code>συνίετε</code>가 형태까지 같다는 것이 보였다. 모형은 응답 칸을 비워 둘 용의가 진단의 정직성을 정한다고 예측했고, 놀이는 마지막 조각을 내놓았다 — 이 단락이 적는 것은 <strong>결핍이 아니라 보유된 채의 정지</strong>라는 것.</p>
+<p><strong>최종 테제</strong>: 마가는 열둘의 상태를 판정하지 않는다. 그는 <strong>반대자의 굳음을 적던 어근과 회복받은 사람의 손을 적던 형틀을 그대로 가져와 열둘의 마음에 걸고, 그 문장 끝을 물음표로 닫은 뒤 응답 칸을 비워 둔다.</strong> 진단은 내려졌으나 선고는 없고, 처방의 시각에 있는 분은 여기서 <strong>묻는 쪽에 서 계신다.</strong></p>
+<p><strong>가장 생산적이었던 도구</strong>: <strong>11단계 놀이.</strong> 격자(5)와 모형(10)은 본문이 이미 배열해 둔 것을 정리했을 뿐이지만, 놀이가 목록을 극단까지 늘리다가 <code>ὀφθαλμοὺς ἔχοντες οὐ βλέπετε</code>에서 <strong>가지고 있음과 하고 있음의 분리</strong>를 끄집어냈다. 이 발견 없이는 8:17의 마음을 「없어진 것」으로 오독했을 것이다.</p>
+<p><strong>처음 관찰과 달라진 이해</strong>: 1단계에서 나는 이 구문이 <strong>결함을 사람에게서 떼어 놓는 장치</strong>라고 보았다. 13단계에 와서 보니 그것만이 아니다. 같은 구문이 3:1에서는 <strong>회복이 보고될 수 있는 결함</strong>에, 8:17에서는 <strong>보고될 수 없는 정지</strong>에 걸렸다. 곧 이 형틀은 사람과 결함 사이에 틈을 내는 동시에, <strong>그 틈에서 무엇이 일어났는지 밖에서 볼 수 없다는 사실</strong>까지 문장 형식으로 실어 나른다.</p>
+<blockquote>
+<p><strong>"굳어진 마음과 마른 손이 같은 틀로 적혔다. 그러나 손에는 명령이 와서 회복이 적혔고, 마음에는 물음이 와서 칸이 비었다. 마가는 그 빈칸을 채우지 않고 다음 장면을 연다 — 진단은 끝났으나 판결은 적히지 않았고, 우리는 아직 그 물음 안에 앉아 있다."</strong></p>
+</blockquote>
+<hr />
+<h2>개혁신학적 조명</h2>
+<p><strong>실질 접점 본문</strong></p>
+<ul>
+<li><strong>에스겔 12:2</strong> — 8:18이 <code>ἔχω</code> + 대격 기관(<code>ὀφθαλμοὺς</code> · <code>ὦτα</code>)에서 이 본문의 LXX 어법과 겹친다. ⚠ 마가는 인용 표지를 두지 않았으므로 「인용」이라 적지 않고 <strong>어법의 겹침</strong>까지만 적는다. 중요한 것은 그 고발이 겨눈 대상이 <strong>언약 백성</strong>이었다는 사실이다. 언약 안에 있음이 보는 일을 보장하지 않는다.</li>
+<li><strong>마가복음 3:5</strong> — <code>συλλυπούμενος ἐπὶ τῇ πωρώσει τῆς καρδίας αὐτῶν</code>. 굳음의 어근이 처음 놓인 자리이고, 그 자리에서 예수의 반응은 <strong>노와 탄식</strong>이었다. 8:17에서 그 어근이 열둘에게 걸릴 때 오는 것은 탄식이 아니라 물음이다. <strong>같은 어근, 다른 반응.</strong></li>
+<li><strong>마가복음 3:1-5의 결말</strong> — <code>ἀπεκατεστάθη</code>(회복되었다)는 <strong>수동이고 행위자가 표시되지 않는다.</strong> 그 사람은 할 수 없는 일을 명령받았고, 명령이 곧 능력이 되었으며, 회복은 그의 몫 밖에 기록되었다. 8:17의 마음에 명령이 오지 않았다는 사실이 무겁다면, 3:1의 명령이 어떻게 작동했는지가 그 무게를 받는 자리다.</li>
+</ul>
+<p><strong>신학자</strong> — <strong>장 칼뱅, 『기독교 강요』 제2권 2장</strong>(타락한 인간 지성의 상태)과 <strong>제3권 2장</strong>(믿음과 성령의 조명). 칼뱅은 지성의 어두움을 <strong>정보의 부족이 아니라 기능의 정지</strong>로 다루고, 그 회복을 인간의 결단이 아니라 <strong>성령의 조명</strong>에 둔다. 이 씨앗이 11단계에서 도달한 「결핍이 아니라 보유된 채의 정지」는 바로 이 구별과 맞물린다 — 눈은 있다. 그런데 보지 않는다. ⚠ 여기서 칼뱅의 문장을 직접 인용하지 않는다. 이 배치에서 원문 확인 절차를 거치지 않았으므로 <strong>지목까지만</strong> 한다.</p>
+<p><strong>설교 적용점</strong> — 회중의 상태를 진단하는 문장을 설교자가 대신 쓰지 않는다. 이 단락에서 상태를 말하는 것은 <strong>저자의 논평이 아니라 예수의 질문</strong>이고(6:52와 8:17의 화자가 다르다), 그 질문은 <strong>2인칭</strong>으로 온다. 회중을 판정석에 세우지 말고, 같은 물음 앞에 설교자 자신이 함께 앉아라. 8:21을 읽고 <strong>대답을 만들어 주지 말고 그대로 닫아라.</strong></p>
+<p><strong>복음 중심성 점검</strong> — 이 통찰이 도덕주의로 귀결되는 지점은 분명하다. 「마음을 부드럽게 하라」로 끝내는 순간이다. 그러나 <strong>본문은 그 명령을 주지 않았다.</strong> 8:17에 온 것은 물음이고, 명령이 온 유일한 자리(3:5)에서는 할 수 없는 사람에게 명령이 왔으며 회복은 <strong>수동으로, 행위자 없이</strong> 기록되었다. 그러므로 이 씨앗의 귀결은 노력이 아니라 <strong>묻는 분 앞에 머무는 일</strong>이다. 굳음을 스스로 푸는 방법을 본문이 적지 않았으므로, 이 노트도 적지 않는다.</p>
+<hr />
+<h2>실무 적용</h2>
+<p><strong>① 고객 상담 전이 — 「모르시는군요」를 물음으로 바꾸기</strong><br />
+- <strong>상황</strong>: 세무 상담에서 고객이 기본 개념을 놓치고 있다. 「이건 모르시네요」라는 상태 판정이 입에서 먼저 나온다.<br />
+- <strong>적용</strong>: 보유 점검 카드 ②를 건다. 이 결함이 <strong>밖에서 확인되는가</strong>. 서류 누락은 확인된다(→ 지시). 판단의 틀이 굳어 있는 것은 확인되지 않는다(→ 물음). 후자에는 「지금 가지고 계신 자료가 무엇인지」부터 묻는다.<br />
+- <strong>기대 효과</strong>: 고객이 방어에 쓰던 에너지가 자료 제시로 돌아온다. 상담자는 <strong>상태술어 대신 소유술어</strong>를 쓰면서 사람과 결함 사이에 틈을 남긴다.</p>
+<p><strong>② 조직·교회 행정 전이 — 진단서에 빈칸을 허용하기</strong><br />
+- <strong>상황</strong>: 사역 평가서·인사 평가서가 모든 항목에 결론을 요구한다. 평가자는 근거가 없어도 칸을 채운다.<br />
+- <strong>적용</strong>: 8:19-21의 배열을 그대로 쓴다. <strong>셀 수 있는 항목</strong>(출석·집행률·처리 건수)에는 답을 적고, <strong>셀 수 없는 항목</strong>(태도·이해·성숙)에는 <strong>「물었음 / 응답 미기록」</strong>을 적을 수 있게 양식을 고친다.<br />
+- <strong>기대 효과</strong>: 위조된 진단이 줄고, 평가서가 나중에 반증 가능한 문서가 된다. 응답 칸의 공백 자체가 다음 대화의 의제가 된다.</p>
+<p><strong>③ 개인 의사결정 전이 — 보이는 결함과 보이지 않는 결함 분리하기</strong><br />
+- <strong>상황</strong>: 연말에 한 해를 돌아보며 고칠 것을 적는데, 목록 전체가 「~하지 말자」로 채워진다.<br />
+- <strong>적용</strong>: 종이를 반으로 접고 왼쪽에 <strong>밖에서 확인되는 것</strong>(수면 시간, 지출, 미처리 업무), 오른쪽에 <strong>확인되지 않는 것</strong>(굳어 있는 판단, 식어 버린 관심)을 적는다. 왼쪽에는 구체적 지시를, 오른쪽에는 <strong>질문 한 줄</strong>만 적고 답을 비워 둔다.<br />
+- <strong>기대 효과</strong>: 지킬 수 없는 결심이 줄고, 오른쪽 칸이 한 해 동안 살아 있는 물음으로 남는다. 「저녁에 받은 것 셋을 갈라 적고, 답이 오지 않은 물음 하나를 그대로 적어 두라」는 이 단위의 권면과 이어진다.</p>
+<hr />
+<h2>[최종 연구 노트 승격 후보]</h2>
+<h3>🥇 가지고 있음과 하고 있음은 다른 항목이다 — 8:18이 만든 구별</h3>
+<ul>
+<li><strong>핵심</strong>: <code>ὀφθαλμοὺς ἔχοντες οὐ βλέπετε</code>는 기관의 <strong>보유</strong>와 기능의 <strong>작동</strong>을 한 문장 안에서 갈라 놓는다. 3:1의 마른 손은 보유와 작동이 함께 무너진 자리였고, 8:17-18은 보유가 온전한 채 작동만 멈춘 자리다. 그러므로 이 단락이 적는 것은 결핍이 아니라 <strong>보유된 채의 정지</strong>다.</li>
+<li><strong>날카로움</strong>: 「제자들이 이해력이 없었다」는 통상적 읽기는 <strong>결핍 모형</strong>이다. 본문의 소유 구문은 그 모형을 거부한다 — 그들은 눈도 귀도 마음도 <strong>가지고 있다.</strong> 결핍이 아니라 정지이므로 처방도 보충이 아니며, 그래서 본문은 보충의 명령 대신 물음을 둔다.</li>
+<li><strong>연결 고리</strong>: [[15_구문묵상_마가복음_8_1-21]] · [[05_구문묵상_마가복음_2_18-3_6]] · <a href="정지가 풀리는 방식은 #16 소관">[16_구문묵상_마가복음_8_22-9_1]</a></li>
+</ul>
+<h3>🥈 같은 형틀에 명령이 오면 회복이 적히고, 물음이 오면 칸이 빈다</h3>
+<ul>
+<li><strong>핵심</strong>: 완료 수동 분사 + <code>ἔχω</code> + 대격 구문이 마가에 놓인 두 자리(3:1 · 8:17)에서, 그 뒤에 오는 어법이 명령이냐 물음이냐에 따라 본문이 적는 다음 칸이 갈린다 — <code>ἀπεκατεστάθη</code>(회복 보고) ↔ (없음). 그리고 명령이 오는 자리는 결함이 <strong>밖에서 확인되는</strong> 자리다.</li>
+<li><strong>날카로움</strong>: 명령과 물음의 선택을 「엄함과 부드러움」의 문제로 읽으면 놓친다. 그것은 <strong>대상의 가시성</strong>에 걸린 정확성의 문제다. 회복을 명하실 수 있는 분이 여기서 묻는 쪽에 서신 것은 유예가 아니라 대상에 맞춘 어법이다.</li>
+<li><strong>연결 고리</strong>: [[05_구문묵상_마가복음_2_18-3_6]] · [[15_일상의깊은사고_마가복음_8_1-21]] · 겔 12:2</li>
+</ul>
+<h3>🥉 굳음의 어근과 깨달음의 어휘가 둘 다 밖에서 안으로 옮겨 앉는다</h3>
+<ul>
+<li><strong>핵심</strong>: <code>πωρ-</code>는 3:5(노려보던 자들)에서 8:17(열둘)로, <code>συνίημι</code>는 4:12(밖의 사람들·접속법 목적절)에서 8:17·8:21(배 안·현재 직설 의문)로 이동한다. <strong>어근은 진영을 가리지 않고, 갈리는 것은 법(法)이다</strong> — 밖에는 선언이, 안에는 물음이 온다.</li>
+<li><strong>날카로움</strong>: 「안」에 속했다는 사실이 면제가 아니라 <strong>물음의 대상이 됨</strong>을 뜻한다. 동시에 밖에 걸린 선언과 안에 걸린 물음의 차이는 유지된다 — 같은 낱말이 걸렸다고 두 자리를 합치지 않는다.</li>
+<li><strong>연결 고리</strong>: <a href="4:12">[07_구문묵상_마가복음_4_1-25]</a> · <a href="6:52">[12_구문묵상_마가복음_6_30-56]</a> · [[15_구문묵상_마가복음_8_1-21]]</li>
+</ul>
+<hr />
+<h2>위키 연결망</h2>
+<blockquote>
+<p>[!todo] 연결 확인 — 아래 링크는 제안입니다. vault의 실제 노트와 대조하세요.<br />
+- [[05_구문묵상_마가복음_2_18-3_6]] — 3:1 <code>ἐξηραμμένην ἔχων τὴν χεῖρα</code>와 3:5 <code>πώρωσις</code>의 원어 근거<br />
+- [[15_구문묵상_마가복음_8_1-21]] — 8:17-18 파싱, <code>πωρ-</code> 어근 전수, <code>συνίημι</code> 5회 표<br />
+- [[15_일상의깊은사고_마가복음_8_1-21]] — 채택된 3️⃣ 통찰의 원형과 「본문이 남겨 둔 긴장」<br />
+- [[12_구문묵상_마가복음_6_30-56]] — 6:52 <code>ἦν … πεπωρωμένη</code>(우언법·3인칭 논평)과의 구문 대조<br />
+- [[16_구문묵상_마가복음_8_22-9_1]] — 8:22-26 두 단계 회복. <strong>이 노트가 넘긴 자리</strong><br />
+- 신규 생성 추천: [[마가복음_보유구문_ἔχω_완료수동분사_지도]] — 3:1·8:17·8:18을 한 표로 모으고 5:15·11:20이 왜 다른 구문인지 표시</p>
+</blockquote>
+<h3>이 씨앗의 T13 노트 인덱스</h3>
+<pre><code class="language-dataview">LIST FROM #t13 AND [[]]
+SORT file.name ASC
+</code></pre>
+<h3>최근 13단계 확장 노트</h3>
+<pre><code class="language-dataview">TABLE seed_source, lens, created FROM #t13/허브
+SORT created DESC
+LIMIT 10
+</code></pre>
+<hr />
+<h2>다음 질문 5</h2>
+<ol>
+<li><strong>(1 관찰에서)</strong> 마가는 왜 굳음을 <code>ἦν … πεπωρωμένη</code>(6:52)로 한 번, <code>πεπωρωμένην ἔχετε</code>(8:17)로 한 번, 서로 다른 구문으로 적었는가 — 화자가 다른 것 말고 또 무엇이 달라지는가?</li>
+<li><strong>(5 패턴 형성에서)</strong> 마가에서 <strong>명령이 오는 자리</strong>와 <strong>물음이 오는 자리</strong>를 전수 조사하면, 「가시성」 외에 다른 변수가 나오는가?</li>
+<li><strong>(9 차원적 사고에서)</strong> <code>συνίημι</code>의 법이 밖(접속법)과 안(직설 의문)으로 갈린다면, 7:14의 <strong>명령</strong> <code>σύνετε</code>는 어느 쪽에 속하는가 — 무리에게 걸린 그 명령은 이 구별을 무너뜨리는가 보강하는가?</li>
+<li><strong>(11 놀이에서)</strong> 「보유된 채의 정지」를 마가가 다른 곳에서도 쓰는가 — 4:12의 <code>βλέποντες βλέπωσιν καὶ μὴ ἴδωσιν</code>은 같은 구조인가 다른 구조인가?</li>
+<li><strong>(13 통합에서)</strong> 응답 칸이 비어 있는 물음이 마가에 몇 자리 더 있는가, 그리고 그 공백들은 결말의 <code>ἐφοβοῦντο γάρ</code>(16:8)와 어떤 관계에 있는가 — ⚠ 마가의 결말은 <strong>2종·3갈래</strong>(SBLGNT는 16:9-20을 이중괄호로 인쇄한다)이므로, 이 질문은 어느 결말을 두고 묻는지 먼저 정해야 한다.</li>
+</ol>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 15 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

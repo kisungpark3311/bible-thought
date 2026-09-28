@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱→🔥 13단계 사고 확장 노트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 4 편</span>
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+<h2>씨앗: 마가복음 2:5·2:10 「아피엔타이 — 수동으로 선언된 것이 능동으로 다시 주장된다」</h2>
+<hr />
+<h2>[원문] — 씨앗 아이디어</h2>
+<blockquote>
+<p><strong>"예수께서 그들의 믿음을 보시고 중풍병자에게 이르시되 작은 자야 네 죄 사함을 받았느니라 하시니"</strong></p>
+<p><code>⸂καὶ ἰδὼν⸃ ὁ Ἰησοῦς τὴν πίστιν αὐτῶν λέγει τῷ παραλυτικῷ· Τέκνον, ⸂ἀφίενταί σου⸃ αἱ ⸀ἁμαρτίαι.</code></p>
+<p><strong>"이 사람이 어찌 이렇게 말하는가 신성 모독이로다 오직 하나님 한 분 외에는 누가 능히 죄를 사하겠느냐"</strong></p>
+<p><code>Τί οὗτος οὕτως λαλεῖ; ⸀βλασφημεῖ· τίς δύναται ἀφιέναι ἁμαρτίας εἰ μὴ εἷς ὁ θεός;</code></p>
+<p><strong>"그러나 인자가 땅에서 죄를 사하는 권능이 있는 줄을 너희로 알게 하려 하노라 하시고 중풍병자에게 말씀하시되"</strong></p>
+<p><code>ἵνα δὲ εἰδῆτε ὅτι ἐξουσίαν ἔχει ὁ υἱὸς τοῦ ἀνθρώπου ⸂ἐπὶ τῆς γῆς ἀφιέναι ἁμαρτίας⸃— λέγει τῷ παραλυτικῷ·</code></p>
+<p>(막 2:5 · 2:7 · 2:10 / 단위 04 = 2:1-17 · 원어 근거는 [[04_구문묵상_마가복음_2_1-17]])</p>
+</blockquote>
+<p>이 단위는 <strong>두 장면</strong>이다. 앞은 가버나움의 막힌 집에서 지붕이 뜯기고 침상이 내려온 일(2:1-12), 뒤는 세관에 앉은 레위를 부르고 세리·죄인들과 한 상에 누운 일(2:13-17)이다. 씨앗은 앞 장면의 한복판에 놓인다 — 예수의 <strong>첫 말</strong>(2:5)과, 그 말이 고발로 되돌려진 뒤 다시 주장되는 <strong>문장</strong>(2:10) 사이다. 그 사이를 통과하는 낱말이 하나다.</p>
+<hr />
+<h2>[씨앗 선정] — 세 통찰 중 왜 이것인가</h2>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>통찰</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td><code>ἀφίενται</code>(2:5) → <code>ἀφιέναι</code>(2:10) — 수동으로 선언된 것이 능동으로 다시 주장된다</td>
+<td><strong>채택</strong> — 셋 중 <strong>유일하게 한 낱말의 어형 변화</strong>만으로 단락의 절정(2:10)까지 간다. 씨앗이 지시하는 자리가 곧 본문의 분기점이다</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td><code>δύναται</code>(2:7) / <code>ἐξουσία</code>(2:10) — 능력을 묻는데 자격으로 답이 온다</td>
+<td><strong>보류</strong> — 배제가 아니라 <strong>흡수</strong>다. 2:7의 <code>τίς δύναται</code>가 묻는 대상이 <code>ἀφιέναι</code>이고, 2:10에서 <code>ἐξουσία</code>가 걸리는 동사도 <code>ἀφιέναι</code>다. 씨앗 1️⃣이 그 전이를 <strong>안에 품고 있으므로</strong> 5단계 도식의 한 칸으로 들어온다</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td><code>συνανέκειντο</code>·<code>δίκαιος</code>(2:15-17) — 누운 자리는 오래 머무는 자리다</td>
+<td><strong>보류</strong> — 이 단위의 <strong>둘째 장면</strong>은 보되 절정인 2:10을 비켜 간다. 게다가 구문묵상노트가 마가의 <code>δικαιοσύνη</code>·<code>δικαιόω</code> 부재를 유보와 함께 적어 두었으므로, 이 축은 자기 근거가 <strong>부재 관찰</strong>에 기울어 있다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>선택 이유</strong>: 세 통찰 중 이 씨앗만이 <strong>본문이 스스로 세 번 통과시킨 낱말 하나</strong>를 붙든다. ① 2:5의 선언, 2:7의 고발, 2:10의 재주장이 전부 <code>ἀφι-</code> 한 어근을 지나가며, 그중 2:7과 2:10의 <code>ἀφιέναι</code>는 <strong>완전 동형</strong>이다 — 곧 이 단락의 논쟁은 주제가 옮겨 간 것이 아니라 <strong>같은 동사의 태가 교체된 것</strong>이다. ② 마가의 편집 결정이 여기서 보인다. 사함을 말하는 자리에 그는 행위자를 표기하는 수단(<code>ὑπό</code>+속격)을 쥐고 있었고 실제로 2:3에서 「네 사람에게 들려서」로 썼는데, 2:5에서는 쓰지 않았다. 쓸 수 있었던 것을 쓰지 않은 자리에 논쟁이 발생한다. ③ 확장 잠재력도 셋 중 가장 멀리 간다 — 태의 교체는 법·행정·의료·회계의 문서 어법으로 곧바로 건너가고, 「먼저 발음된 말의 효력」이라는 물음으로 오늘의 실무까지 뻗는다. 2️⃣는 기각이 아니라 <strong>씨앗 안으로 접혀 들어왔고</strong>, 3️⃣는 같은 단위의 다른 장면으로 남는다. 한 가지 더 적어 둔다 — <strong><code>ἀφι-</code> 어근은 이 배치 전체에서 #04만 씨앗으로 쓴다.</strong> 11:25의 <code>ἀφίετε</code>·<code>ἀφῇ</code>를 축으로 세우려던 #21의 후보 3️⃣이 이 규칙으로 배제되었고, 그 어근의 무게를 여기가 진다.</p>
+<blockquote>
+<p>[!warning] 씨앗에 붙어 다니는 한정 — 13단계 전부에 따라다닌다. 지우지 않는다<br />
+① <strong><code>ἐπὶ τῆς γῆς</code>가 무엇에 걸리는지는 닫히지 않는다.</strong> 어순 자체가 판본 세 갈래다 — Treg(=SBLGNT)는 부정사 <strong>앞</strong>, WH·NIV는 절 <strong>끝</strong>, RP는 부정사와 목적어 <strong>사이</strong>. SBLGNT 어순에서도 어형으로 결정되지 않는다. (a) 부정사에 걸리면 땅은 <strong>사함이 일어나는 자리</strong>, (b) <code>ἔχει</code>에 걸리면 땅은 <strong>인자가 그 권세를 보유하는 조건</strong>이며 둘은 같은 결론이 아니다. 이 노트는 <strong>어느 쪽도 택하지 않는다.</strong> ⚠ NA28 직접 대조는 실시되지 않았다.<br />
+② <strong>2:10의 삽입절이 예수의 발화인지 저자의 방백인지도 어형으로 결정되지 않는다.</strong> <code>εἰδῆτε</code>는 2인칭 복수이고 <code>λέγει τῷ παραλυτικῷ</code>는 3인칭 서술이며, 인용을 끊는 대시는 SBLGNT 편집자가 찍은 것이다. <strong>이 노트는 화자를 확정하지 않는다.</strong><br />
+③ <strong>시상은 판본에 걸린다.</strong> RP는 2:5·2:9를 완료 <code>ἀφέωνται</code>로 읽는다. 그러나 <strong>태는 어느 판본에서도 수동</strong>이므로 씨앗의 관찰 자체는 판본 선택에 걸리지 않는다.<br />
+④ <strong>이 씨앗이 증명하지 못하는 것</strong>: 인과. 「예수가 사했으므로 사해졌다」는 문장을 이 어형은 지지하지도 부정하지도 않는다. 확정되는 것은 <strong>순서</strong>이지 <strong>주체</strong>가 아니다. 행위자 미표기 수동은 헬라어에서 흔하고 무표적이며, 마가 전체의 기저율은 확인되지 않았다.<br />
+⑤ <strong>2:5의 <code>τὴν πίστιν αὐτῶν</code>이 누운 사람을 포함하는지도 어형으로 결정되지 않는다.</strong> 마가에는 믿음 언급이 전혀 없는 치유도 함께 있다(1:31·1:40-45·3:1-6·7:31-37·8:22-26).</p>
+</blockquote>
+<hr />
+<h2>[이 노트의 자리] — 인접 단위와 무엇이 다른가</h2>
+<table>
+<thead>
+<tr>
+<th>노트</th>
+<th>그 단위의 축</th>
+<th>구별선</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직전 · #03 · 1:29-45</strong> ([[03_구문묵상_마가복음_1_29-45]])</td>
+<td><code>θέλω</code> — 의심된 것은 능력이 아니라 <strong>의지</strong>였다</td>
+<td><strong>#03이 의지를, #04가 권세를 맡는다.</strong> 1:40의 물음(「원하시면 하실 수 있나이다」)이 갈라 놓은 두 항을 두 단위가 나눠 진다. #03은 「하시겠는가」, #04는 「그럴 자격이 있는가」</td>
+</tr>
+<tr>
+<td><strong>직후 · #05 · 2:18-3:6</strong> ([[05_구문묵상_마가복음_2_18-3_6]])</td>
+<td><code>νηστεύω</code>·<code>νυμφίος</code> — 금식의 기준이 <strong>달력에서 한 사람으로</strong> 옮겨진다</td>
+<td><strong>#04는 권세의 자리</strong>(누가 사할 수 있는가), <strong>#05는 기준의 이동</strong>(무엇이 규정을 정하는가). 2:1-3:6이 다섯 논쟁의 한 묶음이라는 사실은 알되 <strong>그 묶음 자체를 #04의 논지로 세우지 않는다</strong> — 묶음의 종착(3:6 <code>συμβούλιον</code>)은 #05 소관이다</td>
+</tr>
+<tr>
+<td><strong>먼 단위 · #22 · 11:27-12:12</strong></td>
+<td><code>ἀπεδοκίμασαν</code>·<code>κεφαλὴν γωνίας</code> — 권위 논쟁(<code>ποίᾳ ἐξουσίᾳ</code> 11:28)</td>
+<td><strong>#22는 권위의 출처를 묻는 심문</strong>이고, <strong>#04는 권세가 행사된 자리</strong>다. 같은 낱말이 한쪽에서는 주장되고 다른 쪽에서는 심문된다. 이 아치는 13단계에서 <strong>한 문단 예고</strong>까지만 하고 전개하지 않는다</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!warning] 인접 노트의 문구를 가져오지 않기 위한 선<br />
+<strong><code>ἐξουσία</code>의 신학적 무게는 이 단위가 맡는다</strong> — #02가 1:22·27을 무리의 평가로만 관찰하고 양보했다. 그러나 <strong>계수를 논거의 기둥으로 쓰지 않는다.</strong> 마가의 <code>ἐξουσία</code> 출현 횟수(SBLGNT 기준 10회)와 2:10이 세 번째라는 사실은 <strong>보조 관찰</strong>로만 적고, 논지는 <code>δύναμαι → ἐξουσία</code>라는 <strong>낱말 교체 한 자리</strong>가 진다. 또한 「인자」 칭호가 마가에서 처음 발음되는 자리가 2:10이라는 사실은 쓰되, <strong>인자 기독론 전체를 여기서 전개하지 않는다</strong> — 그 무게는 8:31 이후가 진다.</p>
+</blockquote>
+<hr />
+<h2>사고 지도</h2>
+<pre><code class="language-mermaid">mindmap
+  root((&quot;태가 바뀌는 동안 낱말은 그대로였다&quot;))
+    &quot;관찰·형상화&quot;
+      &quot;수동 능동 수동 능동&quot;
+      &quot;지붕 가루가 떨어진 방&quot;
+    추상화
+      &quot;선언&quot;
+    &quot;패턴·유추&quot;
+      &quot;주문이 먼저 낭독된다&quot;
+      &quot;채무면제 통지와 푸가의 응답&quot;
+    &quot;체화·감정이입&quot;
+      &quot;자료를 덮고 한 문장을 말하는 손&quot;
+      &quot;전제를 지키다 답을 받지 못한 사람&quot;
+    &quot;차원·모형&quot;
+      &quot;땅이라는 낱말과 매립된 첫 칭호&quot;
+      &quot;태 점검표 네 칸&quot;
+    &quot;놀이·변형&quot;
+      &quot;매끄러운 배열이 가능했다&quot;
+    통합
+      &quot;설명이 도착하기 전에 유효한 것&quot;
+</code></pre>
+<hr />
+<h2>[1~13단계 사고 과정 연대기]</h2>
+<blockquote>
+<p>각 단계는 앞 단계의 산물을 이어받아 유기적으로 변모한다.</p>
+</blockquote>
+<h3>1. 관찰 (Observing) — "태가 두 번 바뀌는 동안 낱말은 한 번도 바뀌지 않는다"</h3>
+<p>어형만 적는다. <code>ἀφι-</code> 어근이 이 단위에 <strong>네 번</strong> 나오고 <strong>두 쌍이 동형</strong>이다 — 2:5 <code>ἀφίενται</code>(3인칭 복수 현재 <strong>수동</strong> 직설) / 2:7 <code>ἀφιέναι</code>(현재 <strong>능동</strong> 부정사) / 2:9 <code>Ἀφίενται</code>(다시 <strong>수동</strong>) / 2:10 <code>ἀφιέναι</code>(다시 <strong>능동</strong>). 배열하면 수동 → 능동 → 수동 → 능동이다. 목적어의 격도 이 교대를 따라간다 — 수동 두 자리에서는 <code>αἱ ἁμαρτίαι</code>가 <strong>주격 주어</strong>이고, 능동 두 자리에서는 <code>ἁμαρτίας</code>가 <strong>대격 목적어</strong>다. 2:5에는 행위자구가 붙지 않는다. 이 단위에서 <code>ὑπό</code>+속격이 실제로 쓰인 자리는 <strong>2:3 <code>αἰρόμενον ὑπὸ τεσσάρων</code>(네 사람에게 들려서) 하나뿐</strong>이다.</p>
+<blockquote>
+<p>[!insight] 논쟁의 진행은 화제의 이동이 아니라 어형의 교대로 적혀 있다<br />
+고발이 들어오는 자리(2:7)와 주장이 나오는 자리(2:10)가 <strong>같은 형태</strong>다. 바뀐 것은 낱말이 아니라 <strong>태(voice)</strong>이고, 바뀐 자리마다 죄가 주어에서 목적어로 옮겨 간다.</p>
+<p>[!question] 연결 질문<br />
+- 같은 동사의 태가 교대하는 문서에서, 논쟁은 무엇을 두고 벌어지고 있는 것인가?<br />
+- 행위자를 적을 수단을 가지고도 적지 않은 문장을, 우리는 어떻게 읽어야 하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 격과 태로만 적힌 이 교대를 형상화가 한 방의 장면으로 세운다.</p>
+<h3>2. 형상화 (Imaging) — "지붕 가루가 떨어진 방과, 소리 없는 문장"</h3>
+<p>가버나움의 집. 문간까지 사람이 차서 공기가 덥고 탁하다. 위에서 소리가 난다 — 흙과 나뭇가지를 <strong>파내는</strong>(ἐξορύξαντες) 소리다. 마른 흙가루가 아래 사람들의 목덜미로 떨어진다. 밧줄이 삐걱거리고 <code>κράβαττον</code>(크라밧톤), 값 있는 침구가 천장 구멍으로 내려온다. 방이 조용해진다. 예수가 입을 연다. 첫 낱말이 「테크논」, 작은 자야다. 그다음 말은 명령이 아니다 — <strong>「네 죄들이 사해진다.」</strong> 요구도, 조건도, 자격 심사도 없다. 그리고 한쪽에 <strong>앉아 있던</strong>(καθήμενοι) 사람들의 입은 열리지 않는다. 그들의 문장은 소리를 내지 않고 <strong>마음 안에서</strong>(ἐν ταῖς καρδίαις αὐτῶν) 만들어진다.</p>
+<blockquote>
+<p>[!insight] 장면에서 먼저 도착한 것은 치유가 아니라 말이다<br />
+실려 온 사람이 받은 첫 것은 몸의 회복이 아니라 <strong>발음된 문장</strong>이었다. 그리고 그 문장에 맞선 문장은 <strong>소리를 내지 않았다</strong> — 한쪽은 말했고 한쪽은 속으로 재구성했다.</p>
+<p>[!question] 연결 질문<br />
+- 소리 내어 말해진 것과 속으로 재구성된 것이 맞붙을 때, 무엇이 먼저 무너지는가?<br />
+- 지붕을 뜯어서까지 데려온 사람들이 기대한 첫마디는 무엇이었겠는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 흙가루와 밧줄을 걷어 내고 남는 한 낱말을 추상화가 붙잡는다.</p>
+<h3>3. 추상화 (Abstracting) — "선언"</h3>
+<p><strong>남는 개념: 선언(먼저 발음되어 이미 유효한 말).</strong><br />
+<strong>한 문장 압축: 사함은 자격 확인의 결론으로 도착하지 않고, 선언으로 먼저 온다.</strong></p>
+<p>버린 것 셋. ① <strong>「믿음이 치유의 조건」이라는 도식</strong> — 2:5의 <code>τὴν πίστιν αὐτῶν</code>이 누운 사람을 포함하는지 어형으로 결정되지 않고, 마가에는 믿음 언급이 전혀 없는 치유가 다섯 자리나 함께 있다. 조건절로 읽는 길이 마가 안에서 열리지 않는다. ② <strong><code>ἀφίημι</code>의 어원 그림</strong> — <code>ἀπό</code>+<code>ἵημι</code>에서 「멀리 보냄」을 끌어내 신학을 세우는 길은 구문묵상노트가 막아 두었다. 의미는 용례가 정한다. ③ <strong>「신적 수동태」라는 라벨</strong> — 붙이는 순간 행위자가 확정되어 버린다. 그런데 행위자 미표기 수동은 헬라어에서 <strong>흔하고 무표적</strong>이며, 마가 전체의 기저율은 확인되지 않았다.</p>
+<blockquote>
+<p>[!insight] 남은 것은 신학 용어가 아니라 화행(話行) 하나다<br />
+「선언」은 경건어가 아니라 <strong>말의 종류</strong>다. 사실을 보고하는 말도, 요구하는 말도 아니고, <strong>발음됨으로써 효력이 생기는 말</strong>이다. 남은 알맹이가 신학 명제가 아니라 언어 행위라는 점이 다음 단계를 열어 준다.</p>
+<p>[!question] 연결 질문<br />
+- 발음됨으로써 효력이 생기는 말을 우리는 일상에서 몇 개나 쓰고 있는가?<br />
+- 라벨 하나(신적 수동태)를 붙이지 않고 본문을 끝까지 갈 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 「선언」이라는 알맹이가 신학 밖의 도메인에서도 같은 순서로 작동하는지 패턴 인식이 확인한다.</p>
+<h3>4. 패턴 인식 (Recognizing Patterns) — "효력은 먼저 발음되고, 자격은 나중에 다투어진다"</h3>
+<table>
+<thead>
+<tr>
+<th>도메인</th>
+<th>패턴 발현</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>법·소송</td>
+<td>판결은 <strong>주문(主文)이 먼저 낭독</strong>되고 이유는 뒤에 온다. 효력은 선고 순간에 발생하며, 그 재판부에 관할권이 있었는지는 <strong>상소심에서 따로 다툰다</strong></td>
+</tr>
+<tr>
+<td>세무·행정</td>
+<td>부과처분은 <strong>통지로 효력이 생긴다</strong>. 처분청에 권한이 있었는지·근거 법령이 맞는지는 그 뒤 <strong>불복 절차에서 심리</strong>된다. 처분은 심리 결과를 기다려 효력을 얻지 않는다</td>
+</tr>
+<tr>
+<td>의료</td>
+<td>사망 선고는 <strong>한 문장</strong>이고 그 문장이 법적 시점을 만든다. 그 문장을 말할 자격은 면허 체계가 <strong>별도로</strong> 지고 있으며, 선고 자리에서 면허를 확인하지 않는다</td>
+</tr>
+</tbody>
+</table>
+<p>공통 패턴: <strong>효력을 내는 말은 먼저 발음되고, 그 말을 할 자격은 다른 절차에서 나중에 다투어진다.</strong> 본문의 배열이 이 순서와 겹친다 — 2:5가 주문이고, 2:7이 관할 이의이며, 2:10이 그 이의에 대한 응답이다.</p>
+<blockquote>
+<p>[!insight] 패턴은 씨앗을 편들지만 증명하지는 않는다<br />
+세 도메인이 한목소리로 말해도 그것은 <strong>제도의 관행</strong>이지 이 동사의 의미론이 아니다. 씨앗이 실제로 딛고 선 것은 여전히 <strong>어형 하나</strong>다 — 2:5의 수동과 2:7·2:10의 동형 능동.</p>
+<p>[!question] 연결 질문<br />
+- 관할 이의가 제기되었는데 본안이 먼저 집행되는 제도를 우리는 불안해하는가, 신뢰하는가?<br />
+- 제도의 관행에서 끌어온 유비가 본문 판정의 근거가 될 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 세 도메인에서 확인된 순서를 본문의 세 자리 위에 얹어 패턴 형성이 도식으로 정제한다.</p>
+<h3>5. 패턴 형성 (Forming Patterns) — 프레임워크 「선언 · 되돌림 · 재주장의 세 자리」</h3>
+<pre><code class="language-mermaid">flowchart TD
+    A[&quot;2:5 선언 · ἀφίενται (수동)&lt;br/&gt;죄들이 주어 · 행위자 미표기&quot;] --&gt; B[&quot;2:7 되돌림 · ἀφιέναι (능동)&lt;br/&gt;τίς δύναται — 능력의 언어&lt;br/&gt;죄목: βλασφημεῖ&quot;]
+    B --&gt; C[&quot;2:9 재발음 · Ἀφίενται (수동)&lt;br/&gt;어느 것이 쉽겠느냐 — 비교 안에 놓임&quot;]
+    C --&gt; D[&quot;2:10 재주장 · ἀφιέναι (능동)&lt;br/&gt;ἐξουσίαν ἔχει — 자격의 언어&lt;br/&gt;2:7과 완전 동형&quot;]
+    D --&gt; E[&quot;ἵνα절의 주절 없음 (파격구문)&lt;br/&gt;— 그리고 침상이 들린다&quot;]
+    B -.낱말 교체.-&gt; D
+</code></pre>
+<p><strong>법칙: 논쟁이 진행되는 통로는 낱말의 교체가 아니라 태의 교체다 — 같은 동사가 수동에서 능동으로 넘어가는 순간, 물음이 「무엇이 일어났는가」에서 「누가 하는가」로 바뀐다.</strong></p>
+<p>이 도식의 한 칸이 씨앗 후보 2️⃣를 흡수한다. 고발은 <code>τίς δύναται</code>(2:7), <strong>능력</strong>의 언어로 제기되는데 응답은 <code>ἐξουσία</code>(2:10), <strong>자격</strong>의 언어로 온다. 할 수 있느냐는 물음에 <strong>자격이 있다</strong>는 답이 돌아온다. 동사는 같은 형태로 유지되고 <strong>명사만 교체된다</strong> — 그러니 이것은 화제의 전환이 아니라 같은 자리에서의 <strong>층위 이동</strong>이다.</p>
+<blockquote>
+<p>[!insight] 재주장은 고발의 낱말을 고치지 않고 그대로 받는다<br />
+2:10은 「내 말은 그런 뜻이 아니었다」고 하지 않는다. 서기관이 능동으로 되돌려 놓은 <strong>바로 그 부정사</strong>를 그대로 집어 들고, 거기에 <code>ἐξουσίαν ἔχει</code>를 붙인다. 고발의 형식을 교정하지 않고 승인한 뒤 주체를 채워 넣는 방식이다.</p>
+<p>[!question] 연결 질문<br />
+- 상대가 내 말을 자기 어법으로 옮겨 놓았을 때, 그 어법을 고치지 않고 그대로 받는 응답은 무엇을 걸고 있는가?<br />
+- 능력의 언어로 제기된 문제에 자격의 언어로 답하는 일은 회피인가 상향인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 도식을 신학 바깥의 제도와 음악에 던져 어디서 깨지는지 유추가 시험한다.</p>
+<h3>6. 유추 (Analogizing) — "채무면제 통지서와 푸가의 응답"</h3>
+<p><strong>(1) 세무·민사 ↔ 신학 (교차 유추).</strong> 민법상 <strong>면제</strong>는 채권자의 단독행위다. 채권자가 면제의 의사를 표시하면 그 순간 채무가 소멸하고, 채무자가 무엇을 했는지·동의했는지는 성립 요건이 아니다. 장부에는 「채무가 소멸되었다」는 <strong>수동의 문장</strong>으로 적힌다. 그런데 「그 면제를 할 권한이 누구에게 있었는가」는 <strong>채권의 귀속</strong>이라는 전혀 다른 층위의 문제이고, 다툼이 생기면 그 층위에서 따로 심리된다. <em>새 통찰</em>: 「소멸했다」는 수동 진술과 「누가 면제할 수 있는가」라는 능동 물음이 <strong>실제 제도에서 분리되어 있다.</strong> 본문의 2:5와 2:7이 서로 다른 층위에서 말하고 있다는 사실이 여기서 또렷해진다. <em>깨지는 지점</em>: 면제는 채권자 <strong>자기 권리의 포기</strong>인데, 2:7의 대전제(<code>εἰ μὴ εἷς ὁ θεός</code>)는 그 권리가 하나님께 속한다는 주장이다. 게다가 이 단락에는 <strong>값이 없다</strong> — 값이 오는 자리는 10:45의 <code>λύτρον ἀντὶ πολλῶν</code>이고, 그것은 2:5를 <strong>채우는 것이 아니라 더하는 것</strong>이다.</p>
+<p><strong>(2) 음악.</strong> 푸가에서 주제(subject)가 제시된 뒤 응답(answer)이 다른 성부에서 들어올 때, 음형은 거의 그대로인데 <strong>조성의 자리가 바뀐다.</strong> 듣는 사람은 새 선율이 왔다고 느끼지 않고 <strong>같은 것이 다른 자리에서 다시 온다</strong>고 느낀다. <em>새 통찰</em>: 이 단락의 청각적 사실이 그렇다 — 2:7과 2:10은 <strong>같은 소리</strong>이고, 달라진 것은 그것이 나오는 성부(입)다. <em>깨지는 지점</em>: 푸가는 작곡가 한 사람이 모든 성부를 쓴다. 여기서 둘째 성부는 <strong>적대자</strong>의 속말이고, 셋째 성부(2:10)의 화자가 누구인지는 어형으로 정해지지 않는다.</p>
+<blockquote>
+<p>[!insight] 두 유추가 서로 다른 것을 지킨다<br />
+(1)은 <strong>층위의 분리</strong>를 지키고 (2)는 <strong>소리의 동일성</strong>을 지킨다. 둘을 겹쳐야 씨앗이 온전해진다 — 같은 소리가 다른 층위에서 다시 울린다.</p>
+<p>[!question] 연결 질문<br />
+- 장부에 수동으로 적힌 사건들 가운데, 누가 했는지 아무도 묻지 않고 지나간 것은 몇 건인가?<br />
+- 상대의 말을 같은 음형으로 되받는 응답은 왜 반박보다 강하게 들리는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 두 유추가 갈라 놓은 층위를 몸이 직접 겪게 하는 일을 체화가 맡는다.</p>
+<h3>7. 몸으로 생각하기 (Body Thinking) — "자료를 덮고 한 문장을 말하는 손"</h3>
+<p>실천 프로토콜. <strong>누군가의 문제를 앞에 두고 앉았을 때, 자료를 손에 쥔 채로 말하지 말고 먼저 자료를 덮은 다음 확정된 한 문장을 말하고, 그러고 나서 다시 편다.</strong> 몸이 곧바로 가르친다. 첫째, <strong>손이 자료를 놓지 않으려 한다</strong> — 확인하고 나서 말하려는 성향이 판단이 아니라 근육에 들어 있다. 둘째, 덮은 채로 말하면 <strong>호흡이 짧아지고 문장이 빨라진다</strong> — 근거를 펴 놓지 않은 채 말하는 데 몸이 저항한다. 셋째, 듣는 사람의 <strong>어깨가 내려간다.</strong> 전달에 쓸 때: 2:5를 읽으며 손바닥을 펴 아래로 내리고, 2:7을 읽으며 손을 거두어 가슴 앞에 모으며(속말), 2:10에서 다시 편다.</p>
+<blockquote>
+<p>[!insight] 우리가 지키는 순서는 신념이 아니라 자세다<br />
+「자격을 확인하고 나서 선언한다」는 순서를 우리는 신학으로 배운 적이 없다. <strong>몸이 먼저 배웠다.</strong> 그래서 이 본문의 순서가 어색하게 느껴지는 것은 교리의 문제가 아니라 근육의 문제다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 확정해 놓고도 발음하지 않은 채 자료 뒤에 두고 있는 문장은 무엇인가?<br />
+- 손을 덮는 동작 하나가 상담의 순서를 바꿀 수 있다면, 그것은 기술인가 회개인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 그 짧아진 호흡을 1인칭 목소리로 옮기는 일을 감정이입이 맡는다.</p>
+<h3>8. 감정이입 (Empathizing) — "실려 온 사람의 마음, 그리고 전제를 지킨 사람의 마음"</h3>
+<p><strong>(가) 침상에 누운 사람</strong><br />
+<em>나는 실려 왔다. 문이 막혀서 사람들이 남의 집 지붕을 뜯었고, 나는 그 구멍으로 내려왔다. 내가 한 일은 없다. 내려오는 동안 내가 생각한 것은 걷게 해 달라는 말뿐이었다. 그런데 그가 나를 「작은 자야」라고 불렀고, 내가 아직 아무 말도 하지 않았는데 내 죄들이 사해진다고 했다. 나는 그 말을 받을 준비를 해 본 적이 없다. 받을 준비를 할 기회조차 주어지지 않았다.</em><br />
+감정 전환: <strong>실려 온 부끄러움 → 요구받지 않은 것 앞의 당혹.</strong></p>
+<p><strong>(나) 가장 불편해할 사람 — 서기관</strong><br />
+<em>우리가 지킨 것은 우리 체면이 아니라 문장 하나다. 오직 한 분 외에는 죄를 사할 수 없다. 이 문장은 우리가 만든 것이 아니다. 이 사람의 말을 능동으로 옮겨 보면 그 문장을 밟는다 — 그러니 우리가 붙인 이름은 감정이 아니라 죄목이다. 신성모독. 이것은 사형에 닿는다. 그런데 그는 우리의 대전제를 부정하지도 고쳐 주지도 않았고, 사람을 일으켜 내보냈다. 우리는 답을 받지 못한 채 남았다.</em><br />
+감정 전환: <strong>전제를 지키는 긴장 → 답을 받지 못한 채 남겨짐.</strong></p>
+<blockquote>
+<p>[!insight] 본문은 2:8-2:12 사이에서 그 대전제를 건드리지 않는다<br />
+반박도 확인도 수정도 없다. 논증이 완결되지 않은 채 치유로 넘어가고, 마지막에 군중이 <strong>바로 그 이름</strong>(<code>τὸν θεόν</code>, 2:12)께 영광을 돌린다. 고발한 입과 찬송한 입이 같은 이름을 부르는데, 본문은 둘을 잇는 해설을 넣지 않는다.</p>
+<p>[!question] 연결 질문<br />
+- 내 전제가 부정당하지 않은 채로 무시될 때, 나는 무엇을 잃었다고 느끼는가?<br />
+- 준비할 기회조차 없이 도착한 선물을 사람은 왜 곧바로 기뻐하지 못하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 두 목소리가 선 방 안의 시간을 한 낱말의 안쪽과 복음서 전체의 길이로 옮기는 일을 차원적 사고가 맡는다.</p>
+<h3>9. 차원적 사고 (Dimensional Thinking) — "땅이라는 낱말 하나와, 종속절에 매립된 첫 발음"</h3>
+<p><strong>확대.</strong> 2:10에 「땅에서」(<code>ἐπὶ τῆς γῆς</code>, 에피 테스 게스)가 붙는다. 이 어구가 부정사에 걸리는지 <code>ἔχει</code>에 걸리는지는 <strong>어순 자체가 판본 세 갈래이고 어형으로 결정되지 않으므로 이 노트는 닫지 않는다.</strong> 그러나 두 독법이 <strong>함께 붙잡는 것</strong>이 있다 — 죄 사함이 <strong>땅과 관계된 사건</strong>으로 말해진다는 것이다. 하늘에서 결재되어 통보되는 사면이 아니라, 지붕이 뜯기고 흙가루가 떨어진 이 방에서 발음된 선언이다.</p>
+<p><strong>축소.</strong> 같은 문장의 안쪽으로 들어가면 「인자」(<code>ὁ υἱὸς τοῦ ἀνθρώπου</code>)가 마가에서 <strong>처음 발음되는 자리</strong>가 여기다. 그런데 그 자리는 선언문의 머리가 아니라 <code>ἵνα</code>절 안의 <code>ὅτι</code>절 — 이 문장에서 <strong>가장 깊이 매립된 절</strong>이다. 칭호는 내걸리지 않고 묻힌 채 첫 소리를 낸다. (이 칭호가 지는 무게는 8:31 이후가 진다. 여기서는 <strong>첫 발음의 자리</strong>만 적는다.)</p>
+<p><strong>핵심 전복</strong>: 권세가 주장되는 그 문장이 <strong>문법적으로 완결되지 않는다.</strong> <code>ἵνα</code>절의 주절이 없다 — 파격구문(anacoluthon)이다. 「너희가 알도록 — (그러므로 내가 이렇게 한다)」의 괄호가 어형으로 보충되지 않은 채 말이 끊기고, 중풍병자에게 하는 말로 넘어간다. 주장이 문장으로 닫히기 전에 침상이 들린다.</p>
+<blockquote>
+<p>[!insight] 가장 큰 주장이 가장 깊은 절에 놓이고, 그 문장은 끝나지 않는다<br />
+권세·칭호·땅 — 무게 있는 세 요소가 한 문장에 모여 있는데, 그 문장은 <strong>종속절 안에서</strong> 말해지고 <strong>주절 없이</strong> 끊긴다. 크기와 배치가 반대로 간다.</p>
+<p>[!question] 연결 질문<br />
+- 문장이 완결되기 전에 행동이 먼저 오는 배열을, 설교는 어떻게 견딜 수 있는가?<br />
+- 「땅에서」의 두 독법 중 하나를 택하지 않고도 설교가 가능한가 — 무엇을 말하고 무엇을 말하지 않아야 하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 배열을 오늘 바로 쓸 도구로 만드는 일을 모형 만들기가 맡는다.</p>
+<h3>10. 모형 만들기 (Modeling) — 「태 점검표 — 이 자리에서 먼저 발음된 문장은 어느 태인가」</h3>
+<p>보고서·상담 기록·회의록·권징 서류 앞에 대고 네 칸을 묻는다.</p>
+<table>
+<thead>
+<tr>
+<th>칸</th>
+<th>묻는 것</th>
+<th>막 2:1-17의 답</th>
+<th>내 문서</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>이 자리에서 <strong>먼저 발음된</strong> 문장은 수동인가 능동인가</td>
+<td><strong>수동</strong> — <code>ἀφίενται</code>(2:5). 죄들이 주어다</td>
+<td></td>
+</tr>
+<tr>
+<td>②</td>
+<td>그 문장에 <strong>행위자가 표기</strong>되어 있는가</td>
+<td>없다. 이 단위에서 <code>ὑπό</code>+속격이 쓰인 자리는 2:3(네 사람) 하나뿐</td>
+<td></td>
+</tr>
+<tr>
+<td>③</td>
+<td><strong>태를 바꾼 쪽</strong>은 누구이며, 바꾸면서 무엇을 물었는가</td>
+<td>서기관. 능동으로 되돌려 「<strong>누가</strong> 하느냐」를 물었다(2:7)</td>
+<td></td>
+</tr>
+<tr>
+<td>④</td>
+<td>그 물음에 돌아온 답은 <strong>같은 낱말</strong>인가 다른 낱말인가</td>
+<td>동사는 <strong>완전 동형</strong>(<code>ἀφιέναι</code>), 명사만 교체된다 — <code>δύναμαι</code> → <code>ἐξουσία</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>예측하는 것</strong>: 조직에서 「처리되었습니다」라는 <strong>수동 보고</strong>가 먼저 올라오면, 다음 회의의 첫 질문은 거의 언제나 「<strong>누가</strong> 했습니까」다. ③ 칸이 비어 있는 문서는 없다 — 다만 그 칸을 <strong>문서가 쓰지 않으면 회의가 쓴다.</strong></li>
+<li><strong>설명하지 못하는 것</strong>: <strong>순서의 이유.</strong> 본문은 왜 사함이 먼저 선언되었는지 말하지 않는다. 이 표가 다루는 것은 <strong>배열</strong>이지 <strong>동기</strong>가 아니며, 확정되는 것도 순서이지 인과가 아니다.</li>
+</ul>
+<blockquote>
+<p>[!insight] 이 표의 값은 ③ 칸에 있다<br />
+①②는 문서를 보면 나오고 ④는 대조하면 나온다. 더한 것은 <strong>태를 바꾼 쪽을 지목하게 만드는 칸</strong> 하나뿐이다. 그 칸이 「무슨 일이 있었는가」와 「누가 책임지는가」를 언제 갈라 세울지를 정한다.</p>
+<p>[!question] 연결 질문<br />
+- 내 최근 문서 셋에서 ① 칸의 답이 수동인 것은 몇 건이고, 그중 ② 칸이 비어 있는 것은 몇 건인가?<br />
+- 이 표가 「책임 소재 추궁 요령」으로 전락하지 않게 막는 것은 무엇인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 네 칸을 일부러 어기며 본문을 뜯어보는 일을 놀이가 맡는다.</p>
+<h3>11. 놀이 (Playing) — "세 번 뒤집어 보기"</h3>
+<p><strong>게임 ① 2:5를 능동으로 바꿔 보기.</strong> 「내가 네 죄를 사한다」로 고쳐 놓으면 문장은 성립한다. 그런데 그 순간 <strong>논쟁의 진행 자체가 사라진다</strong> — 서기관이 할 일이 「능동으로 되돌리기」가 아니라 「받아 적기」가 되기 때문이다. 이 단락의 다툼은 <strong>태가 어긋나 있기 때문에</strong> 생긴다.</p>
+<p><strong>게임 ② 순서를 뒤집어 보기.</strong> 2:10을 먼저 놓고 2:5를 뒤에 놓아 본다. 「인자가 땅에서 죄 사하는 권세가 있다 — 그러므로 네 죄가 사해진다.」 논증이 깔끔해지고, <code>ἵνα</code>절도 주절을 얻고, 파격구문이 사라진다. <strong>그런데 그러면 사함이 자격 확인의 결론이 된다.</strong> 씨앗 한 줄이 무너진다.</p>
+<p><strong>게임 ③ 2:10의 화자를 바꿔 보기.</strong> 이것을 저자의 방백으로 읽으면 「너희가 알도록」의 「너희」는 <strong>독자</strong>다. 예수의 발화로 읽으면 현장 논쟁의 응답이다. <strong>어형으로 결정되지 않으므로 둘 다 살려 둔다.</strong> 그런데 방백 쪽으로 읽어 보면 한 가지가 드러난다 — 그 경우 이 장면에서 <strong>소리 내어 발음된 능동형은 서기관의 속말 하나뿐</strong>이고, 예수의 입에서 나온 <code>ἀφι-</code>는 <strong>2:5·2:9 두 자리 모두 수동</strong>이 된다.</p>
+<blockquote>
+<p>[!insight] 예상치 못한 발견 — 매끄러운 배열이 실제로 가능했다<br />
+게임 ②가 보여 준 것은 <strong>저자가 논증을 완결시킬 수 있는 배열을 쓰지 않았다</strong>는 사실이다. 그러니 2:5가 먼저 온 것은 서술의 미숙이 아니라 <strong>배열</strong>이다. 씨앗이 딛고 선 근거는 이것 하나다 — 가능했던 순서가 쓰이지 않았다는 것. 게임 ③은 그 배열의 수신자가 현장인지 독자인지까지는 <strong>정해 주지 않는다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 내가 쓴 문서에서 「가능했는데 쓰지 않은 배열」을 찾아낼 수 있는가?<br />
+- 논증을 완결시키지 않는 선택이 정직일 수 있는 자리는 어디인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 「쓰이지 않은 매끄러운 배열」을 다른 형식으로 옮기는 일을 변형이 맡는다.</p>
+<h3>12. 변형 (Transforming) — 「먼저 발음된 말」 (설교 제목 + 3대지)</h3>
+<blockquote>
+<p><strong>제목: 먼저 발음된 말</strong></p>
+<p><strong>하나. 사함은 선언으로 왔습니다</strong> (2:5). 그는 실려 왔고 아무 말도 하지 않았습니다. 첫마디는 요구가 아니라 선언이었고, 그 문장에는 「누가 하느냐」가 적혀 있지 않습니다. 본문은 그것을 적을 수단을 가지고 있었습니다 — 2:3에서 「네 사람에게 들려서」라고 적었으니까요. 가지고 있었고, 여기서는 쓰지 않았습니다.</p>
+<p><strong>둘. 그 선언은 곧바로 되돌려졌습니다</strong> (2:7). 앉아 있던 사람들이 그 말을 능동으로 옮겨 놓고 물었습니다. 「누가 능히 죄를 사하겠느냐.」 그들이 붙인 이름은 의문이 아니라 죄목이었고, 그 죄목은 사형에 닿습니다. 그들은 틀린 전제 위에 서 있지 않았습니다 — 본문도 그 전제를 부정하지 않습니다.</p>
+<p><strong>셋. 답은 같은 낱말로 왔고, 문장은 끝나지 않았습니다</strong> (2:10). 되돌려진 바로 그 형태를 그대로 받아 「인자가 땅에서 죄를 사하는 권세가 있다」고 합니다. 그런데 그 문장은 주절을 얻지 못한 채 끊기고, 대신 침상이 들립니다. 우리가 배울 것은 결론이 아니라 순서입니다.</p>
+</blockquote>
+<p><strong>한 줄 잠언</strong>: <em>유효한 말은 우리가 그 말을 할 자격을 다 따진 뒤에 도착하지 않는다.</em></p>
+<blockquote>
+<p>[!insight] 변환에서 살아남은 것<br />
+파싱 코드도, 판본 세 갈래도, 파격구문이라는 용어도 사라졌다. 남은 것은 셋이다 — <strong>「먼저」·「되돌림」·「끝나지 않음」.</strong> 셋 모두 내용이 아니라 <strong>순서와 형태</strong>에 관한 말이다.</p>
+<p>[!question] 연결 질문<br />
+- 설교에서 「끝나지 않음」을 결함이 아니라 본문의 형태로 전할 수 있는가?<br />
+- 세 대지 중 하나를 빼면 무엇이 무너지는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 열두 도구가 캐낸 것을 통합이 하나의 테제로 합친다.</p>
+<h3>13. 통합 (Synthesizing) — "설명이 도착하기 전에 유효한 것"</h3>
+<p>관찰은 한 어근이 네 번 지나가며 태가 두 번 교대한다는 어형 사실에서 출발했고(1), 형상화는 흙가루가 떨어진 방에서 <strong>먼저 도착한 것이 치유가 아니라 말</strong>이라는 장면을 얻었다(2). 추상화는 신학 용어가 아니라 <strong>화행 하나</strong> — 「선언」을 남겼고(3), 패턴 인식은 법정·세무·의료에서 효력이 먼저 발음되고 자격은 나중에 다투어지는 순서를 확인하면서 그것이 판정 근거가 될 수 없음도 함께 적었다(4). 프레임워크는 세 자리를 도식으로 세우며 <strong>「논쟁의 통로는 낱말이 아니라 태다」</strong>를 법칙으로 뽑았고, 거기서 씨앗 후보 2️⃣(<code>δύναμαι</code>→<code>ἐξουσία</code>)가 한 칸으로 접혀 들어왔다(5).</p>
+<p>유추는 채무면제의 <strong>층위 분리</strong>와 푸가의 <strong>소리 동일성</strong>을 겹쳐 놓았고(6), 몸은 자료를 놓지 않으려는 손에서 우리가 지키는 순서가 신념이 아니라 자세임을 배웠으며(7), 감정이입은 준비할 기회조차 없이 받은 사람과 전제를 지키다 답을 받지 못한 사람을 나란히 세웠다(8). 차원 전환은 「땅에서」를 열어 둔 채로 두 독법이 함께 붙잡는 것을 남기고, 가장 큰 주장이 가장 깊은 절에서 <strong>주절 없이</strong> 끊긴다는 사실을 드러냈으며(9), 점검표는 그것을 네 칸으로 만들었다(10). 그리고 놀이가 반전을 주었다 — <strong>매끄러운 배열이 실제로 가능했는데 쓰이지 않았다</strong>(11). 설교 세 대지는 그것을 「먼저·되돌림·끝나지 않음」으로 줄였다(12).</p>
+<p><strong>아치 하나를 한 문단으로 예고해 둔다.</strong> 여기서 주장된 <code>ἐξουσία</code>는 뒤에서 심문받는다 — 11:28의 <code>ἐν ποίᾳ ἐξουσίᾳ ταῦτα ποιεῖς</code>가 그 자리다. <strong>#04가 권세가 행사된 자리라면 #22는 권세의 출처를 묻는 심문이고, 그 축은 #22가 맡는다.</strong> 여기서는 아치의 <strong>기둥 하나</strong>가 2:10이라는 사실만 세운다. 마찬가지로 값이 치러지는 자리(10:45)도 지목만 한다 — 그것은 2:5를 <strong>채우는 것이 아니라 그 위에 더해지는 것</strong>이며, 2:5는 이미 사함을 유효하게 선언했기 때문이다.</p>
+<p><strong>최종 테제</strong>: 이 단락의 논쟁은 무엇을 말했는가를 두고 벌어진 것이 아니라 <strong>한 동사의 태가 어긋난 자리</strong>에서 발생했다. 예수의 입에서 사함은 <strong>수동으로</strong> 발음되어 행위자를 지정하지 않았고, 서기관은 그것을 <strong>능동으로 되돌려</strong> 「누가 하느냐」를 물었으며, 2:10은 그 능동 부정사를 <strong>고치지 않고 그대로 받아</strong> 거기에 자격을 붙였다. 그러므로 여기서 확정되는 것은 인과가 아니라 <strong>순서</strong>다 — 사함이 먼저 말해졌고, 그 사함의 권세가 누구에게 있는지는 그다음에 말해졌으며, 그 문장마저 주절 없이 끊겼다. 본문은 논증을 완결할 수 있는 배열을 쓸 수 있었고 쓰지 않았다. <strong>그러므로 말할 수 있는 것은 이것이다 — 설명이 도착하기 전에 이미 유효한 것이 있고, 우리가 견디기 어려워하는 것은 그 순서다.</strong></p>
+<p><strong>가장 생산적이었던 도구</strong>: <strong>11. 놀이.</strong> 게임 ②가 아니었다면 「순서」는 관찰이 아니라 <strong>인상</strong>으로 남았을 것이다. 2:10을 앞에 놓은 배열이 실제로 성립하고 심지어 더 매끄럽다는 것을 보고 나서야, 「먼저 왔다」가 문체의 결과가 아니라 <strong>선택된 배열</strong>이라는 사실이 근거를 얻었다. <strong>처음 관찰과 달라진 이해</strong>: 처음에는 이 단락을 <strong>「죄 사함의 권세를 둘러싼 논쟁」</strong>으로 읽었고, 지금은 <strong>「선언이 먼저 서고 그 뒤에 권세가 주장된 자리」</strong>로 읽는다. 권세는 논쟁의 주제가 아니라 <strong>선언 다음에 오는 항목</strong>이었다.</p>
+<blockquote>
+<p><strong>"그는 실려 왔고 아무 말도 하지 않았는데 첫마디가 선언이었다. 그 선언을 능동으로 되돌려 놓고 「누가 하느냐」를 물은 것은 우리 쪽이다. 답은 같은 낱말로 돌아왔고, 그 문장은 끝나기 전에 침상이 들렸다. 그러므로 이 본문이 우리에게 준 것은 결론이 아니라 순서다 — 자격 확인이 끝나야 유효해지는 것이 아니라, 유효한 것이 먼저 발음되고 자격은 그 뒤에 말해진다."</strong></p>
+</blockquote>
+<hr />
+<h2>개혁신학적 조명</h2>
+<p><strong>마가복음 10:45 — 값은 뒤에서 온다.</strong> <code>δοῦναι τὴν ψυχὴν αὐτοῦ λύτρον ἀντὶ πολλῶν</code>. 2:5에서 선언된 사함의 <strong>값</strong>이 이 단락에는 적혀 있지 않고, 복음서는 그것을 뒤에서 다룬다. <em>한정</em>: 그러나 10:45이 2:5의 <strong>공백을 메우는 것이 아니다.</strong> 2:5는 이미 사함을 유효하게 선언했으므로, 10:45은 <strong>채움이 아니라 더함</strong>이다. 이 구별이 무너지면 2:5가 「아직 조건부인 선언」으로 강등된다.</p>
+<p><strong>이사야 43:25 — 1인칭으로 발음되는 사면.</strong> 「나 곧 나는 나를 위하여 네 허물을 도말하는 자니 네 죄를 기억하지 아니하리라.」 이 어법의 방향이 2:7의 대전제(<code>εἰ μὴ εἷς ὁ θεός</code>)가 서 있는 자리를 보여 준다 — 서기관은 임의의 경건 규칙이 아니라 <strong>구약이 실제로 말한 자리</strong>를 지키고 있었다. <em>한정</em>: 마가가 이 본문을 <strong>인용한다고 쓰지 않는다.</strong> 칠십인역 어휘 대조는 실시되지 않았고, 남길 수 있는 것은 <strong>어법의 방향이 겹친다</strong>는 것까지다.</p>
+<p><strong>로마서 8:33-34 — 고발과 선언이 마주 서는 구조.</strong> 「누가 능히 하나님께서 택하신 자들을 고발하리요 의롭다 하신 이는 하나님이시니.」 여기서도 <strong>선언이 먼저 서 있고 고발이 뒤에 온다.</strong> <em>한정</em>: 마가에 <code>δικαιοσύνη</code>·<code>δικαιόω</code>가 나오지 않으므로 2:17의 <code>δικαίους</code>를 서신서의 의 개념으로 옮겨 읽는 길은 마가 안에서 열리지 않는다. 겹치는 것은 어휘가 아니라 <strong>순서의 구조</strong>다.</p>
+<p><strong>신학자</strong>: <strong>헤르만 바빙크, 『개혁교의학』(Gereformeerde Dogmatiek) 제4권 — 칭의론.</strong> 개혁파 교의학은 칭의를 <strong>주입이나 과정이 아니라 법정적 선언(<em>sententia iudicialis</em>)</strong>으로 규정하고, 그 선언이 성화에 <strong>앞선다</strong>고 본다. 하이델베르크 요리문답 제56문(죄 사함에 관하여)과 웨스트민스터 신앙고백 11장이 같은 계열이다. <strong>한정을 분명히 단다</strong> — 이 단락은 칭의론의 증빙 본문이 아니다. 마가에는 그 어휘가 없고, 2:5는 법정 용어로 쓰이지도 않았다. 겹치는 것은 <strong>순서의 구조 하나</strong>다 — 선언이 먼저 서고, 그 선언의 근거와 자격은 뒤에서 말해진다. 그 이상으로 올리지 않는다.</p>
+<p><strong>설교 적용점</strong>: 회중에게 10단계 표의 ① 칸을 묻는다 — <strong>「당신이 지금 붙들고 있는 문장은 수동입니까, 능동입니까.」</strong> 그리고 ③ 칸을 잇는다. 「내가 아직 자격이 없다」는 문장은 사실은 <strong>태를 바꾼 문장</strong>이다. 본문에서 태를 바꾼 것은 사함을 받은 쪽이 아니라 <strong>지켜보던 쪽</strong>이었다.</p>
+<p><strong>복음 중심성 점검</strong>: 두 방향으로 미끄러진다. ① <strong>도덕주의</strong> — 「선언을 먼저 하라」가 결론이 되면 이 본문은 <strong>화법 요령</strong>으로 전락하고, 순서를 지키는 것이 새로운 공로가 된다. 그러나 2:5에서 선언을 발음한 이는 실려 온 사람이 아니다. <strong>순서를 배우는 것이 순서를 만들어 내지 않는다.</strong> ② <strong>반율법주의</strong> — 「선언이 먼저」가 「값이 없다」로 읽히는 미끄럼이다. 본문이 값을 적지 않은 것은 사실이지만, 복음서는 10:45에서 그것을 적는다. <strong>적히지 않은 것과 없는 것은 다르다.</strong> 그리고 2:7의 대전제도 부정되지 않는다 — 본문은 그것을 무너뜨리지 않고 그 옆에 2:10을 놓는다.</p>
+<hr />
+<h2>실무 적용</h2>
+<p><strong>① 고객 상담 — 조사 통지를 받은 의뢰인 앞의 첫 문장</strong><br />
+<em>상황</em>: 세무조사 통지를 받고 온 의뢰인 앞에서 관행은 「자료를 다 보고 말씀드리겠습니다」로 연다. 자격 확인이 먼저다. 그동안 의뢰인의 공포는 혼자 자란다.<br />
+<em>적용</em>: 7단계 프로토콜과 10단계 ① 칸을 결합한다 — 자료를 <strong>덮고</strong>, 지금 시점에 이미 확정된 사실 <strong>한 문장</strong>을 먼저 발음한다(예: 「이 건은 현재 범칙 사건으로 전환된 상태가 아닙니다」). 그다음 자료를 펴고, ③ 칸에서 「누가 무엇을 해야 하는가」를 적는다.<br />
+<em>기대 효과</em>: 의뢰인의 자료 제출 속도는 정보량이 아니라 <strong>공포의 크기</strong>가 좌우한다. 먼저 선 한 문장이 실무 일정을 앞당긴다.</p>
+<p><strong>② 조직·교회 행정 — 권한 다툼이 사실 확정을 인질로 잡지 못하게 하기</strong><br />
+<em>상황</em>: 권징·징계·감사 절차에서 「이 건을 누가 다룰 수 있는가」(관할·권한)가 먼저 터져 본안이 몇 달씩 묻히는 상태.<br />
+<em>적용</em>: 문서를 <strong>두 단으로 강제</strong>한다 — ⓐ <strong>지금 확정된 사실</strong>(수동태로 적는다: 무엇이 일어났는가) ⓑ <strong>그 사안을 처리할 권한의 소재</strong>(능동태로 적는다: 누가 다루는가). 본문의 2:5/2:10 배치를 문서 형식으로 옮기는 것이며, ⓑ가 확정되기 전에도 ⓐ는 기록되고 공유된다.<br />
+<em>기대 효과</em>: 관할 이의가 사실 기록을 정지시키지 못한다. 권한 다툼이 끝난 뒤 다시 사실을 복원하느라 드는 비용이 사라진다.</p>
+<p><strong>③ 개인 의사결정 — 하루를 두 줄로 적기</strong><br />
+<em>상황</em>: 자기 점검이 「나는 아직 준비가 안 됐다」·「자격이 없다」는 문장으로 반복해서 닫히고, 그 문장이 다음 행동을 계속 미룬다.<br />
+<em>적용</em>: 하루 기록을 <strong>두 줄 고정</strong>으로 쓴다. 첫 줄은 <strong>「오늘 내게 일어난 일」</strong>(수동), 둘째 줄은 <strong>「내가 한 일」</strong>(능동). <strong>순서를 바꾸지 않는다.</strong> 첫 줄이 비는 날이 있어도 그대로 두고, 둘째 줄부터 쓰지 않는다.<br />
+<em>기대 효과</em>: 자기 평가가 성과의 등락에서 분리된다. 「내가 한 일」이 적을 때에도 그날이 <strong>빈 날</strong>이 되지 않는다.</p>
+<hr />
+<h2>[최종 연구 노트 승격 후보]</h2>
+<h3>🥇 이 논쟁은 화제가 아니라 태(voice)로 진행된다</h3>
+<ul>
+<li><strong>핵심</strong>: 막 2:5-10의 다툼은 새 주제가 도입되어 생긴 것이 아니다. 같은 어근이 네 번 지나가며 수동 → 능동 → 수동 → 능동으로 교대하고, 2:7과 2:10의 <code>ἀφιέναι</code>는 <strong>완전 동형</strong>이다. 고발은 예수의 수동 선언을 <strong>능동으로 되돌려 놓는 행위</strong> 자체였고, 2:10은 그 되돌려진 형태를 <strong>고치지 않고 그대로 받아</strong> 자격을 붙인다.</li>
+<li><strong>날카로움</strong>: 통상의 읽기는 이 단락을 「죄 사함의 권세 논쟁」으로 요약하는데, 그 요약은 <strong>논쟁이 어떻게 발생했는지</strong>를 지운다. 태의 교대를 보면 논쟁의 발화점이 주제가 아니라 <strong>어형</strong>이라는 것이 보이고, 그래서 결론이 「누가 옳은가」가 아니라 <strong>「무엇이 먼저 발음되었는가」</strong>가 된다.</li>
+<li><strong>연결 고리</strong>: 막 2:3(<code>ὑπὸ τεσσάρων</code> — 이 단위에서 행위자가 표기된 유일한 자리) / 막 2:12(<code>τὸν θεόν</code>) / <a href="§1 정동사·§4① ἀφίημι 용례">[04_구문묵상_마가복음_2_1-17]</a> / [[04_일상의깊은사고_마가복음_2_1-17]] 통찰 1️⃣</li>
+</ul>
+<h3>🥈 매끄러운 배열이 가능했는데 쓰이지 않았다</h3>
+<ul>
+<li><strong>핵심</strong>: 2:10을 앞에 놓고 2:5를 뒤에 놓으면 논증이 완결되고 <code>ἵνα</code>절도 주절을 얻는다. 그 배열이 실제로 성립한다는 사실이, 현재의 순서가 <strong>문체의 부산물이 아니라 선택</strong>임을 보여 준다. 그리고 그 매끄러운 배열에서는 사함이 <strong>자격 확인의 결론</strong>이 되므로, 씨앗 명제의 유일한 근거는 <strong>쓰이지 않은 배열의 존재</strong>다.</li>
+<li><strong>날카로움</strong>: 「순서가 중요하다」는 진술은 대개 인상에 기대는데, 이 축은 그 진술을 <strong>반사실(counterfactual) 하나</strong>로 떠받친다. 씨앗이 무너질 수 있는 지점을 노트 안에 적어 두는 방식이기도 하다.</li>
+<li><strong>연결 고리</strong>: 막 2:10(파격구문 — <code>ἵνα</code>절의 주절 없음) / 막 10:45(값은 채움이 아니라 더함) / [[04_구문묵상_마가복음_2_1-17]] §3 유보 ④ / [[00_생각의탄생_씨앗선정표_마가복음]] #04</li>
+</ul>
+<h3>🥉 가장 큰 주장이 가장 깊은 절에 매립되어 있다</h3>
+<ul>
+<li><strong>핵심</strong>: 「인자」 칭호가 마가에서 처음 발음되는 자리는 2:10이고, 그 자리는 <code>ἵνα</code>절 안의 <code>ὅτι</code>절 — 이 문장에서 가장 깊이 매립된 절이다. 권세·칭호·「땅에서」가 한 문장에 모였는데, 그 문장은 종속절 안에서 말해지고 <strong>주절 없이 끊긴다.</strong></li>
+<li><strong>날카로움</strong>: 칭호의 첫 출현을 「선포」로 읽는 습관을 어형이 직접 막는다. 감춤과 드러냄이 <strong>한 문장 안에</strong> 동시에 있으며, 이 칭호가 지는 실제 무게는 8:31 이후가 지므로 <strong>여기서는 자리만 확정된다.</strong></li>
+<li><strong>연결 고리</strong>: 막 2:28(둘째 출현) / 막 8:31 이후(칭호의 무게) / 막 11:28 <code>ἐν ποίᾳ ἐξουσίᾳ</code>(주장 → 심문의 아치, 축은 #22) / [[04_구문묵상_마가복음_2_1-17]] §4② <code>ἐξουσία</code></li>
+</ul>
+<hr />
+<h2>위키 연결망</h2>
+<blockquote>
+<p>[!todo] 연결 확인 — 아래 링크는 제안입니다. vault의 실제 노트와 대조하세요.</p>
+</blockquote>
+<ul>
+<li>[[04_구문묵상_마가복음_2_1-17]] — 모든 원어 근거의 출처(§1 정동사·§2 절 구조도·§3 <code>ἐπὶ τῆς γῆς</code> 전용 소절·§4① <code>ἀφίημι</code> §4② <code>ἐξουσία</code>)</li>
+<li>[[04_일상의깊은사고_마가복음_2_1-17]] — 이 씨앗(통찰 1️⃣)의 출처. 씨앗 선정 표의 번호도 이 노트 기준</li>
+<li>[[03_구문묵상_마가복음_1_29-45]] — 직전 단위. 구별선은 <strong>의지(<code>θέλω</code>) ↔ 권세(<code>ἐξουσία</code>)</strong>이며, 1:40의 물음이 갈라 놓은 두 항을 두 단위가 나눠 진다</li>
+<li>[[05_구문묵상_마가복음_2_18-3_6]] — 직후 단위. 구별선은 <strong>권세의 자리 ↔ 기준의 이동</strong>. 다섯 논쟁 묶음의 종착(3:6)은 그쪽 소관</li>
+<li>[[00_마가복음_묵상단위_마스터]] — 축 중복 방지 대장(#04)</li>
+<li>[[00_생각의탄생_씨앗선정표_마가복음]] — <code>ἀφι-</code> 어근 보유 단위 지정(#04) 및 #21-3️⃣ 배제 근거</li>
+<li>신규 생성 추천: [[태의교체가_논쟁을_만든다]] / [[선언이_먼저_오는_문서형식]] / [[에피테스게스_어순세갈래]]</li>
+</ul>
+<h3>이 씨앗의 T13 노트 인덱스</h3>
+<pre><code class="language-dataview">LIST FROM #t13 AND [[]]
+SORT file.name ASC
+</code></pre>
+<h3>최근 13단계 확장 노트</h3>
+<pre><code class="language-dataview">TABLE seed_source, lens, created FROM #t13/허브
+SORT created DESC
+LIMIT 10
+</code></pre>
+<hr />
+<h2>다음 질문 5</h2>
+<ol>
+<li><strong>(1 관찰)</strong> 마가복음에서 예수의 발화가 <strong>수동태로 나오는 자리</strong>를 전수로 모으면, 그 수동들이 붙는 대상에 어떤 공통점이 있는가 — 아니면 없는가(부재도 결과다)?</li>
+<li><strong>(4 패턴 인식)</strong> 「효력은 먼저 발음되고 자격은 나중에 다투어진다」는 제도의 관행인데, 그 관행이 <strong>없는</strong> 제도(사전 인가·사전 승인 체계)에서 자란 독자에게 2:5는 어떻게 들리는가?</li>
+<li><strong>(8 감정이입)</strong> 서기관의 대전제가 <strong>부정되지 않은 채</strong> 남는다면, 오늘 설교에서 그 전제를 지킨 사람들을 어떻게 다루어야 하는가 — 틀린 사람으로인가, 답을 받지 못한 사람으로인가?</li>
+<li><strong>(9 차원적 사고)</strong> 「땅에서」의 두 독법(사함의 장소 / 권세 보유의 조건)을 각각 끝까지 밀고 가면 <strong>어디서 처음으로 신학적으로 갈라지는가</strong>, 그리고 그 분기점은 설교에서 실제로 문제가 되는가?</li>
+<li><strong>(11 놀이)</strong> 성경 안에서 「가능했는데 쓰이지 않은 매끄러운 배열」을 더 찾을 수 있는가 — 그런 자리들을 모으면 저자의 편집 결정을 읽는 별도의 방법이 되는가?</li>
+</ol>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 4 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

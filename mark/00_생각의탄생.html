@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱 마가복음 생각의탄생 씨앗 선정표</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 0 편</span>
+      <h1>🌱 마가복음 생각의탄생 씨앗 선정표</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱 마가복음 생각의탄생 씨앗 선정표</h1>
+<blockquote>
+<p><strong>왜 선정을 먼저 하는가</strong>: 씨앗을 단위마다 그때그때 고르면 <strong>같은 어근·같은 논법이<br />
+스무 번 반복</strong>된다. 로마서 배치에서 「같은 어휘 두 자리 + 무엇이 달라지는가」 형식이<br />
+<strong>여섯 단위 연속 재발</strong>한 실적이 있다(<code>../로마서/00_이어받기_로마서배치.md</code> §5).<br />
+그래서 <strong>90개 후보를 먼저 전수 개관하고, 어근·논법·전담배정 세 축으로 충돌을 소거한<br />
+뒤</strong> 30개 씨앗을 확정한다.</p>
+</blockquote>
+<hr />
+<h2>1. 판정 규칙 (이 표가 적용한 것)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>규칙</th>
+<th>적용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R-A</strong></td>
+<td><strong>어근 중복 금지</strong> — 두 단위가 같은 헬라어 어근을 씨앗으로 쓸 수 없다</td>
+<td>배제 7건 (§3)</td>
+</tr>
+<tr>
+<td><strong>R-B</strong></td>
+<td><strong>전담 배정 존중</strong> — 마스터 「전담 배정」표의 모티프는 배정 단위만 씨앗으로 쓴다</td>
+<td><code>σχίζω</code>→#29 · 메시아 비밀→#09 · <code>πωρόω</code>→#15 · <code>παραδίδωμι</code>→#26·#28</td>
+</tr>
+<tr>
+<td><strong>R-C</strong></td>
+<td><strong>논법 형식 분산</strong> — 같은 논법이 3회를 넘지 않는다</td>
+<td>최다 형식 2회 (§4)</td>
+</tr>
+<tr>
+<td><strong>R-D</strong></td>
+<td><strong>본문 핵심·저자 의도 우선</strong> — R-A~R-C가 충돌하지 않는 한 그 단위의 「본문 핵심」 줄이 가리키는 통찰을 택한다</td>
+<td>30건 중 <strong>21건이 본문 핵심(1️⃣)</strong></td>
+</tr>
+<tr>
+<td><strong>R-E</strong></td>
+<td><strong>소거 결과는 소거라고 적는다</strong> — 본문 핵심을 못 쓴 단위는 그 사유를 표에 남긴다</td>
+<td>9건 (§2의 ⚠ 표시)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠ <strong>마스터 「단위별 고유 관찰 축 배정」과 다를 수 있다.</strong> 씨앗은 <strong>일상의깊은사고의 통찰<br />
+3개 안에서만</strong> 고른다. 배정 어휘가 세 통찰에 없으면 배정을 따르지 않는다(R25가 이미<br />
+「3개 중 최소 1개는 배정 밖에서 나온다」고 정한 그 구조다).</p>
+</blockquote>
+<hr />
+<h2>2. 씨앗 확정표 (30단위)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>본문</th>
+<th>채택</th>
+<th>씨앗 어휘</th>
+<th>씨앗 한 줄</th>
+<th>논법</th>
+<th>비채택 사유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>1:1-13</td>
+<td>1️⃣</td>
+<td><code>γέγραπται</code></td>
+<td>첫 절에 동사가 없고, 책의 첫 동사가 <strong>완료 수동</strong>이다</td>
+<td>부재</td>
+<td>2️⃣3️⃣은 「같은 낱말 두·세 자리」 형식 — 배치 전체에서 2회로 제한</td>
+</tr>
+<tr>
+<td>02</td>
+<td>1:14-28</td>
+<td>1️⃣</td>
+<td><code>πεπλήρωται</code>·<code>ἤγγικεν</code></td>
+<td>두 완료형의 <strong>태가 엇갈린다</strong></td>
+<td>어형</td>
+<td>3️⃣ <code>ἐξουσία</code>는 #04의 권세 논지와 주제 충돌</td>
+</tr>
+<tr>
+<td>03</td>
+<td>1:29-45</td>
+<td>3️⃣ ⚠</td>
+<td><code>θέλω</code></td>
+<td>의심된 것은 <strong>능력이 아니라 의지</strong>였다</td>
+<td>물음의 전제</td>
+<td>2️⃣ <code>ὀργισθείς/σπλαγχνισθείς</code>는 #12 <code>ἐσπλαγχνίσθη</code>와 <strong>어근 충돌(R-A)</strong></td>
+</tr>
+<tr>
+<td>04</td>
+<td>2:1-17</td>
+<td>1️⃣</td>
+<td><code>ἀφίενται</code></td>
+<td>사함이 <strong>수동으로 선언되고</strong> 능동으로 다시 주장된다</td>
+<td>선언의 순서</td>
+<td>—</td>
+</tr>
+<tr>
+<td>05</td>
+<td>2:18-3:6</td>
+<td>1️⃣</td>
+<td><code>νηστεύω</code>·<code>νυμφίος</code></td>
+<td>금식의 기준이 <strong>달력에서 한 사람으로</strong> 옮겨진다</td>
+<td>기준의 이동</td>
+<td>3️⃣ <code>συλλυπούμενος</code>(예수의 감정)는 #11 <code>ἐθαύμαζεν</code>과 축 충돌</td>
+</tr>
+<tr>
+<td>06</td>
+<td>3:7-35</td>
+<td>1️⃣</td>
+<td><code>ἵνα ὦσιν μετ᾿ αὐτοῦ</code></td>
+<td>열둘의 <strong>첫 목적절이 「함께 있게」</strong>다</td>
+<td>서열·배치</td>
+<td>—</td>
+</tr>
+<tr>
+<td>07</td>
+<td>4:1-25</td>
+<td>1️⃣</td>
+<td><code>ἀφεθῇ</code>(사 6:10↔막 4:12)</td>
+<td>인용에서 <strong>「내가 고칠 것이다」의 1인칭이 지워졌다</strong></td>
+<td>인용 변형</td>
+<td>3️⃣ <code>ἐδίδου</code>는 #20 <code>δοῦναι</code>와 어근 충돌(R-A)</td>
+</tr>
+<tr>
+<td>08</td>
+<td>4:26-41</td>
+<td>3️⃣ ⚠</td>
+<td><code>ὑπακούει</code>(단수)</td>
+<td>복수 주어에 <strong>단수 동사</strong> — 복종이 인격에게 향한다</td>
+<td>수의 불일치</td>
+<td>1️⃣ <code>πεφίμωσο</code>는 「두 자리 대조」 형식 초과(R-C)</td>
+</tr>
+<tr>
+<td>09</td>
+<td>5:1-20</td>
+<td>1️⃣</td>
+<td><code>ὕπαγε</code>·<code>ἀπάγγειλον</code></td>
+<td>여덟 자리가 금지인데 <strong>여기 하나만 알리라</strong>다</td>
+<td>금지의 예외</td>
+<td><strong>전담 배정(R-B)</strong> — 메시아 비밀은 #09 소관</td>
+</tr>
+<tr>
+<td>10</td>
+<td>5:21-43</td>
+<td>1️⃣</td>
+<td><code>θυγάτηρ</code>·<code>κοράσιον</code></td>
+<td>네 호칭이 <strong>화자에 따라 갈린다</strong></td>
+<td>호칭 분포</td>
+<td>2️⃣ <code>ἥψατο</code>는 마스터가 #03 축으로 배정한 접촉 어휘</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6:1-29</td>
+<td>1️⃣</td>
+<td><code>ἐθαύμαζεν</code></td>
+<td><strong>놀람의 주어가 예수께로</strong> 역전되는 유일한 절</td>
+<td>주어 역전</td>
+<td>—</td>
+</tr>
+<tr>
+<td>12</td>
+<td>6:30-56</td>
+<td>1️⃣</td>
+<td><code>ἐσπλαγχνίσθη</code></td>
+<td>긍휼이 <strong>가르침이라는 형태</strong>를 가졌다</td>
+<td>감정→행위</td>
+<td>2️⃣ <code>πεπωρωμένη</code>는 <strong>전담을 #15에 양보</strong>(R-B)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>7:1-23</td>
+<td>2️⃣ ⚠</td>
+<td><code>κορβᾶν</code>·<code>ἀκυρόω</code></td>
+<td><strong>헌납의 명목이 부양의 실질을 지운다</strong></td>
+<td>명목/실질</td>
+<td>1️⃣ <code>καλῶς</code> 두 자리는 형식 초과(R-C) ‖ ★ 세무 렌즈 최적 교차점</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7:24-37</td>
+<td>1️⃣</td>
+<td><code>κυνάριον</code></td>
+<td><strong>되받은 낱말은 「개」 하나뿐</strong>이다</td>
+<td>낱말 되받기</td>
+<td>3️⃣ <code>ἐστέναξεν</code>은 #11 감정 축과 충돌</td>
+</tr>
+<tr>
+<td>15</td>
+<td>8:1-21</td>
+<td>3️⃣ ⚠</td>
+<td><code>πεπωρωμένην</code>≡<code>ἐξηραμμένην</code></td>
+<td><strong>굳어진 마음과 마른 손이 같은 구문틀</strong>로 적힌다</td>
+<td>구문틀 전이</td>
+<td><strong>전담 배정(R-B)</strong> — <code>πωρόω</code>는 #15 소관 ‖ 마스터 ★★ 발견</td>
+</tr>
+<tr>
+<td>16</td>
+<td>8:22-9:1</td>
+<td>1️⃣</td>
+<td><code>ἀπεκατέστη</code>·<code>διέβλεψεν</code></td>
+<td><strong>한 번에 낫지 않았다</strong>는 사실 자체가 본문이다</td>
+<td>단계성</td>
+<td>2️⃣ <code>ἀποδοκιμασθῆναι</code>는 #22와 <strong>어근 충돌(R-A)</strong></td>
+</tr>
+<tr>
+<td>17</td>
+<td>9:2-29</td>
+<td>1️⃣</td>
+<td><code>ἀκούετε αὐτοῦ</code></td>
+<td>하늘이 남긴 것은 <strong>명령형 하나</strong>다</td>
+<td>신현의 잔여</td>
+<td>2️⃣ <code>γέγραπται</code>는 #01과 <strong>어근 충돌(R-A)</strong></td>
+</tr>
+<tr>
+<td>18</td>
+<td>9:30-50</td>
+<td>3️⃣ ⚠</td>
+<td><code>σκανδαλίζω</code>·<code>γέεννα</code></td>
+<td><strong>절단의 3연이 같은 모양이 아니다</strong></td>
+<td>3연의 어긋남</td>
+<td>1️⃣ <code>παραδίδοται</code>는 <strong>전담(#26·#28) 위반</strong>(R-B) ‖ 2️⃣ <code>διάκονος</code>는 #20 섬김 주제와 충돌</td>
+</tr>
+<tr>
+<td>19</td>
+<td>10:1-31</td>
+<td>3️⃣ ⚠</td>
+<td><code>ἠγάπησεν</code></td>
+<td><strong>사랑이 먼저 적히고, 그다음에 떠남</strong>이 적힌다</td>
+<td>감정 기입</td>
+<td>1️⃣ <code>ἔγραψεν</code>은 #01과 어근 충돌(R-A) ‖ 2️⃣ 주어 익명→명시는 #29 전담축과 충돌</td>
+</tr>
+<tr>
+<td>20</td>
+<td>10:32-52</td>
+<td>1️⃣</td>
+<td><code>δοῦναι</code>(10:40↔10:45)</td>
+<td><strong>줄 수 없다</strong> 하신 낱말이 다섯 절 뒤 <strong>부정 없이</strong> 선다</td>
+<td>두 자리 대조</td>
+<td>—</td>
+</tr>
+<tr>
+<td>21</td>
+<td>11:1-26</td>
+<td>1️⃣</td>
+<td><code>πεποιήκατε</code>(렘 7:11)</td>
+<td><strong>예언서의 물음이 판결이 된다</strong></td>
+<td>인용의 화행 전환</td>
+<td>3️⃣ <code>ἀφίετε</code>는 #04 <code>ἀφίενται</code>와 어근 충돌(R-A)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>11:27-12:12</td>
+<td>1️⃣</td>
+<td><code>ἀπεδοκίμασαν</code>·<code>κεφαλὴν γωνίας</code></td>
+<td><strong>같은 낱말의 방향이 뒤집힌다</strong></td>
+<td>두 자리 대조</td>
+<td>—</td>
+</tr>
+<tr>
+<td>23</td>
+<td>12:13-44</td>
+<td>2️⃣ ⚠</td>
+<td><code>ἀγαπήσεις</code></td>
+<td>계명이 <strong>「사랑하라」가 아니라 「너는 사랑할 것이다」</strong>로 적혔다</td>
+<td>미래 직설법</td>
+<td>1️⃣ 주어 미정 문장은 #29 전담축과 충돌 ‖ 3️⃣ 과부는 13단계 통합에 흡수</td>
+</tr>
+<tr>
+<td>24</td>
+<td>13:1-37</td>
+<td>1️⃣</td>
+<td><code>παρελεύσονται</code></td>
+<td><strong>지나가는 것의 목록에 하늘과 땅이 들고, 그의 말은 들지 않는다</strong></td>
+<td>목록의 포함/배제</td>
+<td>—</td>
+</tr>
+<tr>
+<td>25</td>
+<td>14:1-25</td>
+<td>1️⃣</td>
+<td><code>συντρίψασα</code>·<code>κατέχεεν</code></td>
+<td><strong>깨뜨림은 곁가지이고 부음이 주절</strong>이다</td>
+<td>분사/주절 무게</td>
+<td>3️⃣ 「기록된 대로」는 #01과 어근 충돌(R-A)</td>
+</tr>
+<tr>
+<td>26</td>
+<td>14:26-52</td>
+<td>1️⃣</td>
+<td><code>Αββα ὁ πατήρ</code></td>
+<td><strong>부르는 말에 번역 표지가 붙지 않았다</strong></td>
+<td>호칭 이중표기</td>
+<td>2️⃣3️⃣은 「동사 없음·문장 미완결」로 #01 부재 형식과 중복</td>
+</tr>
+<tr>
+<td>27</td>
+<td>14:53-72</td>
+<td>1️⃣</td>
+<td><code>Ἐγώ εἰμι</code></td>
+<td><strong>어형이 참과 사칭을 가르지 않는다</strong></td>
+<td>어구 중의성</td>
+<td>—</td>
+</tr>
+<tr>
+<td>28</td>
+<td>15:1-20</td>
+<td>1️⃣</td>
+<td><code>Σὺ λέγεις</code></td>
+<td><strong>답이 두 낱말에서 멈추고 뜻을 본문이 달지 않는다</strong></td>
+<td>답의 유보</td>
+<td>—</td>
+</tr>
+<tr>
+<td>29</td>
+<td>15:21-47</td>
+<td>2️⃣ ⚠</td>
+<td><code>ἐσχίσθη</code></td>
+<td><strong>누가 찢었는지가 문장에 없다</strong></td>
+<td>주어 없는 수동</td>
+<td><strong>전담 배정(R-B)</strong> — <code>σχίζω</code> 2회는 #29 소관 ‖ 1️⃣ <code>ὁ θεός</code>는 #26 <code>πάτερ</code> 씨앗의 뒷면이라 동일 축</td>
+</tr>
+<tr>
+<td>30</td>
+<td>16:1-20</td>
+<td>1️⃣</td>
+<td><code>εἴπῃς</code>→<code>εἴπατε</code>→<code>εἶπαν</code></td>
+<td><strong>한 동사의 세 어형 위에서 책이 닫힌다</strong></td>
+<td>한 동사 세 어형</td>
+<td>3️⃣ <code>ἠγέρθη</code> 주어 부재는 #29와 형식 충돌 ‖ 마스터 ★★★ 축 정정 반영</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. 어근 충돌 소거 기록 (R-A) — 7건</h2>
+<table>
+<thead>
+<tr>
+<th>어근</th>
+<th>보유 단위</th>
+<th>배제된 후보</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>γραφ-</code></td>
+<td><strong>#01</strong></td>
+<td>#17-2️⃣ <code>γέγραπται</code> · #19-1️⃣ <code>ἔγραψεν</code> · #25-3️⃣ 「기록된 대로」</td>
+</tr>
+<tr>
+<td><code>ἀφι-</code></td>
+<td><strong>#04</strong></td>
+<td>#21-3️⃣ <code>ἀφίετε</code>·<code>ἀφῇ</code></td>
+</tr>
+<tr>
+<td><code>σπλαγχν-</code></td>
+<td><strong>#12</strong></td>
+<td>#03-2️⃣ <code>σπλαγχνισθείς</code></td>
+</tr>
+<tr>
+<td><code>ἀποδοκιμ-</code></td>
+<td><strong>#22</strong></td>
+<td>#16-2️⃣ <code>ἀποδοκιμασθῆναι</code></td>
+</tr>
+<tr>
+<td><code>δο-</code>(δίδωμι)</td>
+<td><strong>#20</strong></td>
+<td>#07-3️⃣ <code>ἐδίδου</code></td>
+</tr>
+<tr>
+<td><code>πωρ-</code>/<code>ξηρ-</code></td>
+<td><strong>#15</strong></td>
+<td>#12-2️⃣ <code>πεπωρωμένη</code></td>
+</tr>
+<tr>
+<td>주어 부재 수동</td>
+<td><strong>#29</strong></td>
+<td>#19-2️⃣ · #23-1️⃣ · #30-3️⃣</td>
+</tr>
+</tbody>
+</table>
+<h3>3-1. 어근이 겹치나 축이 갈려 <strong>허용</strong>한 1건 (배치 실행 중 확인)</h3>
+<table>
+<thead>
+<tr>
+<th>어근</th>
+<th>두 자리</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ἀφι-</code></td>
+<td><strong>#04</strong> <code>ἀφίενται</code>(2:5) ↔ <strong>#07</strong> <code>ἀφεθῇ</code>(4:12)</td>
+<td><strong>허용</strong> — 소거하지 않았다</td>
+</tr>
+<tr>
+<td><code>ἀγαπ-</code></td>
+<td><strong>#19</strong> <code>ἠγάπησεν</code>(10:21) ↔ <strong>#23</strong> <code>ἀγαπήσεις</code>(12:30·31)</td>
+<td><strong>허용</strong> — 구별선 사후 보강</td>
+</tr>
+<tr>
+<td><code>λέγω</code></td>
+<td><strong>#28</strong> <code>Σὺ λέγεις</code>(15:2) ↔ <strong>#30</strong> <code>εἴπῃς</code>·<code>εἴπατε</code>·<code>εἶπαν</code></td>
+<td><strong>허용</strong> — 구별선 사후 보강</td>
+</tr>
+</tbody>
+</table>
+<p><strong>사유</strong>: #07의 씨앗은 <strong>어휘가 아니라 인용의 변형</strong>이다. 사 6:10의 <code>ἰάσομαι</code>(1인칭 미래 능동)가<br />
+막 4:12에서 <code>ἀφεθῇ</code>(수동)로 바뀌었다는 사실이 씨앗이고, 그 바뀐 자리에 마침 <code>ἀφι-</code> 어근이<br />
+들어온 것이다. <strong>#07이 묻는 것은 「누가 말하는가」이지 「사함이 무엇인가」가 아니다.</strong><br />
+⚠ 이 예외는 무료가 아니다 — <strong>#07 노트가 그 대가를 세 군데에 명시</strong>했다: 한정 ④(사함 신학은</p>
+<h1>04 소관) · 3단계 추상화(버린 것 ②로 사유의 신학을 명시적으로 버림) · 위키 연결망(어근 보유</h1>
+<p>단위를 #04로 지목). <strong>이 세 표시가 없으면 이 예외는 성립하지 않는다.</strong></p>
+<p><strong><code>ἀγαπ-</code> 사유</strong>: #19는 <strong>아오리스트 직설법 3인칭 단수</strong>이고 <strong>마가 자신의 서술문</strong>이다<br />
+(마 19:16-22·눅 18:18-23에 이 문장이 없다) — 주체는 예수시고 수신자는 독자다.</p>
+<h1>23은 <strong>미래 직설법 2인칭 단수</strong>이고 <strong>칠십인역 인용</strong>이다(신 6:5·레 19:18) — 주체는 계명을</h1>
+<p>받는 사람이다. <strong>#19는 서술자가 기입한 감정</strong>, <strong>#23은 인용된 계명의 어형</strong>을 묻는다.</p>
+<p><strong><code>λέγω</code> 사유</strong>: 표제어는 같으나 <strong>어간이 다르다</strong> — #28의 <code>λέγεις</code>는 현재형 어간 <code>λεγ-</code>,</p>
+<h1>30의 셋은 전부 <strong>보충법 아오리스트 어간 <code>εἰπ-</code></strong>다. 축은 더 멀다 — **#28은 답의 길이가</h1>
+<p>뜻을 유보하는 것<strong>, </strong>#30은 명령과 보고가 어긋나는 것**.</p>
+<blockquote>
+<p>[!warning] 선정 단계의 누락이었다 — 세 건<br />
+§3의 최초 어근표는 <strong>세 건을 놓쳤다</strong>. ① <code>ἀφι-</code> 충돌로 <strong>#21-3️⃣만</strong> 잡고 <strong>#07의 <code>ἀφεθῇ</code></strong>를<br />
+놓쳤다 ② <strong>#19↔#23의 <code>ἀγαπ-</code></strong> ③ <strong>#28↔#30의 <code>λέγω</code></strong>. 원인은 하나다 — <strong>표를 만들 때<br />
+어근 검사를 「씨앗으로 적어 둔 어형」의 눈으로만 했고, 표제어로 환원하지 않았다.</strong><br />
+<code>ἀφεθῇ</code>·<code>ἠγάπησεν</code>·<code>λέγεις</code>는 겉모양이 서로 달라 표에서 부딪치지 않았다.</p>
+<p><strong>셋 다 축이 갈리므로 씨앗은 유지했고</strong>, ①은 #07 노트가 자체적으로 구별선을 담았으며<br />
+②③은 <strong>전수 점검에서 구별선이 0건임을 확인해 네 노트의 「이 노트의 자리」 표에 사후 보강</strong>했다.<br />
+<strong>표가 놓쳤다는 사실은 지우지 않고 남긴다</strong> — 다음 배치는 어근 검사를 <strong>표제어(lemma)로</strong><br />
+돌려야 하고, 보충법(<code>λέγω</code>/<code>εἶπον</code>)까지 같은 표제어로 묶어야 한다.</p>
+</blockquote>
+<hr />
+<p><strong>전담 배정에 의해 씨앗에서 통째로 빠진 것</strong>: <code>παραδίδωμι</code>(#18-1️⃣ 배제. 전담은 #26·#28이나<br />
+두 단위 모두 다른 씨앗을 택했으므로 <strong>이 배치의 씨앗 목록에 <code>παραδίδωμι</code>는 없다</strong> — 각<br />
+노트의 13단계 본문에서 <strong>관찰로만</strong> 다룬다).</p>
+<hr />
+<h2>4. 논법 형식 분포 (R-C 검산)</h2>
+<table>
+<thead>
+<tr>
+<th>형식</th>
+<th>단위</th>
+<th>건수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>두 자리 대조</td>
+<td>#20 · #22</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>인용 다루기</td>
+<td>#07(인칭 삭제) · #21(화행 전환)</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>어형이 말하는 것</td>
+<td>#02(태) · #23(미래 직설법)</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>부재·미정</td>
+<td>#01(동사) · #29(주어)</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>나머지 22종</td>
+<td>각 1건</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<p><strong>최다 2회.</strong> 로마서 배치의 실패선(6회)에 도달하지 않는다.</p>
+<blockquote>
+<p>[!warning] #07 ↔ #21 구별선 — 둘 다 구약 인용을 다룬다<br />
+<strong>#07은 인용 「안」의 인칭이 바뀐 것</strong>(<code>ἰάσομαι</code> 1인칭 → <code>ἀφεθῇ</code> 수동)이고,<br />
+<strong>#21은 인용 「자체」의 화행이 바뀐 것</strong>(렘 7:11의 <strong>물음</strong>이 성전 뜰의 <strong>판결</strong>로).</p>
+<h1>07은 <strong>누가 말하는가</strong>를, #21은 <strong>무엇을 하는 말인가</strong>를 묻는다. 서로의 논거를 빌리지 않는다.</h1>
+<p>[!warning] #09 ↔ #30 구별선 — 둘 다 「말하기 명령」을 다룬다<br />
+<strong>#09는 <code>ἀπαγγέλλω</code></strong>(5:19 보고 동사)<strong>의 유일한 허용</strong>이고,<br />
+<strong>#30은 <code>λέγω</code></strong>(1:44 <code>εἴπῃς</code> ↔ 16:7 <code>εἴπατε</code> ↔ 16:8 <code>εἶπαν</code>)<strong>의 세 어형</strong>이다.<br />
+<strong>동사가 다르다.</strong> #09는 예외를, #30은 어긋남을 다룬다.</p>
+<p>[!warning] #20 ↔ #22 구별선 — 둘 다 「같은 낱말 두 자리」다<br />
+<strong>#20은 부정이 벗겨지는 방향</strong>(줄 수 <strong>없다</strong> → 주려 <strong>함</strong>),<br />
+<strong>#22는 방향 자체가 뒤집히는 것</strong>(<strong>버린</strong> 돌 → 머릿<strong>돌</strong>). #20은 화자가 같고(예수),</p>
+<h1>22는 행위자가 갈린다(건축자 ↔ 주). <strong>계수를 논거로 쓰지 않는다</strong>(로마서 #15의 우회로).</h1>
+</blockquote>
+<hr />
+<h2>5. 산출 규약</h2>
+<ul>
+<li><strong>파일명</strong>: <code>NN_생각의탄생13단계_마가복음_[장]_[절]_[부제].md</code> (로마서 배치 형식 계승)</li>
+<li><strong>저장</strong>: <code>D:\code\300_성경\310_구문묵상\마가복음\</code> (일상의깊은사고 파일과 같은 폴더)</li>
+<li><strong>모드</strong>: full (13단계 통합 1파일) · <strong>렌즈</strong>: 개혁주의 + 세무·실무</li>
+<li><strong>필수 섹션</strong>: <code>[씨앗 선정] — 세 통찰 중 왜 이것인가</code> (후보 3행 판정표 + <strong>선택 이유</strong> 문단)</li>
+<li><strong>원어 근거</strong>: 각 단위의 <code>NN_구문묵상_마가복음_*.md</code> — 노트가 확정하지 않은 것을<br />
+  13단계가 확정하지 않는다(이문·중의성은 <strong>열린 채로</strong> 이어받는다)</li>
+</ul>
+<hr />
+<h2>6. 배치 실행 중 확인된 사실 정정 (지시문의 전제가 틀렸던 것)</h2>
+<p>이 표는 <strong>선정표를 만들 때 내가 전제로 깔았다가 실측으로 뒤집힌 것</strong>을 남긴다.<br />
+산출된 노트는 전부 <strong>실측 쪽</strong>을 따랐다.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>내가 깐 전제</th>
+<th>실측</th>
+<th>노트의 처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>18</strong></td>
+<td>9:44·9:46이 <strong>비평본 간에</strong> 갈린다</td>
+<td>❌ <strong>SBLGNT·MorphGNT에 행 자체가 없고 NA28도 일치</strong> — 비평본끼리는 갈리지 않는다. 갈리는 것은 <strong>비평본 계열 ↔ 개역개정이 따르는 계열</strong></td>
+<td>한정 ①을 그 사실대로 적고 「이 노트는 SBLGNT를 읽고 있다」를 명시. <strong>두 절이 들어오면 48절 후렴이 세 항 전부에 붙어 「후렴이 셋째 항에만 걸린다」는 관찰이 무너진다</strong>는 손실까지 적시</td>
+</tr>
+<tr>
+<td><strong>27</strong></td>
+<td>14:62에 <code>σὺ εἶπας ὅτι ἐγώ εἰμι</code> 이문이 있다</td>
+<td>❌ <strong>WH·Treg·NIV·RP + NA28 전부 <code>Ἐγώ εἰμι</code>로 일치 = 진입점 0.</strong> 갈리는 것은 이웃 자리다 — 14:70 <code>καὶ ἡ λαλιά σου ὁμοιάζει</code>(SBLGNT+RP만) · 14:68 말미 닭 울음 절(WH·NIV 생략). <code>δὶς</code>는 세 독법 전부에 있고 어순만 갈림</td>
+<td><strong>이 노트의 축은 판본 선택 위에 서 있지 않다</strong>고 명시</td>
+</tr>
+<tr>
+<td><strong>27</strong></td>
+<td>씨앗의 대위항이 <code>οὐκ οἶδα</code>(14:68·<strong>71</strong>) 두 자리</td>
+<td>❌ <strong>14:68은 SBLGNT가 <code>Οὔτε οἶδα οὔτε ἐπίσταμαι</code></strong>로 읽는다(<code>Οὐκ οἶδα</code>는 RP 독법). 실재하는 자리는 <strong>14:71 하나뿐.</strong> 게다가 구문묵상 노트가 두 어구의 <strong>「긍정↔부정 대칭」 주장을 이미 철회</strong>했다</td>
+<td>대위법을 <strong>어형 대칭이 아니라 배치</strong>(안 14:53-65 ↔ 밖 14:66-72)로만 세움</td>
+</tr>
+</tbody>
+</table>
+<p>⚠ <strong>셋 다 씨앗 자체는 흔들리지 않았다</strong> — #18은 <code>σκανδαλίζω</code>·<code>γέεννα</code>, #27은 <code>Ἐγώ εἰμι</code>로<br />
+선정표 그대로다. 뒤집힌 것은 <strong>내가 부가로 붙인 참조</strong>였다.</p>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 0 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

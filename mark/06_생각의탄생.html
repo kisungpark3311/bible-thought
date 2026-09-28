@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱→🔥 13단계 사고 확장 노트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 6 편</span>
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+<h2>씨앗: 마가복음 3:14 「히나 오신 메트 아우투 — 열둘의 첫 자리는 성과가 아니라 거리다」</h2>
+<hr />
+<h2>[원문] — 씨앗 아이디어</h2>
+<blockquote>
+<p><strong>"이에 열둘을 세우셨으니 이는 자기와 함께 있게 하시고 또 보내사 전도도 하게 하려 하심이며"</strong> (막 3:14)<br />
+<strong>"귀신을 내쫓는 권능도 가지게 하려 하심이더라"</strong> (막 3:15)</p>
+<p><code>ἐποίησεν δώδεκα ἵνα ὦσιν μετ᾿ αὐτοῦ καὶ ἵνα ἀποστέλλῃ αὐτοὺς κηρύσσειν καὶ ἔχειν ἐξουσίαν ἐκβάλλειν τὰ δαιμόνια</code></p>
+<p>(막 3:14-15 / 단위 06 = 3:7-35 · 원어 근거는 [[06_구문묵상_마가복음_3_7-35]])</p>
+</blockquote>
+<p>단위는 밀려드는 몸들로 열린다 — 배를 대기시키라 하시고(3:9), 병자들이 만지려고 덮쳐 오고(3:10), 더러운 영들에게는 드러내지 말라 하신다(3:12). 그 소음 위쪽에서 산에 올라 열둘을 <strong>만드신다</strong>(3:13-19). 이어 집이 다시 눌리고(3:20-21), 권세의 출처가 고발되고(3:22-30), 마지막에 가족이 다시 정의된다(3:31-35). 씨앗은 이 단락의 <strong>경첩</strong>, 곧 소음과 소음 사이 산 위의 다섯 낱말 <code>ἵνα ὦσιν μετ᾿ αὐτοῦ</code>에 놓인다.</p>
+<hr />
+<h2>[씨앗 선정] — 세 통찰 중 왜 이것인가</h2>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>통찰</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td><code>ἵνα ὦσιν μετ᾿ αὐτοῦ</code>(3:14) — 첫 목적절은 「함께 있게 하려고」이고, <code>ὦσιν</code>(복수)과 <code>ἀποστέλλῃ</code>(단수)에서 주어가 갈린다</td>
+<td><strong>채택</strong> — 셋 중 유일하게 <strong>주동사와 목적절의 서열</strong>을 묻는다. 낱말 둘을 견주는 형식이 아니라 <strong>첫 칸에 무엇이 들어왔는가</strong>를 묻는 배치 논법이다</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>3:28과 3:29 사이에 놓인 것은 「그러나」 하나이고, 3:30이 스스로 범위를 규정한다</td>
+<td><strong>보류</strong> — 성령 훼방 문제인데, 그 경고의 무게를 <strong>본문 자신이 3:30의 이유절로 한정</strong>해 두었다. 13단계 본문에서 <strong>관찰</strong>로 다루되 축으로 세우지 않는다</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td><code>μήτηρ</code> 17회 중 5회가 3:31-35 다섯 절에 몰리고, <code>θέλημα</code>는 마가 1회다</td>
+<td><strong>보류</strong> — <strong>계수를 기둥으로 삼는 논법</strong>이라 이 배치의 금지에 걸린다. 다만 3:35 <code>ποιήσῃ τὸ θέλημα τοῦ θεοῦ</code>는 씨앗의 <strong>귀결점</strong>이므로 9·13단계가 이어받는다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>선택 이유</strong>: 세 통찰 중 이 씨앗만이 <strong>명부가 만들어지는 순간의 구조 자체</strong>를 묻는다. 3:14의 주동사는 <code>ἐποίησεν</code>(에포이에센, 3인칭 단수 직설 부정과거)이고 목적어가 <strong>사람</strong>이다 — 관사 없는 대격 <code>δώδεκα</code>(도데카). 그 위에 목적절이 둘 쌓이는데, 첫 절의 동사가 <code>εἰμί</code>의 가정법 <code>ὦσιν</code>(오신)이어서 <strong>행위 동사가 없고</strong> 절의 내용 전부가 전치사구 <code>μετ᾿ αὐτοῦ</code> 세 낱말이다. 저자(마가)의 편집 결정이 여기에 걸린다 — 열둘을 세우는 장면을 쓰면서 <strong>첫 목적으로 할 일을 적지 않았다.</strong> 2️⃣·3️⃣은 이 단락의 <strong>뒷부분</strong>(28-30절, 31-35절)을 다루므로 명부가 만들어지는 자리를 비켜 간다. 그리고 확장 잠재력이 가장 크다 — 3:14의 <code>ἐποίησεν</code>이 3:35의 <code>ποιήσῃ</code>와 같은 동사 <code>ποιέω</code>이고 주어가 갈리므로, 씨앗은 <strong>단락의 첫 기둥에서 마지막 기둥까지</strong> 하나의 선으로 뻗는다. (번호는 [[06_일상의깊은사고_마가복음_3_7-35]] 기준.)</p>
+<blockquote>
+<p>[!warning] 씨앗에 붙어 다니는 한정 — 13단계 전부에 따라다닌다. 지우지 않는다<br />
+① <strong>3:14에는 본문 갈림이 있다.</strong> SBLGNT는 <code>δώδεκα</code>까지만 읽고(Treg·RP와 함께), WH·NIV는 <code>οὓς καὶ ἀποστόλους ὠνόμασεν</code>(그들을 사도라고도 이름하셨다)을 더 읽는다. 장치에 <code>NA</code> 항목이 인용되지 않아 <strong>NA28 독법은 확정할 수 없다.</strong> 그러나 <strong>씨앗은 두 독법 모두에서 성립한다</strong> — 추가 어구는 <code>δώδεκα</code> 직후에 끼어들어 「세움 → 명명 → 함께 있게 → 파송」이 될 뿐, <strong>두 목적절의 순서는 어느 독법에서도 그대로다.</strong> 반대로 「마가가 3:14에서 사도라 명명했다」는 SBLGNT 기준으로는 <strong>쓸 수 없는 문장</strong>이므로 이 노트는 그 말을 쓰지 않는다.<br />
+② <strong>서열은 배치의 사실이지 문법의 강제가 아니다.</strong> 헬라어에서 <code>ἵνα</code>절 둘이 나란히 놓일 때 앞의 것이 반드시 더 근본이라는 규칙은 없다. 이 노트는 <strong>앞에 적힌 것이 앞에 적혔다</strong>는 사실 위에 서고, 그 사실이 가치의 우선순위를 <strong>증명하지는 않는다</strong>는 것을 안고 간다. 씨앗이 증명하는 것은 「무엇이 먼저 적혔는가」까지다.<br />
+③ <strong>3:21의 미결정을 닫지 않는다.</strong> 구문묵상 노트는 <code>οἱ παρ᾿ αὐτοῦ</code>(그의 곁 사람들)를 「가족」으로 옮기는 것이 <strong>사전의 판정</strong>이며, 3:21과 3:31의 두 무리를 같은 사람으로 묶는 표지가 본문에 없고, <code>ἐξέστη</code>의 주어도 3인칭 단수까지만 확정된다고 적었다(3:20의 <code>ὄχλος</code>도 형태상 후보). 13단계 어느 지점에서도 <strong>「예수의 가족이 그를 미쳤다고 했다」로 확정하지 않는다.</strong> 여기에 3:32의 판본 갈림(SBLGNT <code>σου</code> ] RP·NA <code>+ καὶ αἱ ἀδελφαί σου</code>)이 겹쳐 <strong>밖에 선 사람의 구성 자체가 판본에 따라 달라진다.</strong></p>
+</blockquote>
+<hr />
+<h2>[이 노트의 자리] — 인접 단위와 무엇이 다른가</h2>
+<table>
+<thead>
+<tr>
+<th>노트</th>
+<th>그 단위의 축</th>
+<th>구별선</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직전 05단위 · 2:18-3:6</strong> ([[05_구문묵상_마가복음_2_18-3_6]])</td>
+<td><code>νηστεύω</code>·<code>νυμφίος</code> — 금식의 기준이 달력에서 <strong>한 사람</strong>으로 옮겨진다</td>
+<td>⚠ 05도 <strong>「함께 있음」</strong>을 다룬다(2:19 신랑이 함께 있는 동안). 그러나 그것은 <strong>시간의 규정</strong>(언제까지)이고, 06의 「함께 있게」(3:14)는 <strong>제자직의 정의</strong>(무엇이 첫 조항인가)다. <strong>05가 이 자리를 06에 양보했으므로 「함께 있음」의 신학적 무게는 06이 진다</strong></td>
+</tr>
+<tr>
+<td><strong>직후 07단위 · 4:1-25</strong> ([[07_구문묵상_마가복음_4_1-25]])</td>
+<td><code>ἀφεθῇ</code>(4:12) — 인용에서 <strong>1인칭이 지워졌다</strong></td>
+<td>4:11의 「너희에게는 주었으나 저 바깥 사람에게는」이 3:31-35의 안팎과 이어지지만, <strong>07은 인용의 변형</strong>을 맡고 06은 <strong>목적절의 서열</strong>을 맡는다. ⛔ 「안과 밖」을 06의 논지로 세우지 않는다</td>
+</tr>
+<tr>
+<td><strong>18단위 · 9:30-50</strong> ([[18_구문묵상_마가복음_9_30-50]])</td>
+<td><code>σκανδαλίζω</code>·<code>γέεννα</code> — 절단의 3연이 <strong>같은 모양이 아니다</strong></td>
+<td>9:35-37은 「누가 크냐」에 답하고 3:14는 「왜 세우셨나」에 답한다. <strong>18은 서열의 전복</strong>(첫째가 꼴찌), <strong>06은 목적의 순서</strong>(첫 칸의 내용물). 둘 다 「순서」를 말하지만 <strong>뒤집는 것과 배열하는 것은 다른 일</strong>이다</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!warning] 봉쇄 확인<br />
+<code>εὐθύς</code>·서술 속도(#03), 침묵 명령·메시아 비밀(#09), 제자들의 둔함(#15), <code>παραδίδωμι</code> 사슬은 이 노트의 논지가 아니다. 3:12의 경계 명령과 3:19의 <code>παρέδωκεν</code>, 3:5의 <code>πώρωσις</code>는 <strong>장면 서술의 한 문장 관찰까지만</strong> 쓰고 축으로 세우지 않는다. <code>ἐξουσία</code>(3:15)는 #04가 신학적 무게를 맡았으므로 여기서는 <strong>둘째 목적절의 내용물</strong>로만 다룬다.</p>
+</blockquote>
+<hr />
+<h2>사고 지도</h2>
+<pre><code class="language-mermaid">mindmap
+  root((&quot;첫 칸에 할 일이 없다&quot;))
+    &quot;관찰·형상화&quot;
+      &quot;복수 오신 · 단수 아포스텔레&quot;
+      &quot;물가의 소음과 산 위의 명부&quot;
+    추상화
+      &quot;곁&quot;
+    &quot;패턴·유추&quot;
+      &quot;첫 조항이 관계인 명부&quot;
+      &quot;위임장의 두 서명란&quot;
+    &quot;체화·감정이입&quot;
+      &quot;빈손으로 옆에 서기&quot;
+      &quot;셈하러 내려온 사람의 눈&quot;
+    &quot;차원·모형&quot;
+      &quot;에포이에센에서 포이에세까지&quot;
+      &quot;두 칸 점검표&quot;
+    &quot;놀이·변형&quot;
+      &quot;수를 바꿔 보는 세 판&quot;
+    통합
+      &quot;유일한 할 일에 동사가 없다&quot;
+</code></pre>
+<hr />
+<h2>[1~13단계 사고 과정 연대기]</h2>
+<blockquote>
+<p>각 단계는 앞 단계의 산물을 이어받아 유기적으로 변모한다.</p>
+</blockquote>
+<h3>1. 관찰 (Observing) — "목적절 둘의 동사에서 수가 갈린다"</h3>
+<p>배열만 적는다. 3:14의 주동사는 <code>ἐποίησεν</code>(에포이에센 · 3인칭 단수 직설 부정과거, <code>ποιέω</code>)이고 목적어가 <strong>사람</strong>이다 — 관사 없는 대격 <code>δώδεκα</code>(도데카). 그 위에 <code>ἵνα</code>절이 둘 얹힌다. 첫째 <code>ἵνα ὦσιν μετ᾿ αὐτοῦ</code>, 둘째 <code>καὶ ἵνα ἀποστέλλῃ αὐτοὺς κηρύσσειν</code>. 첫 절의 동사 <code>ὦσιν</code>(오신)은 <code>εἰμί</code>의 가정법이다 — <strong>행위 동사가 아니다.</strong> 절의 내용 전부가 전치사구 <code>μετ᾿ αὐτοῦ</code>, 곧 전치사 하나와 대명사 하나다. 그리고 <strong>수가 갈린다.</strong> <code>ὦσιν</code>은 3인칭 <strong>복수</strong>, <code>ἀποστέλλῃ</code>(아포스텔레)는 3인칭 <strong>단수</strong>다. 3:15의 <code>ἔχειν ἐξουσίαν</code>은 부정사구여서 셋째 목적절이 아니라 <code>κηρύσσειν</code>과 등위로 둘째 절에 딸린다. SBLGNT는 3:16에서 <code>ἐποίησεν τοὺς δώδεκα</code>를 다시 읽는다.</p>
+<blockquote>
+<p>[!insight] 첫 칸의 동사가 「있다」다<br />
+명부를 만드는 문장에서 첫 목적으로 적힌 것이 <strong>상태 동사</strong>다. 번역에서 두 목적이 나란히 붙어 보이지만, 형태에서는 <strong>하는 사람이 갈린다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 명부의 첫 조항에 할 일이 없는 문서는 무엇을 하고 있는 문서인가?<br />
+- 내가 사람을 세울 때 첫 칸에 적는 것은 무엇인가 — 역할인가, 자리인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 격과 수로만 적힌 이 배열을 형상화가 하나의 장면으로 세운다.</p>
+<h3>2. 형상화 (Imaging) — "물가의 소음과 산 위의 명부"</h3>
+<p>아래쪽은 갈릴리 바닷가다. 소금기와 땀이 섞인 공기, 밀리는 어깨, 물에 닿은 배의 나무가 삐걱거리는 소리. 배 한 척을 대기시키라 하셨다 — 사람들이 짓누를까 해서다(3:9 <code>θλίβωσιν</code>). 병 있는 사람들이 만지려고 덮쳐 온다(3:10 <code>ἐπιπίπτειν</code>·<code>ἅψωνται</code>). 손과 등과 옷자락이 끊임없이 닿는다. 그런데 서술이 산으로 올라간다 — <code>ἀναβαίνει</code>(아나바이네이), 역사적 현재다. 소음이 발밑으로 멀어지고 바람이 얼굴을 지나간다. 거기서 그가 <strong>원하시는 자들을</strong> 부르신다(3:13 <code>οὓς ἤθελεν αὐτός</code>). 이름이 불리고 열둘이 만들어진다. 불린 사람들이 기다리는 것은 지시일 텐데, 첫 문장에 지시가 없다. 대신 <strong>간격</strong>이 지정된다 — 그와 <strong>함께</strong>.</p>
+<blockquote>
+<p>[!insight] 배정된 것은 일이 아니라 위치다<br />
+장면에서 실제로 일어난 일은 「임무가 주어졌다」가 아니라 <strong>「거리가 정해졌다」</strong>였다. 아래에서는 몸이 닿아서 눌렸고, 위에서는 곁이 배정됐다.</p>
+<p>[!question] 연결 질문<br />
+- 닿음(3:10)과 곁(3:14)은 같은 가까움인가?<br />
+- 명단에 불려 올라간 사람이 처음 느끼는 것은 영광인가 당혹인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 장면에서 군더더기를 걷어내면 한 낱말이 남는다.</p>
+<h3>3. 추상화 (Abstracting) — "곁"</h3>
+<p><strong>남는 개념: 곁</strong><br />
+<strong>한 문장 압축: 명부의 첫 칸에 들어간 것은 할 일이 아니라 거리다.</strong></p>
+<p>버린 것 셋. ① <strong>열둘의 이름 명단</strong>(3:16-19) — 베드로·보아너게 같은 별명과 열두 대격 명사는 이 축에서 재료가 아니다. ② <strong>파송의 내용물</strong> — 전파(<code>κηρύσσειν</code>)와 귀신 쫓는 권세(<code>ἔχειν ἐξουσίαν</code>)는 둘째 칸의 내용이고, 첫 칸의 성격을 설명해 주지 않는다. ③ <strong>장소와 규모</strong> — 산도, 두로와 시돈까지 이어진 무리의 지리 목록(3:7-8)도 뺀다. 남는 것은 전치사 하나가 지시하는 <strong>위치 관계</strong> 하나다. 추상화가 증명하는 것은 이것이다 — 이 첫 칸은 <strong>내용을 더 넣을 수 없는 칸</strong>이다. 행위 동사를 뺀 것이 아니라 처음부터 없었기 때문이다.</p>
+<blockquote>
+<p>[!insight] 더 줄일 수 없는 자리<br />
+추상화는 보통 깎아낼수록 개념이 성기어지는데, 여기서는 깎아낼수록 <strong>본문이 이미 깎아 놓은 상태</strong>에 닿는다.</p>
+<p>[!question] 연결 질문<br />
+- 더 줄일 수 없는 최소 단위가 「관계」인 제도가 또 있는가?<br />
+- 곁은 상태인가, 행위인가 — 이 질문에 본문은 답하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 알맹이가 다른 도메인에서도 같은 자리에 놓이는지 확인한다.</p>
+<h3>4. 패턴 인식 (Recognizing Patterns) — "첫 조항이 관계인 명부"</h3>
+<table>
+<thead>
+<tr>
+<th>도메인</th>
+<th>패턴 발현</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>세무·법</strong></td>
+<td>세무대리 위임장의 첫 칸은 수임인의 실적이 아니라 <strong>위임 관계의 특정</strong>이다 — 위임인·수임인·대상 세목·기간. 자격과 경력은 별지로 내려간다</td>
+</tr>
+<tr>
+<td><strong>의료 수련</strong></td>
+<td>신규 수련의의 첫 배정은 집도가 아니라 <strong>회진 동행</strong>이다. 「따라 서 있음」이 업무 시간으로 계상되며, 아직 아무것도 못 하는 상태가 제도의 첫 칸이다</td>
+</tr>
+<tr>
+<td><strong>합주 음악</strong></td>
+<td>오케스트라 신입 단원의 첫 시기는 연주가 아니라 <strong>소리 안에 앉아 있기</strong>다. 음정은 설명이 아니라 옆자리에서 흡수된다</td>
+</tr>
+<tr>
+<td><strong>가정·입양</strong></td>
+<td>법 문서의 첫 조항은 역할 분담이 아니라 <strong>동거와 양육 관계의 성립</strong>이다. 양육의 내용은 그다음이다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>공통 패턴</strong>: 관계가 먼저 성립하는 제도에서는 <strong>첫 칸이 심사 항목이 아니고, 심사는 둘째 칸 이후로 밀린다.</strong></p>
+<blockquote>
+<p>[!insight] 첫 칸이 비어 있을수록 명부는 넓어진다<br />
+네 도메인 전부에서, 첫 칸에 수행 항목이 들어가는 순간 <strong>아직 수행할 수 없는 사람이 스스로를 지운다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 우리 조직의 명부는 첫 칸에 무엇을 요구하는가?<br />
+- 첫 칸을 비워 두는 제도는 무엇으로 남용을 막는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 네 도메인에서 확인된 공통 골격을 도식으로 고정한다.</p>
+<h3>5. 패턴 형성 (Forming Patterns) — 프레임워크 「두 칸 명부」</h3>
+<pre><code>            ἐποίησεν δώδεκα          ← 주동사 · 3인칭 단수 · 만든 이는 그
+          (그가 열둘을 만드셨다)
+                   │
+        ┌──────────┴──────────┐
+        ▼                     ▼
+     ἵνα ①                 ἵνα ②
+     ὦσιν                  ἀποστέλλῃ
+     3인칭 복수              3인칭 단수
+     주어 = 열둘             주어 = 그
+     내용 = μετ᾿ αὐτοῦ      내용 = κηρύσσειν
+     (행위 동사 없음)         + ἔχειν ἐξουσίαν (부정사)
+        │                     │
+    심사 항목 0           심사·배치·시점 전부 여기
+</code></pre>
+<p><strong>이 프레임워크의 법칙: 첫 칸의 주어와 둘째 칸의 주어가 다르면, 자격 심사는 통째로 둘째 칸으로 넘어가고 첫 칸은 심사에서 빠진다.</strong></p>
+<p>도식이 드러내는 두 번째 사실이 있다. 첫 칸과 둘째 칸은 <strong>서로 다른 사람의 동사</strong>이므로, 첫 칸을 아무리 잘 채워도 둘째 칸이 열리지 않을 수 있고 — 열리는 시점은 첫 칸에 있는 사람이 정하지 않는다.</p>
+<blockquote>
+<p>[!insight] 준비도와 파송이 형태로 분리된다<br />
+「준비되면 보내신다」는 문장은 <strong>두 칸을 하나로 합쳤을 때만</strong> 성립한다. 본문은 합치지 않았다.</p>
+<p>[!question] 연결 질문<br />
+- 첫 칸에 오래 머문 사람에게 둘째 칸이 빚처럼 느껴지는 이유는 무엇인가?<br />
+- 두 칸을 합쳐 읽는 관행은 어디서 왔는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 도식이 다른 분야의 문서에서도 같은 모양으로 발견되는지 유추로 건넌다.</p>
+<h3>6. 유추 (Analogizing) — "두 서명란"</h3>
+<p><strong>① 신학 ↔ 세무 — 위임장의 두 서명란.</strong> 세무대리 위임장에는 서명란이 둘이다. 수임인은 자기 칸에 아무리 정성껏 서명해도 <strong>위임인 칸을 대신 채울 수 없다.</strong> 대리권의 발생은 위임인의 서명 시점에 걸린다. 새 통찰: <code>ἀποστέλλῃ</code>가 단수라는 사실은 <strong>파송의 유효성이 보내는 쪽의 서명에 걸려 있다</strong>는 말과 같은 구조다. 깨지는 지점: 위임장은 <strong>쌍방 합의</strong>가 전제이고 위임인은 보통 수임인의 실적을 보고 고르는데, 3:13은 <code>οὓς ἤθελεν αὐτός</code>(자기가 원하시는 자들)라고 적는다 — 선택의 근거가 상대편에 있다고 말하지 않는다.</p>
+<p><strong>② 자연 — 궤도 포획.</strong> 위성은 먼저 붙들려야 궤도가 생기고, 그다음에 그 궤도가 위성을 옮긴다. 이동은 관계의 결과다. 새 통찰: 곁이 먼저라는 말은 「먼저 쉬라」가 아니라 <strong>「움직임의 방향이 관계에서 나온다」</strong>는 말이다. 깨지는 지점: 중력은 인격이 아니어서 <strong>원하거나 부르지 않는다.</strong> 3:13의 <code>ἤθελεν</code>(원하셨다)이 유비를 벗어난다.</p>
+<p><strong>③ 음악 — 합주 안에 앉아 있기.</strong> 음정은 설명으로 교정되지 않고 옆자리에서 듣는 시간으로 교정된다. 새 통찰: 곁의 효과는 정보 전달이 아니라 <strong>기준음의 이전</strong>이다. 깨지는 지점: 이것은 <strong>학습 효율</strong>의 이야기다. 본문의 첫 목적절은 함께 있음을 훈련의 수단으로 설명하지 않는다 — 수단이라고 말하는 절이 없다. 유추가 여기서 본문보다 한 걸음 더 나간다.</p>
+<blockquote>
+<p>[!insight] 세 유추가 전부 같은 지점에서 깨진다<br />
+셋 다 <strong>곁을 무언가의 수단으로</strong> 만들 때 깨진다. 본문은 첫 목적절을 목적절로 적었지 수단으로 적지 않았다.</p>
+<p>[!question] 연결 질문<br />
+- 곁이 수단이 아니라 목적일 때, 그 곁은 무엇으로 평가되는가?<br />
+- 평가되지 않는 자리를 제도가 견딜 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 머리로 잡은 이 구분을 몸이 다시 확인한다.</p>
+<h3>7. 몸으로 생각하기 (Body Thinking) — "빈손으로 옆에 서기 3분"</h3>
+<p><strong>프로토콜</strong>: 눈을 감고 양손을 완전히 비운다(휴대전화·펜·컵 전부 내려놓는다). 누군가의 왼편 한 걸음 옆에 서서 3분 동안 <strong>아무것도 하지 않는다.</strong> 말을 걸지 않고, 정리하지 않고, 돕지 않는다. 타이머만 맞춰 둔다.</p>
+<p>몸이 가르쳐 주는 것은 즉각적이다. <strong>손이 먼저 일거리를 찾는다.</strong> 주머니로 가거나, 소매를 만지거나, 무게중심을 옮긴다. 30초쯤 지나면 「내가 왜 여기 있지」라는 문장이 올라오고, 1분을 넘기면 옆 사람에게 <strong>설명할 말</strong>을 준비하기 시작한다. 이 반응이 알려 주는 것 — 우리는 곁을 <strong>설명 가능한 상태</strong>로 바꾸지 않으면 견디지 못한다. 3:14의 첫 절이 견디기 어려운 이유가 여기 있다. 그것은 게으름이 어려운 게 아니라 <strong>설명 없음</strong>이 어려운 것이다.</p>
+<p>설교 전달에 옮기면: 3:14를 읽을 때 손을 펴서 <strong>강단 옆 빈자리</strong>를 가리키고, 3:15로 넘어갈 때 같은 손을 앞으로 밀어 낸다. 두 동작 사이에 한 박자 정지를 둔다 — 그 정지가 두 칸의 간격이다.</p>
+<blockquote>
+<p>[!insight] 곁의 난도는 노동이 아니라 무설명에 있다<br />
+몸은 「쉬어라」를 어려워하지 않는다. 몸이 어려워하는 것은 <strong>자기 존재를 정당화할 동사가 없는 상태</strong>다.</p>
+<p>[!question] 연결 질문<br />
+- 내 하루에서 설명할 동사가 없는 시간은 몇 분인가?<br />
+- 그 시간을 없애는 방향으로 일정을 짜고 있지는 않은가?</p>
+</blockquote>
+<p><strong>다리</strong>: 몸이 느낀 당혹을 이제 1인칭의 목소리로 옮긴다.</p>
+<h3>8. 감정이입 (Empathizing) — "불린 사람의 마음 / 셈하러 내려온 사람의 마음"</h3>
+<p><strong>불린 사람 (열둘 중 하나)</strong><br />
+<em>이름이 불렸을 때 나는 무엇을 해야 하는지부터 물었다. 손이 준비돼 있었고, 배운 것이 없다는 사실이 먼저 부끄러웠다. 그런데 첫 문장에 일이 없었다. 함께 있으라 하셨다. 나는 그 말을 듣고 잠깐 안도했고, 곧 더 불안해졌다 — 일이라면 잘하고 못하고가 있는데, 곁에는 그것이 없다. 아래에서는 사람들이 그를 짓누르고 있었고 나는 그 옆에 서 있었다.</em><br />
+(감정 전환: 조급함 → 안도 → <strong>평가받을 항목이 없는 데서 오는 새 종류의 불안</strong>)</p>
+<p><strong>가장 불편해할 사람 (예루살렘에서 내려온 서기관 · 3:22)</strong><br />
+<em>나는 셈하러 왔다. 그가 무엇을 가졌는지, 그 권세가 어디서 왔는지 목록을 만들 수 있다. 그래서 나는 출처를 말했다 — 바알세불을 가졌다고. 그런데 그가 만든 명부를 보니 첫 칸에 셈할 것이 없다. 자격도 없고 성과도 없고 등급도 없다. 나는 그런 명부를 읽어 본 적이 없다.</em><br />
+(감정 전환: 확신 → <strong>판정 도구가 걸리지 않는 데서 오는 당황</strong>)</p>
+<blockquote>
+<p>[!insight] 첫 칸은 양쪽 모두에게 불편하다<br />
+안에 선 사람에게는 평가 항목이 없어서 불편하고, 밖에서 셈하는 사람에게는 <strong>평가할 항목이 없어서</strong> 불편하다. 같은 빈칸이 두 방향으로 걸린다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 어떤 공동체를 판정하려 할 때 가장 먼저 찾는 칸은 무엇인가?<br />
+- 그 칸이 비어 있으면 나는 무엇이라고 결론 내리는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 한 장면의 두 마음을 시간 축 위에 올려 단락 전체 길이로 늘린다.</p>
+<h3>9. 차원적 사고 (Dimensional Thinking) — "에포이에센에서 포이에세까지"</h3>
+<p><strong>확대.</strong> 이 단락은 같은 동사 <code>ποιέω</code>의 두 형태로 열리고 닫힌다. 3:14 <code>ἐποίησεν</code>(그가 만드셨다 · 직설 부정과거, 주어 = 그)과 3:35 <code>ποιήσῃ</code>(누구든지 행하면 · <strong>부정과거 가정법</strong>, 주어 = 누구든지). ⛔ 3:35는 <code>ποιῇ</code>(현재 가정법)가 아니다 — 구문묵상 노트가 축자로 정정한 항목이다. 그리고 3:35의 <strong>주동사는 <code>ἐστίν</code></strong>이고 <code>ποιήσῃ</code>는 관계절 안에 있다. 곧 단락은 <strong>「그가 만드셨다」로 열려 「그가 ~이다」로 닫힌다.</strong> 사람의 행함은 두 선언 사이에, 그것도 관계절 안에 놓인다. 3:14의 「함께 있음」이 3:35의 「뜻을 행함」으로 닫히되, <strong>닫는 문장의 주동사는 여전히 사람의 동사가 아니다.</strong><br />
+(보조 관찰 하나: 3:13에서 부르심의 기준으로 적힌 <code>ἤθελεν</code>과 3:35의 <code>θέλημα</code>는 같은 어근이다. 다만 구문묵상 노트가 마가 1회 hapax라 한 것은 <strong>명사</strong> <code>θέλημα</code>이며 동사 <code>θέλω</code>는 마가에 여러 번 나오므로, 이 관찰을 계수의 근거로 쓰지 않는다. SBLGNT 기준.)</p>
+<p><strong>축소.</strong> 반대로 줄이면 <code>μετ᾿ αὐτοῦ</code> 세 낱말, 실질적으로는 전치사 하나와 대명사 하나다. 이 단락 전체에서 가장 작은 단위가 <strong>가장 앞 칸</strong>을 차지했다.</p>
+<p><strong>핵심 전복</strong>: 차원을 늘리자 「함께 있음」이 <strong>파송의 예비 단계</strong>에서 <strong>단락이 닫히는 자리의 내용</strong>으로 바뀐다. 3:35는 그 곁의 둘레를 넓혀 형제와 자매와 어머니까지 부른다. 곧 첫 칸은 통과해서 지나가는 대기실이 아니라, <strong>단락이 끝날 때까지 남아 있는 칸</strong>이다.</p>
+<blockquote>
+<p>[!insight] 곁은 거쳐 가는 방이 아니다<br />
+서사가 28절을 지나 되돌아온 자리가 다시 관계의 자리다. 첫 칸은 졸업되지 않는다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 「이 단계를 지나면」이라고 부르는 것들 중 실은 졸업되지 않는 것은 무엇인가?<br />
+- 주동사가 사람의 동사가 아닌 문장을 우리는 어떻게 설교해 왔는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 여기까지의 구조를 현장에서 바로 쓸 수 있는 도구로 굳힌다.</p>
+<h3>10. 모형 만들기 (Modeling) — 「두 칸 점검표」</h3>
+<p>세우는 문서(직분 임명장, 팀 배치표, 위임 계약, 멘토링 합의서)를 앞에 놓고 아래를 채운다. <strong>두 칸을 한 줄에 쓰지 않는 것</strong>이 이 도구의 전부다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>질문</th>
+<th>적는 법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>주동사</strong></td>
+<td>누가 이 명부를 만들었는가</td>
+<td>사람 이름·기구명. 「자연히 모였다」는 답은 무효</td>
+</tr>
+<tr>
+<td><strong>첫 칸</strong></td>
+<td>심사 항목 없이 <strong>관계만</strong> 적을 수 있는가</td>
+<td>동사가 들어가면 실패. 「~와 함께」로 끝나야 한다</td>
+</tr>
+<tr>
+<td><strong>첫 칸의 주어</strong></td>
+<td>이 칸을 채우는 사람은 누구인가</td>
+<td>당사자 본인</td>
+</tr>
+<tr>
+<td><strong>둘째 칸</strong></td>
+<td>무엇이 위임되는가</td>
+<td>범위·기간·회수 조건</td>
+</tr>
+<tr>
+<td><strong>둘째 칸의 주어</strong></td>
+<td>이 칸을 여는 사람은 누구인가</td>
+<td><strong>첫 칸의 주어와 같으면 경고</strong></td>
+</tr>
+<tr>
+<td><strong>간격 점검</strong></td>
+<td>첫 칸만 있고 둘째 칸이 아직 없는 사람이 명부에 있는가</td>
+<td>0명이면 첫 칸이 사실상 심사 칸이 된 것이다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>모형이 예측하는 것</strong>: 첫 칸에 동사를 넣은 조직은 <strong>결원이 생겼을 때 즉시 사람을 찾지 못한다.</strong> 아직 못 하는 사람이 명부에 없기 때문이다.<br />
+<strong>모형이 설명 못하는 것</strong>: 둘째 칸이 <strong>언제</strong> 열리는지는 예측하지 못한다. <code>ἀποστέλλῃ</code>의 주어가 명부 바깥에 있으므로, 이 도구는 시점을 계산하는 도구가 될 수 없다.</p>
+<blockquote>
+<p>[!insight] 점검표의 핵심은 칸 수다<br />
+내용을 고치는 도구가 아니라 <strong>한 줄로 붙어 있던 것을 두 줄로 떼어 놓는</strong> 도구다.</p>
+<p>[!question] 연결 질문<br />
+- 우리 명부에 첫 칸만 채운 사람이 몇 명 있는가?<br />
+- 그 사람들을 우리는 무엇이라고 부르고 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 굳어진 도구를 손에 쥔 채, 규칙을 잠시 내려놓고 조작해 본다.</p>
+<h3>11. 놀이 (Playing) — "수를 바꿔 보는 세 판"</h3>
+<p><strong>판 ① — 두 <code>ἵνα</code>절을 뒤집으면?</strong> 「보내려고, 그리고 함께 있게 하려고」가 된다. 그러면 곁이 파송의 <strong>결과</strong>가 되고, 다녀온 사람만 곁에 앉는다. 명부가 곧바로 성과표가 된다.</p>
+<p><strong>판 ② — <code>ὦσιν</code>을 단수로 바꾸면?</strong> 「그가 그들과 함께 있으려고」가 된다. 뜻이 경건하게 들리고 신학적으로 틀리지도 않는다. 그런데 본문은 그렇게 적지 않았다. <strong>복수를 쓴 결과, 곁에 있는 일이 열둘의 몫으로 남는다.</strong></p>
+<p><strong>판 ③ — 첫 절에 행위 동사를 넣으면?</strong> 가령 「배우게 하려고」류의 동사를 끼우면, 첫 칸에 <strong>즉시 측정 항목이 생긴다.</strong> 얼마나 배웠는가를 물을 수 있게 되고, 못 배운 사람은 첫 칸에서 탈락한다.</p>
+<p><strong>예상치 못한 발견은 판 ②에서 나왔다.</strong> 나는 「행위 동사가 없다」를 곁의 <strong>수동성</strong>으로 읽고 있었다. 그런데 <code>ὦσιν</code>이 복수라는 사실은 곁을 <strong>그들에게 맡겨진 것</strong>으로 만든다. 곧 곁은 배정받은 휴식이 아니라 <strong>열둘의 몫으로 남은 유일한 일</strong>이고, 그 유일한 일에 행위 동사가 없다. 수동성이 아니라 <strong>동사 없는 능동</strong>이다.</p>
+<blockquote>
+<p>[!insight] 동사 없는 능동<br />
+맡겨졌는데 할 동작이 없다. 이것이 첫 칸의 정확한 성격이며, 판 ①·③이 만든 대체 본문들은 전부 이 성격을 지워 버린다.</p>
+<p>[!question] 연결 질문<br />
+- 「동사 없는 능동」을 우리 말로 뭐라고 불러야 하는가?<br />
+- 그것을 일과표에 적을 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 놀이에서 태어난 이 한 문장을 다른 형식으로 옮겨 본다.</p>
+<h3>12. 변형 (Transforming) — 「명부의 첫 칸」 (설교 제목 + 3대지)</h3>
+<p><strong>제목: 명부의 첫 칸</strong></p>
+<ol>
+<li><strong>만드신 분이 먼저다</strong> — 주동사는 <code>ἐποίησεν</code>이고, 그 목적어가 사람이다(3:14). 명부는 모집 공고로 생기지 않았다.</li>
+<li><strong>첫 칸에는 할 일이 없다</strong> — <code>ἵνα ὦσιν μετ᾿ αὐτοῦ</code>. 동사가 「있다」이고 내용 전부가 전치사구다. 오늘 아무것도 할 수 없는 사람에게 이 칸이 먼저 온다.</li>
+<li><strong>보내는 일은 그분의 동사다</strong> — <code>ἀποστέλλῃ</code>는 단수다(3:14-15). 파송의 시점은 준비도가 아니라 보내시는 분의 결정에 걸린다.</li>
+</ol>
+<p><strong>한 줄 잠언</strong>: <em>빈손도 명부의 첫 칸을 채운다.</em></p>
+<p>변환에서 살아남은 것을 확인한다. 설교 뼈대로 옮기자 <strong>명단의 이름들·산·무리의 규모·권세의 내용물</strong>이 전부 떨어져 나갔고, 남은 것은 <strong>주동사 하나와 목적절 둘의 순서</strong>뿐이다. 잠언 한 줄로 더 줄이자 남은 것은 <strong>「빈손」과 「첫 칸」</strong> 두 낱말이다. 이것이 씨앗의 진짜 핵심이다.</p>
+<blockquote>
+<p>[!insight] 두 매체를 지나고도 순서가 남았다<br />
+형식을 바꿀 때 가장 먼저 사라지는 것이 목록이고 가장 늦게까지 남는 것이 <strong>배열</strong>이었다.</p>
+<p>[!question] 연결 질문<br />
+- 「빈손」이라는 말이 자기 연민으로 미끄러지지 않게 하는 것은 무엇인가?<br />
+- 3대지 중 어느 하나를 빼면 나머지가 도덕주의로 기우는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 열두 단계의 산물을 한 자리에 모은다.</p>
+<h3>13. 통합 (Synthesizing) — "유일한 할 일에 동사가 없다"</h3>
+<p>관찰은 수의 차이에서 시작했다. <code>ὦσιν</code>은 복수고 <code>ἀποστέλλῃ</code>는 단수다(1단계). 형상화는 그 차이를 소음과 고요 사이의 장면에 놓았고(2), 추상화는 거기서 「곁」 한 낱말을 건졌다(3). 네 도메인이 같은 골격을 보여 주었고(4), 도식은 그것을 두 칸으로 고정했다 — 첫 칸의 주어와 둘째 칸의 주어가 다르면 심사가 통째로 둘째 칸으로 넘어간다(5). 세 유추는 전부 <strong>곁을 수단으로 만들 때</strong> 깨졌고(6), 몸은 곁의 난도가 노동이 아니라 <strong>설명 없음</strong>에 있다고 알려 주었다(7). 두 1인칭은 같은 빈칸이 안과 밖 양쪽에 불편하다는 것을 보여 주었다(8).</p>
+<p>차원을 늘리자 단락이 <code>ἐποίησεν</code>으로 열려 <code>ἐστίν</code>으로 닫히고, 사람의 행함(<code>ποιήσῃ</code>)은 그 사이 관계절 안에 놓인다는 것이 드러났다(9). 점검표는 이 구조를 현장 문서로 옮겼고(10), 놀이가 마지막 것을 뒤집었다(11). 나는 「행위 동사가 없다」를 <strong>수동성</strong>으로 읽어 왔다. 그런데 <code>ὦσιν</code>이 복수인 이상 곁은 그들에게 <strong>맡겨진 것</strong>이다. 곧 첫 칸은 쉼표가 아니라 배정이고, 배정된 유일한 일에 할 동작이 없다. 변형은 이 발견을 뼈대와 잠언으로 옮기며 목록을 전부 떨어뜨리고 <strong>순서만</strong> 남겼다(12).</p>
+<p><strong>최종 테제</strong>: 마가는 열둘이 만들어지는 자리에서 첫 목적으로 <strong>할 일이 아니라 거리</strong>를 적었고, 두 목적절의 동사를 <strong>복수와 단수로 갈라</strong> 곁은 그들의 몫으로, 파송은 그분의 몫으로 나누었다. 그러므로 제자직의 첫 조항은 <strong>측정되지 않으며, 그 측정 불가능성이 결함이 아니라 설계다.</strong><br />
+<strong>가장 생산적이었던 도구는 11단계 놀이다.</strong> 수를 바꿔 보는 단순한 조작이, 열 단계 동안 내가 「수동」으로 잘못 붙들고 있던 것을 <strong>「동사 없는 능동」</strong>으로 정정했다. 문법 항목 하나(3인칭 복수)가 해석 전체의 방향을 바꾼 자리다.<br />
+<strong>처음 관찰과 달라진 이해</strong>: 1단계에서 나는 첫 목적절을 「내용이 비어 있는 칸」으로 보았다. 지금은 그것을 <strong>「내용이 관계 하나로 꽉 찬 칸」</strong>으로 본다. 비어 있는 것은 칸이 아니라 <strong>심사표</strong>다.</p>
+<blockquote>
+<p><strong>"첫 칸은 그들이 채운다. 그런데 채울 동작이 없다 — 곁에 있는 것 말고는."</strong></p>
+</blockquote>
+<hr />
+<h2>개혁신학적 조명</h2>
+<p><strong>실질 접점 본문</strong><br />
+- <strong>출애굽기 33:15</strong> — "주께서 친히 가지 아니하시려거든 우리를 이곳에서 올려 보내지 마옵소서." 모세가 <strong>사명의 성취보다 동행 자체를 먼저 요구</strong>한 자리다. 가나안으로 보내겠다는 약속은 이미 있었고(33:1-3), 모세가 붙든 것은 그 약속이 아니라 함께 가심이었다. 3:14의 첫 칸이 파송보다 앞에 적힌 것과 <strong>요구의 순서가 같다.</strong><br />
+- <strong>마가복음 3:35</strong> — 같은 단락의 귀결. 주동사가 <code>ἐστίν</code>이고 <code>ποιήσῃ</code>가 관계절 안에 있으므로, 「행하면 가족이 된다」는 조건 거래로 읽으면 주절과 종속절이 뒤집힌다. 3:14의 <code>ἐποίησεν</code>이 3:35의 <code>ποιήσῃ</code>보다 <strong>앞에 온다</strong>는 것이 단락 자체의 배열이다.<br />
+- <strong>요한복음 15:16</strong> — "너희가 나를 택한 것이 아니요 내가 너희를 택하여 세웠나니." 다른 복음서이므로 마가의 어휘로 끌어오지 않고, <strong>세우는 주어가 누구인가</strong>라는 정경 내 대조로만 둔다.</p>
+<p><strong>신학자</strong> — 칼빈 『기독교 강요』 3권 1장 1절. 칼빈은 3권을 이 문장으로 연다: 그리스도께서 우리 <strong>밖에</strong> 계시고 우리가 그에게서 떨어져 있는 한, 그가 인류의 구원을 위해 행하신 모든 것이 우리에게 무익하다. 그래서 2권에서 구속의 성취를 다 서술한 뒤에도 3권을 <strong>연합</strong>(unio cum Christo)에서 다시 시작한다. 성취된 일과 우리 사이를 잇는 것이 성령의 은밀한 역사라는 이 배치가, 3:14의 배열과 같은 방향이다 — <strong>곁이 없으면 일이 이쪽으로 건너오지 않는다.</strong> 다만 칼빈의 연합은 구원론적 연합이고 3:14는 제자 명부의 배열이므로, 같은 교리로 포개지 않고 <strong>같은 순서</strong>로만 나란히 둔다.</p>
+<p><strong>설교 적용점</strong> — 병상에 있거나 일을 쉬고 있거나 셈이 맞지 않는 달을 지나며 스스로를 봉사 명단에서 지운 성도에게, 본문이 배정한 첫 자리를 읽어 준다. 다만 「쉬어도 된다」로 끝내지 않는다. <code>ὦσιν</code>이 복수이므로 그 자리는 <strong>맡겨진 자리</strong>이며, 그 자리가 한가한 자리도 아니다 — 사람들이 밀려 짓누르고(3:9) 떡 먹을 겨를도 없던(3:20) 집 <strong>바로 앞에서</strong> 제자직이 시작됐다.</p>
+<p><strong>복음 중심성 점검</strong> — 이 통찰은 도덕주의로 귀결되는가. 미끄러질 지점은 하나다. 「곁에 있으라」를 <strong>새 율법</strong>으로 만들면 첫 칸이 다시 심사 칸이 되고, 그러면 「얼마나 함께 있었는가」를 재기 시작한다. 그것을 막는 것은 감정이 아니라 <strong>구문</strong>이다 — 주동사는 <code>ἐποίησεν</code>이고 <code>ὦσιν</code>은 목적절 <strong>안</strong>에 있다. 곁은 명령형으로 오지 않았다. 단락의 마지막 문장도 주동사가 <code>ἐστίν</code>이다. 이 배치를 놓치지 않는 한, 이 노트는 「더 가까이 있으라」는 요구가 아니라 <strong>「누가 이 명부를 만들었는가」</strong>로 되돌아간다.</p>
+<hr />
+<h2>실무 적용</h2>
+<p><strong>① 고객 상담 — 첫 면담에서 실적표를 뒤로 미루기</strong><br />
+<em>상황</em>: 신규 의뢰인 앞에서 자격·경력 연수·처리 건수를 먼저 펴는 관행. 신뢰가 없을수록 목록이 길어지고, 의뢰인은 자기 사안을 꺼내기 전에 평가받는 기분이 된다.<br />
+<em>적용</em>: 10단계 점검표의 첫 두 칸만 면담에 옮긴다. 첫 칸에 <strong>관계의 범위</strong>(무엇을 함께 볼 것인가, 어디까지 보지 않을 것인가)를 동사 없이 적고, 실적과 권한은 둘째 칸으로 내린다. 위임장 서명은 <strong>첫 칸을 합의한 다음</strong>에 꺼낸다.<br />
+<em>기대 효과</em>: 신뢰의 근거가 「내가 대단하다」에서 「우리가 같은 자리에 앉아 있다」로 옮겨지고, 수임 후 범위 분쟁이 줄어든다.</p>
+<p><strong>② 조직·교회 행정 — 명부의 첫 칸을 비워 두기</strong><br />
+<em>상황</em>: 직분·봉사 명단의 첫 칸이 곧바로 역할과 실적이어서, <strong>아직 못 하는 사람이 명단에 존재하지 않는</strong> 상태. 결원이 생기면 늘 같은 사람에게 돌아간다.<br />
+<em>적용</em>: 임명 문서를 두 줄로 강제한다 — ⓐ 관계 줄(누구와 함께, 어느 자리에) ⓑ 위임 줄(무엇을, 언제까지, 회수 조건). ⓐ만 채워진 사람을 명부에 <strong>정식 등재</strong>하고 이름을 붙여 준다(예: 동행 명단). 5단계 법칙대로 <strong>ⓑ를 여는 주체는 ⓐ를 채운 본인이 아니다</strong>라고 문서에 명시한다.<br />
+<em>기대 효과</em>: 「아직 못 하는 사람」이 명부에서 사라지지 않고, 결원 시 후보 풀이 실재한다. 봉사 이탈이 곧 소속 이탈로 번지는 경로가 끊긴다.</p>
+<p><strong>③ 개인 의사결정 — 설명할 동사가 없는 시간을 일정에 남기기</strong><br />
+<em>상황</em>: 일정표의 모든 칸에 동사가 적혀 있고, 비는 칸이 생기면 불안해서 무언가로 채우는 상태. 7단계 프로토콜에서 30초 만에 올라오던 문장이 하루 단위로 반복된다.<br />
+<em>적용</em>: 주간 일정에 <strong>동사 없는 칸</strong>을 고정으로 하나 만든다. 이름을 「~와 함께」 형식으로만 적는다(가족과, 본문과, 한 사람과). 그 칸에서 성과를 만들지 않기로 미리 정하고, 끝나고 나서 <strong>무엇을 했는지 기록하지 않는다.</strong><br />
+<em>기대 효과</em>: 성과의 등락과 자기 평가가 분리되고, 비수기의 위축이 정체성의 위기로 번지지 않는다.</p>
+<hr />
+<h2>[최종 연구 노트 승격 후보]</h2>
+<h3>🥇 명부의 첫 칸에는 심사 항목이 없다 — 두 목적절의 주어가 갈리기 때문이다</h3>
+<ul>
+<li><strong>핵심</strong>: 3:14의 두 <code>ἵνα</code>절은 나란히 놓였지만 동사의 <strong>수</strong>가 다르다. <code>ὦσιν</code>(3인칭 복수)의 주어는 열둘이고 <code>ἀποστέλλῃ</code>(3인칭 단수)의 주어는 그분이다. 그 결과 자격·시점·범위에 관한 모든 판단이 <strong>둘째 칸으로 넘어가고</strong>, 첫 칸은 구조적으로 심사에서 빠진다. 첫 절의 동사가 <code>εἰμί</code>의 가정법이어서 측정할 행위 자체가 없다.</li>
+<li><strong>날카로움</strong>: 통상의 읽기는 이 구절을 「교제가 사역에 앞선다」는 <strong>가치 진술</strong>로 다룬다. 이 축은 그것을 가치가 아니라 <strong>문법적 배분</strong>으로 본다. 그래서 결론이 「더 가까이 있으라」는 권면이 아니라 <strong>「그 칸은 애초에 평가 대상이 아니다」</strong>가 된다. 권면은 반박될 수 있지만 수의 차이는 반박되지 않는다.</li>
+<li><strong>연결 고리</strong>: 막 3:14-15 / 출 33:15 / <a href="§3 절 구조도 · 핵심 파싱표">[06_구문묵상_마가복음_3_7-35]</a> / [[05_구문묵상_마가복음_2_18-3_6]] — 시간의 규정 ↔ 제자직의 정의 / 칼빈 『기독교 강요』 3.1.1</li>
+</ul>
+<h3>🥈 복수형이 곁을 능동으로 만든다 — 그런데 그 능동에 행위 동사가 없다</h3>
+<ul>
+<li><strong>핵심</strong>: <code>ὦσιν</code>이 단수였다면 「그가 그들과 함께 있으려고」가 되어 곁은 <strong>주어지는 것</strong>이 된다. 복수이므로 곁은 <strong>그들이 하는 것</strong>이다. 그런데 그들이 하는 그 유일한 일의 동사가 <code>εἰμί</code>이고 내용 전부가 전치사구 <code>μετ᾿ αὐτοῦ</code>다. 맡겨졌는데 할 동작이 없는 상태 — <strong>동사 없는 능동</strong>이다.</li>
+<li><strong>날카로움</strong>: 「함께 있음」을 수동적 수혜로 읽는 관행과, 그 반작용으로 「교제도 훈련이다」라고 동사를 도로 집어넣는 관행을 <strong>둘 다</strong> 본문 밖으로 밀어낸다. 본문은 맡기되 동작을 주지 않았고, 이 조합은 우리 언어에 이름이 없다.</li>
+<li><strong>연결 고리</strong>: 막 3:14 <code>ὦσιν</code>(3PAS-P) / <a href="§3 파싱표 — 「행위 동사가 아니다」">[06_구문묵상_마가복음_3_7-35]</a> / [[06_일상의깊은사고_마가복음_3_7-35]] 통찰 1️⃣ / 신규 [[동사없는능동]]</li>
+</ul>
+<h3>🥉 이 노트의 서열 논지는 문법이 아니라 배치 위에 서 있다</h3>
+<ul>
+<li><strong>핵심</strong>: 두 <code>ἵνα</code>절이 나란할 때 앞의 것이 더 근본이라는 문법 규칙은 없다. 이 노트가 가진 것은 <strong>앞에 적힌 것이 앞에 적혔다</strong>는 사실 하나다. 여기에 3:14의 본문 갈림(SBLGNT는 <code>οὓς καὶ ἀποστόλους ὠνόμασεν</code>을 읽지 않고 WH·NIV는 읽는다. NA28은 장치 미인용으로 확정 불가)이 겹친다.</li>
+<li><strong>날카로움</strong>: 축을 세운 사람이 그 축을 흔들 자료를 노트 안에 적어 두는 방식이다. 그럼에도 남는 것이 있다 — <strong>어느 독법에서도 두 목적절의 순서는 바뀌지 않고, 두 동사의 수도 바뀌지 않는다.</strong> 흔들리는 것은 「사도라 이름하셨다」는 문장이지 씨앗이 아니다.</li>
+<li><strong>연결 고리</strong>: <a href="§2 판본 갈림표 3:14·3:16·3:32">[06_구문묵상_마가복음_3_7-35]</a> / [[00_생각의탄생_씨앗선정표_마가복음]] #06 / 신규 [[서열논법의_증명한계]]</li>
+</ul>
+<hr />
+<h2>위키 연결망</h2>
+<blockquote>
+<p>[!todo] 연결 확인 — 아래 링크는 제안입니다. vault의 실제 노트와 대조하세요.</p>
+</blockquote>
+<ul>
+<li>[[06_구문묵상_마가복음_3_7-35]] — 모든 원어 근거의 출처(§2 판본 갈림표 · §3 절 구조도와 핵심 파싱표 · §4② <code>θέλημα</code> · 3:35 <code>ποιήσῃ</code> 정정)</li>
+<li>[[06_일상의깊은사고_마가복음_3_7-35]] — 이 씨앗(통찰 1️⃣)의 출처. 씨앗 선정표의 번호도 이 노트 기준</li>
+<li>[[05_구문묵상_마가복음_2_18-3_6]] — 직전 단위. 구별선은 <strong>시간의 규정 ↔ 제자직의 정의</strong>이며, 「함께 있음」의 신학적 무게는 이쪽이 06에 양보했다</li>
+<li>[[07_구문묵상_마가복음_4_1-25]] — 직후 단위. <strong>인용의 변형</strong>이 그쪽 축이므로 「안과 밖」은 07 소관이다</li>
+<li>[[18_구문묵상_마가복음_9_30-50]] — 서열의 <strong>전복</strong>을 맡는 단위. 06은 서열의 <strong>배열</strong>을 맡는다</li>
+<li>[[00_마가복음_묵상단위_마스터]] — 축 중복 방지 대장(#06)</li>
+<li>신규 생성 추천: [[동사없는능동]] / [[두칸명부_프레임워크]] / [[서열논법의_증명한계]]</li>
+</ul>
+<h3>이 씨앗의 T13 노트 인덱스</h3>
+<pre><code class="language-dataview">LIST FROM #t13 AND [[]]
+SORT file.name ASC
+</code></pre>
+<h3>최근 13단계 확장 노트</h3>
+<pre><code class="language-dataview">TABLE seed_source, lens, created FROM #t13/허브
+SORT created DESC
+LIMIT 10
+</code></pre>
+<h2>다음 질문 5</h2>
+<ol>
+<li><strong>(1 관찰)</strong> 마가의 <code>ἵνα</code>절 중 동사가 <code>εἰμί</code>인 자리를 전수로 모으면, 목적절이 <strong>상태</strong>를 지시하는 다른 자리가 또 있는가?</li>
+<li><strong>(5 패턴 형성)</strong> 「두 칸 명부」의 법칙(첫 칸과 둘째 칸의 주어가 다르면 심사가 둘째 칸으로 넘어간다)은 신약의 다른 임명 장면(행 6:1-6, 딤전 3장)에서도 같은 모양으로 성립하는가, 아니면 거기서는 두 칸이 한 줄로 붙는가?</li>
+<li><strong>(6 유추)</strong> 세 유추가 전부 「곁을 수단으로 만들 때」 깨졌다면, 곁을 <strong>목적</strong>으로 두고도 끝까지 버티는 유비를 다른 도메인에서 찾을 수 있는가?</li>
+<li><strong>(9 차원적 사고)</strong> 단락이 <code>ἐποίησεν</code>으로 열려 <code>ἐστίν</code>으로 닫히는 이 배열을, 마가의 다른 단락에서도 <strong>주동사의 태와 주어</strong>만으로 지도화할 수 있는가?</li>
+<li><strong>(11 놀이)</strong> 동사의 <strong>수</strong>를 바꿔 보는 조작을 다른 단위의 미결 쟁점(3:21 <code>ἐξέστη</code>의 주어, 4:12 <code>ἀφεθῇ</code>의 행위자)에 적용하면, 본문이 실제로 무엇을 확정하고 무엇을 열어 두었는지가 더 또렷해지는가?</li>
+</ol>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 6 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱→🔥 13단계 사고 확장 노트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 18 편</span>
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+<h2>씨앗: 마가복음 9:43·45·47 「스칸달리제·게엔나 — 절단의 명령은 몸의 낱말로 적히고, 세 번의 반복은 끝까지 한 모양으로 정리되지 않는다」</h2>
+<hr />
+<h2>[원문] — 씨앗 아이디어</h2>
+<blockquote>
+<p><strong>"만일 네 손이 너를 범죄하게 하거든 찍어버리라 장애인으로 영생에 들어가는 것이 두 손을 가지고 지옥 곧 꺼지지 않는 불에 들어가는 것보다 나으니라 / 만일 네 발이 너를 범죄하게 하거든 찍어버리라 다리 저는 자로 영생에 들어가는 것이 두 발을 가지고 지옥에 던져지는 것보다 나으니라 / 만일 네 눈이 너를 범죄하게 하거든 빼버리라 한 눈으로 하나님의 나라에 들어가는 것이 두 눈을 가지고 지옥에 던져지는 것보다 나으니라"</strong></p>
+<p><code>Καὶ ἐὰν σκανδαλίζῃ σε ἡ χείρ σου, ἀπόκοψον αὐτήν· καλόν ἐστίν σε κυλλὸν εἰσελθεῖν εἰς τὴν ζωὴν ἢ τὰς δύο χεῖρας ἔχοντα ἀπελθεῖν εἰς τὴν γέενναν, εἰς τὸ πῦρ τὸ ἄσβεστον. / καὶ ἐὰν ὁ πούς σου σκανδαλίζῃ σε, ἀπόκοψον αὐτόν· καλόν ἐστίν σε εἰσελθεῖν εἰς τὴν ζωὴν χωλὸν ἢ τοὺς δύο πόδας ἔχοντα βληθῆναι εἰς τὴν γέενναν. / καὶ ἐὰν ὁ ὀφθαλμός σου σκανδαλίζῃ σε, ἔκβαλε αὐτόν· καλόν σέ ἐστιν μονόφθαλμον εἰσελθεῖν εἰς τὴν βασιλείαν τοῦ θεοῦ ἢ δύο ὀφθαλμοὺς ἔχοντα βληθῆναι εἰς τὴν γέενναν,</code></p>
+<p>(막 9:43·45·47 / 단위 18 = 9:30-50 · 원어 근거는 [[18_구문묵상_마가복음_9_30-50]])</p>
+</blockquote>
+<p>이 단위는 <strong>떠나는 동작으로 열려 한 집 안으로 접힌다</strong> — 갈릴리를 지나(9:30) → 가버나움으로(9:33) → 그 집에서(9:33). 무대가 좁아진 그 집 안에서 담화 전부가 나온다. 앞쪽에는 둘째 수난 예고(9:31, 여기서 <code>παραδίδοται</code>는 현재 수동으로 적혀 있다 — 이 노트는 이것을 <strong>관찰로만</strong> 적고 축으로 세우지 않는다. 그 사슬은 다른 단위의 소관이다)와 묻지 못함(9:32), 크기의 물음과 그 답절(9:34-37), 막지 말라(9:38-40)가 있다. 씨앗은 <strong>뒤쪽 절반</strong>, 곧 9:42-50에 있다. 스물한 절 가운데 아홉 절이 여기에 걸려 있고, <code>σκανδαλίζω</code>와 <code>γέεννα</code>가 그 아홉 절 안에 몰려 있다.</p>
+<hr />
+<h2>[씨앗 선정] — 세 통찰 중 왜 이것인가</h2>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>통찰</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td><code>παραδίδοται</code>(9:31) — 예고와 겟세마네의 밤(14:41)이 글자 하나까지 같은 낱말을 쓴다</td>
+<td><strong>보류</strong> — 관찰 자체는 강하나 <strong>배치 규칙에 걸린다.</strong> 마스터가 <code>παραδίδωμι</code> 사슬의 전담을 #26(14:41·42·44)과 #28(15:1·10·15)에 배정했고(2026-09-28 정정), <strong>이 배치의 어느 단위도 이 어근을 씨앗으로 쓰지 않는다.</strong> 9:31은 13단계 본문의 <strong>한 줄 관찰</strong>로만 남긴다</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td><code>διάκονος</code>(9:35) — 크기의 물음에 시중드는 직무가 답절로 놓인다</td>
+<td><strong>보류</strong> — <strong>#20과 주제가 충돌한다.</strong> 9:35의 <code>διάκονος</code>와 10:45의 <code>διακονῆσαι</code>는 같은 어근이고, 섬김 축의 신학적 무게는 10:45(<code>λύτρον</code>이 함께 오는 자리)가 진다. 9:35-37은 이 노트의 <strong>4·9단계에서 이어받되</strong> 축으로 세우지 않는다</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td><code>σκανδαλίζῃ</code>(9:42·43·45·47) · <code>γέεννα</code>(9:43·45·47) — <strong>절단의 3연이 같은 모양이 아니다</strong></td>
+<td><strong>채택</strong> — 셋 중 <strong>유일하게 이 단위의 분량 절반이 걸린 담화를 직접 다루고</strong>, 셈이 아니라 <strong>형태의 어긋남</strong>을 근거로 선다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>선택 이유</strong>: 세 통찰 중 이 씨앗만이 <strong>이 단위가 실제로 무게를 실은 자리</strong>에 서 있다. 1️⃣과 2️⃣가 각각 한 절(9:31 · 9:35)에 걸려 있는 데 비해 3️⃣은 9:42-50 아홉 절, 곧 스물한 절짜리 단위의 <strong>뒤쪽 절반 전체</strong>를 붙든다. ⛔ 그러나 이것을 「앞의 둘이 배치 규칙에 막혀서 남은 것」으로 읽으면 안 된다 — <strong>소거 전에 이미 여기에 무게가 있었다.</strong> 우리가 받은 본문의 형태가 그것을 보여 준다. 마가는 같은 조건문을 <strong>세 번 적으면서 세 번을 같게 적지 않았다</strong>. 둘째 항의 태가 갈리고(<code>ἀπελθεῖν</code> 능동 ↔ <code>βληθῆναι</code> 수동), 명령 동사가 갈리고(<code>ἀπόκοψον</code> ↔ <code>ἔκβαλε</code>), 도착지의 이름이 갈리고(<code>ζωήν</code> ↔ <code>βασιλείαν τοῦ θεοῦ</code>), 동격구(<code>εἰς τὸ πῦρ τὸ ἄσβεστον</code>)가 첫 항에만 붙으며, 셋째 항에서는 계사 어순이 뒤집히고 <code>δύο</code>의 관사가 빠진다. 반복이 여섯 자리에서 어긋난다는 것은 <strong>받아 적다가 생긴 흔들림으로 보기에는 방향이 너무 한쪽으로 몰려 있다</strong> — 어긋남이 <strong>셋째 항에 집중된다</strong>. 그리고 9:49-50의 소금 말씀이 그 3연을 <strong>정리하지 않고</strong> 닫는다. 확장 잠재력도 여기가 가장 크다 — 「반복의 어긋남을 어떻게 읽을 것인가」는 법령·규정·회의록·전례문처럼 반복이 형식인 모든 문서로 그대로 건너간다. (번호는 [[18_일상의깊은사고_마가복음_9_30-50]] 기준.)</p>
+<blockquote>
+<p>[!warning] 씨앗에 붙어 다니는 한정 — 13단계 전부에 따라다닌다. 지우지 않는다<br />
+① <strong>이 노트의 축은 판본 선택 위에 서 있다.</strong> 9:44·9:46(「거기에서는 구더기도 죽지 않고 불도 꺼지지 아니하느니라」)은 <strong>SBLGNT/MorphGNT에 행 자체가 없고</strong>(기계 확인: <code>020944</code>·<code>020946</code> 코드 부재) <strong>NA28도 같다</strong> — ⛔ 그러므로 「비평본들 사이에서 본문이 갈린다」고 쓰면 사실 오류다. 갈리는 것은 <strong>비평본 계열과 개역개정이 따르는 계열 사이</strong>다. 개역개정은 두 절을 절 번호와 함께 본문에 둔다. <strong>WH의 처리는 구문묵상노트가 확인하지 않았다(확인 실패)</strong> — 이 노트도 WH를 근거로 적지 않는다. 문제는 이것이 「덧붙은 두 줄」로 끝나지 않는다는 데 있다. 두 절을 넣으면 9:48의 후렴이 <strong>세 항 모두에 붙어</strong> 3연의 외형이 고르게 보이고, 이 노트가 9단계·11단계·13단계에서 쓰는 관찰 하나 — <strong>「48절의 후렴이 셋째 항에만 걸린다」</strong> — 가 성립하지 않는다. <strong>어느 본문을 읽고 있는지를 먼저 밝히지 않으면 「어긋남」을 주장할 수 없다.</strong> 이 노트는 <strong>SBLGNT를 읽고 있다.</strong><br />
+② <strong>9:49도 이문이 크게 갈린다.</strong> SBLGNT 본문은 <code>Πᾶς γὰρ πυρὶ ἁλισθήσεται.</code>가 전부이고 <code>ἁλισθήσεται</code>는 3FPI-S(미래 수동)다. <strong>SBLGNT·Treg·NIV는 짧은 독법</strong>, <strong>RP는 <code>+ καὶ πᾶσα θυσία ἁλὶ ἁλισθήσεται</code></strong>(모든 제물은 소금으로 소금 쳐지리라)를 더하며, 이 추가구는 레위기 2:13 LXX와 <strong>세 낱말이 일치한다</strong>(<code>θυσία</code>·<code>ἁλὶ</code>·<code>ἁλισθήσεται</code>). 결정적 차이는 <strong>여격 한 낱말</strong>이다 — SBLGNT는 <code>ἁλὶ</code>(소금으로) 자리에 <code>πυρὶ</code>(불로)를 둔다. ⛔ 이 노트는 RP 독법으로 논지를 세우지 않고, 49절을 <strong>열린 채로</strong> 둔다.<br />
+③ <strong><code>γέεννα</code>를 「지옥」이라는 후대 관념으로 채우지 않는다.</strong> 낱말은 예루살렘 남쪽 힌놈 골짜기의 지명에서 온다. 구문묵상노트가 확정한 범위는 <strong>격과 배치까지</strong>다 — 3회가 전부 이 단위에 있고 셋 다 ASF(대격 단수 여성)이며, 동격구 <code>εἰς τὸ πῦρ τὸ ἄσβεστον</code>은 <strong>9:43에만</strong> 붙고 <strong>9:47에는 불에 해당하는 낱말이 아예 없다</strong>. 형벌의 내용·기간·성격을 이 노트가 채우지 않는다.<br />
+④ <strong>어긋남의 원인은 본문이 판정하지 않는다.</strong> 편집 결정인가, 전승의 흔적인가, 옮겨 적는 과정의 잔여인가 — 구문묵상노트는 마가의 편집 관습 전수를 <strong>미조사</strong>로, 그런 비대칭의 기저율을 <strong>미확인</strong>으로 적었다. 이 노트가 논증하는 것은 <strong>「이 단위의 무게가 여기에 실려 있다」</strong>이지 <strong>「마가가 일부러 어긋나게 적었다」</strong>가 아니다. 이 선을 13단계 전 구간에서 지킨다.</p>
+</blockquote>
+<hr />
+<h2>[이 노트의 자리] — 인접 단위와 무엇이 다른가</h2>
+<table>
+<thead>
+<tr>
+<th>노트</th>
+<th>그 단위의 축</th>
+<th>구별선</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직전 · #17 · 9:2-29</strong> ([[17_구문묵상_마가복음_9_2-29]])</td>
+<td><code>ἀκούετε αὐτοῦ</code>(9:7) — <strong>하늘이 남긴 것은 명령형 하나다</strong></td>
+<td>⚠ <strong>둘 다 명령형을 다루므로 선을 분명히 긋는다.</strong> #17은 <strong>하늘이 낸 명령 하나</strong>(구름 속에서 나온 말이 명령형 한 마디로 압축된다), #18은 <strong>예수께서 내신 3연</strong>이다. #17이 <strong>압축</strong>을 맡고 #18이 <strong>반복과 그 어긋남</strong>을 맡는다. 9:30이 <code>Κἀκεῖθεν ἐξελθόντες</code>(거기서 나와)로 열려 두 단위가 맞붙지만, 「압축된 하나」와 「어긋난 셋」은 반대 방향의 사실이다</td>
+</tr>
+<tr>
+<td><strong>직후 · #19 · 10:1-31</strong> ([[19_구문묵상_마가복음_10_1-31]])</td>
+<td><code>ἠγάπησεν</code>(10:21) — <strong>사랑이 먼저 적히고, 그다음에 떠남이 적힌다</strong></td>
+<td><strong>묻는 층이 다르다.</strong> 9:43-47의 「들어가는 것이 낫다」와 10:23-25의 「들어가기가 심히 어렵다」가 <code>εἰσέρχομαι</code>로 닿는 것은 사실이나, <strong>#19는 서술자가 기입한 감정</strong>(본문이 예수의 속을 적어 준 드문 자리)을 맡고 <strong>#18은 명령의 형태</strong>를 맡는다. 어휘가 닿는다는 것까지만 적고 <code>εἰσέρχομαι</code>를 이 노트의 축으로 올리지 않는다</td>
+</tr>
+<tr>
+<td><strong>먼 단위 · #20 · 10:32-52</strong> ([[20_구문묵상_마가복음_10_32-52]])</td>
+<td><code>δοῦναι</code>(10:40↔10:45) — <strong>줄 수 없다 하신 낱말이 다섯 절 뒤 부정 없이 선다</strong></td>
+<td>⚠ <strong>9:35의 <code>διάκονος</code>와 10:45의 <code>διακονῆσαι</code>가 같은 어근이다.</strong> 섬김 축의 보유 단위는 <strong>#20</strong>이고, #18은 9:35를 <strong>크기 물음의 답절</strong>로만 관찰한다(4·9단계). #18이 맡는 것은 <strong>몸의 낱말로 적힌 명령</strong> — 손·발·눈, 불구·절뚝거림·애꾸, 연자돌과 바다, 구더기와 불, 그리고 부엌의 소금이다</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!warning] 표현을 섞지 않기 위한 선<br />
+9:32의 두 미완료(<code>ἠγνόουν</code> · <code>ἐφοβοῦντο</code>)를 다루되 <strong>「제자들의 둔함」이라는 표현을 쓰지 않는다</strong> — 그 축은 #15 전담이다. 이 노트는 8단계에서 <strong>묻지 못함의 형태</strong>(지속을 표시하는 미완료 두 개와, 지배 관계가 가려지지 않는 대격 <code>αὐτὸν</code>)까지만 적는다. 또한 <code>σκανδαλίζω</code>를 「실족」이라는 <strong>도덕적 약화</strong>로 옮기지 않는다 — 덫·걸림돌의 뜻이며, 9:42에서는 그 목적어가 <strong>사람</strong>이다.</p>
+</blockquote>
+<hr />
+<h2>사고 지도</h2>
+<pre><code class="language-mermaid">mindmap
+  root((&quot;세 번 말하되 세 번이 같지 않다&quot;))
+    &quot;관찰·형상화&quot;
+      &quot;넷 중 하나가 3연 밖으로 튄다&quot;
+      &quot;세 번째에서 박자가 어긋난다&quot;
+    추상화
+      &quot;어긋난 반복&quot;
+    &quot;패턴·유추&quot;
+      &quot;변이가 몰린 자리가 도착지다&quot;
+      &quot;세 호 중 한 호만 단서가 붙은 조문&quot;
+    &quot;체화·감정이입&quot;
+      &quot;손목 발목을 지나 눈에서 멈추는 손&quot;
+      &quot;묻지 못한 입&quot;
+    &quot;차원·모형&quot;
+      &quot;골짜기 이름이 끝나지 않음의 이름이 된다&quot;
+      &quot;반복 점검표&quot;
+    &quot;놀이·변형&quot;
+      &quot;후렴을 더하면 어긋남이 지워진다&quot;
+    통합
+      &quot;정리되지 않은 채로 닫힌다&quot;
+</code></pre>
+<hr />
+<h2>[1~13단계 사고 과정 연대기]</h2>
+<blockquote>
+<p>각 단계는 앞 단계의 산물을 이어받아 유기적으로 변모한다.</p>
+</blockquote>
+<h3>1. 관찰 (Observing) — "넷 중 하나가 3연 밖으로 튀고, 남은 셋도 서로 맞지 않는다"</h3>
+<p>배열만 적는다. <code>σκανδαλίζω</code>는 이 아홉 절에 <strong>네 번</strong>(9:42·43·45·47) 나오지만 <strong>3연은 43·45·47이고 42절은 그 넷째 항이 아니다.</strong> 42절은 <code>καλόν … ἢ</code> 비교가 아니라 <code>μᾶλλον εἰ</code> + 직설법이고(<code>περίκειται</code> 3PMI-S · <code>βέβληται</code> 3XPI-S), 시상도 홀로 아오리스트 가정(<code>σκανδαλίσῃ</code>)이며, 무엇보다 <strong>목적어가 사람</strong>이다(<code>ἕνα τῶν μικρῶν τούτων</code>). 43·45·47은 현재 가정이고 <strong>주어가 자기 지체, 목적어가 <code>σε</code></strong>다. 남은 셋도 겹치지 않는다 — 43만 동사가 주어보다 앞서고(<code>σκανδαλίζῃ σε ἡ χείρ σου</code>), 43만 둘째 항이 능동 <code>ἀπελθεῖν</code>이며, 43만 <code>εἰς τὸ πῦρ τὸ ἄσβεστον</code>이 붙는다. 47만 명령 동사가 <code>ἔκβαλε</code>이고, 47만 도착지가 <code>τὴν βασιλείαν τοῦ θεοῦ</code>이며, 47만 계사 어순이 뒤집히고(<code>καλόν σέ ἐστιν</code>) <code>δύο</code>에 관사가 없다.</p>
+<blockquote>
+<p>[!insight] 반복은 셋인데 어느 두 항도 완전히 포개지지 않는다<br />
+「세 번 같은 말씀」이라는 인상은 <strong>낭독의 인상</strong>이고, 문장의 사실이 아니다. 여섯 자리에서 어긋난다.</p>
+<p>[!question] 연결 질문<br />
+- 세 번 반복된 문장에서 우리는 무엇을 먼저 듣는가 — 같은 부분인가, 다른 부분인가?<br />
+- 넷째 항처럼 보이지만 형식이 다른 문장을 3연에 끼워 넣으면 무엇이 지워지는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 코드와 어순으로만 적힌 이 어긋남을 형상화가 <strong>들리는 장면</strong>으로 세운다.</p>
+<h3>2. 형상화 (Imaging) — "세 번째에서 박자가 어긋난다"</h3>
+<p>가버나움의 한 집. 문이 닫혀 있고 밖에는 갈릴리를 지나온 길의 먼지가 남아 있다. 그분은 서 계시지 않고 <strong>앉으셨다</strong>(<code>καθίσας</code>, 9:35). 앉은 사람의 말은 천천히 온다. 손 이야기가 나올 때 듣는 사람들의 눈이 자기 손등으로 내려간다. 발 이야기에서 발가락이 신 안에서 한 번 오므라든다. 여기까지는 같은 가락이다 — 같은 조건, 같은 명령어, 같은 도착지. 그런데 세 번째에서 동사가 바뀐다. <strong>찍어내는 것이 아니라 빼내는 것이다.</strong> 그리고 끝의 낱말이 달라진다 — 「생명」이라고 두 번 말한 입이 세 번째에는 「하나님의 나라」라고 말한다. 외우려고 박자를 세던 귀가 거기서 멈춘다. 방 안에 그 어긋남이 남고, 뒤이어 오는 것은 정리가 아니라 구더기와 불, 그리고 소금이다.</p>
+<blockquote>
+<p>[!insight] 장면에서 일어난 일은 「강조가 세졌다」가 아니라 「박자가 어긋났다」였다<br />
+세 번째가 더 크게 발음된 것이 아니다. <strong>다른 낱말이 들어왔다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 낭독으로 들을 때에만 잡히는 이 단락의 사실은 무엇인가?<br />
+- 어긋남을 들은 귀는 그 뒤의 말을 더 잘 듣는가, 더 못 듣는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 집과 먼지와 신발을 걷어 내고 남는 한 낱말을 추상화가 붙잡는다.</p>
+<h3>3. 추상화 (Abstracting) — "어긋난 반복"</h3>
+<p><strong>남는 개념: 어긋난 반복(비대칭적 되풀이).</strong><br />
+<strong>한 문장 압축: 같은 명령이 세 번 오되, 어긋남이 마지막 항에 몰려 있다.</strong></p>
+<p>버린 것 셋. ① <strong><code>γέεννα</code>의 내용</strong> — 후대의 지옥 표상으로 채우면 그때부터 논지는 본문이 아니라 표상 위에 선다. 낱말의 출신(힌놈 골짜기)과 형태(ASF 3회)와 배치(동격구는 43에만)까지가 우리가 받은 것이다. ② <strong>42절의 연자돌 장면</strong> — <code>μύλος ὀνικός</code>(나귀가 끄는 맷돌)와 바다는 강렬하지만 <strong>3연에 속하지 않는다</strong>. 알맹이에서 뺀다. ③ <strong>계수</strong> — <code>σκανδαλίζω</code> 8회 중 4회가 여기 있고 <code>γέεννα</code>는 3회가 전부 여기 있다는 사실은 <strong>보조 관찰</strong>이다. 논지는 셈이 아니라 형태가 진다. 그리고 하나 더 — <strong><code>σκανδαλίζω</code>를 「실족」으로 눅이지 않는다.</strong> 덫이고 걸림돌이다. 9:42에서 그 덫에 걸리는 것은 관념이 아니라 <strong>한 사람</strong>이다.</p>
+<blockquote>
+<p>[!insight] 남은 것은 신학 용어가 아니라 문서의 형식 문제다<br />
+「어긋난 반복」은 성경만의 현상이 아니다. <strong>되풀이를 형식으로 삼는 모든 문서</strong>가 이 문제를 가진다.</p>
+<p>[!question] 연결 질문<br />
+- 반복에서 같은 부분이 아니라 다른 부분을 먼저 보는 읽기는 무엇을 얻고 무엇을 잃는가?<br />
+- 셈을 빼고도 남는 근거가 형태뿐일 때, 그 근거는 얼마나 단단한가?</p>
+</blockquote>
+<p><strong>다리</strong>: 「어긋난 반복」이라는 알맹이가 다른 도메인에서도 같은 일을 하는지 패턴 인식이 확인한다.</p>
+<h3>4. 패턴 인식 (Recognizing Patterns) — "반복은 기억을 만들고, 어긋남은 관심을 옮긴다"</h3>
+<table>
+<thead>
+<tr>
+<th>도메인</th>
+<th>패턴 발현</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>음악</strong></td>
+<td>세 번 되풀이되는 악구의 마지막에서 화성이 바뀐다. 앞의 둘은 귀를 길들이고 셋째가 방향을 튼다. 듣는 사람은 어디가 끝인지를 <strong>변이로</strong> 안다</td>
+</tr>
+<tr>
+<td><strong>법령·세무</strong></td>
+<td>같은 요건을 세 호로 나열하면서 한 호만 문언이 다르면, 그것은 대개 오기가 아니라 <strong>적용 범위의 차이</strong>다. 실무자가 셋을 하나로 뭉개는 순간 그 호의 단서가 사라진다</td>
+</tr>
+<tr>
+<td><strong>구전·기억술</strong></td>
+<td>되풀이는 외우게 하고 어긋남은 멈추게 한다. 매끄럽게 외워지는 대목은 지나가고, 걸리는 대목에서 사람은 <strong>되묻는다</strong></td>
+</tr>
+<tr>
+<td><strong>본문 내부(9:35-37)</strong></td>
+<td>⚠ 같은 담화 안에도 있다. 「누가 더 크냐」라는 물음에 답이 <strong>하나가 아니라 둘</strong>로 주어진다 — 35절은 <strong>직무</strong>(<code>πάντων διάκονος</code>, 시중드는 자)로, 36-37절은 <strong>한 아이의 몸</strong>으로 답한다. 답도 한 모양이 아니다. <em>(섬김 축 자체는 #20 소관이므로 여기서는 「답이 둘이다」까지만 적는다.)</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>공통 패턴 한 문장</strong>: 되풀이는 기억을 만들고 <strong>변이는 관심을 이동시키며</strong>, 변이가 마지막 항에 몰리면 듣는 사람의 무게중심도 그리로 간다.</p>
+<blockquote>
+<p>[!insight] 어긋남은 반복의 실패가 아니라 반복이 가진 두 번째 기능이다<br />
+고정항이 없으면 변이가 보이지 않고, 변이가 없으면 반복은 그냥 지나간다. <strong>둘은 한 장치의 두 부분이다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 내가 세 번 반복해 말한 것 중 세 번째에서 달라지는 것은 무엇이었나?<br />
+- 「답이 둘이다」와 「답이 어긋난다」는 같은 현상인가 다른 현상인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 네 도메인에서 확인된 이 패턴을 패턴 형성이 <strong>쓸 수 있는 도식</strong>으로 굳힌다.</p>
+<h3>5. 패턴 형성 (Forming Patterns) — 프레임워크 「고정항·변이항·집중점」</h3>
+<p>반복 구조를 세 칸으로 분해한다. 막 9:43-47을 그대로 넣어 본다.</p>
+<table>
+<thead>
+<tr>
+<th>칸</th>
+<th>정의</th>
+<th>막 9:43·45·47의 실측</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>고정항</strong></td>
+<td>세 항에 그대로 있는 것</td>
+<td><code>ἐὰν … σκανδαλίζῃ σε</code> · <code>καλόν … ἢ</code> 비교 · <code>εἰσελθεῖν</code> · <code>ἔχοντα</code> · <code>εἰς τὴν γέενναν</code>(ASF ×3)</td>
+</tr>
+<tr>
+<td><strong>변이항</strong></td>
+<td>항마다 달라지는 것</td>
+<td>명령 동사(<code>ἀπόκοψον</code>×2 ↔ <code>ἔκβαλε</code>) · 둘째 항 태(<code>ἀπελθεῖν</code> ↔ <code>βληθῆναι</code>×2) · 도착지(<code>ζωήν</code>×2 ↔ <code>βασιλείαν τοῦ θεοῦ</code>) · 동격구(43에만) · 계사 어순(47만 역전) · 관사(47만 <code>δύο</code> 무관사)</td>
+</tr>
+<tr>
+<td><strong>집중점</strong></td>
+<td>변이가 몰린 항</td>
+<td><strong>셋째 항(9:47)</strong> — 여섯 변이 중 넷이 여기에 있다. 그리고 48절의 후렴 <code>ὅπου …</code>가 <strong>셋째 항의 <code>γέεννα</code>에만</strong> 관계절로 걸린다</td>
+</tr>
+</tbody>
+</table>
+<pre><code>   [1] 손  ─ 고정 ──┬── 변이: 능동 떠남 · 꺼지지 않는 불 · 생명
+   [2] 발  ─ 고정 ──┤        (여기까지 귀가 가락을 익힌다)
+   [3] 눈  ─ 고정 ──┴── 변이×4: 빼내라 · 하나님의 나라 · 어순역전 · 무관사
+                          └─ 48절 후렴이 여기에만 걸린다 ◁ (판본 조건부, 한정 ①)
+</code></pre>
+<p><strong>이 프레임워크의 법칙</strong>: <strong>되풀이의 무게는 반복된 횟수가 아니라 변이가 몰린 자리에 실린다.</strong></p>
+<blockquote>
+<p>[!insight] 셋째 항은 「더 강한 세 번째」가 아니라 「다른 문장」이다<br />
+강조의 점층이라면 낱말이 세져야 하는데, 실제로 바뀐 것은 <strong>도착지의 이름</strong>이다.</p>
+<p>[!question] 연결 질문<br />
+- 변이항을 모두 고정항으로 바꾸면 그 문서는 더 읽기 쉬워지는가, 덜 말하게 되는가?<br />
+- 집중점이 마지막이 아니라 가운데에 있는 반복은 무엇을 하는 문서인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 세 칸 도식을 유추가 <strong>전혀 다른 분야</strong>로 들고 나간다.</p>
+<h3>6. 유추 (Analogizing) — "세 호 중 한 호만 단서가 붙은 조문, 그리고 결정 속의 결함"</h3>
+<p><strong>① 세무·법령 ↔ 신학(교차 유추)</strong>. 가산세 조항이 세 호로 나열되어 있는데 셋째 호에만 「~에 한한다」는 단서가 붙어 있다. 숙련된 실무자일수록 셋을 하나로 요약해 고객에게 설명하고, 그 요약에서 단서가 제일 먼저 탈락한다. 막 9:43-47에서 「손이든 발이든 눈이든 잘라 내라」는 요약이 하는 일이 정확히 그것이다 — <strong>셋째 항에서 도착지의 이름이 바뀐 사실이 요약에서 사라진다.</strong> <em>새 통찰</em>: 요약은 고정항만 남기고 변이항을 버리므로, <strong>요약에 저항하는 문서일수록 변이에 정보가 많다.</strong> <em>깨지는 지점</em>: 법령은 개정 연혁이 남아 어긋남의 원인을 추적할 수 있지만, <strong>마가는 연혁을 주지 않는다</strong>(한정 ④).</p>
+<p><strong>② 자연과학</strong>. 완전한 결정 격자는 오히려 무르다. 금속의 강도는 격자의 <strong>결함</strong>에서 나오고, 반도체의 성질은 불순물을 <strong>일부러 섞어</strong> 만든다. <em>새 통찰</em>: 고르지 않음이 기능을 만든다 — 3연이 완전히 고르게 적혔다면 외우기는 쉬워도 <strong>멈출 자리가 없다.</strong> <em>깨지는 지점</em>: 결정의 결함은 분포가 무작위인데, 이 본문의 어긋남은 <strong>한쪽(셋째 항)으로 몰려 있다.</strong> 유추가 여기서 끊긴다.</p>
+<p><strong>③ 일상</strong>. 세 아이에게 같은 말을 하는 부모. 앞의 둘에게는 같은 문장을 쓰다가 셋째에게만 문장이 길어지거나 호칭이 바뀐다. 듣는 아이들은 <strong>그 차이를 정확히 듣는다.</strong> <em>새 통찰</em>: 어긋남은 말하는 사람이 의식하기 전에 듣는 사람에게 먼저 도착한다. <em>깨지는 지점</em>: 가정의 어긋남은 대개 <strong>감정의 편차</strong>에서 오지만, 본문의 어긋남은 감정이 아니라 <strong>도착지의 이름</strong>에서 일어난다.</p>
+<blockquote>
+<p>[!insight] 요약은 고정항의 기술이고, 읽기는 변이항의 기술이다<br />
+우리가 성경을 잘 요약할수록 3연은 하나로 뭉개진다. <strong>요약을 잘하는 것과 읽는 것은 같은 일이 아니다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 내가 만든 요약본에서 가장 먼저 탈락한 단서는 무엇이었나?<br />
+- 어긋남이 한쪽으로 몰린다는 사실만으로 의도를 말할 수 있는가? <em>(한정 ④)</em></p>
+</blockquote>
+<p><strong>다리</strong>: 머리로 확인한 이 어긋남을 몸으로 생각하기가 <strong>근육으로</strong> 다시 확인한다.</p>
+<h3>7. 몸으로 생각하기 (Body Thinking) — "손목·발목을 지나 눈에서 멈추는 손"</h3>
+<p><strong>실천 프로토콜.</strong> 눈을 감는다. 오른손으로 왼 손목을 감싼다 — <code>ἀπόκοψον</code>(찍어내라). 손을 내려 발목을 잡는다 — 같은 동사다. 그다음 손을 얼굴로 올린다. <strong>거기서 손이 멈춘다.</strong> 눈두덩 위에서 손가락은 감쌀 자세를 못 찾는다. 눈은 감쌀 수도, 찍어낼 수도 없다. 그래서 본문이 동사를 바꾼다 — <code>ἔκβαλε</code>(빼내라). <strong>어긋남이 자의적인 변형이 아니라 몸의 사실과 맞는다.</strong> 이어서 남는 상태의 세 낱말을 몸으로 재본다. <code>κυλλόν</code>(불구인 채로) · <code>χωλόν</code>(절뚝거리며) · <code>μονόφθαλμον</code>(한 눈으로). 한쪽 눈을 감고 방을 걸어 보면 거리감이 무너진다. 본문은 이 상태를 <strong>미화하지 않고 그대로 적는다.</strong></p>
+<blockquote>
+<p>[!insight] 세 번째에서 문장이 바뀐 것을 손이 먼저 안다<br />
+어긋남의 최소 근거는 문법표가 아니라 <strong>손이 멈추는 자리</strong>다.</p>
+<p>[!question] 연결 질문<br />
+- 몸이 따라갈 수 없는 명령을 우리는 어떻게 은유로 바꾸는가, 그리고 그 전환은 정당한가?<br />
+- 설교자가 세 번째에서 손을 멈출 때 회중이 듣는 것은 무엇인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 몸이 멈춘 그 자리에서, 감정이입이 <strong>묻지 못한 입</strong>으로 들어간다.</p>
+<h3>8. 감정이입 (Empathizing) — "묻지 못한 사람의 마음, 그리고 이미 잃은 사람의 마음"</h3>
+<p><strong>① 그 집에 앉아 있던 한 사람.</strong><br />
+<em>몰랐다. 그런데 그 모름이 한 번의 일이 아니라 계속이었다 — 본문은 <code>ἠγνόουν</code>과 <code>ἐφοβοῦντο</code>를 둘 다 지속의 형태로 적는다. 나는 그분을 두려워한 것인가, 그분께 묻기를 두려워한 것인가. 문장이 그것을 가려 주지 않고, 나도 모른다. 그 입이 길 위에서는 열려서 누가 더 큰가를 따졌다. 그런데 손과 발 이야기를 듣는 동안 나는 다시 아무 말도 못 한다. 세 번째에서 말이 바뀌었는데 그것조차 묻지 못한다.</em><br />
+감정 전환: <strong>묻지 못함 → 서로에게는 터진 말 → 다시 막힌 입.</strong> ⚠ 부기: <code>ἐφοβοῦντο</code>(3IMI-P)는 16:8에만 있는 형태가 아니다 — 마스터 실측으로 <strong>9:32·10:32·11:18·11:32·16:8 다섯 자리</strong>이고, 10:32는 9:32와 완전 동형이다. 두려움은 이 책에서 마지막에만 오는 것이 아니라 <strong>되풀이된다.</strong></p>
+<p><strong>② 이미 손이나 눈을 잃은 사람.</strong><br />
+<em>이 말씀이 읽히는 자리에 나는 앉아 있다. 사람들은 「비유일 뿐」이라고 말하며 나를 안심시키려 한다. 그런데 본문은 내 상태를 부르는 낱말을 피하지 않았다 — 불구, 절뚝거림, 애꾸. 그 낱말들이 여기서 </em><em>형벌의 이름이 아니라 들어가는 자의 이름</em><em>으로 쓰인다. 내가 잃은 것이 내가 잃은 채로 적혀 있고, 그 채로 들어간다고 적혀 있다.</em><br />
+감정 전환: <strong>모욕당할 각오 → 이름이 지워지지 않았다는 확인.</strong></p>
+<blockquote>
+<p>[!insight] 본문은 남는 상태를 미화하지도, 그 상태를 자격 박탈로 쓰지도 않는다<br />
+세 형용사는 <strong>도착한 사람의 모습</strong>으로 적혀 있다. 들어가지 못한 사람의 모습이 아니다.</p>
+<p>[!question] 연결 질문<br />
+- 묻지 못한 말은 취소되는가, 아니면 그대로 남아 뒤에서 다시 발음되는가?<br />
+- 이 3연을 설교할 때 회중석의 ②번 자리를 우리는 몇 번이나 떠올렸는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 한 방 안의 두 마음에서 시작해, 차원적 사고가 <strong>축척을 바꾼다</strong>.</p>
+<h3>9. 차원적 사고 (Dimensional Thinking) — "골짜기 하나가 끝나지 않음의 이름이 되고, 관사 하나가 어긋남을 만든다"</h3>
+<p><strong>확대.</strong> <code>γέεννα</code>는 원래 <strong>지도 위의 한 골짜기 이름</strong>이다. 예루살렘 남쪽, 걸어서 갈 수 있는 거리. 그 지명이 이 담화에서 끝을 가리키는 이름으로 쓰이고, 48절이 그 장면의 소리를 <strong>현재형으로 고정한다</strong> — <code>τελευτᾷ</code>(죽지 않는다, 현재 능동) · <code>σβέννυται</code>(꺼지지 않는다, 현재 수동). 우리말 관형형 「죽지 않는 구더기」·「꺼지지 않는 불」이 지우는 것이 바로 이 현재형이다. 그리고 셋째 항에서 도착지의 이름이 <code>ζωήν</code>에서 <code>βασιλείαν τοῦ θεοῦ</code>로 바뀌는 순간, 축척이 <strong>한 사람의 몸에서 한 나라로</strong> 건너뛴다. ⚠ 9:35-37이 여기서 이어진다 — <code>τίς μείζων</code>(누가 더 큰가)으로 시작된 담화에서, 마지막에 커지는 것은 <strong>사람의 서열이 아니라 도착지의 이름</strong>이다.</p>
+<p><strong>축소.</strong> 어긋남의 최소 단위는 낱말도 아니다. 47절의 <code>δύο</code>에 관사가 <strong>없다</strong>는 것, 계사가 <code>καλόν σέ ἐστιν</code>으로 한 칸 뒤집혔다는 것 — 눈으로 읽으면 지나가고 소리 내어 읽으면 걸리는 크기다.</p>
+<p><strong>핵심 전복</strong>: 3연은 <strong>점점 세지는 것이 아니라 점점 이름이 커진다.</strong> ⚠ 잃는 것들(손·발·눈) 사이에 무게 서열을 <strong>본문이 매기지 않는다</strong> — 매겨지는 것은 얻는 쪽의 이름뿐이다. 그리고 48절의 후렴이 그 셋째 항에만 걸려 끝나지 않음을 현재형으로 붙든다. <em>(⛔ 이 마지막 관찰은 </em><em>SBLGNT를 읽을 때만</em><em> 성립한다 — 한정 ①.)</em></p>
+<blockquote>
+<p>[!insight] 축척을 바꾸자 어긋남의 방향이 보인다<br />
+어긋남은 흩어져 있지 않다. <strong>잃는 쪽은 그대로 두고 얻는 쪽의 이름만 커진다.</strong></p>
+<p>[!question] 연결 질문<br />
+- 지명 하나가 종말의 이름이 되는 과정을 본문이 설명하지 않을 때, 해석자는 어디서 멈춰야 하는가?<br />
+- 관사 하나의 유무를 근거로 삼는 읽기는 어디까지 견딜 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 확대와 축소로 드러난 이 구조를 모형 만들기가 <strong>당장 써 볼 도구</strong>로 바꾼다.</p>
+<h3>10. 모형 만들기 (Modeling) — 「반복 점검표: 세 번 말한 것이 세 번 같은가」</h3>
+<p>반복이 형식인 모든 문서(설교 개요·규정·약정서·회의록·전례문·안내문)에 그대로 돌린다.</p>
+<table>
+<thead>
+<tr>
+<th>칸</th>
+<th>물음</th>
+<th>기입</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 고정항</td>
+<td>모든 항에 그대로 있는 낱말·구조는 무엇인가</td>
+<td></td>
+</tr>
+<tr>
+<td>② 변이항</td>
+<td>항마다 달라지는 것을 <strong>빠짐없이</strong> 적었는가 (어순·관사·태까지)</td>
+<td></td>
+</tr>
+<tr>
+<td>③ 집중점</td>
+<td>변이가 몇 번째 항에 몰려 있는가</td>
+<td></td>
+</tr>
+<tr>
+<td>④ 손실 검사</td>
+<td>변이를 모두 고정항으로 고치면 <strong>무엇이 사라지는가</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>⑤ 처분</td>
+<td>정리할 것인가, <strong>열어 둘 것인가</strong> — 열어 둔다면 그 이유를 한 줄로</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>사용 규칙</strong>: ④를 적기 전에 ⑤를 결정하지 않는다. 대개 우리는 사라질 것을 확인하기 전에 이미 정리하기로 마음먹는다.</p>
+<p><strong>이 모형이 예측하는 것</strong>: 변이가 <strong>마지막 항에 몰린 문서는 마지막 항이 결론</strong>이다. 막 9:47이 그렇고, 세 호 중 셋째 호에만 단서가 붙은 조문이 그렇다.<br />
+<strong>이 모형이 설명하지 못하는 것</strong>: <strong>변이의 원인.</strong> 의도인지 전승인지 옮겨 적는 과정의 잔여인지를 이 표는 구분하지 못한다. 본문도 구분해 주지 않는다(한정 ④).</p>
+<blockquote>
+<p>[!insight] 정리하고 싶은 충동이 ④를 건너뛴다<br />
+손실 검사 한 칸이 빠지면 편집은 언제나 「매끄럽게 하기」로 끝난다.</p>
+<p>[!question] 연결 질문<br />
+- 내 설교 개요에서 세 대지의 변이항을 적어 본 적이 있는가?<br />
+- 열어 두기로 한 항목을 회중에게 <strong>열어 둔 채로</strong> 전할 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 점검표의 ④칸(무엇이 사라지는가)을 놀이가 <strong>실제로 해 본다</strong>.</p>
+<h3>11. 놀이 (Playing) — "3연을 세 번 뜯어보기"</h3>
+<p><strong>게임 ① 어긋남을 모두 펴 보기.</strong> 43·45·47을 완전히 같은 문장으로 고쳐 본다 — 명령 동사를 <code>ἀπόκοψον</code>으로 통일하고, 둘째 항을 모두 <code>βληθῆναι</code>로, 도착지를 모두 <code>ζωήν</code>으로. 그러자 47절의 「하나님의 나라」가 사라지고, 48절의 <code>ὅπου</code> 관계절은 <strong>걸릴 곳을 잃는다.</strong> 고르게 만드는 순간 후렴이 공중에 뜬다.</p>
+<p><strong>게임 ② 순서 뒤집기.</strong> 눈 → 발 → 손 순으로 읽는다. 도착지의 이름이 큰 데서 작은 데로 내려앉고, 「꺼지지 않는 불」이 맨 뒤에 놓여 무게중심이 <strong>도착지에서 불로</strong> 옮겨간다. 같은 세 문장인데 다른 설교가 된다.</p>
+<p><strong>게임 ③ 판본으로 놀기.</strong> 9:44·9:46을 도로 넣고 읽어 본다. 후렴이 <strong>세 항 모두에</strong> 붙으면서 3연이 갑자기 고르게 보인다. 어긋남이 사라지는 것이 아니라 <strong>덜 들린다</strong> — 태의 갈림도, 도착지의 갈림도 그대로 남아 있는데 귀가 후렴을 따라가느라 그것을 지나친다.</p>
+<blockquote>
+<p>[!insight] 예상치 못한 발견 — 어긋남을 지우는 가장 효과적인 방법은 낱말을 고치는 것이 아니라 후렴을 더하는 것이었다<br />
+그리고 게임 ③은 순수한 상상이 아니다. <strong>본문 전승 안에 실제로 그 형태가 있다.</strong> ⛔ 다만 추가의 <strong>동기</strong>는 확인 불가이며, 이 노트는 사본 전승의 의도를 추정하지 않는다(한정 ①).</p>
+<p>[!question] 연결 질문<br />
+- 내가 「더 분명하게」 만들려고 더한 문장이 지운 것은 무엇인가?<br />
+- 순서를 바꾸면 달라지는 설교는 원래 순서에서 무엇을 근거로 삼고 있었는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 놀이에서 드러난 「고르게 하면 잃는 것」을 변형이 <strong>다른 형식</strong>으로 옮겨 적는다.</p>
+<h3>12. 변형 (Transforming) — 「세 번 말씀하시되 세 번을 같게 하지 않으셨다」 (설교 제목 + 3대지)</h3>
+<p><strong>제목</strong>: 세 번 말씀하시되 세 번을 같게 하지 않으셨다 (막 9:43-48)</p>
+<ul>
+<li><strong>대지 1 — 손: 제 발로 걸어가는 길이 있다.</strong> 첫 항만 둘째 동사가 <code>ἀπελθεῖν</code>(떠나감, 능동)이고, 첫 항에만 「꺼지지 않는 불」이 동격으로 붙는다. 끌려가는 것만 있는 것이 아니다.</li>
+<li><strong>대지 2 — 발: 던져지는 일이 있다.</strong> 둘째·셋째 항은 <code>βληθῆναι</code>(수동)이다. 본문은 이 두 방향을 <strong>한 원리로 정리하지 않고</strong> 나란히 둔다. 우리도 정리하지 않는다.</li>
+<li><strong>대지 3 — 눈: 거기서 도착지의 이름이 바뀐다.</strong> 동사가 <code>ἔκβαλε</code>로 바뀌고, 「생명」이 「하나님의 나라」가 되며, 후렴이 거기에만 걸린다. 잃는 것의 목록은 커지지 않는데 <strong>얻는 것의 이름만 커진다.</strong></li>
+<li><strong>맺음</strong> — 담화는 정리로 닫히지 않는다. 단수 명령(<code>ἀπόκοψον</code>·<code>ἔκβαλε</code>)으로 시작한 문단이 <strong>복수 명령</strong>으로 끝난다(9:50 <code>ἔχετε</code>·<code>εἰρηνεύετε</code>). 혼자 끊고, 함께 화평한다.</li>
+</ul>
+<p><strong>한 줄 잠언</strong>: <strong>되풀이는 외우게 하고, 어긋남은 멈추게 한다.</strong></p>
+<blockquote>
+<p>[!insight] 형식을 바꾸자 살아남은 것은 「셋이 다르다」가 아니라 「셋째에서 이름이 바뀐다」였다<br />
+설교 개요로 옮기니 대지 1·2는 대조로 묶이고 <strong>대지 3만 방향이 다르다.</strong> 변환에서 살아남은 것이 진짜 핵심이다.</p>
+<p>[!question] 연결 질문<br />
+- 3대지 설교에서 셋째 대지를 앞의 둘과 같은 꼴로 다듬는 습관은 무엇을 지우는가?<br />
+- 「정리하지 않고 닫는 설교」를 회중이 견딜 수 있게 하려면 무엇이 필요한가?</p>
+</blockquote>
+<p><strong>다리</strong>: 열두 단계가 각각 붙든 낱말과 몸과 형식을 통합이 하나로 모은다.</p>
+<h3>13. 통합 (Synthesizing) — "정리되지 않은 채로 닫힌다"</h3>
+<p>관찰은 작게 시작했다 — <code>σκανδαλίζω</code> 넷 중 하나가 3연 밖으로 튀고, 남은 셋도 여섯 자리에서 어긋난다. 형상화는 그것을 <strong>박자가 어긋나는 낭독</strong>으로 세웠고, 추상화는 「어긋난 반복」 한 낱말만 남겼다. 패턴 인식이 음악·법령·기억술에서 같은 장치를 찾았고, 그 안에 같은 담화의 9:35-37 — 크기의 물음에 답이 <strong>둘로</strong> 주어진 자리 — 이 들어왔다. 패턴 형성이 고정항·변이항·집중점 세 칸을 만들자 어긋남이 무작위가 아니라 <strong>셋째 항에 몰려 있다</strong>는 사실이 드러났다.</p>
+<p>그다음이 이 노트의 전환점이다. 몸으로 생각하기가 손을 눈두덩에서 멈추게 했을 때, 셋째 항의 동사 교체(<code>ἀπόκοψον</code> → <code>ἔκβαλε</code>)가 <strong>몸의 사실과 맞는다</strong>는 것이 확인됐다. 어긋남은 흐트러짐이 아니었다. 감정이입은 묻지 못한 입과 이미 잃은 몸을 한 방에 앉혔고, 차원적 사고는 축척을 바꿔 <strong>잃는 쪽은 그대로인데 얻는 쪽의 이름만 커진다</strong>는 방향을 보여 주었다. 모형과 놀이가 그 방향을 시험했다 — 고르게 만들면 48절의 후렴이 걸릴 데를 잃는다. 그리고 게임 ③에서 본문 전승 자체가 <strong>후렴을 더해 어긋남을 덜 들리게 하는 길</strong>을 이미 가지고 있었다는 것이 드러났다.</p>
+<p><strong>최종 테제</strong>: <strong>막 9:43-47은 「같은 말씀 세 번」이 아니라 「세 번 말하면서 한 번도 같지 않은 말씀」이고, 그 어긋남은 흩어져 있지 않고 셋째 항에 몰려 거기서 도착지의 이름을 바꾼다. 그리고 9:49-50은 그 3연을 정리해 주지 않은 채 부엌의 낱말로 담화를 닫는다.</strong> 정리되지 않음이 결함이 아니라 이 단락이 우리에게 건네진 형태다.</p>
+<p><strong>가장 생산적이었던 도구</strong>: <strong>11단계 놀이</strong>다. 게임 ③이 아니었다면 이 노트는 「어긋남이 있다」에서 멈췄을 것이다. 판본을 바꿔 읽어 보는 장난이 두 가지를 동시에 드러냈다 — 어긋남을 지우는 가장 값싼 방법이 <strong>후렴 추가</strong>라는 것, 그리고 이 노트의 축이 <strong>어느 본문을 읽는가에 걸려 있다</strong>는 것(한정 ①). 놀이가 자기 노트의 취약점을 찾아 준 셈이다.</p>
+<p><strong>처음 관찰과 달라진 이해</strong>: 1단계에서 나는 「셋이 서로 어긋난다」고 적었다. 그것은 부정확했다. 셋은 <strong>서로</strong> 어긋나는 것이 아니라, 앞의 둘이 가락을 만들고 <strong>셋째가 그 가락을 튼다.</strong> 어긋남에는 방향이 있다.</p>
+<blockquote>
+<p><strong>"세 번 말씀하셨으나 세 번이 같지 않았고, 그 다름이 마지막에 몰려 도착지의 이름을 바꾸었다. 본문은 그것을 정리해 주지 않았고, 정리하지 않은 채로 우리에게 왔다."</strong></p>
+</blockquote>
+<hr />
+<h2>개혁신학적 조명</h2>
+<p><strong>이사야 66:24 — 어구는 겹치는데 표지가 없다.</strong> 9:48의 <code>ὁ σκώληξ αὐτῶν οὐ τελευτᾷ καὶ τὸ πῦρ οὐ σβέννυται</code>는 사 66:24 LXX와 낱말이 겹치지만, <strong>이 단위 전체에 <code>γέγραπται</code>가 0회이고 어떤 인용 도입구도 없다.</strong> 겹치는 어구에서 두 동사가 미래형에서 현재형으로 바뀌었고, <code>τὸ πῦρ</code>의 <code>αὐτῶν</code>이 빠졌으며, LXX 후반절은 오지 않는다. <em>한정</em>: 그러므로 <strong>「마가가 인용했다」고 쓰지 않는다.</strong> 구문묵상노트가 세운 최대치는 <strong>표지 없는 개작 암시</strong>이고, 부재 논증의 유보 셋(확인 범위 미조사·기저율 미확인·무표성 가능)이 그대로 붙어 있다.</p>
+<p><strong>골로새서 3:5 — 「지체」가 목록으로 바뀐다.</strong> 「그러므로 땅에 있는 지체를 죽이라」에서 명령의 목적어는 손·발·눈이 아니라 죄명의 목록이다. 막 9:43-47은 <strong>신체 부위의 이름을 그대로 두고</strong> 명령하는데, 골로새서는 같은 낱말(지체)을 쓰면서 목적어를 옮긴다. <em>한정</em>: 이 대조는 개역개정 수준이며 어구 대조로 검증한 것이 아니다 — <strong>명령의 목적어가 자기 안에 있다는 방향까지만</strong> 남긴다.</p>
+<p><strong>로마서 6:13 — 지체를 내주는가 드리는가.</strong> 「너희 지체를 불의의 무기로 죄에게 내주지 말고 오직… 의의 무기로 하나님께 드리라」. 막 9:43-47에서 지체는 <strong>주어</strong>다(넘어지게 하는 것이 내 손이다). 로마서에서 지체는 <strong>목적어</strong>다(내가 내주거나 드린다). 같은 몸이 한쪽에서는 나를 걸고 다른 쪽에서는 내게 맡겨진다. 이 둘을 한 원리로 합치지 않는다.</p>
+<p><strong>신학자</strong>: <strong>장 칼뱅, 『기독교 강요』 제3권 3장 「회개」.</strong> 칼뱅은 회개를 <strong>죽임(mortificatio)과 살림(vivificatio)의 두 국면</strong>으로 다루며, 죽임을 자기 파괴가 아니라 옛 사람의 처분으로, 살림을 그리스도 안의 생명으로 규정한다(3.3.8-9). 절단 명령을 <strong>자해의 지침</strong>이 아니라 <strong>회개의 극단 어법</strong>으로 읽어 온 개혁파의 자리가 여기이고, 그 읽기의 근거는 은유로의 도피가 아니라 <strong>명령이 도달하는 목적지가 「들어감」이라는 본문의 사실</strong>이다. ⚠ <em>한정</em>: 칼뱅은 『공관복음 주해(Harmony of the Evangelists)』에서 이 단락을 「마 18:6-10; 막 9:42-48; 눅 17:1-2」 <strong>한 항목으로 묶어</strong> 다루지만, 구문묵상노트는 그 본문 대목의 축자/요지 구분을 <strong>확인 실패</strong>로 적었다. 따라서 이 노트는 <strong>항목 배정이라는 사실까지만 적고 칼뱅을 축자 인용하지 않는다.</strong></p>
+<p><strong>설교 적용점</strong>: 10단계 점검표의 ④칸을 회중에게 그대로 묻는다 — <strong>「당신이 세 번 반복해 말하는 것에서, 세 번째만 달라지는 대목은 무엇입니까.」</strong> 그리고 본문을 다룰 때 3연을 하나로 요약하지 않는다. 셋을 <strong>셋으로</strong> 읽고, 셋째에서 이름이 바뀌는 자리에서 한 번 멈춘다.</p>
+<p><strong>복음 중심성 점검</strong>: 두 방향으로 미끄러진다. ① <strong>도덕주의</strong> — 「끊어라」가 자력 성화 프로그램이 되면 <code>κυλλόν</code>·<code>χωλόν</code>·<code>μονόφθαλμον</code>이 훈장이 되고 명령의 주어가 나로 바뀐다. 그러나 3연의 <code>καλόν … ἢ</code>는 <strong>두 도착지 사이의 비교</strong>이지 내 결단의 효력에 대한 진술이 아니다. 무엇보다 이 문단은 단수 명령으로 시작해 <strong>복수 명령으로 닫힌다</strong>(9:50 <code>ἔχετε</code>·<code>εἰρηνεύετε</code>) — 절단이 목적지가 아니라 <strong>함께 있는 자리</strong>가 목적지다. ② <strong>공포주의</strong> — <code>γέεννα</code>를 후대의 지옥 그림으로 채워 두려움으로 순종을 끌어내는 길. 낱말은 골짜기 이름에서 오고 이 노트의 판정 범위는 거기까지다(한정 ③). 그리고 42절의 무게는 형벌 묘사가 아니라 <strong>「나를 믿는 이 작은 자들 중 하나」</strong>에 걸려 있다 — 방금 「누가 더 크냐」를 다투던 방에서, 서열의 아래쪽에 놓인 그 한 사람이다.</p>
+<hr />
+<h2>실무 적용</h2>
+<p><strong>① 고객 상담 — 세 항으로 나열된 조문에서 변이항 먼저 찾기</strong><br />
+<em>상황</em>: 요건이 세 호로 나열된 조항을 「요컨대 이런 경우입니다」로 한 문장 요약해 안내하고, 나중에 셋째 호의 단서에서 사고가 나는 상태.<br />
+<em>적용</em>: 안내 전에 10단계 점검표 ①②③을 돌린다. 고정항과 변이항을 분리해 적고, 변이가 몇 번째 호에 몰렸는지를 표시한다. 요약본에는 <strong>변이항을 반드시 남긴다</strong>.<br />
+<em>기대 효과</em>: 「쉬운 설명」이 「단서 탈락」과 같은 말이 되는 일을 막고, 분쟁 시 설명 책임의 기록이 남는다.</p>
+<p><strong>② 조직·교회 행정 — 규정 정비에서 「매끄럽게 하기」를 멈추는 칸</strong><br />
+<em>상황</em>: 회칙·내규 개정에서 항마다 다른 문언을 통일하는 작업이 「정비」라는 이름으로 진행되고, 그 과정에서 예외 조항이 조용히 사라지는 상태.<br />
+<em>적용</em>: 문언 통일 제안마다 ④칸(<strong>이 변이를 없애면 무엇이 사라지는가</strong>)을 필수 기입으로 만든다. 게임 ③의 교훈을 규칙으로 쓴다 — <strong>어긋남을 지우는 가장 쉬운 방법은 문구 수정이 아니라 공통 문구의 추가</strong>이므로, 「모든 항에 같은 단서를 붙이자」는 제안을 특히 검사한다.<br />
+<em>기대 효과</em>: 정비가 정보 삭제로 귀결되지 않고, 각 항의 존재 이유가 문서에 남는다.</p>
+<p><strong>③ 개인 의사결정 — 끊기 전에 「남는 상태」를 먼저 적기</strong><br />
+<em>상황</em>: 무엇을 끊겠다는 결심은 하는데 끊은 뒤의 불편을 계산하지 않아 사흘 만에 되돌아가는 반복.<br />
+<em>적용</em>: 본문이 <code>κυλλόν</code>·<code>χωλόν</code>·<code>μονόφθαλμον</code>을 그대로 적은 방식을 그대로 따른다. 끊을 것 하나를 정하고, <strong>끊은 뒤 실제로 불편해질 목록을 먼저 세 줄 적는다.</strong> 미화하지 않는다. 그리고 9:50의 복수 명령을 따라 <strong>그 목록을 한 사람에게 말한다.</strong><br />
+<em>기대 효과</em>: 결심이 의지의 문제에서 예산의 문제로 바뀌고, 혼자 하는 절단이 함께 있는 자리로 이어진다.</p>
+<hr />
+<h2>[최종 연구 노트 승격 후보]</h2>
+<h3>🥇 반복의 어긋남은 흩어져 있지 않고 마지막 항에 몰려, 거기서 도착지의 이름을 바꾼다</h3>
+<ul>
+<li><strong>핵심</strong>: 막 9:43·45·47은 여섯 자리에서 어긋나는데 그중 넷이 셋째 항(9:47)에 있다 — 명령 동사(<code>ἔκβαλε</code>), 도착지(<code>τὴν βασιλείαν τοῦ θεοῦ</code>), 계사 어순 역전(<code>καλόν σέ ἐστιν</code>), <code>δύο</code> 무관사. 그리고 48절의 <code>ὅπου</code> 관계절이 셋째 항의 <code>γέεννα</code>에만 걸린다. 잃는 쪽(손·발·눈) 사이에는 본문이 무게 서열을 매기지 않고, 이름이 커지는 것은 <strong>얻는 쪽뿐</strong>이다.</li>
+<li><strong>날카로움</strong>: 통상의 읽기는 이 3연을 「점층적 강조」로 처리하지만, 점층이라면 <strong>잃는 쪽</strong>의 낱말이 세져야 한다. 실제로 변한 것은 도착지의 이름이므로, 이 단락의 방향은 <strong>경고의 강화가 아니라 목적지의 명명</strong>이다.</li>
+<li><strong>연결 고리</strong>: 막 9:35(<code>τίς μείζων</code> — 크기의 물음이 제기된 자리) · 막 9:50(단수 명령 → 복수 명령) / <a href="§3.5 5열 대조표 · §5.6">[18_구문묵상_마가복음_9_30-50]</a> / [[20_구문묵상_마가복음_10_32-52]] — 크기와 섬김의 축은 그쪽 소관 / [[어긋난_반복_읽기]]</li>
+</ul>
+<h3>🥈 이 3연의 「모양」은 판본 선택 위에 서 있고, 후렴 두 줄이 그 모양을 바꾼다</h3>
+<ul>
+<li><strong>핵심</strong>: 9:44·9:46은 SBLGNT와 NA28에 <strong>행 자체가 없고</strong>(따라서 비평본 사이의 갈림이 아니다), 개역개정이 따르는 계열은 두 절을 본문에 둔다. 두 절이 들어오면 48절의 후렴이 세 항 모두에 붙어 3연이 고르게 보이고, 「후렴이 셋째 항에만 걸린다」는 관찰이 성립하지 않는다.</li>
+<li><strong>날카로움</strong>: 어긋남을 없애는 가장 값싼 방법이 <strong>낱말 수정이 아니라 공통 후렴의 추가</strong>이며, 그 방법이 <strong>본문 전승 안에 실물로 존재한다</strong>. 해석자가 자기 논지의 근거를 어느 본문에서 가져오는지를 먼저 밝혀야 한다는 요구가, 여기서 추상적 원칙이 아니라 <strong>구체적 손실 목록</strong>으로 나타난다. ⛔ 다만 추가의 동기는 확인 불가이며 사본 전승의 의도를 추정하지 않는다.</li>
+<li><strong>연결 고리</strong>: <a href="§2 본문 각주 · §3.6 · 「봉합하지 않는 것」 표">[18_구문묵상_마가복음_9_30-50]</a> / 막 9:49의 <code>πυρὶ</code> ↔ RP <code>ἁλὶ</code> 갈림 / [[판본선택위에선논지]]</li>
+</ul>
+<h3>🥉 명령은 단수로 시작해 복수로 닫힌다 — 절단은 혼자 하고, 목적지는 함께다</h3>
+<ul>
+<li><strong>핵심</strong>: 9:43-47의 명령은 전부 아오리스트 능동 2인칭 <strong>단수</strong>이고 목적어는 자기 지체다. 그런데 같은 문단이 9:50에서 <strong>현재 능동 2인칭 복수</strong> 명령 둘(<code>ἔχετε ἐν ἑαυτοῖς ἅλα</code> · <code>εἰρηνεύετε ἐν ἀλλήλοις</code>)로 닫힌다. 그리고 이 단위는 34절의 「서로를 향해」 다툼에서 열려 50절의 「서로 안에서」 화평으로 닫힌다.</li>
+<li><strong>날카로움</strong>: 절단 명령을 개인 경건의 정점으로 읽는 관행이 <strong>문단의 마지막 인칭 변화</strong>를 지운다. 본문이 배치한 순서는 「혼자 끊어서 혼자 남는다」가 아니라 「혼자 끊고 함께 화평한다」이며, 이것은 적용의 교훈이 아니라 <strong>동사 인칭의 사실</strong>이다.</li>
+<li><strong>연결 고리</strong>: <a href="§6.4">[18_구문묵상_마가복음_9_30-50]</a> / 막 9:34↔9:50(같은 대명사가 전치사만 바꾼다 — ⚠ 복음서 전체 용례 계수는 미실시) / [[18_일상의깊은사고_마가복음_9_30-50]]</li>
+</ul>
+<hr />
+<h2>위키 연결망</h2>
+<blockquote>
+<p>[!todo] 연결 확인 — 아래 링크는 제안입니다. vault의 실제 노트와 대조하세요.</p>
+</blockquote>
+<ul>
+<li>[[18_구문묵상_마가복음_9_30-50]] — 모든 원어 근거의 출처(§2 본문·§3.5 5열 대조표와 <code>σκανδαλίζω</code> 표·§3.6 9:49 이문·§4.6-4.7 계수·§5.6-5.7·§6.4·「봉합하지 않는 것」)</li>
+<li>[[18_일상의깊은사고_마가복음_9_30-50]] — 이 씨앗(통찰 3️⃣)의 출처. 씨앗 선정 표의 번호도 이 노트 기준</li>
+<li>[[17_구문묵상_마가복음_9_2-29]] — 직전 단위. 구별선은 <strong>하늘이 낸 명령 하나(압축) ↔ 예수께서 내신 3연(반복과 어긋남)</strong></li>
+<li>[[19_구문묵상_마가복음_10_1-31]] — 직후 단위. <code>εἰσέρχομαι</code>가 닿지만 그쪽 축은 <strong>서술자가 기입한 감정</strong>(10:21)이다</li>
+<li>[[20_구문묵상_마가복음_10_32-52]] — 9:35 <code>διάκονος</code>와 10:45 <code>διακονῆσαι</code>가 같은 어근. <strong>섬김 축의 보유 단위는 그쪽</strong>이다</li>
+<li>[[00_마가복음_묵상단위_마스터]] — 축 중복 방지 대장(#18) 및 전담 배정(<code>παραδίδωμι</code> → #26·#28)</li>
+<li>[[00_생각의탄생_씨앗선정표_마가복음]] — 씨앗 판정과 비채택 사유의 근거</li>
+<li>신규 생성 추천: [[어긋난_반복_읽기]] / [[게엔나_낱말의_출신]] / [[판본선택위에선논지]]</li>
+</ul>
+<h3>이 씨앗의 T13 노트 인덱스</h3>
+<pre><code class="language-dataview">LIST FROM #t13 AND [[]]
+SORT file.name ASC
+</code></pre>
+<h3>최근 13단계 확장 노트</h3>
+<pre><code class="language-dataview">TABLE seed_source, lens, created FROM #t13/허브
+SORT created DESC
+LIMIT 10
+</code></pre>
+<h2>다음 질문 5</h2>
+<ol>
+<li><strong>(1 관찰)</strong> 마가복음 안에서 <strong>세 번 되풀이되는 어구</strong>를 전수로 모아 고정항·변이항을 적으면, 변이가 마지막 항에 몰리는 경우가 이 단락 말고 또 있는가? (세 수난 예고가 첫 후보다 — 8:31·9:31·10:33의 어휘가 이미 같지 않다.)</li>
+<li><strong>(4 패턴 인식)</strong> 「답이 둘로 주어진다」(9:35의 직무 / 9:36-37의 한 아이)와 「반복이 어긋난다」(9:43-47)는 같은 담화 안의 같은 장치인가, 다른 장치인가? ⚠ 섬김 축 자체는 #20 소관이므로 <strong>형식의 문제로만</strong> 물을 것.</li>
+<li><strong>(6 유추)</strong> 세무 실무의 「요약본에서 단서가 가장 먼저 탈락한다」는 관찰을 표본으로 실측할 수 있는가 — 내가 작성한 안내문 열 건에서 원 조문의 변이항이 몇 개나 살아남았는가?</li>
+<li><strong>(11 놀이)</strong> 게임 ③(후렴을 더해 어긋남을 덜 들리게 하기)을 다른 본문의 이문 지점에 적용하면, 사본 전승이 <strong>무엇을 고르게 만들려 했는지</strong>의 패턴이 보이는가? ⛔ 동기 추정이 아니라 <strong>결과의 목록</strong>으로만.</li>
+<li><strong>(13 통합)</strong> 9:49-50이 3연을 정리하지 않고 닫는다면, 마가복음의 다른 담화들도 <strong>정리 없이 닫는 습관</strong>을 가지고 있는가? (⚠ 결말 문제는 별도 단위의 소관이므로, 담화 단위의 종결 형태만 볼 것.)</li>
+</ol>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 18 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

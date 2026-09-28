@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>🌱→🔥 13단계 사고 확장 노트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 9 편</span>
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>🌱→🔥 13단계 사고 확장 노트</h1>
+<h2>씨앗: 마가복음 5:19 「휘파게 … 아팡게일론 — 여덟 자리가 금지인데 여기 하나만 알리라다」</h2>
+<hr />
+<h2>[원문] — 씨앗 아이디어</h2>
+<blockquote>
+<p><strong>"예수께서 배에 오르실 때에 귀신 들렸던 사람이 함께 있기를 간구하였으나 / 허락하지 아니하시고 이르시되 집으로 돌아가 주께서 네게 어떻게 큰 일을 행하사 너를 불쌍히 여기신 것을 네 가족에게 알리라 하시니 / 그가 가서 예수께서 자기에게 어떻게 큰 일 행하셨는지를 데가볼리에서 전파하니 모든 사람이 놀랍게 여기더라"</strong></p>
+<p><code>καὶ ἐμβαίνοντος αὐτοῦ εἰς τὸ πλοῖον παρεκάλει αὐτὸν ὁ δαιμονισθεὶς ἵνα μετ' αὐτοῦ ᾖ.</code><br />
+<code>καὶ οὐκ ἀφῆκεν αὐτόν, ἀλλὰ λέγει αὐτῷ· Ὕπαγε εἰς τὸν οἶκόν σου πρὸς τοὺς σούς, καὶ ἀπάγγειλον αὐτοῖς ὅσα ὁ κύριός σοι πεποίηκεν καὶ ἠλέησέν σε.</code><br />
+<code>καὶ ἀπῆλθεν καὶ ἤρξατο κηρύσσειν ἐν τῇ Δεκαπόλει ὅσα ἐποίησεν αὐτῷ ὁ Ἰησοῦς, καὶ πάντες ἐθαύμαζον.</code></p>
+<p>(막 5:18-20 / 단위 09 = 5:1-20 · 원어 근거는 [[09_구문묵상_마가복음_5_1-20]])</p>
+</blockquote>
+<p>이 단락은 <strong>배에서 내려 배에 오르기까지의 한 장면</strong>이고, 그 경계를 독립속격 둘이 여닫는다(5:2 <code>ἐξελθόντος αὐτοῦ</code> · 5:18 <code>ἐμβαίνοντος αὐτοῦ</code>). 5:1부터 5:18까지 모든 운동은 예수를 향해 <strong>안으로</strong> 모인다 — 달려옴(5:6), 부르짖음(5:7), 간구 넷(5:10·5:12·5:17·5:18). 씨앗은 그 운동이 처음으로 <strong>밖을 향해 꺾이는 자리</strong>, 곧 문 닫히는 소리와 문 열리는 소리가 한 문장에 들어 있는 5:19에 놓여 있다.</p>
+<hr />
+<h2>[씨앗 선정] — 세 통찰 중 왜 이것인가</h2>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>통찰</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td><code>Ὕπαγε … ἀπάγγειλον</code>(5:19) — 여덟 자리가 전부 금지인데 여기 하나만 「알리라」다</td>
+<td><strong>채택</strong> — 셋 중 <strong>유일하게 단락의 주동사 자리에 서 있다.</strong> 구문묵상노트가 주동사를 5:19 <code>λέγει</code> + <code>ἀπάγγειλον</code>으로 확정했고, 5:20의 정동사 셋이 전부 이 명령에 걸려 있다</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td><code>ὁρκίζω</code>(5:7) — 정확한 호칭과 통제의 요구가 한 문장에 있다</td>
+<td><strong>보류</strong> — 통찰 자체는 귀하나 <strong>정체 고백의 술어 문제</strong>에 얽혀 있다. 1:24 <code>ὁ ἅγιος τοῦ θεοῦ</code> · 8:29 <code>ὁ χριστός</code> · 15:39 <code>υἱὸς θεοῦ</code>는 <strong>같은 고백이 아니며</strong>, 씨앗으로 세우면 셋을 묶는 쪽으로 미끄러진다. 아래 13단계에서 <strong>관찰로만</strong> 다루고 셋을 묶지 않는다</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td><code>πεποίηκεν</code>(5:19-20) — 명령은 「주께서」였고 보고는 「예수께서」가 되었다</td>
+<td><strong>보류하되 이월</strong> — 씨앗 1️⃣과 <strong>같은 두 절 안에</strong> 있고, 씨앗이 연 입에서 나온 첫 소리다. 별도 축으로 세우면 씨앗을 둘로 쪼개므로 <strong>13단계 13(통합)에서 이어받는다</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>선택 이유</strong>: 세 통찰 중 이 씨앗만이 <strong>본문이 스스로 꺾이는 지점</strong>을 붙든다. 2️⃣와 3️⃣이 각각 5:7과 5:19-20의 <strong>낱말 대조</strong>인 데 비해, 1️⃣은 단락 전체의 운동 방향이 역전되는 자리 자체를 묻는다. 저자의 편집 결정과 맞물리는 방식도 다르다 — 마가는 이 사람의 청을 거절한 문장과 보내는 문장을 <code>ἀλλά</code> 하나로 맞세워 놓았고, 그 보냄의 첫 낱말을 하필 1:44와 똑같은 <code>Ὕπαγε</code>로 적었다. 같은 걸음으로 보내면서 한 번은 입을 닫게 하고 한 번은 입을 열게 한 것이다. 확장 잠재력도 여기가 가장 멀리 간다 — 금지의 목적어(<strong>그가 누구인가</strong>)와 허용의 목적어(<strong>그가 무엇을 하셨는가</strong>)를 포개는 순간, 이 예외는 규칙을 깬 자리가 아니라 <strong>규칙이 어디에 그어졌는지 보여 주는 자리</strong>가 된다. 2️⃣의 통찰은 그 구별의 예시로 흡수되고, 3️⃣은 열린 입에서 나온 첫 결과이므로 13단계의 도착지가 된다. (번호는 [[09_일상의깊은사고_마가복음_5_1-20]] 기준.)</p>
+<blockquote>
+<p>[!warning] 씨앗에 붙어 다니는 한정 — 13단계 전부에 따라다닌다. 지우지 않는다<br />
+① <strong>5:19의 <code>ὁ κύριος</code>가 누구를 가리키는지 본문은 못박지 않는다.</strong> 구문묵상노트 §3③이 「본문은 두 이름의 관계를 명시하지 않는다」고 적고 <strong>지시 대상을 단정하지 않은 채</strong> 논의를 시작했다. 이 노트도 <strong>어느 단계에서도 그 지시 대상을 닫지 않는다.</strong> 하나님을 가리키는 것인지 예수 자신을 3인칭으로 말씀하신 것인지는 열린 채로 간다.<br />
+② <strong>「여덟 자리」라는 계수는 이 노트의 기둥이 아니다.</strong> 구문묵상노트가 R21 부재 논증 유보를 걸어 두었다 — 금지가 마가에서 <strong>기본값인지는 확인하지 않았고</strong>(기저율 미확인), 치유·축귀 직후의 함구령이 복음서 서사의 관례라면 금지 자체는 유표적이지 않다(무표성). 그러므로 유표적인 것은 <strong>횟수가 아니라 5:19가 그 관례와 정확히 반대 방향이라는 사실</strong>이다. 계수는 SBLGNT 기준이며 판본에 따라 갈릴 수 있다. 본문에서는 <strong>보조 관찰로 한 번만</strong> 쓴다.<br />
+③ <strong>판본이 갈리는 자리가 셋 있다.</strong> ⓐ 5:19 <code>ἀπάγγειλον</code> ] RP <code>ἀνάγγειλον</code> — 어근은 갈리나 <strong>양쪽 다 부정과거 능동 명령 2단</strong>이므로 이문이 시상을 바꾸지 않는다. ⓑ <strong>RP는 5:13·5:19에서 <code>ὁ Ἰησοῦς</code>를 주어로 명시</strong>하므로, 13(통합)이 이어받는 「주어 명사 교체」는 <strong>RP에서 다르게 배열된다.</strong> ⓒ 5:20의 장치 진입점은 불확실하므로 <strong>5:20에 관한 이문 주장은 하지 않는다.</strong><br />
+④ <strong>이 씨앗이 증명하지 못하는 것</strong>: 왜 함께 있는 것이 막혔는지 본문은 말하지 않는다. 칼뱅도 같은 자리에서 「확정할 수 없다」고 적었다(아래 신학 조명). 이 노트는 <strong>무엇이 열렸는가</strong>까지만 가고 <strong>왜 닫혔는가</strong>는 채우지 않는다.</p>
+</blockquote>
+<hr />
+<h2>[이 노트의 자리] — 인접 단위와 무엇이 다른가</h2>
+<table>
+<thead>
+<tr>
+<th>노트</th>
+<th>그 단위의 축</th>
+<th>구별선</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직전 · #08 · 4:26-41</strong> ([[08_구문묵상_마가복음_4_26-41]])</td>
+<td><code>ὑπακούει</code>(4:41, 단수) — <strong>복종이 인격에게 향한다</strong></td>
+<td><strong>맡은 것이 다르다.</strong> 4:41의 물음(이분이 누구신가)에 5:7의 귀신이 <strong>이름으로</strong> 답하지만, #08은 <strong>복종의 수신자</strong>를 묻고 #09는 <strong>말하기 금지의 예외</strong>를 묻는다. 5:9 <code>λεγιών</code>의 수 불일치는 #08의 단수 일치 축과 형식이 겹치므로 여기서는 <strong>한 문장 관찰까지만</strong> 쓴다</td>
+</tr>
+<tr>
+<td><strong>직후 · #10 · 5:21-43</strong> ([[10_구문묵상_마가복음_5_21-43]])</td>
+<td><code>θυγάτηρ</code>·<code>κοράσιον</code> — <strong>네 호칭이 화자에 따라 갈린다</strong></td>
+<td><strong>축을 빌리지 않는다.</strong> 5:43에 또 하나의 함구령이 있으나 <strong>그 축은 #09가 가져갔다.</strong> 아래 5단계 표가 5:43을 목록의 한 항으로 스치되, #10이 맡은 <strong>호칭의 분포</strong>는 건드리지 않는다</td>
+</tr>
+<tr>
+<td><strong>먼 단위 · #30 · 16:1-20</strong> ([[30_구문묵상_마가복음_16_1-20]])</td>
+<td><code>λέγω</code> 세 어형(1:44 <code>εἴπῃς</code> ↔ 16:7 <code>εἴπατε</code> ↔ 16:8 <code>εἶπαν</code>)이 책을 닫는다</td>
+<td>⚠ <strong>둘 다 「말하기 명령」을 다루므로 선을 명시한다. 동사가 다르다.</strong> #09는 <strong><code>ἀπαγγέλλω</code></strong>(5:19, 보고 동사)<strong>의 유일한 허용</strong>이고 #30은 <strong><code>λέγω</code>의 세 어형</strong>이다. #09는 <strong>예외</strong>를, #30은 <strong>명령과 보고의 어긋남</strong>을 맡는다. 이 노트는 16장의 결말 문제(2종·3갈래)에 들어가지 않는다</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>사고 지도</h2>
+<pre><code class="language-mermaid">mindmap
+  root((&quot;금지의 예외가 규칙을 드러낸다&quot;))
+    &quot;관찰·형상화&quot;
+      &quot;같은 걸음 반대 입&quot;
+      &quot;뱃전에서 떼어지는 손&quot;
+    추상화
+      &quot;예외&quot;
+    &quot;패턴·유추&quot;
+      &quot;면세 열거가 과세를 그린다&quot;
+      &quot;반투막과 임시표&quot;
+    &quot;체화·감정이입&quot;
+      &quot;몸을 180도 돌리는 자세&quot;
+      &quot;말해 버린 사람의 억울함&quot;
+    &quot;차원·모형&quot;
+      &quot;완료형이 가리키는 현재의 몸&quot;
+      &quot;목적어 네 칸 표&quot;
+    &quot;놀이·변형&quot;
+      &quot;두 명령을 맞바꾸기&quot;
+    통합
+      &quot;열린 입에서 두 이름이 겹쳤다&quot;
+</code></pre>
+<hr />
+<h2>[1~13단계 사고 과정 연대기]</h2>
+<blockquote>
+<p>각 단계는 앞 단계의 산물을 이어받아 유기적으로 변모한다.</p>
+</blockquote>
+<h3>1. 관찰 (Observing) — "같은 걸음인데 이어지는 명령만 반대다"</h3>
+<p>보이는 것만 적는다. 1:44와 5:19는 <strong>첫 낱말이 같다</strong> — <code>Ὕπαγε</code>(휘파게, 2PAD-S, 현재 명령). 그다음이 갈린다. 1:44는 <code>μηδενὶ μηδὲν εἴπῃς</code>(아무에게 아무것도 말하지 말라)이고, 5:19는 <code>ἀπάγγειλον αὐτοῖς</code>(아팡게일론, 2AAD-S, 부정과거 명령 — 그들에게 알리라)다. 둘째 관찰: 5:19는 <strong>명령으로 시작하지 않는다.</strong> 문장의 앞부분은 <code>καὶ οὐκ ἀφῆκεν αὐτόν</code>(허락하지 아니하시고)이고, <code>ἀλλά</code>가 거절과 명령을 맞세운다. 셋째 관찰: <code>ἀπαγγέλλω</code>가 이 단락에 <strong>두 번</strong> 나온다 — 5:14 <code>ἀπήγγειλαν</code>(도망한 돼지치기들이 읍내와 촌에)과 5:19 <code>ἀπάγγειλον</code>(보냄받은 사람이 제 집에). 같은 동사가 도망친 입과 보냄받은 입에 함께 쓰인다.</p>
+<blockquote>
+<p>[!insight] 열린 것은 문장 전체가 아니라 문장의 뒷부분이다<br />
+<code>ἀλλά</code> 앞에는 거절이 있고 뒤에는 명령이 있다. 이 자리는 <strong>금지가 풀린 자리가 아니라 거절 안에서 한 대목이 열린 자리</strong>다.</p>
+<p>[!question] 연결 질문<br />
+- 같은 첫 낱말에 반대 명령이 붙는다면, 갈리는 지점은 인물인가 동작인가 목적어인가?<br />
+- 거절을 먼저 적고 명령을 뒤에 붙이는 문장은 무엇을 보호하려는 문장인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 품사와 어형으로만 적힌 이 배열을 형상화가 물가의 한 장면으로 세운다.</p>
+<h3>2. 형상화 (Imaging) — "뱃전을 붙든 손가락이 하나씩 떼어진다"</h3>
+<p>거라사 지방의 물가, 늦은 오전. 비탈에는 조금 전까지 이천 마리가 있던 자리가 비어 있고, 사람들은 멀찍이 서서 다가오지 않는다. 젖은 뱃전 나무는 손바닥에 차갑고, 호수 물이 뱃바닥을 한 번씩 때린다. 방금 옷을 입은 남자가 배에 발을 걸치려 한다. 그의 손가락이 뱃전 테두리를 잡는다. 그런데 대답이 먼저 온 것은 거절이다. 그리고 같은 호흡에 「가라」가 온다 — 그가 온 방향, 곧 등 뒤 마을 쪽이다. 손가락이 하나씩 떨어진다. 배는 떠나고, 남자는 물을 등지고 서서 자기 발이 향할 곳을 본다. 그의 앞에 놓인 것은 <strong>바다가 아니라 집</strong>이다.</p>
+<blockquote>
+<p>[!insight] 밀어내는 손과 보내는 손이 같은 손이다<br />
+장면에서 일어난 일은 「함께 가지 못했다」가 아니라 <strong>「돌려세워졌다」</strong>였다. 배에서 떨어진 손은 빈손이 아니라 <strong>명령을 받은 손</strong>이다.</p>
+<p>[!question] 연결 질문<br />
+- 거절당한 자리와 파송받은 자리가 같은 자리인 경험을 나는 어떻게 기록하는가?<br />
+- 이 장면에서 소리로 남는 것은 물소리인가, <code>ἀλλά</code>인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 장면의 물·나무·거리를 벗기면 무엇이 남는지 추상화가 판정한다.</p>
+<h3>3. 추상화 (Abstracting) — "예외"</h3>
+<p><strong>남는 개념: 「예외」.</strong><br />
+<strong>한 문장 압축: 예외는 규칙을 부수지 않고, 규칙이 무엇을 겨누고 있었는지 가리킨다.</strong></p>
+<p>버린 것 셋을 명시한다. ① <strong>지명</strong> — 5:1 <code>Γερασηνῶν</code> ] RP <code>Γαδαρηνῶν</code>으로 갈리는 이 이문은 씨앗의 무게와 무관하므로 버린다. ② <strong>돼지 이천 마리</strong> — 장면의 충격은 크지만 5:13과 5:14 사이에 승인·비판·정당화 어구가 하나도 없고, 구문묵상노트가 그 침묵에서 의도를 읽지 말라는 유보를 걸었다. 버린다. ③ <strong>귀신의 수와 이름</strong> — <code>Λεγιὼν ὄνομά μοι, ὅτι πολλοί ἐσμεν</code>(5:9)에서 이름을 답하자마자 수가 무너지는 것은 실측되지만, 이 단수/복수 문제는 #08의 축과 형식이 겹치므로 <strong>여기 한 문장으로 두고</strong> 논지로 세우지 않는다.</p>
+<blockquote>
+<p>[!insight] 남은 것은 동사도 인물도 아니고 「하나의 자리」다<br />
+추상화의 결과가 <code>ἀπάγγειλον</code>이라는 낱말이 아니라 <strong>그 낱말이 놓인 자리의 성격</strong>이라는 점이 중요하다. 낱말은 다른 곳에도 있고(5:14), 자리는 여기뿐이다.</p>
+<p>[!question] 연결 질문<br />
+- 「예외」로 추상화하는 순간 잃는 것은 무엇인가 — 이 사람의 몸인가, 이방 지역이라는 장소인가?<br />
+- 예외가 규칙을 가리킨다면, 예외 없는 규칙은 무엇으로 읽히는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 이 알맹이가 성경 밖 도메인에서도 같은 모양으로 반복되는지 패턴 인식이 확인한다.</p>
+<h3>4. 패턴 인식 (Recognizing Patterns) — "허용 목록이 금지의 정의를 만든다"</h3>
+<table>
+<thead>
+<tr>
+<th>도메인</th>
+<th>패턴 발현</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>세법</strong></td>
+<td>비과세·면세 열거가 과세 대상의 윤곽을 그린다. 「무엇이 과세인가」는 과세 조문보다 <strong>면세 조문의 목록</strong>을 읽을 때 더 또렷해진다</td>
+</tr>
+<tr>
+<td><strong>의료 지시</strong></td>
+<td>「금식」의 실제 범위는 금식 지시문이 아니라 <strong>허용된 한 컵의 물</strong>이 정한다. 그 예외가 「무엇을 막으려는 금식인가」를 말해 준다</td>
+</tr>
+<tr>
+<td><strong>저작권</strong></td>
+<td>인용의 허용 요건(출처 표시·분량·목적)이 <strong>복제 금지가 겨눈 이익</strong>을 역으로 드러낸다</td>
+</tr>
+<tr>
+<td><strong>출입 통제</strong></td>
+<td>출입 금지 구역의 예외 명단은 편의가 아니라 <strong>금지의 목적이 시설인지 정보인지 인력인지</strong>를 폭로한다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>공통 패턴</strong>: 규칙의 정체는 규칙문이 아니라 <strong>예외의 목적어</strong>에 적혀 있다.</p>
+<blockquote>
+<p>[!insight] 예외는 규칙의 구멍이 아니라 규칙의 해설이다<br />
+네 도메인 모두에서 예외는 「봐 주는 것」이 아니라 <strong>범위 확정 장치</strong>로 작동한다. 이 씨앗이 걸린 자리도 관용이 아니라 범위다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 속한 조직의 「예외 승인」 기록을 모으면 그 조직이 실제로 무엇을 지키고 있는지 나오는가?<br />
+- 예외가 늘 목적어로 작동한다면, 목적어가 명시되지 않은 예외는 무엇을 뜻하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 네 도메인의 공통 모양을 본문의 목적어에 적용할 수 있는 도식으로 패턴 형성이 정제한다.</p>
+<h3>5. 패턴 형성 (Forming Patterns) — 프레임워크 「금지의 목적어 읽기」</h3>
+<p>금지문에서 읽어야 할 것은 금지 자체가 아니라 <strong>무엇을 금지하는가의 목적어</strong>다. 본문의 목적어를 나란히 놓는다.</p>
+<table>
+<thead>
+<tr>
+<th>자리</th>
+<th>목적어 원문</th>
+<th>목적어가 가리키는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3:12</td>
+<td><code>ἵνα μὴ αὐτὸν φανερὸν ποιήσωσιν</code></td>
+<td>그를 <strong>드러내는 일</strong></td>
+</tr>
+<tr>
+<td>8:30</td>
+<td><code>ἵνα μηδενὶ λέγωσιν περὶ αὐτοῦ</code></td>
+<td><strong>그에 관하여</strong></td>
+</tr>
+<tr>
+<td>9:9</td>
+<td><code>ἵνα μηδενὶ ἃ εἶδον διηγήσωνται</code></td>
+<td><strong>본 것</strong>(변화산에서 본 그의 모습)</td>
+</tr>
+<tr>
+<td>1:25 · 1:34 · 3:12 · 5:43 · 7:36</td>
+<td>(계열별 금지 동사)</td>
+<td>위와 같은 방향</td>
+</tr>
+<tr>
+<td><strong>5:19</strong></td>
+<td><strong><code>ὅσα ὁ κύριός σοι πεποίηκεν</code></strong></td>
+<td><strong>그가 무엇을 하셨는가</strong></td>
+</tr>
+</tbody>
+</table>
+<pre><code>     금지선 ─────────────────────────────
+            │  정체의 공표        │  행위의 보고
+            │  (그가 누구인가)    │  (그가 무엇을 하셨는가)
+     ───────┼────────────────────┼──────────────
+     여덟 자리│        ✕          │       —
+     5:19    │        —          │        ○
+</code></pre>
+<p><strong>이 프레임워크의 법칙</strong>: <strong>예외의 목적어를 금지의 목적어 위에 포개면, 금지선이 어디에 그어졌는지 보인다.</strong></p>
+<blockquote>
+<p>[!insight] 이 예외는 금지를 뒤집지 않고 금지의 조준점을 노출한다<br />
+5:19는 「이제 말해도 된다」가 아니다. 막힌 것은 <strong>정체의 공표</strong>였고 열린 것은 <strong>행위의 보고</strong>다. 두 목적어가 다른 종류라는 것이 이 자리의 전부다.</p>
+<p>[!question] 연결 질문<br />
+- 이 구별이 성립하려면 감춰지는 정체가 무엇이어야 하는가 — 그리고 그 정체는 5:7에서 누구의 입이 이미 발음했는가?<br />
+- 행위의 보고가 끝내 정체를 드러낸다면, 금지선은 내용의 선인가 시점의 선인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 목적어로 갈리는 이 도식을 전혀 다른 분야의 구조와 겹쳐 유추가 시험한다.</p>
+<h3>6. 유추 (Analogizing) — "반투막·면세 조문·임시표"</h3>
+<p><strong>① 세무 ↔ 신학 교차 유추 — 면세 조문.</strong> 부가가치세 면세 열거는 혜택 목록이 아니라 <strong>과세 대상의 정의 장치</strong>다. 무엇이 면세인지 읽으면 입법자가 무엇을 과세로 보고 있었는지 드러난다. 새 통찰: 5:19를 「예외적 은혜」로 읽으면 감상이 되고, <strong>정의 장치</strong>로 읽으면 금지선이 보인다. <em>한계</em>: 세법은 입법자가 경계를 <strong>명문으로 적지만</strong>, 마가는 금지의 이유를 한 번도 적지 않는다. 유추는 「경계가 드러난다」까지만 가고 「경계가 선언되었다」로 가면 깨진다.</p>
+<p><strong>② 자연과학 — 반투막.</strong> 세포막은 「다 막는 벽」이 아니라 <strong>무엇을 통과시키는가로 정의되는 구조</strong>다. 통과 물질의 목록이 막의 성격이다. 새 통찰: 함구령 계열 전체를 벽이 아니라 <strong>선택적 통로</strong>로 보면, 5:19는 구멍이 아니라 이 막의 성능 명세다. <em>한계</em>: 막은 분자 크기·전하로 자동 선별하지만 여기서 선별하는 것은 <strong>인격의 판단</strong>이고, 그 판단의 이유는 본문에 없다.</p>
+<p><strong>③ 음악 — 조표 밖의 한 음.</strong> 온음계 안에 임시표가 하나 찍히면 귀는 그 음이 아니라 <strong>조성 전체</strong>를 다시 듣는다. 새 통찰: 5:19를 들은 귀는 5:19를 기억하는 것이 아니라 나머지 자리들을 다시 듣게 된다. <em>한계</em>: 임시표는 조성을 <strong>이탈</strong>하지만 5:19는 이탈이 아니라 <strong>조준의 노출</strong>이다. 이탈로 읽으면 「예수께서 방침을 바꾸셨다」가 되어 본문에 없는 말을 만든다.</p>
+<blockquote>
+<p>[!insight] 세 유추가 모두 같은 지점에서 깨진다<br />
+셋 다 「예외가 규칙을 드러낸다」까지는 옮겨 오지만, <strong>이유를 설명하는 대목에서 깨진다.</strong> 본문은 이유를 적지 않았고, 유추는 이유를 채우고 싶어 한다.</p>
+<p>[!question] 연결 질문<br />
+- 유추가 깨지는 지점이 늘 「이유」라면, 이 본문의 침묵은 설명 부족인가 설계인가?<br />
+- 면세 조문 비유를 설교에 쓰면 회중은 은혜를 제도로 들을 위험이 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 머리로 붙든 이 구별을 몸이 한 번 실행해 보게 체화 단계로 넘긴다.</p>
+<h3>7. 몸으로 생각하기 (Body Thinking) — "손을 떼고 몸을 180도 돌리는 자세"</h3>
+<p><strong>실천 프로토콜</strong>: 눈을 감고 선다. 두 손으로 눈앞의 난간을 잡은 자세를 만든다(실제 문틀이나 책상 모서리를 잡아도 된다). 숨을 들이쉬며 손가락을 <strong>엄지부터 하나씩 떼어 낸다.</strong> 손이 완전히 떨어지면 그 자리에서 <strong>몸을 180도 돌린다.</strong> 눈은 계속 감은 채로, 방금 등지고 있던 방향을 향해 선다. 세 호흡 동안 그대로 있는다.</p>
+<p>몸이 가르쳐 주는 것: 손을 떼는 동작과 몸을 도는 동작은 <strong>연속이지만 다른 근육</strong>을 쓴다. 놓는 것은 손이고 도는 것은 허리와 발이다. 「거절」과 「파송」이 한 문장에 있다는 사실이 근육에서는 <strong>한 동작이 아니라 두 동작</strong>으로 느껴진다. 그리고 돌아선 뒤에도 손은 여전히 비어 있다 — 그가 받은 것은 쥘 물건이 아니라 <strong>말할 내용</strong>이다.</p>
+<blockquote>
+<p>[!insight] 파송은 손에 무엇을 쥐여 주는 방식으로 오지 않았다<br />
+몸으로 해 보면 5:19의 명령이 <strong>소유의 이전이 아니라 방향의 이전</strong>이라는 것이 만져진다.</p>
+<p>[!question] 연결 질문<br />
+- 설교 전달에서 이 두 동작을 분리해 보여 주면(손 떼기 → 몸 돌리기) 회중이 붙드는 것은 무엇이 달라지는가?<br />
+- 내가 「보냄받았다」고 말할 때 내 몸은 실제로 방향을 바꾸었는가, 손만 바꿔 쥐었는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 몸이 느낀 두 동작의 간극을, 그 자리에 실제로 서 있던 사람의 내면이 감정이입 단계에서 말한다.</p>
+<h3>8. 감정이입 (Empathizing) — "돌려세워진 사람의 마음, 그리고 말해 버린 사람의 마음"</h3>
+<p><strong>주체의 시점 — 5:19에서 돌려세워진 사람</strong><br />
+<em>나는 따라가려고 뱃전을 잡았다. 함께 있게만 해 주시면 되었다. 그런데 돌아온 첫 말이 거절이었고, 나는 그 말이 끝나기 전에 이미 버려진 줄 알았다. 그다음 말이 「가라」였고, 가라는 곳이 하필 내가 무덤에서 나온 그 마을이었다. 나를 쇠사슬로 묶던 사람들에게 가라는 것이었다. 그런데 이어진 말에 내가 지어낼 것은 하나도 없었다 — 내게 이미 일어난 일을 알리라 하셨다.</em><br />
+감정의 전환: <strong>매달림 → 버려짐의 순간적 공포 → 지어낼 것이 없다는 데서 오는 안도.</strong></p>
+<p><strong>가장 불편해할 사람의 시점 — 1:44에서 입이 막힌 사람</strong><br />
+<em>나도 같은 첫 마디를 들었다. 「가라.」 그런데 내게 붙은 것은 「아무에게 아무것도 말하지 말라」였다. 나는 참지 못했고, 나가서 전하기 시작했다. 왜 저 사람의 입은 열리고 내 입은 닫혔는지 나는 아직 모른다.</em><br />
+감정의 전환: <strong>동질감 → 억울함 → 미해결.</strong> 이 시점은 <strong>닫지 않는다.</strong> 본문이 1:44의 금지 이유를 적지 않았으므로 여기서도 답을 만들지 않는다. 다만 구문에서 확인되는 사실 하나는 적어 둔다 — <code>ἤρξατο κηρύσσειν</code>(전파하기 시작했다)은 마가에 <strong>1:45와 5:20 둘뿐이고 형태가 완전히 같으며</strong>, 목적어만 다르다(1:45 <code>τὸν λόγον</code> / 5:20 <code>ὅσα ἐποίησεν αὐτῷ ὁ Ἰησοῦς</code>).</p>
+<blockquote>
+<p>[!insight] 금지를 어긴 입과 명령을 지킨 입이 같은 구문으로 적혀 있다<br />
+마가는 두 사람을 문법으로 구분하지 않았다. 구분은 <strong>목적어</strong>에 있다 — 한쪽은 말씀을, 다른 쪽은 한 사람의 몸에 일어난 일과 그것을 행한 이의 이름을 전한다.</p>
+<p>[!question] 연결 질문<br />
+- 순종과 불순종이 같은 동사 구문으로 적힐 수 있다면, 평가는 어디에서 이루어지는가?<br />
+- 억울한 시점을 닫지 않고 두는 것이 설교에서 가능한가?</p>
+</blockquote>
+<p><strong>다리</strong>: 두 사람의 시점을 나란히 놓은 채, 시간과 규모의 축을 더해 차원적 사고가 이 자리를 다시 본다.</p>
+<h3>9. 차원적 사고 (Dimensional Thinking) — "완료형이 가리키는 현재, 그리고 <code>ἀλλά</code> 하나"</h3>
+<p><strong>확대.</strong> 알릴 내용의 동사가 <code>πεποίηκεν</code>(완료)이다. 완료는 끝난 일이 남긴 <strong>현재의 상태</strong>를 말한다. 그러므로 그가 전할 것은 과거 사건의 재구성이 아니라 <strong>지금 자기 몸에 남아 있는 것</strong>이다. 그 상태는 5:15에 네 분사로 이미 적혀 있다 — 앉아 있고(<code>καθήμενον</code>), 옷 입혀졌고(<code>ἱματισμένον</code>), 정신이 온전하고(<code>σωφρονοῦντα</code>), 군대를 가지고 있었던 자(<code>ἐσχηκότα</code>)다. 공간 축으로도 확대된다 — 이 명령이 떨어진 곳은 <strong>이방 지역</strong>이고, 이 단락에서 처음으로 방향이 밖으로 났다.</p>
+<p><strong>축소.</strong> 규모를 최소로 줄이면 이 모든 것이 한 낱말에 걸려 있다 — <code>ἀλλά</code>. 이 접속사가 없으면 5:19는 거절로 끝나는 문장이다. 예외 전체가 접속사 하나의 폭 위에 서 있다.</p>
+<p><strong>핵심 전복</strong>: 차원을 넓히면 이 자리는 <strong>관용이 아니라 경계의 표지</strong>가 되고, 좁히면 그 경계가 <strong>접속사 한 낱말</strong>로 유지되고 있음이 드러난다. 둘 다 같은 말을 한다 — 이 예외는 크기로 작동하는 것이 아니라 <strong>위치로</strong> 작동한다.</p>
+<blockquote>
+<p>[!insight] 증언의 내용은 기억이 아니라 상태다<br />
+완료형이 요구하는 것은 「그때 그랬다」가 아니라 <strong>「지금 이렇게 되어 있다」</strong>이다. 그래서 그는 말솜씨 없이도 보고할 수 있다.</p>
+<p>[!question] 연결 질문<br />
+- 완료형 증언과 부정과거 증언은 듣는 이에게 어떻게 다르게 도착하는가?<br />
+- 이방 지역에서 열린 이 입이, 유대 지역에서는 왜 열리지 않았는가 — 본문은 답하는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 확대와 축소에서 확인된 이 구조를 실제로 써 볼 수 있는 도구로 모형 단계가 굳힌다.</p>
+<h3>10. 모형 만들기 (Modeling) — 「목적어 네 칸 표」</h3>
+<p>말을 막거나 열 때마다 아래 네 칸을 <strong>문장으로</strong> 채우게 하는 표. 회의록·공지문·상담 기록에 그대로 붙인다.</p>
+<table>
+<thead>
+<tr>
+<th>칸</th>
+<th>질문</th>
+<th>채우는 규칙</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① <strong>막는 목적어</strong></td>
+<td>무엇을 말하지 말라는 것인가</td>
+<td>명사구로 적는다. 「그 일에 대해」처럼 흐리면 반려</td>
+</tr>
+<tr>
+<td>② <strong>여는 목적어</strong></td>
+<td>무엇은 말해도 되는가</td>
+<td>반드시 하나 이상 적는다. 비워 두면 그것은 금지가 아니라 봉쇄다</td>
+</tr>
+<tr>
+<td>③ <strong>목적어의 종류</strong></td>
+<td>①과 ②는 <strong>같은 종류인가</strong></td>
+<td>「누가 무엇이다」(규정)인지 「무슨 일이 있었다」(사실)인지 표시</td>
+</tr>
+<tr>
+<td>④ <strong>보내는 범위</strong></td>
+<td>어디까지 말하라는 것인가</td>
+<td>장소·대상을 적는다. 범위를 적되 <strong>초과분을 뒤에서 채점하지 않는다</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>이 모형이 예측하는 것</strong>: 「말하지 말라」가 반복되는 조직에서 ①을 문장으로 적어 보게 하면, 실제로 막고 있는 것이 <strong>사실(무슨 일이 있었다)이 아니라 규정(누가 무엇이다)</strong>인 경우가 드러난다. 5:19의 구조가 바로 그 모양이다.</p>
+<p><strong>이 모형이 설명하지 못하는 것</strong>: 5:20이 명령 범위(<code>εἰς τὸν οἶκόν σου πρὸς τοὺς σούς</code>)를 넘어 데가볼리까지 간 일을 이 표는 <strong>평가하지 못한다.</strong> 본문도 승인하지도 책망하지도 않으므로, ④칸에 초과 채점란을 만들지 않는 것이 이 모형의 설계다.</p>
+<blockquote>
+<p>[!insight] 목적어를 문장으로 쓰게 하면 봉쇄와 금지가 갈라진다<br />
+여는 칸을 비우지 못하게 하는 것 하나로, 「입단속」이 「범위 설정」으로 바뀐다.</p>
+<p>[!question] 연결 질문<br />
+- 이 표를 과거 3개월의 공지에 소급 적용하면 우리 조직은 무엇을 지키고 있었는가?<br />
+- ④칸에 채점란이 없다는 설계를 조직이 견딜 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 만들어 둔 표를 놀이 단계가 부수고 뒤집어 본다.</p>
+<h3>11. 놀이 (Playing) — "두 명령을 맞바꾸기"</h3>
+<p><strong>게임 ① 맞바꾸기.</strong> 1:44에 <code>ἀπάγγειλον</code>을, 5:19에 <code>μηδενὶ μηδὲν εἴπῃς</code>를 넣어 본다. 곧바로 걸린다 — 1:44에는 알릴 내용을 담을 <code>ὅσα</code> 관계절이 없다. 그 자리에 있는 것은 제사장에게 몸을 보이라는 <strong>절차</strong>다. 발견: 두 자리의 차이는 인물의 자격이 아니라 <strong>뒤에 달린 목적어의 종류</strong>다.</p>
+<p><strong>게임 ② 극단화.</strong> 여덟 자리가 전부 「알리라」였다면? 그러면 5:19는 아무것도 드러내지 않는 평범한 문장이 된다. 예외가 규칙을 드러내려면 규칙이 있어야 한다. <strong>예상치 못한 발견</strong>: 그런데 반대로 극단화해도 결론이 산다 — 금지가 <strong>두 자리뿐</strong>이었어도 5:19가 그 방향과 반대라는 사실은 그대로다. 곧 이 씨앗의 무게는 「하나뿐」이라는 <strong>횟수</strong>에 있지 않고 <strong>방향</strong>에 있다. 한정 ②가 요구한 절제가 오히려 논지를 튼튼하게 만든다.</p>
+<p><strong>게임 ③ 역할 뒤집기.</strong> 5:7에서 가장 정확한 호칭을 발음한 입에게 「알리라」를 주면? 본문은 그 입을 막는 쪽에 두었다. 그리고 같은 입이 이어서 한 일은 하나님을 걸고 맹세시키는 요구(<code>ὁρκίζω σε τὸν θεόν</code>)였다. <strong>여기서 1:24·8:29·15:39의 술어는 묶지 않는다</strong> — 셋은 서로 다른 고백이다. 발견: 허용은 <strong>아는 입</strong>에 간 것이 아니라 <strong>몸에 일을 받은 입</strong>에 갔다.</p>
+<blockquote>
+<p>[!insight] 계수를 빼도 논지가 산다는 것이 게임 ②의 수확이다<br />
+논거의 기둥을 횟수에서 방향으로 옮기고 나니, 판본이 갈려도 흔들리지 않는 문장이 남았다.</p>
+<p>[!question] 연결 질문<br />
+- 내가 세운 주장 가운데 「숫자를 빼면 무너지는 것」은 무엇인가?<br />
+- 아는 입과 몸에 일을 받은 입 사이의 이 구별은 증언자를 세우는 실제 기준이 될 수 있는가?</p>
+</blockquote>
+<p><strong>다리</strong>: 놀이에서 걸러진 이 문장을 다른 형식으로 옮겨 변형이 마지막 시험을 한다.</p>
+<h3>12. 변형 (Transforming) — 「무엇을 말해도 되나요」 (어린이 설명 3문장)</h3>
+<p><em>예수님은 여러 번 「내가 누구인지 아직 말하지 마라」고 하셨어요.</em><br />
+<em>그런데 무덤에서 살던 아저씨에게는 딱 한 번 다르게 말씀하셨어요 — 「집에 가서, 너에게 무슨 일이 있었는지 알려 줘.」</em><br />
+<em>그러니까 막으신 건 「예수님이 누구신지」였고, 열어 주신 건 「나에게 무슨 일이 있었는지」였어요.</em></p>
+<p><strong>한 줄 잠언</strong>: <strong>막으신 것은 내가 그를 무엇이라 부르는가였고, 여신 것은 그가 내게 무엇을 하셨는가다.</strong></p>
+<p>변환에서 살아남은 것: <strong>두 목적어의 구별</strong>. 어린이 설명 세 문장으로 줄여도 이 구별은 지워지지 않았다. 반대로 사라진 것은 헬라어 어형, 여덟이라는 숫자, 데가볼리라는 지명, 돼지 이천 마리다 — <strong>그 넷 없이도 문장이 선다.</strong> 이것이 이 씨앗의 핵심이 목적어에 있다는 증거다.</p>
+<blockquote>
+<p>[!insight] 세 문장으로 줄였을 때 남는 것이 진짜 축이다<br />
+어린이에게 설명할 때 「여덟 번」을 말하지 않아도 되었다는 사실이, 계수가 보조 관찰이라는 판정을 실측으로 확인해 준다.</p>
+<p>[!question] 연결 질문<br />
+- 내 설교의 핵심을 세 문장으로 줄이면 무엇이 먼저 떨어져 나가는가?<br />
+- 떨어져 나간 것을 다시 넣는 이유는 논증인가 분량인가?</p>
+</blockquote>
+<p><strong>다리</strong>: 1~12단계에서 붙든 구별을, 이 명령이 실제로 낳은 첫 결과와 합쳐 통합이 마무리한다.</p>
+<h3>13. 통합 (Synthesizing) — "열린 입에서 나온 첫 소리에 두 이름이 겹쳤다"</h3>
+<p>1단계는 같은 첫 낱말(<code>Ὕπαγε</code>)에 반대 명령이 붙는다는 어형 사실에서 출발했고, 2단계는 그 사실을 뱃전에서 떼어지는 손으로 세웠다. 3단계가 남긴 알맹이는 「예외」였고, 4·5단계가 그 예외를 <strong>목적어 장치</strong>로 정제했다 — 막힌 것은 <code>περὶ αὐτοῦ</code>·<code>ἃ εἶδον</code>처럼 <strong>그가 누구인가</strong>였고, 열린 것은 <code>ὅσα ὁ κύριός σοι πεποίηκεν</code>, 곧 <strong>그가 무엇을 하셨는가</strong>다. 6단계의 세 유추는 이 구별을 옮겨 오는 데 성공했으나 <strong>이유를 설명하는 대목에서 나란히 깨졌고</strong>, 그 깨짐이 본문의 침묵을 지키게 했다. 7·8단계는 거절과 파송이 근육에서는 두 동작이라는 것, 그리고 순종한 입과 어긴 입이 같은 구문(<code>ἤρξατο κηρύσσειν</code>)으로 적혔다는 것을 보탰다. 9단계가 완료형 <code>πεποίηκεν</code>을 짚어 증언의 내용을 <strong>기억에서 상태로</strong> 옮겼고, 11단계의 극단화가 이 씨앗의 무게를 <strong>횟수에서 방향으로</strong> 확정했다.</p>
+<p>이제 그 열린 입이 실제로 낸 첫 소리를 받는다. 명령은 <code>ὅσα ὁ κύριός σοι πεποίηκεν</code>(주께서 네게 하신 일)이었고, 보고는 <code>ὅσα ἐποίησεν αὐτῷ ὁ Ἰησοῦς</code>(예수께서 자기에게 하신 일)가 되었다. 같은 <code>ὅσα</code> 관계절이 두 절에 놓이면서 <strong>주어 명사와 시상이 함께 바뀐다</strong> — 완료에서 부정과거로, <code>ὁ κύριος</code>에서 <code>ὁ Ἰησοῦς</code>로. <strong>본문은 두 이름 사이를 메우지 않는다.</strong> 그러므로 여기서도 5:19의 <code>ὁ κύριος</code>가 하나님을 가리키는지 예수 자신을 3인칭으로 말씀하신 것인지 <strong>닫지 않는다</strong>(한정 ①). 그리고 RP 본문은 5:13·5:19에서 <code>ὁ Ἰησοῦς</code>를 주어로 명시하므로 이 교체 자체가 <strong>판본에 따라 다르게 배열된다</strong>(한정 ③ⓑ). 말할 수 있는 것은 여기까지다 — <strong>행위의 보고만 허락받은 입이 낸 첫 소리에서, 두 이름이 같은 관계절을 받았다.</strong></p>
+<p>그러면 이 단락이 요구하는 결단은 축귀의 권능을 인정하는 일이 아니다. <strong>「주께서 하신 일」을 「예수께서 하신 일」로 발음할 수 있는가</strong>다. 정체의 공표가 막혀 있는 동안에도, 행위의 보고는 그 이름을 데려온다.</p>
+<p><strong>최종 테제</strong>: 마가의 함구령이 겨눈 것은 사실이 아니라 규정이었다. 막히신 것은 <strong>그가 누구인가의 공표</strong>이고 여신 것은 <strong>그가 무엇을 하셨는가의 보고</strong>이며, 그 하나의 예외는 금지를 뒤집은 자리가 아니라 <strong>금지선이 어디에 그어졌는지 보여 주는 자리</strong>다.</p>
+<p><strong>가장 생산적이었던 도구</strong>: <strong>5단계(패턴 형성)</strong>. 금지문과 허용문의 목적어를 한 표에 포갠 그 한 번의 조작이 이 노트의 축을 만들었다. 그 표가 없었다면 이 씨앗은 「예수께서 한 번은 말하라 하셨다」는 감상에서 멈췄을 것이다.</p>
+<p><strong>처음 관찰과 달라진 이해</strong>: 1단계에서 나는 이 자리를 「금지가 풀린 예외」로 보았다. 13단계에 와서 보니 <strong>풀린 것이 아니다.</strong> 같은 문장 앞부분에 <code>οὐκ ἀφῆκεν</code>이 있고 <code>ἀλλά</code>가 거절과 명령을 맞세운다. 열린 것은 금지가 아니라 <strong>목적어 한 종류</strong>였다.</p>
+<blockquote>
+<p><strong>"막으신 것은 그가 누구신가의 공표였고 여신 것은 그가 무엇을 하셨는가의 보고였다. 그 열린 입이 낸 첫 소리에서 두 이름이 같은 관계절을 받았고, 본문은 그 겹침을 설명하지 않은 채 우리에게 발음을 맡겼다."</strong></p>
+</blockquote>
+<hr />
+<h2>개혁신학적 조명</h2>
+<p><strong>실질 접점 본문</strong></p>
+<ul>
+<li><strong>요한복음 9:25</strong> — 「그가 죄인인지 내가 알지 못하나 한 가지 아는 것은 내가 맹인으로 있다가 지금 보는 그것이니이다.」 고침받은 사람이 <strong>정체 판정은 거절하고 행위 보고는 수행한다.</strong> 5:19의 두 목적어가 한 사람의 입에서 그대로 갈리는 자리다. 프루프텍스트가 아니라 <strong>같은 구별이 실제로 작동하는 사례</strong>다.</li>
+<li><strong>시편 66:16</strong> — 「하나님을 두려워하는 너희들아 다 와서 들으라 하나님이 내 영혼을 위하여 행하신 일을 내가 선포하리로다.」 선포의 목적어가 <strong>화자의 감상이 아니라 하나님이 행하신 일</strong>이다. 5:19의 <code>ὅσα … πεποίηκεν</code>과 목적어의 종류가 같다.</li>
+<li><strong>사도행전 4:20</strong> — 「우리는 보고 들은 것을 말하지 아니할 수 없다.」 금지 앞에서 열리는 입의 내용 역시 <strong>본 것과 들은 것</strong>, 곧 일어난 일이다.</li>
+</ul>
+<p><strong>신학자</strong>: <strong>장 칼뱅, 『공관복음 주석』(Commentary on a Harmony of the Evangelists, Matthew, Mark and Luke).</strong> 칼뱅은 이 단락을 「Matthew 8:28-34; Mark 5:1-20; Luke 8:26-39」 한 표제 아래 다루며, 5:19에 해당하는 내용을 <code>[Luke 8:38]</code> 항목에서 이렇게 적는다 — <em>"Why Christ refuses to have this man as one of his followers we cannot determine with certainty, if it was not that he expected the man to make himself more extensively useful…"</em> <strong>「확정할 수 없다」</strong>고 쓴 것이 이 노트의 한정 ④와 같은 자리다. 돼지 문제에서도 칼뱅은 도덕적 정당성을 직접 논하지 않고 <em>"the hidden judgment of God"</em> 앞에서 멈춘다. 개혁신학의 미덕이 여기서는 <strong>설명을 늘리지 않는 절제</strong>로 나타난다.</p>
+<p><strong>설교 적용점</strong>: 회중에게 10단계 표의 ①②칸을 묻는다 — <strong>「당신이 교회 밖에서 말할 수 있는 것은 무엇입니까. 그리고 그것은 「예수님은 누구신가」입니까, 「그분이 내게 무엇을 하셨는가」입니까.」</strong> 대답이 막히는 지점이 많다면 그것은 신앙의 부족이 아니라 <strong>목적어를 배운 적이 없다는 것</strong>일 수 있다. 5:19는 그 목적어를 지정해 준 유일한 자리다.</p>
+<p><strong>복음 중심성 점검</strong>: 이 통찰은 두 방향으로 도덕주의에 미끄러질 수 있다. ① <strong>「간증하라」로의 하강</strong> — 「그러니 우리도 전하자」가 결론이 되면 본문은 전도 독려문이 된다. 그러나 명령의 목적어는 <code>ὅσα ὁ κύριός σοι πεποίηκεν</code>, <strong>완료형으로 이미 이루어진 그분의 행위</strong>이고, 사람은 그것을 <strong>보고할 뿐 만들어 내지 않는다.</strong> 전할 것이 없다는 호소에 이 본문이 주는 답은 더 노력하라가 아니라 <strong>이미 네 몸에 남아 있다</strong>이다. ② <strong>회복을 자격으로 읽는 하강</strong> — 「회복되었으니 보냄받았다」로 읽으면 회복이 승진이 된다. 그러나 5:15에서 그가 <strong>능동으로 한 것은 군대를 가지고 있었던 일뿐</strong>이고, 옷은 <code>ἱματισμένον</code>, 곧 <strong>입혀진 상태</strong>로 적혀 있다. 보냄의 근거는 그의 상태가 아니라 <strong>그에게 행해진 일</strong>이다.</p>
+<hr />
+<h2>실무 적용</h2>
+<p><strong>① 고객 상담 — 소명서 첫 장의 목적어</strong><br />
+<em>상황</em>: 세무조사 대응이나 소명 요청에서 「우리는 성실한 납세자다」라는 <strong>성격 규정</strong>으로 첫 장을 채우고, 정작 「무슨 일이 언제 어떻게 있었다」는 <strong>사실 서술</strong>이 뒤로 밀리는 관행.<br />
+<em>적용</em>: 10단계 표의 ③칸을 소명서 작성에 그대로 쓴다. 첫 장은 <strong>사실 서술만</strong>으로 채우고, 성격 규정은 사실이 다 적힌 뒤에만 한 문단 허용한다. 규정으로 사실을 대신하려는 문장은 반려한다.<br />
+<em>기대 효과</em>: 조사관이 검증할 수 있는 것은 규정이 아니라 사실이므로, 첫 장에서 다툼의 좌표가 정해진다. 신뢰의 근거가 「우리가 어떤 사람인가」에서 「무엇이 있었는가」로 옮겨진다.</p>
+<p><strong>② 조직·교회 행정 — 회복 중인 사람의 복귀 공지</strong><br />
+<em>상황</em>: 치리나 장기 병가 이후의 복귀를 알리면서, 무엇을 말해도 되고 무엇을 말하면 안 되는지 아무도 문장으로 적지 않아 소문이 공백을 채우는 상태.<br />
+<em>적용</em>: 공지 전에 목적어 네 칸 표를 채운다. ②칸(여는 목적어)을 <strong>반드시 하나 이상</strong> 적고, ④칸에 범위를 적되 <strong>초과 채점란은 만들지 않는다.</strong> 본문이 5:20에서 데가볼리까지 간 보고를 승인도 책망도 하지 않았다는 사실을 설계 근거로 삼는다.<br />
+<em>기대 효과</em>: 봉쇄가 금지로 바뀐다. 당사자는 자기가 말할 수 있는 문장을 손에 쥐고 돌아오고, 공동체는 침묵의 빈칸을 추측으로 채우지 않는다.</p>
+<p><strong>③ 개인 의사결정 — 자기 서술을 두 칸으로 나누기</strong><br />
+<em>상황</em>: 기도제목·상담 기록·연말 회고를 쓸 때 「나는 게으른 사람이다」, 「나는 실패했다」 같은 <strong>자기 규정</strong>이 문장의 대부분을 차지하고, 실제로 무슨 일이 있었는지는 한 줄도 없는 상태.<br />
+<em>적용</em>: 종이를 세로로 갈라 왼쪽에는 <strong>규정</strong>(나는 ~한 사람이다), 오른쪽에는 <strong>사실</strong>(언제 무슨 일이 있었다)을 적는다. 그리고 오른쪽 칸만 가지고 한 사람에게 말해 본다.<br />
+<em>기대 효과</em>: 자기 규정이 사실을 삼키는 구조가 눈에 보인다. 5:19가 그 사람에게 준 것도 자기 평가가 아니라 <strong>이미 일어난 일의 목록</strong>이었다.</p>
+<hr />
+<h2>[최종 연구 노트 승격 후보]</h2>
+<h3>🥇 마가의 함구령이 막은 것은 사실이 아니라 규정이다</h3>
+<ul>
+<li><strong>핵심</strong>: 금지의 목적어들은 전부 <strong>그가 누구인가</strong>를 가리킨다 — 3:12 <code>ἵνα μὴ αὐτὸν φανερὸν ποιήσωσιν</code>, 8:30 <code>περὶ αὐτοῦ</code>, 9:9 <code>ἃ εἶδον</code>. 유일한 허용 5:19의 목적어는 <strong>그가 무엇을 하셨는가</strong>다(<code>ὅσα ὁ κύριός σοι πεποίηκεν</code>). 두 목적어가 다른 종류라는 사실 하나가, 이 예외를 규칙의 구멍이 아니라 <strong>규칙의 해설</strong>로 바꾼다.</li>
+<li><strong>날카로움</strong>: 통상의 읽기는 이 자리를 「이방 지역이어서 허용되었다」는 <strong>지리적 설명</strong>이나 「예외적 은혜」라는 <strong>감상</strong>으로 처리한다. 목적어로 보면 설명이 지리나 감정이 아니라 <strong>문법</strong>에서 나오고, 계수가 판본에 따라 갈려도 논지가 흔들리지 않는다.</li>
+<li><strong>연결 고리</strong>: 막 3:12 · 8:30 · 9:9 · 5:19 / 요 9:25 — 정체 판정 거절 + 행위 보고 수행 / <a href="§3③ 계열 대조표 · §6① 금지·허용 목적어 대조">[09_구문묵상_마가복음_5_1-20]</a> / [[00_마가복음_묵상단위_마스터]] — 「메시아 비밀」 전담 배정</li>
+</ul>
+<h3>🥈 같은 걸음에 반대 입 — <code>Ὕπαγε</code> 하나가 두 방향으로 갈라진다</h3>
+<ul>
+<li><strong>핵심</strong>: 1:44와 5:19는 첫 낱말이 똑같이 <code>Ὕπαγε</code>(2PAD-S)이고, 이어지는 명령만 정반대다(<code>μηδενὶ μηδὲν εἴπῃς</code> / <code>ἀπάγγειλον αὐτοῖς</code>). 같은 걸음으로 보내면서 한 번은 입을 닫게 하고 한 번은 입을 열게 하신다. 그런데 열린 자리조차 문장 앞부분은 <code>οὐκ ἀφῆκεν αὐτόν</code>이고, <code>ἀλλά</code>가 거절과 명령을 맞세운다.</li>
+<li><strong>날카로움</strong>: 두 자리의 차이를 <strong>인물의 자격</strong>(이방인이라서, 나병 환자라서)으로 설명하려는 시도를 어형이 막는다. 보내는 동작은 동일하고 갈리는 것은 <strong>뒤에 달린 목적어</strong>뿐이다. 그리고 「열린 자리」가 실은 <strong>거절 안에서 열린 한 대목</strong>이라는 사실이 이 예외의 크기를 정확히 재게 한다.</li>
+<li><strong>연결 고리</strong>: 막 1:44 · 5:18-19 / <a href="§1 충돌 본문 ② · §3③">[09_구문묵상_마가복음_5_1-20]</a> / [[03_생각의탄생13단계_마가복음_1_29-45_의심된것은의지였다]] — 1:44가 속한 단위 / [[30_구문묵상_마가복음_16_1-20]] — <strong><code>λέγω</code>의 세 어형은 그쪽 소관</strong></li>
+</ul>
+<h3>🥉 허락받은 입이 낸 첫 소리에서 두 이름이 같은 관계절을 받았다</h3>
+<ul>
+<li><strong>핵심</strong>: 명령은 <code>ὅσα ὁ κύριός σοι πεποίηκεν</code>(완료), 보고는 <code>ὅσα ἐποίησεν αὐτῷ ὁ Ἰησοῦς</code>(부정과거)다. 같은 <code>ὅσα</code>를 두 절이 받으면서 <strong>주어 명사와 시상이 함께 바뀐다.</strong> 본문은 두 이름 사이를 메우지 않는다.</li>
+<li><strong>날카로움</strong>: 이 겹침을 <strong>판단하지 않고 기록한다</strong>는 것이 이 후보의 날카로움이다. <code>ὁ κύριος</code>의 지시 대상은 본문이 못박지 않았고(한정 ①), RP 본문에서는 주어 명시 방식이 달라 교체 자체가 다르게 배열된다(한정 ③ⓑ). 그럼에도 <strong>허락된 목적어가 행위의 보고였고, 그 보고가 이름을 데려왔다</strong>는 배치는 남는다.</li>
+<li><strong>연결 고리</strong>: 막 5:19-20 / <a href="§3③ 형태 확정 · §5 · §6② 판본 주의 둘">[09_구문묵상_마가복음_5_1-20]</a> / [[09_일상의깊은사고_마가복음_5_1-20]] 통찰 3️⃣ / 시 66:16 — 선포의 목적어</li>
+</ul>
+<hr />
+<h2>위키 연결망</h2>
+<blockquote>
+<p>[!todo] 연결 확인 — 아래 링크는 제안입니다. vault의 실제 노트와 대조하세요.</p>
+</blockquote>
+<ul>
+<li>[[09_구문묵상_마가복음_5_1-20]] — 모든 원어 근거의 출처(§3③ 계열 대조표와 R21 유보 · §5 주동사 확정 · §6① 목적어 대조 · 판본 주의 둘)</li>
+<li>[[09_일상의깊은사고_마가복음_5_1-20]] — 이 씨앗(통찰 1️⃣)의 출처이며 선정표 번호의 기준</li>
+<li>[[08_구문묵상_마가복음_4_26-41]] — 직전 단위. 구별선은 <strong>복종의 수신자 ↔ 말하기 금지의 예외</strong>이며, 5:9의 수 불일치는 그쪽 형식에 속한다</li>
+<li>[[10_구문묵상_마가복음_5_21-43]] — 직후 단위. 5:43의 함구령은 <strong>축을 여기서 가져갔고</strong>, 그쪽은 호칭의 분포를 맡는다</li>
+<li>[[30_구문묵상_마가복음_16_1-20]] — 말하기 명령이 겹치는 먼 단위. <strong>동사가 다르다</strong>(<code>ἀπαγγέλλω</code> ↔ <code>λέγω</code>)</li>
+<li>[[00_마가복음_묵상단위_마스터]] — 전담 배정표(메시아 비밀 → #09) 및 축 중복 방지 대장</li>
+<li>신규 생성 추천: [[금지의_목적어_읽기]] / [[예외가_규칙을_드러내는_구조]] / [[정체의_공표와_행위의_보고]]</li>
+</ul>
+<h3>이 씨앗의 T13 노트 인덱스</h3>
+<pre><code class="language-dataview">LIST FROM #t13 AND [[]]
+SORT file.name ASC
+</code></pre>
+<h3>최근 13단계 확장 노트</h3>
+<pre><code class="language-dataview">TABLE seed_source, lens, created FROM #t13/허브
+SORT created DESC
+LIMIT 10
+</code></pre>
+<hr />
+<h2>다음 질문 5</h2>
+<ol>
+<li><strong>(1 관찰)</strong> <code>ἀπαγγέλλω</code>가 이 단락에서 도망한 자들(5:14)과 보냄받은 자(5:19) <strong>양쪽에</strong> 쓰였다면, 마가에서 이 동사가 쓰인 나머지 자리들(6:30 · 16:10 · 16:13)의 주어를 전수로 모으면 「보고하는 입」의 목록에 무엇이 드러나는가?</li>
+<li><strong>(5 패턴 형성)</strong> 금지·허용의 목적어를 대조하는 이 표를 마태·누가의 병행 자리에 적용하면, 목적어의 종류가 복음서마다 달라지는가?</li>
+<li><strong>(6 유추)</strong> 세 유추가 모두 「이유」에서 깨졌다. 본문이 이유를 적지 않은 다른 자리들(5:13의 <code>ἐπέτρεψεν</code>, 5:17의 축출 요청)에서도 같은 깨짐이 일어나는가, 아니면 이 단락만의 서술 습관인가?</li>
+<li><strong>(9 차원적 사고)</strong> 완료형 <code>πεποίηκεν</code>이 「지금 남아 있는 상태」를 가리킨다면, 신약에서 증언 명령의 목적어 동사가 완료로 적힌 자리를 모으면 증언론에 무엇이 더해지는가?</li>
+<li><strong>(13 통합)</strong> 「주께서 하신 일」이 「예수께서 하신 일」로 발음된 이 겹침을, <code>ὁ κύριος</code>의 지시 대상을 닫지 않은 채 설교에서 전달하는 것이 가능한가 — 가능하다면 어떤 문장 형식으로?</li>
+</ol>
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 9 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
