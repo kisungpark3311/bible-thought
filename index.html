@@ -129,6 +129,10 @@
 <div class="arrow">→</div>
 </a>
 </div>
+<h2 class="section-title">일상의 깊은 사고 (마가복음)</h2>
+<div class="list-group" id="mark-list">
+<!-- 자바스크립트로 리스트 렌더링 -->
+</div>
 <h2 class="section-title">일상의 깊은 사고 (10월: 역대상, 아가)</h2>
 <div class="list-group" id="october-list">
 <!-- 자바스크립트로 리스트 렌더링 -->
@@ -255,6 +259,24 @@
                 <div class="arrow">→</div>
             `;
             ephContainer.appendChild(link);
+        }
+
+        // 마가복음 1~30
+        const markContainer = document.getElementById('mark-list');
+        for (let i = 1; i <= 30; i++) {
+            const numStr = String(i).padStart(2, '0');
+            const link = document.createElement('a');
+            link.href = `./mark/${numStr}_깊은사고.html`;
+            link.className = 'list-item';
+            
+            link.innerHTML = `
+                <div class="item-info">
+                    <h3>일상의 깊은 사고 (${i}편)</h3>
+                    <p>마가복음 묵상</p>
+                </div>
+                <div class="arrow">→</div>
+            `;
+            markContainer.appendChild(link);
         }
 
         // 10월 1일~31일
