@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>명부의 마지막 줄에는 일이 적혀 있지 않습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 04일 &middot; 역대상 18:9-17</span>
+      <h1>명부의 마지막 줄에는 일이 적혀 있지 않습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p class="lead">새로운 계절이나 연말이 되면 우리는 공동체의 조직도나 봉사자 명단을 받아 듭니다. 그 종이를 펼칠 때 사람들은 본능적으로 자신의 이름을 찾고, 이름 바로 옆에 붙은 괄호 속 글자를 확인합니다. '팀장', '총무', '교사', '찬양대원'. 그곳에 분명하고 또렷한 직함이 적혀 있을 때 우리는 비로소 안도합니다. 내가 이 자리에 속해 있다는 소속감, 그리고 내가 누군가에게 쓸모 있는 사람이라는 안도감이 그 작은 괄호 속 단어에서 피어나기 때문입니다.</p>
+<p>반대로 그 칸이 비어 있거나, 무심하게 '기타' 혹은 '지원'이라는 모호한 말로 채워져 있을 때 우리의 마음에는 서늘한 바람이 붑니다. 성과와 효율을 숭배하는 세상에서 직함이 없다는 것은 곧 '쓸모없음'을 뜻하는 것처럼 느껴지기 때문입니다. 우리는 언제나 내가 무엇을 할 수 있는 사람인지, 어떤 실적을 손에 쥐고 있는지를 끊임없이 증명해야만 겨우 한 사람분의 자리를 허락받는 고단한 시대를 살아가고 있습니다.</p>
+<h2>여섯 번째 자리의 낯선 침묵</h2>
+<p>역대상 18장은 다윗 왕국의 가장 찬란한 절정기를 그리고 있습니다. 주변 열방과의 전쟁에서 연전연승을 거두고, 하맛 왕이 보낸 번쩍이는 금과 은과 놋그릇이 줄을 지어 들어옵니다. 그 화려한 정복과 번영의 기록 끝머리인 15절부터 17절에 이르면, 다윗 왕국을 지탱하는 최고 지도자들의 내각 명부가 장엄하게 펼쳐집니다.</p>
+<p>명부를 한 줄 한 줄 내려 읽다 보면 한눈에 일목요연한 규칙이 보입니다. 스루야의 아들 요압에게는 '군대'가 붙고, 아힐룻의 아들 여호사밧에게는 역사를 기록하는 '사관'의 직무가 붙습니다. 사독과 아비멜렉에게는 '제사장'이라는 거룩한 영역이, 사워사에게는 문서를 총괄하는 '서기관'의 직임이 주어집니다. 여호야다의 아들 브나야는 왕을 경호하는 '그렛과 블렛 사람'을 관할합니다. 앞선 다섯 자리에는 하나같이 무엇을 맡아 다스려야 하는지, 그 구체적인 일과 대상이 빈틈없이 적혀 있습니다.</p>
+<p>그런데 이 엄격한 명부의 맨 마지막 줄, 여섯 번째 자리에 이르러 성경의 문법은 기묘하게 꺾입니다. <em>"다윗의 아들들은 왕을 모시는 수령이 되니라."</em> 우리말 성경은 '수령'이라고 번역했지만, 히브리어 원문을 들여다보면 그곳에는 어떠한 행정 직무도, 관할할 영역도 적혀 있지 않습니다. 거기에 놓인 단어는 오직 두 개, <strong>'하리쇼님(הָרִאשֹׁנִים, 첫째가는 자들)'</strong>과 <strong>'르야드 함멜렉(לְיַד הַמֶּלֶךְ, 왕의 손 곁에)'</strong>뿐입니다.</p>
+<p>앞선 이들에게는 '무엇을 할 것인가'라는 구체적인 일(Job)이 주어졌지만, 왕의 아들들에게 주어진 것은 일이 아니라 서열과 위치(Presence)였습니다. 그들에게는 관할할 군사도, 결재할 장부도 없었습니다. 오직 '왕의 손이 닿는 가장 가까운 곁'이라는 자리만이 그들의 몫이었습니다.</p>
+<div class="essay-quote">
+        “명부의 마지막 줄에서 성경은 칸을 채우지 않은 채 멈춰 섭니다.<br/>
+        그들이 가진 것은 맡겨진 일이 아니라, 왕의 손 곁에 머무는 자리였습니다.”
+      </div>
+<h2>쓸모를 잃어버린 계절을 지날 때</h2>
+<p>세상의 장부에서는 일이 적히지 않은 빈칸을 무능이나 잉여로 취급합니다. 하지만 성경의 명부는 그 자리를 지워버리거나 부끄럽게 감추지 않았습니다. 오히려 그 낯선 빈칸을 당당하게 명부의 마지막 줄에 남겨두었습니다. 이것은 오늘을 살아가는 우리에게 말할 수 없이 깊고 다정한 위로를 건넵니다.</p>
+<p>인생을 걷다 보면 손에 쥐고 있던 모든 도구를 어쩔 수 없이 내려놓아야 하는 메마른 계절을 만납니다. 갑작스러운 질병으로 병상에 누워 있거나, 믿었던 직장을 잃고 이력서의 빈칸을 바라볼 때, 혹은 어린아이를 품에 안고 세상의 빠른 흐름에서 한 발짝 물러나 고립된 하루를 보낼 때가 있습니다. 평생을 불태웠던 사역과 일터에서 물러나 더 이상 남들에게 내세울 명함 한 장 남아 있지 않을 때, 우리는 깊은 자괴감에 빠집니다. "하나님, 저는 지금 아무것도 하지 못하고 있습니다. 제 인생의 명부는 이제 텅 빈 공란입니까?"</p>
+<p>그러나 역대기의 마지막 줄은 우리에게 조용히 속삭입니다. 하나님 나라에서 당신의 가치는 손에 쥔 직무와 생산성으로 결정되지 않는다고 말입니다. 왕의 아들에게 진정으로 필요한 것은 화려한 행정 실적이 아니라, 왕의 아들이라는 부를 수 없는 신분 그 자체이며, 아버지의 손길이 닿는 곁을 지키는 친밀함입니다. 아무런 일도 하지 못하는 무력한 날에도, 당신이 하나님의 손 곁에 머물러 있다면 당신의 자리는 조금도 비어 있지 않습니다.</p>
+<h2>사건이 아닌 '상태'로 이어지는 다스림</h2>
+<p>이 신비로운 명부 바로 앞인 14절에는 또 하나의 눈부신 문장이 숨 쉬고 있습니다. <em>"다윗이 온 이스라엘을 다스려 모든 백성에게 정의와 공의를 행할새."</em> 성경은 다윗이 공의를 단 한 번 위대하게 성취했다거나, 단회적인 선행을 베풀었다고 기록하지 않습니다. 히브리어 원문은 <strong>'바예히 오세(וַיְהִי עֹשֶׂה)'</strong>, 즉 '있었다'라는 계사와 '행하는'이라는 분사를 겹쳐 씁니다. 이것은 '계속해서 행하는 중이었다'라는 끊어지지 않는 지속적인 상태를 가리킵니다.</p>
+<p>9절부터 13절까지 적힌 전쟁의 승리와 전리품은 찰나에 번쩍였다 사라지는 불꽃놀이 같은 '사건'들이었습니다. 치고, 빼앗고, 수비대를 두는 외적인 승리는 통쾌하지만 언젠가는 과거의 기록으로 남을 뿐입니다. 그러나 자기 백성을 품고 정의와 공의를 흘려보내는 참된 다스림은 이벤트가 아니라 날마다 이어지는 묵직한 '상태'여야 했습니다.</p>
+<p>다섯 손가락을 힘껏 쥐어 주먹을 만드는 것은 짧은 순간에도 얼마든지 할 수 있습니다. 상대를 꺾고 승리를 쟁취하는 일은 강렬합니다. 그러나 쥔 주먹을 천천히 펴서, 손바닥을 아래로 향한 채 연약한 이들의 머리 위를 가만히 덮어주는 일은 전혀 다른 무게를 요구합니다. 그렇게 손을 뻗은 채 1분, 아니 10분만 가만히 서 있어 보십시오. 이내 어깨와 팔목이 뻐근하게 저려오기 시작할 것입니다. 이 '저림'이 바로 사랑과 공의를 지속하는 자가 치러야 하는 거룩한 비용입니다. 다윗이 온 백성에게 행했던 공의는 번쩍이는 승전보가 아니라, 백성들을 향해 편 손을 거두지 않고 온몸으로 견뎌낸 그 저리고 묵직한 시간들의 축적이었습니다.</p>
+<h2>바쳐진 금속과 종이 된 사람</h2>
+<p>역대기 기자는 결코 세상을 동화처럼 순진하게 미화하지 않습니다. 그는 하맛 왕이 보낸 화려한 금과 은과 놋그릇이 하나님께 구별되어 바쳐지는 바로 그 단락 한가운데, 소금 골짜기에서 목숨을 잃은 만 팔천 명의 피 흘림을 나란히 적어둡니다. 그리고 그 땅에 수비대가 들어서고 살아남은 에돔 사람들이 하루아침에 종이 되어버린 가혹한 현실을 숨기지 않고 응시합니다.</p>
+<p>세상의 역사는 승자가 거머쥔 전리품과 눈부신 황금 잔에만 스포트라이트를 비춥니다. 그러나 성경은 황금의 반짝임 뒤편에 웅크리고 있는 인간의 비애와 부서진 생명들의 한숨을 지우지 않고 같은 줄에 나란히 놓습니다. 그리고 이 모순과 긴장으로 가득 찬 인간사의 바닥에서, 단락의 문을 닫는 진짜 주어를 단호하게 선언합니다. <em>"다윗이 어디로 가든지 여호와께서 이기게 하셨더라."</em></p>
+<p>칼을 휘두른 것은 아비새였고 왕관을 쓴 것은 다윗이었지만, 역사의 주어는 결코 인간이 아니었습니다. 싸움을 이기게 하신 분도, 빼앗아 온 금은을 받으시는 분도, 그리고 종이 된 자들의 슬픔을 내려다보시는 분도 오직 여호와 하나님 한 분이셨습니다. 그러므로 인간이 자랑할 수 있는 성취나 업적이란 애초에 존재하지 않습니다. 모든 것이 하나님의 손안에 머물러 있을 뿐입니다.</p>
+<div class="meditation-box">
+<strong>일상의 질문 · 오늘을 살아가는 당신에게</strong>
+<p>오늘 당신의 이름 곁에는 어떤 수식어가 붙어 있습니까? 혹시 아무런 직함도, 내세울 성취도 없어 초조해하고 있지는 않습니까? 하나님께서 오늘 당신에게 원하시는 것은 화려한 실적의 주먹이 아니라, 그분의 손 곁에 조용히 머무는 편 손바닥입니다.</p>
+</div>
+<h2>다시, 왕의 손 곁에서</h2>
+<p>우리는 언제나 첫 줄에 서고 싶어 합니다. 군대를 호령하는 요압이 되고 싶고, 지혜로운 사관이 되어 역사의 중심에 이름을 남기고 싶어 합니다. 내 이름 옆에 거창한 직책이 주렁주렁 매달려야 비로소 가치 있는 인생을 살았다고 착각합니다. 그래서 명부를 읽을 때도 앞선 서너 줄만 서둘러 훑어보고 책을 덮어버리곤 합니다.</p>
+<p>하지만 오늘은 그 명부를 맨 마지막 줄까지 끝까지 읽어보았으면 좋겠습니다. 아무런 맡은 일이 적혀 있지 않아 쓸쓸해 보이는 그 자리, 세상의 기준으로는 무언가 빠져 있는 결핍의 자리에 서서 가만히 숨을 고르고 싶습니다. 그곳은 결코 버려진 자리가 아닙니다. 어떤 화려한 직책보다 영광스러운 자리, 바로 '왕의 손이 닿는 곁'입니다.</p>
+<p>우리의 참된 왕이신 예수 그리스도께서는 십자가 위에서 양손을 넓게 펴신 채, 우리가 지불할 수 없는 사랑의 지속을 온몸으로 감당해 내셨습니다. 그리고 일평생 쓸모를 증명하느라 지치고 헐벗은 우리를 부르십니다. "수고하고 무거운 짐 진 자들아, 내 손 곁으로 오라."</p>
+<p>당신의 손에 아무런 전리품이 들려 있지 않아도 괜찮습니다. 당신의 이름 옆에 세상이 부러워할 직함이 적혀 있지 않아도 결코 초라하지 않습니다. 왕의 손 곁에 머물러 있는 그 자체로, 당신은 이미 가장 안전하고 복된 자리에 서 있기 때문입니다. 일이 멈춘 바로 그 빈칸에서, 비로소 참된 은혜가 시작됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 04일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

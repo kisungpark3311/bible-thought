@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>가장 많이 바친 날, 그림자가 된 사람</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 22일 &middot; 역대상 29:10-19</span>
+      <h1>가장 많이 바친 날, 그림자가 된 사람</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가면서 가장 가슴 벅찬 순간은 언제일까요? 오랜 세월 피땀 흘려 준비한 과업을 마침내 완성했을 때, 혹은 내 인생의 가장 소중한 것을 아낌없이 바쳐 누군가를 감동하게 했을 때일 것입니다. 세상의 논리는 늘 성취의 크기로 사람의 가치를 매깁니다. 손에 쥔 것이 많을수록, 내어놓은 기여가 거대할수록 세상에서 우리의 이름표는 두터워지고 존재의 영토는 견고해진다고 믿기 때문입니다.</p>
+<p>이스라엘의 황금기를 일군 다윗 왕의 일생에도 그런 눈부신 절정의 날이 있었습니다. 역대상 29장은 다윗이 평생의 소원이었던 하나님의 성전을 건축하기 위해, 자신과 백성들의 온갖 보화를 모아 봉헌하는 찬란한 장면을 그립니다. 왕실의 국고가 활짝 열리고 금과 은, 놋과 쇠, 진귀한 보석들이 거대한 산처럼 제단 앞에 쏟아져 들어왔습니다. 상상을 초월하는 예물이 온전히 채워진 그날, 백성들이 벅찬 감격으로 숨을 죽이고 있을 때 다윗이 홀연히 일어섭니다. 하지만 백성들의 환호 속에서 입을 연 다윗의 입술에서는, 승리자의 도취나 영웅적인 자부심과는 전혀 결이 다른 뜻밖의 기도가 흘러나왔습니다.</p>
+<h2>동사가 사라진 찬양 — 행동보다 크신 하나님의 존재</h2>
+<p>다윗의 기도는 하나님을 향한 거룩한 찬송으로 문을 엽니다. “여호와여 광대하심과 권능과 영광과 이김과 위엄이 다 주께 속하였사오니 천지에 있는 것이 다 주의 것이로소이다.”(대상 29:11) 눈부신 언어들이 줄을 잇고, 부와 귀, 존귀와 통치가 덧붙여집니다. 듣기만 해도 가슴이 웅장해지는 찬양의 고조입니다.</p>
+<p>그런데 히브리어 원문을 가만히 들여다보면 참으로 놀랍고 기이한 문법적 침묵을 마주하게 됩니다. 11절부터 13절에 이르는 찬양의 절정 속에 ‘동사’가 단 하나도 없다는 사실입니다. 움직임을 나타내는 술어가 완전히 자취를 감추었습니다. 광대하심을 뜻하는 ‘게둘라’부터 맨 끝의 위엄을 뜻하는 ‘호드’에 이르기까지, 오직 거룩한 명사들만이 고요하게 줄지어 서 있을 뿐입니다.</p>
+<p>우리는 기도할 때 늘 동사에 매달리곤 합니다. “주님, 나를 도우소서. 내 길을 여소서. 이 문제를 해결해 주소서.” 하나님이 과거에 무엇을 행하셨는지를 따지거나, 앞으로 나를 위해 무엇을 해 주셔야 하는지 그분의 행동을 재촉하곤 합니다. 그러나 일생일대의 성취를 목전에 둔 다윗의 시선은 하나님의 행동 너머로 향했습니다. 하나님이 내게 무엇을 해 주셨는가가 아니라, 그분이 누구이시며 무엇이 그분의 것인가. 천지 만물이 이미 온전히 그분의 소유라는 엄숙한 사실 앞에 선 것입니다. 동사가 사라진 그 침묵 속에서, 다윗은 하나님을 내 뜻대로 움직이려는 조급함을 내려놓고 그분의 광대하심이라는 거대한 바다 앞에 가만히 무릎을 꿇었습니다.</p>
+<blockquote>
+<p>“모든 것이 주께로 말미암았사오니 우리가 주의 손에서 받은 것으로 주께 드렸을 뿐이니이다” (대상 29:14)</p>
+</blockquote>
+<h2>유일한 동사 '나탄누' — 우리는 그저 손을 거쳐 보냈을 뿐입니다</h2>
+<p>명사들의 장엄한 행렬이 지나간 뒤, 14절에 이르러서야 비로소 굳어 있던 문장에 하나의 동사가 맥박처럼 뛰기 시작합니다. 바로 <em>‘나탄누’</em>, “우리가 드렸다”라는 동사입니다. 거대한 성전 예물을 바친 인간의 행위가 마침내 동사로 포착된 것입니다.</p>
+<p>그런데 우리말 성경에는 “우리가 주의 손에서 받은 것으로 주께 드렸을 뿐이니이다”라고 번역되어 있어, 마치 ‘받고 나서 드리는’ 두 개의 순차적인 동작처럼 읽힙니다. 하지만 원어 성경을 살펴보면 여기에도 ‘받다’라는 동사는 존재하지 않습니다. 이 구절에 놓인 것은 오직 세 개의 전치사뿐입니다. ‘주에게서(밈메카)’, ‘주의 손에서(우미야드카)’, 그리고 ‘주께로(라크)’.</p>
+<p>‘받았다’는 동작은 문법의 무대 뒤편으로 감추어지고, 오직 ‘주의 손에서 주께로’라는 경로만이 전치사로 조용히 적혀 있습니다. 그리고 인간이 행한 유일한 동사는 오직 ‘내어놓았다(드렸다)’ 하나뿐이었습니다. 다윗은 자신이 엄청난 헌신을 이루어 낸 주체라고 생각하지 않았습니다. 내가 땀 흘려 일구고 전쟁에서 승리하여 쟁취한 금과 은이라 여겼던 것들이, 실상은 애초에 하나님의 손에서 출발하여 잠시 내 손을 거쳐 다시 그분께로 돌아가는 거룩한 순환의 한 지점이었음을 간파한 것입니다. 통장의 잔고나 손에 쥔 숫자는 영원히 내 것이 될 수 없으며, 인간이란 단지 그 거대한 은혜의 흐름을 막지 않고 다음 자리로 흘려보내는 정직한 ‘통로’일 뿐이라는 자각이었습니다.</p>
+<blockquote>
+<p>“우리는 우리 조상들과 같이 주님 앞에서 이방 나그네와 거류민들이라 세상에 있는 날이 그림자 같아서 희망이 없나이다” (대상 29:15)</p>
+</blockquote>
+<h2>가장 많이 바친 날, 스스로를 '그림자'라 부른 사람</h2>
+<p>그러나 이 기도의 진짜 절정은 바로 그 다음 문장인 15절에 숨어 있습니다. 수천 톤의 금과 은을 바쳐 백성들의 칭송이 하늘을 찌르던 바로 그 순간, 다윗은 기도의 흐름을 완전히 뒤엎는 낯설고 시린 고백을 쏟아냅니다. “우리는 주님 앞에서 이방 나그네와 거류민들이라 세상에 있는 날이 그림자 같아서 희망이 없나이다.”</p>
+<p>이 구절 역시 동사가 단 하나도 없습니다. 열세 개의 낱말이 ‘나그네(게림)’, ‘우거한 자(토샤빔)’, ‘그림자(카첼)’, 그리고 ‘없다(엔 미크베)’라는 뼈아픈 단어들로만 이어집니다. 나그네와 우거한 자란 자기 이름으로 등기된 땅 한 평 갖지 못한 무력한 이들을 가리킵니다. 세상에서 가장 넓은 영토를 다스리고, 가장 거대한 국고를 털어 하나님께 바친 왕이, 바로 그 바침의 자리에서 자신을 향해 ‘땅 없는 나그네’요 ‘해 질 녘 스러지는 그림자’라 부른 것입니다.</p>
+<p>어째서 다윗은 이 축제의 날에 이런 서늘한 말을 꺼냈을까요? 헌신 뒤에 찾아온 공허한 허무주의 때문이었을까요? 아닙니다. 그것은 소유의 환상에서 벗어난 사람만이 누릴 수 있는 지극히 투명한 영적 정직함이었습니다. 무거운 짐을 가득 지고 언덕을 오를 때는 내 손에 들린 짐의 무게가 곧 내 존재의 무게처럼 느껴집니다. 하지만 제단 앞에 그 무거운 금과 은을 남김없이 내려놓고 빈손으로 돌아선 순간, 다윗은 마침내 보았습니다. 내가 쥐고 있던 거대한 부와 권력의 장막을 걷어내고 나니, 거울 앞에 남은 인간 다윗은 조상들이 그러했듯 잠시 지상에 머물다 사라질 하루치 안개요 바람에 흔들리는 그림자에 불과하다는 사실을 말입니다. 가장 많이 내어놓음으로써 그는 가장 깨끗하게 비워졌고, 손을 펴 비워낸 그 자리에서 비로소 자신의 진짜 맨얼굴을 마주한 것입니다.</p>
+<h2>반박하지 않는 은혜 — 두 문장 사이를 메우는 하나님의 손</h2>
+<p>성경의 놀라운 점은, 다윗의 이 뼈아픈 고백 뒤에 곧바로 손쉬운 위로를 덧붙이지 않는다는 사실입니다. “우리의 날이 그림자 같아서 소망이 없나이다”라는 고백 뒤에, “그러나 하나님을 믿으면 소망이 넘칩니다”라는 식의 상투적인 반전이나 교리적 봉합을 시도하지 않습니다. 본문은 그 문장을 그늘진 채로 고요히 놓아둔 뒤, 곧바로 16절로 이어갑니다. “우리가 주의 거룩한 이름을 위하여 전을 건축하려고 미리 저축한 이 모든 물건이 다 주의 손에서 왔사오니...”</p>
+<p>성경은 우리의 연약한 실존과 하나님의 크신 섭리를 억지로 타협시키지 않습니다. ‘그림자 같은 인생’이라는 정직한 자기 인식과, ‘모든 것이 주의 손에서 왔다’는 겸손한 고백을 그저 나란히 두 칸의 장부처럼 펼쳐 놓을 뿐입니다. 인간에게는 소망이 없습니다. 그러나 그 덧없는 그림자 위로 영원하신 하나님의 손길이 가만히 내려앉습니다. 그림자이기에 교만할 수 없고, 주의 손에서 온 은혜이기에 절망할 수도 없는 거룩한 긴장. 다윗의 기도는 결국 사람을 향한 명령이 아니라 하나님을 향한 세 가지 간구로 끝을 맺습니다. “지키소서, 향하게 하소서, 주소서.”(18~19절) 성도를 다그치거나 자녀를 윽박지르기 전에, 사람의 연약한 마음을 영원하신 하나님의 손에 온전히 맡겨 드리는 기도의 무릎이었습니다.</p>
+<h2>소유의 무게를 내려놓고 빈손으로 서는 평안</h2>
+<p>오늘 우리는 매일 아침 눈을 떠 밤에 잠들 때까지 무언가를 손에 쥐기 위해 안간힘을 쓰며 살아갑니다. 통장에 찍힌 잔고, 아파트의 평수, 명함에 적힌 직함, 그리고 교회 안에서 내가 흘린 땀과 봉사의 분량을 헤아리며, 그것이 곧 내 인생의 가치요 안전판이라고 착각합니다. 손에 쥔 것이 줄어들면 내 존재마저 쪼그라드는 것 같아 불안해하고, 손에 쥔 것이 조금만 늘어나면 나도 모르게 어깨에 힘을 주며 다른 사람을 내려다봅니다.</p>
+<p>하지만 성경은 오늘 우리에게 다윗의 빈손을 보여 줍니다. 지금 내놓을 것이 없어 초라한 자리에 계십니까? 이 본문은 우리에게 무언가를 바치라고 다그치지 않습니다. 열 절의 긴 기도 어디에도 사람을 향한 의무나 명령은 없습니다. 반대로, 남들이 부러워할 만큼 많은 것을 이루고 손에 쥔 채 서 계십니까? 내가 이룬 성취를 내 영적 자격이나 권리로 환산하려 하지 마십시오. 그것은 애초에 주의 손에서 잠시 내 손을 거쳐 지나가는 바람 같은 위탁물일 뿐입니다.</p>
+<p>인생의 참된 평안은 더 많이 움켜쥘 때가 아니라, 가만히 손을 펴서 하나님의 제단 위에 내려놓을 때 시작됩니다. 가장 화려하게 성취한 그날, 손을 털고 돌아서서 “주님, 저는 그저 나그네요 그림자일 뿐입니다”라고 맑게 고백할 수 있는 사람. 손에 쥔 소유의 거품을 털어내고 빈손의 나그네로 주님 앞에 설 때, 그림자처럼 덧없는 우리 인생 위에 흔들리지 않는 하나님의 영원한 그늘이 가장 따뜻하고 넉넉하게 드리울 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 22일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

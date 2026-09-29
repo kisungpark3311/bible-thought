@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 손의 수고가 다른 이의 손에서 꽃필 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 03일 &middot; 역대상 18:1-8</span>
+      <h1>내 손의 수고가 다른 이의 손에서 꽃필 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 날마다 저마다의 치열한 삶의 전장으로 나섭니다. 무거운 짐을 지고, 흙먼지를 뒤집어쓰며, 보이지 않는 내일을 향해 묵묵히 발걸음을 옮깁니다. 그러나 온 힘을 다해 하루를 살아내고 집으로 돌아오는 길, 문득 가슴 한구석을 서늘하게 파고드는 질문 하나를 마주할 때가 있습니다. "내가 흘린 이 수많은 땀방울의 끝은 어디로 향하고 있는 걸까?", "혹시 내가 이렇게 애써 일군 결실을 내가 아닌 다른 사람이 누리는 것은 아닐까?" 세상은 언제나 내가 시작한 일의 끝을 내 손으로 맺고, 마지막 영광의 스포트라이트를 온전히 독차지하라고 부추깁니다. 그래서 내가 땀 흘려 준비한 자리에서 내 이름이 빠지거나, 내 손의 수고가 다른 사람의 공로로 이어질 것 같을 때 우리는 깊은 허탈감과 불안에 휩싸이곤 합니다.</p>
+<p>역대상 18장을 펼치면 온통 숨 가쁜 전쟁의 소리가 가득합니다. 다윗은 동서남북을 누비며 적들을 치고, 항복을 받아내고, 전차 말의 힘줄을 끊으며, 수많은 전리품을 거두어들입니다. 쳤다, 빼앗았다, 사로잡았다, 가져왔다. 문장마다 거친 노동과 땀 냄새가 짙게 배어 있습니다. 그런데 이 숨 가쁜 정복의 행렬이 멈춰 서는 8절에 이르면, 문장의 결이 기이할 정도로 고요하게 바뀌며 전혀 다른 사람의 이름 하나가 불쑥 등장합니다.</p>
+<div class="quote">
+        "또 하닷에셀의 성읍 디브핫과 군에서 심히 많은 놋을 빼앗았더니 솔로몬이 그것으로 놋대야와 기둥과 놋그릇들을 만들었더라"
+        <span class="quote-ref">- 역대상 18:8</span>
+</div>
+<h2>내 손으로 시작했으나, 다른 이의 손끝에서 맺히는 결실</h2>
+<p>전쟁터의 비명 속에서 목숨을 걸고 거친 놋을 짊어지고 온 사람은 다윗이었습니다. 그러나 그 놋을 뜨거운 용광로에 녹여 하나님의 거룩한 성전을 지탱할 웅장한 기둥과 놋대야, 그리고 거룩한 그릇들로 빚어낸 손은 다윗이 아닌 그의 아들 <span class="highlight">'솔로몬의 손'</span>이었습니다. 치열하게 싸워 재료를 거둔 사람과, 그것으로 아름다운 성전의 집을 지은 사람의 이름표가 전혀 다릅니다. 다윗의 거친 수고가 다른 사람의 손끝에서 비로소 완성된 것입니다.</p>
+<p>성경은 다윗이 그 놋을 가져오면서 "이것으로 훗날 성전 기구를 만들겠다"고 거창하게 기획했다는 해설을 덧붙이지 않습니다. 그저 한 사람은 묵묵히 놋을 실어 날랐고, 다음 사람은 그 놋을 건네받아 거룩한 기물을 만들었을 뿐입니다. 내가 시작한 일의 마침표를 내 손으로 찍지 못할 때, 내가 땀 흘려 쌓아 올린 기반 위에서 다른 사람이 열매를 거둘 때가 우리 삶에도 찾아옵니다. 성경은 그런 자리가 우리 인생에 엄연히 존재함을, 그리고 그것이 결코 헛된 실패가 아님을 조용히 보여줍니다.</p>
+<h2>거친 흙먼지 묻은 출처를 지우지 않으시는 은혜</h2>
+<p>더욱 깊은 울림을 주는 것은, 성경이 그 놋의 출처를 지우지 않았다는 사실입니다. 거룩한 성전 한복판에 우뚝 선 기둥과 성스러운 그릇이 되었다면, 세상의 방식대로라면 그 남루하고 피비린내 나는 과거의 꼬리표를 떼어내고 싶었을 것입니다. 성공한 이들이 자신의 비천했던 시작과 어두운 과거를 감추고 이력을 세탁하듯 말입니다. 그러나 성경은 한 문장 안에 두 자리를 고스란히 묶어둡니다. "하닷에셀의 성읍 디브핫과 군에서 빼앗은 놋"이라는 거친 출처와, "성전의 기둥과 놋대야"라는 거룩한 행선지가 한 문장 안에서 나란히 숨 쉬고 있습니다.</p>
+<p>이것은 오늘을 살아가는 우리에게 말할 수 없이 깊은 위안을 건넵니다. 하나님은 우리가 눈물로 버텨낸 남루한 어제, 거친 흙먼지 묻은 일터의 노동을 결코 부끄러워하거나 지워버리지 않으십니다. 땀내 나는 일터, 실패의 상처로 얼룩졌던 자리, 거친 전쟁터 같았던 우리의 시간마저도 하나님은 하나도 버리지 않고 품어 안으시며, 당신의 거룩한 은혜를 담아내는 가장 단단한 그릇의 재료로 삼으십니다.</p>
+<h2>치열한 일상의 틈바구니에 스며든 하나님의 구원</h2>
+<p>본문 6절에는 또 하나의 눈부신 고백이 보석처럼 박혀 있습니다. <i>"다윗이 어디로 가든지 여호와께서 이기게 하시니라."</i> 여기서 '이기게 하시다'로 번역된 히브리어 단어는 승리의 무용담을 자랑하는 말이 아니라, 깊은 수렁에서 건져내신다는 뜻의 <strong>'야샤(구원)'</strong>입니다. 성경은 하나님의 이 일하심을 저 높은 하늘의 고상한 해설란에 따로 떼어 적지 않았습니다. 사람이 달리고 넘어지며 부딪히는 치열한 사건들 한복판에, 같은 문장의 모양으로 나란히 끼워 넣었습니다.</p>
+<p>하나님은 우리가 모든 일을 완벽하게 끝마친 뒤에야 찾아오셔서 박수를 치시는 분이 아닙니다. 오늘 우리가 지친 몸으로 만원 버스에 몸을 실을 때, 복잡한 서류와 씨름하며 한숨지을 때, 묵묵히 일상의 무게를 견뎌내는 바로 그 흙먼지 나는 자리에서 우리와 같은 보폭으로 함께 걸으시며 우리를 건져내시는 분입니다. 하나님의 구원은 언제나 우리의 가장 평범하고 고단한 노동의 틈바구니에 조용히 스며들어 있습니다.</p>
+<h2>미완의 수고와 거룩한 이어달리기</h2>
+<p>훗날 다윗은 피를 너무 많이 흘렸다는 이유로 성전을 직접 건축하지 못하고 물러나야 했습니다(역대상 22:8). 하나님이 함께하셔서 이기게 하신 전쟁이었지만, 그 손에 묻은 피 때문에 그는 성전의 문턱에서 멈춰 서야 했습니다. 성경은 이 아프고 역설적인 긴장을 억지로 포장하거나 지우지 않고 그대로 둡니다. 만약 다윗이 "내가 피땀 흘려 모아온 놋이니 반드시 내 이름으로 성전을 지어야 한다"고 고집부렸다면, 그는 결코 다윗이 될 수 없었을 것입니다.</p>
+<p>그는 멈춰 서야 할 때를 알았습니다. 거친 놋을 성실하게 실어 나르는 것까지가 자신의 몫임을 인정하고, 성전을 완성하는 영광은 다음 사람의 손에 기쁘게 넘겨주었습니다. 우리의 인생은 홀로 결승선을 통과해야 하는 외로운 독주가 아니라, 하나님 나라를 향해 손을 맞잡고 달리는 거룩한 '이어달리기'입니다. 내가 거친 놋을 나르는 역할을 맡았다면, 그것으로 아름다운 기둥을 세우는 것은 다음 세대의 몫일 수 있습니다. 내 손의 수고가 다른 이의 손끝에서 완성되는 것은 빼앗김이 아니라, 가장 아름다운 헌신이자 신뢰입니다.</p>
+<div class="blessing">
+        당신이 묵묵히 흘린 땀방울의 내력을<br/>
+        하나님은 결코 잊지도, 지우지도 않으십니다.<br/><br/>
+        오늘 당신이 거칠게 짊어지고 온 그 놋들이,<br/>
+        내일 누군가의 손을 통해 거룩한 성전의 기둥으로 우뚝 설 것입니다.<br/><br/>
+        끝을 내 손으로 다 맺지 못해도 괜찮습니다.<br/>
+        주님의 거룩한 이어달리기 한복판을 달리고 있는 당신의 오늘 위에<br/>
+        깊은 평안과 따뜻한 위로가 가득하기를 기도합니다.
+      </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 03일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

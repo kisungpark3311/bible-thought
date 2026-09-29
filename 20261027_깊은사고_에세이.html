@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 27일 &middot; 아가 4:1-16</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 누군가를 바라볼 때 너무 쉽게 '뜻'과 '평가'로 건너뜁니다. 어떤 이의 눈부신 성공을 보면 "대단하다"며 치켜세우고, 누군가의 짙은 그늘을 보면 "다 깊은 뜻이 있을 것"이라며 서둘러 신앙적 위로나 교훈의 도장을 찍어버립니다. 말은 언제나 가볍고 빨라서 허공을 훨훨 날아다니지만, 정작 그 자리를 묵묵히 버텨낸 사람의 구체적인 피로와 땀방울은 그 거창한 수식어 뒤편으로 무심하게 지워지곤 합니다. 뜻과 의미로 서둘러 날아오르는 사이, 우리 곁에 살아서 숨 쉬는 '사람'은 어디론가 사라져 버리는 것입니다.</p>
+<p>수천 년 전 기록된 가장 뜨겁고 아름다운 사랑의 노래, 성경의 아가서 4장을 가만히 들여다보면 문득 낯설고도 경이로운 문법의 풍경을 마주하게 됩니다. 아가서 전체 여덟 장을 샅샅이 뒤져보아도, 이 4장만큼 누군가에게 행동을 요구하는 '동사'가 적은 장은 없습니다. 열여섯 절의 긴 노래 속에 정동사는 고작 열여덟 개에 불과합니다. 반대로 "네 눈", "네 머리털", "네 입술"처럼 상대를 가리키는 2인칭 소유의 조각은 스물세 번이나 쏟아집니다. 아가서 전체에서 행위의 동사보다 상대를 부르는 말이 더 많은 장은 오직 4장 하나뿐입니다.</p>
+<p>이것은 무엇을 말해줍니까? 화자는 지금 눈앞의 연인을 향해 "무엇을 하라"고 재촉하거나, 어떤 유익한 결과를 내놓으라고 요구하지 않습니다. 상대방을 행동과 실적의 주어로 세우는 대신, 그의 눈과 머리털, 치아와 입술, 목과 가슴에 이르기까지, 존재의 마디마디에 스물세 번이나 가만히 손을 얹으며 그의 이름을 불러줄 뿐입니다. 참된 사랑은 상대에게 끊임없이 쓸모와 성취를 캐묻는 조급함을 내려놓고, 그가 거기에 그저 존재한다는 사실 하나만을 오롯이 응시하는 다정한 머무름에서 시작된다는 것을 본문은 말없이 웅변합니다.</p>
+<p>더욱 깊은 울림을 주는 것은 그 찬사를 엮어 올린 '재료'들입니다. 화자는 저 먼 밤하늘의 추상적인 별이나 허공의 구름을 따오지 않았습니다. 그가 연인을 칭찬하기 위해 가져온 재료들은 전부 흙냄새가 물씬 풍기고 사람의 거친 손때가 묻어 있는 지상의 노동 현장에서 왔습니다. "털을 깎고 씻는 곳에서 막 올라온 양 떼" 같다는 치아를 보십시오. 그것은 저절로 빚어진 자연 풍경이 아닙니다. 진흙과 오물이 엉겨 붙은 양털을 하나하나 조심스레 깎아내고, 차가운 물가에서 허리를 굽혀 씻겨낸 목동들의 고단한 노동이 그 비유의 등 뒤에 숨 쉬고 있습니다.</p>
+<p>연인의 목을 찬양하며 끌어온 비유는 또 어떠합니까? 화자는 뜻밖에도 "다윗의 망대, 곧 용사들의 방패 천 개가 걸려 있는 무기고"를 가져옵니다. 아름다움을 노래하는 시 한가운데에 서늘한 쇠 냄새가 진동하는 '무기'가 걸려 있는 것입니다. 사랑하는 이를 지켜내기 위해 치러야 했던 수많은 날의 긴장, 험한 세상을 온몸으로 막아내며 둘러쳤던 방패들의 상처와 수호의 기억이 연인의 목선 위로 겹쳐집니다. 화자는 사랑을 그저 달콤한 감상으로 포장하지 않고, 누군가를 지킨다는 일의 무거움과 서늘함을 정직하게 직시합니다.</p>
+<p>4장의 후반부인 13절과 14절에 이르면, 몰약과 침향, 나도와 번홍화, 창포와 계수 등 아홉 가지 향품의 이름이 숨 가쁘게 이어집니다. 이 향기로운 보물들은 팔레스타인의 작은 텃밭에서 한꺼번에 피어날 수 있는 것들이 아닙니다. 거친 파도를 넘고 뜨거운 사막의 모래바람을 뚫으며, 수천 킬로미터의 거리를 건너온 '원거리 교역품'들입니다. 누군가의 고단한 이동과 위험, 발바닥이 부르트는 상인들의 발걸음이 없었다면 결코 한자리에 놓일 수 없는 향기였습니다. 본문은 연인의 아름다움을 칭찬하면서, 이렇듯 목축 노동과 무기고의 방패, 그리고 대륙을 건너온 교역의 수고를 아낌없이 끌어다 씁니다. 아름답다는 말의 값은, 그 말을 짓기 위해 가져온 삶의 재료들을 지우지 않는 정직함에서 비롯되기 때문입니다.</p>
+<p>성경은 삶의 그늘과 긴장을 섣불리 지워버리는 값싼 긍정을 경계합니다. 칭찬의 목록이 눈부시게 이어지는 2절의 한복판에, 성경은 굳이 "새끼 잃은 것 없는"이라는 상실의 단어를 얹어놓습니다. 부정이 붙어 있긴 하지만, '새끼를 잃어버린 어미의 비애'라는 날카로운 통증이 찬란한 찬가 한가운데로 불쑥 파고듭니다. 8절에서는 험준한 산 이름을 읊조리다 말고 "사자들의 거처와 표범들의 산"을 불쑥 응시합니다. 심지어 6절에서 화자는 "내가 몰약 산으로 가겠다"며 홀로 떠남을 선언했다가, 두 절 뒤인 8절에서는 "나와 함께 가자"며 동행을 청합니다. 본문은 이 모순된 마음과 상실의 그림자, 맹수가 도사리는 위험을 굳이 설명하거나 봉합하려 들지 않습니다. 그저 삶이란 그런 것임을, 사랑의 여정 곁에는 언제나 상실의 기억과 설명되지 않는 긴장이 나란히 걷고 있음을 정직하게 펼쳐둘 뿐입니다.</p>
+<p>이 오래된 노래는 오늘을 살아가는 우리에게 서늘한 거울을 비춥니다. 우리는 일상에서 누군가를 칭찬하고 격려할 때, 그 말의 재료를 어디서 가져오고 있습니까? 주일 예배를 마치고 돌아서며 "오늘 예배가 참 은혜로웠다"는 매끄러운 감탄을 뱉기 전에, 주일 새벽 차가운 예배당의 난방을 켜고, 묵묵히 주보를 접고, 보이지 않는 구석의 쓰레기를 치운 이의 거친 손을 한 번이라도 떠올려 보았습니까? 말의 재료가 된 사람들의 땀을 지워버릴 때, 우리의 칭찬은 누구도 위로하지 못하는 허공의 메아리가 됩니다.</p>
+<p>일터에서도 마찬가지입니다. 회계 장부와 세금계산서의 차가운 숫자를 들여다볼 때, 그 영수증 한 장 뒤편에 어두운 밤길을 달려 화물을 실어 나른 기사의 피로와 물건을 포장한 노동자의 굳은살이 깃들어 있음을 기억해야 합니다. 숫자로만 거래를 바라보는 것은 사람의 경로를 지워버리는 일입니다. 또한 우리가 가정을 지킨다는 명분으로 벽에 걸어둔 차가운 침묵과 방어기제가, 혹시 상대를 겨누는 또 다른 '무기'가 되어 있지는 않은지 돌아보아야 합니다. 무기는 지키기 위해 걸어두었다 해도, 결국 누군가에게는 위협이 되는 법입니다.</p>
+<p>그리고 오늘, 이 찬란한 사랑의 노래 앞에서 단 한 줄도 자기 것으로 가져오지 못해 아득한 벼랑 끝에 서 있는 이들이 있습니다. 품에 안았던 아이를 먼저 떠나보낸 사람, 병들고 노쇠하여 세상의 칭찬 목록에서 영원히 지워진 것만 같은 사람, 오늘 하루 온종일 아무도 다정하게 이름을 불러주지 않은 쓸쓸한 사람입니다. 우리는 그들을 향해 "이 말씀으로 위로를 받으라"며 값싼 신앙적 해명을 들이밀지 말아야 합니다. 본문이 칭찬의 한가운데 상실의 낱말을 둔 채 아무런 설명을 달지 않았듯이, 오늘 우리가 해야 할 일은 서툰 정답을 지어내는 것이 아니라 그저 말없이 그들의 상실 곁으로 가 나란히 앉아주는 것까지입니다.</p>
+<p>염소는 염소이고, 방패는 방패입니다. 사람을 뜻으로 바꾸기 전에, 그 사람이 살아낸 몸과 땀방울을 먼저 바라보아야 합니다. 거창한 영적 수식어로 상대의 현실을 덮어버리지 않고, 그가 여기까지 걸어오며 치러낸 노동과 상처, 그리고 험한 세상에서 버텨낸 방패의 무게를 온전히 인정해 주는 것. 그것이 아가서 4장이 스물세 번의 부름을 통해 우리에게 건네는 참된 사랑의 예의입니다. 오늘 하루, 내 곁에 있는 이들의 화려한 결과물이 아니라, 그 결과를 빚어내느라 닳아진 거친 손과 발걸음을 다정한 눈빛으로 먼저 어루만져 주는 우리가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 27일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

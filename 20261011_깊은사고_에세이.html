@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내가 다 짓지 못해도 좋은 이유</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 11일 &middot; 역대상 22:2-19</span>
+      <h1>내가 다 짓지 못해도 좋은 이유</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p class="lead">우리는 누구나 자기 생을 바쳐 완성하고 싶은 성전 하나쯤을 가슴에 품고 살아갑니다. 밤낮으로 피땀 흘려 일군 일터일 수도 있고, 온 힘을 다해 키워낸 자녀의 삶일 수도 있으며, 평생의 소명을 바친 어떤 거룩한 자리일 수도 있습니다.</p>
+<p>"이것만큼은 내 손으로 끝맺으리라. 내 이름을 걸고 이 집을 기어이 완성하리라." 그 간절한 열망 하나로 우리는 수많은 밤의 피로를 견디고, 세상의 거친 비바람을 묵묵히 버텨냅니다. 성취를 눈앞에 둔 사람은 자신의 땀방울이 곧 영광의 머릿돌이 될 날만을 손꼽아 기다립니다.</p>
+<p>그런데 때로 삶의 가장 잔인한 순간은 가장 정점에 서 있을 때 찾아옵니다. 모든 난관을 극복하고 마침내 그 일을 이룰 수 있는 힘과 자원을 다 쥐었다고 믿었던 순간, 하늘로부터 청천벽력 같은 음성이 들려옵니다. "너는 여기까지다. 이 집을 건축할 사람은 네가 아니다."</p>
+<p>구약 성경 역대상 22장에 등장하는 다윗 왕이 마주한 자리가 바로 그곳이었습니다. 들판의 양치기 소년에서 시작해 숱한 사선을 넘나들며 이스라엘의 통일 왕국을 일구어낸 왕, 평생을 떠돌던 하나님의 언약궤를 모실 웅장한 성전을 짓는 것만이 평생의 유일한 꿈이었던 사람. 그러나 하나님은 다윗의 가슴에 단호한 빗장을 지르십니다. "너는 피를 심히 많이 흘렸고 크게 전쟁하였느니라. 내 이름을 위하여 성전을 건축하지 못하리라." 평생을 바친 열망이 단 한마디로 거절당하는 순간, 그 심장의 무너져 내림을 무엇으로 다 설명할 수 있을까요.</p>
+<h2>거절당한 사람이 돌보다 먼저 모은 손들</h2>
+<p>사람은 거절 앞에서 너무도 쉽게 비틀거립니다. 내가 주인공이 될 수 없다면 판을 엎어버리고 싶어 하고, 내 이름이 완공의 기념비에 새겨지지 않는다면 차라리 아무것도 하지 않겠다며 손을 놓아버리곤 합니다. "내가 어떻게 여기까지 왔는데, 왜 내가 아니란 말인가." 억울함과 배신감이 영혼을 사로잡기 십상입니다.</p>
+<p>그러나 역대상 22장의 다윗은 전혀 다른 길을 걸어갑니다. 그는 주저앉아 신세를 한탄하거나 섭섭함에 등을 돌리지 않았습니다. 성전을 짓지 못한다는 최종 판결을 가슴에 품은 채, 그는 곧바로 다음 걸음을 뗍니다. 자신이 결코 들어갈 수 없는 그 집을 위해, 자신의 손으로 완공의 기쁨을 누릴 수 없는 그 거룩한 터전을 위해 묵묵히 준비를 시작한 것입니다.</p>
+<p>놀랍게도 다윗이 가장 먼저 착수한 일은 화려한 보석이나 값비싼 대리석을 고르는 일이 아니었습니다. 성경은 그 첫 동작을 이렇게 기록합니다. "다윗이 명령하여 이스라엘 땅에 거류하는 이방 사람을 모으고 석수를 시켜 하나님의 성전을 건축할 돌을 다듬게 하고." 그가 가장 먼저 모은 것은 돌이 아니라 사람이었습니다. 그것도 이스라엘 본토인이 아니라 변방에 머물던 나그네와 거류민들이었습니다.</p>
+<p>다윗은 자신의 이름이 결코 새겨질 수 없는 집을 짓기 위해, 세상에서 가장 이름 없는 사람들의 거친 손을 모았습니다. 땀 냄새 나는 채석장에서 묵묵히 정을 치고 망치를 두드리던 이방 석수들의 손. 성전이라는 거대한 영광의 이면에는, 거절당한 한 늙은 왕의 겸손과 가장 소외된 자들의 정직한 노동이 든든한 밑거름처럼 깔려 있었던 것입니다.</p>
+<h2>'달 수 없는 무게' 앞에 놓인 단 한마디, "내 고난 중에"</h2>
+<p>다윗이 성전을 위해 모아둔 자재의 목록은 실로 입이 떡 벌어질 만큼 거대합니다. 금 십만 달란트, 은 백만 달란트, 그리고 무게를 달 수조차 없을 만큼 엄청난 양의 놋과 철, 산더미 같은 백향목. 고대 세계의 기준으로는 상상조차 할 수 없는 천문학적인 분량입니다.</p>
+<p>그런데 그 찬란한 보물과 끝없는 숫자의 목록을 열어젖히는 22장 14절의 첫머리에서, 다윗은 참으로 뜻밖의 고백을 나직이 읊조립니다. "내가 환난 중에 여호와의 성전을 위하여 준비하였고." 히브리어 원문으로 보면 '베오느이(בְעָנְיִי)', 곧 "내 고난 중에", "나의 가난하고 비천한 시간 속에서"라는 단어가 저 거대한 금과 은의 숫자들 맨 앞에 외롭게 서 있습니다.</p>
+<blockquote>"내가 고난 중에 여호와의 성전을 위하여 준비하였고…<br/>너는 거기에 더하라." (역대상 22:14)</blockquote>
+<p>사람은 본래 자기 치적을 과시하고 싶어 하는 존재입니다. 막대한 성취를 이루고 나면 "내가 이만큼 성공했고 부유했기에 이토록 큰일을 해냈다"고 뻐기거나, 혹은 "내가 이토록 뼈를 깎는 고통을 겪었으니 내 헌신을 세상이 알아주어야 마땅하다"며 고난과 성취 사이에 영웅적인 인과관계를 덧붙이곤 합니다.</p>
+<p>하지만 성경은 다윗의 입술을 통해 그 어떤 인위적인 접속사도 허락하지 않습니다. "고난을 겪었지만 이겨냈다"거나 "고생했으니 보상을 바란다"는 식의 군더더기가 없습니다. 그저 "나는 고통 속에 있었고, 상처투성이의 환난을 지나왔으며, 바로 그 시간 속에서 이 무게를 달 수 없는 것들을 모았다"고 나란히 놓을 뿐입니다. 자신의 아픔을 훈장으로 내세워 누군가를 압박하지도 않고, 거대한 성취를 방패 삼아 교만해지지도 않는 담백한 정직함. 상처와 풍요를 억지로 꿰매지 않고 하나님 앞에 있는 그대로 올려놓는 고요한 인격이 그 한마디에 깃들어 있습니다.</p>
+<h2>자재 목록 사이에 숨겨진 가장 눈부신 은혜</h2>
+<p>철과 놋, 거친 돌과 나무의 건조한 목록이 한참 이어지던 한가운데, 불현듯 가슴을 저미는 따스한 말씀 한 구절이 불쑥 모습을 드러냅니다. "그는 내 아들이 되고 나는 그의 아버지가 되리라."</p>
+<p>성전 건축이라는 거대한 프로젝트의 설명서 한복판에, 하나님은 밑줄도 긋지 않은 채 가장 다정한 사랑의 언약을 숨겨두셨습니다. 하나님은 다윗에게서 "너는 성전을 짓지 못한다"며 건축가의 칼자루를 빼앗으셨지만, 그 빈손에 "네 아들을 통해 평화를 줄 것이며, 그 아들은 내 아들이 될 것이다"라는 영원한 관계의 약속을 가득 쥐여주셨습니다.</p>
+<p>우리는 내가 세운 계획이 꺾이고 내 손의 사역이 중단되면, 하나님이 나를 버리셨거나 내 인생이 실패했다고 지레 절망하곤 합니다. 일의 문이 닫히면 하나님과의 관계마저 끝난 것처럼 비명을 지릅니다. 그러나 하나님은 우리의 거창한 업적보다 우리와의 관계를 더 소중히 여기시는 분입니다. 때로는 우리의 교만한 손에서 망치를 빼앗으심으로써, 비로소 우리가 당신의 사랑받는 자녀이자 아버지 품에 안긴 존재임을 다시 깨닫게 하십니다. 일은 멈추어도, 사랑은 결코 멈추지 않는 법입니다.</p>
+<h2>"내가 준비하였으니, 너는 거기에 더하라"</h2>
+<p>역대상 22장에서 가장 아름답고 눈물겨운 순간은, 다윗이 어린 아들 솔로몬에게 건네는 마지막 인수인계의 한마디입니다. "내가 준비하였고… 너는 거기에 더하라."</p>
+<p>히브리어 성경을 가만히 들여다보면, 이 한 절 안에서 다윗의 말은 완료형('하키노티'—내가 마쳤다)으로 맺어지고, 솔로몬을 향한 말은 미완료형('토시프'—너는 더할 것이다)으로 열립니다. 한 문장 안에서 떠나는 자의 마침표와 걸어 들어오는 자의 쉼표가 맞닿는 경이로운 순간입니다.</p>
+<p>얼마나 성숙하고 눈부신 물러섬입니까. "내가 다 해놓았으니 너는 내 뜻대로 숟가락만 얹어라"가 아닙니다. "내가 모든 것을 통제할 테니 너는 내 그림자 아래 머물라"는 집착도 아닙니다. "내 몫은 여기까지 기초를 파고 목재를 모아두는 것까지다. 이제 기둥을 세우고 지붕을 얹어 집을 완성하는 거룩한 영광은 온전히 너의 몫이다." 자신의 한계를 기쁘게 인정하고, 다음 사람이 숨 쉴 수 있는 넉넉한 공간을 비워주는 사람. 내가 시작한 일의 결실을 다음 세대가 온전히 누리도록 축복하며 미련 없이 손을 털고 일어서는 뒷모습이야말로, 성경이 우리에게 가르쳐주는 가장 고결한 어른의 품격입니다.</p>
+<h2>삶의 미완성이라는 거룩한 선물</h2>
+<p>다윗의 생애는 매끄러운 해피엔딩의 동화가 아니었습니다. 역대상 22장 안에는 여전히 풀리지 않는 서늘한 긴장이 흐릅니다. 8절에서는 그가 평생 흘린 피 때문에 성전을 짓지 못한다고 꾸짖으시더니, 불과 열 절 뒤인 18절에서는 하나님께서 사방의 대적을 다윗의 손에 넘겨주셨기에 이 땅이 평온을 얻었다고 선언하십니다.</p>
+<p>전쟁터에서 흘린 피는 거절의 이유였을까요, 아니면 평화를 가져온 하나님의 도구였을까요? 성경은 이 모순된 두 사실 사이에 접속사를 넣지 않습니다. "하나님이 그의 전쟁을 쓰시고도 버리셨다"거나 "결국 다 뜻이 있었다"며 함부로 결론을 봉합하려 하지 않습니다. 그저 그 신비롭고 아픈 모순을 있는 그대로 열어둔 채, 담담히 다음 역사를 향해 걸어갈 뿐입니다.</p>
+<p>우리의 인생도 이와 같지 않습니까. 온 힘을 다해 충성했지만 뜻밖의 거절을 만나기도 하고, 눈물 흘리며 인내한 고난의 시간 곁에 도저히 설명할 수 없는 하나님의 과분한 은혜가 나란히 놓여 있기도 합니다. 그 뒤엉킨 삶의 매듭들을 내 좁은 머리로 억지로 다 풀어내려 애쓰지 않아도 괜찮습니다.</p>
+<p>내가 다 짓지 못해도 참 좋습니다. 내 인생의 장부에 미완성의 빈칸들이 군데군데 남아 있어도 괜찮습니다. 오늘 내가 흘린 눈물의 고난 속에서 모아둔 작은 자재들, 내가 다듬어놓은 거친 돌 하나가 훗날 내 뒤를 이어 걸어올 누군가의 든든한 디딤돌이 될 수 있다면 그것으로 이미 차고 넘칩니다.</p>
+<p>오늘도 묵묵히 내 몫의 돌을 다듬고 계신 당신에게, 다윗의 나직한 음성이 깊은 위로로 가 닿기를 소망합니다. "나는 고난 중에 여기까지 준비하였다. 그러니 너는, 거기에 더하라."</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 11일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>무게를 단 황금과 세어지지 않은 이름들</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 07일 &middot; 역대상 20:1-8</span>
+      <h1>무게를 단 황금과 세어지지 않은 이름들</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>한 해의 결산 보고서나 대형 프로젝트 완료 문서를 펼칠 때마다 마주하는 서늘한 장면이 있습니다. 맨 윗줄에는 최종 책임자의 이름과 함께 수억 원, 수십억 원이라는 굵직한 실적의 숫자가 번쩍입니다. 하지만 그 찬란한 숫자를 만들어내기 위해 밤마다 차가운 형광등 아래서 컵라면으로 끼니를 때우고, 주말을 반납하며 땀 흘린 실무자들의 이름은 ‘외 몇 명’이라는 단 세 글자로 뭉뚱그려지거나 아예 장부에서 지워지곤 합니다. 세상의 저울은 언제나 저 높은 곳에 걸린 영광의 무게만을 정밀하게 달 뿐, 그 영광을 밀어 올리기 위해 바닥에서 닳아 없어진 수많은 손의 수고는 좀처럼 헤아려주지 않습니다. 구약성경 역대상 20장은 세월이 흘러도 변하지 않는 세상의 차가운 기록법과, 그 이면에 드리워진 인간의 가파른 현실을 서늘할 만큼 정직하게 보여줍니다.</p>
+<p>암몬 자손의 수도 랍바를 함락시키는 전장을 묘사한 역대상 20장 1절은 요압 장군의 숨 가쁜 동사들로 빽빽하게 채워져 있습니다. 군대를 거느리고, 치고, 쳐들어가, 에워싸고, 마침내 쳐서 성을 헐어버립니다. 히브리어 원문으로 보면 요압의 마지막 동작은 ‘바예헤르세하(그 성을 헐어버렸다)’입니다. 흙먼지와 비명, 피비린내를 온몸으로 뒤집어쓰며 견고한 성벽을 기어코 무너뜨린 것은 요압과 이름 모를 군사들의 거친 손이었습니다. 그런데 그 성벽의 먼지가 채 가라앉기도 전인 바로 다음 절, 성경은 전혀 다른 인물의 움직임으로 시선을 옮깁니다. “다윗이 그 왕의 머리에서 보관을 벗겨 보니 그 중량이 금 한 달란트라 그 보관에 보석이 있어 다윗의 머리에 씌워졌으며.”</p>
+<p>방금 전까지 적의 창검 앞에서 피 흘리며 성을 허문 것은 장수의 손이었지만, 그 전리품인 번쩍이는 금관을 머리에 쓴 이는 후방의 궁전에 머물던 왕 다윗이었습니다. 더 놀라운 것은, 성경 기자가 이 두 장면 사이에 그 어떤 해명이나 평가도 덧붙이지 않는다는 사실입니다. 요압이 왜 왕을 불렀는지, 혹은 다윗이 타인의 공을 가로챈 것인지에 대한 사소한 변명조차 없습니다. ‘성벽을 허문 손’과 ‘금관을 쓴 머리’가 단 한 절의 간격을 두고 무심하게 교차할 뿐입니다. 이 먹먹한 공백은 설명보다 더 깊은 침묵으로 우리 삶의 현장을 응시하게 만듭니다. 수고한 자의 땀방울과 영광을 누리는 자의 자리가 어긋나는 이 부조리한 풍경은, 오늘 우리가 살아가는 일터와 삶의 자리에서도 매일같이 반복되는 익숙한 아픔이기 때문입니다.</p>
+<p>그런데 그 거친 요압의 동사 여섯 개가 폭풍처럼 몰아치는 1절 한가운데에, 마치 고장 난 시계바늘처럼 덜컥 멈추어 선 문장 하나가 끼어 있습니다. “다윗은 예루살렘에 그대로 있더니.” 히브리어로는 그저 ‘요셰브’, 즉 ‘앉아 있는 상태’를 나타내는 분사 하나뿐입니다. 앞뒤로 치열하게 칼을 휘두르고 성벽을 부수는 능동의 동작들이 요동치는데, 왕의 자리에는 아무런 동사가 없습니다. 그저 멈추어 앉아 있을 뿐입니다. 우리 인생에도 이처럼 동사가 사라져 버리는 계절이 찾아옵니다. 남들은 저마다 눈부신 성취를 향해 내달리고 번듯한 경력의 동사들을 쌓아가는데, 뜻하지 않은 질병으로 병상에 눕거나, 직장을 잃거나, 병든 가족을 돌보느라 온종일 제자리에 묶여 있어야 하는 시간들 말입니다.</p>
+<p>“요즘 무슨 일 하세요?”라는 가벼운 안부 앞에서도 우리는 작아집니다. 아무런 사회적 동사를 내세울 수 없는 내 모습이 마치 쓸모없는 존재처럼 여겨지기 때문입니다. 하지만 성경의 배열을 가만히 들여다보십시오. 성경은 요압의 화려하고 긴박한 동사 목록 한가운데서 ‘그대로 머물러 있던’ 다윗의 자리를 결코 삭제하지 않았습니다. 비록 세상의 장부에는 기록될 만한 화려한 동사가 없을지라도, 묵묵히 버텨내고 견뎌야 하는 멈춤의 자리 역시 삶의 엄연한 한 페이지로 온전히 보존되어 있는 것입니다.</p>
+<blockquote>
+        세상의 저울은 번쩍이는 금관의 무게만 정확히 달아 올리지만,<br/>
+        성경의 시선은 잊혀진 자들의 멈춤과 손을 지우지 않고 끝까지 남겨둡니다.
+      </blockquote>
+<p>이어지는 2절과 3절의 대조는 한층 더 깊은 비장함을 자아냅니다. 다윗은 적국의 왕관을 집어 들고 그 무게를 달아봅니다. ‘금 한 달란트.’ 오늘날의 무게로 환산하면 무려 34킬로그램에 달하는 엄청난 황금입니다. 보석의 찬란함과 금의 중량은 저울 위에서 정확한 숫자로 계량되어 역사의 기록으로 남습니다. 그러나 바로 다음 절, 랍바 성에서 끌려 나온 백성들의 운명 앞에는 그 어떤 저울도 놓이지 않습니다. 성경은 그들의 수효를 단 한 사람도 세지 않은 채, 그저 ‘그 가운데 백성’이라는 익명의 덩어리로 뭉뚱그려 놓습니다.</p>
+<p>더욱 서글픈 진실은 언어의 이면에 숨어 있습니다. 다윗이 전리품을 성에서 ‘내온 것(호치)’과, 그 성의 사람들을 밖으로 ‘끌어낸 것(호치)’은 원문에서 정확히 같은 동사입니다. 번역은 단어를 갈라놓았지만, 본문은 물건을 끄집어내듯 사람들을 끌어내어 차가운 톱과 쇠 연장과 도끼 앞에 세웠음을 건조하게 증언합니다. 한 성읍이 아니라 암몬의 모든 성읍에서 이 일이 행해졌다고 기록합니다. 가치 있는 황금과 보석은 그램 단위까지 정밀하게 측정되어 왕의 머리를 장식하지만, 무력한 사람들의 목숨과 눈물은 물건처럼 취급된 채 숫자조차 남기지 못했습니다. 효율과 성과만을 숭상하는 세상의 메커니즘은 언제나 번쩍이는 금관에만 저울을 대어주고, 그 아래 짓밟힌 인간의 존엄은 보이지 않는 통계 속에 묻어버립니다.</p>
+<p>하지만 역대상 20장은 이 메마르고 차가운 비극으로 끝나지 않습니다. 장의 마지막인 8절에 이르면, 거인 골리앗의 후손들과 맞서 싸운 또 다른 전쟁의 마침표가 찍힙니다. 블레셋의 무시무시한 거인들을 쓰러뜨린 영웅들은 다윗 왕이 아니었습니다. 십브개, 엘하난, 요나단과 같이 이름조차 낯선 무명의 용사들이었습니다. 그런데 성경은 이 단락의 문을 닫으며 놀라운 문장을 적어 넣습니다. “가드의 키가 큰 자의 소생이라도 다윗의 손과 그의 신복들의 손에 다 죽었더라.” 본문은 최고 권력자인 ‘다윗의 손’만을 적지 않았습니다. 그 곁에 잊지 않고 ‘그의 신복들의 손’을 나란히 적어 올렸습니다. 손이 두 번 적힌 것입니다. 비록 세상은 왕의 이름 하나만 기억하려 할지라도, 성경의 마지막 줄은 땀 흘린 자들의 손을 결코 누락시키지 않았습니다.</p>
+<p>이 서늘하고도 정직한 역사의 장부 너머에서, 우리는 마침내 우리의 영원한 왕이신 예수 그리스도의 얼굴을 마주하게 됩니다. 세상의 왕들은 타인의 피와 눈물을 딛고 서서 그들이 바친 금관으로 자신의 머리를 치장하지만, 참된 왕이신 그리스도는 결코 타인의 수고를 빼앗아 영광의 관을 쓰지 않으셨습니다. 오히려 그분은 친히 자신의 손과 발이 찢기시는 십자가의 자리로 내려가셨습니다. 남의 성벽을 허물어 황금을 취하는 대신, 자신의 몸을 깨뜨려 죄와 사망의 견고한 진을 무너뜨리셨습니다. 그분의 머리에 씌워진 것은 힘없는 백성들의 것을 빼앗아 만든 서른네 킬로그램의 무거운 금관이 아니라, 스스로 우리의 모든 비참과 죄악을 짊어지신 채 피 흘리신 가시 면류관이었습니다.</p>
+<p>그 십자가의 왕 앞에서는 그 어떤 인생도 ‘그 가운데 백성’이라는 익명으로 지워지지 않습니다. 주님은 세상의 저울에 달리지 못해 소외된 자들, 동사를 잃어버리고 제자리에 주저앉아 눈물짓는 이들의 이름을 당신의 상한 손바닥에 하나하나 아로새기셨습니다. 타인의 수고를 가로채지 않으시고, 도리어 당신의 전부를 내어주신 그분의 사랑 안에서, 비로소 세상의 차가운 저울은 힘을 잃고 은혜라는 새로운 저울이 작동하기 시작합니다.</p>
+<p>오늘 우리는 어떤 장부를 써 내려가고 있습니까? 내가 속한 가정과 일터에서, 나는 화려하게 번쩍이는 금관의 무게에만 눈이 멀어 함께 땀 흘린 이들의 얼굴을 ‘그 가운데’라는 편리한 단어 속에 묻어버리지는 않았습니까? 스스로 어떤 동사도 만들어내지 못해 멈추어 있는 연약한 이웃을 무능하다고 쉽게 배제해 버리지는 않았습니까? 성경적 인격이란, 세상이 지워버린 자리에 조용히 멈추어 서서 그들의 이름을 다시 적어주는 따뜻한 정직함입니다. 내 손에 쥐어진 영광의 보고서 맨 마지막 줄에, 함께 비를 맞고 길을 걸어준 이들의 ‘손’을 잊지 않고 나란히 적어 넣는 겸손함입니다. 번쩍이는 황금의 무게보다 지워진 사람들의 눈물을 먼저 헤아릴 줄 아는 그 깊고 따스한 시선이, 오늘 우리의 삶과 일상 속에서 가장 아름다운 그리스도의 향기로 피어나기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 07일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

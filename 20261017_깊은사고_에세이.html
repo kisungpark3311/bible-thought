@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>세지 않은 자리에 깃든 약속</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 17일 &middot; 역대상 27:1-24</span>
+      <h1>세지 않은 자리에 깃든 약속</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 아침에 눈을 뜨는 순간부터 밤에 잠자리에 들 때까지 쉼 없이 숫자를 셈하며 살아갑니다. 스마트폰 상단에 깜빡이는 시간과 배터리 잔량, 확인하지 않은 알림의 개수, 통장에 찍힌 잔고의 자릿수와 대출 금리, 체중계 위의 소수점, 그리고 직장에서 마주하는 달성률과 결산표까지. 현대인은 어쩌면 말이나 글보다 숫자로 세상을 먼저 인지하고, 그 숫자의 크기로 자신의 안녕과 가치를 가늠하는 존재인지도 모릅니다. 숫자가 올라가면 안도하고, 숫자가 떨어지거나 세상의 평균치에 미치지 못하면 나라는 존재 전체가 삭감당한 것 같은 서늘한 불안에 사로잡힙니다. 세상은 언제나 우리에게 묻습니다. "당신의 수치는 얼마입니까? 당신은 지금 몇 번째 칸에 서 있습니까?"</p>
+<p>구약성경 역대상 27장을 펼치면, 숫자에 매달려 살아가는 우리 삶의 축소판과도 같은 거대한 행정 장부가 등장합니다. 일 년 열두 달, 매달 한 반열씩 교대로 국방의 의무를 감당하는 다윗 왕국의 철통같은 군사 조직망입니다. 1절부터 15절까지 서기관은 단 한 치의 오차도 허락하지 않겠다는 듯, 먹을 듬뿍 묻힌 붓으로 똑같은 숫자를 줄기차게 써 내려갑니다. "그 반열에 이만 사천 명이라." 이만 사천, 이만 사천, 이만 사천… 무려 열세 번이나 같은 숫자가 벽돌처럼 빈틈없이 쌓여 올라갑니다. 한 달에 2만 4천 명씩 열두 달, 총 28만 8천 명에 달하는 정예 병력. 완벽한 규격과 빈틈없는 행정력, 국가의 안전과 왕국의 위엄을 수량으로 완벽히 통제하려는 치밀한 계산서입니다.</p>
+<p>그런데 이 거대한 장부를 원어 히브리어의 결을 따라 천천히 읽어가다 보면, 뜻밖의 서늘한 정적을 마주하게 됩니다. 1절부터 22절까지 스물두 절이 길게 이어지는 동안, 놀랍게도 이 지면 위에서는 아무런 '사건'도 일어나지 않습니다. 문장을 앞으로 밀고 나아가는 '움직이는 동사'가 단 하나도 없기 때문입니다. 히브리어 원문은 그저 "누구 위에는 누구, 그 반열에는 이만 사천 명"이라는 건조한 명사와 직책의 나열로만 이어집니다. 사람이 땀을 흘리고 숨을 쉬는 생생한 삶의 호흡은 사라지고, 오직 자리와 계급, 숫자의 격자판만이 박제되어 있습니다. 게다가 더 놀라운 사실은, 그 거대하고 정교한 군사력의 기록 한가운데에 '하나님(여호와)'이라는 거룩한 이름이 단 한 번도 불리지 않는다는 점입니다. 우리가 통제할 수 있는 숫자를 셈하고, 완벽한 계획표를 채우며, 내 손으로 세상을 장악할 수 있다고 확신할 때, 그 빽빽한 장부 안에는 신비도, 은혜도 머물 자리가 없음을 보여주는 듯합니다.</p>
+<p>그런데 끝없이 이어질 것만 같던 숫자의 행렬이 23절에 도달하는 순간, 거짓말처럼 뚝 멈춰 섭니다.</p>
+<blockquote>"이스라엘 사람의 이십 세 이하의 수효는 다윗이 조사하지 아니하였으니 이는 여호와께서 전에 말씀하시기를 이스라엘을 하늘의 별 같이 많게 하리라 하셨음이라" (대상 27:23)</blockquote>
+<p>여기서 본문의 문법 구조가 극적으로 바뀝니다. 앞선 스물두 절 동안 단 한 번도 나타나지 않았던 정동사가 비로소 고개를 듭니다. 그런데 그 동사가 깨어난 자리는 무언가를 거창하게 성취했다는 승리의 문장이 아니었습니다. 히브리어 '웨로'(וְלֹא), 즉 "그리고 ~하지 않았다"라는 부정어와 함께였습니다. 다윗이 스무 살 이하의 어린 사람들을 '세지 않았다'고 적는 바로 그 멈춤의 문장에서, 차갑게 굳어 있던 텍스트가 비로소 살아 움직이며 동사를 일으켜 세운 것입니다. 서른네 절짜리 장부 전체에서 문법의 문이 열리고 생명의 호흡이 돌아온 유일한 자리는, 더 많은 숫자를 채워 넣은 자리가 아니라 스스로 셈을 멈춘 자리였습니다.</p>
+<p>더욱 가슴을 먹먹하게 하는 것은 그 뒤에 이어지는 구절입니다. "이는 여호와께서 전에 말씀하시기를..." 이 장 전체에서 '여호와'라는 하나님의 거룩한 이름은 오직 이 한 구절에만 나타납니다. 하나님이 주어가 되어 행하신 동작 역시 '말씀하셨다'라는 이 한 문장뿐입니다. 이만 사천이 열세 번이나 호명되며 인간의 위세를 과시하던 화려한 장부의 전반부에는 침묵하시던 하나님이, 인간이 계산기를 내려놓고 "여기서부터는 내가 세지 않겠습니다"라고 물러선 그 여백에서 마침내 당신의 이름을 드러내신 것입니다. 다윗이 조사를 멈춘 이유는 나태해서가 아니었습니다. "하늘의 별처럼 많게 하리라" 하신 하나님의 옛 언약을 기억했기 때문입니다. 내 손안의 얄팍한 잣대로 재어 담을 수 없는 우주적인 은혜, 헤아릴 수 없는 생명의 신비를 인정하는 순간, 2만 4천이라는 유한한 숫자는 지워지고 끝없는 밤하늘의 별빛이 그 빈칸을 가득 채웠습니다.</p>
+<p>이어지는 24절은 또 하나의 깊은 위로를 건넵니다. 군대 장관 요압이 인구 조사를 시작했으나 끝내 완수하지 못했고, 그 일로 진노가 임하여 결국 그 수효는 '다윗 왕의 역대지략에 기록되지 않았다'고 적습니다. 우리의 삶에도 그런 순간들이 있습니다. 야심 차게 시작했으나 끝내 매듭짓지 못한 일들, 기대했던 성과를 거두지 못하고 중도에 멈춰버린 사역, 남들에게 떳떳하게 결산표로 내놓을 수 없는 꺾여버린 계획들. 세상의 기준에서 그것은 결손이며 실패이고, 장부에 오를 자격조차 없는 부끄러운 결측치일지 모릅니다. 하지만 성경은 그 아픈 역사를 지우개로 지워버리지 않았습니다. 숫자는 국가 공식 통계에 올라가지 못했으나, "그 수효가 올라가지 못했다"는 그 미완의 문장만큼은 하나님의 거룩한 성경 한가운데 영원히 지워지지 않도록 올려두었습니다. 하나님은 우리가 완성해 낸 번듯한 숫자뿐만 아니라, 끝내 완성하지 못해 흘린 눈물, 중단된 자리에서의 참회, 미완으로 남겨진 우리의 서툰 시간까지도 결코 잊지 않고 당신의 기억 속에 품으십니다.</p>
+<p>우리는 성실하게 숫자를 마주해야 합니다. 역대상 27장의 백성들이 매달 2만 4천 명씩 들어가고 나가며 각자의 일상을 묵묵히 지켜냈듯, 우리도 매일의 밥벌이와 결산, 책임의 무게를 충실히 살아내야 합니다. 성경은 결코 일상의 성실한 계산과 질서를 부정하지 않습니다. 그러나 동시에 성경은 우리에게 조용하지만 준엄한 질문을 던집니다. "당신의 인생 장부에는 기꺼이 셈을 멈추고 남겨둔 거룩한 여백이 있습니까?" 내 기준과 통제로 타인을 재단하려던 잣대를 거둘 때, 내가 베푼 수고와 희생의 대가를 계산하지 않고 가만히 손을 펼 때, 내 결핍과 한계를 인정하며 "여기서부터는 하나님의 일하심입니다"라고 고백할 때, 우리의 메마른 영혼은 비로소 숨을 쉬기 시작합니다.</p>
+<p>만약 지금 당신이 세상이 정해놓은 '이만 사천'이라는 번듯한 숫자에 들지 못해 외로움에 떨고 있다면, 기억하십시오. 규격화된 수치에 포함되지 못했다고 해서 당신의 존재 가치가 결코 사라진 것은 아닙니다. 성경은 숫자에 들지 못한 이들을 위해 장부 한 귀퉁이를 소중히 비워두었고, 바로 그 비워진 자리에서 하나님의 이름을 가장 또렷하게 불렀습니다. 세상의 평가는 차가운 숫자로 끝나지만, 하나님의 은혜는 우리가 셈을 멈춘 바로 그 빈자리에서 비로소 시작됩니다. 오늘 하루, 내 손에 쥐고 있던 불안의 계산기를 잠시 내려놓고 고개를 들어 밤하늘을 바라보십시오. 셀 수 없는 별들을 품으신 그분의 신실한 약속이, 세지 않은 당신의 고단한 오늘을 따스하게 감싸 안아줄 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 17일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

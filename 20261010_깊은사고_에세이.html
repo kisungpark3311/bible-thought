@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>땀 묻은 타작마당에서 칼이 칼집에 꽂히기까지</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 10일 &middot; 역대상 21:18~22:1</span>
+      <h1>땀 묻은 타작마당에서 칼이 칼집에 꽂히기까지</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살다 보면 감당하기 어려운 재앙과 시련이 예고도 없이 삶을 덮칠 때가 있습니다. 내 힘으로는 도무지 어찌할 수 없는 거대한 불안의 칼날이 머리 위에 서슬 퍼렇게 드리워질 때, 우리는 세상의 모든 시계가 멈춰 서기만을 바라곤 합니다. 그러나 참으로 이상하고도 서글픈 것은, 거대한 비극의 한가운데에서도 누군가는 여전히 밥벌이를 위해 무거운 몸을 일으켜야 하고, 또 누군가는 그 곁에서 숨죽여 눈물을 삼켜야 한다는 사실입니다.</p>
+<p>역대상 21장, 이스라엘 전역을 휩쓴 참혹한 전염병과 예루살렘 허공을 겨눈 천사의 칼날 아래에서, 성경은 기이하게도 한 평범한 농부의 일터를 조명합니다. 여부스 사람 오르난의 타작마당입니다. 성경은 이 숨 막히는 긴장의 순간에 두 가지 삶의 상태를 아무런 수식이나 평가 없이 한 문장 안에 나란히 놓아둡니다. 아버지는 묵묵히 땀을 훔치며 밀을 타작하고 있고, 그의 네 아들은 바로 그 곁에 함께 있으면서 두려움에 몸을 숨깁니다.</p>
+<div class="quote">
+        "오르난이 밀을 타작하다가 돌이켜 천사를 보고 오르난의 네 아들이 함께 있다가 숨었더라"
+        <span>- 역대상 21:20</span>
+</div>
+<p>성경은 일상을 지키려 묵묵히 타작기를 돌리는 아버지를 '담대하다' 칭찬하지도 않고, 거대한 공포에 질려 몸을 웅크린 아들들을 '비겁하다' 나무라지도 않습니다. 곁에 함께 있으면서도 숨고만 싶은 연약함과, 두려움 속에서도 자식들을 먹이기 위해 흙먼지를 뒤집어써야 하는 노동의 고단함. 그것은 거친 세상을 살아내는 우리 인간의 너무나 정직하고도 애잔한 두 얼굴이기 때문입니다.</p>
+<p>그 절박한 타작마당 한복판으로 왕이 찾아옵니다. 재앙을 멈추기 위해 제단을 쌓겠다는 다윗 앞에서, 농부 오르난은 땅에 얼굴을 대고 엎드려 자신의 삶 전부를 내어놓습니다. 번제물로 바칠 소들과 땔감으로 쓸 타작 기계, 소제로 바칠 햇밀까지, 자신이 가진 생계의 수단이자 일터 전체를 주저 없이 내놓으며 말합니다. "왕이여, 다 드리나이다. 값없이 거저 드리겠나이다." 자신의 생존 기반마저 아낌없이 바치겠다는 참으로 눈물겨운 헌신입니다.</p>
+<p>하지만 다윗은 이 감동적인 무상 호의를 단호하게 거절합니다. "그렇지 아니하다. 내가 반드시 온전한 값을 주고 사리라. 내가 여호와께 드리려고 네 물건을 빼앗지 아니하겠고, 값없이는 번제를 드리지도 아니하리라." 그리고 다윗은 그 자리에서 저울을 꺼내 금 육백 세겔의 무게를 정확히 달아 오르난의 손에 쥐여줍니다.</p>
+<div class="quote">
+        "내가 여호와께 드리려고 네 물건을 빼앗지 아니하겠고 값 없이는 번제를 드리지도 아니하리라"
+        <span>- 역대상 21:24</span>
+</div>
+<p>우리는 종종 '은혜'라는 이름으로 누군가의 희생을 당연하게 여기고, '헌신'이라는 종교적 명분 뒤에 숨어 타인의 눈물과 손실을 가볍게 지나치곤 합니다. "좋은 게 좋은 것"이라며 누군가의 땀방울을 거저 취하고는, 그것을 하나님을 향한 거룩한 열정이라 포장하기도 합니다. 그러나 다윗은 분명히 알고 있었습니다. 남의 피땀 위에 거저 얹어 올리는 번제는 결코 하늘을 울릴 수 없다는 것을 말입니다.</p>
+<p>오르난의 일터가 입을 손실을 고스란히 메워주는 정직한 터 값, 내 허물로 초래된 비극 앞에서 내 주머니의 살을 베어내는 쓰라린 대가를 지불할 때에만, 우리의 기도는 공허한 외침을 벗고 묵직한 진실을 얻게 됩니다. 신앙이란 남의 헌신을 소비하는 기술이 아니라, 내 몫의 책임을 저울에 달아 묵묵히 갚아내는 정직함입니다.</p>
+<p>오르난이 내어놓은 물건의 목록 중 유독 가슴을 먹먹하게 만드는 것이 하나 있습니다. 바로 곡식을 떨던 '타작 기계'입니다. 그것은 본래 거룩한 성전의 기물이 아니었습니다. 흙먼지 날리는 마당을 수없이 맴돌며 이삭의 껍질을 벗겨내던 차갑고 무거운 노동의 연장이었습니다. 지독한 가난의 냄새와 생존의 고단함이 켜켜이 배어 있는 밥벌이의 도구였습니다. 그런데 이 타작 기계가 제단 위에 오르는 순간, 제물을 사르는 '땔나무'로 변합니다. 자신이 거칠게 부수고 떨어냈던 바로 그 밀과 소를 하늘로 올려보내는 거룩한 불쏘시개가 되어, 스스로를 장렬하게 사르는 것입니다.</p>
+<p>우리가 치열하게 살아내느라 닳고 닳아버린 직업의 도구들, 눈물로 버텨낸 일터의 피로와 상처들이 하나님의 제단 위에 놓일 때, 그것은 누군가를 살리고 위로하는 거룩한 불꽃으로 다시 태어납니다. 가장 비속해 보이던 땀방울의 자리가 가장 거룩한 예배의 처소가 되는 신비가 바로 여기에 있습니다.</p>
+<p>그렇게 사람이 정직하게 무게를 달고, 땀 묻은 일터의 모든 것을 제단 위에 얹어 놓았을 때, 성경은 비로소 문장의 주어를 사람에서 '여호와'로 바꿉니다. 제단을 쌓고 값을 치른 것은 사람이었지만, 불을 내리시고 칼을 거두신 분은 여호와 하나님이셨습니다.</p>
+<div class="quote">
+        "여호와께서 하늘에서부터 번제단 위에 불을 내려 응답하시고 여호와께서 천사에게 명령하시매 그가 칼을 칼집에 꽂았더라"
+        <span>- 역대상 21:26-27</span>
+</div>
+<p>인간의 계산과 발버둥이 멈추고, 자신의 책임을 정직하게 달아 올린 빈손의 자리에 이르러서야 비로소 하늘의 불길이 내려앉습니다. 세상을 위협하던 공포의 칼날을 멈추게 한 것은 사람의 권세가 아니라, 여호와의 자비로운 명령이었습니다. 성경은 여기서 독특하게 칼집을 뜻하는 '느다나'라는 낱말을 남겨둡니다. 거칠게 번뜩이던 심판의 칼이 마침내 평화와 안식의 자리로 깊숙이 들어간 것입니다.</p>
+<p>그러나 이야기는 매끄러운 해피엔딩으로 서둘러 매듭지어지지 않습니다. 본문은 다윗이 모세가 만든 성막과 번제단이 있던 거룩한 산당 '기브온'에 끝내 가지 못했다는 무력한 고백을 담담히 적어둡니다. 천사의 칼이 너무나 두려워 마땅히 가야 할 정답의 자리에 다다를 수 없었던 것입니다. 살다 보면 우리에게도 그런 날이 찾아옵니다. 남들처럼 번듯하고 거룩한 자리에 서지 못하고, 죄책감과 두려움에 짓눌려 발걸음조차 떼지 못하는 무력한 날들이 있습니다.</p>
+<p>하지만 놀랍게도 하늘의 불길은 완벽한 격식을 갖춘 기브온의 산당이 아니라, 두려움에 떨며 멈춰 선 초라한 타작마당 위로 내려앉았습니다. 다윗은 거친 흙바닥을 가리키며 나직이 선언합니다. "이는 여호와 하나님의 성전이요, 이는 이스라엘의 번제단이라." 화려하고 웅장한 종교적 외형이 성전이 아니라, 두려움 속에서 정직한 값을 치르고 일터를 내어놓은 바로 그 깨어진 자리가 영원한 성전의 기초가 된 것입니다.</p>
+<p>오늘, 당신의 일터와 삶의 마당에는 무엇이 놓여 있습니까? 해결되지 않는 삶의 위기 앞에서 아들들처럼 숨어버리고 싶지는 않습니까? 혹은 감당할 수 없는 무게에 짓눌린 채 멍하니 타작기만 돌리고 있지는 않습니까?</p>
+<p>두려워하지 마십시오. 하나님은 당신의 고단한 일터, 땀 냄새 밴 밥벌이의 도구들을 결코 외면하지 않으십니다. 남에게 책임을 전가하지 않고 내 몫의 무게를 정직하게 달아 올릴 때, 마땅히 가야 할 정답의 자리조차 갈 수 없어 멈춰 선 바로 그 자리에서 하늘의 불길이 내려와 우리의 부끄러움을 덮으실 것입니다. 성전은 저 높은 곳에 있지 않습니다. 오늘 당신이 눈물로 값을 치르고 정직하게 버텨낸 바로 그 삶의 타작마당, 그곳이 바로 칼이 꽂히고 은혜가 시작되는 거룩한 성전입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 10일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

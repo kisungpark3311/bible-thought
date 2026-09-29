@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>칠만이 엎드러진 자리에서 왕이 묻습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 09일 &middot; 역대상 21:9-17</span>
+      <h1>칠만이 엎드러진 자리에서 왕이 묻습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p class="lead">살다 보면 어느 쪽을 선택해도 낭떠러지인 막다른 골목에 홀로 서게 되는 날이 있습니다. 앞으로 나아갈 수도, 그렇다고 뒤로 물러설 수도 없는 사방이 꽉 막힌 궁지. 그보다 더 시리고 고통스러운 것은, 나의 사소한 과시욕이나 오판에서 비롯된 불길이 걷잡을 수 없이 번져 정작 아무 잘못도 없는 이들의 삶을 덮칠 때입니다.</p>
+<p>이스라엘 역사상 가장 찬란했던 왕, 다윗에게도 그런 뼈아픈 날이 찾아왔습니다. 왕국의 위세를 뽐내고 군사력을 과시하고 싶었던 욕망으로 시작된 인구 조사가 끝나자마자, 선견자 갓이 세 가지 재앙의 선택지를 들고 왕 앞에 섰습니다. 삼 년의 기근, 석 달 동안 적들의 칼날에 쫓겨 다니는 치욕, 그리고 사흘 동안 온 지경을 휩쓸 여호와의 전염병. 어느 하나 감당할 수 없는 죽음의 길목에서 다윗은 숨이 턱에 닿는 탄식을 내뱉었습니다.</p>
+<blockquote><em>"내가 곤경에 빠졌도다 여호와께서는 긍휼이 심히 크시니 내가 그의 손에 빠지고 사람의 손에 빠지지 아니하기를 원하나이다"</em> (역대상 21:13)</blockquote>
+<p>히브리어로 '곤경에 빠졌다'는 말은 '차르 리 메오드(צַר־לִי מְאֹד)', 즉 사방의 벽이 숨 막히게 좁혀져 도무지 몸을 뒤척일 틈조차 없다는 뜻입니다. 인간의 잔인한 손길 대신, 그래도 "긍휼이 심히 크신" 하나님의 손에 운명을 맡기겠다는 그의 고백은 벼랑 끝에서 매달린 마지막 신앙의 줄이었습니다. 누구나 이 대목에서 기적 같은 자비와 극적인 반전의 해피엔딩을 기대했을 것입니다.</p>
+<h2>설명이 지워진 자리, 칠만이라는 침묵</h2>
+<p>그러나 이어진 성경의 기록은 우리의 기대를 서늘하게 부숴버립니다. 단 한 줄, 어떠한 수식어나 해설도 없이 무겁게 내려앉은 문장이 읽는 이의 숨을 멎게 합니다.</p>
+<blockquote><em>"이스라엘 백성 중에서 죽은 자가 칠만 명이었더라"</em> (역대상 21:14)</blockquote>
+<p>칠만이라는 숫자는 결코 추상적인 통계나 과장된 은유가 아닙니다. 그것은 사흘 동안 이스라엘 온 땅에서 칠만 채의 집에서 식솔들의 숟가락이 멈추었고, 칠만 번의 찢어지는 곡소리가 골목마다 터져 나왔다는 뜻입니다. 어제까지 밭을 갈던 가장이, 아이를 품에 안고 달래던 어머니가, 내일을 꿈꾸던 젊은이들이 영문도 모른 채 쓰러져 차가운 시신이 되었습니다.</p>
+<p>참으로 놀랍고 두려운 것은, 성경이 이 거대한 비극의 숫자 뒤에 단 한마디의 변호도 덧붙이지 않는다는 사실입니다. "그래도 사람의 손에 쫓기는 것보다는 나았다"거나, "그 고통 속에 하나님의 깊은 뜻이 있었다"는 식의 값싼 변명을 달지 않습니다. 성경은 칠만이라는 참혹한 현실 앞에 그저 거대한 침묵으로 우두커니 서 있습니다.</p>
+<p>원어 성경은 그들이 '죽었다'는 말 대신 <span class="highlight">'바이폴(וַיִּפֹּל)'</span>, 즉 '엎드러졌다'는 단어를 씁니다. 똑바로 서서 걷고 숨 쉬던 생명들이 한순간에 바닥으로 와르르 곤두박질친 것입니다. 인생의 비극 앞에서 우리는 너무 성급하게 이유를 지어내고 값싼 교훈을 끼워 맞추려 안달합니다. 그러나 성경은 칠만의 쓰러진 몸들 앞에서 침묵합니다. 감당할 수 없는 고통 앞에서는 말을 아끼고 정직하게 함께 멈추어 서는 것만이, 비극을 대하는 인간의 참된 경외이기 때문입니다.</p>
+<h2>말씀은 거두라 하셨으나, 칼은 여전히 펴져 있고</h2>
+<p>비극의 절정에서 하나님은 온 땅을 멸하는 천사를 보시고 뜻을 돌이키셨습니다. "족하다, 이제는 네 손을 거두라." 천사가 여부스 사람 오르난의 타작마당 곁에 멈추어 섰습니다. 재앙이 끝났다는 하나님의 엄중한 선언이 떨어진 것입니다.</p>
+<p>하지만 바로 그 다음 순간 다윗이 눈을 들어 보았을 때 펼쳐진 광경은 기이하기만 합니다. 천사는 여전히 천지 사이에 위태롭게 서 있었고, 그의 손에는 칼이 칼집에서 뽑혀(쉘루파) 예루살렘 하늘을 향해 시퍼렇게 펴져(네투야) 있었습니다. 하나님의 입술에서는 이미 "거두라"는 말씀이 떨어졌는데, 지상에서 인간의 눈으로 올려다본 현실 속에는 여전히 시퍼런 칼날이 머리 위를 가르고 있었던 것입니다.</p>
+<p>우리의 신앙과 삶 역시 이 아득한 시차(時差) 속에 놓일 때가 많습니다. 기도는 올렸고 하나님의 자비를 믿는다고 고백하지만, 내 머리 위를 짓누르는 고난의 구름과 불안의 칼날은 당장 사라지지 않습니다. 말씀의 약속과 눈앞의 현실 사이, 그 숨 막히는 긴장의 시간 속에서 우리는 어떻게 서 있어야 할까요?</p>
+<h2>굵은 베를 입고 얼굴을 땅에 묻는 왕</h2>
+<p>칼이 하늘을 뒤덮고 있을 때, 다윗과 백성의 장로들은 회피하거나 도망치지 않았습니다. 그들은 화려한 왕복과 권위의 관을 벗어 던지고 거친 굵은 베를 입었습니다. 살갗을 따갑게 찌르는 거친 베옷은 죄의 무게를 피부로 고스란히 겪어내는 방식입니다. 그리고 그들은 얼굴을 땅에 대고 엎드렸습니다.</p>
+<p>여기서 쓰인 단어 역시 저 들판에 쓰러진 칠만의 백성들에게 쓰였던 바로 그 단어, '바이폴'입니다. 백성들이 전염병에 맞아 엎드러진 그 자리에, 이제는 한 나라의 왕과 지도자들이 자신의 이마를 차가운 흙먼지에 처박으며 함께 엎드러진 것입니다. 엎드림은 말이나 생각이 아닙니다. 온몸의 무게를 바닥으로 끌어내려 스스로 가장 낮은 자리가 되는 전인격적인 응답입니다.</p>
+<p>그리고 흙먼지 속에서 다윗의 피 맺힌 고백이 터져 나옵니다. 그는 세 번이나 자신을 가리키며 죄를 자백합니다. "명령하여 백성을 계수하게 한 자가 내가 아닙니까? 범죄하고 악을 행한 자는 곧 나입니다."</p>
+<h2>이 양 떼는 무엇을 행하였나이까</h2>
+<p>자신의 허물을 숨김없이 인정한 왕의 입술에서, 마침내 하늘을 향한 가장 절절한 물음이 터져 나옵니다.</p>
+<blockquote><em>"이 양 떼는 무엇을 행하였나이까"</em> (역대상 21:17)</blockquote>
+<p>히브리어 단 두 낱말, '메 아수(מֶה עָשׂוּ)'. "저들이 대체 무엇을 하였습니까?" 무고하게 스러져간 백성들을 끌어안고 터뜨리는 목자의 찢어지는 비명입니다. 우리는 부조리한 세상에서 억울한 고통을 겪는 무고한 이웃들을 볼 때마다 하늘을 향해 묻습니다. "저 힘없고 선한 이들이 무슨 죄가 있어 이토록 큰 눈물을 흘려야 합니까?"</p>
+<p>그러나 성경은 이 절규 같은 물음 뒤에도 침묵합니다. 하늘에서 어떠한 음성도, 논리적인 설명도 내려오지 않습니다. 하늘은 왜 이토록 잔인하리만치 무거운 침묵을 지키시는 것일까요? 그 고통의 무게는 세상의 어떤 논리나 철학으로도 정당화될 수 없기 때문입니다.</p>
+<p>놀라운 것은, 다윗이 그 대답 없는 침묵 앞에서 원망을 늘어놓거나 도망치지 않았다는 사실입니다. 그는 답을 요구하며 삿대질하는 대신, 자신의 온 존재를 바쳐 하나의 청원을 올립니다.</p>
+<blockquote><em>"청하건대 나의 하나님 여호와여 주의 손이 나와 내 아버지의 집을 치시고 주의 백성에게 재앙을 내리지 마옵소서"</em> (역대상 21:17)</blockquote>
+<h2>고통의 주소지를 나에게로 돌려놓는 사람</h2>
+<p>다윗이 구한 것은 재앙의 크기를 줄여달라는 타협이 아니었습니다. 이미 쏟아진 물을 도로 담아달라는 억지도 아니었습니다. 그가 구한 것은 단 하나, <span class="highlight">'재앙의 주소지를 바꾸는 것'</span>이었습니다.</p>
+<p>"이 재앙의 수신인은 저 무고한 양 떼가 아니라 바로 나입니다. 그러니 고지서의 이름을 지우고 내 이름을 꾹꾹 눌러써 주십시오. 저들의 등으로 향하는 채찍을 거두시고, 그 칼날을 내 등에 내리쳐 주십시오."</p>
+<p>비바람이 사납게 몰아칠 때, 곁에 선 이의 어깨가 젖지 않도록 내 한쪽 어깨가 흠뻑 젖는 것을 감수하며 기꺼이 우산을 기울여주는 넉넉한 손길이 있습니다. 재난의 현장에서 무너져 내리는 잔해를 온몸으로 막아서며 "내가 먼저 들어간다"고 외치는 참된 리더의 뒷모습이 있습니다. 다윗은 이마를 땅에 댄 채, 하늘의 침묵을 향해 자신의 몸을 과녁으로 내밀었습니다. 책임의 주소지를 '나'로 돌려세우는 것, 그것이 바로 대답 없는 침묵 속에서 탄생하는 가장 숭고한 인간의 품격이자 참된 사랑입니다.</p>
+<h2>나를 목적어로 내어놓는 그 자리에서</h2>
+<p>다윗의 이 눈물겨운 기도가 바닥에 쏟아졌을 때, 비로소 성경은 다음 장면의 문을 엽니다. 칼은 멈추었고, 재앙이 그친 오르난의 타작마당에는 여호와를 향한 거룩한 제단이 세워집니다. 훗날 온 세상을 품고 치유할 솔로몬의 성전이 바로 이 피눈물 나는 회개와 책임의 땅 위에 세워진 것은 결코 우연이 아닙니다.</p>
+<p>우리는 오늘 어떤 자리에 서 있습니까? 혹시 내가 만든 실수의 대가를 은근슬쩍 가족이나 동료, 힘없는 이들에게 떠넘기며 "상황이 어쩔 수 없었다"고 비겁한 핑계를 대고 있지는 않습니까? 삶의 부조리와 고통 앞에서 "왜 나에게만 이런 일이 일어나느냐"며 세상을 향해 원망의 화살만 쏘아대고 있지는 않습니까?</p>
+<p>진정한 성숙과 단단한 인격은 삶의 세 가지 빈칸을 정직하게 채워갈 때 비로소 완성됩니다. 첫째는 "내가 잘못했습니다"라고 변명 없이 인정하는 <strong>'자백'</strong>의 칸입니다. 둘째는 "저 무고한 이웃들은 무슨 죄가 있습니까"라며 타인의 아픔을 끌어안고 함께 우는 <strong>'물음'</strong>의 칸입니다. 그리고 셋째는, 하늘이 끝내 침묵할 때 "그렇다면 그 무거운 짐을 내게 주십시오"라며 고통의 과녁에 내 이름을 올려놓는 <strong>'목적어'</strong>의 칸입니다.</p>
+<p>성경은 다윗을 완벽한 영웅으로 미화하지 않습니다. 다만 칠만이 엎드러진 잿빛 들판 위에서, 자신의 책임을 온몸으로 끌어안고 흙먼지에 함께 엎드려 울었던 한 인간의 정직한 등을 묵묵히 비출 뿐입니다.</p>
+<p>삶이 사방으로 좁혀져 숨 쉴 틈이 없을 때, 하늘이 침묵하여 아무런 답을 주지 않을 때, 섣부른 말로 도망치지 마십시오. 거친 베옷을 입듯 내 몫의 책임을 기꺼이 입고 바닥에 엎드리십시오. 타인을 향하던 원망의 화살을 거두고, "주의 손이 내게 있게 하소서"라며 나를 목적어로 내어놓을 때, 시퍼렇게 펴져 있던 세상의 칼날은 거두어지고 폐허 같던 우리의 삶터 위에 평화와 생명의 새로운 성전이 시작될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 09일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

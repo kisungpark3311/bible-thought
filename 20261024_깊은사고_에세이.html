@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>못 지킨 포도원을 안고도, 우리는 여전히 눈부시다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 24일 &middot; 아가 1:1-17</span>
+      <h1>못 지킨 포도원을 안고도, 우리는 여전히 눈부시다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h2>남의 밭을 돌보느라 놓쳐버린 '내 것인 내 포도원'</h2>
+<p>어둠이 짙게 깔린 늦은 퇴근길, 만원 지하철 차창에 어른거리는 자신의 얼굴을 물끄러미 마주할 때가 있습니다. 푸석해진 뺨과 깊게 파인 눈 밑의 그늘을 바라보노라면 불현듯 가슴 밑바닥에서 서글픈 헛헛함이 차오릅니다. 하루 종일 남들의 부탁을 들어주고, 회사의 지표를 채우며, 가족들의 크고 작은 필요를 채우느라 숨 가쁘게 뛰어다녔지만, 정작 '나 자신'을 위해서는 물 한 잔 편히 마실 여유조차 내어주지 못했다는 자책 때문입니다. "나는 오늘 하루 도대체 무엇을 위해 이토록 아등바등 살았던 걸까? 정작 내 영혼의 밭은 황폐하게 내버려 둔 채, 언제까지 남의 밭만 매어주며 살아야 하는 걸까."</p>
+<p>약 삼천 년 전 고대 이스라엘의 들녘에서도 바로 이 고단한 탄식이 터져 나왔습니다. 성경 아가서 1장 6절의 여인은 흐느끼듯 고백합니다.</p>
+<div class="quote">
+        "나의 포도원을 내가 지키지 못하였구나" (아 1:6)
+      </div>
+<p>그녀는 결코 게으르거나 나태해서 자기 밭을 잃어버린 것이 아니었습니다. 뙤약볕이 사정없이 내리쬐는 황량한 들판에서, 화가 난 오라비들의 성화에 못 이겨 '남의 포도원들'을 지키는 파수꾼으로 일해야 했습니다. 남의 포도나무를 정성스레 가지치고 울타리를 보수하느라, 정작 '내 것인 내 포도원'을 돌볼 시간도 기력도 남아있지 않았던 것입니다. 성경은 이 기막힌 현실을 한 문장 안에 고스란히 담아냅니다. 복수형으로 적힌 '남의 포도원들'은 성실하게 지켜냈지만, 소유격이 두 번이나 겹쳐 적힌 '내 몫의 내 포도원'은 속절없이 놓쳐버린 아픔. 타인의 기대를 채우느라 정작 자기 삶은 돌보지 못한 채 살아가는 현대인들의 고단한 일상과 어쩌면 이토록 닮아 있을까요.</p>
+<h2>'비록'이 아닌 '그리고': 있는 그대로를 긍정하는 사랑</h2>
+<p>사람들은 햇볕에 그을려 까맣게 타버린 그녀의 모습을 차가운 시선으로 바라보았습니다. 그녀 역시 주눅 든 목소리로 사람들에게 애원하듯 말합니다. "내가 햇볕에 쬐어서 거무스름할지라도 흘겨보지 말라." 그런데 우리말 성경은 바로 앞 절인 5절을 이렇게 번역해 놓았습니다.</p>
+<p>"내가 비록 검으나 아름다우니" (아 1:5)</p>
+<p>언뜻 따뜻한 격려처럼 들리는 이 번역 뒤편에는, 실은 우리가 무의식중에 품고 있는 가혹한 조건이 숨어 있습니다. '비록 ~이나'라는 역접의 토씨 속에는, 검은 피부는 본래 부끄러운 결함이자 흠결이지만 다른 무언가로 간신히 상쇄하여 겨우 아름다워졌다는 뉘앙스가 깔려 있기 때문입니다. 세상은 언제나 우리에게 이런 식의 단서를 붙입니다. "비록 네가 실패했을지라도", "비록 남들보다 가진 것은 없지만", "비록 지금은 초라하지만…". 은연중에 현재의 고단한 모습을 지워야 할 결점으로 서열화하는 것입니다.</p>
+<p>하지만 히브리어 원문을 한 글자씩 짚어가며 읽다 보면 눈시울이 붉어지는 은혜를 발견하게 됩니다. 원문에는 '비록'이라는 역접의 단서가 전혀 없습니다.</p>
+<p><strong>"셰호라 아니 베나바(שְׁחוֹרָה אֲנִי וְנָאוָה)."</strong></p>
+<p>단어 순서대로 정직하게 옮기면 <span class="highlight">"나는 검다, 그리고 아름답다"</span>입니다. 두 단어 사이를 잇고 있는 것은 오직 대등한 접속사 '그리고(וְ)' 하나뿐입니다. 성경은 검음과 아름다움 사이에 어떤 우열도, 변명도 두지 않았습니다. 뙤약볕 아래서 누군가의 삶을 지탱하기 위해 온몸으로 땀 흘려 검게 그을린 그 살갗은 부끄러워해야 할 상처가 아니라, 정직하게 살아낸 숭고한 흔적이었기 때문입니다. 주님은 우리의 고단함을 결코 '비록'이라는 괄호 속에 가두지 않으십니다. 지치고 그을린 모습 그대로, 세상의 무게를 짊어지느라 투박해진 손발 그대로, "너는 검다, 그리고 참으로 눈부시게 아름답다"고 있는 그대로의 우리를 안아주십니다.</p>
+<h2>성급히 메우지 않는 거룩한 침묵과 여백</h2>
+<p>더욱 깊은 위로를 주는 대목은, 성경이 이 아픈 고백 뒤에 취하는 태도입니다. 만약 우리가 이 이야기를 썼다면 어떻게 결말을 지었을까요? 아마도 6절의 고통스러운 탄식 뒤에 서둘러 "그러나 주께서 그녀의 포도원을 두 배로 풍성하게 갚아주셨다"라거나 "모든 잃어버린 것을 완벽하게 되찾게 하셨다"는 통쾌한 반전을 적어 넣었을 것입니다. 그래야 불안한 마음이 가라앉고, 신앙적인 해피엔딩이 완성된다고 믿기 때문입니다.</p>
+<p>하지만 아가서 1장은 끝내 그런 안이한 위로를 덧붙이지 않습니다. 성경은 그녀가 자기 포도원을 지키지 못했다는 뼈아픈 한 줄을 적어두고는, 뒤이어 그 어떤 해명이나 즉각적인 보상도 적지 않은 채 묵묵히 7절로 걸어갑니다.</p>
+<p>성경은 삶의 결손과 미완성을 거짓된 긍정으로 서둘러 덮어버리지 않습니다. 아픈 자리에 섣부른 말의 다리를 놓지 않습니다. 못 지킨 것은 못 지킨 채로 정직하게 남겨두고, 그 허기진 마음을 품은 채로 들판의 향품을 노래합니다. 나드와 몰약의 깊은 향기를 들이마시고, 들보의 백향목과 서까래의 잣나무가 든든하게 받쳐주는 집의 그늘로 들어갑니다.</p>
+<p>참된 신앙의 품격은 내 삶에 뚫린 결손을 억지 위로로 포장하는 데서 오지 않습니다. "그래, 오늘 나는 내 밭을 다 지키지 못했어. 남들을 위해 뛰느라 정작 나 자신은 돌보지 못했어." 그 사실을 인정하고 가만히 품어 안을 때, 비로소 상처 입은 마음에 참된 쉼의 공간이 열립니다. 하나님은 우리의 결점을 가리기 위해 억지 변명을 지어내지 않고도, 그 텅 빈 사유란을 넉넉히 품어내시는 광대한 사랑이시기 때문입니다.</p>
+<h2>멈춰 선 자리에서 발견하는 '이미 완료된 은혜'</h2>
+<p>우리는 흔히 아가서 1장 4절의 열정적인 외침에 마음을 빼앗깁니다. "나를 이끌라, 우리가 달려가자! 우리가 너로 말미암아 기뻐하며 즐거워하리라. 우리가 네 사랑을 기억하리라." 한 구절 안에 무려 네 번이나 쏟아지는 "우리가 ~하자"라는 청유형의 결단들. 그러나 가쁜 숨을 몰아쉬며 전력 질주해 본 사람이라면 잘 압니다. 온 힘을 다해 달리고 있는 사람의 입에서는 결코 "달리자"는 긴 문장이 터져 나올 수 없습니다. 그 벅찬 청유들은 오직 출발선에 멈춰 서서 가쁜 숨을 고르는 사람의 침묵 속에서만 나옵니다.</p>
+<p>그리고 아직 온전히 달리지 못한 채 머뭇거리는 그 수많은 다짐들 한가운데, 성경은 유일하게 완료된 문장 하나를 가만히 디딤돌처럼 놓아둡니다.</p>
+<div class="quote">
+        "그 왕이 나를 그의 방으로 이끄셨다." (아 1:4)
+      </div>
+<p>우리가 마침내 완벽하게 달려갔기 때문이 아닙니다. 내 포도원도 남의 포도원도 흠 없이 가꾸어내었기 때문이 아닙니다. 여전히 출발선에서 서성이고, 지키지 못한 삶의 조각들을 바라보며 한숨짓는 우리를, 주님은 이미 당신의 가장 깊고 은밀한 방으로 이끄셨습니다. 우리의 불안정한 결심과 흔들리는 다짐들 밑바닥에는, 언제나 변함없이 우리를 감싸 안으시는 주님의 거대한 은혜가 먼저 흐르고 있습니다.</p>
+<h2>못 지킨 아픔을 품고도 이어지는 삶의 노래</h2>
+<p>오늘 하루도 남의 밭을 가꾸느라 정작 당신 자신의 영혼과 몸은 까맣게 타버리지 않으셨습니까? 지키지 못한 약속들, 돌보지 못한 나만의 시간들 앞에서 혼자 숨죽여 눈물짓고 계시지는 않습니까?</p>
+<p>서둘러 자신을 변호하려 애쓰지 않아도 괜찮습니다. 이유 없는 자책으로 영혼을 상하게 하지 마십시오. 성경이 못 지킨 포도원의 탄식을 지우지 않고 노래의 한가운데 오롯이 남겨두었듯, 주님은 당신이 겪어낸 그 모든 수고와 땀방울의 무게를 다 알고 계십니다.</p>
+<p>세상은 조건을 달아 "비록"이라 부르겠지만, 하늘의 사랑은 단서를 달지 않고 부릅니다. <span class="highlight">"너는 검다, 그리고 참으로 눈부시게 아름답다."</span></p>
+<div class="blessing">
+        남의 밭을 돌보느라 까맣게 그을린 당신의 손을 주님이 잡으십니다.<br/><br/>
+        못 지킨 포도원의 아쉬움을 안고 집으로 돌아가는 당신의 지친 발걸음 위에,<br/>
+        세상의 어떤 화려한 성취보다 더 깊고 안락한<br/>
+        주님의 백향목 그늘이 시원하게 드리워지기를 축복합니다.<br/><br/>
+        그 품 안에서 오늘 밤, 깊고 평안한 안식을 누리십시오.
+      </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 24일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

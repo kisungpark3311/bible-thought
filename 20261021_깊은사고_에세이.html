@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>명령이 멈춘 자리에 남겨진 기쁨의 장부</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 21일 &middot; 역대상 29:1-9</span>
+      <h1>명령이 멈춘 자리에 남겨진 기쁨의 장부</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 무언가를 요구받고 증명해야 하는 세상 속에 살아갑니다. 아침에 눈을 뜨는 순간부터 밤에 잠자리에 들 때까지, 삶은 온통 "해야 한다"는 명령형과 지시문으로 빽빽하게 채워져 있습니다. 직장에서는 마감과 실적을 달성하라는 지시가, 관계 속에서는 기대에 부응하라는 무언의 압박이 쉼 없이 이어집니다. 슬픈 것은 신앙과 헌신의 자리마저 어느덧 이 메마른 명령의 법칙에 물들어간다는 사실입니다. "더 뜨겁게 기도하라", "더 많이 헌신하라", "마음을 다해 기뻐하라"는 다그침과 구호가 넘쳐나지만, 그렇게 쥐어짜 낸 마음의 자리에는 기쁨 대신 피로와 공허만이 앙금처럼 가라앉곤 합니다. 억지로 입증해야 하는 자발성은 결코 사람의 영혼을 살리지 못하기 때문입니다.</p>
+<p>그런데 수천 년 전, 이스라엘 역사상 가장 웅장하고 거대한 헌신이 일어났던 역대상 29장의 풍경은 뜻밖에도 깊은 침묵으로 우리를 맞이합니다. 다윗의 노년, 온 나라와 백성이 성전 건축을 위해 천문학적인 보물을 모아들이는 이 장엄한 현장에 서서 본문을 가만히 들여다보면 이상하리만치 낯선 공기를 느끼게 됩니다. 이 아홉 절의 긴 이야기 속에 사람을 재촉하거나 무언가를 강요하는 '명령형 동사'가 단 하나도 없다는 사실입니다.</p>
+<p>직전 단락까지만 해도 "지키라", "힘쓰라", "건축하라"며 여섯 번이나 거세게 몰아치던 왕의 명령이, 정작 백성들이 모여 예물을 바치는 이 결정적인 순간에는 완벽하게 자취를 감춥니다. 다윗은 백성들의 양심을 찌르거나 호주머니를 열기 위해 화려한 웅변을 토하지 않았습니다. 그가 던진 유일한 말은 명령이 아니라 조용한 물음이었습니다. "오늘 누가 즐거이 손에 채워 여호와께 드리겠느냐." 문을 걸어 잠그고 윽박지르는 다그침이 아니라, 각 사람의 마음에 응답의 여백을 활짝 열어둔 담담한 질문 하나가 허공에 울려 퍼졌을 뿐입니다.</p>
+<p>더욱 깊은 울림을 주는 것은 이 본문 전체에서 하나님이 주어로 등장하는 동사가 단 하나뿐이라는 점입니다. 바로 1절에 기록된 "하나님이 택하셨다"는 말씀입니다. 그러나 성경은 그 눈부신 택하심을 이야기하면서도 사람의 현실을 미화하거나 포장하지 않습니다. "내 아들 솔로몬이 유일하게 하나님의 택하신 바 되었으나, 어리고 미숙하며 이 공역은 크도다." 성경은 하나님의 거룩한 선택과 인간의 시린 연약함을 한 문장 안에 아무런 완충장치도 없이 나란히 올려놓습니다. "하나님이 택하셨으니 다 잘 될 것이다"라는 식의 손쉬운 낙관이나 값싼 위로를 섣불리 덧붙이지도 않습니다. 우리가 삶에서 마주하는 부르심도 그렇지 않습니까. 택하심을 입어 어떤 자리에 섰지만, 우리는 여전히 서툴고 두려우며 앞에 놓인 과업은 감당하기 버거울 만큼 거대합니다. 성경은 우리의 그 작고 떨리는 손을 지우지 않고 그대로 둔 채 역사를 기록합니다.</p>
+<p>왕의 행동 또한 묵직합니다. 다윗은 왕권을 이용해 백성들에게 솔선수범을 요구하기에 앞서, 자신의 가장 사적인 보물창고를 조용히 열었습니다. 성전 건축을 위해 국가적으로 준비한 공적 자산과는 완전히 구별된, '자기 사유의 금과 은'을 하나님 앞에 내어놓았습니다. 그는 "내가 냈으니 너희도 내라"고 훈계하지 않았습니다. 성경 역시 왕의 1인칭 단수의 드림과 백성들의 3인칭 복수의 응답 사이에 "그러므로"라는 인과관계를 억지로 끼워 넣지 않습니다. 다만 자기 것을 먼저 내어놓은 한 노인의 진실한 고백 뒤에, 굳이 설명하지 않아도 자연스럽게 뒤따라오는 무리들의 발걸음을 그저 덤덤하게 배치해 둘 뿐입니다.</p>
+<p>뒤이어 나열되는 기록은 거룩한 미사여구가 아니라 마치 건조한 장부(帳簿)와 같습니다. 금 오천 달란트와 다릭 일만, 은 일만 달란트, 놋 만 팔천 달란트, 철 십만 달란트, 그리고 이름 모를 보석들. 성경은 헌신을 감정적인 수사로 뭉뚱그리지 않고, 백성들이 땀 흘려 일구어 낸 삶의 무게와 숫자를 그대로 적어 내려갑니다. 그 무게는 결코 가볍지 않은 현실의 쇳덩이요, 차가운 금속입니다.</p>
+<p>그런데 그 차갑고 무거운 장부의 맨 끝줄에서, 설명할 수 없는 감동의 물결이 터져 나옵니다. 9절은 히브리어 원어로 고작 열다섯 단어에 불과하지만, 그 짧은 한 문장 안에 '자원하다(나다브)'와 '기뻐하다(사마흐)'라는 두 뿌리의 말이 무려 다섯 번이나 빽빽하게 겹쳐 울려 퍼집니다. 세 단어마다 하나꼴로 자원함과 기쁨이 흘러넘치는 것입니다. 그 누구도 강요하지 않았고, 그 누구도 빚진 자처럼 억지로 흉내 내지 않았습니다. 백성들은 스스로 기꺼이 드림으로 기뻐했고, 노년의 다윗 왕 또한 그 백성들을 바라보며 가슴이 벅차올라 심히 기뻐했습니다. 성경은 백성의 기쁨과 왕의 기쁨에 높낮이를 두지 않습니다. 왕이라고 해서 더 거룩한 기쁨을 누리는 것도 아니고, 이름 없는 백성이라고 해서 작은 기쁨에 머무는 것도 아닙니다. 똑같은 언어로, 똑같은 은혜의 파도 속에서 온 회중이 하나가 되어 웃고 울었습니다.</p>
+<p>우리는 삶의 수많은 국면에서 관계를 강요하고, 성과를 쥐어짜며, 스스로를 다그치는 데 익숙해져 있습니다. 그러나 오늘 역대상 29장이 우리에게 보여주는 진정한 인격과 신앙의 깊이는, 다그침과 명령이 멈춘 자리에서 비로소 피어납니다. 요구받지 않았기에 온전히 내 것으로 누릴 수 있는 자발성, 입증할 필요가 없기에 거짓 없이 터져 나오는 온전한 기쁨. 그것은 사람의 교묘한 설득이나 통제로 만들어낼 수 있는 결과물이 아닙니다. 하나님이 주어가 되신 단 하나의 부르심을 신뢰하고, 나의 미숙함을 정직하게 인정하며, 내가 가진 몫을 조용히 내려놓을 때 선물처럼 주어지는 은혜의 신비입니다.</p>
+<p>오늘 당신의 삶에도 무거운 현실의 장부가 펼쳐져 있을지 모릅니다. 내가 감당해야 할 숫자가 버겁고, 맡겨진 책임에 비해 스스로가 너무나 어리고 연약하게 느껴질 때가 있습니다. 그러나 서둘러 조급한 결론을 내리거나 스스로를 다그치지 마십시오. 명령이 그친 자리, 오직 주님의 부르심과 우리의 진실한 물음만이 마주하는 그 고요한 여백 속에서 하나님은 일하고 계십니다. 억지로 채우려던 힘을 빼고 주 앞에 섰을 때, 차갑던 삶의 장부 끝머리에 세상의 그 어떤 성공으로도 맛볼 수 없는 묵직하고 찬란한 기쁨이 넘치도록 채워질 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 21일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

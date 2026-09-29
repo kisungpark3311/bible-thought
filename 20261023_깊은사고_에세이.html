@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>모든 동사가 멈추는 자리에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 23일 &middot; 역대상 29:20-30</span>
+      <h1>모든 동사가 멈추는 자리에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 살아가는 동안 끊임없이 '동사(動詞)'로 스스로의 존재를 증명하려 애씁니다. 계획하고, 달리고, 성취하고, 버텨냅니다. 쉼표 하나 찍는 것조차 뒤처지는 일인 양 두려워하며, 하루의 빈칸을 쉼 없는 움직임으로 빽빽하게 채워 넣곤 하지요. 내가 멈추면 내 삶의 무게중심마저 와르르 무너져 내릴 것만 같은 불안 때문일지도 모릅니다. 구약성경 역대상의 대미를 장식하는 29장(20~30절) 역시, 겉으로 보기에는 그러한 인간 역사의 거칠고 숨 가쁜 질주로 가득 차 있습니다. 다윗 왕의 통치 말기, 새로운 왕 솔로몬의 즉위를 앞두고 백성들은 쉴 틈 없이 움직입니다. 머리를 숙이고, 몸을 엎드리고, 제사를 드리고, 먹고 마시며, 기름을 붓고 복종합니다. 불과 열한 절 남짓한 짧은 본문 안에 무려 스물다섯 개의 정동사가 파도처럼 굽이칩니다. 수송아지 천 마리, 숫양 천 마리, 어린 양 천 마리라는 압도적인 숫자의 제물과 온 나라를 뒤흔드는 환호 속에서, 역사의 무대는 인간들의 거대한 열정과 부산한 행위들로 빈틈없이 채워지는 듯 보입니다.</p>
+<p>그런데 이 거대한 움직임의 소용돌이 한가운데, 유독 시선을 멈추게 하는 한 절이 있습니다. 본문에 등장하는 스물다섯 개의 정동사 가운데 하나님이 주어로 서신 동사는 놀랍게도 단 두 개뿐이며, 그 둘은 25절 한 절에 오롯이 모여 있습니다. "여호와께서 솔로몬을 모든 이스라엘의 목전에서 심히 크게 하시고 또 왕의 위엄을 그에게 주사." 바로 앞 24절에서는 모든 방백과 용사들이 솔로몬에게 무릎을 꿇고 충성을 맹세했습니다(히브리어 원어로는 '손을 내어주었다'고 표현합니다). 사람들의 복종과 헌신이 먼저 있었고, 그 뒤에 하나님의 높이심이 이어집니다.</p>
+<p>우리는 대개 이런 배치를 대하면 본능적으로 그 사이에 서투른 인과관계를 덧붙이고 싶어 합니다. "사람이 먼저 온전히 순종했더니, 하나님께서 그 보상으로 왕권을 높여주셨다"는 식의 편리한 공로주의적 도식 말입니다. 설교하기에도 쉽고, 귀에 쏙 들어오는 익숙한 교훈이지요. 그러나 성경은 그 두 문장 사이에 '그러므로'도, '그 결과로'도 두지 않았습니다. 사람들의 성실한 충성과 하나님이 주권적으로 베푸신 위엄 사이에 본문은 아무런 접속사도 두지 않고 깊은 침묵의 공간으로 비워두었습니다. 우리가 살아가는 삶의 자리도 그렇지 않던가요. 내가 쏟아부은 땀방울과 하나님이 베풀어주신 은총 사이에 우리는 조급하게 등호(=)를 그리려 하지만, 참된 신앙은 그 두 사건 사이의 거룩한 여백을 인정하는 데서 시작됩니다. 내가 열심히 살았기 때문에 은혜를 '받아낸' 것이 아니라, 나의 작고 성실한 걸음 곁에 하나님의 신비로운 은혜가 조용히 나란히 걸어오셨음을 고백하는 겸손 말입니다.</p>
+<p>이어지는 27절에 이르면, 성경은 다윗의 사십 년 생애를 담담하게 계수합니다. "이스라엘을 다스린 기간은 사십 년이라. 헤브론에서 칠 년 동안 다스렸고 예루살렘에서 삼십삼 년 동안 다스렸더라." 수많은 전장과 광야의 밤들, 숱한 배신과 통곡, 영광과 회개의 눈물이 교차했던 한 인간의 파란만장한 일생이 '사십', '칠', '삼십삼'이라는 단 세 개의 정갈한 숫자로 정리됩니다. 그리고 28절에서 다윗은 조용히 숨을 거둡니다. "그가 나이 많아 늙도록 부하고 존귀하다가 죽으매."</p>
+<p>세고, 마치고, 넘깁니다. 다윗은 자신이 세운 왕국을 영원한 자신의 소유로 움켜쥐려 하지 않았습니다. 내가 시작한 역사라 해서 내 손으로 끝장내려 하지 않고, 정해진 시간표가 차오르면 펜을 내려놓고 다음 사람에게 자리를 내어줍니다. 직장에서 오랫동안 맡아온 프로젝트를 인계할 때, 평생 일군 사업의 장부를 정리할 때, 혹은 자녀들을 품에서 떠나보낼 때 우리에게 필요한 것도 바로 이 거룩한 단정함일 것입니다. 나의 전성기라는 숫자를 담담히 마감하고, 미련 없이 마침표를 찍은 뒤 다음 세대의 어깨 위로 역사를 넘겨주는 것. 그것이야말로 하나님을 신뢰하는 자만이 보여줄 수 있는 가장 아름다운 은퇴의 품격입니다.</p>
+<p>그리고 마침내 역대상이 완전히 닫히기 직전, 29절에 이르러 우리는 이 본문에서 가장 경이로운 문학적·신학적 침묵을 마주하게 됩니다.</p>
+<blockquote>
+<p>"다윗 왕의 행적은 처음부터 끝까지 선견자 사무엘의 글과 선지자 나단의 글과 선견자 갓의 글에 다 기록되고"</p>
+</blockquote>
+<p>앞선 아홉 절 내내 숨 가쁘게 달리던 스물다섯 개의 동사들이 이 한 절에 이르러 완전히 자취를 감춥니다. 우리말 성경에는 '기록되고'라는 동사로 번역되었지만, 히브리어 원어 '케투빔(kətûvîm)'은 움직이는 정동사가 아니라 고요히 머물러 있는 수동분사입니다. 이 문장에는 주도적으로 움직이는 동사가 단 하나도 없습니다. 20절부터 30절까지의 전체 단락 중에서 정동사가 0개인 절은 오직 이 29절 하나뿐입니다.</p>
+<p>성경은 왜 책을 덮는 문턱에서 모든 움직임을 멈추어 세웠을까요? 땀 냄새 풍기던 역사의 격전지가 문득 먼지 한 점 없는 고요한 서가(書架)로 바뀌는 순간입니다. 역대기는 자신이 다윗의 생애를 완벽하게 집대성했다고 뽐내지 않습니다. "그의 처음부터 끝까지는 저 세 사람의 글에 있다"며, 책 바깥의 세 사람—사무엘, 나단, 갓—의 이름을 가리키며 조용히 뒤로 물러섭니다. 게다가 성경은 이 세 사람의 직함을 서로 다른 원어(로에, 나비, 호제)로 부르면서도, 그들 사이에 어떤 서열이나 차이가 있었는지 단 한마디도 설명하지 않습니다. 누가 더 훌륭한 선견자였는지, 누구의 글이 더 권위 있는지 따지지 않고, 그저 한 사람의 생애를 서로 다른 각도에서 비추었던 세 개의 거울을 나란히 놓아둘 뿐입니다.</p>
+<p>우리는 종종 내 인생이라는 책 안에 모든 것을 다 담아내려 안간힘을 씁니다. 내가 모든 성공을 거두어야 하고, 내 손으로 지은 이름표 하나로 나의 온 생애가 완벽하게 규정되기를 갈망합니다. 그러다 예상치 못한 질병이나 실패, 혹은 시간의 한계에 부딪혀 하던 일을 덮어야 할 때, 내 존재 전체가 지워진 것만 같은 절망에 빠지곤 하지요.</p>
+<p>그러나 오늘 역대상이 덮이는 자리는 우리에게 깊은 안도와 위로를 건넵니다. 내 삶의 모든 행적을 내가 다 써 내려가지 않아도 괜찮습니다. 내가 미처 다 채우지 못한 이야기들, 내가 서툴러 다듬지 못한 여백들은 나를 곁에서 지켜보았던 소중한 이들의 기억과 따뜻한 시선 속에 각기 다른 이름으로 조용히 기록될 것입니다. 누군가에게는 든든한 버팀목으로, 누군가에게는 애틋한 눈물로, 또 누군가에게는 고마운 기도로 나누어 담길 것입니다.</p>
+<p>그러니 오늘 하루, 당신을 쉼 없이 몰아세우던 그 많은 동사들을 잠시 내려놓아도 좋습니다. 내가 한 수고와 하나님이 주신 선물 사이에 억지스러운 인과를 채워 넣으려 애쓰지 마십시오. 오늘 내게 주어진 시간의 숫자를 담담히 헤아리고, 사랑하는 이들을 위해 내 자리를 기쁘게 비워두십시오. 분주한 모든 동사가 멈추어 서는 그 침묵의 자리에서, 우리는 비로소 보게 될 것입니다. 내 인생의 마지막 장을 조용히 품어 안으시는 하나님의 깊고 너른 은혜의 서가를 말입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 23일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

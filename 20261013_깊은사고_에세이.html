@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>수는 달라도, 서 있는 자리는 같습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 13일 &middot; 역대상 24:1-31</span>
+      <h1>수는 달라도, 서 있는 자리는 같습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 숫자로 크기를 재고 가치를 매기는 세상에 살고 있습니다. 매달 통장에 찍히는 급여의 액수, 아파트의 평수, 명함에 적힌 직급의 연차, 자녀의 시험 점수, 그리고 소셜 미디어 화면 위에서 반짝이는 숫자에 이르기까지, 우리는 아침에 눈을 떠 잠자리에 들 때까지 셀 수 없이 많은 숫자의 파도를 헤엄칩니다. 그리고 때로는 그 숫자의 크기가 곧 나의 존재 증명서이자 삶의 성적표인 양 착각하며 살아갑니다. 남들의 숫자가 내 것보다 곱절은 커 보일 때 우리는 설명할 수 없는 박탈감에 사로잡히고, 내 손에 쥐어진 숫자가 초라할 때면 마치 인생의 출발선에서부터 영영 뒤처진 것만 같은 불안에 가슴을 졸이곤 합니다.</p>
+<p>그러나 구약성경 역대상 24장을 가만히 펼쳐 들면, 숫자의 무게에 짓눌려 숨이 가쁜 우리에게 깊고 고요한 숨을 불어넣어 주는 낯설고도 눈부신 장면 하나를 마주하게 됩니다. 다윗 왕이 성전에서 하나님을 섬길 제사장 가문들을 스물네 반열로 나누어 세우는 대목입니다. 그 성전 뜰에는 두 집안이 마주 서 있었습니다. 한쪽은 엘르아살의 자손으로 우두머리가 열여섯 명이었고, 다른 한쪽은 이다말의 자손으로 여덟 명이었습니다. 열여섯과 여덟. 정확하게 두 배의 차이가 나는 두 가문이었습니다.</p>
+<p>만약 세상의 방식과 효율의 계산법을 따랐다면 어떤 결정이 내려졌을까요? 당연히 열여섯을 가진 집단이 두 배의 권한과 몫을 가져가거나, 더 좋은 시간대를 차지하거나, 적어도 그 숫자의 우위를 인정받아 먼저 호명되었을 것입니다. 그것이 오늘날 우리가 너무나 당연하게 여기는 세상의 저울질입니다. 하지만 성경은 전혀 뜻밖의 한 걸음을 내딛습니다. 성경은 그 두 집안의 숫자를 배정의 계산기에 집어넣지 않았습니다. 오히려 그 둘 사이에 '제비'를 꺼내 들며 담담하게 선언합니다.</p>
+<div class="quote">
+        "이에 제비 뽑아 서로 차등이 없이 나누었으니, 이는 성전의 일을 다스리는 자와 하나님의 일을 다스리는 자가 엘르아살의 자손 중에도 있고 이다말의 자손 중에도 있음이라."<br/>
+<span style="font-size:0.85em; color:#7a6238; font-style:normal; display:block; margin-top:8px;">- 역대상 24:5</span>
+</div>
+<p>성경은 열여섯과 여덟이라는 숫자를 애써 못 본 척 지우지 않았습니다. 본문은 정직하게 그 숫자를 적어 두었습니다. 열여섯은 끝까지 열여섯이었고, 여덟은 끝까지 여덟이었습니다. 세상처럼 작은 숫자를 부끄러워하거나 큰 숫자를 우상화하지 않고, 있는 그대로의 현실을 담담히 응시한 것입니다. 하지만 결코 그 숫자를 '차별의 근거'로 삼지 않았습니다. 성경이 밝힌 나눔의 유일한 이유는 오직 하나였습니다. "양쪽 모두에게 성소와 하나님의 일을 맡을 어른들이 서 있었기 때문"이었습니다. 숫자의 많고 적음이 아니라, 그 자리에 서서 성전을 지키고자 하는 거룩한 중심이 양쪽 모두에게 있었기 때문이었습니다.</p>
+<p>우리의 일상과 직업 현장도 이와 닮아 있습니다. 우리는 날마다 차가운 수치와 평가로 재단당합니다. 그런데 역대상 24장 4절에서 그 수가 많았음을 가리키는 히브리어 동사는 흥미롭게도 <span class="highlight">"많은 것으로 발견되었다(바임마체우)"</span>는 수동태입니다. 누가 그 수를 세어 기록했는지 성경은 적지 않습니다. 세상의 평가는 늘 익명의 시선 속에서 우리를 재단하고 숫자로 묶어두려 합니다. 그러나 사람의 이름과 순번만이 묵묵히 이어지던 긴 침묵을 지나 19절에 이르러서야 성경은 비로소 단 한 번, 움직이는 주어를 전면에 내세웁니다. 바로 "이스라엘의 하나님 여호와께서 명령하셨다"는 문장입니다. 우리 삶의 참된 주관자는 수치를 매기는 세상의 손이 아니라, 우리를 그 자리에 부르신 하나님 한 분뿐이십니다.</p>
+<p>이 장의 또 다른 먹먹한 여운은 명부의 양쪽 끝자락에 조용히 묻어 있습니다. 제사장 명단이 시작되기 직전 2절에 "그들에게 아들이 없으므로"라는 문장이 나오고, 명단이 닫히는 28절에 또 한 번 "엘르아살은 아들이 없으며"라는 결여의 기록이 나옵니다. 수많은 이름이 번성하는 가운데, 홀로 자식을 잇지 못한 이들의 아픈 빈칸이 성경에 숨김없이 적혀 있습니다. 성경은 이 결여에 대해 섣부른 교훈을 덧붙이거나 어설픈 위로로 얼버무리지 않습니다. 그저 그 아픔의 자리를 지우지 않고 명부의 한복판에 그대로 품어 안습니다. 남들은 다 가진 것 같은데 나만 갖지 못한 결핍, 아무리 발버둥 쳐도 채워지지 않는 인생의 빈칸 때문에 가슴을 쥐어뜯는 이들에게, 성경은 그 빈자리마저도 하나님의 역사 속에서 결코 삭제되지 않는 존귀한 삶의 한 페이지라고 조용히 말해줍니다.</p>
+<p>마지막 절에서 제사장들은 다윗 왕과 지도자들 앞에서 제비를 던졌습니다. 히브리어 원문에는 우리가 흔히 생각하는 혈통적인 '장자'라는 단어가 없습니다. 성경이 나란히 놓은 것은 '우두머리 가문'과 '그의 작은 형제'였습니다. 누가 먼저 태어났는지, 누가 더 힘 있는 가문인지를 따지지 않고, 모두가 하나님 앞에서는 한 형제로서 제비를 던지는 손길에 자신의 몫을 맡겼습니다. 그것은 운에 인생을 던지는 도박이 아니라, 내 삶의 순번과 자리를 하나님의 선하신 섭리에 온전히 맡겨드리는 거룩한 신뢰의 몸짓이었습니다.</p>
+<p>지금 당신은 어떤 숫자를 쥐고 서 계십니까? 남들의 열여섯 앞에서 나의 초라한 여덟을 숨기고 싶어 주눅 들어 있지는 않습니까? 혹은 내 삶의 이력서에 선명하게 새겨진 결여와 빈자리 때문에 홀로 밤을 지새우고 있지는 않습니까? 낙심하지 마십시오. 세상은 숫자를 보지만, 하나님은 그 자리를 묵묵히 지켜내는 당신의 존재를 보십니다. 손에 쥔 숫자는 달라도, 하나님 앞에서 우리가 서 있는 은혜의 자리는 결코 차등이 없습니다. 당신이 흘린 땀방울과 말 못 할 눈물, 그리고 묵묵히 견뎌낸 하루의 무게를 하나님은 그분의 손바닥에 하나도 지우지 않고 다 새겨두셨습니다. 오늘 내게 주어진 삶의 자리에서, 나만의 작은 순번을 성실하게 살아내는 당신의 그 걸음이야말로 하늘에서 가장 찬란하게 빛나는 거룩한 예배입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 13일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

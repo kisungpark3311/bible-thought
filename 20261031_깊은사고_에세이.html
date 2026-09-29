@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>접속사 없는 사랑 앞에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 31일 &middot; 아가 8:1-14</span>
+      <h1>접속사 없는 사랑 앞에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 매끄럽고 명쾌한 결말을 갈망하며 살아갑니다. 소설을 읽든, 영화를 보든, 고단했던 한 해의 마지막 날을 보내든, "그리하여 모든 오해는 풀리고 두 사람은 오래오래 행복하게 살았습니다"라는 안도감 있는 마침표를 기대합니다. 설명되지 않은 여백이나 풀리지 않은 갈등은 마음 한구석에 얹힌 체기처럼 우리를 불안하게 만들기 때문입니다.</p>
+<p>그런데 인류 역사상 가장 찬란하고 격정적인 사랑의 노래로 불리는 성경의 아가서(雅歌書)는, 그 대미를 장식하는 8장의 마지막에 이르러 참으로 기이하고 서늘한 침묵을 우리 앞에 툭 던져 놓습니다. 여덟 장에 걸친 숨 가쁜 사랑의 여정이 끝나는 바로 그 순간, 책의 마지막 장에는 전체를 아우르는 지혜로운 총괄도, 벅찬 포옹으로 끝나는 완결된 후일담도 없습니다.</p>
+<blockquote>"내 사랑하는 자여 너는 빨리 달리라 향기로운 산 위의 노루와 같고 어린 사슴과도 같아라" (아가 8:14)</blockquote>
+<p>아가서는 놀랍게도 이 다급하고 애틋한 두 개의 명령형 한가운데서 홀연히 숨을 멈춥니다. 그 사랑하는 이가 부름을 듣고 달려왔는지, 마침내 두 사람이 손을 맞잡았는지 본문은 단 한 줄도 적어주지 않습니다. 마치 열린 창문 너머로 누군가의 이름을 애타게 부른 뒤, 대답이 돌아오기도 전에 그대로 멈춰 서 버린 것처럼, 성경은 완결되지 않은 부름의 메아리만을 허공에 흩뿌려 둔 채 조용히 책장을 덮습니다.</p>
+<h2>나란히 놓인 것과 이어진 것 사이에서</h2>
+<p>이 닫히지 않은 마지막 장을 찬찬히 거닐다 보면, 우리를 당혹스럽게 만드는 거칠고 단절된 문장들이 곳곳에 널려 있음을 마주하게 됩니다. 4절에서 여인은 예루살렘의 딸들에게 간곡하게 부탁합니다. "내 사랑하는 자가 원하기 전에는 흔들지 말며 깨우지 말지니라." 사랑의 신비를 인간의 조급한 손길로 억지로 흔들어 깨우지 말라는 엄중한 금지입니다. 그런데 바로 다음 절인 5절에 들어서자마자, 본문은 아무런 예고도 없이 전혀 다른 목소리를 불쑥 내어놓습니다. "사과나무 아래서 내가 너를 깨웠노라."</p>
+<p>도대체 어떻게 된 일일까요? 방금 전까지 깨우지 말라고 금지해 놓고, 곧바로 다음 문장에서 내가 너를 깨웠다고 말합니다. 두 구절 사이에는 '그러나'라는 반전의 접속사도, '마침내 때가 차매'라는 친절한 해설도 없습니다. 그저 '깨우지 말라'는 금지와 '내가 깨웠다'는 수행이 한 치의 완충지대도 없이 나란히 마주 서 있을 뿐입니다.</p>
+<p>6절에 이르면 이 단절감은 더욱 서늘하고 깊어집니다. <strong>"사랑은 죽음같이 강하고, 질투는 스올(무덤)같이 모질다."</strong> 수많은 연인들의 가슴을 울렸던 낭만의 노래 끝자락에 불쑥 튀어나온 '질투'라는 낱말. 아가서 전체를 통틀어 오직 단 한 번 쓰인 이 낯선 단어 앞에서 우리는 멈칫하게 됩니다. 사랑을 노래하는 책이 어찌하여 질투를 스올의 가혹함에 견주며 나란히 놓아두었을까요?</p>
+<p>이 숨 막히는 긴장 앞에서 우리는 본능적으로 우리만의 '접속사'를 끼워 넣고 싶어 합니다. "사랑은 죽음처럼 강하지만, 질투는 가혹한 것이니 경계해야 한다"며 교훈을 덧붙이거나, "사랑이 너무 크기 때문에 질투 역시 거세게 타오르는 법이다"라며 그럴듯한 인과관계를 조립하려 듭니다. 심지어 어떤 이들은 이 '질투'를 서둘러 '거룩한 열심'이라는 신성한 언어로 포장하여 그 불편한 가시를 서둘러 뽑아내려 합니다.</p>
+<p>하지만 본문은 그 어떤 포장도, 인과도 허락하지 않습니다. 사랑과 질투 사이에 아무런 접속사를 두지 않은 채, 죽음의 무게와 스올의 참혹함을 대등하게 나란히 세워두었을 뿐입니다. 나란히 놓여 있다고 해서 그것이 필연적으로 이어져 있는 것은 아닙니다. 성경 본문이 해소하지 않은 긴장을 우리가 섣부른 말재주로 봉합하려 들 때, 그것은 깊은 묵상이 아니라 오만한 자기 편집에 불과합니다.</p>
+<h2>회의실에서 침묵당한 사람의 몫</h2>
+<p>아가서 8장이 품은 또 하나의 묵직한 거울은 8절과 9절의 웅성거림 속에 숨어 있습니다.</p>
+<blockquote>"우리에게 있는 작은 누이는 아직 유방이 없구나 그가 청혼을 받는 날에는 우리가 그를 위하여 무엇을 할까. 그가 성벽이라면 우리는 은 망대를 그 위에 세울 것이요 그가 문이라면 우리는 백향목 판자로 두르리라."</blockquote>
+<p>이 두 구절 안에는 '우리'라는 1인칭 복수 주어가 쉼 없이 등장합니다. 우리가 무엇을 할까, 우리가 지으리라, 우리가 두르리라. 누군가를 지극히 아끼고 보호하려는 듯한 열띤 의논이 꼬리를 뭅니다. 그러나 가만히 들여다보면 가슴 시린 모순이 발견됩니다. 그 거창한 의논의 중심에 선 누이는 정작 그 자리에서 단 한 마디의 말도 건넬 기회를 얻지 못합니다. 그녀는 두 구절 내내 3인칭의 객체로만 불릴 뿐, 자신의 삶과 미래에 대해 자기 입으로 단 한 번도 발언하지 못합니다.</p>
+<p>우리의 일상은 어떠합니까? 우리는 얼마나 자주 가정의 식탁에서, 직장의 회의실에서, 공동체의 모임에서 '너를 위하여'라는 명분을 앞세워 누군가의 입을 막고 있습니까? 자녀를 위한다는 명목으로 아이의 작은 한숨을 무시하고, 성도를 위한다는 명분으로 힘겨워하는 이들의 신음을 지워버린 채, 우리끼리 은 망대를 세우고 백향목 판자를 두르는 대책에 도취되지는 않았습니까?</p>
+<p>아가서는 이 '우리'의 계획에 대해 그 어떤 칭찬도, 비난도 덧붙이지 않습니다. 그저 말할 수 없는 사람이 결정의 대상이 되어 있는 그 서글픈 회의의 현장을 있는 그대로 적어둘 뿐입니다. 그 침묵의 기록은 오늘 우리에게 묻습니다. <strong>"지금 당신이 주도하는 수많은 결정의 한복판에서, 정작 말할 수 없는 그 사람은 어디에 서 있는가?"</strong></p>
+<h2>땀방울과 은전의 무게: 현실을 디딘 사랑</h2>
+<p>아가서는 신비롭고 영적인 사랑의 노래로 읽히지만, 8장의 시선은 놀랍도록 흙 묻은 현실의 땅바닥을 정직하게 응시합니다. 본문은 석류즙과 향내 나는 포도주, 백향목 판자와 은 망대, 사과나무와 광야를 구체적인 물성(物性) 그대로 호명합니다. 그리고 마침내 11절과 12절에 이르면, 영적인 비유로 도무지 환치할 수 없는 냉정한 '숫자'와 '셈(계산)'이 등장합니다.</p>
+<p>솔로몬의 포도원에서 일하는 소작인들은 수확의 열매로 은 천을 바치고, 땀 흘려 그 포도원을 지킨 사람들은 은 이백을 자기 몫으로 돌려받습니다. 다섯 중의 하나, 20퍼센트의 명확한 분배율입니다. 이것은 공허한 관념이 아닙니다. 땅이 있고, 그 땅에서 뙤약볕을 견디며 일한 사람이 있으며, 정당한 땀의 대가를 나누는 공정한 규칙과 계약이 있습니다.</p>
+<p>우리는 종종 '사랑'이나 '은혜'라는 숭고한 핑계를 대며 현실의 정당한 몫과 계산을 흐릿하게 뭉개버리곤 합니다. 헌신이라는 이름으로 누군가의 정당한 노동을 가볍게 여기고, 사랑한다는 이유로 마땅히 지켜야 할 삶의 경계와 계약을 허물어뜨립니다. 하지만 성경은 단호합니다. 석류즙은 즙이고, 판자는 판자이며, 은 천과 이백은 땀 흘려 일한 자들의 피와 눈물이 담긴 거룩한 대가입니다. 사물을 다른 영적인 말로 바꾸기 전에 먼저 제 이름으로 부르고, 삶의 물질적 무게를 정직하게 감당하는 것—이것이 바로 아가서가 가르쳐주는 지극히 성숙한 인격의 출발점입니다.</p>
+<h2>빈자리를 견디는 인격을 향하여</h2>
+<p>아가서의 마지막 장은 우리에게 해답을 쥐여주지 않습니다. 대신 질문과 긴장의 자리를 온전히 남겨둡니다. 6절의 맹렬한 불꽃이 하나님의 이름인지 단순한 최상급의 불길인지 확정하지 않고, 포도원의 솔로몬이 저자인지 부름받는 청자인지 가려주지 않습니다. 정경은 봉합되지 않은 두 자리를 그저 나란히 둔 채 책을 닫습니다.</p>
+<p>삶을 살아가다 보면 아무리 애를 써도 접속사가 붙지 않는 날들을 만납니다. 깊은 사랑과 차가운 질투가 한 방에서 마주 보고, 결코 깨우지 말라던 금지와 사과나무 아래서 흔들어 깨우는 모순이 한날한시에 일어납니다. 내가 말할 수 없는 회의의 대상이 되어 가슴을 치기도 하고, 땀 흘려 일한 대가 앞에서 세상의 차가운 셈법에 눈물짓기도 합니다.</p>
+<p>그럴 때마다 억지로 내 손으로 인생의 틈새를 메우려 하지 마십시오. 내가 지어낸 오만의 접속사들을 거두어들이고, 성경이 비워 둔 그 자리를 정직하게 비워 둔 채 머무는 법을 배워야 합니다. 성숙한 인격이란 모든 질문에 매끄러운 답을 내놓는 사람이 아니라, 본문이 멈춘 곳에서 내 생각의 손길바저 멈출 줄 아는 사람입니다.</p>
+<p>"주님, 말씀이 멈춘 곳에서 제 생각도 멈추게 하소서. 매끄럽게 포장하고 싶은 유혹을 내려놓고, 비워 두신 자리를 경외함으로 바라보게 하소서."</p>
+<p>결말이 적히지 않았기에, 우리의 사랑은 결코 박제된 과거에 머물지 않습니다. 노루처럼, 어린 사슴처럼 향기로운 산을 향해 지금도 숨 가쁘게 달려오시는 그 사랑의 발소리를 기다리며, 오늘도 우리는 비워 둔 자리에서 참된 믿음과 사랑을 배웁니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 31일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

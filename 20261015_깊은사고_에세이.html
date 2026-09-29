@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>맏아들이 아니어도, 북쪽 문이어도</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 15일 &middot; 역대상 26:1-19</span>
+      <h1>맏아들이 아니어도, 북쪽 문이어도</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<div class="container">
+<p>살다 보면 내 뜻대로 정할 수 없는 것들이 훨씬 더 많다는 사실을 문득 깨닫게 됩니다. 어느 집안의 몇째로 태어날지, 인생의 중요한 길목에서 어떤 자리에 서게 될지, 심지어 예기치 못한 아픔이나 삶의 굴곡마저도 우리의 계획대로 주어지지 않습니다. 우리는 누구나 햇살이 따스하게 내리쬐는 번듯한 '동쪽 문'에 서기를 꿈꿉니다. 그러나 손을 떠난 인생의 제비가 툭 하고 굴러떨어진 곳은, 매서운 바람이 몰아치는 그늘진 '북쪽 문'이거나 먼지 쌓인 곳간 앞일 때가 적지 않습니다.</p>
+<h2>던지는 손과 떨어지는 제비 사이의 침묵</h2>
+<p>구약성경 역대상 26장은 성전 문지기들의 명부입니다. 번쩍이는 칼을 든 용사도, 화려한 에봇을 입은 대제사장도 아닌, 묵묵히 성전의 문을 열고 닫아야 했던 평범한 사람들의 이름이 열아홉 절 내내 이어집니다. 그런데 그 명단을 가만히 들여다보면 참으로 건조하고도 묘한 장면 하나를 마주하게 됩니다.</p>
+<div class="quote">
+          "셀레먀는 동쪽을 뽑았고 그의 아들 스가랴는 명철한 모사인데 그를 위하여 제비 뽑으니 북쪽을 뽑았고" <br/>
+<span style="font-size:0.88rem; color:#7f8c8d; font-style:normal; display:block; margin-top:8px;">- 역대상 26:14</span>
+</div>
+<p>한 구절 안에 사람이 제비를 '던지는 손'과 바닥으로 제비가 '떨어지는 결과'가 나란히 적혀 있습니다. 그러나 성경은 그 사이에 아무런 설명도 덧붙이지 않습니다. "사람이 제비를 던졌으나 하나님이 깊은 뜻이 있어 북쪽으로 이끄셨다"는 식의 은혜로운 포장도, 왜 명철한 모사였던 아들이 굳이 북쪽으로 가야 했는지에 대한 변명도 없습니다. 성경은 그저 던지는 손과 떨어진 제비 사이, 거친 흙바닥 같은 담담한 침묵만을 고스란히 남겨둡니다.</p>
+<p>우리는 삶에서 이해할 수 없는 자리에 서게 될 때마다 몹시 불안해합니다. 내가 왜 하필 이 자리에 서게 되었는지, 왜 내 노력의 결과가 이토록 초라한 바닥에 떨어졌는지 견디지 못하고 성급한 결론을 지어내려 합니다. "내가 기도가 부족해서 이런 일을 겪는 걸까" 자책하거나, "이것 또한 나중에 나를 높이 쓰시려는 거대한 계획일 거야"라며 값싼 신앙의 언어로 그 텅 빈 공간을 억지로 꿰맞추려 듭니다. 원인과 결과를 매끄럽게 봉합해내지 않으면 마음이 무너지기 때문입니다.</p>
+<p>하지만 성경의 기록자는 그 사이를 신학으로 섣불리 땜질하지 않습니다. 어떤 자리는 제비가 정하고, 어떤 자리는 아버지가 세웁니다. 성경은 두 방식을 같은 장에 나란히 두면서도 어느 쪽이 더 옳다고 편들지 않습니다. 삶의 많은 순간들은 즉각적인 해답을 주지 않습니다. 진정한 영적 성숙은 설명되지 않는 그 침묵의 여백을 억지로 채우려 하지 않고, 있는 그대로 바라보며 오늘을 살아내는 단단한 인격에서 비롯됩니다.</p>
+<h2>맏아들이 아니라는 사실을 지우지 않는 성경</h2>
+<p>명단 중간쯤에 이르면 또 하나의 아릿한 문장이 발걸음을 멈추게 합니다.</p>
+<div class="quote">
+          "시므리는 본래 맏아들이 아니나 그의 아버지가 그를 우두머리로 삼았고" <br/>
+<span style="font-size:0.88rem; color:#7f8c8d; font-style:normal; display:block; margin-top:8px;">- 역대상 26:10</span>
+</div>
+<p>세상의 위인전이라면 아마 이 문장을 슬그머니 감추었을 것입니다. "비록 차남이었으나 형보다 훨씬 출중했다"며 결핍을 가리기 위한 그럴듯한 미담을 지어냈을지도 모릅니다. 그러나 성경은 "그는 본래 맏아들이 아니었다"는 결핍의 사실을 지우지 않고 명부 한가운데 덩그러니 남겨둡니다. 왜 아버지가 그를 우두머리로 삼았는지 이유도 설명하지 않습니다.</p>
+<p>성경은 우리의 부족한 자격과 뒤처진 순서를 부끄러워하여 지우지 않습니다. 혹시 지금 앞자리가 아닌 자리, 순서가 한참 뒤로 밀려나 있는 자리에 서 계십니까? "본래 내 차례가 아니었는데"라는 자격지심이나, "내가 먼저였어야 했는데"라는 서운함이 마음을 흔들고 있지는 않습니까. 성경은 그 아쉬운 사실을 있는 그대로 둔 채, 그 옆에 '그럼에도 오늘 그 자리를 지켜낸 사람'의 이름을 적어 넣습니다. 인생의 가치는 출생 순서나 번듯한 자격에 있는 것이 아니라, 내게 주어진 자리를 묵묵히 살아내는 정직함에 있기 때문입니다.</p>
+<h2>거창한 직무가 아닌 '여덟'이라는 일상 뒤에 오시는 하나님</h2>
+<p>이 열아홉 절의 긴 명단 가운데, '하나님'이 주어로 서신 문장은 놀랍게도 단 하나뿐입니다.</p>
+<div class="quote">
+          "여섯째 암미엘과 일곱째 잇사갈과 여덟째 브울래대이니 이는 하나님이 오벧에돔에게 복을 주셨음이라" <br/>
+<span style="font-size:0.88rem; color:#7f8c8d; font-style:normal; display:block; margin-top:8px;">- 역대상 26:5</span>
+</div>
+<p>우리는 흔히 하나님의 복이 대단한 업적이나 화려한 사역의 결실 뒤에 올 것이라 기대합니다. "문지기 일을 특출나게 잘해서 복을 받았다"거나 "남들보다 더 거룩하게 헌신해서 복을 누렸다"고 인과관계를 잇고 싶어 합니다.</p>
+<p>하지만 본문이 실제로 복을 붙여둔 자리는 그런 거창한 직무가 아니었습니다. 그저 첫째부터 여덟째까지, 평범한 한 가정의 아들들의 이름이 차례로 적힌 바로 다음이었습니다. 지극히 일상적인 '여덟'이라는 식구의 수 뒤에 하나님이 조용히 서 계셨던 것입니다.</p>
+<p>날마다 밥상을 차리고, 옷을 빨아 입히고, 지치고 고단한 몸으로 서로를 부둥켜안았던 보통의 나날들. 하나님은 우리의 거창한 야망이 아니라, 이 땀내 나는 일상의 지붕 아래에서 "내가 너에게 복을 주었다"고 말씀하십니다. 진짜 은혜는 빛나는 무대 위가 아니라, 오늘 내 곁에 숨 쉬고 있는 가족과 평범한 일상의 무게 속에 깃들어 있습니다.</p>
+<h2>파수가 파수를 마주 보고, '매일'의 문을 지키는 숭고함</h2>
+<p>본문 16절과 17절은 문지기들이 서 있던 자리를 이렇게 묘사합니다. "서로 대하여 파수하되... 동쪽에 여섯, 북쪽에 매일 네 사람, 남쪽에 매일 네 사람..."</p>
+<p>'서로 대하여'라는 말은 파수가 파수를 마주 보고 선다는 뜻입니다. 혼자 외롭게 버티는 것이 아니라, 나와 똑같이 피로에 젖은 눈으로 자리를 지키는 동료와 시선을 마주하는 것입니다. 그리고 그곳엔 '매일'이라는 단어가 묵직하게 놓여 있습니다.</p>
+<p>어제도 섰고, 오늘도 서며, 내일도 서야 하는 문지기의 일. 그것은 지루하고 반복적인 몸의 수고입니다. 동쪽에는 여섯 명, 북쪽에는 네 명. 왜 숫자가 다른지 성경은 따지지 않습니다. 남들의 화려한 도약을 바라보며 '왜 나만 날마다 똑같은 출퇴근길을 걷고, 왜 나만 이 좁은 문에 매여 있어야 하는가' 서글퍼질 때가 있습니다.</p>
+<p>그러나 하나님은 그 불균형과 침묵 속에서도 묵묵히 자기 몫의 문을 지켜내는 사람들의 이름을 하나하나 새겨두십니다. 세상은 눈부신 결과만을 기억하지만, 하나님은 날마다 문을 열고 닫는 당신의 거친 손마디와 성실한 발걸음을 가장 거룩한 예배로 기억하십니다.</p>
+<h2>내게 주어진 문 앞에서</h2>
+<p>예수 그리스도께서 걸어가신 길 역시 그러했습니다. 갈보리 언덕 위에서 무자비한 로마 군병들이 자신의 겉옷을 두고 제비를 뽑는 참혹한 순간에도, 주님은 섣부른 해명이나 분노로 그 빈칸을 채우려 하지 않으셨습니다. 그 거칠고 부조리한 십자가의 자리를 온몸으로 묵묵히 지켜내심으로써, 온 인류를 향한 영원한 구원의 문을 활짝 열어주셨습니다.</p>
+<p>그러니 오늘 내 손을 떠난 제비가 어디에 떨어졌든 낙심하지 마십시오. 맏아들이 아니어도 괜찮습니다. 내게 배정된 자리가 바람 찬 북쪽 문이어도 결코 초라하지 않습니다.</p>
+<p>하나님은 당신이 딛고 선 바로 그 자리, 날마다 반복되는 일상의 문 앞에 서 계십니다. 오늘 하루, 내게 맡겨진 문을 소중히 지키며 곁에 있는 이들을 따뜻하게 마주 보십시오. 정해진 자리를 성급히 해석하지 않고 담담히 살아내는 당신의 그 신실한 하루가, 하나님의 눈에는 세상에서 가장 찬란하고 아름다운 예배입니다.</p>
+</div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 15일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>사유란이 비어 있는 반려 앞에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 01일 &middot; 역대상 17:1-15</span>
+      <h1>사유란이 비어 있는 반려 앞에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p class="lead">정성껏 올린 기획서가 반려되었는데 서류 어디에도 붉은 펜 줄이나 거절 사유가 적혀 있지 않았습니다. 기획안은 완벽하게 통과되었지만, 맨 아래 ‘담당자’ 칸에 적혀 있던 내 이름만 조용히 다른 사람의 이름으로 바뀌어 있었습니다.</p>
+<p>살아가다 보면 세상에서 가장 헌신적이고 순수한 마음으로 품었던 계획이 뜻밖의 벽에 부딪히는 순간을 만납니다. 남을 해치려는 욕망도 아니었고, 개인의 영달을 탐한 잔꾀도 아니었습니다. 오직 상대를 위해, 공동체를 위해, 혹은 신을 위해 내가 가진 가장 귀한 것을 아낌없이 바치고 싶었던 열망이었습니다. 그러나 그 지극히 선한 다짐이 아무런 사전 경고도 없이 멈춰 서게 될 때, 우리는 깊은 혼란과 서글픔에 빠집니다.</p>
+<p>이스라엘의 왕 다윗에게도 그런 밤이 있었습니다. 거친 광야와 도망자의 세월을 지나 마침내 백향목 향기 그윽한 안락한 궁전에 안착한 날, 그는 창밖 언덕을 바라보며 깊은 부채감에 휩싸입니다. 자신은 이토록 호화로운 궁궐에 발을 뻗고 누워 있는데, 지난 세월 민족의 영혼을 이끌어 온 하나님의 언약궤는 여전히 비바람 치는 거친 휘장(천막) 아래 덩그러니 놓여 있었기 때문입니다. “나는 백향목 궁에 거주하거늘 여호와의 언약궤는 휘장 아래에 있도다.”(대상 17:1)</p>
+<p>그의 결심은 망설임이 없었습니다. 하나님을 위해 웅장하고 영원한 성전을 지어 올리겠다는 청사진이었습니다. 당대의 선지자 나단조차 그 말을 듣자마자 무릎을 치며 지지했습니다. “하나님이 왕과 함께 계시니 마음에 있는 바를 모두 행하소서.”(대상 17:2) 왕의 진심과 선지자의 권위가 맞물린, 그야말로 거칠 것 없는 완전한 승인이었습니다.</p>
+<p>그러나 그 확신에 찬 승인의 무게는 채 반나절을 넘기지 못했습니다. 바로 그날 밤, 하나님의 말씀이 선지자 나단에게 불현듯 임합니다. “가서 내 종 다윗에게 말하기를 너는 내가 거할 집을 건축하지 말라.”(대상 17:4)</p>
+<h2>‘로 아타’ — 도면은 남고 사람만 물러서다</h2>
+<p>이 거절의 장면을 히브리어 원문으로 가만히 들여다보면 가슴을 먹먹하게 만드는 문법적 진실 하나가 드러납니다. 히브리어에서 금지나 부정을 뜻하는 단어 ‘로(לֹא)’는 대개 금지하고자 하는 ‘동사’ 바로 앞에 놓입니다. 가령 집을 짓지 말아야 한다면 ‘건축하다’라는 행위 앞에 부정어가 서는 것이 자연스럽습니다. 그런데 역대상 17장 4절에서 하나님은 부정어를 동사가 아니라 대명사 앞에 세워 두셨습니다.</p>
+<blockquote>
+<p><strong>‘로 아타 티브네’ (לֹא אַתָּה תִּבְנֶה)</strong><br/>
+        직역하면 이렇습니다. “네가 아니다. 나를 위하여 그 집을 지을 사람은.”</p>
+</blockquote>
+<p>하나님은 성전을 짓겠다는 다윗의 거룩한 뜻을 무효로 돌리지 않으셨습니다. 휘장 아래 머무는 궤를 안타까워했던 그의 섬세한 영적 감각을 나무라지도 않으셨고, 그 계획이 시기상조라거나 쓸데없는 낭비라고 깎아내리지도 않으셨습니다. 성전이라는 도면은 결재판 위에서 살아남았고, 심지어 몇 절 뒤인 12절에서는 “그는 나를 위하여 집을 건축할 것이요”라며 그 건물이 반드시 완공될 것임을 분명히 약속하십니다. 다만 그 도면을 손에 쥐고 현장을 진두지휘할 사람의 자리에서 다윗이라는 이름 석 자만 지워졌을 뿐입니다.</p>
+<p>이것이 우리를 가장 아프게 하는 지점입니다. 일이 틀어졌다면 차라리 덜 억울합니다. 시장 상황이 나빴다거나, 예산이 모자랐다거나, 기획안 자체에 치명적인 결함이 있었다면 우리는 고개를 끄덕이며 물러설 수 있습니다. 그러나 프로젝트는 전폭적인 지지를 받으며 다음 단계로 넘어가는데, 정작 그 일을 밤낮으로 구상하고 눈물로 씨앗을 뿌렸던 ‘나’만 팀에서 배제될 때, 상처를 입는 것은 기획서가 아니라 바로 우리의 존재 자체입니다.</p>
+<p>이 감각을 몸으로 상상해 보십시오. 두 손으로 무겁고 깨지기 쉬운 보물 상자를 온 힘을 다해 받쳐 들고 있었습니다. 그런데 보이지 않는 손이 나타나 상자는 그대로 허공에 띄워 둔 채, 내 몸만 뒤로 반 걸음 쓱 밀어내는 것과 같습니다. 손바닥을 짓누르던 묵직한 무게감은 사라졌지만, 팔은 여전히 상자를 받쳐 든 모양 그대로 허공에서 굳어 있습니다. 어깨가 아픈 것이 아니라 명치끝이 뻐근하게 조여옵니다. 다윗이 침상에서 나단의 전갈을 전해 들었을 때 삼켜야 했던 감정이 바로 이 형언할 수 없는 헛헛함이었을 것입니다.</p>
+<h2>사유란이 비어 있는 결재 서류</h2>
+<p>더 깊은 침묵은 그 뒤에 이어집니다. 역대상 17장 전체를 아무리 샅샅이 뒤져보아도, 하나님은 왜 다윗이 안 되는지 그 ‘이유’를 단 한 마디도 설명해 주지 않으십니다. 훗날 역대상 22장에 가서야 다윗의 입을 통해 “전쟁에서 피를 심히 많이 흘렸기 때문”이라는 회고가 나오고, 열왕기상 5장에서는 솔로몬이 “사방의 전쟁을 치르느라” 여력이 없었다고 말하지만, 하나님이 다윗을 직접 대면하여 멈춰 세우시던 역대상 17장의 그 밤에는 어떠한 설명서도, 변명도 첨부되지 않았습니다.</p>
+<p>사람은 이유가 비어 있는 반려를 가장 견디기 힘들어합니다. 관공서의 행정 처분에도 사유가 누락되면 위법이 되듯, 우리는 거절을 당할 때 “왜 내가 안 되는가?”라는 납득할 만한 이유를 갈망합니다. 그리고 그 사유란이 비어 있으면, 본능적으로 자학적인 상상력으로 그 빈칸을 메우기 시작합니다. “내 기도가 모자랐던 걸까?”, “내가 하나님께 숨겨둔 큰 죄가 있어서 나를 벌하시는 걸까?”, “내 역량이 부족해서 나를 버리신 걸까?”</p>
+<p>그러나 성경이 비워 둔 곳은 억지로 채우지 않고 빈칸 그대로 남겨 두는 것이 신앙의 품격입니다. 하나님은 다윗에게 죄의 대가를 물으신 것이 아니었습니다. 행위에 대한 거절은 이유를 따져 묻게 하지만, 인격적인 주권 앞에서의 배치는 이유를 캐물을 자리를 스스로 닫아 법니다. 다윗은 자신을 향한 무언(無言)의 정지 신호 앞에서 항변하지 않았습니다. 4절에서 거절의 전언이 떨어진 이후 15절에 이르기까지, 그는 하나님의 침묵을 침묵으로 받아내며 단 한 줄의 토도 달지 않고 묵묵히 경청합니다.</p>
+<h2>어제 한 말을 거두는 아침의 수화기</h2>
+<p>이 본문에서 또 하나 잊지 말아야 할 사람은 선지자 나단입니다. 그는 전날 왕의 면전에서 “하나님이 왕과 함께 계시니 원하는 대로 다 행하십시오”라고 축복했던 사람입니다. 왕의 기분을 맞추려는 아첨이 아니라, 다윗의 진심에 감동하여 건넨 진심 어린 지지였습니다. 그런데 그날 밤, 하나님은 나단을 찾아오셔서 그의 말이 틀렸음을, 아니 그의 입으로 승인했던 그 기획을 번복해야 함을 통보하셨습니다.</p>
+<p>다음 날 아침, 다시 궁궐로 걸어 들어가 왕을 마주해야 했던 나단의 발걸음은 얼마나 무거웠을까요. “왕이시여, 어제 제가 왕께 드렸던 그 확신에 찬 지지의 말을 거두어야겠습니다.” 우리 일상에서도 이런 순간이 있습니다. 회의실에서 호기롭게 “좋습니다, 제가 책임지고 밀어붙이겠습니다”라고 말해 놓고, 그날 밤 양심과 상황의 무게 속에서 괴로워하다가 이튿날 아침 수화기를 들고 어제의 말을 철회해야 하는 난처한 자리 말입니다.</p>
+<p>그 자리의 무게는 내가 틀렸다는 자존심의 상처에서만 오지 않습니다. 이미 상대방의 마음에 불을 지펴 놓았고, 그 열망에 내 이름으로 보증을 서 주었기 때문에 더더욱 고통스럽습니다. 그러나 나단은 자신의 체면이나 왕과의 관계를 위해 하나님의 말씀을 왜곡하지 않았습니다. 성숙한 영성이란 언제나 옳은 답만을 말하는 능력이 아니라, 뒤늦게 임한 진짜 말씀 앞에서 내가 먼저 뱉었던 섣부른 확신을 겸손히 거두어들일 줄 아는 정직함에 있습니다.</p>
+<h2>“내가 거두지 않겠다” — 거두어 본 분의 엄중한 약속</h2>
+<p>하나님은 다윗의 손에서 망치와 정을 내려놓게 하신 뒤, 뜻밖의 선물을 건네십니다. “네가 나를 위하여 집을 짓는 것이 아니라, 여호와가 너를 위하여 한 집(왕조)을 세울 것이다.”(대상 17:10) 유한한 인간이 영원하신 신을 위해 거처를 마련해 주는 것이 아니라, 영원하신 하나님이 연약한 인간을 위해 영원한 거처가 되어 주시겠다는 기막힌 역전입니다.</p>
+<p>그리고 하나님은 13절에서 가슴 시린 맹세를 더하십니다. “나의 인자(헤세드)를 그에게서 빼앗지 아니하기를 내가 네 전에 있던 자에게서 빼앗음과 같이 하지 아니할 것이며.” 사무엘하에서는 ‘사울에게서’라고 실명을 적시했지만, 역대기는 그 이름을 지우고 그저 ‘네 전에 있던 자’라고만 부릅니다. 실패하여 권좌에서 내려온 옛 왕의 이름은 역사 속으로 지워졌지만, 그에게서 은혜가 거두어졌던 그 서늘한 비극의 기억만은 고스란히 남아 있습니다.</p>
+<p>하나님은 바로 그 자리에서 다윗에게 약속하십니다. “내가 거두지 않겠다.” 이 문장은 고난 한 번 겪어보지 않은 사람의 피상적인 응원이 아닙니다. 한 사람에게서 은혜를 실제로 거두어 보셨던 분, 그 냉혹한 단절의 아픔을 친히 집행하셨던 분의 입에서 나오는 약속이기에 천지보다 무겁습니다. “내가 너를 이 건축 현장에서 물러나게 한 것은, 너를 향한 내 사랑을 거두었기 때문이 아니다. 내 일의 도면에서 네 이름을 지웠을망정, 내 언약의 품에서는 너를 결코 지우지 않겠다.”</p>
+<h2>수익자 칸을 확인하며 비로소 웃다</h2>
+<p>그날 밤 선포된 하나님의 언약 문서(9-10절)를 펼쳐 ‘수익자’ 칸을 하나씩 따져보면, 하나님 나라의 기이한 경제학이 한눈에 들어옵니다. 그 문서의 수혜자는 성전을 짓지 못해 손이 묶인 다윗 개인이 아닙니다. 하나님은 “내 백성 이스라엘을 위하여 한 곳을 정하여 그들을 심고, 다시는 옮겨가지 아니하며 악한 사람들에게 해를 받지 않게 하겠다”고 선언하십니다.</p>
+<p>다윗이 물러선 그 빈자리로 인해 참된 안식과 평화를 얻는 이들은 바로 이름 없는 이스라엘의 평범한 백성들이었습니다. 만약 다윗이 끝끝내 고집을 부려 성전 건축을 밀어붙였다면, 그 건물은 하나님의 영광이 아니라 ‘다윗 대왕의 치적’이라는 인간의 야망으로 물들었을 것입니다. 그가 기꺼이 손을 떼고 무대 뒤편으로 반 걸음 물러섰을 때, 비로소 성전은 한 인간의 기념비가 아닌 온 백성을 품는 거룩한 은혜의 처소가 될 수 있었습니다.</p>
+<p>우리는 언제나 내가 주연이 되어 역사의 무대 위에 영웅적인 기념비를 세우고 싶어 합니다. 내가 땀 흘려 가꾼 공동체에 내 손으로 마지막 방점을 찍고 싶어 하고, 내가 시작한 사역의 완공식 테이프를 내 손으로 끊고 싶어 합니다. 그러나 성숙한 신앙인은 계약서의 ‘수익자’ 칸에 내 이름 대신 내가 사랑하는 이들의 이름이 적히는 것으로 기꺼이 만족할 줄 압니다. 내 손이 닿지 않은 곳에서 백성들이 안전하게 발을 뻗고 누울 수 있다면, 내 이름이 머릿돌에 새겨지지 않는 것쯤은 얼마든지 감수할 수 있는 넉넉함, 그것이 다윗이 그 밤에 배운 인격이었습니다.</p>
+<aside class="reflection">
+<strong>오늘의 일상 사고</strong>
+<p>지금 내 뜻대로 풀리지 않아 멈춰 서 있는 자리가 있습니까? 그 거절이 나의 사역 자체를 부정하신 것인지, 아니면 나를 쉬게 하시고 다른 사람을 세우시려는 하나님의 섬세한 손길인지 조용히 묵상해 보십시오. 비어 있는 사유란 앞에서 억지로 이유를 만들어 자책하지 마십시오. 하나님은 당신의 열심보다 당신의 존재 자체를 더 소중히 여기십니다.</p>
+</aside>
+<hr/>
+<p>도면은 살아남았고, 당신의 이름만 조용히 빠졌습니까? 서러워하지 마십시오. 당신의 정성과 기도는 하늘의 보좌에 온전히 상달되었습니다. 하나님은 당신이 지으려던 흙과 돌의 집 대신, 결코 무너지지 않는 은혜의 왕조를 당신의 영혼 안에 친히 짓고 계십니다. 비워 둔 두 손을 가만히 내려놓고, 이제 하나님께서 당신을 위하여 짓고 계신 눈부신 집을 바라보십시오. 거두지 않으시는 그분의 신실한 사랑이 오늘 당신의 빈손을 가득 채우고 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 01일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

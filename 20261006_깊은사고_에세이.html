@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 06일 &middot; 역대상 19:8-19</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리의 일상은 매일매일 크고 작은 전쟁의 연속입니다. 출근길 만원 지하철에서부터 시작되는 하루, 책상 위에 쌓인 서류들, 누군가와의 껄끄러운 대화, 그리고 삶의 무게를 짊어진 채 묵묵히 감당해야 하는 수많은 결정들까지. 우리는 늘 전쟁 같은 오늘을 살아내며 "반드시 이겨내야 한다"고 스스로를 다그치곤 합니다. 패배나 두려움을 입 밖으로 꺼내는 것은 곧 믿음이 부족한 것이라 여기며, 애써 불안한 마음을 억누르면서 말입니다.</p>
+<p>하지만 성경이 기록한 치열한 전쟁의 한복판에서, 우리는 뜻밖의 고백을 만나게 됩니다. 이스라엘의 군대 장관 요압은 앞뒤로 적에게 포위된 절체절명의 위기 속에서 동생 아비새에게 이렇게 말합니다. <em>"만일 아람 사람이 나보다 강하면 네가 나를 돕고, 만일 암몬 자손이 너보다 강하면 내가 너를 도우리라."</em> (역대상 19:12)</p>
+<p>놀랍게도 요압은 승리만을 장담하지 않았습니다. 그는 자신이 밀릴 수도 있다는 사실, 계획대로 되지 않을 수 있다는 경우의 수를 먼저 입술로 고백했습니다. 이 솔직한 고백은 우리에게 깊은 위로를 건넵니다. 때로는 지금 당장 '담대하라'는 조언이 아무런 힘이 되지 않을 때가 있습니다. 내 힘으로 도저히 감당할 수 없을 것 같은 벅찬 현실 앞에서, 무조건 잘될 것이라는 막연한 낙관은 오히려 마음을 더 공허하게 만듭니다.</p>
+<p>참된 용기는 두려움이 전혀 없는 상태가 아닙니다. 실패할 가능성까지 끌어안고서도, 기꺼이 서로를 의지하며 앞으로 한 걸음 내딛는 데 있습니다. 요압은 자신의 전략 절반을 실패의 가능성에 배정했지만, 바로 그 솔직한 인정이 오히려 두려움을 이기고 서로를 굳게 붙잡는 진짜 담력이 되었습니다.</p>
+<br/>
+<p>이어서 요압은 매우 독특한 명령을 내립니다. <em>"너는 담대하라 우리가 우리 백성과 우리 하나님의 성읍들을 위하여 담대히 행하자."</em> (역대상 19:13) 원문을 들여다보면 그의 마음이 더욱 선명하게 다가옵니다. 첫 단어는 "너는 강하라(하자크)"라는 일방적인 명령이었습니다. 하지만 곧바로 이어진 단어에서 주어는 "우리가 스스로 굳세지자(베니트하즈카)"로 바뀝니다.</p>
+<p>명령을 내리는 자리에서 벗어나, 그 무거운 짐을 감당해야 하는 무리 안으로 리더가 스스로 걸어 들어가는 장면입니다. 이것은 오늘날 각박한 경쟁 사회와 일터, 나아가 우리의 가정과 신앙 공동체 안에서도 꼭 필요한 태도입니다. 누군가에게 "당신이 하십시오"라고 요구하는 문장과 "우리가 함께합시다"라며 어깨를 겯는 문장은, 듣는 이의 마음을 전혀 다른 곳에 세워둡니다. 일의 무게를 타인에게만 떠넘기지 않고 기꺼이 짐을 나눠 지는 '우리'가 될 때, 아무리 벅찬 현실 앞에서도 우리는 기어코 돌파구를 찾아낼 수 있습니다.</p>
+<br/>
+<p>그러나 성경은 전쟁의 현실을 낭만적으로만 묘사하지 않습니다. 이 뜨거운 전우애와 기도가 얽힌 장면 뒤에, 성경은 아주 차갑고도 건조한 현실의 숫자들을 가감 없이 기록해 둡니다. 누군가는 전쟁을 위해 은 천 달란트라는 막대한 자본을 쏟아부었고, 그 결과 전장에서는 병거 칠천 대의 군사와 무려 사만 명의 보병이 목숨을 잃었습니다. 돈이 먼저 움직이고, 수많은 사람의 피가 땅을 적신 것입니다.</p>
+<p>이 무거운 기록은 우리가 발 딛고 사는 일상을 다시금 돌아보게 합니다. 우리의 직장 생활, 비즈니스, 그리고 매일의 선택들이 실은 누군가의 삶과 생존에 맞닿아 있음을 잊지 말아야 합니다. 무심코 넘긴 서류에 적힌 숫자 하나, 무겁게 찍어 누른 결재 도장 한 번이 누군가의 삶을 살리기도 하고 벼랑 끝으로 몰아세우기도 합니다. 성경은 승리의 영광만을 노래하지 않고, 그 뒤에 남겨진 수많은 생명의 무게를 기록함으로써 우리의 평범한 일상이 지닌 무서운 책임감을 일깨워 줍니다.</p>
+<br/>
+<p>이 모든 치열한 과정의 끝에서, 요압은 자신의 입술을 통해 단 하나의 위대한 동사를 남깁니다. 치밀하게 진을 짜고, 밀릴 경우를 대비하고, 동생과 어깨를 나란히 하며 목숨을 건 요압이었지만, 그의 문장 마지막은 자신의 행동이 아니었습니다.</p>
+<p><em>"여호와께서 선히 여기시는 대로 행하시기를 원하노라."</em></p>
+<p>히브리어 원문에서 이 문장의 맨 마지막을 장식하는 단어는 '야아세(그가 행하실 것이다)'입니다. 자신이 할 수 있는 모든 최선을 다한 뒤, 요압은 문장의 마지막 자리를 하나님께 내어드립니다. 결과는 내 몫이 아님을, 우리를 가장 선한 길로 이끄실 분은 오직 여호와 하나님 한 분뿐이심을 겸손히 고백한 것입니다.</p>
+<p>우리의 일상도 그러해야 하지 않을까요. 내게 주어진 하루라는 전장에서 실패할지도 모른다는 솔직한 두려움을 안고 묵묵히 나아갈 때, 기꺼이 짐을 나눠 지는 동역자들과 함께 치열하게 살아낼 때, 비로소 우리의 입술 끝에는 "하나님이 하실 것이다"라는 온전한 의탁의 고백이 흘러나와야 합니다.</p>
+<p>계획을 세우고 고군분투하는 삶의 모든 여정에서, 그리고 땀 흘려 달려온 그 길의 끝자리에서, 내 인생을 완성하시는 마지막 주어는 오직 '하나님'이 되셔야 합니다. 오늘 당신이 마주한 벅찬 일상의 전투 한가운데서, 수고한 손을 잠시 모으고 그분의 선하신 뜻에 모든 결과를 내어 맡기는 참된 안식과 위로가 당신의 삶에 가득하기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 06일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

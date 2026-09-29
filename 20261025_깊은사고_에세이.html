@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>지워지지 않은 한 글자처럼, 삶의 모호함을 견디는 사랑</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 25일 &middot; 아가 2:1-17</span>
+      <h1>지워지지 않은 한 글자처럼, 삶의 모호함을 견디는 사랑</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 매끄럽고 명쾌한 하나의 정답을 갈망합니다. 복잡하고 모호한 일상의 문제 앞에서도 누군가 "그래서 결론이 뭡니까?", "좋다는 뜻입니까, 나쁘다는 뜻입니까?"라고 물어오면, 서둘러 깔끔한 하나의 값을 내놓아야만 마음을 놓습니다. 불확실함과 흔들림을 견디지 못하는 현대인들에게 모든 것을 단일한 서랍에 깔끔하게 정리해 넣는 일은 일종의 강박이자 안도감의 유일한 원천입니다.</p>
+<p>하지만 우리의 진짜 삶은 단 한 번도 그렇게 매끄러운 단일 공식으로 풀린 적이 없습니다. 슬픔과 기쁨은 늘 한 그릇의 물처럼 뒤섞여 있고, 결심과 주저함은 같은 날 아침에도 수없이 교차합니다. 마음 깊은 곳에 눅눅한 슬픔을 안은 채로도 일터에 나가 씩씩하게 웃어야 하고, 누군가를 지극히 사랑하면서도 때로는 홀로 침묵의 동굴로 숨어들고 싶은 것이 인간의 정직한 실존입니다. 그럼에도 우리는 세상의 속도에 떠밀려 내면의 수많은 갈등과 모호한 여백들을 가차 없이 잘라내 버립니다. 아무런 상처도, 의심도 없는 확신의 사람인 척 포장하느라 우리의 영혼은 날마다 깊은 피로를 앓습니다.</p>
+<h2 class="section-title">지워지지 않은 한 글자 — 성경이 남겨 둔 거룩한 망설임</h2>
+<p>이러한 조급함 속에서, 수천 년 전 아가서 2장을 베껴 쓰던 고대 필사자들의 태도는 가슴을 먹먹하게 만드는 깊은 울림을 건넵니다. 아가서 2장 13절을 히브리어 원문으로 가만히 들여다보면, 사랑하는 이를 부르며 "일어나 함께 가자"고 다정하게 속삭이는 대목 한가운데에 아주 기묘한 흔적 하나가 남아 있습니다.</p>
+<p>그 자리에 실제로 쓰여 있는 자음은 세 글자(‘가라’는 뜻의 명령형)인데, 막상 소리 내어 읽을 때는 글자 하나를 빼고 두 글자(‘너에게’라는 뜻의 전치사)로 읽으라는 메모가 본문 곁에 나란히 붙어 있습니다. 성서학에서는 이를 ‘케티브(쓰여 있는 것)’와 ‘케레(읽어야 할 것)’의 갈림길이라 부릅니다. 이 아주 작은 글자 하나의 차이 때문에, 이 장에 쓰인 명령형이 열두 개가 되기도 하고 열한 개가 되기도 하며, 문법 구조와 계수의 총량이 통째로 흔들립니다.</p>
+<p>만약 오늘날 효율과 완전무결함을 최고의 미덕으로 삼는 현대인이 그 편집대 앞에 앉았다면 어떻게 했을까요? 아마도 전후 문맥을 치밀하게 따져 "이쪽이 진짜 원본이다"라고 단언하며, 다른 한쪽을 붉은 줄로 깨끗이 지워버렸을 것입니다. 하나의 흠결도 없는 매끄러운 단일 텍스트를 만들어내는 것이야말로 가장 유능한 작업이라고 믿기 때문입니다.</p>
+<p>그러나 수백 년 동안 목숨처럼 양피지를 지켜온 마소라 학자들은 끝내 지우개질을 하지 않았습니다. 쓰인 글자도 버리지 않고, 읽어온 전통도 지우지 않은 채, 두 가지 읽기를 본문 한 페이지에 고스란히 나란히 적어 두었습니다. 그들이 무능하거나 결단력이 없어서가 아니었습니다. 함부로 내 알량한 지식으로 본문의 문을 닫아버리지 않고, 신비와 전승의 무게를 있는 그대로 열어두는 것. 그것이야말로 말씀을 대하는 가장 숭고한 경외이자 정직함이었기 때문입니다. 성경 본문은 우리보다 훨씬 더 오래, 그 불편하고 모호한 자리를 견뎌냈습니다.</p>
+<div class="quote">
+        "기계가 센 수도 누군가 어느 쪽으로 읽기로 한 결과 위에 서 있습니다.<br/>
+        본문은 그 두 갈래의 읽기를 지우지 않은 채 나란히 적어 두었습니다."
+      </div>
+<h2 class="section-title">여덟 개의 완료형 — 본문이 적은 것과 우리가 덧씌우는 조급함</h2>
+<p>성경의 이러한 정직한 호흡은 자연을 묘사하는 대목에서도 눈부시게 이어집니다. 아가서 2장 11절부터 13절은 메마른 땅을 적시는 봄의 풍경처럼 읽히는 찬가입니다. "겨울도 지나고 비도 그쳤고 지면에는 꽃이 피고 새가 노래할 때가 이르렀고..."</p>
+<p>우리는 흔히 이 구절을 읽으며 "보라, 마침내 찬란한 봄이 왔다! 고난의 겨울은 끝났으니 이제 승리와 축복의 새 시대가 열렸다!"라고 힘주어 외치곤 합니다. 절망의 끝자락에서 서둘러 환희의 깃발을 꽂고 싶어 하는 우리의 조급한 열망 때문입니다.</p>
+<p>하지만 원문을 한 글자씩 차분히 짚어가다 보면, 놀라운 침묵과 마주하게 됩니다. 이 아름다운 구절 어디에도 ‘봄’이라는 명사는 단 한 번도 등장하지 않습니다. 본문에 잇달아 쏟아지는 여덟 개의 동사는 모두 ‘지나갔다’, ‘사라졌다’, ‘그쳤다’처럼 무언가가 매듭지어졌음을 담담히 가리키는 ‘완료형’입니다.</p>
+<p>성경은 아직 오지 않은 새봄의 화려함을 요란하게 예찬하지 않습니다. 그저 모질었던 겨울의 추위와 차가운 비가 마침내 지나갔다는 사실을 담담하고도 정직하게 확인할 뿐입니다. 우리는 고통이 조금만 잦아들어도 서둘러 거창한 의미를 부여하고 화려한 미래를 약속하려 들지만, 성경은 지나간 시간을 가만히 응시하며 숨을 고릅니다. 어두운 터널을 막 빠져나온 사람에게 지금 당장 필요한 것은 시끄러운 희망의 구호가 아니라, "그래, 그 혹독했던 겨울이 드디어 지나갔구나" 하며 시린 가슴을 쓸어내리는 조용한 쉼표이기 때문입니다.</p>
+<h2 class="section-title">낫지 않는 병과 섣부른 위로를 멈추는 일</h2>
+<p>이 담담함은 인간의 아픔을 대하는 태도에서 한층 더 깊은 위로로 피어납니다. 아가서 2장 5절에서 주인공은 절절하게 호소합니다. "너희는 건포도 떡으로 내 힘을 돋우고 사과로 나를 시원하게 하라, 내가 사랑으로 병이 났음이라."</p>
+<p>놀랍게도 아가서 2장은 끝날 때까지 이 여인의 병을 고쳐주지 않습니다. 기적처럼 병이 나아 벌떡 일어났다거나 모든 상처가 말끔히 씻겨 내려갔다는 손쉬운 해피엔딩은 이 장에 존재하지 않습니다. 아픔은 여전히 그 자리에 남아 있고, 사랑의 앓음은 해결되지 않은 채 본문은 다음 장으로 흘러갑니다.</p>
+<p>우리는 곁에 있는 누군가가 고통과 슬픔을 털어놓을 때, 그 아픔의 자리를 잠시도 견디지 못합니다. 서둘러 위로의 말을 던지고, 손쉬운 해답을 처방하려 합니다. "기도하면 곧 나을 거야", "견디면 반드시 이전보다 더 큰 축복이 올 거야." 그러나 그러한 미래의 전망은 때로 지금 피 흘리고 있는 사람의 아픈 오늘을 송두리째 지워버리는 가혹한 폭력이 되기도 합니다.</p>
+<p>아가서 본문은 결코 "곧 나을 것이니 참으라"고 말하지 않습니다. 나를 붙들어 달라는 간청의 유일한 이유는 오직 하나, "내가 지금 병이 났기 때문"입니다. 성경은 회복의 미래가 아니라, 지금 앓고 있다는 현재의 사실 그 자체 위에 연민의 닻을 내립니다. 참된 위로는 섣부른 낙관을 약속하는 것이 아니라, 고쳐지지 않은 채 신음하는 그 사람의 곁에 묵묵히 머물며 함께 그 아픔의 무게를 견뎌주는 것입니다.</p>
+<h2 class="section-title">수신자 없는 부름 — 포도원을 허는 여우와 나의 책임</h2>
+<p>아가서 2장의 후반부에 이르면, 앞뒤 문맥과 묘하게 어긋나는 낯선 외침 하나가 불쑥 등장합니다. "우리를 위하여 여우 곧 포도원을 허는 작은 여우를 잡으라 우리의 포도원에 꽃이 피었음이라."</p>
+<p>많은 이들이 이 여우를 ‘우리 신앙을 좀먹는 은밀한 죄’나 영적인 결함으로 서둘러 비유하곤 합니다. 그러나 본문이 묘사하는 포도원과 포도 움, 무화과 열매와 건포도 떡은 추상적인 관념이 아닙니다. 그것은 누군가 거친 돌밭을 갈아엎고 땀 흘려 심은 것이며, 뙤약볕 아래 품을 팔아 가꾸어낸 노동의 열매이자 한 가족의 생계가 달린 절박한 삶의 터전입니다. 여우가 허무는 것은 신학적 개념이 아니라, 가난한 일꾼들이 한 해 동안 흘린 땀방울과 밥그릇입니다.</p>
+<p>더욱 깊이 주목해야 할 것은, 성경이 "누구더러 여우를 잡으라고 했는지" 그 수신자의 이름을 전혀 적어두지 않았다는 사실입니다. 수신자가 비어 있는 명령, 주인이 명시되지 않은 책임은 세상에서 언제나 가장 거절하기 어렵고 힘없는 사람들의 어깨 위로 조용히 전가됩니다. 조직에서도, 가정에서도, 교회에서도 이름 없는 궂은일은 늘 가장 연약한 이들의 몫이 되곤 합니다.</p>
+<p>그렇기에 성경이 가르치는 참된 영성은 저 먼 하늘을 바라보는 낭만에 머물지 않습니다. 그것은 포도원을 그저 포도원으로 바라보고, 삶의 현장에서 주인이 비어 있는 책임을 발견했을 때 기꺼이 내 손으로 그 자리에 이름을 적어 넣는 결단입니다. 거절하지 못해 홀로 짐을 짊어진 연약한 이들의 곁으로 다가가, 그 짐을 나누어 지는 구체적인 사랑입니다.</p>
+<h2 class="section-title">섣불리 지우지 않는 정직함으로 오늘을 살아가기</h2>
+<p>기다림을 요청하는 침묵의 맹세와, 이제 일어나 함께 가자는 재촉의 부름이 같은 날 우리의 마음에 찾아올 때가 있습니다. 목회자의 심방 길에서도, 직장인의 고단한 퇴근길에서도 "조금 더 묵묵히 버텨야 하는가, 아니면 이제 결단하고 자리를 털고 일어나야 하는가" 하는 두 마음이 치열하게 충돌합니다.</p>
+<p>성경은 그 두 마음 중 어느 하나를 성급하게 정답으로 규정하지 않습니다. 본문이 케티브와 케레의 두 글자를 지우지 않고 나란히 남겨두었듯, 우리 삶에 찾아오는 모호함과 긴장을 있는 그대로 끌어안습니다.</p>
+<p>우리가 회복해야 할 진정한 인격과 신앙은, 완벽한 정답만을 내세우며 자신의 한계를 감추는 데 있지 않습니다. 숫자의 총량 뒤에 숨겨진 산정 기준을 투명하게 밝히는 정직한 장부처럼, 내가 확신하는 바의 한계를 겸손히 인정하고 두 개의 고민을 솔직하게 고백할 수 있는 내면의 너비에 있습니다.</p>
+<div class="blessing">
+        봄이 아직 오지 않았어도 지나간 겨울의 끝자락을 바라보며 깊은 숨을 내쉬십시오.<br/><br/>
+        오늘 당장 고쳐지지 않는 아픔일지라도,<br/>
+        그 앓음 자체를 소중히 여기며 곁을 지켜주십시오.<br/><br/>
+        그리고 이름 없는 일터의 빈자리에<br/>
+        조용히 당신의 이름을 적어 넣으십시오.<br/><br/>
+        성경의 양피지 위에 끝내 지워지지 않은 채 남아 있는 그 작은 한 글자처럼,<br/>
+        오늘 우리에게 필요한 것은 매끄러운 포장이 아니라<br/>
+        삶의 울퉁불퉁한 결을 묵묵히 견뎌내는 진실한 용기입니다.
+      </div>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 25일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
