@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>한 절 안에 「달 수 없는 무게」와 「내 고난 중에」가 나란히 놓입니다</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 11일 · 역대상 22:2-19</span>
+<h1>한 절 안에 「달 수 없는 무게」와 「내 고난 중에」가 나란히 놓입니다</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>이 단락의 첫 동작은 돌을 고르는 일이 아닙니다. 사람을 모으는 일입니다. 22:2는 이스라엘 땅에 거류하는 이방 사람을 모아 석수로 세웠다고 적습니다. 철과 놋과 백향목은 그 뒤에 옵니다.</p>
+<p>그 다음에 다윗이 아들을 부릅니다. 그가 옮기는 것은 자기 생각이 아니라 여호와께서 하신 말씀입니다.</p>
+<p>「너는 피를 심히 많이 흘렸고 크게 전쟁하였느니라 … 내 이름을 위하여 성전을 건축하지 못하리라」 (대상 22:8)</p>
+<p>짓지 못하는 이유가 여기서 처음 적힙니다. 17장에서는 「너는 짓지 말라」고만 했고, 다윗에 관한 이유는 적히지 않았습니다. 그런데 같은 말씀이 곧바로 약속으로 이어집니다 — 「내가 그를 그의 사방 모든 대적에게서 평온하게 하리라」, 그리고 「그는 내 아들이 되고 나는 그의 아버지가 되리라」(22:10).</p>
+<p>이어서 다윗이 자기 이야기를 합니다. 이 단락에서 그가 자기 행위를 완료형으로 말하는 자리는 22:14 한 곳뿐이고, 그 한 절 안에 무게를 달 수 없을 만큼과 내 고난 중에가 함께 있습니다. 본문은 둘의 관계를 설명하지 않고 다음 문장으로 갑니다 — 「너는 거기에 더하라」.</p>
+<p>마지막에 다윗이 방백들에게 말합니다. 「너희 하나님 여호와께서 너희와 함께 계시지 아니하느냐」, 그리고 여호와께서 이 땅 주민을 자기 손에 넘기셨다고 합니다(22:18). 이 단락에서 하나님이 주어로 명시된 문장은 세 번이며, 말씀하셨고 약속하셨고 넘기셨습니다. 이 장 전체가 사무엘하에는 없습니다.</p>
+<p>— 본문은 이 둘에 평가를 붙이지 않습니다. 많아서 고생했다고도, 고생했으니 값지다고도 적지 않습니다. 볼 수 있는 것은 한 절 안에 둘이 있다는 것까지입니다. 그런데 그 「까지」가 적지 않습니다. 분량을 정확히 아는 사람이 자기 준비를 말할 때 그 앞에 무엇을 두었는지가 문장 안에 남아 있기 때문입니다.</p>
+<p>본문은 고난과 분량을 한 절에 두고, 둘을 잇는 문장은 쓰지 않습니다.</p>
+<p>— 막는 말은 근거를 달고 오고, 미리 하는 일은 근거 없이 그냥 놓입니다. 이것은 다윗의 심정에 대한 진술이 아니라 문장 구조에 대한 관찰입니다. 덧붙여 「많이」(`לָרֹב`)라는 낱말이 이 장에 일곱 번 나오는데, 여섯 번은 철과 놋과 백향목과 장인에게 붙고 한 번만 피에 붙습니다. 저는 이것을 세어 본 데까지만 적고, 「그러므로 피도 자재처럼 많았다」류의 대조로 옮기지 않겠습니다.</p>
+<p>본문은 막는 이유를 적고, 준비하는 이유는 적지 않습니다.</p>
+<p>— 이 문장은 히브리서 1:5가 인용합니다. 신약이 이 약속을 그리스도께 돌립니다 — 제가 만든 연결이 아니라 정경이 낸 길입니다. 다만 저는 「솔로몬은 부족했고 그리스도가 채우셨다」고는 쓰지 않겠습니다. 이 단락에 솔로몬의 부족은 적혀 있지 않습니다. 볼 수 있는 것은 약속이 금과 놋 사이에 표시 없이 놓여 있다는 것, 그리고 그 문장을 히브리서가 다시 읽었다는 것까지입니다.</p>
+<p>가장 큰 약속이 자재 목록 사이에 표시 없이 놓여 있습니다.</p>
+<p>「너는 피를 심히 많이 흘렸고 크게 전쟁하였느니라 … 내 이름을 위하여 성전을 건축하지 못하리라」 (대상 22:8) 「여호와께서 이 땅 주민을 내 손에 넘기셨나니 땅이 여호와와 그의 백성 앞에 복종하게 되었나니」 (대상 22:18)</p>
+<p>22:8은 흘린 피를 결격의 근거로 적습니다. 22:18은 그 전쟁의 결과를 여호와께서 주신 것으로 적습니다. 같은 전쟁인데 한쪽에서는 성전을 짓지 못하는 이유가 되고 한쪽에서는 쉼을 얻은 근거가 됩니다.</p>
+<p>⚠ 「같은 손이 한 일」이라고 쓰고 싶어집니다. 그런데 22장 8절에 「손」이라는 낱말이 없습니다. 8절은 「네가 흘렸다」이고 「내 손에」는 18절에만 있습니다. 두 절의 주어도 다릅니다. 손이라는 이미지는 두 절을 잇고 싶은 제가 만든 것이지 본문이 준 것이 아닙니다.</p>
+<p>정경이 이 둘을 어떻게 배치했는지만 적겠습니다. 같은 장 안입니다. 열 절 남짓 사이에 놓여 있습니다. 본문은 두 문장 사이에 아무 접속사도 두지 않았습니다. 「그러나」도 없고 「그러므로」도 없습니다. 어느 쪽이 더 참인지도 적지 않습니다.</p>
+<p>저는 이 둘을 잇지 않겠습니다. 본문이 잇지 않았습니다. 「하나님은 그의 전쟁을 쓰시고도 그의 손을 물리치셨다」로 정리하고 싶은 마음이 있습니다. 그러나 그 문장은 제가 만드는 것이지 본문이 적은 것이 아닙니다. 남겨 둔 채로 다음 절로 가겠습니다. 본문이 그렇게 했습니다.</p>
+<p>이 단락은 목록입니다. 돌과 철과 놋과 백향목, 금 십만 달란트와 은 백만 달란트, 석수와 목수와 온갖 일에 익숙한 사람들. 그 목록 한가운데에 「그는 내 아들이 되리라」가 표시 없이 들어 있고, 목록을 만든 사람의 입에서는 「내 고난 중에」가 나옵니다. 본문은 이 셋에 순서를 매기지 않습니다. 오늘 제가 읽은 것은 정돈된 교훈이 아니라, 정돈되지 않은 채로 한 장에 담긴 목록입니다.</p>
+<p>하나님, 이 장에서 주께서 세 번 말씀하신 것을 읽었습니다. 말씀하셨고, 약속하셨고, 넘기셨습니다. 저는 그 세 문장 옆에 제 설명을 붙이고 싶었습니다. 붙이지 않고 읽는 법을 배우게 하십시오. 못 하게 하신 자리와 주신 자리가 같은 장에 있는 것을 견디게 하시고, 제가 준비한 분량보다 그것을 무엇이라 불렀는지를 먼저 살피게 하십시오. 돌을 뜬 손들을 기억하게 하시고, 목록에 이름이 없는 사람들을 세어 보게 하십시오.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 11일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

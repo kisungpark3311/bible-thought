@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>빼앗은 놋에 출처가 남아 있고, 그것으로 만드는 손은 다른 사람의 손입니다</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 03일 · 역대상 18:1-8</span>
+<h1>빼앗은 놋에 출처가 남아 있고, 그것으로 만드는 손은 다른 사람의 손입니다</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>여덟 절입니다. 문장들이 거의 같은 걸음으로 이어집니다 — 쳤다, 항복받았다, 빼앗았다, 사로잡았다, 힘줄을 끊었다, 남겼다, 가져왔다. 전부 손으로 하는 일이고, 그 손의 주인은 다윗입니다.</p>
+<p>그 걸음 한가운데에 한 문장이 들어옵니다. 「다윗이 어디로 가든지 여호와께서 이기게 하시니라」(18:6). 주어가 바뀌었는데 문장의 꼴은 바뀌지 않았습니다. 본문은 하나님의 행위를 따로 떼어 위층에 올려놓지 않고, 사람의 행위와 같은 모양으로 그 옆에 붙여 적습니다.</p>
+<p>그리고 단락의 끝에서 문장의 꼴이 한 번 바뀝니다. 거기서 주어가 처음으로 솔로몬이 되고, 하는 일이 치는 일에서 만드는 일로 바뀌며, 만들어지는 것이 아직 세워지지도 않은 성전의 기구입니다. 빼앗은 놋의 출처와 그 놋의 행선지가 한 문장 안에 나란히 적혀 있습니다.</p>
+<p>본문이 말하는 것은 딱 여기까지입니다. 이 전쟁의 목적이 성전이었다고는 적지 않습니다. 다만 그 놋이 거기 쓰였다고 적을 뿐입니다.</p>
+<p>— 우리는 이런 문장을 보통 해설처럼 읽습니다. 사건은 아래에 있고 신학적 설명은 위에 붙어 있는 것처럼요. 본문은 그렇게 층을 나누지 않았습니다. ⚠ 다만 여기서 「그러므로 사람의 일과 하나님의 일이 같다」거나 「다르다」는 결론으로 가지는 않겠습니다. 문장의 꼴이 그렇다는 것까지가 제가 말할 수 있는 전부입니다.</p>
+<p>본문은 하나님이 하신 일을 설명란에 적지 않고, 사건들 사이에 같은 모양으로 끼워 넣습니다.</p>
+<p>— 이것이 「승리」라는 낱말 아래에 실제로 들어 있는 내용입니다. ⚠ 그리고 저는 이 침묵에 해석을 붙이지 않겠습니다. 「저자가 무관심했다」도 「당시 기록 관행이 그랬다」도 본문이 하지 않는 말이고, 저는 그 관행을 세어 보지 않았습니다. 다만 이 단락을 읽는 동안 그 침묵이 옆에 함께 있다는 것은 적어 둡니다. 승리의 기록을 읽을 때 우리가 무엇을 듣지 않고 지나가는지를, 본문이 적지 않음으로써 남겨 두었습니다.</p>
+<p>이 단락에서 없는 것은 당한 쪽의 발화입니다.</p>
+<p>가져온 사람과 만드는 사람이 다르고, 출처는 지워지지 않았습니다.</p>
+<p>"다윗이 어디로 가든지 여호와께서 이기게 하시니라" (대상 18:6) "너는 피를 심히 많이 흘렸고 크게 전쟁하였느니라 … 너는 내 이름을 위하여 성전을 건축하지 못하리라" (대상 22:8)</p>
+<p>18장에 적힌 이 전쟁들이, 22장이 말하는 그 피 흘림입니다. 같은 책 안입니다. 그런데 18장은 그것을 문제 삼지 않습니다. 오히려 여호와께서 이기게 하셨다고 적고, 그 전쟁에서 나온 놋으로 성전 기구가 만들어진다고 적습니다. 22장에 가면 바로 그 피 때문에 다윗의 손은 성전에서 물러납니다.</p>
+<p>해소하는 길이 없는 것은 아닙니다. 전쟁은 정당했으나 손은 부정했다고 말할 수도 있고, 하나님의 허락과 사람의 자격은 다른 문제라고 말할 수도 있고, 22:8은 책망이 아니라 배려라고 말할 수도 있습니다. ⛔ 그런데 셋 다 본문이 하지 않는 말입니다. 18장은 22장을 언급하지 않고, 22장은 18장의 승리 문장을 취소하지 않습니다.</p>
+<p>남는 것은 이것입니다. 같은 손이 한 같은 일을 두고 성경이 두 자리에서 다르게 말하고, 두 자리가 다 성경입니다. 정경은 둘을 화해시켜 놓지 않고 몇 장 간격을 두고 나란히 놓아두었습니다. 우리가 자기 과거를 한 문장으로 정리하고 싶어질 때, 이 배치는 그 정리를 허락하지 않습니다.</p>
+<p>— 두 문장은 한 절 안에 붙어 있습니다. 앞 문장의 주어는 사람이고 뒤 문장의 주어는 여호와인데, 두 문장이 이어지는 방식은 같습니다. 이 단락에서 여호와가 주어로 서는 자리는 여기 한 곳뿐이고, 그 한 곳도 따로 떼어져 있지 않습니다.</p>
+<p>— 이 여덟 절에서 말하는 이는 둘뿐입니다. 이야기를 적는 사람과 다윗입니다. 쳐서 굴복시킨 쪽이 아니라 당한 쪽에게는 문장이 한 줄도 배정되지 않습니다. 그들은 「종이 되어 조공을 바치는」 상태로만, 곧 직무의 이름으로만 문장에 들어옵니다. 18:4에서는 말들의 힘줄이 끊깁니다. 다시는 전차를 끌 수 없게 만드는 처리입니다. 그 장면에도 소리는 적히지 않습니다.</p>
+<p>놋은 말이 없습니다. 어디서 왔는지, 누구의 성읍에서 실려 왔는지, 오는 길에 무엇을 보았는지 놋은 말하지 않습니다. 그런데 본문이 그 내력을 대신 적어 두었습니다. 그리고 그 놋을 녹여 성전의 그릇을 만드는 손은 그것을 가져온 손이 아닙니다.</p>
+<p>성경은 이 장에서 「여호와께서 이기게 하셨다」고 적었고, 몇 장 뒤에서는 그 피 때문에 이 손이 성전에서 물러난다고 적었습니다. 두 문장이 한 책 안에 그대로 남아 있습니다. 오늘 저는 그중 하나를 골라 다른 하나를 덮는 대신, 둘 다 펼쳐 둔 채로 이 자리를 떠나려 합니다.</p>
+<p>주님, 제가 이룬 일을 한 문장으로 정리하고 싶어 하는 손을 붙들어 주십시오. 승리라고 적힌 자리 아래에서 소리 내지 못한 이들이 있었음을 잊지 않게 하시고, 제가 지고 온 것의 내력을 제가 지우지 않게 하십시오. 그 끝을 제가 보지 못하더라도, 그것이 주님의 집에서 쓰이는 일을 두려워하지 않게 하십시오. 오늘 제 손이 한 일 옆에, 주님께서 하신 일을 해설로 붙이지 않고 같은 자리에 두게 하소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 03일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>본문은 누가 했고 누가 받았는지를 적을 뿐입니다</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 07일 · 역대상 20:1-8</span>
+<h1>본문은 누가 했고 누가 받았는지를 적을 뿐입니다</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>해가 바뀌어 왕들이 나갈 때가 되었습니다. 20장 1절 한 절 안에 동사가 줄줄이 이어지는데, 「때가 되었다」는 비인칭 동사 하나를 빼면 나머지 여섯이 전부 요압의 것입니다. 거느리고, 치고, 와서, 에워싸고, 치고, 헐었습니다. 요압의 이름은 이 한 절에 두 번 적힙니다.</p>
+<p>다음 절에서 다윗이 나옵니다. 왕의 머리에서 관을 벗기고 무게를 재어 봅니다. 금 한 달란트입니다. 그런데 관이 머리에 놓이는 문장의 주어는 사람이 아니라 관입니다.</p>
+<p>20:2 끝과 20:3 첫머리가 같은 동사를 씁니다. 성의 노략물을 내왔고, 그 안에 있던 백성을 내왔습니다. 내온 백성은 톱과 쇠 연장과 도끼 앞에 세워지고, 본문은 「다윗이 암몬 자손의 모든 성읍을 이같이 행하니라」로 닫습니다. 한 성이 아닙니다.</p>
+<p>⚠ 이 단락에는 여호와가 주어인 문장이 하나도 없습니다. ⛔ 그 부재를 논거로 쓰지는 않겠습니다 — 기저율을 세지 않았습니다. 적어 두기만 합니다. 본문은 이 배열에 아무 말도 붙이지 않습니다. 누가 했고 누가 받았는지를 적을 뿐입니다.</p>
+<p>— 헐린 성과 씌워진 관이 두 절 사이에 나란히 놓입니다. 본문은 이것을 문제로도 미덕으로도 적지 않습니다. ⚠ 저는 왕이 군대의 전과를 자기 것으로 받는 것이 관행이었는지 세어 보지 않았습니다. 그러니 ⛔ 「다윗이 공을 가로챘다」고도, 「그래서 이상하다」고도 쓰지 않겠습니다. 적을 수 있는 것은 순서뿐입니다.</p>
+<p>허문 손과 관을 쓴 머리가 한 절 사이에서 갈리고, 본문은 그 사이에 아무 말도 넣지 않습니다.</p>
+<p>— 다른 것은 문장이 아니라 주변입니다. 역대상 쪽은 주변 동사가 전부 3인칭 단수이고 주어가 요압 한 사람인데, 사무엘하 11:1은 「멸하고」와 「에워쌌다」가 둘 다 3인칭 남성 복수입니다. ⛔ 그렇다고 이 대목이 역대상 고유라고 말하지는 않겠습니다. 「고유가 아니다」라고 적어 놓고 문단 끝에서 고유성을 되살리면 우회 복원입니다. 적을 수 있는 것은 두 책이 같은 문장을 쓰되 주변 동사의 수가 갈린다는 것까지입니다.</p>
+<p>두 책이 함께 왕을 앉은 자리에 두었고, 갈리는 것은 그 곁에서 움직이는 손이 몇인가입니다.</p>
+<p>— 20:3은 한 성에서 끝나지 않습니다. 「암몬 자손의 모든 성읍을 이같이 행하니라」 — 규모가 적혀 있습니다. 관의 무게는 달란트로 재어지고 사람의 수는 적히지 않습니다. 「그 가운데 백성」이라고만 적힙니다. ⚠ 그들에게 무슨 일이 있었는지는 낱말이 난해하고, 역대상과 사무엘하의 동사가 어근부터 갈립니다. 어느 쪽이 원래인지 판정하지 않겠습니다. 확실한 것은 끌려 나온 것이 사람이고 그 다음에 연장의 목록이 온다는 것입니다. ⛔ 여기에 해석을 붙이지 않겠습니다.</p>
+<p>세어진 것은 금이고, 세어지지 않은 것은 사람이며, 그 일이 한 성이 아니라 모든 성읍입니다.</p>
+<p>1. 친 사람과 관을 쓴 사람이 다릅니다. 20:1 후반과 20:2 사이에 연결어가 없습니다. 헐었다 다음에 바로 벗겼다가 옵니다. 본문은 둘을 이어 줄 문장을 넣어 두지 않았고, 저도 넣지 않겠습니다.</p>
+<p>2. 사무엘하 12:26-31은 다른 그림을 줍니다. 거기서는 요압이 랍바를 친 뒤 다윗을 불러 오게 합니다 — 「왕이 와서 치소서」. 그리고 다윗이 와서 칩니다. 역대상에는 그 장면이 없습니다. ⛔ 어느 쪽이 원래인지, 왜 없는지 판정하지 않겠습니다. 다만 이 장에서 눈에 띄는 순서가 사무엘하 쪽 서술에서는 서지 않는다는 것은 적어 둡니다.</p>
+<p>3. 이 장이 사무엘하 11:2-12:25를 지나갑니다. 54절입니다. ⚠ 지나간다는 사실까지가 본문이고, ⛔ 왜 지나가는지는 추정하지 않겠습니다. ⚠ 「역대기가 다윗을 미화했다」도 쓰지 않겠습니다 — 바로 다음 장이 다윗의 죄를 길게 적습니다.</p>
+<p>4. 20:3의 낱말이 난해합니다. 끌어내어진 것이 사람이라는 것까지가 확실하고 그 다음은 확실하지 않습니다. 이 네 가지를 닫지 않은 채로 둡니다.</p>
+<p>이 단락에 저울은 한 번 등장합니다. 관의 무게를 재는 자리입니다. 끌려 나온 사람들 앞에는 저울이 없고 연장이 있습니다. 본문은 이 차이에 아무 말도 붙이지 않고, 누가 했고 누가 받았는지만 적고 지나갑니다. ⚠ 그리고 여기에는 여호와가 주어인 문장이 없습니다. 하나님이 무엇을 하셨는지를 본문이 말하지 않으므로, 저도 그 자리를 채우지 않고 기도로 넘어가겠습니다.</p>
+<p>하나님, 오늘 본문은 재어진 것과 재어지지 않은 것을 나란히 적어 두었습니다. 그 두 줄을 그대로 읽을 눈을 주십시오. 저희도 재기 쉬운 것만 기록하고, 세어지지 않는 이름은 「그 가운데」로 묶어 온 일이 있음을 고백합니다. 저희가 쓰는 문서와 장부에 누구의 손이 적히는지, 누가 동사 없이 남는지 보게 하십시오. 본문이 말하지 않은 자리를 저희 말로 채워 하나님의 자리를 대신하지 않게 하시고, 말한 것 앞에서만 정직하게 서게 하십시오.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 07일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>이름을 불러 주는 사랑</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 27일 · 아가 4:1-16</span>
+<h1>이름을 불러 주는 사랑</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>아가서 4장은 사랑하는 이를 향한 긴 호칭으로 가득하다. 눈, 머리카락, 이, 입술, 목, 가슴, 동산이 차례로 불리고, ‘네’라는 말이 반복된다. 이 장은 무엇을 하라고 요구하는 말보다 먼저 한 사람을 오래 바라보고 부르는 말로 채워져 있다. 사랑은 상대를 기능이나 성과로 줄이지 않고, 그 존재를 구체적으로 알아보는 데서 시작한다.</p>
+<p>그러나 이 아름다움의 언어는 공중에 떠 있지 않다. 염소, 양 떼, 방패, 망대, 몰약, 유향, 레바논과 같은 재료가 등장한다. 그것들은 누군가가 돌보고, 만들고, 운반하며, 위험을 지나 얻은 것들이다. 우리는 비유의 뜻을 빨리 말하고 싶지만, 먼저 염소를 염소로, 방패를 방패로, 향품을 누군가의 수고가 담긴 물건으로 보아야 한다. 아름다운 말이 현실의 노동을 지우지 않을 때 사랑은 더 진실해진다.</p>
+<p>‘내 누이, 내 신부’라는 호칭과 ‘나와 함께 레바논에서 오라’는 부름도 있다. 가까움과 먼 길, 칭찬과 초대가 함께 놓인다. 본문은 그 사이의 모든 사정을 설명하지 않는다. 그래서 우리는 사랑을 단지 감정의 고조나 소유의 언어로 바꾸지 않는다. 사랑은 상대를 향해 가는 길을 열고, 그가 두려움과 위험에서 벗어나 함께 오도록 부르는 일이기도 하다.</p>
+<p>우리의 일상은 너무 쉽게 사람을 역할로 부른다. 엄마, 직원, 교인, 책임자라는 이름만 남고, 그 사람이 지나온 수고와 두려움은 보이지 않는다. 오늘 누군가를 대할 때 그가 해 준 일만 계산하지 말고, 그 사람의 존재와 노동을 함께 기억하고 싶다. 칭찬도 평가의 도구가 아니라 그를 존중하는 말이 될 수 있다.</p>
+<p>하나님, 제 말이 빠른 해석으로 사람을 지우지 않게 해 주십시오. 가까운 이에게 필요한 이름을 불러 주고, 보이지 않는 수고를 알아보며, 함께 걸어야 할 길에는 혼자 앞서지 않게 해 주십시오. 사랑이 아름다운 말에만 머물지 않고, 서로의 짐을 실제로 알아보는 눈과 손으로 자라기를 기도한다.</p>
+<p>누군가의 이름을 구체적으로 불러 주는 일은 생각보다 큰 돌봄이다. ‘수고했다’는 짧은 말 안에도 내가 당신의 노동을 보았다는 뜻을 담을 수 있다. 반대로 아름다운 말만 하고 실제 부담을 외면하면 칭찬은 빈말이 된다. 오늘 가까운 사람의 일과 피로, 기쁨과 두려움을 한 가지라도 구체적으로 물어보자. 사랑은 정확한 호칭과 실제 도움을 함께 필요로 한다.</p>
+<p>아가서의 찬양은 상대를 한꺼번에 소유하려 하지 않고, 한 부분씩 바라보며 말한다. 이 느린 시선은 우리가 가까운 사람을 대하는 방식과 다르다. 우리는 익숙하다는 이유로 그의 표정, 몸의 피로, 말 없는 수고를 지나친다. 오늘은 가족이나 동료 한 사람에게 그가 감당한 구체적인 일을 물어보고, 고맙다는 말을 일반론이 아니라 실제 장면과 함께 전하고 싶다. 또한 칭찬을 들은 사람이 더 많은 일을 떠맡아야 한다고 느끼지 않도록, 그의 부담을 덜어 줄 수 있는 행동을 곁들이겠다.</p>
+<p>북풍과 남풍에게 동산 위에 불라고 부르는 마지막 장면은 사랑이 갇힌 공간에 머물지 않기를 바라는 말처럼 들린다. 동산의 향기는 바람을 타고 퍼진다. 우리의 사랑도 집 안의 말과 일터의 태도, 약한 이를 대하는 손길로 드러난다. 오늘 가까운 사람에게만 친절하고 밖에서는 차가워지는 분열을 돌아본다. 하나님께서 내 마음의 향기가 넓은 곳에 흘러가도록, 말과 행동을 하나로 만들어 주시기를 바란다.</p>
+<p>아름다움을 말하는 사람의 책임은 더 무겁다. 상대를 칭찬하면서도 그가 감당할 수 없는 기대를 얹지 않아야 한다. 오늘 나는 사랑하는 이에게 고마움을 말하고, 동시에 그가 쉴 수 있도록 내 몫의 일을 기꺼이 맡겠다.</p>
+<p>사랑은 보이는 것을 말해 주는 데서 자란다. 오늘 나는 누군가의 수고를 막연히 칭찬하지 않고, 내가 실제로 보았던 한 가지 일을 말하며 고맙다고 전하겠다. 내 말이 사람을 살리고 그의 수고를 보게 하소서. 가까운 이를 구체적인 존중으로 대하겠다.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 27일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

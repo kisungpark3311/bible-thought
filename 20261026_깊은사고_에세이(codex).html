@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>찾지 못한 밤을 지나</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 26일 · 아가 3:1-11</span>
+<h1>찾지 못한 밤을 지나</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>아가서 3장은 밤의 침상에서 사랑하는 이를 찾는 사람으로 시작한다. 그는 구했으나 찾지 못했다고 말하고, 그 문장을 거의 그대로 한 번 더 반복한다. 반복은 독자에게 설명을 주지 않는다. 왜 떠났는지, 얼마나 오래 헤맸는지, 결국 무엇이 해결되었는지 바로 알려 주지 않는다. 성경은 찾지 못한 밤을 빨리 성공담으로 바꾸지 않는다.</p>
+<p>그는 성 안을 돌고 순찰하는 사람들을 만나 사랑하는 이를 보았느냐고 묻는다. 마침내 붙들어 놓는 장면이 오지만, 곧 예루살렘 딸들에게 사랑이 원하기 전에는 깨우지 말라고 부탁한다. 찾고 붙드는 열망과, 억지로 깨우지 않겠다는 기다림이 한 장 안에 함께 있다. 사랑은 소유하려는 손만이 아니라, 사랑 자체의 때를 존중하는 손을 요구한다.</p>
+<p>후반부에는 솔로몬의 가마가 레바논의 나무, 은 기둥, 금 받침, 자주색 자리로 묘사된다. 화려한 노래 속에도 누군가 베고, 캐고, 만들고, 지켜 낸 재료가 있다. 우리는 상징을 빨리 붙들다가 그 물질과 노동을 지워 버리기 쉽다. 그러나 사랑이 아름답게 불리는 자리에는 언제나 몸으로 준비하고 위험을 감당한 삶도 함께 있다.</p>
+<p>찾아도 만나지 못하는 시간은 누구에게나 있다. 기도해도 답이 오지 않고, 회복을 바라도 길이 보이지 않는 밤이 있다. 그때 우리는 설명을 만들어 자신이나 타인을 다그치기 쉽다. 이 본문은 우선 찾지 못했다고 말하게 한다. 아직 없는 것을 있는 것처럼 꾸미지 않고, 사랑이 원하기까지 기다리는 믿음을 배우게 한다.</p>
+<p>오늘 내게도 찾지 못한 무엇이 있다면 그것을 주님 앞에 숨기지 말자. 서두른 결론을 내려 사랑을 깨우지 말고, 필요한 도움을 묻고, 곁의 사람을 붙잡아야 할 때와 놓아주어야 할 때를 분별하자. 밤을 도는 사람의 발걸음을 아시는 하나님께서, 찾지 못한 우리의 기도도 헛되이 사라지지 않게 붙들어 주시기를 바란다.</p>
+<p>찾지 못한 밤에 가장 어려운 일은 기다림을 포기로 오해하지 않는 것이다. 아무 일도 하지 않는 듯한 시간에도 우리는 하나님 앞에 솔직히 말하고, 믿을 만한 사람에게 도움을 구하며, 내 몸을 돌보는 작은 일을 할 수 있다. 사랑을 깨우지 말라는 말은 침묵을 강요하는 말이 아니라, 다른 사람의 마음과 하나님의 시간을 내 조급함으로 조종하지 말라는 부탁처럼 들린다. 기다림도 사랑의 한 형태다.</p>
+<p>밤에 길을 나선 사람은 결국 사랑하는 이를 붙들지만, 본문은 그 만남을 모든 불안의 종결로 길게 설명하지 않는다. 그 절제는 우리의 삶에도 필요하다. 어느 날 기도가 응답되고 관계가 회복되어도, 우리는 그 경험을 모든 사람에게 적용되는 공식으로 만들 수 없다. 만남의 기쁨은 감사로 받아들이되, 아직 찾지 못한 이들의 밤도 함께 기억해야 한다. 오늘 누군가의 기다림을 조급한 충고로 흔들지 않고, 필요한 때에 곁을 지키는 사람이 되겠다. 사랑은 답을 대신 말하는 일이 아니라 함께 찾는 길을 비추는 일이다.</p>
+<p>가마 안쪽이 사랑으로 꾸며졌다는 말과 밤에 찾지 못한 사람의 말은 같은 장에 있다. 눈부신 장면과 불안한 장면을 한쪽으로 밀어내지 않는 것이 이 노래의 정직함이다. 내 삶에도 감사한 날과 찾지 못하는 날이 함께 있다. 어느 한쪽만 진짜라고 말하지 않고, 기쁠 때에는 겸손히 감사하고 막막할 때에는 도움을 구하겠다. 하나님은 두 장면 모두에서 우리를 떠나지 않으신다.</p>
+<p>두 번 반복된 ‘찾지 못하였다’는 문장을 내 기도에 가져온다. 주님, 아직 찾지 못했습니다. 그러나 그 사실 때문에 길을 포기하지 않게 해 주십시오. 오늘 밤에도 나를 사랑하시는 분을 향해 정직하게 찾는 마음을 지켜 주십시오.</p>
+<p>찾는 사람의 길에는 밤과 거리와 질문이 있다. 내 믿음도 때로 그렇게 더디다. 그 더딤을 부끄러워하지 않고, 오늘 할 수 있는 기도와 돌봄을 계속하겠다. 찾지 못한 밤에도 기도를 멈추지 않고 함께 걸을 사람을 찾겠다. 기다림 속에서도 사랑을 잃지 않겠다.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 26일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

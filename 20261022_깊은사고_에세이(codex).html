@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>받은 것을 다시 드리는 날</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 22일 · 역대상 29:10-19</span>
+<h1>받은 것을 다시 드리는 날</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>다윗은 성전 건축을 위해 기쁘게 드린 백성 앞에서 뜻밖의 고백을 한다. “나는 누구이며 내 백성은 무엇이기에” 이렇게 즐거이 드릴 힘이 있었느냐고 묻고, 곧 모든 것이 주께로부터 왔으며 우리는 주의 손에서 받은 것으로 드렸을 뿐이라고 말한다. 드림의 자리에서 사람의 공로가 커지는 대신, 받은 것의 근원이 더 또렷해진다. 감사는 내가 무엇을 이루었는지 세는 말이 아니라, 내 손에 들어온 것이 어디에서 왔는지 알아보는 눈이다.</p>
+<p>그 고백의 앞뒤에는 광대하심과 권능과 영광과 위엄이 모두 하나님께 속한다는 찬양이 놓여 있다. 그런데 다윗은 찬양을 높이 쌓아 놓고도 자신의 날을 그림자 같다고 말한다. 이 짧은 생을 비관으로 몰아가지 않고, 소유와 시간 모두 내 것이 아니라는 자리로 가져간다. 그래서 ‘소망이 없다’는 말은 모든 것을 포기하자는 체념이라기보다, 손에 쥔 것으로 영원한 보장을 만들 수 없다는 정직한 인정처럼 들린다.</p>
+<p>우리는 무언가를 드릴 때조차 은근히 내 수고를 증명하고 싶어 한다. 시간, 재능, 헌금, 돌봄을 내 이름의 자산처럼 쌓아 두고, 알아주지 않으면 서운해진다. 그러나 다윗의 기도는 받은 것과 드리는 것 사이에 빈틈을 두지 않는다. 손에 쥔 것, 그것을 내놓을 마음, 함께할 사람까지 모두 하나님께로부터 왔다. 이 사실을 기억하면 드림은 자랑이 아니라 기쁨이 되고, 비교는 감사로 조금씩 바뀐다.</p>
+<p>그렇다고 본문이 현실의 무게를 지우지는 않는다. 나그네와 거류민이라는 고백은 삶이 불안정하다는 감각을 그대로 품고 있다. 오늘의 직장과 가정, 건강과 관계도 그림자처럼 흔들릴 수 있다. 바로 그때 우리는 더 세게 움켜쥐기보다, 받은 것을 선물로 다시 부르는 법을 배운다. 불안 때문에 쌓아 두던 말과 물건과 계획을 하나님 앞에 내려놓는 작은 연습이 필요하다.</p>
+<p>오늘 내가 드릴 수 있는 것이 크든 작든, 먼저 ‘주님의 손에서 받았다’고 고백하고 싶다. 누군가를 돕는 손이 생겼다면 그 손을 자랑하지 않고, 부족한 날에도 나를 붙드신 분을 기억하고 싶다. 그림자 같은 날들을 붙들어 영원을 만들려 하지 않고, 오늘 주어진 기회에 감사로 응답하자. 하나님께서 우리의 마음을 주께 향하게 지켜 달라고 기도했던 다윗처럼, 받은 것을 기쁘게 나누는 마음을 구한다.</p>
+<p>다윗의 말은 성전 건축이라는 특별한 날에만 머물지 않는다. 밥을 차리고, 일한 대가를 받고, 누군가에게 시간을 내어 주고, 내 몫을 조금 덜어 내는 모든 순간에도 우리는 받은 것을 다시 흘려보낸다. 받은 것을 기억하지 못하면 작은 친절도 내가 베푼 호의가 되지만, 근원을 기억하면 감사가 관계를 살린다. 오늘의 부족함까지도 숨기지 않고, 있는 것을 나누며 하나님께 돌아가고 싶다.</p>
+<p>다윗은 또 백성의 마음을 영원히 지켜 주시고 솔로몬에게 온전한 마음을 달라고 기도한다. 그러므로 이 감사는 한순간의 감동으로 끝나지 않는다. 받은 것을 드린다는 고백은 다음 세대가 무엇을 소유로 여기며 살아갈지를 위한 기도까지 나아간다. 우리 집과 공동체에서도 아이들과 후배가 무엇을 성공으로 배우는지 살펴야 한다. 더 많이 움켜쥐는 사람이 아니라, 받은 것을 감사로 사용하고 다음 사람에게 기쁨으로 넘기는 사람이 복되다는 것을 삶으로 보여 주고 싶다. 오늘 내게 주어진 것을 독점할 권리처럼 대하지 않고, 누군가의 필요를 향해 열어 둘 방법을 하나 찾겠다.</p>
+<p>다윗이 ‘나는 누구인가’라고 묻는 것은 자신을 작게 만들기 위한 말이 아니다. 그는 백성과 함께 기쁘게 드릴 수 있었다는 사실을 놀라워한다. 나도 이 질문을 불평의 언어가 아니라 감사의 언어로 배우고 싶다. 내게 주어진 관계와 일, 몸과 시간이 당연하지 않다는 것을 알 때, 오늘의 평범한 수고도 예배가 된다. 받은 것이 많아야만 나눌 수 있는 것이 아니라, 받은 은혜를 기억하는 사람이 작은 것부터 나눌 수 있다.</p>
+<p>성전의 재료가 많아질수록 다윗의 고백은 더 낮아진다. 풍성함은 내 힘을 증명하는 이유가 아니라, 더 많이 맡겨졌다는 사실을 깨닫는 이유가 된다. 오늘 내게 있는 여유를 누구와 나눌지 구체적으로 정하고, 감사가 말에서 멈추지 않도록 하겠다.</p>
+<p>다윗은 백성의 즐거움을 하나님 앞에서 기뻐했다. 나도 누군가가 기쁘게 나누는 모습을 경쟁의 이유로 보지 않고 함께 감사하겠다. 공동체의 풍성함은 한 사람의 소유가 아니라 함께 받은 은혜의 표지가 될 수 있다. 오늘의 감사가 내 손을 열어, 누군가의 필요를 외면하지 않게 하소서. 받은 은혜를 기억하며 기쁜 마음으로 나누겠다.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 22일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

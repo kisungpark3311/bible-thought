@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>네 동사가 한 무리를 향하고, 본문은 그들이 당한 상태를 적습니다</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 05일 · 역대상 19:1-7</span>
+<h1>네 동사가 한 무리를 향하고, 본문은 그들이 당한 상태를 적습니다</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>암몬 왕 나하스가 죽고 그의 아들 하눈이 대신 왕이 됩니다. 다윗은 사람을 보냅니다. 본문은 그들을 세 가지 이름으로 부릅니다 — 보내진 자들, 다윗의 신하들, 그의 신하들. 2절과 3절에서 그들은 문장의 주어입니다. 그들이 갔고, 그들이 왔습니다. 4절에서 자리가 바뀝니다. 하눈이 그들을 붙잡고, 그들의 수염을 밀고, 그들의 옷을 볼기가 드러나는 데까지 잘라 내고, 그 상태로 돌려보냅니다. 조문하러 간 사람들이 수치를 입은 몸으로 돌아옵니다. 5절은 그 결과를 서술문으로 적습니다 — 「그 사람들이 심히 부끄러워하므로」. 그리고 6절과 7절에서 암몬은 은 천 달란트를 내어 병거와 마병을 삯 냅니다. 이 단락은 사람이 당한 일을 적고, 그 일에 대한 판정은 적지 않습니다.</p>
+<p>한 절 안에서 네 동사가 전부 한 무리에 가닿습니다.</p>
+<p>— ⛔ 이 차이에 의도를 붙이지 않겠습니다. 두 본문의 이문 관계를 확인하지 않았습니다. 두 문장이 그렇게 되어 있다는 것까지가 제가 적을 수 있는 전부입니다. 다만 역대상의 문장만 따로 읽으면 이렇게 됩니다 — 의심은 왕에게 향했는데, 문장에서 그 의심을 받고 서 있는 것은 심부름을 간 사람들입니다. 그리고 바로 다음 절에서 손이 닿는 것도 그들입니다.</p>
+<p>의심이 겨눈 사람과 그 대가를 몸으로 치른 사람이 다릅니다.</p>
+<p>— 본문은 그들이 어떤 상태였는지를 적고, 그 상태가 왕을 움직였다고 적습니다. 당한 사람의 몸 상태가 문장에서 원인의 자리에 놓여 있습니다. 다윗이 그들에게 건넨 말도 그 상태에 맞춰져 있습니다 — 「너희는 수염이 자라기까지 여리고에 머물다가 돌아오라」. ⚠ 이 일곱 절에서 그들이 「너희」로 불리는 것은 여기 한 번뿐입니다. 다만 인용된 발화 안이 2인칭인 것은 정상 문법이므로, 「다윗이 특별히 인격적으로 불렀다」고 신학화하지는 않겠습니다. 적을 수 있는 것은 이 단락에서 그들에게 말을 건 사람이 다윗뿐이라는 것까지입니다.</p>
+<p>당한 상태가 기록되었고, 그것이 왕의 행동의 이유로 적혔습니다.</p>
+<p>"그 사람들이 심히 부끄러워하므로" (대상 19:5)</p>
+<p>본문은 그들의 상태를 적었습니다. 그런데 하눈이 한 일을 「악하다」거나 「부당하다」고 부르는 낱말은 이 단락에 없습니다. 다윗의 반응도 처벌의 선언이 아니라 여리고에 머물라는 조치입니다. 당한 상태는 기록되고, 가한 행위는 평가되지 않습니다. 저는 이 비대칭을 봉합하지 않겠습니다.</p>
+<p>같은 자리에 목적의 긴장도 하나 더 있습니다. 서술은 19:2에서 「그를 위로하려고」를 두 번 씁니다. 방백들은 19:3에서 「탐지·전복·정탐하려고」라고 말합니다. 같은 방문에 두 개의 목적이 붙는데, 본문은 어느 쪽이 맞다고 적지 않습니다. 서술자의 말이 앞에 있고 방백들의 말이 뒤에 있을 뿐입니다.</p>
+<p>— 이 절의 주어는 처음부터 끝까지 하눈 하나입니다. 동사는 넷입니다 — 잡고, 밀고, 자르고, 보내고. 한 사람이 네 번 움직이는 동안 그 반대편에 서 있는 것은 줄곧 같은 무리입니다.</p>
+<p>— 방백들의 문장에서 움직이는 주체는 다윗이 아닙니다. 역대상의 주절은 「그의 신하들이 왔다」이고, 「탐지하려고·뒤엎으려고·정탐하려고」라는 세 부정사가 전부 그 「왔다」에 걸립니다. 왕을 의심하는 말인데, 문장의 자리에 서 있는 것은 온 사람들입니다.</p>
+<p>— 5절 안에 이유가 하나 적혀 있습니다. 「그 사람들이 심히 부끄러워하므로」. 이것은 누가 한 말이 아니라 본문이 하는 말이고, 다윗이 사람을 보낸 까닭으로 놓여 있습니다.</p>
+<p>이 단락에는 여호와가 주어인 문장이 하나도 없습니다. ⚠ 이 부재를 논거로 쓰지는 않겠습니다 — 짧은 서사에서 흔한 일이고, 저는 그 빈도를 세지 않았습니다. 이 일곱 절이 적어 둔 것은 사람이 한 일과 사람이 당한 일입니다. 수염이 깎이고, 옷이 볼기까지 잘리고, 심히 부끄러워하는 상태가 기록되고, 그 상태 때문에 왕이 사람을 보내 그들을 맞습니다. 그리고 그 옆에서 은 천 달란트가 병거 값으로 나갑니다. 본문은 거기까지 적고 멈춥니다. 저도 거기서 멈추겠습니다.</p>
+<p>주님, 오늘 본문은 당한 사람들의 상태를 적어 두었습니다. 저는 사람이 당한 일을 빨리 정리하고 넘어가려 할 때가 많았습니다. 기록된 것을 기록된 만큼 읽게 하시고, 없는 판정을 제가 만들어 넣지 않게 하소서. 지금 어떤 자리에도 나설 수 없는 상태에 있는 이들을 기억합니다. 그 상태가 지나가기까지의 시간을 제가 재촉하지 않게 하소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 05일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#173f35" name="theme-color"/>
+<title>기록되지 않은 사이에서</title>
+<style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<main>
+<header>
+<span class="label">일상의 깊은 사고 · 2026년 10월 23일 · 역대상 29:20-30</span>
+<h1>기록되지 않은 사이에서</h1>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="shareSermon()">공유하기</button>
+<button onclick="copySermon()">텍스트 복사</button>
+<button onclick="resizeText(1)">크게</button>
+<button onclick="resizeText(-1)">작게</button>
+</div>
+<article class="content" id="sermon">
+<p>역대상은 다윗의 마지막을 장엄하게 마무리한다. 백성은 솔로몬에게 복종하고, 여호와께서는 솔로몬을 모든 이스라엘 앞에서 크게 하시며 왕의 위엄을 주신다. 왕위의 이양이라는 커다란 장면에서 본문은 누가 역사를 최종적으로 세우시는지를 숨기지 않는다. 솔로몬이 스스로 커졌다고 말하지 않고, 하나님이 크게 하셨다고 말한다.</p>
+<p>그러나 책의 끝은 모든 이유를 설명하는 해설로 닫히지 않는다. 다윗의 행적은 처음부터 끝까지 사무엘의 글, 나단의 글, 갓의 글에 기록되어 있다고만 말한다. 선견자, 선지자, 선견자라는 서로 다른 이름이 나란히 놓이고, 그들이 무엇을 어느 날 어떻게 기록했는지는 본문이 풀어 주지 않는다. 한 사람의 삶은 한 줄의 평가로 끝나지 않고 여러 증언과 기록의 자리 안에 남는다.</p>
+<p>우리는 사람의 인생을 너무 빨리 결론 내리고 싶어 한다. 성공한 사람에게는 늘 성공할 만한 이유가 있었고, 넘어지는 사람에게는 분명한 원인이 있었다고 말한다. 하지만 역대상의 마지막은 다윗의 공과와 솔로몬의 영광 사이에 해설되지 않은 넓은 공간을 남긴다. 하나님의 주권은 분명하지만, 우리가 그분의 섭리를 다 설명할 수 있다는 뜻은 아니다.</p>
+<p>이 장면은 리더십을 보는 눈도 고친다. 다음 사람에게 자리를 넘기는 일은 내 업적이 영원히 이어진다는 증명이 아니다. 내가 할 수 있는 일을 성실히 기록하고, 다음 세대가 감당할 몫을 축복하며, 하나님이 주시는 위엄을 내 이름으로 가로채지 않는 일이다. 다윗의 시대가 끝나도 하나님의 이야기는 멈추지 않았다. 우리의 역할도 그 큰 이야기의 한 장면일 뿐이다.</p>
+<p>오늘 누군가의 평가를 서두르고 싶은 마음이 들 때, 기록되어 있다고만 말하는 이 마지막 절을 기억하고 싶다. 내가 모르는 수고와 눈물, 아직 열리지 않은 다음 장이 있다. 내 삶 역시 모든 설명을 갖추어야만 의미 있는 것이 아니다. 하나님이 하신 일은 감사로 고백하고, 아직 알지 못하는 것은 그분께 맡기며, 오늘 맡겨진 자리를 충성되게 걸어가자.</p>
+<p>다윗의 마지막이 세 사람의 기록으로 남았다는 것은 한 사람의 삶이 자기소개서보다 크다는 뜻처럼 들린다. 나를 기억하는 사람마다 다른 장면을 보았을 것이고, 하나님은 그 모든 증언보다 깊이 아신다. 그러므로 오늘의 선한 선택은 당장 박수받지 않아도 헛되지 않다. 내 이름을 남기려 애쓰기보다, 다음 사람이 더 잘 걸을 수 있도록 길 하나를 정리해 두는 것이 믿음의 유산일 수 있다.</p>
+<p>솔로몬의 위엄은 다윗이 물려준 권력의 자동 연장이 아니라 여호와께서 주신 것으로 적힌다. 그래서 다윗의 마지막은 자신의 시대를 붙잡으려는 몸짓이 아니라, 하나님이 다음 장을 여신다는 사실을 인정하는 자리다. 나도 내가 익숙한 방식과 자리를 내려놓아야 할 때가 있다. 그때 후임의 방식이 나와 다르다는 이유만으로 하나님의 일을 의심하지 않기를 바란다. 내가 남길 수 있는 가장 좋은 기록은 모든 것을 통제했다는 흔적이 아니라, 다음 사람이 하나님께 충성할 수 있도록 길을 열어 준 마음일 것이다.</p>
+<p>사무엘과 나단과 갓의 이름은 한 시대를 한 사람의 목소리로만 기억하지 못하게 한다. 내 주변에도 내가 듣기 불편하지만 필요했던 증언을 해 준 사람들이 있다. 그들의 목소리를 지우지 않고 기억하는 것이 겸손일 수 있다. 오늘 내가 맡은 공동체에서도 한 사람의 판단이 모든 이야기를 덮지 않도록, 서로 다른 경험을 듣고 기록할 자리를 만들고 싶다. 하나님은 우리의 단순한 결론보다 더 넓은 방식으로 역사를 이끄신다.</p>
+<p>다윗의 행적이 처음부터 끝까지 기록되었다는 말은 마지막이 삭제가 아니라 보존임을 알려 준다. 실패와 성공이 섞인 내 과거도 하나님 안에서는 버려진 조각이 아니다. 오늘은 지난 일을 미화하거나 숨기기보다, 거기서 배운 충성을 다음 걸음에 사용하겠다.</p>
+<p>다음 세대의 성공을 내 공으로 묶지 않을 때 축복이 자유로워진다. 오늘 나는 후배와 자녀가 나보다 다른 방식으로 잘되는 것을 기뻐하고, 필요한 조언은 하되 그들의 길을 하나님께 맡기겠다. 나는 내 시대의 끝에서도 하나님이 시작하실 일을 신뢰하겠다. 하나님의 다음 장을 위해 내 손을 비워 두겠다.</p>
+</article>
+<footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br/>
+      2026년 10월 23일
+    </footer>
+</main>
+<div id="toast"></div>
+<script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
