@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>모으려는 날개 아래에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 30편 &middot; 누가복음 13:22-35</span>
+      <h1>모으려는 날개 아래에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>예루살렘을 향한 길에는 좁은 문과 닫힌 문, 울음과 잔치가 함께 놓여 있습니다. 그 길 끝에서 예수님은 심판의 말만 남기지 않고, 새끼를 날개 아래 모으려는 암탉의 마음으로 도성을 부르십니다.</p>
+<p>누가는 22절에서 예루살렘을 향해 지나가며 가르치는 여정을 배경으로 깔아 둡니다. 그 걸음 위에서 24절의 명령이 나옵니다. "좁은 문(θύρας)으로 들어가기를 힘쓰라(ἀγωνίζεσθε)"는 요구 뒤에, 구하여도 능히 하지 못할 사람들이 미래형으로 예고됩니다. 25절에서 집주인(οἰκοδεσπότης)이 일어나 문을 닫으면 밖에 서서 두드리는(κρούειν) 사람들이 남습니다. 본문은 이 집주인을 예수와 명시적으로 동일시하지 않으므로, 이 노트도 25~27절의 발화를 이야기 속 인물의 말로 다룹니다. 26절의 항변이 함께 먹고 마신 이력과 거리에서 들은 강의를 자격으로 제출할 때, 27절의 응답은 출신을 모른다는 부정과 "내게서 떠나가라"(ἀπόστητε)는 판결로 돌아옵니다. 28절이 울음(κλαυθμός)과 이 가는 소리를 그 자리에 남기고, 29절은 사방에서 이르는 이들이 상에 눕혀진다고 미래형으로 말합니다. 31절부터 헤롯의 위협이 전해지자 예수는 그를 저 여우(ἀλώπεκι)라 부르고 자기 일정을 세 항으로 말한 뒤, 34절의 애가와 35절의 선언으로 단락을 닫습니다. 이 단락의 중심 명제는 여기 있습니다 — 여러 세대를 건너온 모으려 하심이 1인칭으로 발화되고, 그 앞에서 응답은 비어 있습니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 일정표의 앞 이틀이 같더라도 마지막 칸이 그 이틀의 뜻을 정한다. 우리의 거절보다 오래된 의지가 이미 여러 차례 뻗어 있었다. 인용의 무게를 재는 손이 본문을 넘어서지 않게 한다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>24절의 명령을 들을 힘조차 없는 날이 있습니다. 본문은 그런 경우를 감추지 않고 "구하여도 능히 하지 못한다"를 미래형으로 적어 두었습니다. 그 자리에 남는 문장은 29절입니다 — 사방에서 이르는 이들이 상에 눕혀진다는 말에 본문은 그들의 힘을 조건으로 달지 않았습니다.</p>
+<p>26절의 항변은 함께 먹고 마신 이력과 거리에서 들은 강의를 내밉니다. 그 강의를 가리키는 동사의 표제어는 22절에서 "가르치며 지나갔다"고 적힌 바로 그 낱말입니다. 서사가 배경으로 적어 둔 행위가 몇 절 뒤에 자격 증명으로 제출되는 셈입니다. 성도에게 물어야 할 것은 출석 햇수가 아니라, 그 햇수가 무엇의 근거로 제출되고 있는가입니다.</p>
+<p>27절은 판결받는 사람들을 ἐργάται ἀδικίας라 부릅니다. ἐργάτης는 노동으로 밥을 얻는 사람을 가리키는 직업 명사이니, 게으름이 아니라 일함 자체가 판결의 대상으로 호명됩니다. 다만 ἀδικίας 속격이 대상을 가리키는지 성질을 가리키는지 본문은 정하지 않으므로, 이 유보를 닫지 않은 채 읽습니다. 이 단락에는 물질의 눈금이 촘촘합니다 — 문과 두드림과 바깥에 서 있음이 25절 한 절에 모이고, 29절의 눕는 자세는 식탁의 몸짓이며, 28절은 이라는 신체 부위를 명시합니다. 장부와 신고서와 계산서를 맞추는 노동이 어느 속격에 매여 있는지는 노동량으로 판별되지 않습니다.</p>
+<p>이 말씀 앞에서 이렇게 기도합니다.</p>
+<p>28절이 판결 다음에 남겨 둔 것은 울음(κλαυθμός)이라는 명사입니다. 이 낱말을 신체 묘사의 하나로 흘려보내지 않고 탄식으로 받습니다. 27절의 "떠나가라"와 "알지 못한다", 34절의 "몇 번이나 모으려 했으나 너희는 원하지 않았다", 35절의 "너희 집이 버려진다"가 한 단락 안에 차례로 놓여 있고, 그 끝에 놓인 것은 해결이 아니라 울음입니다. 모으려는 그림과 버려지는 선언이 두 절에 잇달아 있으며, 이 노트는 그 사이를 메우지 않고 닫습니다.</p>
+<p>걸음마다 가르치며 예루살렘으로 가신 주님, 좁은 문 앞에서 힘쓰라는 명령을 가볍게 듣지 않게 하소서. 먹고 마신 이력과 들은 시간을 자격으로 내밀던 입을 닫게 하시고, 출신을 모른다는 말 앞에서 떨게 하소서. 여러 세대를 건너온 모으려 하심 앞에서 원하지 않았던 저희 자리를 보게 하소서. 울음이 남는 자리를 서둘러 덮지 않게 하시고, 본문이 열어 둔 간격을 저희 손으로 닫지 않게 하소서. 예수님의 이름으로 기도합니다. 아멘.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 30편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

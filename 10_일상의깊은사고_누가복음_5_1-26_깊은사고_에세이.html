@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>엎드림으로 드러나는 고백</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 10편 &middot; 누가복음 5:1-26</span>
+      <h1>엎드림으로 드러나는 고백</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>시몬이 예수를 부르는 말이 세 절 사이에서 바뀝니다. 5:5에서는 「선생님」(에피스타타)이고 5:8에서는 「주여」(퀴리에)입니다. 두 호칭 사이에서 어촌의 장비가 무너집니다 — 그물은 「찢어지고 있었다」(디에레세토, 5:6 — 이 노트가 따르는 본문의 판독입니다)로 진행에 머물고, 배들은 「가라앉게 되도록」(5:7) 찼습니다. 첫 호칭은 밤새 헛일한 어부가 「당신의 말에 근거해서 그물을 내리겠습니다」(5:5)라고 하며 부른 말이고, 둘째 호칭은 무릎을 꺾고 자기를 죄인이라 부르면서 마지막에 내놓은 말입니다.</p>
+<p>그 「주여」가 무엇을 뜻하는지는 셋째 장면의 끝에서 세 층위로 갈라집니다. 첫째, 5:20에서 예수가 「네 죄들이 사하여져 있다」를 선언합니다. 둘째, 서기관과 바리새인이 자기들끼리 주고받는 말 안에서 「오직 하나님 외에 누가 죄를 사할 수 있는가」(5:21)를 내놓습니다 — 서사의 진술이 아닙니다. 그들의 발화 안에 든 물음입니다. 셋째, 5:24에서 예수가 「인자가 땅에서 죄를 사하는 권한을 가진다」라고 말합니다. 여기의 「가진다」도 그 발화 안의 동사이고, 서사가 내놓은 중심 동사가 아닙니다.</p>
+<p>세 장면을 한 축으로 묶는 근거는 한 인물이 세 장면에 나온다는 사실이 아닙니다. 그 사실은 복음서 전편에 두루 참이어서 이 세 장면을 특정해 주지 못합니다. 묶는 힘은 낱말의 어근이 장면을 가로질러 되돌아오는 방식에서 나옵니다. 시몬이 자기를 부른 말이 「죄인인 남자」(5:8, 하마르톨로스)이고, 방 안에서 다루어지는 것이 「너의 죄들」(5:20)·「죄들을」(5:21)·「죄들을」(5:24, 하마르티아스)입니다. 한 어근이 호수에서는 사람의 자기 지명이고 방 안에서는 처리의 대상입니다. 호격 「주여」도 이 단위에 두 번 놓입니다 — 5:8의 시몬과 5:12의 나병 환자입니다. 5:17의 「주의 능력이 고치기 위해 있었다」는 능력의 출처를 한정하는 말이고, 그것이 5:8의 호격과 같은 대상을 가리키는지는 본문이 판정해 주지 않아 미판정으로 둡니다. 그를 「이 스승」으로만 읽으면 5:20이 5:21의 판정에 걸립니다 — 가르치는 권한 밖에 죄의 처리가 놓이기 때문입니다.</p>
+<p>고백은 낱말 하나로 성립하지 않습니다. 「퀴리에」만 떼어 내면 「엎드렸다」가 하는 일이 사라집니다. 우리가 외워 둔 고백문이 어느 자세에 매달려 있는지를 본문이 묻습니다. 낱말과 문장 구조가 함께 고백을 싣습니다.</p>
+<p>고백은 낱말이 아니라 엎드림에 매달린 분사입니다.</p>
+<p>순서가 뒤집혀 있습니다. 5:18의 사람은 「중풍병에 걸려 있는」(파랄렐뤼메노스) 상태이고, 5:24가 그를 다시 부를 때도 같은 완료 수동 분사 「토 파랄렐뤼메노」입니다. 몸은 아직 그 완료 수동에 묶여 있는데, 죄에 관해서는 또 하나의 완료 수동이 이미 성립해 있습니다. 「일어나라」와 「가라」(5:24)는 그 뒤에 이어집니다. 몸이 회복된 다음에 죄가 다루어지는 순서가 아닙니다.</p>
+<p>사함은 땅에서 선언된 결과이며, 하늘에 유보된 약속으로 미뤄지지 않습니다.</p>
+<p>자기 고발이 취소되지 않은 상태에서 부름을 듣습니다. 「하마르톨로스」(5:8)는 그 사람의 자기 규정으로 그대로 서 있고, 5:20이 그 처리를 한 문장으로 줍니다. 그런데 5:21의 서기관과 바리새인은 그 문장을 「블라스페미아스」, 참람한 말이라 부릅니다. 나가라는 말을 거두지 못한 사람이 붙잡히는 근거는, 붙잡는 이가 누구인가에 걸려 있습니다. 5:21이 세워 둔 배타 조건을 그대로 두면 5:20을 발한 이가 누구인지가 남습니다.</p>
+<p>부름은 자기 고발이 철회된 다음에 오지 않습니다.</p>
+<p>세 쌍이 봉합되지 않습니다.</p>
+<p>ⓐ 5:8과 5:10. 「나에게서 나가소서, 나는 죄인인 남자입니다, 주여」(5:8)와 「두려워하지 말라. 이제부터 너는 사람을 산 채로 붙잡을 것이다」(5:10)입니다. 본문은 앞의 명령이 철회됐다고 적지 않습니다. 바로 다음에 어부들이 「모든 것을 버려두고 따라갔다」(5:11)로 이어지는데, 나가라고 말한 입과 따라가는 발이 같은 사람의 것입니다. 정경은 이 둘을 취소 없이 붙여 두었습니다.</p>
+<p>ⓑ 5:14와 5:15. 「아무에게도 말하지 말라고 명했다」(5:14) 바로 뒤에 「그에 관한 말이 더욱 퍼져 나가고 있었다」(5:15)가 따라붙습니다. 퍼져 나간 것의 주어는 나은 사람이 아닙니다 — 「말」입니다. 본문은 그가 명령을 어겼다고 적지 않습니다. 5:15는 확산을 진행으로 적고, 5:16은 「그는 광야들로 물러가 기도하고 있었다」를 또 하나의 진행으로 적습니다. 무리는 모여들고 그는 물러납니다. 본문이 놓은 것은 이 두 진행의 반대 방향입니다.</p>
+<p>ⓒ 5:26의 두 반응. 무리는 「하나님을 찬양했다」면서 동시에 「두려움으로 가득 찼다」고 적힙니다(5:26). 그들이 한 말의 마지막 두 낱말은 「오늘 이상한 일들을」입니다. 찬양 하나만 남기면 두려움이 지워지고, 두려움만 남기면 찬양이 지워집니다. 본문은 둘을 같은 절에 함께 적었습니다. 이 단락은 정리된 감정으로 닫히지 않고 낯설게 남습니다.</p>
+<p>밤을 다 새워 수고하고 빈손으로 돌아온 시몬이 이 말을 먼저 듣습니다(5:5). 실적을 채운 다음에 부름을 받은 순서가 아닙니다. 지금 내놓을 것이 결산뿐인 성도에게, 그 결산을 채워 오라고 하지 말고 그대로 가지고 나오라고 말합니다. 아직 「나가소서」를 거두지 못한 사람도 5:10의 부름을 함께 듣습니다.</p>
+<p>5:19에서 사람들은 지붕의 기와를 벗겨 병자를 내려보냈습니다. 그 집의 주인은 본문에 적히지 않습니다. 5:24는 그에게 「네 들것을 들고」라고 해서 실려 온 물건을 그의 소유로 돌려줍니다. 장부와 신고서를 다루는 일터에서도 남의 것을 뜯어야 하는 결정과 내 것으로 돌려받는 결정이 따로 있습니다. 5:2의 배 두 척과 「동업자들」(5:7)·「동업자」(5:10)가 한 조로 움직인 것처럼, 결정의 비용도 한 조가 함께 집니다. 어업은 여기서 비유가 아니라 장비와 어획과 계약입니다.</p>
+<p>나병으로 가득한 사람은 얼굴을 땅에 대고 엎드려(5:12) 「원하시면 저를 깨끗하게 하실 수 있습니다」라고 말했습니다. 시몬의 엎드림은 무릎이었고(5:8) 이 사람의 엎드림은 얼굴입니다. 할 수 있느냐를 묻지 않고 원하느냐를 물었습니다. 5:13의 답은 「원한다, 깨끗해지라」인데, 「카타리스테티」는 부정과거 수동 명령이고 「텔로」는 현재 능동 직설입니다 — 말하는 이가 지금 원하고, 그 사람은 받는 쪽으로 깨끗해집니다. 이어서 5:14가 그를 제사장에게 보내며 「모세가 명한 대로」라고 적습니다. 그 제사장은 모세 제도의 제사장이고 명하는 주어도 모세입니다. 오늘 가정 기도에서 능력을 따지는 문장 하나를 의지를 묻는 문장으로 바꿔 보십시오.</p>
+<p>세 장면이 한 표제로 이어집니다 — 손에서 놓는 일입니다. 5:11의 「버려두고」(아펜테스)는 사람이 소유를 손에서 놓는 일이고, 5:20의 「사하여져 있다」(아페온타이)·5:21의 「사할」(아페이나이)·5:23의 「사하여져 있다」(아페온타이)·5:24의 「사하는」(아피에나이)은 죄가 놓여 나는 일입니다. 한 표제가 다섯 번 나오지만 지시가 갈리므로, 뜻을 합쳐 세면 과대집계가 됩니다. 첫 장면에서 사람이 놓은 것은 배와 그물이고, 셋째 장면에서 놓여 난 것은 사람이 스스로 손에서 놓을 수 없는 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

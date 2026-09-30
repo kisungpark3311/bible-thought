@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>값을 헤아리되 잃은 이를 기뻐하는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 32편 &middot; 누가복음 14:25~15:10</span>
+      <h1>값을 헤아리되 잃은 이를 기뻐하는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>제자가 되는 길에는 가벼운 약속으로 넘길 수 없는 무게가 있습니다. 그러나 길 잃은 양과 잃은 드라크마를 찾는 기쁨은, 주님이 사람을 숫자나 성과로만 세지 않으심을 보여 줍니다.</p>
+<p>많은 무리가 함께 갈 때에 예수께서 돌이켜 말씀하십니다. 14:26과 14:27과 14:33은 서로 다른 요구를 걸고도 끝에 같은 문장을 놓습니다 — οὐ δύναται εἶναί μου μαθητής(우 뒤나타이 에이나이 무 마테테스), "능히 나의 제자가 되지 못한다"입니다. 사본 표시 기호를 벗기면 어순까지 세 번 다 같습니다. 14:26은 혈연 여섯을 μισεῖ(미세이)의 목적어로 세우고 일곱째 자리에 듣는 사람 자신의 목숨을 놓습니다. 14:27은 βαστάζει τὸν σταυρὸν ἑαυτοῦ(바스타제이 톤 스타우론 헤아우투), 자기 십자가를 지는 일을 겁니다. 14:33은 ἀποτάσσεται πᾶσιν τοῖς ἑαυτοῦ ὑπάρχουσιν(아포타세타이), 자기 소유 전부와 작별하는 일을 겁니다.</p>
+<p>그 사이에 셈의 비유 두 편이 들어섭니다. 앉아서(καθίσας) 비용을 세는 사람(ψηφίζει τὴν δαπάνην)이 완공(ἀπαρτισμόν)에 닿을 재원을 먼저 헤아리고, 왕은 교전 직전에 승산을 헤아립니다(βουλεύσεται). 두 비유는 셈을 말리지 않습니다. 14:34-35는 맛을 잃은 소금(ἅλας·μωρανθῇ·ἀρτυθήσεται)을 흙에도 거름더미(κοπρίαν)에도 쓸 수 없다고 판정하고, 판정 뒤에 처분 동사를 붙입니다 — ἔξω βάλλουσιν αὐτό(엑소 발루신 아우토), 밖에 내버린다는 말입니다. 15:1-2에서 세리와 죄인들이 들으려고 가까이 오고, 끊이지 않는 수군거림(διεγόγγυζον)이 밥상을 고발합니다(προσδέχεται·συνεσθίει). 이 단락의 중심 명제는 제자 됨의 값을 정하는 권리가 화자 한 사람에게 고정되어 있다는 진술입니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 기쁨은 두 번 선언되지만, 두 선언이 서로를 대신하지 못합니다. 찾아지는 자리는 능동의 자리가 아닙니다. 동의하지 않아도 함께 기뻐하라는 명령이 남습니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>예수님은 많은 무리에게 제자의 길을 가볍게 약속하지 않으십니다. 가족보다 주님을 미워하라는 낯선 표현도 사랑을 버리라는 명령이 아니라, 어떤 관계와 소유도 주님보다 앞자리를 차지하게 두지 말라는 급진적인 부르심으로 들립니다. 탑을 세우기 전에 비용을 계산하고, 전쟁을 앞둔 왕이 힘을 헤아리는 이야기는 믿음이 무모한 흥분이 아니라 삶 전체를 정직하게 바라보는 결단임을 알려 줍니다.</p>
+<p>그런데 이 무거운 말씀은 잃은 양과 잃은 드라크마의 기쁨으로 이어집니다. 주님을 따르는 길이 사람을 걸러 내기 위한 시험만은 아니라는 뜻입니다. 목자는 아흔아홉을 버려두었다는 계산보다 잃은 한 마리를 찾아 어깨에 메고 돌아오는 기쁨을 보여 줍니다. 여인은 작은 동전 하나를 찾기까지 등불을 켜고 집을 쓸며, 찾은 뒤 이웃을 불러 기뻐합니다. 하늘의 기쁨은 누군가가 다시 돌아오는 데 있습니다.</p>
+<p>그러니 우리는 제자의 대가를 말할 때에도 사람을 차갑게 밀어내지 말아야 합니다. 나 자신도 길을 잃을 수 있는 사람임을 기억하고, 돌아오는 이에게는 심문보다 환영의 문을 열어야 합니다. 오늘 내려놓아야 할 집착이 무엇인지, 또 찾아가야 할 한 사람이 누구인지 조용히 묻습니다. 주님, 제 삶의 우선순위를 바로 세우게 하시고, 당신이 찾으시는 사람을 함께 기뻐하는 마음을 주소서.</p>
+<p>그 길은 한 번의 뜨거운 결심으로 끝나지 않습니다. 매일의 선택에서 주님을 가장 먼저 사랑하고, 길 잃은 이를 포기하지 않는 마음으로 다시 걸어가는 길입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 32편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

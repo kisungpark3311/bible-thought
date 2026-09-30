@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>얼굴을 굳게 하시고 걸으신 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 22편 &middot; 누가복음 9:51~10:24</span>
+      <h1>얼굴을 굳게 하시고 걸으신 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>예수께서 자기 얼굴을 예루살렘으로 굳게 세우셨습니다(9:51). 그 굳힘의 시점을 정하는 말이 수동입니다. 그의 올려짐의 날들이 채워질 때이며, 채우는 분을 본문이 밝히지 않습니다. 뒤따르는 서른세 절(9:54-10:24)이 이 한 문장을 표제로 삼습니다. 사마리아 마을이 그 얼굴을 받아들이지 않고(9:53), 따르겠다고 나선 세 사람이 각각 유보를 붙이고(9:57-62), 칠십둘이 그 얼굴 앞서 파송되고(10:1 · 이 노트가 따르는 본문에서는 칠십둘이고 다른 데서는 칠십입니다), 두 성이 화를 듣고(10:13-15), 거절이 보내신 이에게까지 도달하고(10:16), 마지막에 예수께서 성령으로 크게 기뻐하십니다(10:21). 다섯 단락 가운데 어느 것도 9:51이 정한 방향을 다시 정하지 않습니다. 각 단락은 그 방향 위에서 벌어지는 개별 사건을 주장할 뿐입니다. 예수께서 자기가 정하지 않은 달력 위에서 자기 얼굴을 정하십니다.</p>
+<p>하늘을 향한 상승과 음부를 향한 하강이 스물 몇 낱말 사이에 놓입니다. 등록이 화 선언을 덮지 않고, 화 선언이 등록을 취소하지 않습니다. 이 단위에서 행위자를 밝히지 않은 수동이 아홉 개입니다(9:56 · 10:2 · 10:6 · 10:13 · 10:15 두 개 · 10:17 · 10:20 두 개). 올려짐과 내려짐이 둘 다 그 아홉에 들어 있습니다. 누가 올리고 누가 내리는지 본문이 말하지 않은 채, 올림과 내림을 사람의 손에서 빼앗아 갑니다.</p>
+<p>화 선언과 이름의 등록을 한 담화가 함께 말한다.</p>
+<p>예수께서 이 문장의 구조적 중간항에 서십니다. 그분을 빼면 삼중 연쇄가 이중으로 줄고 이 항목 자체가 사라집니다. 사자의 말에 무게가 실리는 근거를 사자 자신이 갖지 못합니다. 파송된 사람의 입에서 나온 말이 보내신 이에게까지 닿는 통로를 아들이 자기 몸으로 놓으셨습니다. 여기서 복음이 선포됩니다. 아들이 중간에 서시고, 그 위에서 우리가 전한 말이 하나님께 도달합니다. 우리가 받은 거절도 우리에게서 멈추지 않습니다. 아들이 먼저 받으십니다. 본문은 보내신 이가 계시고 보내심을 받은 이가 계시다고 세워 둡니다. 그 통로가 받아들임만 나르지 않습니다.</p>
+<p>아들이 중간항에 서시고, 그 위에서 사자의 말이 무게를 얻고, 사자의 거절도 아들에게 도달한다.</p>
+<p>단위의 경계를 두 계수가 지지합니다. "가다"라는 낱말이 9:51·52·53·56·57에 다섯 번 몰려 있고 그 뒤로 사라집니다. "예루살렘"이 9:51과 9:53에 두 번 나온 뒤 서른세 절 동안 한 번도 나오지 않습니다. 목적지를 말하는 절이 서두에 다 모였고, 그 뒤 본문은 목적지를 다시 부르지 않은 채 길 위의 일들을 적습니다. 목적지를 되풀이해 말하지 않아도 방향은 취소되지 않습니다.</p>
+<p>날들을 채우는 손과 얼굴을 세우는 손이 같지 않으며, 본문은 앞의 손을 익명으로 둔다.</p>
+<p>ⓐ 꾸짖음의 빈 내용</p>
+<p>"주님, 우리가 불이 하늘에서 내려와 그들을 태우기를 원하시면 말씀하시겠습니까?" (눅 9:54)</p>
+<p>"돌아서서 그들을 꾸짖으셨습니다." (눅 9:55)</p>
+<p>이 노트가 따르는 본문은 9:55에서 멈춥니다. 예수께서 무엇을 꾸짖으셨는지 기준 본문이 말하지 않습니다. 불로 멸하자는 요청이 왜 틀렸는지를 본문에서 읽어 낼 수 없습니다. 다른 데서 읽히는 설명은 이 노트의 기준 밖입니다. 빈 내용을 채워 넣지 않고 빈 채로 둡니다. 제자들이 구했고 예수께서 꾸짖으셨다는 두 사실만 남습니다.</p>
+<p>ⓑ 화 선언과 큰 기쁨의 병치</p>
+<p>"가버나움아, 네가 하늘까지 높아지겠느냐? 음부까지 내려지리라." (눅 10:15)</p>
+<p>"예수께서 성령으로 크게 기뻐하며 말하셨습니다. 아버지여, 하늘과 땅의 주님, 당신께 감사합니다. 이것들을 지혜롭고 총명한 자들에게서 감추시고 어린아이들에게 드러내셨기 때문입니다." (눅 10:21)</p>
+<p>가버나움이 음부까지 내려지고, 여섯 절 뒤 예수께서 크게 기뻐하십니다. 이 본문에 "안에서"에 해당하는 전치사가 없습니다. 이 노트는 "성령으로"로 옮깁니다. 기뻐하시는 이유가 감추심과 드러내심 둘 다이며 감추심이 먼저 놓입니다. 이것을 "결국 다 드러날 것이다"로 풀면 본문이 감사의 내용으로 둔 것을 없애 버립니다. 봉합하지 않습니다.</p>
+<p>ⓒ 작별 인사와 뒤돌아봄</p>
+<p>"주님, 당신을 따르겠습니다. 그러나 먼저 제 집 사람들에게 작별하게 허락해 주십시오." (눅 9:61)</p>
+<p>"손을 쟁기에 얹고 뒤를 돌아보는 사람은 하나님 나라에 적합하지 않습니다." (눅 9:62)</p>
+<p>9:61이 청한 것은 작별 인사이고, 9:62가 부적합하다고 말한 것은 뒤돌아봄입니다. 두 문장 사이에 설명이 없습니다. 어디까지가 작별이고 어디부터가 뒤돌아봄인지 본문이 선을 그어 주지 않습니다. 두 분사의 상이 다르다는 관찰만 남습니다 — 손을 얹는 일은 한 점이고 뒤를 보는 일은 지속입니다. 봉합하지 않습니다.</p>
+<p>ⓓ 권세의 약속과 머리 둘 데 없음</p>
+<p>"인자는 머리를 눕힐 데가 없습니다." (눅 9:58)</p>
+<p>"보라, 내가 너희에게 뱀과 전갈을, 또 원수의 모든 힘을 밟을 권세를 주었다. 아무것도 너희를 해하지 못할 것이다." (눅 10:19)</p>
+<p>두 문장이 스물세 절 거리에 놓입니다. 앞의 것은 파송하시는 이를 말하고 뒤의 것은 파송된 이들을 말한다는 구분이 가능하지만, 그 구분이 "아무것도 해하지 못한다"를 설명하지는 못합니다. 10:3이 이미 이리 떼 가운데 어린 양처럼 보낸다고 말해 두었습니다. 한 담화가 안전과 위험을 둘 다 약속합니다. 봉합하지 않습니다. 한 가지를 정정합니다 — 10:19의 뱀과 전갈을 시 91:13으로 잇는 관행이 있으나 헬라어 구약(LXX) 시 90:13에 뱀도 전갈도 없습니다. 두 낱말이 함께 있는 참인 출처는 신명기 8:15이며, 거기서는 둘 다 단수이고 누가는 복수입니다.</p>
+<p>"많은 선지자와 왕들이 너희가 보는 것을 보기를 원했으나 보지 못했고, 너희가 듣는 것을 듣기를 원했으나 듣지 못했습니다." (눅 10:24)</p>
+<p>"모든 것이 내 아버지께로부터 내게 넘겨졌습니다." (눅 10:22)</p>
+<p>"지갑도 배낭도 신발도 지고 가지 마십시오." (눅 10:4)</p>
+<p>자기가 정하지 않은 날들 위에서 자기 얼굴을 정한 한 분이 길을 떠나십니다. 그 길 위에서 마을이 그를 거절하고, 지원자들이 조건을 붙이고, 두 성이 이름을 불리며 화를 듣고, 한 성이 음부까지 내려진다는 말을 듣습니다. 그 길 위에서 칠십둘이 파송되고 이름이 하늘에 등록됩니다(이 노트가 따르는 본문에서는 칠십둘이고 다른 데서는 칠십입니다). 화 선언과 등록이 한 길에 함께 놓였고, 그 길의 가운데에 서신 분이 우리 말과 우리가 받은 거절을 함께 지고 가십니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 22편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

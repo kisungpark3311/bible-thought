@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>입을 때까지 앉아 있는 믿음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 52편 &middot; 누가복음 24:36-53</span>
+      <h1>입을 때까지 앉아 있는 믿음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>부활하신 주님은 놀라고 믿지 못하는 제자들 가운데 서셨습니다. 그분은 손과 발을 보이시고 음식을 드시며, 성경을 깨닫게 하신 뒤 모든 민족을 향한 길 앞에서 기다리라고 명하십니다.</p>
+<p>서사의 첫 문장은 αὐτὸς ἔστη ἐν μέσῳ αὐτῶν(그가 친히 그들 가운데 서셨다)입니다. 그런데 그 자리에 있던 사람들의 첫 반응은 믿음이 아니라 πτοηθέντες(프토에텐테스, 놀라)였고, 주님은 그들을 향해 "왜 τεταραγμένοι(테타랑메노이, 흔들린) 상태냐" 물으십니다. 주님은 논증을 내놓지 않으시고 τὰς χεῖράς μου καὶ τοὺς πόδας μου(내 손과 내 발)를 보라 하시며 ψηλαφήσατε(프셀라파사테, 만져 보라)로 촉각을 지정하시고, 영에게는 없는 것으로 σάρκα καὶ ὀστέα(사르카 카이 오스테아, 살과 뼈)를 드십니다. 그러고도 본문은 제자들을 ἔτι δὲ ἀπιστούντων αὐτῶν ἀπὸ τῆς χαρᾶς καὶ θαυμαζόντων(그들이 기쁨 때문에 아직 믿지 못하고 놀랍게 여기고 있을 때)이라고 적습니다. 주님은 그 상태에 명령을 얹지 않으시고 먹을 것이 있느냐 물으신 뒤 ἰχθύος ὀπτοῦ μέρος(구운 생선 한 조각)를 받아 ἔφαγεν(에파겐, 먹으셨다)으로 그 장면을 닫습니다. 이어 24:45에서 그들의 지성을 여시고, 24:46에서 기록의 공식을 놓으시고, 24:48에서 증인의 자리를 지정하시고, 24:49에서 마지막 명령을 주십니다. 그리고 이 열여덟 절 전체에 하나님이 주어로 서는 절이 하나도 없습니다. θεός(테오스)는 목적어 자리에 한 번 나오고 그 자리는 사본이 갈리는 표시 안에 있으며, πατήρ(파테르)는 소유의 자리에 한 번 나올 뿐입니다. 주격 주어는 0건입니다. 이 단락의 신학적 중심은 하나님이 주어로 등장하는 문장이 아니라, 지성을 열어 성경을 깨닫게 하신 분이 남기신 미완결의 명령입니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 깨달음은 열정이 올라가는 사건이 아니라 이해하는 기관이 열리는 사건이며, 그 열림은 내가 만들어 내는 것이 아니다. 공식은 있고 인용문은 없다 — 성경이 한 인물을 향해 읽히는 근거는 구절 목록이 아니라 고난과 부활이라는 두 사건이다. 이 복음서의 마지막 명령은 더 하라가 아니라 입을 때까지 앉으라이며, 그 명령은 조건이 채워지지 않은 채로 남는다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>24:41은 기쁜데도 믿지 못하는 상태에 이름을 붙이고, 그 상태의 사람에게 명령을 얹지 않습니다. 다음에 오는 말은 요구가 아니라 먹을 것이 있느냐는 질문입니다. 오늘 믿음을 끌어올릴 수 없는 자리에 있다면, 먼저 해야 할 일은 확신을 짜내는 것이 아닙니다. 본문은 그 상태를 결함으로 처리하지 않고 이름을 붙여 놓았습니다.</p>
+<p>이 단락이 지시하는 것은 관념이 아닙니다. 손과 발, 살과 뼈, 구운 생선 한 조각, 그리고 성전이라는 장소입니다. 이 단락의 몸 층위 핵은 ψηλαφήσατε(만져 보라)와 ἔφαγεν(먹으셨다)입니다. 먹을 것을 물으신 뒤 등장한 두 낱말, 곧 「먹을 만한 것」과 「구운」은 신약에 이 자리에서만 나오는 어형입니다. 돈과 거리와 시간이 걸린 자리에서 사람을 돕는 일이 설명보다 먼저일 때가 있습니다. 오늘 한 사람과 한 끼를 나누고, 교통비와 병원비처럼 몸에 닿는 것을 부담하십시오.</p>
+<p>성도의 흔들림을 처리해야 할 문제로 다루지 않는 훈련이 필요합니다. 주님은 놀란 자들에게 교리를 앞세우지 않으시고 만지게 하시고 함께 먹으셨습니다. 그리고 결단을 요구하기 전에 성경을 깨닫도록 지성을 여셨습니다. 요구를 앞세우기보다 읽고 이해하는 자리를 먼저 만들어 주는 것이 목회의 순서입니다.</p>
+<p>24:48의 증인은 자기 확신을 말하는 사람이 아니라 본 것을 진술하는 사람입니다. 세무와 회계에서 요구되는 것도 판단의 강도가 아니라 확인한 범위를 넘지 않는 진술입니다. 근거가 아직 오지 않았다면 결론을 앞질러 쓰지 않는 것, 그것이 이 본문이 지지하는 직업 윤리입니다. 앉으라는 명령을 게으름이 아니라 정직으로 읽는 연습이 여기서 이루어집니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 52편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>알지 못하는 길에서 듣는 말씀</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 21편 &middot; 누가복음 9:37-50</span>
+      <h1>알지 못하는 길에서 듣는 말씀</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>산에서 내려오신 다음 날 큰 무리가 예수를 맞았습니다. 한 아버지가 무리 가운데서 소리치며 청했습니다. "선생님, 내 아들을 돌아보아 주시기를 당신께 간구합니다. 그는 내게 하나뿐인 아들입니다."(9:38) 영이 아이를 붙잡으면 아이는 소리를 지르고, 거품을 흘리며 몸이 뒤틀리고, 떠날 때에도 아이를 부숩니다(9:39). 아버지는 제자들에게 먼저 구했으나 제자들은 하지 못했습니다(9:40). 예수께서 탄식하시고 "믿음 없고 뒤틀린 세대여, 내가 언제까지 너희와 함께 있으며 너희를 참으랴"(9:41) 하신 뒤, 더러운 영을 꾸짖고 아이를 고쳐 아버지에게 돌려주셨습니다(9:42). 사람들이 놀라고 있던 한가운데서 예수께서 제자들에게 자기의 넘겨짐을 말씀하셨고(9:43b-44), 제자들은 알지 못했고 그 말씀은 그들에게서 가려져 있었고 그들은 묻기를 두려워했습니다(9:45). 곧 누가 더 크냐는 다툼이 제자들 사이에 들어왔고(9:46), 예수께서 아이 하나를 붙들어 곁에 세우셨습니다(9:47). 요한이 "우리와 함께 따르지 않으므로 막았습니다"라고 하자 예수께서 "막지 말라"고 답하셨습니다(9:49-50). 한 구간 안에 두 개의 수동이 겹치는데, 본문은 넘긴 이와 가린 이를 둘 다 비워 둔 채 다음 장면으로 갑니다.</p>
+<p>뒤틀림도 넘겨짐도 가려짐도 사건의 주동사로는 적히지 않습니다. 세 낱말은 문장을 세우지 못하고 문장에 매달립니다. 본문이 가린 이를 대지 않습니다. 우리도 그 빈칸에 이름을 만들어 넣지 않습니다. 이 통찰은 선포로 넘어가지 않고 관찰에서 멈춥니다.</p>
+<p>본문은 누가 가렸는지 말하지 않고, 우리도 그 빈칸을 채우지 않습니다.</p>
+<p>그가 그 손에 놓이시는 일이 우리를 위한 대속이므로, 그 한 문장이 귀에 넣어 둘 문장이 됩니다. 칭찬이 쏟아지는 주에도 그 한 문장을 귀에 챙겨 둡니다. 귀에 두라는 명령과 손에 넘겨진다는 예고가 한 절의 두 전치사로 마주 놓입니다.</p>
+<p>감탄의 절정에서 그가 자기 넘겨짐을 말씀하셨습니다.</p>
+<p>이 사슬을 지탱하는 힘은 심정의 동일시가 아니라 대표입니다. 보내진 이가 보내신 이를 대표하시므로, 보내진 이를 받는 손이 보내신 이를 받는 손이 됩니다. 이것이 언약의 중보자 구조이며, 그 대표가 아이를 받는 손에까지 내려옵니다.</p>
+<p>크기를 재던 무리에게 그 이름 하나가 셈의 기준으로 들어왔습니다.</p>
+<p>ⓐ 감탄과 넘겨짐이 잇대어 있습니다.</p>
+<p>"사람들이 놀랍게 여기고 있을 때에" (눅 9:43) "인자가 사람들의 손에 넘겨지려 한다." (눅 9:44)</p>
+<p>두 문장 사이에 설명이 없습니다. 앞 절의 감탄을 뒤 절이 취소하지도 않고, 뒤 절의 무게가 앞 절을 지우지도 않습니다. 감탄의 자리에 넘겨짐이 놓였고, 누가는 두 문장을 잇대어 두었을 뿐입니다.</p>
+<p>ⓑ 주어졌다와 가려져 있었다가 같은 꼴로 마주 섭니다.</p>
+<p>"그들은 이 말씀을 알지 못하였고, 그것은 그들에게서 가려져 있었으며, 그들은 묻기를 두려워하였다." (눅 9:45) "너희에게는 하나님 나라의 비밀을 깨달아 아는 것이 주어졌다." (눅 8:10)</p>
+<p>8:10의 상대는 바로 이 제자들입니다. "주어졌다"와 "가려져 있었다"가 같은 형태로 같은 무리를 두고 반대 방향을 말합니다. 어느 쪽이 나중인지 본문은 알려 주지 않고, 우리도 순서를 만들지 않습니다. 24:45에서는 여는 주체가 예수로 밝혀지는데("그들의 마음을 열어 성경을 깨닫게 하셨다"), 9:45에는 그 주어가 없습니다. 9:45의 "깨닫다"에 쓰인 낱말은 신약에 한 번만 나옵니다. 제자들은 이해하지 못한 채 다음 장면으로 갑니다. 이 어긋남은 어긋남으로 둡니다.</p>
+<p>ⓒ 못했던 손이 하고 있는 사람을 막습니다.</p>
+<p>"당신의 제자들에게 내보내 주기를 구하였으나 그들이 하지 못하였습니다." (눅 9:40) "어떤 사람이 당신의 이름으로 귀신을 쫓아내는 것을 우리가 보고 막았습니다." (눅 9:49)</p>
+<p>아홉 절 사이에 이 두 장면이 놓였고, 누가는 둘을 연결하는 문장을 쓰지 않았습니다. 예수의 답도 앞선 실패를 들어 꾸짖는 방식이 아니라 "막지 말라"는 금지 하나입니다(9:50). 두 장면을 화해시키지 않고 나란히 둡니다.</p>
+<p>지금 기도해도 아무 일이 일어나지 않는 방에 앉아 있다면, 9:40의 한 줄이 당신의 줄입니다. 제자들도 하지 못했고, 그 실패가 본문에 남아 있습니다. 이번 주에 할 일은 낫게 하는 일이 아닙니다. 그 몸을 씻기고 먹이고, 부르짖는 보호자 옆에 앉아 있는 일입니다. 고쳐 품에 돌려주신 그 손이 사람들의 손에 넘겨졌고, 그 한 사역이 우리를 위한 것이므로, 낫지 않는 몸도 버려진 몸이 아닙니다.</p>
+<p>요한이 댄 근거는 하나였습니다. 우리와 함께 따르지 않는다는 것(9:49). 세무와 회계의 책상에도 명부가 많습니다 — 등록 여부, 자격 목록, 거래 이력. 이번 달에 내가 "우리 명부에 없어서" 뒤로 미룬 건이 있는지 보십시오. 명부로 잘라도 되는 건과 이름으로 다시 열어야 할 건을 갈라 적어 보십시오. 앞 장면에서는 명부 안의 제자들이 그 이름으로도 하지 못했고(9:40), 뒤 장면에서는 명부 밖의 사람이 그 이름으로 했습니다.</p>
+<p>다툼은 밖에서 오지 않고 제자들 사이에 들어왔습니다(9:46). 교회 회의석과 가정 식탁에도 같은 물음이 들어옵니다. 예수께서 말로 꾸짖기 전에 아이를 곁에 세우셨습니다(9:47). 이번 주 한 모임에서 발언 순서를 가장 작은 사람에게 먼저 주십시오.</p>
+<p>아이의 몸이 이 단락의 저울입니다. 찢기고 뒤틀린 몸이 앞에 놓이고(9:39), 고쳐져 아버지 품으로 돌아가고(9:42), 다시 다툼 한가운데 세워집니다(9:47). 그 몸 셋을 잇는 선 위에 사람들의 손으로 넘겨지시는 한 분의 몸이 겹칩니다. 우리는 그 사슬의 끝을 알고도 자주 묻지 못합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 21편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

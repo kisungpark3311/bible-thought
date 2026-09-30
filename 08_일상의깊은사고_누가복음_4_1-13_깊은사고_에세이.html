@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아들 됨을 증명하지 않는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 08편 &middot; 누가복음 4:1-13</span>
+      <h1>아들 됨을 증명하지 않는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>누가는 이 단락의 서사를 한 동사에 붙들어 둡니다. 「광야에서 사십 일 동안 성령에게 이끌리시며」(4:1), 예수께서 사십 일 동안 성령 안에서 이끌려 다니셨습니다. 시험은 그 이끄심과 나란히 선 별개의 사건으로 놓이지 않고 그 동사에 매달린 분사로 놓이며, 기간을 가리키는 「사십 일」이 거기에 붙어 있습니다. 이 노트가 따르는 본문에서는 그렇게 판독됩니다. 그렇게 이끌려 가신 이를 마귀는 「네가 만일 하나님의 아들이면」(4:3·4:9)이라고 두 차례 부릅니다. 이 조건절이 화자의 참 확신을 함의하지는 않습니다. 논의를 위해 참으로 놓는 수사적 전제입니다. 아들 됨을 확정한 음성은 이 단락 밖 3:22의 세례 장면에서 울립니다. 마귀는 열어 두는 형식도 택할 줄 알았고, 4:7의 「네가 만일 내게 절하면」에서 그 형식을 골랐습니다. 아들 됨은 흥정 항목에서 빠지고 절함이 흥정 항목으로 올라갑니다. 마귀는 아들 됨의 진위를 겨루지 않고 아들 됨의 사용을 겨룹니다. 성령의 충만이 굶주림을 면제하지 않았고 아들 됨이 시험을 면제하지 않았으며, 면제 없이 끝까지 걸어가신 그 순종을 언약 백성의 대표가 드립니다.</p>
+<p>이끌리는 이가 하나님의 아들이라는 사실이 이 겹침을 불편하게 만듭니다. 어떤 스승이 시련 속에서 영적 인도를 받는다는 말은 아무 긴장도 만들지 않습니다. 아들이 아버지의 영에 이끌려 아버지를 시험해 보라는 제안 앞에 선다는 말이 긴장을 만듭니다. 인도를 받는 중이라는 사실이 광야를 면제하지 않습니다.</p>
+<p>성령의 이끄심은 사십 일을 줄여 주지 않고 사십 일 전체를 덮습니다.</p>
+<p>한 입에서 두 형식이 갈라져 나옵니다. 마귀는 아들 됨을 흥정 항목에서 빼고 절함을 흥정 항목으로 올립니다. 마귀는 신분을 증명하라 하지 않고 신분을 소비하라 합니다. 이 구분이 무너지면 시험은 자존감의 문제로 축소되고, 본문은 아들 됨이 누구의 뜻을 위해 소비되는가를 다룹니다. 4:6-7의 마귀는 양도의 어형을 쓰고(내게 넘겨졌다 · 내가 준다 · 다 네 것이 되리라), 4:8의 예수는 그 양도를 다투지 않고 절할 대상을 확정하십니다. 4:8은 예배의 대상을 확정합니다. 물목의 귀속에 대한 판정은 이 단락에 없습니다.</p>
+<p>광야의 다툼은 아들 됨의 사용을 겨눕니다.</p>
+<p>예수께서 끌어오신 세 구절은 모두 사십 년 광야를 지난 백성에게 준 훈계입니다. 그 백성이 넘어진 세 국면 — 먹을 것, 절할 대상, 주를 시험하는 일 — 이 이 사십 일의 세 시험과 나란히 섭니다. 이 사십 일을 걸어가신 이는 홀로 수련하지 않으시고, 광야에서 넘어진 언약 백성을 대표하여 같은 길을 다시 지나가십니다. 더해진 「다만」 한 낱말이 이미 4:4에 나와 있었습니다. 「떡으로만」 살 것이 아니라 하신 입이 「다만 그를 섬기라」 하십니다. 무엇으로 사는지에는 「만」을 허락하지 않고 누구를 섬기는지에는 「만」을 박는 입이 한 입입니다.</p>
+<p>신명기로 답하는 입은 광야 백성의 대표가 드리는 순종을 말합니다.</p>
+<p>세 대목을 봉합하지 않고 그대로 둡니다.</p>
+<p>ⓐ 성령으로 충만한 이가 굶주립니다.</p>
+<p>"예수께서 성령의 충만함을 입어 요단 강에서 돌아오사 광야에서 사십 일 동안 성령에게 이끌리시며" (눅 4:1) "이 모든 날에 아무것도 먹지 아니하시니 날 수가 다하매 주리신지라" (눅 4:2)</p>
+<p>충만과 굶주림이 한 문장 사슬 안에 함께 있습니다. 누가는 둘 중 하나를 설명으로 눌러 주지 않습니다. 충만을 영적 상태로 옮겨 굶주림을 몸의 일로 떼어 놓으면 두 절의 연결이 끊어집니다. 두 절을 그대로 붙여 둔 채 읽습니다.</p>
+<p>ⓑ 마귀가 성경을 인용합니다.</p>
+<p>"기록되었으되 하나님이 너를 위하여 그 사자들을 명하사 너를 지키게 하시리라 하였고" (눅 4:10)</p>
+<p>도입 어형까지 예수의 것과 같습니다. 정경은 마귀의 입에서 나온 인용을 지워 주지 않고 본문에 그대로 둡니다. 「성경을 인용하니 옳다」는 판단이 이 절 앞에서 막힙니다. 이 단락은 말미 생략의 실측만 남기고 그 생략의 의도를 판정하지 않습니다.</p>
+<p>ⓒ 4:13은 「때까지」로 닫습니다.</p>
+<p>"마귀가 모든 시험을 다 한 후에 얼마 동안 떠나니라" (눅 4:13)</p>
+<p>원어 「아크리 카이루(achri kairou)」는 「때까지」입니다. 떠남에 기한이 붙어 있습니다. 누가는 이 대목에서 종결을 선언하지 않고 기한을 말합니다. 22:3에서 사탄이 유다에게 들어가는 장면을 이 기한과 곧바로 잇는 독법도 있으나, 이 단락의 마귀를 가리키는 낱말과 22:3의 사탄을 가리키는 낱말이 서로 다르다는 실측이 남습니다. 이 노트는 판정을 열어 둡니다.</p>
+<p>통증이 그대로인 몸, 끊어지지 않는 간병, 늘어만 가는 빚, 나가지지 않는 방. 4:2는 사실 하나를 건넵니다. 사십 일 내내 그는 성령 안에서 이끌리고 있었고, 그 인도가 배고픔을 지워 주지 않았습니다. 벗어날 수 없는 조건에 있는 분은 벗어나지 못한 그대로 이미 인도를 받고 있습니다. 인도는 조건이 바뀌기를 기다리지 않습니다.</p>
+<p>4:6의 마귀는 자기 권한의 근거를 「내게 넘겨 준 것」이라 말하면서 누가 넘겼는지는 밝히지 않습니다. 장부와 위임장을 다루어 본 사람은 이 문장의 구조를 압니다. 권한을 주장하는 서류의 효력은 그 권한을 넘긴 쪽의 문서에서 나오고, 위임의 범위를 넘은 행위는 서류가 두꺼워도 무효입니다. 학원에서 수업을 맡은 사람 앞에 세계의 통치권을 적어 내면 그 문서는 반송됩니다 — 4:5-7이 올린 물목의 크기가 값을 매길 상대를 좁힙니다. 이번 주 위임장과 결재 라인에서 「누가 이것을 승인했는가」를 한 줄씩 확인하십시오.</p>
+<p>4:6-7의 마귀는 양도의 어형을 쓰고, 4:8의 예수는 그 양도를 다투지 않고 절할 대상을 확정하십니다. 교회가 받는 제안도 물목만 줄여 같은 형식으로 오고, 그 타협은 「여기까지」라는 이름을 달고 옵니다. 규모와 영향력을 놓고 계산이 서지 않을 때에도 누구에게 절하는지는 정할 수 있습니다. 오늘 가정에서 내리는 결정 하나를 앞두고 그 방향을 먼저 확인하십시오.</p>
+<p>사십 일을 굶은 몸 앞에 돌 하나가 놓였고, 세상의 모든 나라가 순식간에 진열되었고, 성전 높은 곳에 발이 놓였습니다. 세 제안이 모두 아들 됨을 값으로 요구했고, 세 응수가 모두 신명기를 끌어왔습니다. 그러고서 본문은 종결을 선언하지 않고 기한을 말합니다 — 마귀는 「얼마 동안」 떠났습니다. 이 사십 일을 걸어가신 이가 언약 백성의 대표로 그 기한 안으로 다시 들어가십니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 08편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

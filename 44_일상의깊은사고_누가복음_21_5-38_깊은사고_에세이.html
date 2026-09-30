@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>끝을 말하는 시대에 깨어 있기</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 44편 &middot; 누가복음 21:5-38</span>
+      <h1>끝을 말하는 시대에 깨어 있기</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>성전의 아름다움을 보던 사람들에게 예수님은 무너질 날을 말씀하십니다. 그러나 그 말씀은 공포를 퍼뜨리기 위한 예고가 아니라, 흔들리는 시대에 어떤 말을 믿고 어떻게 견딜지를 가르치는 명령입니다.</p>
+<p>성전의 아름다운 돌들과 봉헌물들을 두고 감탄하는 말이 먼저 있었고, 그 말을 들은 이가 입을 열었습니다(21:5). 서사의 첫 주동사가 주장하는 것은 하나입니다 — 감탄을 들은 이가 말했다는 것입니다. 그 입에서 나온 첫 내용이 「돌 하나도 돌 위에 남지 않고 다 풀릴 날들이 온다」는 예고입니다(21:6). 담화가 열리면서 두 계열이 함께 갑니다. 앞일을 알리는 미래 문장 스물여섯 개가 열일곱 절에 놓이고, 명하는 문장 열세 개가 열 절에 퍼지며, 두 계열을 한 절에 동시에 담는 절은 21장 8절 하나입니다. 담화의 무게는 몸의 동작에 실립니다 — 「몸을 일으키고 너희 머리를 들라」(21:28)는 두 명령과 「항상 깨어 간구하라」(21:36)는 명령입니다. 그리고 한 가지를 정직하게 적어 둡니다. 이 단락에는 하나님이 주격 주어로 선 문장이 하나도 없습니다. 「하나님」은 21장 31절 「하나님의 나라」에서 속격으로 한 번 나오고 「아버지」는 한 번도 나오지 않으며, 담화는 사람의 입에서 사람의 귀로 갑니다. 담화가 닫힌 뒤 본문은 성전의 낮과 감람산의 밤과 새벽에 나아오는 백성으로 돌아옵니다(21:37-38).</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 기절하는 몸 위로 오는 이가 오며, 본문은 그 둘을 한 문단에 둡니다. 목숨을 얹을 자리로 본문이 지시하는 것은 시간표가 아니라 지나가지 않는다는 그 말들입니다. 종말을 맞이하는 훈련은 사변의 정교함이 아니라 무거워지지 않는 마음입니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>21장 21절은 세 무리에게 각각 다른 명령을 줍니다. 유대에 있는 이들은 산으로 도망하고, 성 가운데 있는 이들은 떠나고, 지방에 있는 이들은 들어가지 말라는 것입니다. 그런데 바로 두 절 뒤에 그 도망이 불가능한 사람이 지목됩니다 — 태에 아이를 가진 여자와 젖 먹이는 여자입니다. 본문은 그들에게 더 빨리 걸으라고 하지 않습니다. 21장 28절이 주는 동작은 이동이 아니라 자세입니다. 병실에서, 간병 의자에서, 해고 통보 앞에서 움직일 수 없는 당신에게 본문이 명하는 것은 머리를 드는 것 하나입니다. 그리고 21장 23절에서 진노의 대상이던 「이 백성」이 21장 38절에서는 새벽에 그에게 나아오는 「모든 백성」이 됩니다. 같은 낱말이 두 자리에서 정반대를 가리킵니다.</p>
+<p>21장 36절의 명령은 깨어 간구하라는 것이고, 시간의 폭은 「항상」입니다. 이 단락에서 「때」를 뜻하는 낱말 세 어형 중 미혹자의 발화 안에 있는 것과 이방인의 때를 가리키는 복수형을 빼면, 성도의 상시 시간을 가리키는 것은 이 한 자리뿐입니다. 심방과 상담에서 주는 과제를 특정 날짜나 특정 사건에 매달지 말고, 상시의 자세로 번역해 줍니다. 기도의 목표를 위험 회피로 낮추지 않고 서는 것까지 올려 잡는 것도 여기서 배웁니다.</p>
+<p>21장 34절의 세 번째 항목이 직업의 물질성에 그대로 닿습니다. 마감과 장부와 세액의 염려는 도덕적 실패가 아니라 생계의 조건인데, 본문은 그것을 숙취와 취함과 한 목록에 넣습니다. 몸이 무거워지는 방식에는 등급이 없다는 뜻입니다. 이번 주에는 수치 하나를 정합니다 — 잠자는 시간, 술의 양, 또는 밤에 열어 보는 장부의 횟수입니다. 21장 29절에서 무화과나무와 모든 나무를 보라 하고 싹이 트면 여름이 가깝다고 한 것처럼, 계절을 읽는 눈은 해와 달과 별을 세는 눈보다 먼저 몸에서 시작합니다.</p>
+<p>이 말씀 앞에서 이렇게 기도합니다.</p>
+<p>담화가 끝난 자리에 남는 것은 일정표가 아니라 반복입니다. 낮에는 성전에서 가르치고 밤에는 감람산에서 지냈으며, 모든 백성이 새벽에 그에게 나아왔습니다. 첫 절과 마지막 두 절에 동시에 놓인 낱말은 「성전」 하나이고, 이 단락에서 그것이 유일한 수미 이음매입니다. 무너질 건물 안에서 가르치는 낮과, 그 건물로 새벽마다 모이는 백성이 이 담화의 액자입니다. 종말 담화 다음에 오는 것이 아침이라는 사실을 오늘 하루의 규격으로 받습니다.</p>
+<p>주님, 아름다운 돌과 봉헌물에 눈을 두던 저희가 그것이 풀릴 날을 듣습니다. 저희는 언제인지 알고 싶어 했으나, 본문은 저희에게 자세를 명했습니다. 도망할 수 없는 이들이 이 본문 안에 있음을 잊지 않게 하시고, 그들의 무게를 좋은 낱말 하나로 덮으려는 손을 멈추게 하소서. 숙취와 취함과 생계의 염려로 무거워진 마음을 그대로 아시오니, 이 몸을 데리고 머리를 들게 하시고, 항상 깨어 간구하게 하소서. 예수님의 이름으로 기도합니다. 아멘.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 44편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

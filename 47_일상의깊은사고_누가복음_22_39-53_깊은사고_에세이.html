@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>떼어져 드린 기도</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 47편 &middot; 누가복음 22:39-53</span>
+      <h1>떼어져 드린 기도</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>감람산의 밤은 혼자 무릎 꿇어 드린 기도의 밤입니다. 예수님은 고난의 잔을 앞에 두고도 자신의 뜻보다 아버지의 뜻이 이루어지기를 구하십니다.</p>
+<p>예수는 관례대로 감람산으로 간다. 22:39의 「관례대로」는 이 이동이 습관이었음을 말하고, 목적지는 산과 감람나무라는 두 낱말로 적힌다. 도착해서 예수는 제자들에게 기도를 명한다 — 「유혹에 들지 않기를 기도하라」(22:40). 그다음 한 절에 두 동작이 겹친다. 「그들에게서 돌 던질 만큼 떼어져 무릎을 꿇고 기도하시며」(22:41). 여기서 「떼어졌다」로 옮겨지는 ἀπεσπάσθη(아페스파스테)는 형태만으로 수동이 확정되는 낱말이고, 같은 표제어가 신약의 여러 대목에서 여러 형태로 실현되므로 이 형태는 다른 선택지가 있는 자리에서 골라진 것이다. 기도는 22:42에서 두 마디로 갈린다. 앞은 상대를 향한 청이고 — παρένεγκε(파레넹케, 옮기소서) — 뒤는 실현의 주어를 「네 것」에 넘기는 바람이다 — γινέσθω(기네스토, 이루어지기를).</p>
+<p>그리고 이 단락에서 가장 무거운 사실이 여기 있다. 하나님이나 아버지가 주격 주어로 세워진 문장이 이 단락에 0건이다. θεός(테오스, 하나님)가 0회이고 πατήρ(파테르, 아버지)는 22:42의 호격 Πάτερ 한 건뿐이다. 앞항의 「내 뜻」과 뒷항의 「네 것」 사이에서 「뜻」이라는 명사가 반복되지 않으므로 대조는 대칭이 아니고, 우리 번역이 「아버지의 뜻」으로 보충한 명사는 본문 어형에 없다. 뜻의 주인은 이름으로 불리지 않고, 관사 하나에 매달린 τὸ σόν(토 손, 네 것)이 실현의 주어를 맡는다.</p>
+<p>돌아온 자리에서 제자들은 잠들어 있다. 「슬픔으로 인하여 잠든 것을 보시고」(22:45). 본문은 잠의 원인을 ἀπὸ τῆς λύπης(아포 테스 뤼페스, 슬픔 때문에)로 지정한다. 이어 무리가 온다. 앞서 온 사람이 입맞추려 가까이 오고, 예수는 묻는다 — 「유다야 네가 입맞춤으로 인자를 파느냐」(22:48). 제자들이 될 일을 보고 묻는다. 칼이 뽑히고 한 사람의 오른쪽 귀가 잘린다(22:50). 예수는 제지하고 그 귀를 만져 고친다(22:51). 무리의 손에는 검과 몽치가 들려 있고(22:52), 마지막 발화는 어둠의 권세로 끝난다(22:53). 이 단락의 신학적 중심은 이것이다 — 뜻의 주인이 이름으로 불리지 않는 자리에서 예수는 실현의 몫을 「네 것」에 넘기고, 잘린 귀를 만지고, 어둠이 시간을 가진 밤을 자기 시간으로 받는다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 하나님을 주어로 세운 문장 하나 없이도, 실현의 몫은 넘겨진다. 기도가 끊긴 자리에 본문이 두는 것은 판정이 아니라 원인이고, 명령은 그다음에 다시 온다. 초점은 가르침에서 손으로 옮겨졌고, 뻗지 않던 손이 결국 뻗어지는 밤이 왔다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>본문이 재는 것은 거리와 자세와 몸이다. 돌 던질 만큼의 거리, 무릎을 두는 자세, 조건 아래에서 땀과 핏방울과 땅, 그리고 검과 몽치와 잘린 오른쪽 귀. 병상에 있어 무릎을 꿇을 수 없는 사람, 교대 근무로 새벽을 가질 수 없는 사람, 상을 치른 지 얼마 안 되어 몸이 먼저 잠드는 사람에게 본문은 자세를 요구하기 전에 원인을 지정해 준다. 오늘은 몸을 일으켜 앉는 것까지만 하라. 잘린 귀는 잘린 것으로 남겨 두고, 지금 할 수 있는 크기의 동작만 하라.</p>
+<p>교회 안에서 누군가의 귀가 잘렸을 때, 우리는 51절로 뛰어가 50절을 덮는다. 고쳐진 이야기를 먼저 들려주고 다친 이야기를 생략한다. 본문은 그렇게 하지 않았다. 다친 사람의 50절을 끝까지 들은 다음에야 51절을 말하라. 그리고 그 손이 우리 쪽이었던 일은 이름을 붙여 다루라.</p>
+<p>세무와 회계의 일은 규정을 세우는 일이고, 규정을 세우려는 손이 사람을 상하게 하는 자리가 반드시 생긴다. 원칙대로 처리한 한 건이 누군가의 생계에 검처럼 닿는 날이 있다. 결산에는 숫자만 오르고 그 귀는 오르지 않는다. 이번 분기에는 「원칙대로였으나 사람이 상했다」는 항목을 따로 적어 두고, 「이것까지」에서 멈춘 자리도 함께 적으라.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 47편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

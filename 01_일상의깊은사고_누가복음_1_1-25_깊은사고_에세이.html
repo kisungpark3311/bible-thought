@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>확실성은 닫힌 입의 시간을 지나옵니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 01편 &middot; 누가복음 1:1-25</span>
+      <h1>확실성은 닫힌 입의 시간을 지나옵니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>누가복음의 첫 네 절은 마침표가 하나뿐인 긴 한 문장입니다. 그 안에서 홀로 서는 동사는 "좋은 줄 알았노니" 하나이고, 나머지 형태들은 전부 그 결단에 매달린 곁가지입니다. 그리고 문장의 맨 끝자리에 "확실성"이 목적어로 놓입니다. 그 확실성의 대상은 새로 알려 줄 소식이 아니라 데오빌로가 "알고 있는 바", 곧 이미 가르침 받은 말들입니다. 5절부터 장면은 성전으로 옮겨집니다. 늙은 제사장 하나가 제비에 뽑혀 성소에 들어가고, 온 백성은 밖에서 기도합니다. 천사의 말이 임하지만 그는 믿지 못하고 입을 잃으며, 그 상태로 당번 기간을 끝까지 마치고 집으로 돌아갑니다. 확실성을 향해 쓰인 책이 시작되는 자리에 먼저 놓인 것은 닫힌 몸과 닫힌 입이고, 이 단락에서 하나님이 문장의 주어인 곳은 마지막 한 절뿐입니다.</p>
+<p>확실성은 서언이 큰 목소리로 선포하는 전제가 아니라, 정확하게 조사하고 순서대로 써 보내는 노동이 끝에서 도달하는 지점입니다. 그러므로 신앙의 확실성은 감정의 강도가 아니라 배운 것이 놓인 견고함입니다. 우리가 붙들 것은 아직 듣지 못한 무엇이 아니라 이미 들은 말들입니다.</p>
+<p>확실성은 새 소식에 붙지 않고, 이미 배운 말들이 단단히 놓이는 데서 옵니다.</p>
+<p>하나님의 말씀이 임한 자리는 특별히 마련된 무대가 아니라 순번표가 데려다 놓은 평범한 당번일이었습니다. 그리고 안과 밖을 하나로 묶은 것은 사람의 조직이 아니라 향이 오르는 한 시각이었습니다. 내가 고르지 않은 차례가 곧 그분이 말씀하시는 자리일 수 있습니다.</p>
+<p>부르심은 내가 고른 자리가 아니라 순번이 데려다 놓은 자리에서 옵니다.</p>
+<p>이 단락에서 상황을 뒤집은 주어는 사가랴의 믿음도 엘리사벳의 인내도 아닙니다. 수치가 벗겨진 뒤에도 그녀는 다섯 달을 숨어 지냅니다. 몸의 시간은 여전히 느리게 갑니다. 그러나 그 느린 시간 위에 놓인 한 문장이 "주께서 하셨다"입니다.</p>
+<p>정해진 때는 듣는 사람의 믿음에 걸려 있지 않고, 말하신 분에게 걸려 있습니다.</p>
+<p>"천사가 그에게 이르되 사가랴여 무서워하지 말라 너의 간구함이 들린지라" (눅 1:13) "보라 이 일이 이루어지는 날까지 네가 말 못하는 자가 되어 능히 말을 못하리니" (눅 1:20)</p>
+<p>기도가 들린 사람이 곧 침묵에 갇힙니다. 응답의 통보와 입을 잃는 판정이 같은 대화, 같은 장면 안에 나란히 놓여 있습니다. 본문은 이 둘을 잇는 설명을 달지 않습니다. "응답은 받았지만 태도가 문제였다"고 정리하면 매끄러워지지만, 그 정리는 본문이 하지 않은 일입니다. 정경은 응답과 침묵을 한 장면에 붙여 두었고, 그것을 봉합하는 문장을 넣지 않았습니다.</p>
+<p>"이 두 사람이 하나님 앞에 의인이니 주의 모든 계명과 규례대로 흠이 없이 행하더라" (눅 1:6)</p>
+<p>두 번째 긴장은 여기 있습니다. 계명과 규례 전부에서 흠이 없다는 최대치의 칭찬을 받은 사람이, 같은 단락에서 "내 말을 믿지 아니함이거니와"로 판정됩니다. 오래 신실했던 사람이 결정적인 순간에 믿지 못하는 일은 본문 안에서 이미 한 사람에게 동시에 참입니다. 그러므로 "흠 없이 살면 믿음은 따라온다"는 위로도, "믿지 못했으니 그 경건은 가짜였다"는 판결도 이 본문은 주지 않습니다. 세 번째로, 서언이 목표로 삼은 확실성과 20절의 불신이 같은 책 첫 장에 함께 있다는 사실도 해소되지 않습니다. 확실하게 하려고 쓴 책의 첫 장면이 믿지 못한 제사장입니다. 이것은 결함이 아니라 이 책이 누구를 향해 쓰였는지를 알려 주는 배치입니다.</p>
+<p>성도의 오랜 신실함을 칭찬하면서 그의 불신을 완화하지 말고, 그의 불신을 다루면서 그의 경건을 취소하지 마십시오. 노년의 몸, 잉태하지 못하는 몸, 사람들 앞의 수치 같은 조건은 영적 진단의 근거가 아니라 본문이 그냥 적어 둔 사실입니다. 두 기재가 같은 사람에게 동시에 있다는 것을 견디는 것이 이 본문이 요구하는 목회입니다.</p>
+<p>누가는 근원부터 조사하고 차례대로 써 보내는 방식을 복음 전달의 방법으로 씁니다. 근거 서류를 순서대로 정리하고 기간을 날수로 세는 실무는 신앙과 무관한 잡무가 아니라, 확실성이 만들어지는 방식과 같은 구조입니다. 그리고 사가랴는 환상을 본 날에도 당번 기간의 날수가 찰 때까지 근무를 마치고 집으로 갔습니다(1:23) — 하나님을 만난 날이 마감표를 지우지 않습니다.</p>
+<p>할 수 있는 일이 하나도 남지 않은 분께 이 본문이 건네는 것은 요구가 아닙니다. 20절의 약속은 믿지 못한 사람에게, 말도 못하게 된 사람에게, 조건 없이 주어진 미래형입니다. 지금 아무것도 하지 못하는 상태가 정해진 때를 늦추지 못한다는 것 — 그것이 오늘 당신이 받을 한 문장입니다.</p>
+<p>향이 오르는 한 시각이 성소 안의 한 사람과 문 밖의 온 무리를 함께 묶었습니다. 그 시각 안에서 한 사람은 말을 잃고, 밖의 사람들은 아무것도 듣지 못했습니다. 그런데 그 침묵 위로 정해진 때는 그대로 흘러가고, 다섯 달 뒤 한 여인의 입에서 문장 하나가 나옵니다 — 주께서 하셨다. 아직 이름이 적히지 않은 자리가 남아 있지만, 그 자리를 채울 분이 누구신지를 이 책은 계속 써 내려갈 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 01편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

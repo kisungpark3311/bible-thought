@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이웃이 되어 주는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 23편 &middot; 누가복음 10:25-42</span>
+      <h1>이웃이 되어 주는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>율법 교사가 조건을 앞세워 물었습니다 — "내가 무엇을 하여야 영생을 얻으리이까"(10:25). 그가 인용한 율법은 네 항을 세워 하나님을 사랑의 대상으로 놓고, 이어서 이웃을 자신처럼 사랑하라고 말합니다(10:27). ⚠ 세 복음서의 병행 구절은 항의 수와 순서와 전치사에서 서로 갈립니다. 어느 쪽이 어느 쪽을 고쳤다는 판정을 이 글은 하지 않습니다. 대답은 그 정확한 읽기를 그대로 받아 현재 명령으로 건넵니다 — "이를 행하라 그러면 살리라"(10:28). 명령을 받은 사람이 다시 한 번 묻습니다 — "그러면 내 이웃이 누구니이까"(10:29). 이 물음은 이웃의 경계선을 자기를 중심으로 그어 달라는 요청입니다. 비유는 세 사람을 신분으로 적고, 앞의 두 사람에게 같은 동사를 두 번 붙입니다(10:31·10:32). 멈춘 한 사람은 상처를 처리하고 값을 약속합니다(10:34-35). 10:36은 경계선을 그려 주지 않고 판정을 묻습니다. 둘째 단락에서 맞아들인 사람은 청한 명령을 받지 못합니다. 10:42는 이미 골라진 몫에 조건 없는 보증을 붙입니다. 판단을 되돌려 준 입이 떼어지지 않을 몫을 보증합니다.</p>
+<p>범위를 재려는 물음이 판정의 요구로 돌아옵니다. 판정의 기준점은 도움을 받은 몸입니다. 그 몸은 비유 안에서 열 번 지시되면서 한 번도 움직이는 동사의 주어가 아닙니다. 아무 동작도 하지 못하는 몸이 세 사람을 잽니다.</p>
+<p>이웃됨은 범위 계산으로 정해지지 않고 이미 된 사실로 판정됩니다.</p>
+<p>멈춘 사람은 상처에 기름과 포도주를 붓고, 자기 짐승에 태워 여관으로 데려가고, 두 데나리온을 판도케우스(πανδοχεύς, 여관 주인)에게 건넵니다(10:34-35). 10:35은 돌봄의 명령에 값을 붙입니다 — 프로스다파네세스(προσδαπανήσῃς, 더 쓰게 되면)와 아포도소(ἀποδώσω, 내가 갚겠다). ⚠ 추가 비용은 아직 발생하지 않았고 가정으로 걸려 있습니다. 돌봄의 명령과 되돌려 줄 값의 약속이 한 절에 함께 섭니다.</p>
+<p>신분이 아니라 동사가 세 사람을 가릅니다.</p>
+<p>10:42의 보증에는 조건이 달리지 않고 부정어 하나만 붙습니다. 10:25의 물음에는 조건 분사가 앞섰습니다. 이 단락의 사실은 한 문장으로 적힙니다 — 「마르다는 요청한 명령을 받지 못하고 자기 이름을 두 번 들었다」. ⚠ 「마르다가 그의 한마디로 동생의 위치가 되돌아온다고 전제했다」는 추론입니다. 근거 어형은 명령법과 목적절뿐이고, 전제를 서술하는 낱말이 10:40에 없습니다.</p>
+<p>청한 말이 오지 않은 날에도 골라진 몫은 떼어지지 않습니다.</p>
+<p>"가서 너도 이와 같이 하라" (10:37b)</p>
+<p>"마리아는 좋은 몫을 택하였으니" (10:42)</p>
+<p>첫 단락은 두 개의 현재 명령으로 닫힙니다. 10:42는 앉아서 들은 사람의 선택을 승인합니다. 이 글은 둘을 하나로 묶지 않습니다. 부사 '호모이오스'(ὁμοίως)가 10:32에서는 지나쳐 감을 가리키고 10:37b에서는 자비를 가리킵니다. 부사가 척도를 정하지 않습니다. 정경은 명령과 승인을 같은 단위 안에 나란히 두었고, 이 글은 그 배치를 그대로 둡니다.</p>
+<p>두 번째 긴장도 닫지 않습니다. 레위기 18:5를 인용한 갈라디아서는 행함과 삶을 묶어 믿음과 대립시킵니다. 10:28은 같은 두 동사를 묶어 명령으로 건넵니다. 이 글은 10:28을 「율법으로 생명을 얻는다」로도, 「얻지 못한다」로도 읽어 넘기지 않습니다. 10:28은 명령이고, 그 명령을 받은 사람이 10:29에서 다시 묻습니다.</p>
+<p>이 단위의 두 끝에 미래형이 하나씩 옵니다. 10:25의 미래형에는 조건 분사가 앞섰습니다. 10:42의 미래형에는 부정어 하나만 붙습니다. 그 수동형의 행위자는 문면에 적히지 않습니다. ⚠ 이 부재에는 확인 범위가 10:42 한 절이라는 한정과, 기저율이 미확인이라는 한정과, 행위자 생략이 무표일 가능성이 함께 걸려 있습니다. 그래서 이 글은 그 부재를 논증의 축으로 쓰지 않습니다.</p>
+<p>★ 이 단위의 술어 가운데 그리스도론적 고유성을 지는 것을 이 글은 세우지 않습니다. 본문에 없는 결핍을 만들어 채우지 않고, 미달을 미달로 둡니다.</p>
+<p>성경을 정확히 요약하는 성도가 10:29의 물음을 그대로 반복할 수 있습니다. 심방과 구제의 범위를 먼저 확정해 달라는 요청이 들어올 때, 10:36의 판정 질문을 그 사람에게 돌려주십시오. 본문은 경계선의 답을 주지 않았습니다.</p>
+<p>비유는 도움을 몸과 돈으로 적습니다 — 매 맞은 상함, 반쯤 죽은 상태, 상처, 기름, 포도주, 자기 짐승, 여관, 두 데나리온, 여관 주인. 여기에 프로스다파네세스와 아포도소가 지불 약속을 붙입니다. 견적과 정산을 다루는 실무자라면 이번 달 돕는 일에 쓸 금액과 기간을 장부에 적고, 추가 비용의 상한을 미리 문서에 남기십시오.</p>
+<p>「지금 아무것도 할 수 없는 사람이 이 대목을 먼저 읽는다」. 열 번 지시되면서 한 번도 움직이는 동사의 주어가 아닌 사람을 10:36이 세 사람의 판정 기준으로 삼습니다. 몸이 눕고 손이 비어 있어도 판정의 기준점에서 밀려나지 않습니다.</p>
+<p>이 단위는 두 개의 명령과 한 개의 보증을 같은 지면에 둡니다. 가서 하라는 말과 골라진 몫을 빼앗기지 않는다는 말이 서로를 설명해 주지 않습니다. 이 글은 그 둘을 한 결론으로 합치지 않고 그대로 남겨 둡니다. 되돌려받은 물음 하나와 조건이 붙지 않은 미래형 하나가 남습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 23편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

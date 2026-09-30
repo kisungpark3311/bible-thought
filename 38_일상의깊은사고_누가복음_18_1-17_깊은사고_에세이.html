@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>낮아져 기도하는 사람</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 38편 &middot; 누가복음 18:1-17</span>
+      <h1>낮아져 기도하는 사람</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>성전에는 두 사람이 올라갔지만, 한 사람은 자기 의를 말했고 다른 한 사람은 멀리 서서 긍휼을 구했습니다. 하나님 앞에 서는 길은 자신을 높이는 말이 아니라, 있는 모습으로 내려오는 데서 열립니다.</p>
+<p>누가는 이 단락을 세 개의 서사 동사로 엽니다. 18:1의 엘레겐(Ἔλεγεν), 18:9의 에이펜(Εἶπεν), 18:15의 프로세페론(Προσέφερον)입니다. 세 국면이 각각 하나의 주동사로 시작하고, 판정은 18:14의 카테베(κατέβη)가 냅니다.</p>
+<p>첫 국면은 기도를 명령하지 않습니다. 18:1은 「항상 기도하고 낙심하지 말아야 할 것」을 부정사 셋으로 묶어 놓았고, 그 셋 가운데 명령형은 하나도 없습니다. 대신 한 과부가 판결을 요구하고(18:3) 재판관이 움직입니다(18:5). 본문은 그 재판관을 하나님과 겹쳐 놓지 않습니다. 18:6의 「불의의 재판관」과 18:7의 「그러나 하나님은」이 접속사 하나로 갈라섭니다. 그리고 이 국면은 확언이 아니라 물음으로 닫힙니다(18:8).</p>
+<p>둘째 국면은 성전에 올라간 두 사람을 세우고(18:10) 한 사람의 하강에 완료형 술어를 붙입니다(18:14). 셋째 국면은 젖먹이를 데려온 일에서 시작해 「나에게 오는 것」과 하나님 나라의 소속을 접속사 하나로 잇습니다(18:16).</p>
+<p>이 단락의 중심 명제는 그 판정 문장에 있습니다. 한 사람이 의롭다 하심을 입은 채 내려갔고, 본문은 그 판정을 낸 행위자를 적지 않았습니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 기도의 정동사 하나가 자기를 향했고, 그 사실을 본문은 전치사와 어순으로만 적었습니다. 오는 것이 소속의 근거가 되는 접속은 도착점이 누구인지에 달려 있습니다. 판정은 내려졌고 행위자 칸은 비어 있습니다. 그 칸은 우리가 채울 자리가 아닙니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>18:13의 세리에게 붙은 것은 넷입니다. 멀리 서 있었고, 눈을 들려 하지 않았고, 자기 가슴을 치고 있었고, 두 낱말짜리 간구와 자기를 죄인으로 놓는 한 마디를 냈습니다. 그런데 18:10은 두 사람이 함께 기도하러 올라갔다고 적으므로 그가 기도 밖에 있었던 것이 아닙니다. 어형 배분이 다를 뿐입니다. 긴 문장을 만들지 못하는 것이 기도의 자격 미달이라는 진술은 이 절에 없습니다.</p>
+<p>18:12는 물질 어형 셋을 한 절에 모읍니다. 주 두 번의 금식, 소득 전부에 연동된 십일조, 그리고 그 소득을 얻는 동작입니다. 본문은 그 항목을 물리지 않습니다. 물리는 것은 그 목록으로 자기 신분을 산출한 뒤 남을 업신여긴 자리입니다. 18:17은 나라에 들어가는 조건을 다른 동사로 세웁니다. 계량 동사가 아니라 「받아들이다」입니다. 신고서를 다루는 사람에게 이 두 절이 나란히 놓입니다. 계량되는 칸과 계량되지 않는 칸을 구분해 적어 두는 일이 이 주의 과제입니다.</p>
+<p>18:7은 부르짖음의 폭을 「밤낮」이라고 적고 18:8은 처리의 속도를 「속히」라고 적습니다. 두 절이 붙어 있는데 화자는 둘을 맞추지 않습니다. 목회 현장에서 기간을 세어 온 성도에게 설교자가 대신 조정해 줄 것이 없습니다. 본문이 내놓은 것은 해명이 아니라 두 부사구이고, 그 사이에 하나님이 주격 주어로 서는 자리가 이 단락에 단 한 번 나옵니다. 그 한 번을 가리키는 것으로 족합니다.</p>
+<p>예수님은 낙심하지 말고 기도하라고 말씀하시면서, 힘없는 과부의 끈질긴 호소를 들려주십니다. 불의한 재판관은 귀찮아서라도 움직이지만, 하나님은 자기 백성의 부르짖음을 무심히 지나치시는 분이 아니십니다. 이 비유는 기도를 오래 하면 원하는 결과를 얻는다는 거래가 아닙니다. 당장 바뀌지 않는 현실 속에서도 하나님 앞에 내 사정을 숨기지 않고 계속 서 있으라는 초대입니다.</p>
+<p>바리새인과 세리의 기도는 우리가 하나님께 무엇을 가져가는지 보여 줍니다. 바리새인은 자신이 다른 사람과 다르다는 말로 기도를 채우고, 세리는 멀리 서서 자신을 불쌍히 여겨 달라고 구합니다. 하나님 앞에서 낮아진다는 것은 자기를 미워하는 일이 아닙니다. 내 공로를 붙들어 다른 이를 판단하지 않고, 은혜 없이는 설 수 없음을 정직하게 인정하는 일입니다. 주님은 그 정직한 기도를 들으십니다.</p>
+<p>마지막에 어린아이들이 예수님께 나아옵니다. 제자들은 방해로 보았지만 예수님은 아이들을 막지 말라 하십니다. 하나님 나라는 성취와 체면을 들고 들어가는 자리가 아니라, 받는 손을 펴는 자리입니다. 오늘 나는 무엇을 내세우며 기도하는지 돌아봅니다. 답이 늦어도 낙심하지 않고, 다른 사람보다 낫다는 마음을 내려놓고, 아이처럼 주님의 은혜를 받게 하소서. 그 낮은 자리에서 새로운 평안이 시작됨을 믿습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 38편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

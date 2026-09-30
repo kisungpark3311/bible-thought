@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>듣는 마음이 여는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 35편 &middot; 누가복음 16:19-31</span>
+      <h1>듣는 마음이 여는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>부자의 문 앞에는 이름을 가진 가난한 사람이 누워 있었습니다. 듣지 않는 마음은 기적을 더 보아도 쉽게 바뀌지 않는다는 말씀 앞에서, 우리는 오늘 들리는 말씀을 어떻게 받고 있는지 묻게 됩니다.</p>
+<p>19절에서 21절까지 본문이 적는 것은 두 사람의 몸과 물질입니다. 자색 옷과 고운 베옷, 날마다의 호화로운 잔치, 대문, 종창, 상에서 떨어지는 것, 와서 핥는 개들입니다. 22절에서 장면이 바뀝니다. "이에 그 거지가 죽어 천사들에게 받들려 아브라함의 품에 들어가고 부자도 죽어 장사되매." 사건 동사는 여기까지 몰려 있고, 23절부터는 대화가 사건을 대신합니다.</p>
+<p>부자는 세 번 말하고 세 번 다 기각됩니다. 24절의 물 한 방울 요청은 25절에서 기각되고, 26절은 큰 구렁이 이미 세워져 굳어 있다고 답하고, 27-28절의 파송 요청은 29절에서 두 항을 들으라는 명령으로 돌려보내집니다. 31절의 마지막 문장은 조건절을 현재에 두고 귀결절을 미래 수동에 둡니다. 중심 명제는 이것입니다. 지금 듣지 않는 사태가 계속되는 한, 죽은 자 가운데서 누군가 일어나는 일도 설득을 만들어 내지 않습니다.</p>
+<p>★ 먼저 적어 둘 것이 있습니다. 이 열세 절에는 하나님(테오스) 어형이 0회이고, 그리스도·주·예수·구주·인자 어형도 전부 0회입니다. 고유명사는 아브라함 여섯 번, 나사로 네 번, 모세 두 번뿐입니다. 그리스도론 항목으로 보면 이 단위는 하한에 크게 미달합니다. 그래서 본문이 주지 않은 주어를 세우지 않고 적힌 어형만 따라갑니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 이름을 가진 쪽과 갖지 못한 쪽이 갈리고, 갈린 방향이 세상의 기록과 반대입니다. 고통은 같은 낱말로 확인되지만, 확인이 요청의 수락은 아닙니다. 들을 자료는 이미 손에 있고, 부족한 것은 청취입니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>본문은 나사로에게 무엇을 하라고 말하지 않습니다. 그에 대해 적힌 것은 대문을 향해 놓여 있었다는 상태와 종창을 입은 몸입니다. 요청도 그의 입에서 나오지 않습니다. 병상에 있거나 소득이 끊겨 아무것도 줄 수 없는 자리라면, 오늘 무엇을 해내지 않아도 이 본문 안에 남아 있습니다. 이 단락에서 이름이 있는 쪽은 아무 일도 하지 않은 쪽입니다.</p>
+<p>부자와 나사로 사이의 거리는 대문 하나였습니다. 본문이 적는 것은 마음의 거리가 아니라 문과 상과 떨어지는 음식과 개들입니다. 이번 주 심방 목록을 마음 상태가 아니라 몸과 거리로 다시 적어 보십시오. 이름, 앓는 곳, 문 앞까지의 걸음 수를 씁니다.</p>
+<p>25절의 아펠라베스는 "이미 다 받았다"는 완결된 어형입니다. 세무 실무에서도 이미 받은 것과 아직 받지 않은 것의 구분이 판단을 가릅니다. 지나간 신고 기한, 소멸된 권리, 이미 수령한 급부는 다시 열리지 않습니다. 이미 도착한 고지서와 규정을 읽는 시간을 일정에 고정하십시오. 몰랐다는 말이 면책이 되지 않는 자리에서 읽기는 경건이 아니라 업무입니다.</p>
+<p>부자와 나사로 사이의 거리는 아주 멀리서 시작되지 않았습니다. 한 사람은 날마다 풍성히 먹고, 한 사람은 바로 그 대문 앞에 누워 있었습니다. 부자는 나사로를 때리거나 내쫓았다고 기록되지 않습니다. 그러나 가까이에 있는 고통을 보지 못한 채 자기 식탁만 지킨 것도 이미 깊은 단절이었습니다. 사랑의 반대는 때로 노골적인 미움이 아니라, 보아도 아무 일도 하지 않는 무심함일 수 있습니다.</p>
+<p>죽음 뒤의 장면은 이 단절이 얼마나 무거운지 보여 줍니다. 그러나 예수님의 목적은 다른 사람의 운명을 호기심으로 들여다보게 하는 데 있지 않습니다. 아브라함이 거듭 말하는 것은 이미 모세와 선지자의 말씀이 있다는 사실입니다. 특별한 기적이 오면 마음이 바뀔 것이라는 기대보다, 오늘 내게 들려오는 말씀에 귀를 기울이는 일이 더 중요합니다. 말씀은 먼 세계의 비밀을 알려 주기보다, 내 문 앞의 이웃을 보게 합니다.</p>
+<p>나는 누구의 이름을 모르고 지나치고 있는지 생각합니다. 도움을 줄 수 있는 형편과 마음이 모두 넉넉하지 않을 때도 있지만, 최소한 타인의 아픔을 보이지 않는 것으로 만들지 않을 수는 있습니다. 식탁의 한 자리, 시간의 일부, 따뜻한 안부와 실제적인 도움은 대문 앞의 거리를 줄이는 시작이 됩니다. 주님, 제게 주신 풍요가 담을 높이는 재료가 되지 않게 하시고, 오늘 말씀을 듣는 귀와 이웃을 보는 눈을 주소서.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 35편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

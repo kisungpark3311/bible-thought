@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>여물통에 누인 구주를 만나는 밤</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 04편 &middot; 누가복음 2:1-21</span>
+      <h1>여물통에 누인 구주를 만나는 밤</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>단락은 칙령으로 시작합니다. "그 칙령이 나왔다"(2:1). 주어가 동사 뒤에 옵니다. 미치는 범위는 온 세계이고, 그 효력은 사람들을 걷게 만드는 것입니다. 요셉은 나사렛에서 베들레헴까지 올라가고, "임신한" 마리아가 그 길에 함께 있습니다(2:5). 호적은 등록이고 등록은 과세의 기초입니다. 제국의 장부가 한 가정의 일정을 정했습니다.</p>
+<p>그 이동의 끝에서 "해산할 날들이 채워졌고"(2:6) 마리아가 "낳았습니다"(2:7). 여물통의 이유는 한 줄로 적혀 있습니다. "숙소에 그들을 위한 자리가 없었기 때문이다"(2:7). 자리를 얻지 못한 사람은 요셉과 마리아이며, 그 조건에서 한 여자가 아이를 낳았습니다.</p>
+<p>들에서는 목자들이 밤을 지새우고 있었습니다(2:8). 그들이 먼저 받은 것은 기쁨이 아니라 큰 두려움입니다(2:9). 그 두려움 위에 선포가 얹히고(2:11), 표징이 지정되고(2:12), 목자들은 서로 말합니다. "주께서 우리에게 알려 주신 이 일을 보자"(2:15). 이 단락에서 하나님이 동사의 주어로 명시되는 자리는 이 한 군데입니다. 그리고 그들은 지정된 자리로 가서 찾아냅니다(2:16). 여드레째에 언약의 표가 그 몸에서 집행되고, 잉태 이전에 이미 불린 이름이 불립니다(2:21). 이 단락의 신학적 중심은 이것입니다 — 하나님을 부르던 칭호가, 걸어가면 닿는 자리에 누운 한 몸의 술어가 되었습니다.</p>
+<p>목자들이 찾아낸 것은 새 여물통이 아니라 지목된 그 여물통이었습니다. 말이 먼저 자리를 지목하고 발이 뒤에 확인합니다. 그리고 그 자리에 누운 이를 11절은 「주」라 부릅니다. 주권자의 칭호와 짐승의 먹이통이 한 표징 안에 묶입니다. 한 가지는 닫아 둡니다 — 이사야 1장 3절에도 여물통이 나오지만 거기서는 소와 나귀가 주어이고, 소와 나귀는 이 단락에 없습니다. 낱말이 겹치는 것과 본문이 성취되는 것은 다른 일입니다.</p>
+<p>표징의 확인은 새것을 발견하는 일이 아니라 지목된 것을 찾아내는 일입니다.</p>
+<p>표징은 손에 쥐는 물건이 아니라 가서 겪어야 하는 사건으로 주어졌습니다. 그리고 낱말을 하나하나 맞대어 본 사람은 목자들이 아니라 마리아였습니다. 해산한 몸이 그 모든 말을 자기 심장 안에 모아 두고 맞대어 봅니다. 확인은 달려간 발로도 이루어지고, 오래 붙들고 맞대어 보는 심장으로도 이루어집니다. 목자들은 전수 대조가 끝나기 전에 "말한 그대로"라고 찬양하며 돌아갔습니다.</p>
+<p>표징은 검증을 요구하고, 검증은 달려가는 발과 오래 붙드는 심장 두 방식으로 이루어집니다.</p>
+<p>그래서 이 단락의 선포는 「구주라 불린 분이 태어나셨다」가 아닙니다. 순서가 반대입니다 — 여물통에 누인 이 몸이 그 칭호의 주인입니다. 확인할 수 없는 곳에 있는 칭호가 아니라, 걸어가면 닿는 자리에 누운 몸의 술어입니다. 11절에 「오늘」이 붙어 있는 것도 사실이지만, 이 단락이 세운 논지는 시간이 아니라 술어가 옮겨 붙는 사태입니다.</p>
+<p>하나님께 붙던 칭호가 한 갓난아기의 술어가 되었고, 그 몸은 가서 볼 수 있는 자리에 있었습니다.</p>
+<p>두 자리를 닫지 않고 그대로 둡니다.</p>
+<p>첫째, 평화입니다.</p>
+<p>"땅에는 평화, 사람들 가운데 기뻐하심이." (2:14)</p>
+<p>"내가 땅에 화평을 주려고 온 줄로 아느냐? 내가 너희에게 이르노니 아니라, 오히려 분열이라." (12:51)</p>
+<p>같은 책입니다. 「평화」와 「땅」 두 낱말이 그대로 다시 나오는데, 뒤의 문장은 「분열」로 끝납니다. 이것을 「지금은 분열이지만 마지막에는 평화가 완성된다」로 봉합하지 않습니다. 그 봉합은 12장 51절의 「아니라」를 없는 말로 만들어 버립니다. 누가는 두 문장을 한 책 안에 나란히 두었고, 본문은 어느 쪽도 취소하지 않습니다. 정경은 둘을 화해시키는 문장을 주지 않고 둘 다 남겨 두었습니다.</p>
+<p>둘째, 말하는 것과 말하지 말라는 것입니다.</p>
+<p>"그들이 이 아기에 관하여 들은 말을 알렸다." (2:17)</p>
+<p>"그러나 예수께서 이 일을 아무에게도 말하지 말라고 명하셨다." (8:56)</p>
+<p>2장에서 목자들은 알리고 돌아갑니다. 8장에서 같은 예수께서 침묵을 명하십니다. 두 장면을 나란히 둡니다. 어느 한쪽을 「그때는 그랬고 나중은 달라졌다」로 정리하면, 본문이 서로 다른 자리에 배치한 두 명령이 하나의 원칙으로 납작해집니다.</p>
+<p>그리고 같은 장 34절과 35절은 이 표징을 다시 부르며 「반대받는 표징」이라 하고, 어머니의 영혼을 칼(롬파이아)이 지나갈 것이라 합니다. 큰 기쁨의 선포와 반대받는 표징과 칼이 같은 장에 있습니다. 표징은 확인되었고, 그러고도 반대받는 표징이라 다시 불립니다.</p>
+<p>자기 하루를 스스로 정할 수 없는 사람에게 이 단락을 먼저 읽힙니다. 교대 근무표가 몸을 정하는 사람, 간병 때문에 하루를 남에게 맞추는 사람, 병상에서 움직일 수 없는 사람. 요셉과 마리아는 자기 일정으로 베들레헴에 가지 않았습니다. 남의 장부가 정한 이동 끝에 약속의 성이 있었습니다. 다만 본문은 그 이유를 걸어가던 두 사람에게 알려 주지 않습니다 — 위로는 독자 쪽에 먼저 도착했고, 걷는 사람 쪽에는 아직 도착하지 않았습니다.</p>
+<p>이 단락의 첫 사건은 등록이고, 등록은 과세의 기초입니다. 본문은 그 칙령이 무엇을 과세했는지 적지 않습니다. 적힌 것은 그것이 사람을 움직였다는 사실뿐입니다. 신고 기한과 장부 마감이 내 한 달을 정하는 때에도, 그 장부 안쪽에서 하나님이 일하지 않으신다고 말할 근거는 본문에 없습니다. 그리고 지목된 항목을 찾아내는 일과 맞지 않는 항목을 그대로 적어 두는 일은 같은 성실함입니다. 목자들이 셋을 확인하고 넷째를 채워 넣지 않은 것과 같습니다.</p>
+<p>이 단락의 물질은 밤과 야경과 해산과 짐승의 먹이통과 자리 없음입니다. 소식이 먼저 닿은 몸은 밤에 일하던 몸이었고, 그들이 먼저 받은 것은 기쁨이 아니라 큰 두려움이었습니다. 야간 근무자와 신생아를 안고 밤을 새우는 부모에게 알려 줄 것은, 그 칭호의 전환을 처음 확인한 눈이 밤에 깨어 있던 눈이었다는 사실입니다. 본문은 그들의 사회적 지위를 평가하지 않습니다 — 적은 것은 그들이 들에 있었고, 거기로 소식이 왔다는 것입니다.</p>
+<p>말이 먼저 자리를 지목하고, 발이 뒤에 그 자리에 도착합니다. 도착한 자리에 있던 것은 왕의 요람이 아니라 짐승의 먹이통이었고, 거기 누운 몸이 하나님을 부르던 칭호의 주인이었습니다. 확인된 것은 셋이고 하나는 다시 적히지 않았습니다. 그래도 목자들은 돌아가며 찬양했습니다. 믿음은 전수 대조가 끝난 뒤에 시작되는 것이 아니라, 확인된 것을 들고 돌아가는 걸음입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 04편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

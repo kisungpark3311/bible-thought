@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>돌아와 감사한 한 사람</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 36편 &middot; 누가복음 17:1-19</span>
+      <h1>돌아와 감사한 한 사람</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>열 명이 고침을 받았지만 한 사람만 돌아왔습니다. 그 한 사람의 걸음은 받은 은혜를 감탄으로 끝내지 않고, 은혜를 주신 분께로 되돌아가는 길이었습니다.</p>
+<p>오늘 본문은 세 덩어리가 이어 붙어 있습니다. 앞쪽은 판정의 담화입니다. "실족하게 하는 것이 없을 수는 없으나 그렇게 하게 하는 자에게는 화로다"(17:1)로 화를 선언하고, "차라리 연자 맷돌이 그 목에 매여 바다에 던져지는 것이 나으리라"(17:2)로 손익을 잽니다. 가운데는 청구권이 소멸하는 자리입니다. 사도들이 믿음을 더해 달라 청하자(17:5) 겨자 씨알 한 알의 비교가 오고(17:6), 비유는 "우리는 무익한 종이라 우리가 하여야 할 일을 한 것뿐이라"(17:10)로 닫힙니다. 뒤쪽은 서사입니다. 나병 든 남자 열 명이 멀리 서서 한 마디를 내고(17:13), 제사장에게 가는 이동 중에 열 명 전원이 깨끗해집니다(17:14). 그리고 "그 중의 한 사람이 자기가 나은 것을 보고 큰 소리로 하나님께 영광을 돌리며 돌아와"(17:15) 발 앞에 엎드립니다. 이 단락을 붙잡는 동사는 그 한 사람의 「돌아왔다」 하나이며, 본문이 기록하는 것은 마음의 상태가 아니라 방향의 역전입니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 한 사건이 세 이름으로 갈릴 때, 마지막 이름은 열 명이 아니라 돌아온 하나에게만 붙습니다. 믿음은 더해 받아야 할 총량이 아니라, 발 앞에 엎드린 자리에서 주어가 되는 것입니다. 돌아옴을 재는 기준이 족속 밖에서 확인될 때, 안에 있다는 사실은 아무것도 보증하지 않습니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>열 사람이 가진 것은 목소리 하나였습니다. 멀리 선 자리에서 "우리를 불쌍히 여기소서"(17:13) 한 마디를 낸 것이 전부이고, 정결은 그 뒤 이동 중에 일어났습니다. 지금 병상에서, 혹은 어떤 실천도 불가능한 조건에서 이 글을 보신다면, 오늘 요구되는 것은 그 한 마디뿐입니다.</p>
+<p>성도가 사라진 이유를 우리는 너무 빨리 이름 붙입니다. 본문은 아홉을 설명하지 않고 물음만 남겼습니다. 이번 주에는 떠난 사람의 동기를 해석하는 문장을 한 번도 쓰지 말고, 남은 사람의 진행 방향만 물어보십시오.</p>
+<p>17:10의 종은 밭과 양과 시중을 다 마친 뒤에 청구서를 꺼내지 않습니다. 「하여야 할」이라는 낱말은 본래 빚지다라는 뜻(오페일로, ὀφείλω)이고, 유익하다는 뜻의 낱말과는 별개입니다. 오늘 마감할 장부에서 내가 받아야 한다고 계산해 둔 항목 하나를 지우고, 그 대신 몸을 옮겨 한 사람을 찾아가거나 전화 한 통을 거십시오. 본문이 재는 단위는 감정이 아니라 거리와 시간입니다.</p>
+<p>이 단락은 서로 다른 이야기처럼 보이지만 모두 관계 속에서 사는 마음을 묻습니다. 다른 이를 넘어지게 하는 일의 무게, 잘못한 형제를 용서하는 어려움, 믿음을 더해 달라는 제자들의 부탁, 해야 할 일을 했을 뿐이라고 말하는 종의 비유가 이어집니다. 예수님은 믿음을 자랑할 능력으로 만들지 않으시고, 작은 믿음이라도 하나님께 붙어 다른 이를 살리는 삶으로 부르십니다.</p>
+<p>특히 용서는 감정을 억지로 없애는 일이 아닙니다. 잘못을 잘못이라고 말하고 돌이킴을 기다리되, 돌아오는 사람을 계속 받아들이는 길입니다. 우리가 용서하기 어려운 까닭은 상처가 작지 않기 때문입니다. 그래서 제자들이 믿음을 더해 달라고 한 말이 낯설지 않습니다. 그러나 주님은 큰 믿음의 양을 약속하시기보다, 겨자씨만 한 믿음이 하나님의 일을 신뢰하게 한다고 말씀하십니다.</p>
+<p>열 명의 나병 환자가 고침을 받았지만 한 사람만 예수님께 돌아와 하나님께 영광을 돌렸습니다. 그는 은혜를 단순한 문제 해결로 끝내지 않았습니다. 받은 것을 기억하고, 자신을 고치신 분께 다시 방향을 돌렸습니다. 오늘의 감사도 그와 같습니다. 당연하다고 지나친 한 끼, 한 사람, 회복된 몸과 관계를 다시 바라보며 주님께 돌아가는 것입니다. 주님, 제 믿음이 남을 무겁게 하지 않게 하시고, 받은 은혜를 기억하여 감사로 돌아오는 사람이 되게 하소서.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 36편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

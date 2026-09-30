@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>나누어 주시는 손</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 19편 &middot; 누가복음 9:1-17</span>
+      <h1>나누어 주시는 손</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>9:1에서 그는 열둘을 불러 세우고 귀신 전체를 제어하고 병을 고치는 능력과 권세를 나눠 준 뒤 보냅니다. 곧이어 9:3에서 길에 지고 갈 것을 막습니다. "아무것도 지고 가지 말라. 지팡이도 배낭도 떡도 은돈도 두 벌 옷도." 목적어는 「아무것도」 한 낱말이고 「짐」이라는 명사는 그 자리에 놓이지 않습니다. 9:5는 떨어 낼 것까지 지정합니다. "너희 발에서 그 먼지를 털어 버리라." 9:9에서 헤롯이 묻습니다. "요한은 내가 목을 베었다. 그런데 이 사람은 누구냐." 9:10에서 열둘이 돌아와 보고하고, 무리가 따라붙자 그는 하나님 나라를 말하며 "치료가 필요한 사람들"(9:11)을 고칩니다. 해가 기울자 열둘이 처분을 요구합니다. "무리를 보내소서. 우리가 여기 빈 들에 있습니다"(9:12). 앓는 몸과 굶은 몸이 해 지는 들판에 앉아 있습니다. 그가 돌려준 말은 9:13입니다. "너희가 그들에게 먹을 것을 주라." 9:14에서 오십씩 떼로 앉히라 하고, 9:16에서 그는 떡을 집어 하늘을 우러러 축복하고 쪼개어 제자들에게 계속 건넵니다. 능력과 권세를 나눠 준 그 손이 떡을 쪼개어 건넨 그 손입니다.</p>
+<p>떡 다섯과 물고기 둘로 오천을 먹이는 셈은 서지 않습니다. 그래서 9:13의 명령은 두 갈래 가운데 하나입니다. 조롱이거나, 명령한 이가 그 명령을 자기 손으로 감당하겠다는 말입니다. 9:16이 뒤쪽을 보여 줍니다. 권세를 나눠 준 그 손이 떡을 쪼개어 계속 건넵니다. 떡이 어떻게 불었는지 본문은 적지 않습니다. 본문은 그 손만 적습니다. 감당할 수 없는 명령을 받았을 때 우리가 확인할 수 있는 것도 여기까지입니다. 명령한 입과 감당한 손이 하나인지 아닌지.</p>
+<p>명령을 내린 손과 떡을 건넨 손이 하나입니다.</p>
+<p>그 단수 명령을 받은 분이 9:1에서 그들에게 나눠 준 몫이 귀신 전체에 대한 능력과 권세입니다. 권세를 남에게 배분하는 이는 그 권세를 빌려 쓰는 자리에 서 있지 않습니다. 배분은 소유자의 동작입니다. 9:11에서 그 몸들을 이미 고친 손이 9:12의 요구를 듣습니다. 흩자는 말을 들은 분이 흩지 않습니다. 9:13은 그 요구를 거절하는 말 대신 다른 명령으로 답하고, 단수를 복수로 바꾸고 「너희가」를 세웁니다. 처분을 요구한 입에 처분의 책임이 되돌아옵니다. 그리고 9:16에서 그 책임을 그가 다시 받아 냅니다.</p>
+<p>권세를 나눠 줄 수 있는 분만이 처분 요구를 명령으로 되돌릴 수 있습니다.</p>
+<p>배낭을 금한 낱말이 결말에서 광주리를 받아 냅니다. 손에 쥔 것을 줄이라는 말과 남은 것을 담으라는 말이 한 낱말 안에서 만납니다. 다만 9:17은 누가 그 광주리를 들어 올렸는지 적지 않습니다. 제자들이라고 확정하지 않겠습니다. 이 칸은 비어 있고, 비어 있는 채로 둡니다. 열둘이 들었다고 적으면 본문이 하지 않은 말을 하게 되고, 그가 들었다고 적어도 같습니다.</p>
+<p>지고 갈 것을 줄이라 한 낱말이 담을 것을 받아 내는 쪽으로 뒤집힙니다.</p>
+<p>- 왕하 4:42-44 대조: 이 노트가 대조한 범위에서 두 본문은 「주라」라는 낱말과 명령의 형태를 나눠 씁니다. 다만 그 급식 단락에 명령형이 몇 개인지, 42절과 43절에서 형태가 갈리는지는 아직 확인되지 않았습니다. 「같은 명령형이다」를 확정으로 쓰지 않습니다. - 명령의 주체를 가리는 판별의 범위: 두 본문을 나란히 두면 한쪽의 「주라」는 한 사람에게 떨어지고 9:13의 「주라」는 열둘에게 떨어집니다. 이 판별이 서는 범위는 나란히 둔 두 본문뿐입니다. 그 범위에서 인칭과 수까지가 보이고, 명령을 내리는 이는 9:13의 이름 적히지 않은 주어입니다. 여기서 칭호를 한 눈금 올리지 않습니다. - 인용 도입구: 이 열일곱 절에는 「기록된 대로」류의 인용 도입구가 놓이지 않습니다. 세 가지 제한을 함께 둡니다. ①확인 범위는 이 열일곱 절이고 누가복음 전체가 아닙니다. ②이 표제어들이 누가복음의 서사 단락에서 평균 몇 번 나오는지는 확인되지 않았습니다. ③서사 단락에서 인용 도입구가 놓이지 않는 것은 특별한 표시보다 보통 상태일 수 있습니다.</p>
+<p>포인트 1 — 지금 아무것도 내놓을 수 없는 사람에게 오늘 손에 실제로 있는 것을 세어 보십시오. 다섯이면 다섯입니다. 그 수가 넉넉한지 판정하는 권한은 떡을 쪼갠 손에 있습니다. 세어 보고 그대로 말하는 일까지는 오늘 당신 몸이 합니다. 병상에 있어도 셈은 셀 수 있고, 9:12의 무리도 치료가 필요한 몸으로 그 자리에 앉아 있었습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 19편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

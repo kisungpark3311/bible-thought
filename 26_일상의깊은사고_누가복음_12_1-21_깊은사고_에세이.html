@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>자기에게만 말하던 밤</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 26편 &middot; 누가복음 12:1-21</span>
+      <h1>자기에게만 말하던 밤</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>어떤 밤은 말이 너무 많아서 오히려 고요합니다. 누가복음 12장에 나오는 부자는 밭의 소출이 풍성해지자 혼자 생각합니다. “내가 어떻게 할까.” 그는 헐고, 짓고, 쌓고, 쉬고, 먹고, 마시는 미래를 차례로 말합니다. 문장마다 ‘내’가 돌아옵니다. 내 곡식, 내 창고, 내 좋은 것, 내 영혼. 가진 것이 많아진 것이 문제라기보다, 그 많은 것을 함께 바라볼 한 사람도 하나님께 여쭐 한 자리도 없는 것이 그의 밤을 쓸쓸하게 만듭니다.</p>
+<p>예수님은 바로 그 탐심의 이야기 앞에서 제자들에게 사람 앞에서 자신을 시인하는 일과 두려움에 관해 말씀하십니다. 그러므로 이 단락은 단지 재산을 경계하는 교훈이 아닙니다. 누구의 시선을 가장 크게 여기며 사는가, 누구에게 내 삶의 이름을 들려주는가를 묻습니다. 사람들의 평가가 두려워 마음을 숨기고, 내일을 움켜쥐려 하며, 마음속 대화마저 나 자신에게만 되돌려 보내는 삶이 여기에 함께 놓여 있습니다.</p>
+<p>부자의 계획은 무능하거나 게으르지 않습니다. 그는 풍성한 수확을 보았고, 보관할 공간이 부족하다는 현실도 정확히 알았습니다. 우리는 그런 사람을 책임감 있다고 부를 수 있습니다. 그러나 그가 세운 계획에는 한계가 있습니다. 곡식을 둘 곳은 계산하지만, 자신이 누구에게 속해 있는지는 묻지 않습니다. 오래 살 날을 확보하려 하지만, 오늘 밤의 생명을 자기 계획 안에 넣을 수 없다는 사실은 생각하지 못합니다.</p>
+<p>그 밤에 하나님이 말씀하십니다. “오늘 밤에 네 영혼을 도로 찾으리니.” 이 한 문장은 부자의 모든 독백을 멈춥니다. 하나님은 그를 소유의 양으로 부르지 않으시고, 그의 영혼을 물으십니다. 우리가 쌓아 둔 것이 많아도 영혼을 대신할 수는 없습니다. 내일을 준비하는 일은 필요하지만, 내일을 소유할 수 있다는 생각은 우리를 가난하게 만듭니다. 가장 많은 것을 가진 사람이 가장 중요한 질문을 놓칠 수 있기 때문입니다.</p>
+<p>이 말씀은 계획을 버리라고 하지 않습니다. 오히려 계획 속에 하나님을 향한 자리를 비워 두라고 합니다. 내 일을 정리하고, 가족의 필요를 살피고, 맡겨진 책임을 성실히 감당하는 일은 귀합니다. 다만 그 모든 일이 내 이름을 더 크게 만드는 창고가 되지 않도록 돌아보게 합니다. 오늘의 수고가 누구를 살리고 있는지, 내 손에 들어온 것이 누구에게 흘러가고 있는지, 내 마음의 대화가 너무 오래 나에게만 머물러 있지 않은지 묻게 합니다.</p>
+<p>이 단락에는 두려워하지 말라는 말씀도 있습니다. 예수님은 친구라 부르신 이들에게 몸을 해할 수 있는 사람들을 두려움의 마지막 기준으로 삼지 말라고 하십니다. 참된 두려움은 공포에 사로잡히라는 명령이 아니라, 생명의 주인이 누구신지를 잊지 말라는 부르심입니다. 참새 다섯도 하나님 앞에서 잊힌 바 되지 않으며, 우리의 머리카락까지 세신 바 되었다고 말씀하십니다. 그러므로 우리의 안전은 창고의 크기나 사람들의 평가에만 걸려 있지 않습니다.</p>
+<p>사람 앞에서 예수님을 시인하는 일도 거창한 말에서만 시작되지 않습니다. 불리한 자리에서 거짓을 택하지 않는 것, 두려운 마음을 숨기지 않고 하나님께 가져오는 것, 이웃의 필요를 보면서 내 몫만 계산하지 않는 것에서 시작됩니다. 우리는 늘 용감하지 못하고, 어떤 날은 부자의 독백처럼 마음을 닫습니다. 그러나 예수님은 자신의 사람들을 ‘친구’라 부르시며, 그들이 두려움 속에서도 누구를 바라보아야 하는지를 가르치십니다.</p>
+<p>“자기를 위하여 재물을 쌓아 두고 하나님께 대하여 부요하지 못한 자”라는 마지막 말씀은 우리를 정죄하기 위해서만 주어진 것이 아닙니다. 그것은 우리 삶의 방향을 돌려 세우는 자비로운 경고입니다. 하나님께 부요하다는 것은 가진 것이 전혀 없다는 뜻이 아니라, 가진 것의 주인이 내가 아니라는 사실을 기쁘게 인정하는 것입니다. 내 시간도, 능력도, 수입도, 가족도, 오늘 밤의 숨도 선물임을 아는 사람은 창고를 지어도 창고에 갇히지 않습니다.</p>
+<p>오늘 우리는 무엇을 오래 독백하고 있는지 돌아봅니다. 해결되지 않은 일, 걱정되는 수입, 자녀의 미래, 몸의 피곤, 누군가의 시선이 마음을 가득 채울 수 있습니다. 그 생각을 멈추라는 말이 아닙니다. 다만 그것을 혼자만의 방에 가두지 말라는 초대입니다. 하나님께 말하고, 믿을 만한 사람과 나누고, 필요한 이에게 손을 펴는 순간 우리의 말은 ‘내 것’에서 ‘우리에게 맡겨진 것’으로 바뀌기 시작합니다.</p>
+<p>오늘 밤을 내가 장악할 수는 없습니다. 그러나 오늘 밤에도 나를 기억하시는 분께 마음을 맡길 수는 있습니다. 내일을 위한 준비가 불안을 쌓는 일이 아니라 사랑을 준비하는 일이 되게 해 달라고 구할 수 있습니다. 그래서 이 말씀은 창고를 허무는 이야기만이 아니라, 닫힌 독백의 문을 열어 하나님과 이웃에게로 돌아가게 하는 이야기입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 26편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

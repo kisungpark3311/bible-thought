@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>하늘이 열릴 때 들린 이름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 07편 &middot; 누가복음 3:21-38</span>
+      <h1>하늘이 열릴 때 들린 이름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>이 열여덟 절에서 사건을 끌고 가는 동사는 단 하나입니다. 21절의 "되었다"입니다. 세례도 기도도 그 동사 아래로 내려가, 언제 어떤 상황이었는지를 알려 주는 자리에 놓입니다. 흔히 "주된 동사가 세례에서 기도로 옮겨 갔다"고 읽지만 그렇지 않습니다 — 기도 역시 주된 동사가 아니라 상황을 서술하는 표현이고, 세례와 함께 아래층으로 내려갑니다. 그 하나의 동사가 붙잡는 것은 사람이 한 일이 아니라 하늘이 한 세 가지입니다. 하늘이 열리고, 성령이 한 사람 위에 내리고, 소리가 납니다. 그리고 그 소리가 "너는 내 사랑하는 아들이라"로 한 사람을 두 번 한정해 지목합니다. 23절부터 38절까지 열다섯 절에는 동사가 하나도 없고, 이름 일흔일곱 개가 "~의"라는 한 마디 일흔여섯 번으로만 이어지며, 목록은 아브라함을 지나쳐 "그 위는 아담이요 그 위는 하나님이시니라"(3:38)에서 끝납니다. 그러므로 이 단락의 주장은 이것입니다 — 백성의 줄 안에서 같은 물에 선 한 사람을 하늘이 위에서 그 아들로 불러냈고, 그 사람이 대표하는 범위는 한 민족이 아니라 아담에게서 갈라진 전부입니다.</p>
+<p>우리는 하나님의 말씀을 듣기 위해 남과 다른 자리로 올라가야 한다고 믿습니다. 본문의 순서는 반대입니다. 하늘이 열린 지점이 줄 안쪽이었습니다. 대표는 구별된 자리에서 시작하지 않고 같은 자리에서 시작하며, 그 자리에 선 자가 누구인지는 하늘이 정합니다.</p>
+<p>같은 물에 함께 섰다는 것이 이 장면의 첫 사실이고, 구분은 물이 아니라 호명이 만듭니다.</p>
+<p>하나님은 이 장면을 감정의 층위가 아니라 몸의 층위로 적게 하셨습니다. 보이지 않는 일을 보이는 것으로 적는 절제가 여기 있습니다. 그리고 그 같은 문장이 "아들"과 "사랑받는 자" 두 자리에 각각 한정하는 표현을 붙여 한 사람을 특정합니다. 어떤 아들이 아니라 그 아들입니다. 이 단락의 그리스도론은 비유나 예표로 오지 않고 호명으로 옵니다 — 역할을 맡기는 말이 아니라 신원을 확정하는 말입니다.</p>
+<p>하늘은 보이는 층위로 내려와 한 사람을 설명하지 않고 불렀습니다.</p>
+<p>한 인물 위에 두 진술이 겹칩니다. 위에서는 "내 아들"이라는 호명이, 아래에서는 사람들의 계산이. 두 진술이 같은 한 사람을 가리킨다는 것은 본문의 지시가 정합니다. 이 겹침이 성립하는 것은 그가 하나님의 아들이면서 사람의 계보 안으로 들어온 자일 때뿐입니다. 성육신은 이 노트가 덧붙인 교리가 아니라 두 끝이 한 사람에게서 만나는 데서 나옵니다. 그리고 그 목록은 아브라함에서 멈추지 않고 아담을 거쳐 하나님에게서 끝납니다 — 하늘이 아들로 부른 그 사람이 대표하는 것은 한 민족이 아닙니다.</p>
+<p>동사 없는 일흔일곱 개의 이름이 한 사람의 자리를 만들고, 그 목록의 끝이 대표의 범위를 확정합니다.</p>
+<p>"백성이 다 세례를 받을 때에" (눅 3:21)</p>
+<p>"모든 백성과 세리들은 이미 요한의 세례를 받았으므로 이 말씀을 듣고 하나님을 의롭다 하되" (눅 7:29)</p>
+<p>"바리새인과 율법교사들은 그의 세례를 받지 아니함으로 자기들을 위한 하나님의 뜻을 저버렸느니라" (눅 7:30)</p>
+<p>3:21은 "백성이 다"로 묶습니다. 같은 낱말군이 7:29에서 그대로 되풀이되고, 바로 다음 절 7:30이 두 집단을 그 "다"에서 빼냅니다. 그러므로 3:21의 "다"를 "백성 전체"로 단정할 수 없습니다. 그러나 "관용적 총칭이니 예외가 있어도 상관없다"로 봉합할 수도 없습니다 — 누가는 두 절을 같은 책 안에, 그것도 나란히 붙여 놓았습니다. 한쪽을 다른 쪽의 각주로 만드는 장치를 본문이 주지 않습니다.</p>
+<p>여기서 걸리는 것은 산술이 아닙니다. 하나님이 여신 자리가 "다"라고 적힌 그 자리인데, 스스로를 그 "다"에서 빼낸 사람들이 실제로 있었다는 사실입니다. 그들은 빠질 수 없어서 빠진 것이 아니라 받지 않음으로 빠졌습니다. 정경은 양쪽을 다 적어 두고 어느 쪽으로도 닫지 않았습니다. 이 노트도 닫지 않습니다.</p>
+<p>한 가지 더 열어 둡니다. 3:22의 하늘은 "너는 내 사랑하는 아들이라"로 단정하는데, 바로 다음 단락 4:3과 4:9는 같은 동사를 그대로 쓰면서 "네가 만일 하나님의 아들이면"으로 한정하는 표현을 떼고 조건절로 되돌립니다. 갈리는 것은 그 표현의 유무와 "만일"뿐입니다. 두 장면 사이에 하늘의 단정을 철회하는 말은 놓여 있지 않습니다. 확증을 받은 사람에게 곧 증명 요구가 온다는 이 순서를, 본문은 화해시키지 않고 배치로만 보여 줍니다.</p>
+<p>세례를 받고 돌아온 성도가 다음 주에 무너져 앉아 있을 때, "믿음이 약해서"라고 말하기 전에 이 순서가 본문의 순서라는 것을 먼저 말해야 합니다. 하늘이 단정한 직후에 "정말 그렇다면 증명해 보라"가 왔습니다. 설교와 상담은 두 장면을 화해시키려 하지 말고 나란히 놓아야 합니다 — 화해시키는 순간 성도는 자기 경험을 비정상으로 여기게 됩니다.</p>
+<p>이 족보는 서술이 아니라 명부입니다. "~의" 일흔여섯 번, 이름 일흔일곱 개, 동사 0개. 그리고 첫 고리에 "사람들이 아는 대로는"이라는 유보 한 줄이 남아 있습니다. 가족관계등록부와 상속 계산, 사업자 등록과 주주 명부는 지금도 같은 일을 합니다 — 동사 없이 한 사람의 권리와 부담을 만들고, 그 기재 하나가 상속 지분과 세액을 정합니다. 이름 한 칸을 잘못 적으면 사람이 다른 사람이 되고, 유보 한 줄을 지우면 사실이 아닌 것이 사실로 등록됩니다. 성령의 강림조차 몸의 층위로 적힌 본문 앞에서 서류의 물질성을 가볍게 다룰 수 없습니다. 기재를 정확히 하는 일은 실무가 아니라 사람을 다루는 일입니다.</p>
+<p>3:24-38의 열다섯 절에는 동사가 0개입니다. 이 사람들은 본문에서 아무 일도 하지 않습니다. 업적도 없고 말도 없고 기도도 기록되지 않았으며, 서른아홉에서 마흔한 개 이름에 대해 성경은 다른 문장을 하나도 갖지 않습니다. 그런데 그 고리 하나가 빠지면 목록이 끊어집니다. 지금 기도할 힘이 없고, 자기 이름이 어떤 문장의 주어가 된 적 없고, 올해 한 일을 대라면 댈 것이 없는 사람에게 이 열다섯 절이 주는 것은 요구가 아니라 자리입니다. "~의" 한 마디로 이어지는 것도 계보입니다.</p>
+<p>같은 물에 발을 담근 무리, 몸의 형체로 내려온 성령, 반올림해 적힌 서른 살, 그리고 동사 하나 없이 일흔일곱 칸을 채운 명부. 이 단락의 모든 물질이 낮은 층위에 있습니다. 그 낮은 층위 위에서 하늘만 말을 합니다. 우리가 붙들 것은 우리가 무엇이 되었는지가 아니라, 우리와 같은 자리에 선 한 사람을 향해 하늘이 먼저 무엇을 말했는지입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 07편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

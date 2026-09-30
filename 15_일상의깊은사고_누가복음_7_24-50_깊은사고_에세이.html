@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>용서는 사랑의 시작입니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 15편 &middot; 누가복음 7:24-50</span>
+      <h1>용서는 사랑의 시작입니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>요한이 보낸 사람들이 떠난 뒤에 예수님은 무리에게 광야에서 무엇을 보았는지 되물으십니다. "너희가 무엇을 보려고 광야에 나갔더냐 바람에 흔들리는 갈대냐"(7:24)입니다. 화려한 옷을 입고 사치하게 지내는 자는 왕궁에 있다고 하시고(7:25), 요한을 "선지자보다도 훌륭한 자"(7:26)라 하신 다음 "하나님의 나라에서는 극히 작은 자라도 그보다 크니라"(7:28) 하십니다. 7:27은 이 단락에서 기록을 끌어오는 하나뿐인 자리이고, 7:29-30은 예수님의 말씀이 아니라 기록자가 끼워 넣은 두 문장입니다. 이어지는 비유에 "우리가 곡하여도 너희가 울지 아니하였다"(7:32)가 있고, 예수님은 사람들이 인자를 두고 하는 말 "세리와 죄인의 친구"(7:34)를 그대로 인용하십니다. 장면이 바리새인 시몬의 집으로 옮겨지고, 이름 없는 한 여자가 향유 담은 옥합(`ἀλάβαστρον μύρου`, 알라바스트론 뮤루)을 들고 들어와 울면서 눈물로 발을 적십니다(7:38). 집주인은 입을 열지 않고 마음속으로만 판정하고(7:39), 예수님은 오백 데나리온과 오십 데나리온의 빚을 세우신 뒤 이 집에서 받지 못한 물과 입맞춤과 기름 셋을 세십니다(7:41-46). 그리고 "네 죄 사함을 받았느니라"(7:48)는 선포가 나오는데, 그 선포는 이미 끝나 상태로 남은 형태이고 그 일을 한 이가 문장에 드러나지 않습니다. 이 스물일곱 절의 중심 명제는 여기 있습니다 — 누가 옳다 하고 누가 옳다 함을 받는지가 두 번 뒤바뀌고, 사함을 낸 이를 묻는 마지막 물음은 닫히지 않습니다.</p>
+<p>이 단락에서 하나님이 격을 가지고 나오는 세 구절을 펼쳐 봅니다. 7:28의 "하나님의 나라"는 소유의 격이고, 7:30의 "하나님의 뜻"도 소유의 격이며, 7:29의 "하나님"만 목적어의 격입니다. 그러니 하나님이 직접 격으로 나오는 이 세 곳 가운데, 사람이 주어인 동사의 목적어로 놓인 곳이 7:29 하나입니다. 다만 7:29-30은 기록자가 자기 이름으로 쓴 삽입이고 7:35는 예수님의 발화 안입니다. 두 문장에서 화자는 자기를 「나」로 부르지 않고 청중을 「너희」로 부르지도 않습니다. 7:31의 "내가 이 세대를 무엇으로 비유할까"에서 1인칭이 다시 열리며, 7:24는 청중을 3인칭으로 되짚습니다. 서로 다른 화자가 쓴 두 문장입니다. 한 층위로 화해시키지 않고 나란히 둡니다.</p>
+<p>한 낱말이 태를 바꾸면서, 누가 옳다 하고 누가 옳다 함을 받는지가 두 번 갈립니다.</p>
+<p>그에 대하여 기록되었다"(`περὶ οὗ γέγραπται`, 페리 후 게그랍타이)의 앞말은 `οὗτος`, 곧 7:24-28이 말해 온 요한입니다. 기록된 대상은 앞서 가는 사자이고, 예수님은 인용문 안에서 `σου`(수, "너의") 편에 놓입니다 — "네 앞에"와 "네 길을"의 그 "너"입니다. 보내는 1인칭의 화자는 인용된 성구 안의 하나님이고, 이 인용이 그 1인칭까지 옮겼다고 볼 어구는 본문에 없습니다. 길을 닦을 자가 왔다는 것과 그 길의 주인이 누구냐 하는 것이 한 문장 안에 들어 있고, 7:29-30은 그 닦인 길에서 사람이 어떻게 갈렸는지를 이어서 보여 줍니다.</p>
+<p>기록이 앞세운 것은 길을 닦을 자이고, 닦인 그 길은 "너의 길"이라는 이름으로 한 사람에게 붙습니다.</p>
+<p>두 읽기가 다 본문에서 나옵니다. 사함이 먼저이고 사랑은 그 사함이 드러난 결과라는 읽기는 후반절의 짜임이 낳고, 사랑이 많았던 것이 사함의 이유라는 읽기는 전반절의 "이는 ~ 많음이라"가 낳습니다. 본문은 어느 쪽인지 절의 짜임으로 정하지 않습니다. 미결을 미결로 두어도 남는 것이 있습니다 — 7:48에서 선포가 그대로 터집니다. 원인을 정하지 못한 곳에서 사함은 이미 끝난 일이고, 7:49의 물음이 바로 그 비어 있는 칸에 섭니다. 7:50의 "네 믿음이 너를 구원하였으니"(`σέσωκέν`, 세소켄)도 끝난 일인데, 예수님이 주어로 세운 것은 자기 이름이 아니라 그 여자의 믿음입니다.</p>
+<p>원인이 정해지지 않은 채로 선포가 서 있고, 그 선포를 낸 이를 본문은 단정이 아니라 물음의 형태로 둡니다.</p>
+<p>ⓐ 7:47의 두 읽기 — "그의 많은 죄가 사하여졌도다 이는 그의 사랑함이 많음이라"와 "사함을 받은 일이 적은 자는 적게 사랑하느니라"(7:47)가 한 절 안에 있습니다. 앞은 사랑함을 사함의 이유처럼 매달고, 뒤는 사함의 크기를 사랑의 크기 앞에 놓습니다. 원인을 가리키는 말이 한 절에 둘이고 주종이 뒤집힙니다. 어느 쪽이 본문의 방향인지는 절의 짜임만으로 정해지지 않습니다. 저는 이 원인을 판정하지 않고 둡니다. 판정하는 순간 7:48의 선포가 논쟁의 결론이 되어 버리는데, 본문에서 그 선포는 논쟁 뒤에 딸리지 않고 논쟁 위에 얹힙니다.</p>
+<p>ⓑ 인용된 비난과 입 밖에 나오지 않은 판정 — "세리와 죄인의 친구로다"(7:34)는 예수님이 남들의 말을 그대로 옮긴 것이고, "어떠한 자 곧 죄인인 줄을 알았으리라"(7:39)는 집주인이 마음속에서 혼자 내린 판정입니다. 같은 낱말이 두 번 오는데 두 번째는 발화가 아닙니다. 7:34에서 예고된 비난이 7:39에서는 입 밖으로 나오지 않는 형태로 실현됩니다. 둘 다 예수님과 여자를 죄인 편에 놓는데, 본문은 둘을 맞추어 정리해 주지 않습니다.</p>
+<p>ⓒ 선지자보다 큰 자와 그보다 큰 작은 자 — "선지자보다도 훌륭한 자니라"(7:26)와 "하나님의 나라에서는 극히 작은 자라도 그보다 크니라"(7:28)가 두 절 사이에 나란히 있습니다. 앞은 요한을 위로 올리고 뒤는 가장 작은 자를 그 위에 놓습니다. 어느 한쪽을 비유로 내리면 다른 쪽이 헐거워집니다. 본문은 둘을 잇는 설명을 붙이지 않고 그대로 이어 놓습니다.</p>
+<p>이 스물일곱 절에서 이미 끝난 일은 넷입니다 — 기록과 도래와 사함과 구원입니다. 그 넷 가운데 예수님이 능동의 주어로 적히는 곳은 7:34 하나이고, 나머지는 주어를 비우거나(7:27의 "기록된 바", 7:48의 "사함을 받았느니라") 믿음에 내줍니다(7:50). 그리고 그가 주어로 한 번 서는 대목이 곧 비난을 받는 7:34입니다.</p>
+<p>향유를 살 돈이 없는 사람, 남의 집 문턱을 넘을 명분이 없는 사람, 울어도 그것이 값이 되지 않는다고 배워 온 사람에게 이 본문이 먼저 옵니다. 7:49의 물음이 겨눈 것은 여자가 들고 온 준비물이 아니라 그 상에 비스듬히 누운 쪽입니다. 준비해서 자격을 만든 다음에 가려는 사람은 7:49 앞에 서지 못하고 7:44의 받지 못한 목록 앞에 섭니다. 오늘 들고 갈 것을 만들기 전에, 그 집에 누가 앉아 있는지부터 보십시오.</p>
+<p>집주인은 입을 열지 않았습니다. 7:39은 그가 "마음에 이르되"로 혼자 판정했다고 하며, 그 판정 문장을 본문에 그대로 남겨 둡니다. 성도를 두고 입 밖에 내지 않은 판단이 설교의 예시로 슬며시 들어오는 일이 있습니다. 이번 주에 그 문장 하나를 옮겨 보고, 그 문장의 주어가 누구인지 확인하십시오.</p>
+<p>7:41에 오백 데나리온과 오십 데나리온이 나란히 놓이고, 7:42에서 둘 다 갚을 것이 없어 탕감됩니다. 액수는 열 배 차이인데 탕감은 둘 다입니다. 세무 현장에서 우리는 액수의 크기로 사람을 가늠하는 손을 갖게 됩니다 — 큰 건은 정성껏, 작은 건은 서둘러 넘깁니다. 오십을 진 사람 앞에서 오백을 진 사람과 같은 시간을 쓰는지 이번 달 장부로 확인해 보십시오.</p>
+<p>7:44-46이 세는 셋 가운데 발 씻을 물(`ὕδωρ`, 휘도르)과 머리에 부을 기름(`ἔλαιον`, 엘라이온)은 손으로 건네는 물건입니다. 입맞춤(`φίλημα`, 필레마)은 건넬 물건이 없고 몸으로 하는 일입니다. 오늘 집에서 건넬 것 하나와 건넬 물건 없이 몸으로 할 것 하나를 각각 정해 두십시오. 물 한 잔, 수건 한 장, 손 한 번입니다.</p>
+<p>옥합이 열리고 향유 냄새가 집 안에 퍼집니다. 상 앞에 앉은 사람들은 그 냄새의 값을 셈하고, 집주인은 그 여자의 이름 대신 죄인이라는 낱말을 마음속에 새깁니다. 값의 셈은 7:41의 두 숫자에서, 7:44의 주지 않은 물그릇에서, 7:46의 붓지 않은 기름에서 이미 다 끝나 있습니다. 그런데 선포는 그 셈의 결론을 딛지 않고 그 위에 놓입니다. 그리고 그 선포를 낸 이의 이름을 본문은 밝히지 않은 채, 이미 끝난 일 넷 가운데 그가 주어로 한 번 서는 7:34에서 그에게 비난을 붙입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 15편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

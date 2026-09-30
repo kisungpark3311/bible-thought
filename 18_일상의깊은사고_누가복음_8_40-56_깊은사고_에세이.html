@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두려움 속에 먼저 들린 구원의 말</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 18편 &middot; 누가복음 8:40-56</span>
+      <h1>두려움 속에 먼저 들린 구원의 말</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>예수께서 건너편에서 돌아오시자 무리가 맞이합니다. 회당장 야이로가 발 앞에 엎드려 집으로 와 달라고 청합니다. 열두 살쯤 된 하나뿐인 딸이 죽어 가는 중이었습니다(8:42). 가는 길에 무리가 밀어대고, 그 사이에서 한 여인이 뒤로 다가와 옷의 끝단에 손을 댑니다. 열두 해 동안 피 흐름이 그치지 않던 몸이었습니다(8:43). 손이 닿은 다음 문장의 주어는 여인도 예수도 아닙니다 — "곧 그의 피 흐름이 그쳤다"(8:44). 예수는 "누가 내게 손을 댔느냐" 물으시고(8:45), 무리가 밀어댄다는 대답에 "내게서 능력이 나간 것을 내가 알았다"고 답하십니다(8:46). 여인이 온 백성 앞에서 나은 일을 알리자, 예수는 몸의 고침을 말한 낱말이 아닌 다른 낱말을 쓰십니다 — "네 믿음이 너를 구원하였다"(8:48). 그 말이 끝나는 순간 죽음을 알리는 전갈이 도착하고, 그 낱말도 완료였습니다(8:49). 이 단락은 구원의 완료와 죽음의 완료를 한 절 사이에 맞붙여 놓습니다.</p>
+<p>옷단에 닿은 손 하나에 구원의 완료가 돌려졌습니다. 몸의 고침을 말하던 두 낱말이 끝나는 데서 세 번째 낱말이 시작됩니다. 그 손이 닿은 몸에 구원이 있다는 결론은 언약 전체의 논리에 속하고, 8:40-56의 문장은 48절의 주어가 「너의 믿음」이라는 데까지 말합니다. 이 노트는 그 주어를 「믿음이 구원의 주어를 맡는다」는 주장으로 올리지 않습니다.</p>
+<p>몸이 나은 여인에게 예수는 몸의 고침 밖에 있는 낱말을 주셨습니다.</p>
+<p>순서가 뒤집혀 있습니다. 죽음의 완료가 도착하기 전에 구원의 완료가 먼저 발음되었습니다. 그 집에 들어가신 분은 사람들이 아는 사실을 지우지 않고, 그 사실 위에서 손을 잡고 부르십니다. 이 노트가 따르는 본문에서 54절의 부름은 예수가 발음한 명령이고, 다른 데서는 같은 어형이 달리 읽힙니다. 어느 판독으로 읽어도 부름이 먼저이고 소녀의 일어남이 그다음입니다.</p>
+<p>마지막 원수 앞에서 먼저 발음된 완료는 구원의 완료였습니다.</p>
+<p>한 단락에서 구원의 낱말이 완료와 미래로 갈라지고, 능동과 수동으로 갈라집니다. 이미 된 일과 아직 될 일이 같은 낱말로 묶여 있고, 야이로에게 남겨진 몫은 명령 하나였습니다. 두려움을 먼저 처리하라는 요구가 그 명령의 조건으로 붙지 않았습니다.</p>
+<p>구원은 이미 된 일로도 말해지고 아직 될 일로도 말해집니다.</p>
+<p>ⓐ 열두 살과 열두 해가 겹칩니다. 야이로의 딸은 "나이가 열두 살쯤" 되었고(8:42), 여인은 "열두 해를 피 흐름으로" 지냈습니다(8:43). 소녀가 살아온 햇수와 여인이 앓아온 햇수가 같습니다. 그런데 본문은 그 겹침에 대해 한 마디도 하지 않습니다. 두 수를 나란히 적어 놓고 해석은 붙이지 않았습니다. 이 노트도 붙이지 않습니다.</p>
+<p>ⓑ 물음과 앎이 나란히 있습니다. 예수는 "누가 내게 손을 댔느냐" 물으시고(8:45), 곧 "내게서 능력이 나간 것을 내가 알았다"고 말하십니다(8:46). 모르고 물으신 것인지 알면서 물으신 것인지 본문은 밝히지 않습니다. 46절의 「나갔다」는 이 노트가 따르는 본문에서는 완료로 읽히고, 다른 데서는 달리 읽힙니다. 어느 판독으로 읽어도 45절의 물음과 46절의 앎이 한 사람의 입에서 연달아 나온 사실은 남습니다.</p>
+<p>ⓒ 살린 뒤에 알리지 말라 하십니다. 여인은 "온 백성 앞에서" 알렸습니다(8:47). 소녀의 부모는 "이 일을 아무에게도 말하지 말라"는 명령을 받습니다(8:56). 한 날 안에서 두 지시가 반대로 갑니다. 이 노트는 두 지시를 나란히 둡니다.</p>
+<p>ⓓ 「죽지 않았다」와 「죽은 것을 알므로」가 함께 남습니다. 예수의 말은 한 절 전체가 이렇습니다 — "Μὴ κλαίετε, οὐ γὰρ ἀπέθανεν ἀλλὰ καθεύδει", 곧 "울지 말라. 죽지 않았고 잔다"(8:52). 금지 명령과 그 근거절이 한 절 안에 함께 있습니다. 그런데 서사는 곧 "그들이 그가 죽은 것을 알므로 비웃었다"고 적습니다(8:53). 소녀가 일어난 뒤에도 53절은 철회되지 않습니다. 「잔다」는 낱말은 누가복음에서 여기와 22장 46절, 두 자리에 쓰이고 뒤의 것은 잠든 제자들에게 붙습니다. 살아 있는 사람의 잠을 가리키던 말이 여기서는 시체 위에 얹힙니다. 두 진술은 한 단락에 함께 서 있고, 성경은 둘을 화해시키지 않았습니다.</p>
+<p>예수의 물음이 찾은 사람은 무리 뒤에서 옷의 끝단에 손을 댄 한 사람입니다(8:45). 이 노트가 따르는 본문에서 「손을 대다」는 44절부터 47절까지 네 번 되풀이되고, 다른 데서는 그 되풀이의 횟수가 달라집니다. 어느 판독으로 읽어도 여인이 한 일은 닿은 것뿐이고, 본문은 그 한 번을 「너의 믿음」이라 불렀습니다(8:48). 오늘 남은 힘이 그것뿐이라면 그것으로 됩니다.</p>
+<p>어구가 있는 판독으로 43절을 읽으면 열두 해와 빈 살림이 한 절에 함께 놓입니다. 고침이 온 뒤에도 그 셈은 43절 문장에 그대로 유지됩니다. 장부를 다루는 사람은 회복과 결산을 같은 칸에 넣지 않아야 합니다. 몸이 나은 사람의 빈 살림은 여전히 빈 살림이고, 그 항목은 교회의 셈에 그대로 계상되어야 합니다. 회복을 축하하는 자리에서 「이제 됐으니 지난 손해는 잊으라」고 말할 근거가 이 본문에는 없습니다.</p>
+<p>소녀가 일어난 뒤 예수는 "먹을 것을 주라"고 명하십니다(8:55). 그리고 부모에게는 알리지 말라 하십니다(8:56). 소문 대신 끼니가 먼저 챙겨졌습니다. 이번 주에 회복을 기도한 사람의 저녁 한 끼를 누가 차릴지, 가정에서 먼저 정해 보십시오.</p>
+<p>열두 해를 앓은 손과 열두 살에 멈춘 숨이 하루 안에서 만납니다. 한쪽은 옷단에 닿았고 한쪽은 손이 잡혔습니다. 죽음이 끝났다고 발음된 집에 먼저 도착해 있던 말은 구원이 끝났다는 말이었습니다. 비웃음은 철회되지 않은 채로 본문에 남았고, 소녀는 일어나 밥을 받았습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 18편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

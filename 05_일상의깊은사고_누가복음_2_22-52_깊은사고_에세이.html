@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두 팔에 안긴 구원</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 05편 &middot; 누가복음 2:22-52</span>
+      <h1>두 팔에 안긴 구원</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>부모가 아기를 데리고 예루살렘으로 올라갑니다(2:22). 율법을 말하는 어구가 이 단락에 다섯 번 나오는데, 그 어구의 형태는 매번 다릅니다. 그리고 다섯 다 문장의 주된 동사를 지지 않습니다 — 둘은 시간절에, 하나는 비교절에, 둘은 부정사에 붙습니다. 문장을 실제로 움직이는 동사는 `ἀνήγαγον`(아네가곤, 「그들이 데리고 올라갔다」, 2:22) 하나이고, 그 이동의 끝을 `παραστῆσαι τῷ κυρίῳ`(파라스테사이 토 퀴리오, 「주께 세워 드리려고」, 2:22)가 지정합니다. 그 문장에서 아기는 주어가 아니라 목적어로 섭니다. 규정은 빠짐없이 이행되어 2:39에서 「모든 것」으로 묶입니다. 그런데 본문은 규정이 가리킨 끝에서 절차를 수행한 사람들의 성실을 칭찬하지 않습니다. 시므온의 두 팔에 한 몸이 안깁니다(2:28). 그는 그 몸을 받아 안고 하나님께 직접 말을 걸며 `τὸ σωτήριόν σου`(토 소테리온 수, 「당신의 구원」, 2:30)라 부릅니다. 성령은 그가 죽음을 보기 전에 `τὸν χριστὸν κυρίου`(톤 크리스톤 퀴리우, 「주의 그리스도」, 2:26)를 보리라고 그에게 알려 준 바 있습니다. 이 단락은 그리스도를 멀리서 암시하지 않고 2:26의 기름부음 칭호와 2:30의 「당신의 구원」으로 직접 지시합니다.</p>
+<p>이 찬가는 넓은 도식을 확보하지 않고 한 낱말의 어형 하나를 확보합니다. 그 하나로 충분합니다. 하나님이 예비하신 구원을 시므온은 개념으로 받지 않고 `εἰς τὰς ἀγκάλας`(에이스 타스 앙칼라스, 「두 팔에」, 2:28)로 받습니다. 눈이 보고 팔이 드는 무게가 거기 있었습니다.</p>
+<p>구원이 시므온의 팔 안에서 이름을 얻었고, 그 이름은 이미 이사야 안에 있었습니다.</p>
+<p>하나님이 이 단락의 주어가 되는 순간에 설명문이 들어서지 않습니다. 한 사람이 아기를 안고 직접 말을 겁니다. 그 발화는 `ὅτι εἶδον οἱ ὀφθαλμοί μου`(「내 눈이 보았기에」, 2:30)로 근거를 세웁니다. 그분이 예비하셨고, 사람의 눈이 보았고, 그 눈은 팔 안의 무게를 보았습니다.</p>
+<p>하나님이 주어로 서는 두 문장은 설명문 밖에 있습니다 — 한 사람이 아기를 안고 건네는 말 안에 있습니다.</p>
+<p>축복을 받은 부모가 사흘 동안 아이를 잃고 아파하며 찾았습니다 — `ἰδοὺ ὁ πατήρ σου καὶ ἐγὼ ὀδυνώμενοι ἐζητοῦμέν σε`(2:48, 「보라, 네 아버지와 내가 아파하며 너를 찾고 있었다」). 분사 `ὀδυνώμενοι`(오뒤노메노이)는 복수여서 `ὁ πατήρ σου καὶ ἐγώ` 둘을 함께 받습니다. 어머니 혼자 아파한 것으로 읽을 수 없습니다. 같은 낱말을 누가는 뒤에서 불꽃 가운데 괴로워하는 사람에게도 씁니다(16:24-25) — 어형이 같고 지시가 다르며, 두 용례를 잇는 것은 이 노트의 배열이고 본문의 연결이 아닙니다. 그리스도의 가족이 받은 예고를 두 문장이 담습니다 — 2:34의 `κεῖται εἰς πτῶσιν`과 2:35의 목적절. 축복과 칼 사이에 설명이 놓이지 않습니다.</p>
+<p>넘어짐과 일어남을 한 구절에 함께 지정한 그 문장이 어머니의 영혼을 지나갈 칼도 같이 말합니다.</p>
+<p>첫째, 넘어짐과 일어남이 한 구절 안에 함께 있습니다. "이는 이스라엘 중 많은 사람을 넘어지게 하고 일어나게 하려고"(2:34). 본문은 두 방향을 서로 다른 집단에 나눠 배정하지 않고 `πολλῶν`(폴론, 「많은 이의」) 하나에 걸어 둡니다. 누가 넘어지고 누가 일어나는지를 이 구절이 구분해 주지 않습니다.</p>
+<p>둘째, 감사와 칼이 같은 장면에 나란히 있습니다. "마침 이때에 나아와서 하나님께 감사하고"(2:38)와 "또 칼이 네 영혼을 뚫고 지나가리라"(2:35)를 같은 성전 장면이 담습니다. 한쪽에서는 감사가 올라가고, 같은 성전에서 어머니는 방금 칼 이야기를 들었습니다. 본문은 둘을 조정하는 문장을 넣지 않습니다.</p>
+<p>셋째, 깨닫지 못함과 순종이 잇달아 옵니다. "그 부모가 그가 하신 말씀을 깨닫지 못하더라"(2:50) 다음에 "예수께서 함께 내려가사 그들에게 순종하여 받드시며"(2:51)가 이어집니다. `οὐ συνῆκαν`(우 쉬네칸, 「그들이 깨닫지 못했다」, 2:50)은 지워지지 않고, `ἦν ὑποτασσόμενος`(2:51)는 그 못 깨달음 뒤에 놓입니다. 더구나 2:49의 `ἐν τοῖς τοῦ πατρός μου`(엔 토이스 투 파트로스 무)가 무엇을 가리키는지 문법이 어느 쪽으로도 닫지 않습니다 — 「집」으로 보충하면 수가 걸리고, 「일들」로 보충하면 전치사를 「~에 관하여」로 읽어야 합니다. 그 발화 형태도 의문문 둘입니다 — `Τί ὅτι ἐζητεῖτέ με;`(「어찌하여 나를 찾으셨습니까」)와 `οὐκ ᾔδειτε ὅτι … δεῖ εἶναί με;`(「내가 … 있어야 할 줄을 알지 못하셨습니까」, 2:49). 부모는 그 말을 깨닫지 못한 채 2:51로 갑니다.</p>
+<p>이 셋 가운데 어느 것도 본문이 봉합하지 않습니다. 정경은 둘을 잇달아 배치했고, 사이에 해설을 넣지 않았습니다.</p>
+<p>안나는 남편과 `ἔτη ἑπτά`(일곱 해, 2:36)를 살고 `ἕως ἐτῶν ὀγδοήκοντα τεσσάρων`(여든넷 해에 이르기까지, 2:37) 성전을 떠나지 않았습니다. 그에게 붙은 칭호는 `προφῆτις`(여선지자, 2:36)와 `χήρα`(과부, 2:37) 둘입니다. 그가 2:38에서 말을 건넨 사람들도 성취를 이미 본 이들이 아니었습니다 — `τοῖς προσδεχομένοις λύτρωσιν Ἰερουσαλήμ`(2:38), 예루살렘의 구속됨을 아직 기다리는 중인 사람들입니다. 오늘 기다림이 응답으로 바뀌지 않은 분이 그 명단의 맨 앞에 있습니다.</p>
+<p>누가는 이 단락에서 `κατ’ ἔτος`(해마다, 2:41)와 `ἡμέρας ὁδόν`(하룻길, 2:44)과 `ἡμέρας τρεῖς`(사흘, 2:46)를 셌습니다. 세무와 회계도 해마다 돌아오는 주기와 날수를 다룹니다. 이번 신고 기간의 한 줄을 정확히 맞추는 일이 신앙 바깥의 잡무가 아닙니다 — 본문도 그 종류의 숫자만 셌습니다.</p>
+<p>부모는 2:24에서 `ζεῦγος τρυγόνων ἢ δύο νοσσοὺς περιστερῶν`(산비둘기 한 쌍이나 집비둘기 새끼 둘)을 드렸습니다. 제물을 말하는 낱말은 `θυσίαν`(2:24) 하나뿐이고, 번제와 속죄제의 구분이 없습니다. 이번 주에 몸으로 옮긴 거리와 실제로 내놓은 물건을 한 줄로 정리해 보십시오. 그 줄이 짧아도 2:22의 `παραστῆσαι`(「세워 드리려고」)는 여전히 그 아기를 향합니다.</p>
+<p>성전에서 두 손이 움직입니다. 부모의 손은 새 두 마리를 내밀고(2:24), 시므온의 손은 아기를 받아 두 팔에 안습니다(2:28). 본문은 그 두 손 사이에 해설을 끼워 넣지 않습니다. 그리고 같은 장면에서 어머니는 칼 이야기를 듣습니다(2:35). 이 단락을 다 읽고 나서도 우리는 그 칼이 언제 지나가는지 알지 못합니다. 본문이 정해 주지 않았기 때문입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 05편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

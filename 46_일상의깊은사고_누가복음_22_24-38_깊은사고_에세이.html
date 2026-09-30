@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>기록된 말씀이 이루어지는 밤</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 46편 &middot; 누가복음 22:24-38</span>
+      <h1>기록된 말씀이 이루어지는 밤</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>예수님은 제자들이 지갑도 배낭도 없이 보냄받았던 때를 기억하게 하십니다. 그리고 체포를 앞둔 밤, 기록된 말씀이 자신에게서 이루어져야 한다고 말씀하십니다.</p>
+<p>성찬을 나눈 바로 그 자리에서 다툼이 일어납니다. 누가는 그것을 필로네이키아(φιλονεικία)라고 적었고, 이 낱말은 신약에서 여기 한 번만 나옵니다. 예수께서는 먼저 바깥 질서를 그대로 세워 보이십니다. "이방인의 왕들은 그들을 주관하고, 권세를 부리는 자들은 은인이라 불립니다."(22:25) 그리고 곧바로 끊으십니다. "그러나 너희는 그렇지 않습니다."(22:26) 여기서 「섬기는 자」는 신분을 가리키는 이름이 아니라 지금 섬기고 있는 동작을 가리키는 말로 세 번 나오고, 마지막 한 번은 예수께서 자기를 두고 하신 말씀입니다.</p>
+<p>다툼 다음 자리에 수여가 옵니다(22:29). 그 뒤에 시몬을 부르시는 말씀과 부인 예고가 오고, 마지막으로 22:35의 회고가 22:36의 명령과 정면으로 부딪치며 22:37이 그 부딪침의 근거를 댑니다. 이 단락의 중심은 여기 있습니다. 명령이 바뀐 근거는 사람의 형편이 아니라, 기록된 것이 가서 닿아야 할 종점이 정해져 있다는 사실입니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 나라는 다투어 얻는 것이 아니라 위에서 정해져 내려온 것입니다. 간구가 드려졌다는 사실이 흔들림이 없었다는 뜻은 아닙니다. 명령이 바뀐 근거는 사람의 형편이 아니라 기록된 것이 닿을 종점입니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>22:32는 순서를 이렇게 놓습니다. 돌아선 다음, 그다음에 형제들을 굳게 하십시오. 지금 누구를 붙들어 줄 힘이 전혀 없다면, 본문이 주는 것은 요구가 아니라 순서입니다. 돌아서기 전에 그 위임이 취소된다는 진술은 본문 어디에도 없습니다. 오늘은 그 순서의 앞자리에 그대로 서 있으십시오.</p>
+<p>다툼은 먼 데서 일어나지 않았습니다. 함께 먹고 마신 자리에서 일어났습니다. 갈등을 진단할 때 우리는 외부 요인을 먼저 찾지만, 본문은 가장 가까운 자리를 가리킵니다. 회의석에서 결론보다 순위가 먼저 계산되는 순간을 한 번 붙잡아 멈춰 세우십시오.</p>
+<p>세무와 회계의 자리에서 자산 처분은 늘 숫자로 먼저 옵니다. 그러나 22:36은 팔아야 할 것을 「자기 겉옷」이라고 지정합니다. 장부상 같은 금액이라도 여벌에서 나가는 돈과 하나뿐인 것에서 나가는 돈은 같지 않습니다. 숫자를 말하기 전에 그것이 어느 쪽인지 먼저 물으십시오.</p>
+<p>이 본문은 처음부터 끝까지 물건 이름을 늘어놓습니다. 상과 밀과 전대와 배낭과 신과 겉옷과 검입니다. 신앙의 결단이 마음에서만 일어난다고 말하지 않습니다. 겉옷을 팔면 그날 밤 추위가 실제로 옵니다. 오늘 감당해야 할 순종에 몸의 대가가 붙어 있다면, 그것을 영적이지 않다고 여기지 마십시오.</p>
+<p>성찬의 자리에서 제자들은 누가 더 큰 사람인가를 다투었습니다. 예수님은 세상의 왕들이 권세를 부리고 은인이라 불리는 방식을 말씀하신 뒤, "너희는 그렇지 않을지니"라고 하십니다. 큰 사람은 섬기는 사람이 되어야 한다는 말씀은 제자들을 낮추기 위한 모욕이 아니라, 예수님 자신이 그들 가운데 섬기는 이로 계신다는 초대입니다. 주님이 보여 주신 리더십은 앞자리를 차지하는 힘이 아니라 다른 이를 살리는 책임입니다.</p>
+<p>그러나 주님은 제자들의 연약함을 모르지 않으십니다. 시몬이 시험을 받을 것을 말씀하시면서도 그를 위해 기도하셨고, 돌이킨 뒤 형제를 굳게 하라고 부탁하십니다. 실패를 예고하시는 말씀 속에도 회복의 길이 들어 있습니다. 베드로는 장담하지만 곧 주님을 부인하게 됩니다. 그럼에도 주님은 그의 실패가 끝이라고 선언하지 않으시고, 다시 형제들을 돌볼 사람으로 부르십니다.</p>
+<p>지갑과 배낭, 칼에 관한 마지막 말씀은 편안했던 때와 위험이 가까운 때가 같지 않음을 보여 줍니다. 제자들은 자기 힘으로 위기를 통제하려 하지만, 예수님은 기록된 말씀이 자신에게 이루어져야 한다고 말씀하십니다. 우리의 준비도 불안을 이기기 위한 무기가 아니라, 주님을 신뢰하며 맡겨진 현실을 정직하게 감당하는 태도가 되어야 합니다. 주님, 비교와 다툼에서 저를 건져 주시고, 넘어질 때에도 다시 돌아와 다른 이를 세우는 섬김의 사람이 되게 하소서.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 46편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

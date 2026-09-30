@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>눈에 보이지 않아도 가까이 오는 나라</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 37편 &middot; 누가복음 17:20-37</span>
+      <h1>눈에 보이지 않아도 가까이 오는 나라</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>하나님의 나라는 눈에 띄는 표지처럼 붙잡히지 않는다고 주님은 말씀하십니다. 그럼에도 인자의 날을 기다리는 사람의 삶에는 가벼울 수 없는 긴장과 충실함이 남습니다.</p>
+<p>바리새인은 시점을 물었습니다. 언제 하나님의 나라가 오느냐는 질문입니다. 예수님의 대답은 시점을 주지 않습니다. 첫 응답의 주절 동사는 셋인데 그중 둘이 부정됩니다. 「오지 않는다」와 「말하지 않을 것이다」입니다. 남은 하나가 긍정 계사입니다. 부정 둘 뒤에 긍정 하나가 놓이는 구조입니다. 그런데 둘째 응답에서 주어가 바뀝니다. 하나님의 나라가 주격 자리에서 물러나고 한 사람이 그 자리에 들어섭니다. 이 단락은 나라의 달력을 주지 않고 한 인물을 줍니다. 오늘 묵상은 그 교체를 따라갑니다.</p>
+<p>「하나님의 나라」는 이 단락에서 주격으로 세 번 나옵니다. 세 번 모두 20절과 21절 안에 있습니다. 22절부터는 한 번도 나오지 않습니다. 22절 이후 주격 단수 자리를 「인자」가 받습니다. 24절과 30절이 그 자리입니다. 동사도 함께 교체됩니다. 20절과 21절은 현재형 「온다」와 「있다」를 썼습니다. 24절은 미래형 「있을 것이다」를 쓰고 30절은 「나타난다」를 씁니다. 그리고 그 사이에 25절이 끼어듭니다. 「먼저 그가 많은 고난을 받고 버림받아야 한다」입니다. 나라의 시점을 묻는 질문에 한 사람의 날들이 대답으로 옵니다. 그 날들 앞에는 고난이 먼저 놓입니다.</p>
+<p>20절의 「관찰」은 파라테레시스(παρατήρησις)입니다. 신약 전체에 한 번만 나오는 낱말입니다. 이 단락의 유일한 hapax입니다. 지켜보며 표지를 모으는 행위를 가리킵니다. 25절은 프로톤 데이(πρῶτον δεῖ)로 시작합니다. 「먼저 …해야 한다」는 비인칭 구문입니다. 이 구문이 두 부정사를 지배합니다. 파테인(παθεῖν)과 아포도키마스테나이(ἀποδοκιμασθῆναι)입니다. 뒤의 부정사는 형태로 수동이 확정됩니다. 배척하는 주체도 명시됩니다. 「이 세대에게서」입니다. 그리고 22절과 26절은 그 날들을 복수 속격으로 한 인물에게 묶습니다. 「인자의 날들」입니다. 이 단락에 단수 속격 연결은 한 토큰도 없습니다. 「먼저 해야 한다」가 「그의 날들」과 결합할 때, 고난이 그의 날들 앞자리를 차지합니다.</p>
+<p>20절의 바리새인과 25절의 「이 세대」가 같은 대상인지는 어형이 말해 주지 않습니다.</p>
+<p>표지를 모으는 길과 고난을 통과하는 길은 다릅니다. 본문은 앞의 길을 부정하고 뒤의 길을 먼저 둡니다. 그리스도의 날들은 그의 고난 뒤에 옵니다. 순서가 뒤바뀌지 않습니다. 우리가 쥐고 싶은 것은 표지입니다. 본문이 먼저 내놓는 것은 한 사람의 고난입니다. 그래서 이 단락은 달력이 아니라 인물을 신뢰하라고 요구합니다. ⛔ 여기서 징조의 목록을 세우면 본문이 닫은 문을 다시 여는 셈입니다.</p>
+<p>30절은 관계절 하나로 닫힙니다. 「인자가 나타나는 그 날에」입니다. 주어는 「인자」이고 동사는 3인칭 단수 현재입니다. 24절에는 번개의 비유가 있습니다. 번개가 번쩍이고 비춘다는 이중 표현입니다. 비유의 귀착점은 사람입니다. 「인자가 그의 날에 그러할 것이다」입니다. 여기서 「날」에는 속격 연결이 붙지 않습니다. 대명사 하나가 붙습니다. 「그의」입니다.</p>
+<p>30절의 동사는 아포칼뤼프테타이(ἀποκαλύπτεται)입니다. 계시를 뜻하는 동사입니다. 태는 확정할 수 없습니다. 현재 시제에서 중간과 수동은 형태가 구별되지 않습니다. 그래서 이 묵상은 한 가지만 말합니다. 이 동사의 문법 주어 자리를 인자가 채웁니다. 24절의 두 동사는 아스트랍토(ἀστράπτω)와 람포(λάμπω)입니다. 뜻이 겹치는 두 낱말을 나란히 둡니다. 마태복음 24:27은 겹침 없는 다른 두 동사를 씁니다. 아스트랍토는 누가만 쓰는 표제어입니다. 마태는 이 날을 파루시아(παρουσία)로 부르지만 누가는 「나타난다」는 동사를 씁니다. 24절의 날은 엔 테 헤메라 아우투(ἐν τῇ ἡμέρᾳ αὐτοῦ)입니다. 「그의 날에」입니다. 대명사 하나가 종말의 날을 한 사람의 것으로 표시합니다.</p>
+<p>구약 어구와의 대조는 판정하지 않습니다. 이 전치사구를 두지 않는 판독도 있고, 그 판독에서는 미래 술어에 시간 한정이 붙지 않습니다.</p>
+<p>나라가 언제 오느냐는 질문이 「그의 날」이라는 표현으로 되돌아옵니다. 날의 임자는 표시되었고 날짜는 표시되지 않았습니다. 본문이 확정한 것은 시점이 아니라 소유입니다. 한 사람이 계시 동사의 주어 자리에 있고, 그 날이 그의 것으로 표시됩니다. 표지를 세는 대신 그 이름을 부르는 편이 본문의 방향입니다. 23절이 같은 방향을 반대편에서 지킵니다. 「가지도 말고 따르지도 말라」는 두 금지입니다. 마태와 마가는 같은 자리에서 「믿지 말라」를 씁니다. 그리고 두 복음서에는 그 자리에 「그리스도」라는 낱말이 있는데 누가에는 없습니다. 누가는 믿음을 단속하지 않고 발걸음을 단속합니다.</p>
+<p>26절부터 30절까지 두 시대가 예로 나옵니다. 노아의 날들과 롯의 날들입니다. 27절은 네 동사로 그 시대를 서술합니다. 먹고 마시고 장가들고 시집갔습니다. 28절은 여섯 동사를 더합니다. 먹고 마시고 사고팔고 심고 지었습니다. 열 동사 모두 미완료형입니다. 계속되는 일상을 그리는 형태입니다. 이 열 동사에는 도덕적 수식어가 하나도 붙지 않습니다. 두 시대를 닫는 문장은 같습니다. 「모두 멸하였다」입니다. 27절은 홍수가 주어이고 29절은 하늘에서 내린 불과 유황입니다. 그리고 유추의 둘째 항만 미래형을 받습니다. 「인자의 날들에도 그러할 것이다」입니다.</p>
+<p>「모두 멸하였다」는 아폴레센 판타스(ἀπώλεσεν πάντας)입니다. 마태복음 24:39는 같은 자리에서 「데려갔다」를 씁니다. 낱말이 다릅니다. 29절의 「유황」은 테이온(θεῖον)입니다. 신약에 일곱 번 나오지만 두 책에만 있습니다. 누가 한 번과 요한계시록 여섯 번이고 마태와 마가에는 없습니다. 롯 단락 자체가 마태와 마가에 병행이 없습니다. 31절의 세간은 스케우에(σκεύη)입니다. 마태와 마가는 같은 자리에 겉옷을 둡니다. 34절의 침상 클리네(κλίνη)는 누가만 씁니다. 35절에는 맷돌질하는 두 여자 알레투사이(ἀλήθουσαι)가 있습니다. 31절에는 옥상 도마(δῶμα)가 있고 37절에는 몸 소마(σῶμα)가 있습니다. 이 목록이 본문의 물질 층위입니다. 두 시대는 「모두 멸하였다」로 닫히고, 에스타이(ἔσται)라는 미래형을 받는 항은 인자의 날들뿐입니다. 유추의 귀착항이 한 사람의 날들입니다.</p>
+<p>본문은 일상을 죄로 규정하지 않습니다. 먹는 일과 사는 일에 평가어를 붙이지 않습니다. 문제는 일상의 내용이 아니라 그 일상이 누구의 날들 안에 놓였는지입니다. 세간과 침상과 맷돌과 옥상은 그대로 있습니다. 31절은 그 세간을 가지러 내려가지 말라고만 말합니다. 재화의 소재를 확정해 세금을 계산하는 실무가 있습니다. 37절의 문답도 시점이 아니라 소재를 확정합니다. 다만 확정된 소재는 몸이 놓인 자리이고, 거기에는 장부에 올릴 항목이 하나도 없습니다. ⛔ 롯의 아내의 속마음이나 노아 시대 사람들의 무지는 본문에 어형이 없어 적지 않습니다. 32절은 「기억하라」는 명령과 목적어까지만 줍니다.</p>
+<p>넷을 적고 넷을 열어 둡니다.</p>
+<p>첫째, 25절은 고난의 목적을 말하지 않습니다. 「먼저 많은 고난을 받고 버림받아야 한다」가 전부입니다. 무엇을 위한 고난인지 이 단락의 어형은 밝히지 않습니다. 우리가 아는 대답을 여기에 끌어오면 본문이 하지 않은 말을 하게 됩니다. 그래서 이 자리는 「먼저」라는 순서 표시에 머무릅니다.</p>
+<p>둘째, 22절은 갈망과 부정을 한 문장에 둡니다. 「너희가 사모하나 보지 못할 것이다」입니다. 두 동사 모두 2인칭 복수 미래입니다. 예수님은 「보게 될 것이다」로 문장을 고치지 않습니다. 갈망을 잘못이라고 진단하지도 않습니다. 갈망은 그대로 두고 충족의 시점만 부정됩니다.</p>
+<p>셋째, 34절과 35절이 두 짝을 놓습니다. 한 침상의 둘과 맷돌질하는 둘입니다. 한 사람은 데려가고 한 사람은 버려집니다. 네 동사 모두 미래 수동입니다. 마태복음 24:40-41은 같은 자리에 현재형을 씁니다. 그런데 무엇을 기준으로 갈리는지는 적혀 있지 않습니다. 두 사람은 같은 침상과 같은 맷돌에 있습니다. 본문은 그 기준을 끝내 쓰지 않습니다. ★ 이 편집본에는 36절이 없습니다. 35절에서 37절로 이어지고 「둘 중 하나」 짝은 둘입니다.</p>
+<p>넷째, 37절의 질문에 대답이 격언으로 돌아옵니다. 제자들은 「주여, 어디입니까」라고 묻습니다. 대답은 「몸이 있는 곳에 독수리가 모인다」입니다. 앞 절에는 동사가 없고 뒤 절의 동사 하나가 미래 수동입니다. 누가는 여기서 몸을 뜻하는 소마(σῶμα)를 씁니다. 마태복음 24:28은 시체를 뜻하는 다른 낱말에 다른 동사를 붙입니다. 그 낱말은 누가복음에 한 번도 나오지 않습니다. 두 본문이 공유하는 것은 독수리뿐입니다. 질문은 장소를 물었고 대답은 그림 하나를 줍니다. 그 그림은 장소를 알려 주지 않습니다.</p>
+<p>이 단락은 두 번 막고 한 번 엽니다. 관찰로 오지 않는다고 막고, 여기라 저기라 말하지 말라고 막습니다. 그리고 한 사람의 날들을 엽니다. 막힌 두 문 앞에서 우리는 흔히 달력을 만듭니다. 본문은 달력 대신 순서 하나를 줍니다. 고난이 먼저이고 나타남이 나중입니다. 그 사이에 우리의 일상이 있습니다. 먹고 마시고 사고팔고 심고 짓는 일이 계속됩니다. 본문은 그 일을 멈추라고 하지 않습니다. 다만 그 일이 누구의 날들 안에 있는지를 묻습니다.</p>
+<p>주님, 표지를 세던 손을 내려놓게 하십시오. 먼저 고난을 지나신 분을 신뢰하게 하십시오. 사모하나 보지 못하는 날에도 그 이름을 부르게 하십시오. 오늘의 일상을 주님의 날들 안에 두게 하십시오. 예수님의 이름으로 기도합니다. 아멘.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 37편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

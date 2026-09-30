@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오늘 이루어진 말씀</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 09편 &middot; 누가복음 4:14-44</span>
+      <h1>오늘 이루어진 말씀</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>예수님은 성령의 권능으로 갈릴리로 돌아오시고, 회당에서 가르치시며 칭송을 받으십니다(4:14-15). 자라신 나사렛에 이르러 안식일에 회당에 들어가 이사야의 글을 받으시고, 두루마리를 펴서 읽으십니다(4:17). 읽기를 마치자 책을 덮어 맡은 자에게 돌려주시고 앉으시며, 회당에 있던 사람들의 눈이 그분에게 멈춥니다(4:20). 그 정지 위에서 그분은 말하기를 시작하시고, 시작된 그 발화 안에 동사가 하나 놓입니다 — "이 글이 오늘 너희 귀에 이루어졌느니라"(4:21). 그런데 성취를 들은 사람들이 그 성취를 환영하지 않습니다. 4:21과 4:28 사이에 여섯 절(4:22-27)이 놓이고, 두 마디의 담화가 끝나자 회당은 분노로 채워지며 사람들은 그분을 동네 밖으로 쫓아내 산 낭떠러지까지 끌고 갑니다(4:28-29). 가버나움에서는 더러운 귀신이 그분의 정체를 정확히 부르지만 그 입은 막히고(4:34-35), 해 질 무렵에는 온갖 병자가 몰려와 그분이 일일이 그 위에 손을 얹으십니다(4:40). 이 단위의 끝에서 이야기하는 이가 그분을 「그리스도」라 적습니다(4:41). 오늘 이루어진 그 글의 내용은 조항 목록 아닌 한 분, 기름 부음 받으신 분이십니다.</p>
+<p>선포 대상 넷을 향한 권한은 선포자의 열의가 아니라 「그가 나에게 기름을 부으셨다」에 걸려 있습니다. 인용문 안에서 1인칭으로 그 말을 한 「나」가 지금 회당 의자에 앉아 계시고, 같은 단위의 끝에서 그분의 이름이 같은 어근으로 적힙니다. 오늘 이루어졌다는 그 글의 내용은 조항 목록이 아니라 그 한 분이십니다. 한 가지 조건을 적어 둡니다. 이 노트가 따르는 본문에서는 4:18의 인용이 이사야 61:1의 「고치다」에 해당하는 말을 지나갑니다. 다른 데서는 그 말을 읽어서 인용의 길이 자체가 달라집니다. 목록의 항목 수를 논증의 기둥으로 삼지 않습니다.</p>
+<p>성취의 내용은 목록 아닌 한 분, 기름 부음 받으신 분이십니다.</p>
+<p>인용 안에 있는 말만으로는 이야기가 그것을 자기 주장으로 내놓았다고 하기 어렵습니다. 4:41이 그 자리를 메웁니다. 4:21의 완료형은 낭독자의 자기 주장에 머물지 않고 이야기의 진술로 받아집니다. 다만 이 단위는 직무 명칭으로 성취를 명시하지 않습니다. 4:24의 「선지자가 고향에서는 환영을 받는 자가 없느니라」는 3인칭 일반 명제이고, 그 명제 안에 자기를 가리키는 1인칭이 없습니다. 이것을 그분 자신에게 적용하는 읽기는 4:23의 「네 고향」과 4:24의 「그의 고향」이 같은 낱말이라는 데 기댄 추론입니다. 4:18의 기름 부음도 인용 성구 안에 있습니다. 이 단위가 세 직무를 이름으로 못 박았다고 적지 않고, 미달을 미달로 둡니다.</p>
+<p>그분의 이름은 그분이 읽은 성구 안에서만 주장되지 않고, 이야기하는 이의 문장에서 확인됩니다.</p>
+<p>정체에 관한 옳은 말도 아무 입에서나 나오지 않습니다. 4:21의 선언은 그분의 입에서만 열립니다. 그리고 던져진 그 몸은 그분의 명령 아래에서 상하지 않고 남습니다. 입을 막는 그 명령이 몸까지 닿아 있었습니다. 이 논증은 4:18과 4:41의 어근 왕복에 기대지 않고 4:34-35와 4:41의 호칭과 봉쇄만으로 섭니다.</p>
+<p>그분만이 자기 정체를 여시고, 그 명령은 입에서 멈추지 않고 몸에 닿습니다.</p>
+<p>세 가닥이 열려 있습니다. 봉합하지 않고 그대로 적습니다.</p>
+<p>ⓐ 오늘과 낭떠러지 — "이 글이 오늘 너희 귀에 이루어졌느니라"(4:21)와 "회당에 있는 자들이 이 말씀을 듣고 다 크게 화가 나서 일어나 동네 밖으로 쫓아내어 그 동네가 건설된 산 낭떠러지까지 끌고 가서 밀쳐 떨어뜨리고자 하되"(4:28-29)가 같은 회당 안에서 일어납니다. 4:20과 4:28이 한 전치사구로 장소를 적습니다. 성취의 선포가 환영을 만들어 내지 않았습니다. 원어는 그 지점을 「산의 눈썹」이라 부르고, 목적은 밀쳐 떨어뜨리는 것이었습니다. 이 단위는 그 이유를 설명하지 않고 두 장면을 잇대어 둡니다.</p>
+<p>ⓑ 선포 목록과 침묵 명령 — 4:18은 전파를 명령받은 목록을 적습니다 — 가난한 자, 포로 된 자, 눈먼 자, 눌려 부서진 자. 그런데 4:41에서 정체를 정확히 말하는 입에는 "그들이 말함을 허락하지 아니하시니"가 내려집니다. 전파를 위해 보내심을 받았다고 인용문이 적은 그분이 정체를 아는 입을 막으십니다. 본문은 두 진술을 조정하지 않습니다.</p>
+<p>ⓒ 붙잡는 손과 보내심 — "무리가 찾다가 만나서 자기들에게서 떠나시지 못하게 만류하려 하매"(4:42)와 "내가 다른 동네들에서도 하나님의 나라 복음을 전하여야 하리니 나는 이 일을 위해 보내심을 받았노라"(4:43)가 붙어 있습니다. 4:42는 붙잡는 동작과 「떠나지 못하게」라는 목적까지만 적습니다. 그들이 왜 붙잡았는지를 본문이 적지 않았습니다. 여기서도 적지 않습니다. 붙잡힌 손을 떼고 그분은 다른 동네로 가십니다.</p>
+<p>시몬의 장모는 이 단위에서 한마디도 하지 않습니다. 본문은 그녀가 중한 열병을 앓고 있었다고 적고, 그분께 구한 사람도 그녀가 아니라 주위 사람들이었다고 적습니다(4:38). 그분이 열병을 꾸짖으시자 열병이 그녀를 떠났고, 몸이 풀려난 다음에 비로소 일어나 수종듭니다(4:39). 4:39의 「떠나고」와 4:18의 「자유」는 어근이 겹치지만 서로 다른 낱말입니다. 한국어로 둘을 한 낱말로 옮겨 없는 연결을 만들지 않습니다. 오늘 아무것도 할 수 없는 상태라면, 섬김을 먼저 요구하지 않는 이 순서를 그대로 두십시오.</p>
+<p>4:22의 놀람과 4:28의 분노가 한 회당 안에서 일어납니다. 4:19의 「주의 은혜의 해」에 쓰인 낱말과 4:24의 「환영을 받는」이 같은 낱말이고, 다섯 절 뒤에 그 낱말이 부정어와 함께 다시 섭니다. 누가복음에서 이 낱말은 이 두 절에만 나옵니다. 성도의 환영을 성취의 증거로 삼지 말고, 분노를 성취의 반증으로도 삼지 마십시오. 이번 주에 받은 반응 한 건을 적어 두고, 그 반응으로 본문의 진위를 판단하지 마십시오.</p>
+<p>4:18에서 「자유」로 옮겨진 낱말이 닿는 범위는 석방과 죄 용서까지입니다. 이 단위는 그 낱말을 두 인용 안에서만 씁니다. 대상은 사람으로 적혀 있습니다 — 포로 된 자에게, 눈먼 자에게. 책상에서 감면을 결정하는 단계와 그 돈이 실제로 그 사람 손에 남는 단계는 다릅니다. 이번 주에 처리한 한 건을 끝까지 따라가, 서류가 아니라 사람에게 도달했는지 확인하십시오.</p>
+<p>두루마리는 덮여 맡은 자의 손으로 돌아갔고, 그분의 손은 비었습니다. 비운 손으로 앉아 말하기를 시작하신 그 입에서 「오늘」이 나왔습니다. 그 회당이 그 입을 산 낭떠러지까지 끌고 갔고, 그 손이 해 질 무렵 병자들 위에 하나하나 얹혔습니다. 이 단위는 그 둘을 화해시키지 않고 나란히 둡니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 09편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

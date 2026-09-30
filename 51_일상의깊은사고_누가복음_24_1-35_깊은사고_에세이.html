@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>떡을 떼실 때 알려진 분</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 51편 &middot; 누가복음 24:1-35</span>
+      <h1>떡을 떼실 때 알려진 분</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>엠마오로 걷던 두 사람은 자신들이 무엇을 잃었는지 이야기하고 있었습니다. 그들은 알아보지 못한 채 예수님과 동행했고, 떡을 떼시는 손길에서 비로소 그분을 알게 됩니다.</p>
+<p>안식 후 첫날 새벽에 여자들이 준비한 향품을 가지고 무덤으로 갑니다(24:1). 돌은 이미 옮겨져 있었고, 무덤에서 만난 두 남자가 그들에게 묻습니다. "어찌하여 살아 있는 자를 죽은 자 가운데서 찾느냐"(24:5). 여자들이 이 소식을 전하지만 사도들은 그 말을 ὡσεὶ λῆρος(호세이 레로스 · 허탄한 말처럼) 여기고 ἠπίστουν(에피스투운 · 계속 믿지 않았다)이었습니다(24:11). 같은 날 두 사람이 예루살렘에서 육십 스타디온 떨어진 마을로 걸어가고, 예수께서 그들과 함께 걸으시는데 그들의 눈은 가리어져 있었습니다(24:16). 그들의 얼굴은 σκυθρωποί(스퀴트로포이 · 슬픈 얼굴)였고(24:17), 그들의 말은 ἠλπίζομεν(엘피조멘 · 우리는 바라고 있었다)이었으며(24:21), 여자들의 소식은 그들을 ἐξέστησαν(엑세스테산 · 놀라게 했다)고 적힙니다(24:22). 예수께서 그들을 부르신 첫 호칭은 위로가 아니라 ὦ ἀνόητοι καὶ βραδεῖς τῇ καρδίᾳ(24:25 · 미련하고 마음이 둔한 자들아)라는 호격이었습니다. 이 단락에는 하나님이 주어로 서는 절이 하나도 없습니다. 하나님을 가리키는 낱말은 24:19에 한 번 나오는데 그것도 "하나님 앞에서"라는 부사구 안의 소유 형태이고 「아버지」는 한 번도 나오지 않습니다. 그래서 이 단락의 신학 명제는 요구가 있었다는 것이고, 그 요구의 주체는 본문이 표시하지 않습니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 본문은 요구의 존재를 세우고 요구의 주체는 침묵한다. 보는 일의 주어가 우리 쪽에 놓인 절이 이 단락에 없다. 알려진 것은 그이고, 그 일이 일어난 자리는 손이 떡을 떼는 자리였다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>이 포인트의 수신자는 지금 그것을 할 수 없는 사람입니다. 눈이 밝아지는 일을 자기 힘으로 당길 수 없는 사람에게 본문이 주는 것은 방법이 아니라 자리입니다. 24:15는 그가 그들과 함께 걸으셨다고 적고, 그 동행은 눈이 아직 가리어져 있던 동안의 일입니다. 아직 보이지 않는 동안에 동행이 없었다고 적힌 절은 이 단락에 하나도 없습니다.</p>
+<p>24:11의 불신은 이 단락 안에서 훈계로 처리되지 않습니다. 성도의 "우리는 바랐노라"를 고쳐야 할 문장으로 받지 말고, 본문이 그 문장을 지운 적이 없다는 사실부터 알려 주십시오. 설교가 성도의 24:21을 지워 버리면 성도는 자기가 서 있는 자리를 잃습니다.</p>
+<p>장부를 다루는 자리에서 검증되는 것은 날짜와 금액과 수량입니다. 심중은 검증되지 않습니다. 본문도 같은 선을 긋습니다. 거리와 시각과 수량은 확인되고 심중은 확인되지 않습니다. 소명감이나 선의를 근거 칸에 적어 넣으려는 유혹이 올 때 이 선을 떠올리십시오.</p>
+<p>이 단락은 물질을 여덟 자리에서 셉니다. ἀρώματα(향품 · 24:1), λίθος(돌 · 24:2), ὀθόνια(세마포 · 24:12 · 사본 표시가 붙은 절이므로 조건을 달고 씁니다), μία τῶν σαββάτων(안식 후 첫날 · 24:1), στάδιοι ἑξήκοντα(육십 스타디온 · 24:13), ἑσπέρα(저녁 · 24:29), ἄρτος(떡 · 24:30), ἐν τῇ κλάσει τοῦ ἄρτου(떡을 떼실 때 · 24:35)입니다. 24:29의 강권 이유도 마음이 아니라 시각이었습니다. 오늘 하루를 이 여덟 칸처럼 적어 보십시오. 걸은 거리, 남은 시간, 손에 쥔 것. 확인되는 것만 확인된다고 적는 훈련이 여기서 시작됩니다.</p>
+<p>포인트를 넷으로 둔 사유: 첫 포인트를 「지금 할 수 없는 사람」 수신자로 단독으로 두면서 몸과 물질의 층위도 단독 포인트로 세우려면 셋으로는 겹칩니다. 그래서 넷으로 늘렸습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 51편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

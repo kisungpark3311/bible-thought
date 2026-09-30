@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>말씀으로 다시 그려지는 가족</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 16편 &middot; 누가복음 8:1-21</span>
+      <h1>말씀으로 다시 그려지는 가족</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>8장은 걸음으로 열립니다. 예수께서 성과 마을을 두루 다니며 하나님 나라를 선포하셨고, 열둘이 함께했습니다. 그 뒤로 악한 영과 병에서 고침 받은 여자들이 따릅니다 — 막달라 마리아에게서는 일곱 귀신이 나갔습니다. 3절은 그들을 이렇게 묶습니다 — "헤롯의 청지기 구사의 아내 요안나와 또 수산나와 다른 여러 여자가 함께 하여 자기들의 소유로 그들을 섬기더라." 왕국을 선포하는 걸음의 살림이 고침 받은 몸들의 주머니를 지나갔습니다. 이어 씨 뿌리는 비유가 놓이고, 해설의 첫 문장이 선언입니다 — "씨는 하나님의 말씀이요"(8:11). 길가와 바위와 가시떨기와 좋은 땅 넷은 그 말씀이 놓이는 네 형편이며, 세 형편의 어휘는 몸의 것입니다 — 밟힘, 물기가 말라 버림, 숨이 막힘. 단락의 끝에서 어머니와 동생들이 찾아왔으나 무리에 막혀 문 밖에 섭니다. 그리고 두 번째 선언이 내립니다 — "내 어머니와 내 동생들은 곧 하나님의 말씀을 듣고 행하는 이 사람들이라"(8:21). 한 단락이 「하나님의 말씀」을 두 번 선언 문장에 올리고, 뒤엣것이 언약의 집안을 다시 긋습니다.</p>
+<p>4:39에서 시몬의 장모가 일어나 그들에게 수종들었고, 그 어형이 8:3에서 주어의 수만 늘어 다시 놓입니다. 열병에서 일어난 한 사람이 하던 일이 귀신과 질병에서 고침 받은 여러 사람의 일로 자랐습니다. 다만 이 여자들의 섬김과 왕국 선포를 잇는 끈은 「아우토이스」 한 낱말의 지시입니다 — 문장 구조가 「섬김이 있어 복음이 전파되었다」라고 잇지는 않습니다. 요안나에게는 헤롯의 청지기 구사의 아내라는 신분이 붙고, 수산나에게는 어떤 수식도 붙지 않으며, 나머지는 「다른 여러 여자」로 묶입니다.</p>
+<p>왕국의 걸음은 공중에서 시작하지 않고 고침 받은 몸들의 소유를 지나갑니다.</p>
+<p>그러니 「좋은 땅이 곧 좋은 마음」이라는 등식을 낱말의 일치로 세울 수 없습니다. 본문이 두 낱말을 겹쳐 얹은 그 마음에 붙은 동사는 8:15의 두 현재형입니다 — 붙들고 열매를 맺습니다. 그리고 문장 끝에 휘포모네, 견딤이 놓입니다. 이 낱말은 누가복음에 두 번 놓입니다(8:15·21:19). 열매가 견딤 안에서 갑니다. 이 단락의 심장은 두 절에 놓이는데, 8:12에서 말씀이 심장에서 빠져나가고 8:15에서는 그 심장으로 들은 이들이 말씀을 붙듭니다. 심장이 말씀의 출입구로 쓰인 것입니다.</p>
+<p>마음을 두 낱말로 수식한 그 절이 열매를 견딤 안에 둡니다.</p>
+<p>8:21은 어머니를 안으로 부르지도 밖으로 내보내지도 않고 문의 기준을 옮깁니다. 혈연도 적혀 있고 말씀을 듣고 행함도 적혀 있습니다 — 본문은 둘 다로 실어 둡니다. 그리고 어머니가 밖에 서 있다는 사실은 취소되지 않고 그대로 남습니다. 1:38에서 「말씀대로 내게 이루어지이다」라고 한 그 어머니입니다. 언약의 집안이 다시 그어지는 그 문장 옆에서, 문 밖의 두 사람은 지워지지 않습니다.</p>
+<p>친족의 기준이 말씀 쪽으로 옮겨 가는 동안에도 문 밖의 사실은 지워지지 않습니다.</p>
+<p>ⓐ 재산이 한 번은 섬김의 재료이고 한 번은 목을 조르는 것입니다.</p>
+<p>"...다른 여러 여자가 함께 하여 자기들의 소유로 그들을 섬기더라" (8:3)</p>
+<p>"가시떨기에 떨어진 것은 말씀을 들은 자이나 지내는 중 이생의 염려와 재물과 향락에 기운이 막혀 온전히 결실하지 못하는 자요" (8:14)</p>
+<p>8:14의 동사는 쉼프니곤타이, 함께 눌러 숨을 막는다는 말입니다. 8:7에서 가시가 씨에게 한 일도 숨을 막아 죽인 것이었습니다. 한 물질이 한 단락 안에서 두 방향으로 갑니다. 본문은 3절을 지우고 14절만 남기지도, 14절을 지우고 3절만 남기지도 않았습니다. 그러니 재산을 성화의 지표로도, 위험의 표지로도 한쪽만 세울 수 없습니다.</p>
+<p>ⓑ 보지 못하게 하려는 말과 감춘 것이 드러난다는 말이 한 담화 안에 놓입니다.</p>
+<p>"...저희로 보아도 보지 못하고 들어도 깨닫지 못하게 하려 함이라" (8:10)</p>
+<p>"숨은 것이 장래에 드러나지 아니할 것이 없고 감추인 것이 장래에 알려지고 나타나지 아니할 것이 없느니라" (8:17)</p>
+<p>8:10은 목적절로 보지 못함을 향하고, 8:17은 드러남을 향합니다. 8:17의 두 동사는 앞날을 가리키지만 그 시점도 그 일을 하는 이도 밝히지 않습니다. 이 노트가 따르는 본문은 두 문장을 화해시키지 않고 한 담화 안에 함께 둡니다. 문법이 행위자를 정하지 않고, 언약의 논리가 그 몫을 정합니다.</p>
+<p>ⓒ 순종한 어머니와 문 밖에 선 어머니가 한 복음서 안에 함께 실려 있습니다.</p>
+<p>"주의 여종이오니 말씀대로 내게 이루어지이다" (1:38)</p>
+<p>"당신의 어머니와 동생들이 당신을 보려고 밖에 서 있나이다" (8:20)</p>
+<p>1:38의 어머니는 말씀대로 이루어지기를 구했고, 8:20의 어머니는 무리에 막혀 문 밖에 멈춰 섭니다. 8:21은 그를 꾸짖지 않고 기준만 옮깁니다. 두 절을 겹쳐 하나로 만들면 둘 중 하나가 지워집니다.</p>
+<p>덧붙여 이 단락이 말하지 않은 것 셋을 메우지 않습니다. 「순종하다」라는 동사가 이 단락에 놓이지 않고, 「씨 뿌리는 자」가 누구인지 8:11-15의 해설이 밝히지 않으며, 그리스도의 직임을 가리키는 낱말 넷(크리스토스·히에류스·바실류스·프로페테스)도 이 단락에 놓이지 않습니다.</p>
+<p>"너희가 어떻게 들을까 스스로 삼가라 누구든지 있는 자는 받겠고 없는 자는 그 있는 줄로 아는 것까지도 빼앗기리라" (8:18)</p>
+<p>"...다른 여러 여자가 함께 하여 자기들의 소유로 그들을 섬기더라" (8:3)</p>
+<p>"예수의 어머니와 그 동생들이 왔으나 무리 때문에 가까이 하지 못하니" (8:19)</p>
+<p>이 단락에는 씨 한 줌과 네 땅, 등불 하나와 그릇과 평상, 그리고 문 밖에 멈춰 선 두 사람이 놓여 있습니다. 씨는 하나님의 말씀이고, 그 말씀은 밟히는 흙과 물기 없는 바위와 목을 조르는 가시 사이로도 뿌려졌습니다. 고침 받은 몸에 있던 것이 그 걸음을 먹였고, 그 걸음이 남긴 한 문장이 집안의 경계를 다시 그었습니다. 문 밖의 어머니는 그 문장 옆에 그대로 남았습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 16편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

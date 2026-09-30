@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>열림의 이유를 다 알지 못해도</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 03편 &middot; 누가복음 1:57-80</span>
+      <h1>열림의 이유를 다 알지 못해도</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>엘리사벳이 아들을 낳고 이웃과 친족이 함께 기뻐합니다. 여드레째 아기의 몸에 칼을 대는 자리에서(1:59) 이름 다툼이 벌어집니다. 친족들은 "네 친족 중에 이 이름으로 이름한 이가 없다"(1:61)라고 반대하고, 말을 잃은 아버지에게는 입이 아니라 몸짓으로 묻습니다(1:62). 여기서 한 가지를 놓치기 쉽습니다. 어머니가 먼저 그 이름을 말했습니다 — "아니라 요한이라 할 것이라"(1:60). 그런데 그 말 뒤에 아무 회복도 따라오지 않습니다. 회복은 사가랴가 서판을 청해 같은 이름을 적은 뒤에 붙습니다 — "그가 서판을 달라 하여 그 이름을 요한이라 쓰니"(1:63), "이에 사가랴가 곧 입이 열리고 혀가 풀려"(1:64). 그리고 본문은 그 회복에 이유를 적지 않습니다. 두 문장을 잇는 것은 접속사 하나이고, "곧"은 시간을 재는 말입니다. 반대로 닫힘에는 이유가 적혔습니다 — "이는 내 말을 믿지 아니함이거니와"(1:20). 이유를 적을 줄 아는 단락이 회복의 자리에서만 이유를 적지 않았고, 이유가 다시 적히는 자리는 사람이 한 일이 아니라 하나님의 긍휼입니다(1:78).</p>
+<p>그러므로 이 자리에서 우리가 확인할 수 있는 것은 순서와 즉시성뿐입니다. 회복이 서판 뒤에 왔고, 그 일이 즉시였다는 것입니다. 그 이상을 적으면 본문이 비워 둔 칸에 우리가 글씨를 넣는 일이 됩니다. 그리고 회복을 본 이웃에게 임한 것이 안도가 아니라 두려움이었다는 사실("그 이웃이 다 두려워하고" 1:65)은, 이 사건을 계산이 맞아떨어진 순간으로 읽는 독법을 본문이 지지하지 않는다는 표시이기도 합니다.</p>
+<p>회복의 자리에 적힌 것은 시간 하나뿐입니다.</p>
+<p>이것이 이 단락의 핵입니다. 같은 이름을 말한 두 입 가운데 한쪽에만 회복이 따라왔으므로, "바른 고백이 언어를 되돌려 준다"는 법칙은 이 스물네 절 안에서 이미 반례를 만납니다. 본문이 스스로 거래 도식을 막아 둔 것입니다. 우리가 애써 조심하지 않아도 되도록, 본문 자체가 공식을 무너뜨릴 사례를 세 절 앞에 배치해 두었습니다. 그러니 이 장면에서 뽑아낼 수 있는 규칙은 무엇을 하면 무엇을 받는다는 규칙이 아니고, 남는 것은 하나님이 하신 일의 순서뿐입니다.</p>
+<p>공식을 세우려는 손을 본문이 먼저 붙잡습니다.</p>
+<p>원인이 다시 적히는 자리는 여기입니다. "이는 우리 하나님의 긍휼로 인함이라"(1:78). 여기 "긍휼"로 옮겨진 낱말(스플랑크나)은 창자를 가리키는 몸 낱말입니다. 우리가 한 일에는 원인 표지가 붙지 않았고, 위로부터의 그 돋음이 찾아오는 일에는 붙었습니다. 그리고 그 비춤이 향하는 곳은 "어둠과 죽음의 그늘에 앉은 자"(1:79)입니다. 걷는 이도 선 이도 아닙니다.</p>
+<p>원인 칸이 채워진 쪽은 하나님의 긍휼 쪽입니다.</p>
+<p>"우리가 원수의 손에서 건지심을 받고 두려움 없이 주를 섬기며" (눅 1:74) "헤롯은 이 위에 한 가지 악을 더하여 요한을 옥에 가두니라" (눅 3:20)</p>
+<p>1:74는 원수의 손에서 건져져 두려움 없이 섬기게 될 것이라 말하고, 그 담보는 1:69에서 다윗의 집에 세워진 뿔입니다. 그런데 이 예언을 자기 아버지의 입으로 받은 아이가 3:20에서 옥에 갇힙니다. 같은 책이 두 문장을 나란히 둡니다.</p>
+<p>이 긴장을 "영적 자유와 육신의 처지는 층위가 다르다"로 닫으면, 갇힌 사람에게 그의 처지를 설명하는 신학을 주고 그의 갇힘은 그대로 두는 일이 됩니다. 누가는 그렇게 정리해 주지 않습니다. 오히려 눈에 띄는 것은 누가가 무엇을 적지 않았는지입니다. 3:20에서 누가는 투옥까지만 적고 처형을 적지 않습니다. 그래서 이 긴장은 결말로 봉합되지도 않고, 결말이 없는 채로 남습니다.</p>
+<p>1:74의 "두려움 없이"와 3:20의 "옥에"는 같은 책 안에서 서로를 취소하지 않은 채 남습니다. 심방과 강단은 두 문장을 함께 읽어 주는 데서 멈출 수 있습니다. 그리고 회복의 자리에 이유가 적히지 않았다는 사실을 함께 기억하면, 아직 풀리지 않은 사람에게 원인을 찾아 주려는 충동에도 본문의 뒷받침이 없다는 것이 드러납니다.</p>
+<p>한 가지 더 남습니다. 1:76은 이 아이가 "주 앞에" 앞서 갈 것이라 말하는데, 이 노트는 그 "주"가 1:68의 이스라엘의 하나님인지 1:78의 돋음인지를 한쪽으로 고정하지 않았습니다. 그 결과 1:76에서 확정해 말할 수 있는 것은 그가 앞서 간다는 사실까지입니다.</p>
+<p>아직 회복되지 않은 교우 앞에서 우리는 이유를 찾아 주고 싶어집니다. 그런데 본문은 회복된 자리에조차 이유를 적지 않았습니다. 이번 주 심방에서 1:74와 3:20을 함께 읽고, 두 문장을 화해시키지 말고 그대로 두는 연습을 해 보십시오. 갇힌 사람에게 필요한 것은 그의 갇힘을 해석해 주는 신학이 아닐 수 있습니다.</p>
+<p>말을 못 하는 사람이 자기 뜻을 남기려면 서판을 청해야 했고(1:63), 거기 적힌 이름이 친족 명부의 관행(1:61)을 이겼습니다. 기록이 당사자의 입을 대신하는 자리를 아는 직업이 있습니다. 장부와 신고서가 매일 그 일을 합니다. 다만 1:77은 구원의 지식이 죄 사함, 곧 탕감 안에서 주어진다고 적습니다. 장부에서 탕감은 채권자가 결산에 반영할 때 성립하고, 채무자의 성실 납부가 산출하는 항목이 아닙니다. 이번 주 결산 검토에서 내가 산출한 항목과 상대 쪽 반영으로 성립한 항목을 따로 표시해 보십시오. 계산으로 얻어 낸 결론과 계산 밖에서 온 결론을 구별하는 훈련이 직업에도 신앙에도 같은 근육을 씁니다.</p>
+<p>1:79의 수신자는 걷는 이도 선 이도 아니라 어둠과 죽음의 그늘에 앉은 이들입니다. 비추는 일과 발을 평강의 길로 향하게 하는 일, 두 동작 모두 주어가 그들이 아닙니다. 병상에서 몇 년째 같은 자리에 앉아 있는 사람, 말할 힘이 아직 돌아오지 않은 사람에게 본문이 주는 것은 일어서라는 요구가 아니라 비춤이 앉은 자리로 온다는 문장입니다. 오늘 일어설 수 없다면, 일어서는 것을 조건으로 달지 않은 이 문장 하나를 붙드십시오. 사가랴에게 입이 돌아온 일에도 본문은 조건을 달지 않았습니다.</p>
+<p>서판 한 장이 이 단락의 그림입니다. 소리를 낼 수 없는 사람이 청해서 받은 얇은 판이고, 거기 적힌 글자가 친족들의 명부 관행을 이깁니다. 그러나 그 판이 회복을 사 온 것은 아닙니다. 본문은 판 다음에 회복이 왔다고만 적고, 판 때문에 왔다고는 적지 않습니다. 원인 칸이 채워진 유일한 자리는 우리 하나님의 긍휼, 창자를 가리키는 몸 낱말로 적힌 그 긍휼입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>광야에 임한 말씀</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 06편 &middot; 누가복음 3:1-20</span>
+      <h1>광야에 임한 말씀</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>3장 1절과 2절은 한 문장입니다. 황제의 열다섯째 해에서 대제사장의 이름까지, 권세를 지정하는 말들이 길게 이어집니다. 그 목록이 끝난 다음에야 문장을 세우는 동사가 하나 옵니다. 그 동사 앞에 놓인 낱말이 서른아홉 개입니다. 사람 이름은 일곱이고, 통치를 지정하는 구문은 여섯입니다. 대제사장직을 가리키는 말이 단수여서 안나스와 가야바가 한 직분으로 묶이기 때문입니다. 무엇을 세는지 밝히지 않으면 이 대비가 흐려집니다.</p>
+<p>그 하나뿐인 동사의 주어는 사람이 아닙니다. "하나님의 말씀이 빈 들에서 사가랴의 아들 요한에게 임한지라"(3:2). 말씀이 도달한 곳은 권세의 목록 어디도 아니고 빈 들입니다. 요한은 죄 사함을 받게 하는 회개의 세례를 선포하며 요단 강 부근 지역으로 들어갑니다. 이 「부근 지역」을 「그 온 지역」으로 한정해 읽는 판독도 있어서, 범위의 폭은 이 노트가 택한 기준 판본의 판독에 걸려 있습니다. 인용된 이사야는 길을 예비하라 말하고, 그 인용의 결론이 "모든 육체가 하나님의 구원을 보리라"(3:6)입니다.</p>
+<p>이어서 세 무리가 같은 물음을 가져오고, 답이 세 번 다 물건으로 내려옵니다(3:10-14). 백성이 요한을 그리스도로 여길 뻔한 자리에서 요한이 칭호를 옮기고(3:15-16), 같은 절 안에서 자기 몫과 오시는 분의 몫을 갈라 놓습니다. 그리고 단락은 감옥 문 안에서 닫힙니다(3:19-20). 이 단락의 중심 명제는 이것입니다 — 역사를 세는 이름들은 사건의 주어가 아니라 사건의 날짜이고, 사건의 주어는 하나님의 말씀입니다.</p>
+<p>그러므로 이 문장은 「누가 말씀을 전했다」가 아니라 「말씀이 임했다」입니다. 황제와 총독과 분봉 왕과 대제사장은 사건을 일으키는 자리에 없습니다. 그들은 사건이 언제 일어났는지를 알려 주는 자리에 있습니다. 우리가 연표라고 부르는 것이 여기서는 배경 구문이 됩니다.</p>
+<p>권세의 목록은 사건의 주어가 아니라 사건의 날짜입니다.</p>
+<p>누가는 이 낱말을 복음서 안에서 두 번 씁니다. 시므온이 아기를 안고 "내 눈이 주의 구원을 보았사오니"(2:30) 했던 그 낱말이 3:6에 다시 옵니다. 사도행전 끝에서도 같은 낱말이 나오는데, 두 책을 이어 읽는 것은 이 노트가 택한 배열입니다. 누가복음 안에서 분명한 것은, 이 낱말이 아기를 안은 노인의 눈과 광야의 외침을 한 줄로 연결한다는 사실입니다.</p>
+<p>길을 예비한 자리의 결론은 영광을 보는 것이 아니라 구원을 보는 것입니다.</p>
+<p>예비하는 자의 직무가 여기서 정의됩니다. 자기를 가리키지 않고 오시는 분의 길을 곧게 하는 것입니다. 신발끈을 푸는 일은 종이 하는 일인데, 요한은 그 일에도 자격이 없다고 말합니다. 백성의 기대가 자기에게 모인 자리에서 스스로 종의 자리 아래로 내려가는 것은, 3:4에서 비워 두었던 대명사가 자기가 아닌 분으로 채워졌기 때문입니다.</p>
+<p>비워 둔 대명사는 요한이 아니라 오시는 분으로 채워집니다.</p>
+<p>"모든 육체가 하나님의 구원을 보리라 하였느니라" (눅 3:6) "좋은 열매를 맺지 아니하는 나무마다 찍혀 불에 던져지리라" (눅 3:9) "그는 성령과 불로 너희에게 세례를 베푸실 것이요" (눅 3:16) "쭉정이는 꺼지지 않는 불에 태우시리라" (눅 3:17)</p>
+<p>같은 단락 안에서 「모든 육체」가 구원을 보고, 「나무마다」 찍혀 불에 던져집니다. 같은 한정사가 스무 절 안에서 반대 방향을 가리키는데, 본문은 둘을 이어 주는 문장을 놓지 않습니다. 불도 둘로 갈립니다. 3:16에서 불은 성령과 나란히 세례의 재료이고, 바로 다음 절에서 불은 쭉정이를 태우는 꺼지지 않는 불입니다. 한 화자의 연속 발화이고 같은 낱말입니다.</p>
+<p>여기서 할 수 있는 정직한 진술은 봉합이 아니라 병기입니다. 같은 화자가 같은 낱말로 두 일을 말하고, 두 진술은 연속한 두 절에 나란히 서 있습니다. 「사랑이 곧 심판이다」로 부드럽게 만들거나 「결국 한 분의 인격 안에서 통합된다」로 진정시키면, 본문이 나란히 둔 것을 우리가 겹쳐 놓는 일이 됩니다. 곡식과 쭉정이를 같은 타작마당에서 갈라내는 이가 성령으로 세례를 주시는 그분이라는 것까지가, 본문이 적어 놓은 전부입니다.</p>
+<p>닫히는 방식이 긴장을 한 번 더 벌립니다. 3:18에서 요한은 백성에게 좋은 소식을 전하고 있었는데, 3:20에서 헤롯이 그를 옥에 가둡니다. 1절에서 배경 구문에 묶여 때만 표시하던 헤롯이 19절과 20절에서 주어로 올라와 동사 둘을 쥡니다. 성령과 불의 세례를 선포한 입이 감옥 문 안에서 닫히는 자리를 본문이 그대로 두었으므로, 우리도 그대로 둡니다.</p>
+<p>설교와 기도에서 사건의 주어가 누구인지 한 주간 세어 보십시오. 사역 계획과 담임 연차와 교단 사정은 이 본문에서 배경 구문의 자리에 있습니다. "하나님의 말씀이 빈 들에서 사가랴의 아들 요한에게 임한지라"(3:2)가 주절인 문장을 성도에게 그대로 읽어 주고, 우리 공동체의 이야기에서 그 주어가 어디에 있는지 함께 찾으십시오.</p>
+<p>세리가 받은 기준은 "부과된 것 외에는 거두지 말라"(3:13)였고, 군인이 받은 기준은 "사람에게서 강탈하지 말며 거짓으로 고발하지 말고 받는 급료를 족한 줄로 알라"(3:14)였습니다. 회개에 합당한 열매가 여기서는 수임료 견적서의 한 줄, 경비 처리의 항목, 급여 대장의 숫자입니다. 세 무리의 물음이 같은 꼴이라는 관찰은 이 노트가 택한 기준 판본의 판독에서 그렇고, 다른 인쇄에서는 세 자리를 다르게 읽습니다. 이번 주에 발행할 청구서 한 장을 열어 「부과된 것」의 범위를 실제로 적어 보십시오. 「정직의 마음가짐」으로 옮기지 말고 금액으로 적으십시오.</p>
+<p>"옷 두 벌 있는 자는 옷 없는 자에게 나눠 줄 것이요"(3:11)에서 명령을 받는 쪽은 두 벌 가진 사람입니다. 같은 절이 함께 세워 둔 또 한 사람은 「옷 없는 자」입니다. 나눌 두 번째 옷이 없는 사람, 청구 금액을 스스로 정할 권한이 없는 사람, 3:20처럼 갇혀 있는 사람에게 이 본문이 주는 것은 과제가 아니라 근거입니다. "하나님이 능히 이 돌들로도 아브라함의 자손이 되게 하시리라"(3:8). 이 단락에서 하나님이 문장의 주어로 서는 자리가 여기입니다. 아브라함의 자녀 됨이 내가 가진 것으로 확정되지 않는다는 말은, 가진 것이 없는 쪽에서 먼저 들립니다.</p>
+<p>권세의 이름을 서른아홉 낱말이나 지나온 뒤에 문장이 한 번 숨을 쉽니다. 그 숨이 「임하였다」입니다. 그리고 도착지는 궁정이 아니라 빈 들입니다. 우리가 연표라 부르는 것이 배경으로 내려앉고, 그 배경 뒤에서 말씀이 한 사람에게 임하는 것이 이 단락의 형태입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 06편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

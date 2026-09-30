@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>대답하지 못한 권위의 질문</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 42편 &middot; 누가복음 20:1-26</span>
+      <h1>대답하지 못한 권위의 질문</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>권위의 출처를 묻던 사람들이 예수님의 되물음 앞에서 침묵합니다. 이어지는 비유 속에서 맡겨진 것을 자기 것으로 바꾸려는 손은, 권위를 말하기 전에 우리가 무엇을 맡아 살고 있는지 묻게 합니다.</p>
+<p>예수께서 성전에서 가르치실 때 대제사장들과 서기관들이 다가와 권위의 출처를 묻습니다. 이 장면의 낱말은 ἐξουσία(엑수시아, 권위)이고 20장 2절에 두 번, 8절에 한 번 나옵니다. 20절의 τῇ ἀρχῇ καὶ τῇ ἐξουσίᾳ τοῦ ἡγεμόνος는 로마 총독의 권한이므로 앞의 셋과 한 묶음으로 세지 않습니다. 예수께서 요한의 세례를 되물으시자 그들은 답을 셈합니다. "만일 사람으로부터라 하면 백성이 다 우리를 돌로 칠 것이라 하니" (20:6) 이어지는 포도원 비유에서 맡은 자들은 보내진 사람들을 네 번 밖으로 내몰고 마지막에 한 사람을 죽입니다. 비유의 발신자는 ὁ κύριος τοῦ ἀμπελῶνος(포도원의 주인, 20:13·15)이고 그가 마지막으로 보낸 이는 τὸν υἱόν μου τὸν ἀγαπητόν(내 사랑하는 아들, 20:13)입니다. 두 낱말은 속격 한정으로 비유 안의 인물로 확정되며, 이 단위는 그 아들을 예수와 명시적으로 잇지 않습니다. 세 장면을 통과한 뒤 단위는 돌려주라는 명령과 잠잠해진 입으로 닫힙니다. 이 본문이 놓는 중심 명제는 이것입니다. 권위의 출처를 묻는 심문은 답 없이 닫히고, 맡은 자의 손은 요구를 가져온 사람을 밖으로 내몰며, 판정은 누구의 것이냐에서 시작됩니다.</p>
+<p>한 가지를 먼저 적어 둡니다. 이 단위에서 θεός는 세 번 나오지만 모두 주격이 아닙니다. 21절의 속격, 25절의 속격과 여격입니다. 본문은 하나님을 문장의 주어로 세우지 않습니다. 그래서 이 노트도 「하나님이 이렇게 하셨다」는 문장을 만들지 않습니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 밖으로 내모는 손은 한 번의 결단이 아니라 네 번의 반복으로 완성됩니다. 본문은 감정을 숨기지 않고 계산을 드러냅니다. 계산은 항목으로 적을 수 있고, 적으면 보입니다. 확인이 명령보다 먼저 옵니다. 누구의 것인지 정하지 않으면 돌려주는 일은 끝까지 손해로 남습니다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>지금 이 결론에 동의할 수 없는 사람이 있습니다. 무언가를 결단할 힘도, 마음을 고칠 힘도 없는 자리에 있는 사람입니다. 20장 16절의 청중이 바로 그 자리에 있었고, 본문은 그를 내치지 않았습니다. 그 절 뒤에 두 절이 더 이어졌다는 사실만 확인하십시오. 동의가 조건이라고 본문이 말하지 않았습니다. 억지로 고개를 끄덕이지 않아도 대화는 끝나지 않았습니다.</p>
+<p>20장 19절과 26절은 지도자의 손이 회중 앞에서 멈추는 장면을 두 번 기록합니다. 회중은 지도자를 지지하는 세력도 아니고 심판하는 법정도 아닙니다. 다만 지켜봄으로 손을 제한합니다. 이번 주 사역 결정 가운데, 회중이 보고 있다는 사실 때문에 하지 않은 일과 보고 있어도 한 일을 각각 하나씩 적어 보십시오. 그 둘의 차이가 제 직무의 실제 기준을 보여 줍니다.</p>
+<p>20장 24절은 금속 조각 하나를 손에 들게 하고 그 위의 형상과 글을 눈으로 읽게 합니다. 무게도 액수도 아니고 이름입니다. 이번 달 장부에서 예수금과 유보금 계정을 열어 각 금액 위에 누구의 이름이 새겨져 있는지 한 항목씩 적어 보십시오. 이름이 남의 것인 돈은 내 자금과 같은 통장에 두지 않습니다. 이것은 신념의 문제가 아니라 계좌와 잔액과 마감일의 문제입니다. 다만 이 실무 규범은 20장 25절의 판독 조건 위에서만 서며, 제도 일반의 원칙으로 넓히지 않습니다.</p>
+<p>성전의 지도자들은 예수님께 "무슨 권위로 이런 일을 하느냐"고 묻습니다. 그 질문 자체가 잘못된 것은 아닙니다. 그러나 그들은 답을 듣기보다 예수님을 곤란하게 만들 근거를 찾고 있었습니다. 예수님이 요한의 세례를 되물으셨을 때, 그들은 진실보다 사람들의 반응과 자기 자리를 먼저 계산합니다. 말할 수 없다고 답한 침묵은 몰라서 생긴 침묵이 아니라, 손해를 피하려는 침묵이었습니다.</p>
+<p>포도원 비유에서 농부들은 맡겨진 포도원을 자기 것으로 만들고, 주인이 보낸 사람들을 밀어냅니다. 마지막에 사랑하는 아들까지 죽이려는 모습은, 맡김을 소유로 바꾸려는 인간의 욕심을 드러냅니다. 우리는 가정과 일터와 교회에서 맡은 역할을 마치 내 권리처럼 대할 때가 있습니다. 그러나 주님은 우리에게 쥐어 주신 것을 빼앗기 위한 분이 아니라, 그 맡김이 생명을 살리는 열매가 되게 하시는 분입니다.</p>
+<p>가이사의 것과 하나님의 것을 돌려드리라는 말씀도 회피의 기술이 아닙니다. 세상 안에서 살아가는 책임을 피하지 않되, 내 마음의 최종 자리를 어떤 권력이나 이익에도 내주지 말라는 부르심입니다. 동전에 새겨진 형상이 누구의 것인지를 묻듯, 하나님의 형상으로 지음 받은 나는 누구에게 속했는지 기억합니다. 주님, 계산으로 진실을 피하지 않게 하시고, 맡겨진 자리에서 열매를 맺으며 당신께 제 삶을 돌려드리게 하소서.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 42편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

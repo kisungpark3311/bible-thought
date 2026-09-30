@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>식탁에 남겨진 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 누가복음 제 31편 &middot; 누가복음 14:1-24</span>
+      <h1>식탁에 남겨진 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>식탁은 누가 중요한 사람인지 드러내는 곳이 되기 쉽습니다. 예수님은 높은 자리를 고르는 마음을 내려놓게 하시고, 갚을 수 없는 이들을 초대하는 잔치를 보여 주십니다.</p>
+<p>장면은 안식일(σάββατον)에 한 바리새인 지도자의 집에서 열립니다(14:1). 그 집에 수종병 든 사람(ὑδρωπικὸς, 휘드로피코스)이 예수 앞에 있습니다(14:2). 본문이 이 사람에게 얹은 술어는 "예수 앞에 있었다" 하나입니다. 이름도 요청도 한마디 말도 본문은 그에게 주지 않습니다. 예수께서 먼저 물으십니다. "안식일에 병 고쳐 주는 것이 합당하냐 아니냐"(Ἔξεστιν … ἢ οὔ, 14:3). 그들은 잠잠했습니다(ἡσύχασαν, 14:4). 붙드시고 고치시고 보내신 뒤에 두 번째 물음이 옵니다. "너희 중에 누가 그 아들이나 소가(υἱὸς ἢ βοῦς) 우물에 빠졌으면 안식일에라도 곧 끌어내지 않겠느냐"(14:5). 그들은 대답하지 못했습니다(οὐκ ἴσχυσαν ἀνταποκριθῆναι, 14:6).</p>
+<p>두 물음과 두 침묵을 딛고 예수께서 말씀을 시작하십니다(Ἔλεγεν, 14:7). 이 절의 정동사가 단락 전체의 뼈대를 세웁니다. 같은 절의 "높은 자리를 고르더라"(ἐξελέγοντο)는 간접의문절에 딸린 동사이므로 논증의 근거로 쓰지 않고 뜻만 밝힙니다. 그 말씀은 청함을 받은 사람들(κεκλημένους)에게 한 번, 자기를 청한 사람(κεκληκότι)에게 한 번 갑니다. 이어지는 비유는 큰 잔치(δεῖπνον μέγα)를 세우고 준비의 완료를 먼저 알립니다(14:17). 마지막 절은 그 잔치를 "내 잔치"라 부르며 배제를 선언합니다(14:24). 청함의 완료가 맛봄을 보증하지 않는다는 선언이 이 단락의 마지막 문장입니다.</p>
+<p>이 본문이 붙드는 중심은 분명합니다. 같은 낱말의 두 형태가 한 식탁의 두 편을 세운다. 하나님 나라의 잔치를 "내 잔치"라 부른 입에서 이 단락의 마지막 문장이 나온다. 같은 네 부류를 두 절이 부르되 지배하는 동사가 다르다.</p>
+<p>말씀을 읽는 일은 정답을 빨리 얻는 일이 아니라, 내 삶이 서 있는 자리를 말씀 앞에 정직하게 가져가는 일입니다. 그러므로 오늘의 믿음은 큰 결심보다도, 내가 붙잡고 있는 것을 내려놓고 주님이 보게 하시는 사람과 시간을 다시 바라보는 데서 시작됩니다.</p>
+<p>14:8은 높은 자리(πρωτοκλισίαν)에 앉지 말라는 금지입니다. 14:10은 끝자리에 앉으라(ἀνάπεσε)고 지정합니다. 그 두 문장 틈에 "너보다 더 높은 사람"(ἐντιμότερός σου)이라는 서열어가 놓입니다. 올라앉으라는 말(προσανάβηθι ἀνώτερον)은 청한 사람의 입에서만 옵니다. 손님이 스스로 하는 말이 아닙니다. 같은 입이 14:9에서 "이 사람에게 자리를 내주라"(Δὸς τούτῳ τόπον)로 내려보냅니다. 예배당의 좌석, 위원회의 순서, 식사 자리의 배치가 이 본문의 관찰 범위 안에 있습니다. 14:10의 목적절은 가정된 결과를 말합니다. 그 결과를 "낮추면 높아진다"는 규범 평서로 확장하지 않습니다.</p>
+<p>세 사양이 직접화법으로 나옵니다. "밭을 샀으매"(Ἀγρὸν ἠγόρασα, 14:18)·"소 다섯 겨리를 샀으매"(ζεύγη βοῶν, 14:19)·"장가 들었으니"(γυναῖκα ἔγημα, 14:20)입니다. 앞의 둘은 "나를 양해하도록 하라"(ἔχε με παρῃτημένον)로 닫고, 그 어형이 두 번 그대로 반복됩니다. 셋째는 그 정식조차 없이 "가지 못하겠노라"로 끝냅니다. 본문은 이 사유들의 정당성을 판정하지 않습니다. 밭 매입, 소 다섯 겨리 매입, 혼인 — 셋 다 실사·검수·계약에 걸리는 사유로 기록될 뿐입니다. 세 사람의 내심을 본문은 말하지 않습니다. 추론을 얹지 않고 어형만 봅니다. 주목할 자리는 14:18의 "나에게 필요가 있다"(ἔχω ἀνάγκην)와 14:23의 ἀνάγκασον이 어근을 공유한다는 점입니다. 표제어는 서로 다릅니다. 장부의 필요가 초청을 미루는 사유로 적히는 동안, 같은 어근이 14:23에서 마지막 명령에 실립니다. 결산 마감과 실사 일정이 실제 압박인 직업에서 이 단락은 일정의 부당성을 판정하지 않습니다. 상은 ἄριστον(점심)이 아니라 δεῖπνον(만찬)으로 차려졌고, 그 시각은 14:17이 이미 지정했습니다.</p>
+<p>14:2의 ὑδρωπικὸς는 한마디도 하지 않습니다. 본문이 그에게 얹은 술어는 하나뿐입니다. 14:13의 네 이름도 같은 처지에 놓입니다. πτωχούς(가난한)·ἀναπείρους(몸이 상한)·χωλούς(저는)·τυφλούς(눈먼)입니다. 14:14는 이 명단의 조건을 갚을 것 없음으로 적습니다. 지금 청할 형편이 못 되는 사람, 지금 그 상에 갈 수 없는 몸에게 본문은 요구 대신 명단을 줍니다. 그 이름이 κάλει의 목적어 자리에 먼저 있습니다. 병상에 있는 가족, 일을 놓은 손, 거리와 시간과 돈이 막아선 자리가 이 명단의 실제 내용입니다.</p>
+<p>이 말씀 앞에서 이렇게 기도합니다.</p>
+<p>한 집에서 두 번 물었고 두 번 아무 말도 돌아오지 않았습니다(14:4·14:6). 그 침묵 위에서 말씀이 시작되었고, 그 말씀이 한 식탁의 두 편에 각각 닿았습니다. 상은 이미 차려졌습니다. 마지막 문장은 그 상의 소유를 일인칭으로 밝히면서 동시에 문을 닫습니다. 이 단락은 닫힌 문장을 열어 두는 말을 덧붙이지 않았고, 나도 덧붙이지 않습니다.</p>
+<p>안식일의 식탁에서 말씀하신 주님, 두 물음 앞의 침묵에 저희 자리가 있음을 압니다. 청함을 받은 자리에서 높은 자리를 먼저 살핀 눈을 고백합니다. 청하는 자리에서 되돌려 받을 셈을 먼저 한 손을 고백합니다. 갚을 것이 없는 이름을 명단의 첫 줄에 적게 하소서. 준비가 끝난 상 앞에서 사양의 말을 고르지 않게 하시고, 마지막 문장이 닫아 둔 자리를 저희가 임의로 열지 않게 하소서. 예수님의 이름으로 기도합니다. 아멘.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      누가복음 제 31편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
