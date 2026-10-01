@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 07일 &middot; 역대상 20:1-8</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 삶은 무수한 동사들로 채워져 있습니다. 일하고, 성취하고, 무너뜨리고, 다시 세우며 하루라는 장부를 빼곡히 써 내려갑니다. 오늘 우리가 마주한 역대상 20장의 기록도 이와 다르지 않습니다. 한 해가 바뀌어 왕들이 전장에 나갈 때가 되었고, 요압은 군대를 거느리고 나가 성을 치고 헐어버리는 맹렬한 동사들을 쏟아냅니다. 그런데 그 숨 가쁜 성취의 목록 한가운데, 마치 시간이 멈춘 듯 고요하고 낯선 문장 하나가 놓여 있습니다. "다윗은 예루살렘에 그대로 있더니." 모두가 땀 흘려 전진할 때, 홀로 동사 없이 남겨진 이 고립된 문장 속에서 우리는 뜻밖에도 우리 삶의 서글픈 단면과 마주하게 됩니다.
+
+<h3>동사 없이 남겨진 자리의 의미</h3>
+인생을 살다 보면 스스로 어찌할 수 없는 무력한 계절을 만날 때가 있습니다. 질병으로 병상에 누워 있어야만 할 때, 원치 않게 일자리를 잃었을 때, 혹은 누군가를 돌보는 주체가 아니라 온전히 돌봄을 받아야만 하는 연약한 위치에 섰을 때가 그렇습니다. 회의록에는 참석자로 이름이 오르지만 아무런 발언도, 행동도 하지 못한 채 가만히 머물러 있어야 하는 시간. 내가 주도하는 '동사' 없이 그저 내 이름만 덩그러니 남겨진 그 자리는 우리를 깊은 무력감으로 몰아넣곤 합니다.
+
+하지만 성경은 요압의 눈부신 성취를 알리는 거침없는 동사들 사이에서, 다윗이 그저 '앉아 있는' 그 무력한 상태를 지워버리지 않았습니다. 본문은 그 자리를 섣불리 위로하거나 포장하지 않은 채, 그저 있는 그대로 기록해 둡니다. 이는 우리에게 작지만 깊은 안도감을 줍니다. 내가 무엇을 성취해서가 아니라, 그저 존재하고 머물러 있는 그 시간조차도 하나님 앞에서는 결코 지워지지 않는 인생의 한 페이지임을 일깨워 주기 때문입니다. 세상은 끊임없이 무언가를 해내는 사람들의 동사에만 주목하지만, 하나님은 멈춰 선 이들의 고요한 이름표도 결코 장부에서 지우지 않으십니다.
+
+<h3>금관의 무게와 사람의 무게</h3>
+화려한 전공 뒤에 다윗은 암몬 왕의 머리에서 관을 벗겨 그 무게를 달아봅니다. 금 한 달란트, 그리고 영롱하게 빛나는 보석들. 성경은 그 눈부신 전리품의 무게와 가치를 아주 정확하게 세어 기록합니다. 그러나 바로 이어지는 장면에서 우리는 서늘한 대비를 마주합니다. 전쟁의 폐허 속에서 끌려 나온 백성들의 수는 어디에도 기록되지 않습니다. 그저 '그 가운데 백성'이라는 익명의 덩어리로 뭉뚱그려질 뿐입니다. 금관은 달란트라는 저울로 섬세하게 달아지지만, 정작 천하보다 귀한 사람들의 무게는 어디에도 달리지 않은 채 톱과 도끼 같은 차가운 쇠붙이 연장 앞에 던져집니다.
+
+오늘 우리의 삶과 직장, 그리고 심지어 신앙 공동체의 장부에는 무엇이 더 세밀하게 기록되고 있습니까? 예산서의 숫자와 실적의 무게는 꼼꼼히 달아보면서도, 정작 그 일을 함께 이루어가는 사람들의 이름과 눈물은 '그 가운데 백성'이라는 이름으로 뭉뚱그려 흘려보내고 있지는 않은지 돌아보게 됩니다. 성경은 누가 무엇을 취했고 누가 고통받았는지를 고스란히 보여주며, 우리가 세어야 할 진짜 가치가 무엇인지 묵묵히 묻고 있습니다.
+
+<h3>마지막 문장에 남겨진 손길들</h3>
+이 장의 마지막 절에 이르면, 치열했던 전투를 마무리하며 "다윗의 손과 그의 신복들의 손에 다 죽었더라"라는 기록이 남습니다. 다윗이 직접 칼을 들고 전장에 나섰다는 기록은 앞서 찾아볼 수 없었지만, 마지막 결과 앞에서는 한 사람의 공로가 아닌 '함께한 이들의 손'이 나란히 기록됩니다. 승리라는 화려한 관을 쓸 때, 혹은 어떠한 성취를 이루어냈을 때, 그것이 결코 나 혼자만의 손으로 이루어진 것이 아님을 기억하는 것은 매우 중요합니다. 내가 무력하게 예루살렘에 머물러 있을 때 나를 대신해 수고해 준 수많은 요압과 엘하난들의 헌신이 있었기에 가능한 일입니다.
+
+하나님은 오늘 본문을 통해 재어진 것과 재어지지 않은 것을 나란히 보여주십니다. 우리가 매일 써 내려가는 일상의 장부 속에, 혹시 화려한 숫자에 가려져 잃어버린 누군가의 이름은 없는지, 동사 없이 머물러 있는 이들의 뼈아픈 침묵을 외면하고 있지는 않은지 살피기를 원하십니다. 우리의 시선이 금관의 무게를 재는 차가운 저울에서 벗어나, 이름 없이 수고하는 이들의 손길과 동사 없이 멈춰 선 이들의 아픔을 헤아리는 따뜻한 눈빛으로 변화되기를 소망합니다. 세상은 은혜조차 달란트의 무게로 재려 하지만, 참된 은혜는 숫자로 환산되지 않는 그 한 사람, 한 사람의 존재 자체를 품어 안는 데에서부터 시작됩니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 07일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

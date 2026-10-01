@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 01일 &middot; 역대상 17:1-15</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 삶에는 선하고 아름다운 의도마저 철저히 거절당하는 순간이 있습니다. 계획이 어설퍼서도, 동기가 불순해서도 아닙니다. 단지 "그 일을 할 사람이 당신은 아니다"라는 이유 없는 통보 앞에서 우리는 길을 잃곤 합니다. 역대상 17장의 다윗이 마주한 벽이 바로 그러했습니다.
+
+자신은 화려한 백향목 궁에 거하는데, 하나님의 궤는 초라한 휘장 아래 있다는 사실이 다윗의 마음을 찔렀습니다. 그는 하나님을 위해 웅장한 성전을 짓겠다는 거룩한 열망을 품었습니다. 선지자 나단조차 "하나님이 왕과 함께 계시니 마음에 있는 바를 행하소서"라며 흔쾌히 동의했습니다. 그러나 그날 밤, 하나님의 말씀이 개입하며 모든 것이 멈춥니다.
+
+<h3>이유를 묻지 않는 거절 앞에서</h3>
+
+놀라운 것은, 하나님께서 다윗의 계획 자체를 나무라지 않으셨다는 점입니다. 생각이 짧았다거나 시기가 이르다는 설명은 단 한 줄도 없습니다. 히브리어 원문은 부정어 '로(לא)'를 동사가 아닌 대명사 앞에 둡니다. "네가 아니다(로 아타)." 우리말로는 "건축하지 말라"고 번역되어 금지의 무게가 행동에 실린 듯하지만, 원문의 초점은 명확합니다. 거절당한 것은 성전 건축이라는 '일'이 아니라, 다윗이라는 '사람'이었습니다.
+
+우리가 올린 기획안이 반려되었는데, 내용에는 아무런 빨간 줄이 없고 오직 담당자 이름만 다른 사람으로 바뀌어 있을 때를 상상해 보십시오. 그때 상처받는 것은 우리의 기획이 아니라 자존심입니다. 우리는 왜 내가 안 되는지, 내게 무슨 흠이 있는지 묻고 싶어 합니다. 그러나 본문은 끝내 침묵합니다. 다윗이 왜 그 일을 할 수 없는지 아무런 사유서를 쥐여 주지 않습니다. 
+
+때로 하나님은 우리에게 따뜻한 위로 대신 정확한 좌표를 주십니다. 네가 틀린 것이 아니라, 단지 이 일이 네 몫이 아님을 헷갈리지 말라는 서늘하고도 명확한 선언입니다. 물러나라는 말을 들었다고 해서 내 지난 수고와 진심까지 부정당한 것은 아님을 우리는 기억해야 합니다.
+
+<h3>어제 한 말을 거두어야 하는 아침</h3>
+
+이 서늘한 선언 앞에서 선지자 나단의 자리를 돌아보게 됩니다. 그는 다윗의 선한 의도 앞에서 섣불리 승인 도장을 찍었습니다. 그러나 말씀은 그의 허락 뒤에 찾아왔습니다. 
+
+회의 끝에 "좋습니다, 그렇게 진행하시죠"라고 호기롭게 말해 놓고, 그날 밤 잠자리에서 마음을 찌르는 무언가 때문에 뒤척여 본 적이 있습니까? 다음 날 아침 수화기를 들고 "어제 제가 드린 말씀을 거두어야겠습니다"라고 말해야 하는 순간의 뼈아픈 무게를 우리는 압니다. 그 무게는 단순히 내 판단이 틀렸다는 부끄러움에서만 오지 않습니다. 이미 부풀어 오른 상대의 기대에 찬물을 끼얹어야 하는 고통에서 비롯됩니다.
+
+하지만 본문은 나단의 경솔함을 꾸짖지 않습니다. 단지 인간의 섣부른 승인과 하나님의 번복 사이에 놓인 '하룻밤'의 시간을 묵묵히 기록할 뿐입니다. 진정한 신앙은 처음에 얼마나 확신에 찬 말을 했느냐에 있지 않습니다. 내 확신보다 늦게 당도한 하나님의 말씀 앞에서, 기꺼이 내 어제의 입술을 부정하고 내 말을 거두어들일 수 있는 용기에 있습니다.
+
+<h3>이름 지워진 자리와 변함없는 약속</h3>
+
+설계도는 살아남았으나 시행자는 교체되었습니다. 하나님은 다윗을 건축의 자리에서 물러나게 하시며 하나의 묵직한 약속을 건네십니다. "내가 네 전에 있던 자에게서 은총을 빼앗음과 같이 하지 아니하리라." 
+
+이 약속은 결코 낭만적이지 않습니다. 실제로 누군가에게서 은총을 매몰차게 거두셨던 선례가 그 문장 뒤에 버티고 있기 때문입니다. 흥미로운 것은, 사무엘하가 '사울'이라는 실명을 기록한 것과 달리 역대상은 그저 '네 전에 있던 자'라고만 기록한다는 점입니다. 일어난 일이라는 무거운 사실만 남고, 실패한 자의 이름은 조용히 지워졌습니다. 
+
+우리 역시 언젠가 누군가의 기억 속에서 '전임자'라는 익명으로 남게 될지 모릅니다. 내가 다 짓지 못한 집, 내가 다 누리지 못한 영광의 혜택은 결국 내가 아닌 다음 세대의 사람들에게 돌아갈 것입니다. 수익자란에서 내 이름이 지워지는 것을 보는 일은 쓰라립니다. 그러나 지워진 내 이름 밑바닥에는 "결코 내 은총을 거두지 않겠다"는 하나님의 맹세가 깊게 새겨져 있습니다.
+
+우리는 살아가면서 수없이 '사유란이 비어 있는 반려'를 경험합니다. 막힌 이유는 모르겠고, 억지로 갖다 붙일 설명도 마땅치 않은 채 멍하니 서 있어야 하는 날들이 있습니다. 그러나 빈칸을 억지로 은혜로운 해석으로 채우려 하지 마십시오. 나를 멈춰 세우신 분이 멈춘 자의 삶을 책임지십니다. 성전을 짓지 못해 텅 빈 다윗의 두 손에, 하나님은 결코 무너지지 않을 영원한 약속의 집을 지어 주셨습니다. 
+
+이유를 다 알지 못해도 괜찮습니다. 내 이름이 찬란한 건축가의 명패에서 지워진다 해도, 끝내 나를 포기하지 않으시는 분의 사랑 안에 우리가 머물고 있다면 그것으로 충분합니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 01일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

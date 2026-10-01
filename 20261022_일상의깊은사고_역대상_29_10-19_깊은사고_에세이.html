@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 22일 &middot; 역대상 29:10-19</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 삶은 종종 무언가를 이루고, 모으고, 성취하는 동사들로 채워집니다. "내가 벌었다", "내가 지었다", "내가 헌신했다"는 주어와 동사의 결합이 우리의 일상을 지탱하는 자부심이 되곤 합니다. 그런데 오늘 역대상 29장에서 만나는 다윗의 기도는, 우리가 꽉 쥐고 있던 이 소유의 동사들을 가만히 내려놓게 만듭니다. 성전을 짓기 위해 평생을 바쳐 모은 막대한 금과 은을 하나님 앞에 모두 내어놓은 그 화려하고 장엄한 헌납식의 절정에서, 다윗의 입술을 통해 흘러나온 고백은 우리의 예상과는 조금 다른 박자로 박동합니다.
+
+<h3>동사가 멈춘 자리, 오직 그분만의 위엄</h3>
+다윗의 기도가 시작되는 11절부터 13절까지를 원어로 가만히 들여다보면 놀라운 사실을 발견하게 됩니다. 그 세 구절 안에는 동사가 단 하나도 존재하지 않습니다. 오직 '광대하심', '권능', '영광', '이김', '위엄'이라는 명사들만이 장엄하게 이어집니다. 무언가를 '하였다'는 인간의 행위는 철저히 사라지고, 오직 '무엇이 그분의 것인가'를 나열하는 숨 막히는 고요함만이 그 자리를 채웁니다. 
+
+때로 진정한 찬양 앞에서는 우리의 어떤 화려한 동사도 필요치 않습니다. 하늘과 땅에 있는 모든 것이 다 주의 것이라는 그 압도적인 사실 앞에서는, 그저 하나님의 어떠하심을 바라보는 명사들의 나열만으로도 우리의 영혼은 이미 가득 차오릅니다. 내가 무엇을 이루어냈는가 하는 소란스러운 자랑은, 하나님의 크심 앞에서는 조용히 입을 다물게 됩니다.
+
+<h3>가장 위대한 동사, "우리가 드렸나이다"</h3>
+동사가 멈추었던 고요한 찬양의 바다를 지나, 14절에 이르러서야 비로소 인간의 행위를 담은 동사 하나가 등장합니다. 그것은 바로 "우리가 드렸다"입니다. 하지만 이 고백조차도 '내가 주도해서 바쳤다'는 교만한 선언이 아닙니다. 이 유일한 동사 앞에는 "주에게서", "주의 손에서"라는 전치사들이 겸손하게 엎드려 있습니다. 
+
+우리가 누군가에게 마음을 다해 선물을 준비할 때를 떠올려 보십시오. 실은 그 선물을 살 수 있는 재물도, 드릴 수 있는 건강도, 심지어 기꺼이 드리고자 하는 벅찬 마음조차도 모두 그분께서 먼저 우리 손에 쥐어주신 것들입니다. 다윗은 성전을 위해 바친 그 어마어마한 금과 은 앞에서 자기 이름을 지웁니다. 오직 주님께로부터 흘러온 것을 다시 주님께로 흘려보냈을 뿐이라는, 이 가슴 벅찬 수동태적 능동태야말로 우리 그리스도인이 드릴 수 있는 가장 아름다운 헌신의 모습일 것입니다.
+
+<h3>그림자 같은 날들, 그러나 주의 손 안에</h3>
+가장 모든 것을 쏟아부어 드린 직후인 15절에서, 다윗은 뜻밖의 고백을 이어갑니다. "우리는 이방 나그네와 거류민이라, 세상에 있는 날이 그림자 같아서 희망이 없나이다." 방금 전까지 엄청난 재물을 바치며 위대한 성전 건축을 꿈꾸던 사람의 입에서 나온 말이라고는 믿기지 않을 만큼 짙은 무상함이 배어 있습니다. 놀랍게도 이 절에는 다시 동사가 사라집니다. '나그네', '그림자', '우리의 날들', 그리고 '없다'는 말만 덩그러니 남습니다. 
+
+가진 것을 전부 내어놓은 사람이 바로 다음 문장에서 스스로를 아무것도 없는, 땅 없는 사람이라 부릅니다. 어쩌면 이것이 우리 인생의 가장 정직한 실존일지 모릅니다. 우리가 제아무리 많은 것을 이루고 바쳤다 한들, 우리는 여전히 아침 안개처럼 사라질 그림자에 불과합니다. 그러나 성경은 이 그림자 같은 인생을 섣부른 위로로 포장하지 않습니다. 그 무상함을 있는 그대로 둔 채, "이 모든 물건이 다 주의 손에서 왔나이다"라며 곧바로 주님의 손을 바라봅니다. 내 인생이 희망 없는 그림자 같을지라도, 그 삶마저 주의 손에서 비롯되었음을 인정하는 고백입니다.
+
+오늘 우리 손에 쥐어진 것들을 가만히 내려다봅니다. 통장 장부에 적힌 숫자들, 내가 이룬 성취들… 이 모든 것들이 한낱 그림자처럼 지나갈 것입니다. 오늘 내어드릴 것이 없어 초라한 자리에 서 계십니까? 주님은 우리에게 무언가를 억지로 강요하지 않으십니다. 그저 모든 것이 주의 손에서 왔음을 아는 그 정직한 마음 하나, 영원하신 주님의 시선 안에 우리의 그림자 같은 날들이 머물기를 소망하는 그 온전한 마음 하나를 구하실 뿐입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 22일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 04일 &middot; 역대상 18:9-17</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리는 누군가를 기억할 때 종종 그가 '무엇을 하는 사람인가'로 그의 가치를 매기곤 합니다. 교회의 주보나 회사의 조직도를 보면, 이름 옆에는 항상 그 사람이 맡은 직분과 역할이 선명하게 적혀 있습니다. 이름과 직무는 언제나 하나의 짝을 이룹니다. 하지만 성경을 깊이 들여다보면, 세상의 상식과는 조금 다른 방식으로 쓰여진 특별한 명부 하나를 발견하게 됩니다.
+
+역대상 18장의 마지막 부분에는 다윗 왕국의 핵심 인사들의 이름이 차례로 등장합니다. 요압은 군대를 이끌고, 사독은 제사를 주관하며, 사워사는 문서를 관리합니다. 모두가 자신의 이름 옆에 '무엇을 맡았는지'가 분명히 새겨져 있습니다. 하지만 이 명부의 가장 마지막 줄에 이르면 묘한 침묵이 흐릅니다. "다윗의 아들들은 왕을 모시는 수령이 되니라." 다른 이들과 달리, 왕의 아들들에게는 구체적으로 관할할 업무가 적혀 있지 않습니다. 그저 '왕의 곁에 있는 첫째가는 자들'이라는 서열과 위치만 기록되어 있을 뿐입니다.
+
+<h3>빈칸으로 남겨진 가장 빛나는 자리</h3>
+
+이 텅 빈 칸은 우리에게 깊은 위로와 통찰을 던집니다. 우리는 때로 내가 맡은 일이 없거나, 조직도에서 내 이름 옆이 '공란'일 때 깊은 소외감을 느낍니다. 내가 쓸모없는 사람처럼 여겨지기도 합니다. 하지만 다윗의 아들들이 왕의 곁에 머물렀던 것처럼, 우리의 진짜 가치는 '무엇을 하느냐'에 있지 않습니다. 우리가 '누구의 곁에 서 있느냐'가 우리의 존재를 증명합니다. 
+
+때로는 내게 주어지는 거창한 사역이나 눈에 띄는 직무가 없을지라도, 만왕의 왕이신 하나님의 곁에 머무는 자녀라는 사실 하나만으로도 우리는 이미 명부의 가장 영광스러운 자리를 차지하고 있습니다. 성경은 그 빈칸을 굳이 무엇으로 채우려 하지 않았습니다. 존재 그 자체로 이미 완전하기 때문입니다.
+
+<h3>사건이 아닌 상태로 이어지는 은혜의 통치</h3>
+
+이 명부 앞에는 다윗의 정복 전쟁이 폭풍처럼 몰아칩니다. 적을 치고, 전리품을 빼앗고, 수비대를 두는 숨 가쁜 '사건'들이 이어집니다. 그런데 흥미롭게도 다윗이 백성을 다스리는 장면에서는 문법의 호흡이 완전히 달라집니다. "다윗이 온 이스라엘을 다스려 모든 백성에게 정의와 공의를 행할새." 
+
+원어의 느낌을 살려 읽으면 이는 단 한 번 일어난 승리의 사건이 아닙니다. 끝없이 이어지는 '상태'입니다. 정복은 한순간의 강렬한 사건으로 끝나지만, 백성을 향한 왕의 돌봄과 공의는 멈추지 않는 호흡처럼 계속됩니다. 이것이 우리를 향한 하나님의 다스림이기도 합니다. 우리 삶에 일어나는 극적인 기적이나 문제 해결의 단회적 사건들보다 더 위대한 것은, 매일의 일상 속에서 변함없이 우리에게 정의와 긍휼을 베푸시는 주님의 끊임없는 통치 그 자체입니다.
+
+<h3>화려한 승리 이면에 담긴 사람들의 무게</h3>
+
+그러나 이 위대한 통치의 기록 사이에는 우리가 쉽게 지나쳐서는 안 될 묵직한 긴장이 흐릅니다. 본문은 하나님께 바쳐진 눈부신 금과 은, 놋그릇의 화려함 바로 곁에, 소금 골짜기에서 만 팔천 명이 죽임당하고 남은 자들이 종이 되어버린 참혹한 현실을 나란히 기록해 둡니다. 거룩한 성전의 기물들과 사람들의 쓰라린 희생이 한 단락 안에 공존합니다.
+
+성경은 승리의 영광을 찬양하느라 패배자들의 피눈물을 지워버리지 않았습니다. 은혜와 승리를 노래하는 가운데서도, 우리는 그 이면에 놓인 아픔과 희생의 무게를 외면해서는 안 됩니다. 오늘날 우리의 목회 현장과 일상에서도 마찬가지입니다. 화려한 성취와 헌신의 이면에는 늘 누군가의 땀방울과 남겨진 상처들이 있습니다. 신앙이란 빛나는 금그릇에만 시선을 빼앗기는 것이 아니라, 그 곁에 적힌 아파하는 사람들의 이름까지 한 호흡으로 읽어내는 깊은 시선을 갖는 것입니다.
+
+명부를 마지막 줄까지 읽어내는 인내, 빈칸마저도 은혜로 받아들이는 넉넉함, 그리고 승리의 기록 뒤에 감춰진 아픔까지 헤아리는 마음. 오늘, 이름 옆의 텅 빈 공간을 바라보며 나를 그저 자녀 삼아 곁에 두신 하늘 아버지의 사랑을 깊이 묵상해 봅니다. 우리가 마침내 머물러야 할 곳은 화려한 직무의 자리가 아니라, 오직 왕의 손이 닿는 가장 가까운 그 자리입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 04일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 12일 &middot; 역대상 23:1-32</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+성경을 읽다 보면 길고 지루하게 이어지는 족보나 명단 앞에서 잠시 숨을 고르게 됩니다. 역대상 23장 역시 그러한 장 중 하나입니다. 서른두 절로 이루어진 이 장 안에는 이름과 직무의 목록이 끝없이 나열됩니다. 수많은 절이 뚜렷한 동사 없이 정지된 화면처럼 사람들의 이름만을 비추고 있습니다. 인생의 황혼녘에 접어들어 기력이 쇠한 늙은 다윗이 아들 솔로몬을 왕으로 세우는 쓸쓸하고도 엄숙한 장면으로 시작된 이 명부는, 마치 아무 일도 일어나지 않는 우리의 반복되는 일상을 닮아 있습니다. 몸이 늙어가고 스스로 무언가를 주도할 수 없는 노년의 시간 속에서도 각 사람에게 맡겨진 일상의 역사는 멈추지 않고 흘러갑니다. 이 건조한 명단의 한가운데서, 문장의 모양이 바뀌며 비로소 이 역사의 진짜 주어가 등장하는 가슴 벅찬 순간이 있습니다.
+
+<h3>하나님이 주어로 서시는 단 한 번의 자리</h3>
+
+숨 가쁘게 이어지던 명부의 행렬은 25절에 이르러 잠시 멈춰 섭니다. "이스라엘 하나님 여호와께서 그의 백성에게 평강을 주시고." 서른두 절 전체를 통틀어, 하나님이 문장의 주어로 서시는 정동사는 오직 이 한 번뿐입니다. 수많은 사람의 이름과 직무가 기록된 긴 목록의 앞자리에, 하나님이 친히 주어가 되셔서 '평강(쉼)을 주셨다'는 묵직한 선언이 놓입니다. 우리의 삶도 이와 같지 않을까요? 매일 아침 눈을 뜨면 우리가 감당해야 할 일들의 목록이 길게 늘어서 있습니다. 일터로 나가고, 서류를 처리하고, 가족을 돌보고, 무거운 책임감을 견뎌냅니다. 뚜렷한 주어 없이 그저 묵묵히 버텨내야 하는 고단하고 분주한 하루의 목록 앞에, 하나님은 당신이 친히 주어가 되셔서 먼저 쉼을 선언하십니다. 
+
+우리의 모든 수고와 직무는 바로 이 한 문장, 하나님이 주신 평강 뒤에 놓여 있습니다. 은혜가 먼저 당도했고, 그다음이 우리의 일상입니다. 화려한 신학적 설명이 덧붙여지지 않아도, 성경이 배치해 둔 이 두 문장의 순서만으로도 우리는 깊은 위로를 얻습니다. 우리가 짊어진 삶의 모든 짐은 결국, 하나님이 주어로 서시는 그 든든한 반석 위에 놓여 있습니다.
+
+<h3>무거운 짐을 내려놓고 서로의 자리를 지키다</h3>
+
+하나님이 평강을 주신 결과로 레위 사람들은 더 이상 성막과 기구들을 어깨에 멜 필요가 없어졌습니다. 짓누르던 짐이 벗겨진 것입니다. 그런데 무거운 짐을 내려놓았다고 해서 그들의 일이 모두 사라진 것은 아닙니다. 본문은 26절부터 다시 성전 뜰을 청소하고, 성물을 닦고, 가루를 반죽하고 떡을 굽는 기나긴 직무를 동사 하나 없이 나열합니다. 그리고 마침내 32절에 이르러서야, 이 모든 긴 목록을 온전히 받아내는 단 하나의 동사가 등장합니다. 바로 '지키다'입니다. 
+
+그들은 성소를 지키고, 형제 아론 자손의 직무를 지켰습니다. 어깨를 짓누르던 짐을 내려놓은 자리에, 이제는 매일 아침과 저녁으로 서서 성소를 돌보고 타인의 몫을 대신 지켜주는 다정한 책임감이 남았습니다. 오늘 우리가 감당하는 일들 중에도 본래 내 몫이 아닌데 묵묵히 지켜주고 있는 자리가 있을 것입니다. 동료의 빈자리를 메워주거나, 가족을 위해 나의 쉼을 기꺼이 내어주는 그 피곤하고 반복되는 수고를, 하나님은 누군가의 직무를 지켜주는 거룩한 일이라 부르십니다.
+
+<h3>저울과 반죽, 일상이라는 이름의 성소</h3>
+
+이 길고 숭고한 직무의 목록 속에서 유독 우리의 눈길을 끄는 독특한 도구들이 있습니다. 바로 '모든 저울과 자', 그리고 '반죽하는 것'입니다. 거룩한 제사와 찬송이 울려 퍼지는 성전의 직무 한가운데에, 길이를 재고 부피를 달아보는 정교한 계산 도구들, 그리고 온몸에 가루를 묻혀가며 떡을 굽는 고된 육체의 노동이 나란히 놓여 있습니다. 성경은 제단 앞에서의 거룩한 찬양과, 장부를 맞추며 수치를 계산하는 세밀한 저울질 사이를 성과 속으로 나누지 않습니다. 
+
+우리가 일터에서 모니터를 뚫어지게 바라보며 숫자를 맞추는 일, 복잡한 세액을 계산하고 데이터를 대조하는 일, 주방에서 사랑하는 이들을 위해 음식을 반죽하고 굽는 그 평범한 육체의 동작들이 모두 하나님의 성소를 지키는 목록 안에 당당히 기록되어 있습니다. 역대상 23장을 덮고 나면 우리의 손에 남는 것은 매끄러운 결론이 아니라 땀내 나는 이름과 도구들의 긴 목록입니다. 거칠고 투박한 그 목록이 바로 하나님이 기억하시는 우리의 진짜 삶입니다. 오늘 하루, 당신의 손에 들린 저울과 반죽을 결코 작게 여기지 마십시오. 하나님이 주어로 서신 그 평강의 그늘 아래에서, 우리는 각자의 저울과 자를 들고 '오늘'이라는 거룩한 성소를 가장 아름답게 지켜내고 있습니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 12일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

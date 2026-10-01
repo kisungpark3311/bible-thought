@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 27일 &middot; 아가 4:1-16</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리가 누군가를 진실로 사랑하게 될 때, 우리의 언어는 어떻게 변할까요? 사랑에 빠진 이의 입술은 '내가' 무엇을 했는지 증명하려는 피곤한 변호를 멈춥니다. 그 대신, 온통 상대방을 향한 감탄과 경이로 채워지기 시작합니다. 성경에서 가장 아름다운 사랑의 노래인 아가서, 그중에서도 4장을 가만히 들여다보면 이 놀라운 언어의 전복을 목격하게 됩니다. 
+
+이 장에는 내가 무엇을 하겠다는 주도적인 행위의 자리보다, "네 눈이", "네 머리털이", "네 입술이"라며 사랑하는 '당신'을 가리키는 자리가 압도적으로 많습니다. 신앙인이라면 으레 기대할 법한 장엄한 신학적 선언이나 하나님의 이름조차 이 장에는 등장하지 않습니다. 오직 사랑하는 이의 존재 자체를 머리끝부터 찬찬히 훑어 내려가며 그 잊을 수 없는 이름을 부르는 데 온 마음을 쏟습니다. 사랑은 그토록, 상대방을 내 삶의 문장에서 가장 소중하고 유일한 주어로 세우는 일이기 때문입니다.
+
+<h3>당신을 향해 쏟아지는 언어들</h3>
+
+시인은 사랑하는 이를 찬양하기 위해 자신이 상상할 수 있는 세상의 모든 아름다운 것들을 끌어옵니다. 길르앗 산비탈을 내리닫는 짐승들의 역동적인 모습, 목욕장에서 막 씻고 올라온 털 깎인 양 떼의 정갈함, 붉은 실과 석류 한 조각의 짙은 매혹, 용사들의 방패 천 개가 걸려 있는 다윗 망대의 위풍당당함, 그리고 머나먼 이국땅에서 목숨을 걸고 건너온 진귀한 향품들까지. 시인의 언어는 그저 관념 속에 맴도는 것이 아니라, 손에 잡힐 듯 생생하고 구체적인 물질의 세계에 뿌리를 내리고 있습니다.
+
+그런데 우리는 성경을 읽으며 너무나 자주, 이 생생하고 짙은 흙내음 나는 물질의 언어를 황급히 '영적인 의미'로 치환해 버리곤 합니다. 잠긴 동산을 도덕적 순결로, 무리지은 양 떼를 그저 성도들의 모임으로 덮어두고 황급히 다음 장으로 넘어갑니다. 하지만 영적인 고상한 의미를 찾기 위해 서두르기 전에, 시인이 가져온 이 '칭찬의 재료'들이 삶의 한복판에서 원래 무엇이었는지를 가만히 짚어보아야 합니다. 
+
+<h3>아름다움 뒤에 숨겨진 땀방울</h3>
+
+시인이 노래한 양 떼는 결코 한가로운 목가적 풍경이 아닙니다. 그것은 누군가 뙤약볕 아래서 땀 흘려 털을 깎고 정성껏 씻겨낸 치열한 노동의 결과물입니다. 다윗의 망대에 걸린 방패들은 화려한 장식품이 아니라, 언제 닥칠지 모르는 위협으로부터 삶을 지켜내려는 무기요 절박한 방어선입니다. 열거된 아홉 가지의 진귀한 향품들은 한 텃밭에서 쉽게 얻은 것이 아니라, 상인들이 거친 사막을 건너고 먼 거리를 이동해 온 고단한 교역의 흔적입니다. 
+
+우리가 누군가를, 혹은 어떤 상황을 아름답다고 말할 때, 그 아름다움의 뒤에는 반드시 누군가의 거친 손과 땀방울이 배어 있습니다. 주일 아침, "오늘 예배가 참 은혜롭고 아름다웠다"라고 말하기 전에, 가장 먼저 예배당의 차가운 난방을 켜고 묵묵히 의자를 닦으며 주보를 접은 누군가의 이름을 회중 앞에서 불러주어야 합니다. 일터에서 매입과 매출의 숫자를 맞추며 장부를 넘길 때, 그 차가운 세금계산서 한 장 뒤에 숨어 물건을 실어 나른 누군가의 고단한 운전과 먼 길을 헤아려야 합니다. 숫자로만 세상을 보면, 우리는 살아 숨 쉬는 사람의 자리를 지워버리게 됩니다.
+
+사람을 보자마자 곧바로 '뜻'과 '의미'로 넘어가 버리면, 그 사람의 지친 몸과 성실한 노동은 지워지고 맙니다. 신앙이라는 고상한 이름으로, 우리는 얼마나 자주 이 구체적인 삶의 무게를 건너뛰었습니까? 염소는 염소이고 방패는 방패입니다. 영적인 의미를 캐내기 전에, 그 투박한 삶의 자리를 먼저 존중하는 것, 칭찬의 재료를 숨기지 않는 것이야말로 진짜 사랑의 시작입니다.
+
+<h3>설명하지 않고 곁에 머무는 사랑</h3>
+
+아가서 4장의 화려한 칭찬 목록 한가운데에는 묘하게도 '새끼 잃은 것'이라는 뼈아픈 상실의 단어가 섞여 들어와 있습니다. 완벽한 사랑의 노래 한가운데 상실의 흔적이 불쑥 등장하지만, 본문은 그것이 왜 거기 있는지, 어떻게 극복되었는지 굳이 설명하지 않습니다. 
+
+오늘 우리의 삶에도 칭찬의 화려한 목록에서 지워진 것 같은 이들이 있습니다. 사랑하는 이를 잃어버린 사람, 마음대로 움직이지 않는 아픈 몸을 끌어안고 있는 사람, 오늘 하루 종일 아무도 다정하게 이름을 불러주지 않아 마치 투명 인간처럼 살아간 사람들이 있습니다. 우리는 종종 위로라는 이름으로 그들의 아픔을 쉽게 해석하려 들거나, "다 하나님의 뜻이 있을 것"이라며 서둘러 상처를 꿰매려 합니다. 
+
+그러나 성경은 때로 설명 없이 상실의 단어를 그저 그 자리에 묵묵히 둡니다. 본문이 잇지 않은 자리를 서둘러 봉합하지 않는 것. 오늘 우리에게 필요한 진정한 경건은, 고통을 완벽하게 해석해 내는 능력이 아니라 섣부른 설명을 거두고 그저 곁에 앉아 함께 눈물을 흘리는 것일지도 모릅니다. 
+
+만물을 추상적인 뜻으로 바꾸기 전에 먼저 누군가의 땀방울과 헌신으로 읽어내는 눈을 가졌으면 좋겠습니다. 사랑하는 이의 잃어버린 상실 곁에 답을 주려 하지 않고 잠잠히 머무는 마음을 가졌으면 좋겠습니다. 우리의 신앙이 저 높은 하늘의 언어에만 머물지 않고, 거칠고 투박한 이 땅의 노동과 삶의 자리로 깊이 내려앉을 때, 비로소 우리의 찬양은 세상을 살리는 가장 진실하고 아름다운 사랑의 노래가 될 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 27일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

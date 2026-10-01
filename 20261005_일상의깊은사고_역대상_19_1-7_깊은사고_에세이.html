@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 10월 05일 &middot; 역대상 19:1-7</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+누군가에게 선의를 베풀었음에도 불구하고, 돌아오는 것은 오해와 깊은 상처일 때가 있습니다. 성경 역대상 19장에는 호의가 참담한 수치로 뒤바뀐 사람들의 이야기가 기록되어 있습니다. 다윗은 암몬 왕 나하스가 죽자, 그의 아들 하눈에게 조문 사절단을 보냅니다. 순수한 위로의 발걸음이었습니다. 그러나 하눈의 신하들은 그들을 국토를 엿보러 온 정탐꾼으로 몰아붙였습니다.
+
+결과는 참혹했습니다. 암몬 왕 하눈은 다윗의 신하들을 붙잡아 수염을 절반이나 깎아버렸고, 그들이 입은 옷을 엉덩이가 드러나도록 잘라낸 뒤 돌려보냈습니다. 당시 중동 사회에서 수염과 옷은 남성의 명예와 인격을 상징했습니다. 그것을 잃었다는 것은 단순한 모욕을 넘어, 사회적 존재로서의 완전한 죽음을 의미했습니다. 조문하러 갔던 이들은 하루아침에 가장 수치스러운 꼴을 한 채 터덜터덜 고향을 향해 무거운 걸음을 옮겨야 했습니다.
+
+<h3>의심의 대가를 몸으로 치른 사람들</h3>
+
+성경의 문장들을 가만히 들여다보면, 암몬 방백들의 의심은 애초에 다윗 왕을 향한 것이었습니다. "다윗이 조문객을 보낸 것이 참으로 왕의 부친을 공경함인 줄로 아시나이까?" 그러나 그 폭력적인 의심의 대가는 고스란히 심부름을 간 신하들의 몸에 새겨졌습니다. 하눈이 행한 네 개의 끔찍한 동사들—'잡고', '밀고', '자르고', '돌려보내고'—은 쉼 없이 오직 한 무리, 다윗의 신하들만을 향해 쏟아졌습니다.
+
+우리의 일상도 이와 크게 다르지 않습니다. 직장이나 가정, 혹은 삭막한 사회 구조 속에서 타인의 오해나 조직의 갈등 때문에 애먼 사람들이 씻을 수 없는 상처를 입곤 합니다. 원인은 다른 곳에 있었지만, 정작 수치와 모멸감을 온몸으로 감당해야 하는 이들이 우리 곁에 있습니다. 본문은 그 부조리한 폭력이 누구를 향해 내리꽂혔는지를 시선을 떼지 않고 정확하게 기록합니다.
+
+<h3>당한 상태의 기록, 그리고 마중</h3>
+
+사절단이 참담한 몰골로 돌아오고 있다는 소식이 다윗에게 전해집니다. 이 대목에서 성경은 매우 독특한 시선을 보여줍니다. 본문은 그 상황에서 하눈의 행동이 얼마나 악한지 신학적으로 정죄하거나, 향후 벌어질 거대한 전쟁의 명분을 앞세워 설명하는 데 급급하지 않습니다. 대신, 폭력을 당한 사람들의 내면을 고스란히 문장에 담아냅니다. 
+
+"그 사람들이 심히 부끄러워하므로." 
+
+히브리어 '니클라밈 메오드', 즉 극심한 수치심에 휩싸인 그들의 처참한 감정이 성경에 묵직하게 기록됩니다. 그리고 놀랍게도, 이들의 무너진 감정 상태는 왕을 움직이는 단 하나의 원인이 됩니다. 다윗은 소식을 듣자마자 사람을 보내어 '그들을 맞이하게' 합니다. 외교적 실패에 대한 문책도, 보복을 향한 분노의 선언도 아니었습니다. 수치심에 고개 숙인 채 걸어오고 있을 그들을 향해, 왕은 가장 먼저 사람을 보내어 따뜻한 마중을 나갔습니다. 누군가 억울한 일을 당했을 때, 우리가 가장 먼저 해야 할 일은 차가운 사실관계 분석이 아니라, 그 고통의 자리로 마중을 나가는 것임을 성경은 말해주고 있습니다.
+
+<h3>자라기까지 머물 자리, 여리고</h3>
+
+마중을 나간 다윗은 그들에게 이렇게 지시합니다. "너희는 수염이 자라기까지 여리고에 머물다가 돌아오라." 다윗은 그들에게 당장 수도 예루살렘으로 복귀하여 아무 일도 없었던 것처럼 일상을 살라고 강요하지 않았습니다. 그렇다고 섣부른 회복을 약속하며 그들의 상처를 덮어버리지도 않았습니다. 그는 그저 깎여버린 수염이 다시 자라기까지, 무너진 명예와 자존감이 시간을 두고 회복되기까지 머물 수 있는 고요한 공간을 내어주었습니다. 
+
+우리의 삶에도 도저히 사람들 앞에 나설 수 없을 만큼 자아와 인격이 훼손된 순간들이 찾아옵니다. 억지로 웃으며 괜찮은 척할 수 없는 깊은 절망의 시간입니다. 본문은 우리에게 무리해서 털고 일어나라고 재촉하지 않습니다. 지금 당장 어떤 자리에도 나설 수 없는 찢겨진 상태라면, 그 상태가 지나가기까지 머물러야 할 '여리고'가 필요하다고 말합니다. 상처가 아물고, 깎여나간 수염이 다시 자라날 때까지 온전히 견딜 수 있는 유예의 시간이 주어지는 것입니다.
+
+오늘 본문은 가해자를 향한 통쾌한 복수극으로 서둘러 끝맺지 않습니다. 그저 사람들이 당한 일과, 그들이 느꼈던 심한 부끄러움, 그리고 그들을 위해 마중을 나가고 머물 자리를 마련해 준 왕의 행동만을 담담히 기록할 뿐입니다. 
+
+우리는 때로 나의 고통이나 타인의 아픔을 너무 빨리 '하나님의 거대한 뜻'이나 '합력하여 선을 이루는 과정'이라는 말로 서둘러 포장하려 합니다. 그러나 상실과 수치의 한복판에 서 있는 사람에게 필요한 것은 섣부른 결론이 아닙니다. 극심한 부끄러움 속에 있는 이들을 재촉하지 않고, 수염이 자라기까지 기다려 주는 여리고의 시간입니다. 혹시 오늘, 누군가의 섣부른 판단과 오해로 깊은 상처를 입으셨습니까? 당장 무언가를 증명하려 애쓰지 마십시오. 당신의 수염이 다시 자라기까지, 평안히 머물며 회복할 당신만의 여리고를 주님께서 묵묵히 예비하고 계십니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 05일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
