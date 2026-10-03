@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오늘의 말씀 | 마태복음 16:1-20</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 24 편 &middot; 마태복음 16:1-20</span>
+      <h1>오늘의 말씀 | 마태복음 16:1-20</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>오늘의 말씀 | 마태복음 16:1-20</h1>
+<h2>표적을 구하는 세대, 떡을 잊은 제자, 그리고 한 사람의 고백</h2>
+<p><strong>2026-10-02 (금) | 생명의삶 QT</strong></p>
+<hr />
+<blockquote>
+<p><em>"너희는 나를 누구라 하느냐"</em> (16:15)</p>
+<p><em>"이를 네게 알게 한 이는 혈육이 아니요 하늘에 계신 내 아버지시니라"</em> (16:17)</p>
+</blockquote>
+<hr />
+<h2>본문 핵심</h2>
+<p>본문은 세 장면으로 이어집니다. 먼저 바리새인과 사두개인들이 옵니다. 그들은 "예수를 시험하여 하늘로부터 오는 표적 보이기를 청"합니다(1절). 예수님은 그들을 악하고 음란한 세대라 부르십니다. 장면은 "그들을 떠나 가시니라"(4절)로 끝납니다. 다음 장면에서 제자들은 떡을 잊고 건너왔습니다. 누룩을 주의하라는 말씀을 듣고도 "우리가 떡을 가져오지 아니하였도다"(7절)라며 수군거립니다. 마지막 장면에서 예수님이 물으십니다. "너희는 나를 누구라 하느냐"(15절). 베드로가 "주는 그리스도시요 살아 계신 하나님의 아들이시니이다"(16절)라고 답합니다. 예수님은 그 고백에 복을 선언하시고, 교회를 세우겠다고, 천국 열쇠를 주겠다고 약속하십니다. 그리고 "자기가 그리스도인 것을 아무에게도 이르지 말라"(20절)고 명하십니다. 이 명령에는 이유도 기한도 붙어 있지 않습니다.</p>
+<hr />
+<h2>오늘의 통찰</h2>
+<h3>1. 떠나시는 예수님</h3>
+<blockquote>
+<p><em>"악하고 음란한 세대가 표적을 구하나 요나의 표적 밖에는 보여 줄 표적이 없느니라 하시고 그들을 떠나 가시니라"</em> (16:4)</p>
+</blockquote>
+<p>그들이 구한 것은 하늘로부터의 증명이었습니다. 그러나 1절은 그 요청이 시험이었다고 밝힙니다. 예수님은 요나의 표적 하나만 남기시고 그 자리를 떠나십니다. 이 장면은 화해로 끝나지 않습니다. 성과와 숫자로 하나님의 일하심을 증명받으려는 교회도 이 고발 앞에 섭니다.</p>
+<h3>2. 아직도 깨닫지 못하느냐</h3>
+<blockquote>
+<p><em>"믿음이 작은 자들아 어찌 떡이 없으므로 서로 논의하느냐"</em> (16:8)</p>
+<p><em>"떡 다섯 개로 오천 명을 먹이고 주운 것이 몇 바구니며 떡 일곱 개로 사천 명을 먹이고 주운 것이 몇 광주리였는지를 기억하지 못하느냐"</em> (16:9-10)</p>
+</blockquote>
+<p>예수님은 꾸중부터 하십니다. 그리고 두 번의 급식을 숫자까지 되짚게 하십니다. 다섯 개와 오천 명, 일곱 개와 사천 명입니다. 제자들은 그제서야 누룩이 "바리새인과 사두개인들의 교훈"(12절)임을 깨닫습니다. 깨달음이 왔다고 앞의 꾸중이 지워지지는 않습니다. 우리가 먼저 살필 것은 식탁보다 들려지는 가르침입니다.</p>
+<h3>3. 혈육이 아니라 아버지께서</h3>
+<blockquote>
+<p><em>"더러는 세례 요한, 더러는 엘리야, 어떤 이는 예레미야나 선지자 중의 하나라 하나이다"</em> (16:14)</p>
+<p><em>"바요나 시몬아 네가 복이 있도다 이를 네게 알게 한 이는 혈육이 아니요 하늘에 계신 내 아버지시니라"</em> (16:17)</p>
+</blockquote>
+<p>사람들의 대답은 선지자의 목록이었습니다. 베드로의 대답은 그 목록과 다릅니다. 예수님은 베드로의 고백이 어디서 왔는지를 하늘 아버지께 돌리십니다. 그런데 배 안의 제자들도 이미 "진실로 하나님의 아들이로소이다"(14:33)라고 말했습니다. 왜 여기서 따로 복이 선언되는지 본문은 설명하지 않습니다. 이 글도 그 물음을 닫지 않고 남겨 둡니다.</p>
+<hr />
+<h2>오늘의 적용</h2>
+<p><strong>증명을 요구하던 자리 돌아보기</strong><br />
+"보여 주시면 믿겠습니다"라고 내건 조건이 있었는지 적어 봅니다. 그 조건이 4절의 고발 아래 있음을 인정합니다.</p>
+<p><strong>받은 것을 세어 보기</strong><br />
+예수님이 숫자를 되짚게 하셨듯, 지난 한 해 채워진 일을 날짜와 함께 구체적으로 적어 봅니다.</p>
+<p><strong>들은 가르침을 분별하기</strong><br />
+이번 주 들은 설교와 읽은 글 가운데 무엇이 누룩처럼 퍼지고 있는지 살핍니다.</p>
+<hr />
+<h2>오늘의 기도</h2>
+<blockquote>
+<p>하나님, 시험하는 마음으로 표적을 구했던 저를 고발하시는 말씀 앞에 섭니다.<br />
+받은 것을 잊고 떡 걱정만 하던 제가 믿음이 작은 자라는 꾸중을 듣습니다.<br />
+그 꾸중을 가볍게 넘기지 않게 하시고, 받은 것을 하나하나 기억하게 하옵소서.<br />
+너희는 나를 누구라 하느냐는 물음 앞에서 남의 말이 아닌 제 대답으로 서게 하옵소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</blockquote>
+<hr />
+<h2>묵상 질문</h2>
+<ol>
+<li>내가 하나님께 요구해 온 "하늘로부터의 표적"은 무엇이었습니까?</li>
+<li>받은 것을 기억하지 못해 떡 걱정만 하던 자리는 어디였습니까?</li>
+<li>"너희는 나를 누구라 하느냐"는 물음에 나는 남의 견해를 옮기고 있습니까, 내 대답을 하고 있습니까?</li>
+</ol>
+<hr />
+<p><strong>#오늘의말씀 #마태복음 #생명의삶 #QT #성경묵상 #베드로의고백 #누룩을주의하라 #표적</strong></p>
+<!-- COUNT: 본문 1,398자 / raw 2,290자 -->
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 24 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오늘의 말씀 | 마태복음 25:1-30</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 39 편 &middot; 마태복음 25:1-30</span>
+      <h1>오늘의 말씀 | 마태복음 25:1-30</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>오늘의 말씀 | 마태복음 25:1-30</h1>
+<h2>모두 잠든 밤 끝에 내려진 「깨어 있으라」</h2>
+<p><strong>2026-10-02 (금) | 생명의삶 QT</strong></p>
+<hr />
+<blockquote>
+<p><em>"그런즉 깨어 있으라 너희는 그 날과 그 때를 알지 못하느니라"</em> (마 25:13)</p>
+<p><em>"잘하였도다 착하고 충성된 종아 네가 적은 일에 충성하였으매 내가 많은 것으로 네게 맡기리니 네 주인의 즐거움에 참여할지어다"</em> (마 25:21, 23)</p>
+</blockquote>
+<hr />
+<h2>본문 핵심</h2>
+<p>예수님은 제자들의 물음에 답하시며 두 이야기를 들려주십니다. 첫째는 등을 들고 신랑을 맞으러 나간 열 처녀 이야기입니다. 슬기 있는 다섯은 "그릇에 기름을 담아 등과 함께 가져갔"습니다(25:4). 그런데 "신랑이 더디 오므로 다 졸며 잘새"(25:5), 열이 모두 잠들었습니다. 밤중의 외침 뒤에 "그 처녀들이 다 일어나"(25:7) 등을 준비합니다. 기름을 사러 간 사이에 신랑이 왔고 "문은 닫힌지라"(25:10). 이야기 끝에 듣는 이들에게 명령 하나가 내려집니다. "그런즉 깨어 있으라 너희는 그 날과 그 때를 알지 못하느니라"(25:13). 둘째 이야기는 타국에 가는 주인이 종들에게 자기 소유, 곧 돈을 맡기는 장면으로 이어집니다.</p>
+<hr />
+<h2>오늘의 통찰</h2>
+<h3>1. 슬기로운 이들도 잤습니다</h3>
+<blockquote>
+<p><em>"신랑이 더디 오므로 다 졸며 잘새"</em> (25:5)</p>
+<p><em>"준비하였던 자들은 함께 혼인 잔치에 들어가고 문은 닫힌지라"</em> (25:10)</p>
+</blockquote>
+<p>열을 가른 것은 잠이 아니었습니다. 잠은 열 모두에게 일어났습니다. 이야기는 들어간 이들을 "준비하였던 자들"이라 부릅니다. 그래서 「깨어 있으라」는 졸음을 이기는 시험보다 미리 갖추어 두라는 말로 들릴 수 있습니다(추론). 그러나 문은 닫혔습니다. 밖에서 들린 말은 "진실로 너희에게 이르노니 내가 너희를 알지 못하노라"(25:12)였습니다. 이야기 속 신랑의 대답입니다.</p>
+<h3>2. 다섯과 둘에게 같은 칭찬</h3>
+<blockquote>
+<p><em>"잘하였도다 착하고 충성된 종아 네가 적은 일에 충성하였으매 내가 많은 것으로 네게 맡기리니 네 주인의 즐거움에 참여할지어다"</em> (25:21)</p>
+<p><em>"잘하였도다 착하고 충성된 종아 네가 적은 일에 충성하였으매 내가 많은 것으로 네게 맡기리니 네 주인의 즐거움에 참여할지어다"</em> (25:23)</p>
+</blockquote>
+<p>두 절을 나란히 놓으면 한 글자도 다르지 않습니다. 두 종은 각자 맡은 돈을 정확히 두 배로 남겼습니다. 주인은 다섯 달란트를 더 번 종에게도 "적은 일"이라 말합니다. 판정의 말에는 차등이 없습니다. 그런데 곧이어 "그 한 달란트를 빼앗아 열 달란트 가진 자에게 주라 무릇 있는 자는 받아 풍족하게 되고"(25:28-29)라는 말이 양을 다시 겁니다. 본문은 이 두 장면을 나란히 두고 풀지 않습니다.</p>
+<h3>3. 땅에 감춘 주인의 돈</h3>
+<blockquote>
+<p><em>"주인이여 당신은 굳은 사람이라 심지 않은 데서 거두고 헤치지 않은 데서 모으는 줄을 내가 알았으므로 두려워하여 나가서 당신의 달란트를 땅에 감추어 두었었나이다"</em> (25:24-25)</p>
+</blockquote>
+<p>달란트는 여기서 돈의 단위입니다. 셋째 종의 두려움은 그 자신이 그린 주인 묘사에 이어 나옵니다. 주인은 "악하고 게으른 종아"(25:26)라 부릅니다. 그리고 그 돈을 은행가에게 맡겨 이자라도 받게 했어야 했다고 말합니다(25:27). 결말은 무겁습니다. "이 무익한 종을 바깥 어두운 데로 내쫓으라 거기서 슬피 울며 이를 갈리라"(25:30).</p>
+<hr />
+<h2>오늘의 적용</h2>
+<p><strong>모름을 전제로 오늘을 갖추기</strong><br />
+명령의 이유는 "그 날과 그 때를 알지 못"함입니다. 오늘 미뤄 둔 일 하나를 끝내 둡니다.</p>
+<p><strong>맡은 돈의 임자를 부르기</strong><br />
+본문 내내 돈의 임자는 주인입니다. 오늘 내 손을 거치는 돈이 누구의 것인지 이름 붙여 봅니다(추론).</p>
+<p><strong>닫힌 문을 그대로 읽기</strong><br />
+닫힌 문과 바깥 어두운 데를 서둘러 위로로 덮지 않습니다. 본문이 둔 무게 그대로 듣습니다.</p>
+<hr />
+<h2>오늘의 기도</h2>
+<blockquote>
+<p>그 날과 그 때를 알지 못하는 저희에게 깨어 있으라 하신 주님,<br />
+잠든 밤에도 미리 갖추어 둔 것이 무엇인지 돌아보게 하소서.<br />
+맡기신 것을 남의 것처럼 가벼이 여기지 않게 하시고,<br />
+닫힌 문 앞의 말씀을 흘려듣지 않게 하소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</blockquote>
+<hr />
+<h2>묵상 질문</h2>
+<ol>
+<li>열이 모두 잠들었다는 25:5는 「깨어 있으라」를 어떻게 다시 듣게 합니까?</li>
+<li>똑같은 칭찬(25:21, 23)과 열 달란트 가진 자에게 더 주는 장면(25:28-29)을 함께 읽을 때 무엇이 남습니까?</li>
+<li>셋째 종이 그린 주인의 모습(25:24)과 주인이 되받은 말(25:26)을 나란히 읽으면 무엇이 보입니까?</li>
+</ol>
+<hr />
+<p><strong>#오늘의말씀 #마태복음 #생명의삶 #QT #성경묵상 #열처녀비유 #달란트비유 #깨어있으라</strong></p>
+<!-- 본문 1369자 / raw 2343자 (count_body.py 실측, 범위 1,200~1,800 내) -->
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 39 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

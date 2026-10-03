@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 13편 &middot; 마태복음 9:35~10:15</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 종종 삶의 무게에 짓눌려 길을 잃은 것 같은 기분을 느낄 때가 있습니다. 매일 반복되는 치열한 생존의 현장에서 이리저리 치이고 깎이다 보면, 어느새 마음은 텅 비어버리고 몸은 기진맥진해집니다. 이천 년 전, 흙먼지 날리는 이스라엘의 거리를 걸으시던 예수님의 눈에 비친 사람들의 모습도 이와 다르지 않았습니다.
+
+마태복음 9장에서 예수님은 수많은 무리를 보며 깊은 탄식과 함께 연민을 느끼십니다. 그들의 모습이 마치 '목자 없는 양과 같이 고생하며 기진한' 상태였기 때문입니다. 아무도 돌보아 주지 않아 상처 입고 세상에 내던져진 사람들. 예수님의 시선은 언제나 그 시대의 가장 피곤하고 아픈 사람들을 향해 먼저 머물렀습니다. 그분의 마음 가장 깊은 곳에서 끓어오르는 긍휼이 메마른 세상을 향해 흘러가고 있었습니다.
+
+## 1. 일꾼을 모으기 전, 먼저 하늘을 향해 청하라
+
+흥미로운 것은 그토록 절박한 상황 앞에서 예수님이 제자들에게 내리신 '첫 번째 명령'입니다. 우리는 보통 다급한 문제를 마주하면 당장 팔을 걷어붙이고 스스로 해결책을 찾으려 합니다. "할 일이 너무 많다! 어서 사람들을 더 모으고, 계획을 세우고, 당장 일터로 뛰어들자!"라고 외치기 십상입니다. 하지만 예수님의 처방은 우리의 상식을 뒤엎습니다.
+
+"추수할 것은 많되 일꾼은 적으니, 그러므로 추수하는 주인에게 청하여 추수할 일꾼들을 보내 주소서 하라." (마 9:37-38)
+
+예수님은 다급하게 모집 공고를 내거나 제자들을 당장 들판으로 떠미는 대신, 먼저 '청하라(간구하라)'고 말씀하십니다. 텅 빈 들판과 부족한 일손 앞에서 우리가 가장 먼저 해야 할 일은 분주히 땀 흘리는 것이 아니라, 주인이신 하나님께 무릎을 꿇고 구하는 것입니다. 모든 일의 주도권이 내게 있는 것이 아니라 하늘의 주인에게 있음을 겸손히 인정하는 것. 그것이 수많은 사역과 벅찬 일상을 살아가는 우리의 첫 단추가 되어야 합니다. 우리의 조급한 열심보다, 주님을 향한 간절한 의존이 항상 먼저입니다.
+
+## 2. 값없이 흘려보내는 은혜의 리듬
+
+간절한 청원의 시간이 지나고, 예수님은 열두 제자를 부르시며 상한 자들을 치유할 놀라운 권능을 안겨 주십니다. 그리고 그들을 세상으로 보내시며 이렇게 당부하십니다. "너희가 거저 받았으니, 거저 주라."
+
+우리가 살아가는 세상은 철저한 계산과 교환의 법칙이 지배하는 곳입니다. 받은 만큼 돌려주고, 준 만큼 받아내는 것이 당연한 이치입니다. 정당한 대가와 무료의 헌신 사이에서 어디까지 선의를 베풀어야 할지 저울질하는 것이 우리의 피할 수 없는 현실이기도 합니다. 심지어 본문 안에서도 '일꾼이 먹을 것을 받는 것이 합당하다'는 말씀이 잇따라 등장하며 우리의 고민을 깊게 합니다.
+
+하지만 예수님은 구원의 은혜 앞에서는 계산기를 내려놓으라고 말씀하십니다. 제자들이 받은 치유의 능력과 천국 복음의 비밀은 돈을 주고 산 것이 아니었습니다. 그저 값없이 쏟아부어진 사랑이었습니다. 내가 '거저 받았다'는 사실을 가슴 깊이 깨달은 사람만이 타인에게 온전히 내어줄 수 있습니다. 대가를 바라지 않고 베푸는 친절, 조건 없이 건네는 위로, 기꺼이 나의 시간과 마음을 내어주는 헌신은 오직 나를 향한 하나님의 맹렬하고도 값없는 은혜를 흠뻑 경험했을 때 비로소 가능해집니다. 은혜는 고인 물이 아니라 끊임없이 흘러가는 강물이 되어야 합니다.
+
+## 3. 아무것도 할 수 없어 멈춰 선 당신에게
+
+이 거룩한 파송의 이야기 끝에서, 우리는 뜻밖의 따스한 위로를 발견합니다. 만약 병상에 누워 있거나 삶의 무거운 짐에 짓눌려 한 발자국도 뗄 수 없는 사람이라면, 이 '추수'와 '파송'의 명령 앞에서 어떤 마음이 들까요? 
+
+기억하십시오. 목자 없는 양처럼 기진하여 쓰러져 있던 무리에게 주님은 '나가서 일하라'고 다그치지 않으셨습니다. 일을 하라는 명령은 열두 제자에게 주어졌을 뿐, 지친 무리들은 예수님의 긍휼과 '불쌍히 여기심'을 받는 자리에 머물러 있었습니다. 
+
+당신이 지금 당장 아무것도 할 수 없어 깊은 무력감에 빠져 있다면, 당신은 무언가를 성취해 내야만 하는 일꾼이 아닙니다. 당신은 주님의 사랑과 돌봄을 온전히 받아야 할 그분만의 애틋한 양입니다. 지금 그 멈춰 선 자리가 바로 주님의 따뜻한 눈길이 가장 먼저 머무는 자리입니다.
+
+빈손으로 와서 십자가의 은혜를 거저 받고, 다시 빈손으로 세상을 향해 나아가는 거룩한 여정. 거절당하는 아픔 앞에서는 가볍게 발의 먼지를 털어버리고, 심판의 무거운 몫은 주님의 말씀에 온전히 맡겨드리는 홀가분한 삶. 오늘, 우리의 팍팍한 일상 속에도 이 단순하고도 다정한 하늘의 음성이 스며들기를 소망합니다. 
+
+"먼저 청하라, 그리고 거저 주라."
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 13편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

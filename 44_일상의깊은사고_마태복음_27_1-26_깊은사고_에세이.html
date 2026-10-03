@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 44편 &middot; 마태복음 27:1-26</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+## 책임 전가의 법정, 서로를 향해 떠넘기는 사람들
+
+마태복음 27장의 법정은 거대한 ‘책임 전가의 무대’와도 같습니다. 예수를 죽음에 이르게 한 무거운 핏값 앞에서, 사람들은 저마다 자기 손에 묻은 피를 닦아내고 다른 이에게 그 책임을 떠넘기기에 급급합니다. 우리는 이 무대 위에서 인간이 지닌 가장 연약하고 이기적인 민낯을 마주하게 됩니다.
+
+예수님을 팔아넘긴 가룟 유다는 뒤늦은 후회와 뼈저린 고통 속에서 은 삼십 세겔을 들고 대제사장들과 장로들을 찾아갑니다. "내가 무죄한 피를 팔아 죄를 범했습니다." 그의 절박한 고백에 돌아온 지도자들의 대답은 차갑고도 날카로웠습니다. "그것이 우리와 무슨 상관이냐? 네가 당하라." 헬라어 원문으로 이 말은 "네가 보게 될 것이다(옵세)"라는 의미를 담고 있습니다. 그들은 유다의 고백을 철저히 외면하며, 핏값의 책임을 오롯이 유다 한 사람의 몫으로 밀어냈습니다.
+
+로마의 총독 빌라도 역시 마찬가지였습니다. 그는 예수에게서 어떤 죄도 찾지 못했지만, 민란이 일어날 것을 두려워하여 결국 무리의 거센 요구에 굴복하고 맙니다. 그리고 무리 앞에서 물을 가져다가 손을 씻으며 선언합니다. "이 사람의 피에 대하여 나는 무죄하니, 너희가 당하라." 빌라도 역시 대제사장들과 똑같은 말, "너희가 보게 될 것이다(옵세스테)"라는 말로 자신의 책임을 군중에게 던져버렸습니다. 유다에서 대제사장들로, 다시 빌라도에서 무리로, 피의 책임은 마치 폭탄 돌리기처럼 계속해서 옮겨 다닙니다.
+
+## 깨끗한 금고와 씻은 손이 덮지 못하는 진실
+
+가장 가슴 아픈 비극은 책임을 회피하려는 이들의 기만적인 행동에 있습니다. 대제사장들은 유다가 성소에 던져두고 간 은 삼십 세겔을 성전 금고에 넣기를 거부합니다. "이것은 핏값이니 금고에 넣는 것은 옳지 않다"는 거룩한 명분을 내세운 것입니다. 그들은 그 돈으로 나그네를 위한 묘지를 사들였고, 스스로는 종교적 결백을 완벽하게 지켰다고 안도했을지 모릅니다. 그러나 핏값으로 산 그 땅은 오늘날까지도 '피밭'이라 불리며, 그들의 위선적인 행동이 결코 죄의 흔적을 지우지 못했음을 역사 속에 고발하고 있습니다. 
+
+빌라도 또한 손을 씻는 상징적인 의식을 통해 자신의 결백을 강변했습니다. 하지만 한 바가지의 물이 그의 손에 묻은 보이지 않는 피를 씻어낼 수는 없었습니다. 그는 "나는 무죄하다"고 말한 바로 그 입으로, 예수를 채찍질하고 십자가에 못 박히도록 넘겨주었습니다. 말과 행동이 빚어낸 이 끔찍한 모순 속에서, 빌라도는 결코 결백할 수 없는 공범자가 되어버렸습니다.
+
+우리의 일상은 어떠합니까? 우리 역시 대제사장들이나 빌라도처럼, 나의 '금고'만 깨끗하게 유지하면, 혹은 내 손만 씻어내면 모든 책임에서 자유로워진다고 착각할 때가 많습니다. 누군가 아픔을 호소하며 다가올 때 "그건 내 소관이 아니야"라며 선을 긋고, 부당한 현실 앞에서는 침묵하며 다수의 뒤에 숨어버리지 않습니까? 장부상 아무 문제가 없다고 해서, 혹은 다른 사람들도 다 그렇게 넘어간다고 해서, 우리가 마주한 도의적 책임과 이웃을 향한 사랑의 의무마저 지워지는 것은 아닙니다.
+
+## 떠넘겨진 비극을 홀로 짊어지신 가장 위대한 침묵
+
+이처럼 모두가 서로를 향해 핏값을 떠넘기고 있는 이 소란스러운 법정에서, 오직 한 분만이 깊은 침묵을 지키고 계십니다. 바로 예수 그리스도이십니다. 예수님은 "네 말이 옳도다"라는 짧은 긍정 이후, 자신을 향한 억울한 고발과 모욕 앞에서도 일절 입을 열지 않으셨습니다. 총독이 크게 놀라워할 만큼 그분의 침묵은 묵직하고도 단호했습니다.
+
+예수님의 침묵은 결코 할 말이 없어서나 두려워서가 아니었습니다. 그것은 세상의 모든 핑계와 비겁함, 이기심이 빚어낸 죄악의 무게를 고스란히 끌어안기 위한 거룩한 결단이었습니다. 사람들이 서로 "네가 당하라"며 던져버린 그 수많은 피의 책임을, 예수님께서는 아무런 변명 없이 온몸으로 받아내셨습니다. 남에게 책임을 미루기 위해 쏟아내는 수백 마디의 말보다, 우리의 모든 짐을 짊어지기 위해 선택하신 예수님의 침묵이 세상 그 어떤 언어보다 위대한 사랑을 증명합니다.
+
+오늘 우리는 조용히 스스로에게 질문해야 합니다. 손을 씻는 얄팍한 몸짓으로 내 몫의 짐을 회피하고 있지는 않은지, 누군가의 간절한 고백을 차가운 얼굴로 밀어내고 있지는 않은지 말입니다. 수많은 말과 핑계로 서로에게 책임을 미루는 이 각박한 세상 속에서, 십자가를 향해 묵묵히 걸어가신 예수님의 그 숭고한 침묵을 배울 수 있기를 소망합니다. 우리가 외면했던 이웃의 상처를 따뜻하게 안아주고, 내가 감당해야 할 삶의 무게를 기꺼이 짊어질 때, 예수님이 보여주신 그 위대한 십자가의 사랑이 비로소 우리의 일상 속에 아름답게 피어날 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 44편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

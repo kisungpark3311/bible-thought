@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오늘의 말씀 | 마태복음 15:1-20</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">말씀과 묵상 &middot; 제 22 편 &middot; 마태복음 15:1-20</span>
+      <h1>오늘의 말씀 | 마태복음 15:1-20</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      <h1>오늘의 말씀 | 마태복음 15:1-20</h1>
+<h2>되돌아온 물음 — 무엇이 사람을 더럽게 하는가</h2>
+<p><strong>2026-10-02 (금) | 생명의삶 QT</strong></p>
+<hr />
+<blockquote>
+<p><em>"당신의 제자들이 어찌하여 장로들의 전통을 범하나이까 떡 먹을 때에 손을 씻지 아니하나이다"</em> (15:2)</p>
+<p><em>"너희는 어찌하여 너희의 전통으로 하나님의 계명을 범하느냐"</em> (15:3)</p>
+</blockquote>
+<hr />
+<h2>본문 핵심</h2>
+<p>예루살렘에서 바리새인과 서기관들이 옵니다. 그들은 제자들이 장로들의 전통을 범한다고 고발합니다. 고발의 실물은 손과 떡입니다. 제자들은 떡을 먹을 때 손을 씻지 않습니다. 예수님은 변호하지 않고 같은 물음을 되돌리십니다. "너희는 어찌하여 너희의 전통으로 하나님의 계명을 범하느냐"(15:3). 범한다는 같은 동사가 쓰이지만 주어와 대상이 바뀝니다. 장로들의 전통이 하나님의 계명이 되고, 제자들이 고발자 자신이 됩니다. 이어서 예수님은 무리에게 말씀하십니다. "입으로 들어가는 것이 사람을 더럽게 하는 것이 아니라 입에서 나오는 그것이 사람을 더럽게 하는 것이니라"(15:11).</p>
+<hr />
+<h2>오늘의 통찰</h2>
+<h3>1. 계명을 무효로 만든 것은 너희의 전통이다</h3>
+<blockquote>
+<p><em>"그 부모를 공경할 것이 없다 하여 너희의 전통으로 하나님의 말씀을 폐하는도다"</em> (15:6)</p>
+</blockquote>
+<p>하나님은 "네 부모를 공경하라"고 말씀하셨습니다(15:4). 그런데 그들은 부모에게 드릴 몫에 "하나님께 드림"이라는 이름을 붙입니다(15:5). 그러면 부모를 공경할 것이 없어집니다. 말씀을 폐한 주어는 "너희"이고, 수단은 "너희의 전통"입니다. 경건의 이름이 부모의 몫을 덮는 길이 여기 있습니다.</p>
+<h3>2. 입술은 가깝고 마음은 멀다</h3>
+<blockquote>
+<p><em>"이 백성이 입술로는 나를 존경하되 마음은 내게서 멀도다"</em> (15:8)</p>
+</blockquote>
+<p>예수님은 그들을 "외식하는 자들아"(15:7)라고 부르십니다. 그리고 이사야의 말을 가져오십니다. 공경한다는 말이 입술에는 있습니다. 그러나 마음은 멀리 떨어져 있습니다. 이 고발은 위로로 덮을 말이 아닙니다.</p>
+<h3>3. 더러움은 마음에서 나온다</h3>
+<blockquote>
+<p><em>"입에서 나오는 것들은 마음에서 나오나니 이것이야말로 사람을 더럽게 하느니라"</em> (15:18)<br />
+<em>"이런 것들이 사람을 더럽게 하는 것이요 씻지 않은 손으로 먹는 것은 사람을 더럽게 하지 못하느니라"</em> (15:20)</p>
+</blockquote>
+<p>입으로 들어간 것은 배로 가서 뒷간으로 나갑니다(15:17). 그러나 마음에서는 악한 생각, 살인, 간음, 음란, 도둑질, 거짓 증언, 비방이 나옵니다(15:19). 이것들이 사람을 더럽힙니다. 그다음에야 씻지 않은 손의 문제가 답을 얻습니다.</p>
+<hr />
+<h2>오늘의 적용</h2>
+<p><strong>내 전통의 이름 점검하기</strong><br />
+내가 지키는 습관 가운데 하나님의 계명보다 앞서는 것이 없는지 하나 적어 봅니다.</p>
+<p><strong>부모의 몫 다시 보기</strong><br />
+헌신의 이름으로 미뤄 둔 부모의 몫이 있다면 이번 주에 직접 챙깁니다.</p>
+<p><strong>입에서 나가는 말 살피기</strong><br />
+오늘 한 말 가운데 비방이나 거짓이 섞인 말이 있었는지 저녁에 돌아봅니다.</p>
+<hr />
+<h2>오늘의 기도</h2>
+<blockquote>
+<p>하나님, 주의 계명보다 제 습관을 앞세운 날들을 고백합니다.<br />
+입술로만 주를 공경하고 마음은 멀리 두었습니다.<br />
+경건의 이름으로 부모와 이웃의 몫을 덮지 않게 하소서.<br />
+제 마음에서 나가는 것을 정직하게 보게 하소서.</p>
+<p>예수님의 이름으로 기도합니다. 아멘.</p>
+</blockquote>
+<hr />
+<h2>묵상 질문</h2>
+<ol>
+<li>내가 남을 판단할 때 쓰는 기준이 나에게 되돌아온다면 무엇이 드러납니까?</li>
+<li>경건한 이름을 붙여 책임을 피한 일이 있습니까?</li>
+<li>오늘 내 입에서 나간 말은 내 마음의 어떤 것을 보여 줍니까?</li>
+</ol>
+<hr />
+<p><strong>#오늘의말씀 #마태복음 #생명의삶 #QT #성경묵상 #장로들의전통 #마음 #부모공경</strong></p>
+<!-- 본문/raw: 본문 1109자 / raw 1868자 (count_body 실측 · 하한 1,200 대비 7.6% 미달 — 20% 이내라 수정하지 않음) -->
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      제 22 편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글자 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

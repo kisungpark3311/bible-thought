@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 05편 &middot; 마태복음 5:1-16</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리는 종종 신앙생활을 끊임없는 의무와 과제의 연속으로 여기며 살아갑니다. 더 착해져야 하고, 더 많이 희생해야 하며, 흠 없는 완벽한 그리스도인이 되어야 한다는 무언의 강박이 우리의 어깨를 짓누르곤 합니다. 그러나 갈릴리의 어느 푸른 언덕, 삶의 무게에 지친 무리와 제자들을 앞에 두고 입을 여신 예수님의 첫마디는 차갑고 무거운 명령이 아니었습니다. 무언가를 요구하시기 전에, 그분은 먼저 상처받고 흔들리는 이들을 향해 "너희는 복되다"라고 선언하셨습니다. 우리가 어떤 그럴듯한 자격을 증명해 내기 전에, 그저 상한 마음 그대로 주님 앞에 나아왔을 때 천국은 이미 우리의 것이라고 말씀해 주셨습니다. 
+
+예수님의 산상수훈은 지켜내야 할 버거운 율법 조항들의 나열이 아니라, 우리를 향한 다함 없는 은혜와 사랑의 선언으로 시작됩니다. 행동을 요구하기 전에 우리의 존재를 먼저 다정하게 규정하시는 이 따뜻한 역설 속에서, 우리는 비로소 참된 자유와 안식을 발견하게 됩니다.
+
+## 1. '되라'는 벅찬 강요가 아닌, '이다'라는 은혜의 선언
+
+교회의 강단에서 우리는 참으로 익숙한 권면을 듣습니다. "세상의 빛과 소금이 되십시오." 우리는 이 말씀을 들을 때마다 내심 찔림을 받으며, 무언가 대단한 일을 해내야 한다는 압박감을 느낍니다. 부패한 세상을 썩지 않게 할 짠맛을 내기 위해, 어두운 세상을 밝히기 위해 부단히 내 자신을 갈아 넣어야 할 것만 같습니다. 그러나 헬라어 원문이 들려주는 진실은 우리의 짐을 가볍게 합니다. 예수님은 결코 우리에게 "소금이 되어라", "빛이 되어라" 하고 무겁게 명령하지 않으셨습니다. 
+
+"너희는 세상의 소금이다." "너희는 세상의 빛이다."
+
+예수님은 단호하고도 명확하게, 직설법으로 우리의 정체성을 먼저 선언하십니다. 소금과 빛은 우리가 고군분투하며 기어코 도달해야 할 아득한 목표 지점이 아닙니다. 그것은 주님께서 우리를 부르실 때 이미 우리 존재 깊은 곳에 새겨주신 찬란한 이름입니다. 그러므로 신앙의 순종이란 자격을 얻어내기 위한 처절한 몸부림이 아닙니다. 이미 값없이 받은 그 아름다운 이름이, 내 삶의 구체적인 자리에서 자연스럽게 배어 나오도록 살아가는 방식일 뿐입니다. 기억하십시오. 당신은 이미 소금이며, 당신은 이미 빛입니다.
+
+## 2. 억지로 빚어내는 빛이 아니라, 그저 덮어두지 않는 빛
+
+그렇다면 이미 빛이 된 우리는 일상에서 어떻게 살아가야 할까요? 예수님은 "너희 빛을 사람 앞에 비치게 하라"고 말씀하십니다. 그런데 이 말씀을 가만히 묵상해 보면, 내 안에서 억지로 빛을 쥐어짜 내어 발광체가 되라는 뜻이 아님을 알 수 있습니다. 어둠을 밝히는 주어는 '나' 자신이 아니라, 이미 내 안에 켜진 '빛' 그 자체이기 때문입니다. 
+
+가정집의 흔한 풍경을 떠올려 보십시오. 누구도 등불을 켜서 그릇 아래 숨겨두지 않습니다. 우리가 할 일은 무에서 유를 창조하듯 빛을 만들어내는 것이 아니라, 이미 주님이 내 영혼에 켜두신 그 밝은 등불을 이기적인 욕심의 됫박으로 덮어두지 않는 것뿐입니다. 물론 우리의 삶에는 거룩한 긴장이 흐릅니다. 빛을 비추어 사람들에게 착한 행실을 보이라는 명령과, 사람에게 보이려고 의를 행하지 말라는 경고가 한 설교 안에 나란히 놓여 있기 때문입니다. 
+
+그 긴장을 푸는 열쇠는 목적지에 있습니다. 내 삶의 빛이 비추어 도달하는 곳, 사람들의 시선과 영광이 최종적으로 머무는 곳이 '나의 평판'이 아니라 '하늘에 계신 우리 아버지'라면 우리의 빛은 안전합니다. 우리는 사람들의 칭찬을 끌어모으는 자가 아니라, 오직 아버지를 투명하게 보여주는 맑은 창문이 되어야 합니다. 
+
+## 3. 일상의 낡은 장부 위로 내려앉는 하늘의 빛
+
+산 위에서 선포된 이 장엄한 하나님 나라의 선언은, 이제 지극히 평범하고 때로는 치열한 우리의 일상 한가운데로 내려옵니다. 심령이 가난한 자와 박해받는 자에게 이미 선언된 '현재의 천국'은, 아직 위로받지 못해 애통해하는 이들의 '미래의 약속'을 앞뒤로 따뜻하게 감싸 안고 있습니다. 지금 당장 억울함에 눈물 흘리는 이들에게 섣부른 정답을 내밀기보다, 천국을 소유한 자답게 그들 곁에 묵묵히 머물며 다가올 위로를 함께 기다려주는 것. 그것이 바로 빛 된 자의 조용한 걸음입니다.
+
+우리의 착한 행실이 드러나는 자리는 세상이 주목하는 거창한 무대가 아닙니다. 세무나 회계 현장에서 땀 흘리는 이들에게, 말(계량 그릇) 아래 덮어두지 말아야 할 빛은 거창한 구호가 아닙니다. 그것은 숨김없고 투명한 장부요, 약속된 기한을 지키는 성실한 신고이며, 정직하게 청구된 수수료입니다. 시간이 곧 돈이 되는 바쁜 신고 기간에 야근 시간을 부풀리지 않고 묵묵히 숫자를 맞추는 그 정직하고 고독한 순간, 하늘의 빛은 우리의 낡은 모니터 위로 눈부시게 비칩니다. 
+
+오늘 하루, 억지로 대단한 일을 해내려 발버둥 치기보다 그저 내 안에 심겨진 주님의 빛을 덮어두지 않기를 소망합니다. 아직 아무것도 이룬 것 없는 초라한 나를 먼저 찾아와 "복되다" 안아주신 그 크신 은혜에 기대어, 나의 작고 평범한 일상이 하늘 아버지를 오롯이 비추는 맑고 투명한 거울이 되기를 두 손 모아 기도합니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 05편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

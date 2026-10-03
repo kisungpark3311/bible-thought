@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 02편 &middot; 마태복음 2:1-23</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+성탄의 계절이나 연말연시가 오면 우리는 흔히 동방에서 온 박사들이 아기 예수께 예물을 드리는 눈부시고 아름다운 장면을 떠올리곤 합니다. 평화로운 밤, 말구유에 누운 아기 예수와 그를 경배하는 경건한 사람들의 모습은 한 폭의 그림처럼 우리 마음을 따뜻하게 합니다. 하지만 마태복음 2장이 전해주는 실제 이야기는 우리가 상상하는 것만큼 마냥 낭만적이지만은 않습니다. 
+
+이 짧은 장 안에는 구약성경의 오래된 예언이 네 번이나 불려 나오며, 탄생의 벅찬 기쁨 이면에는 한밤중의 급박한 피난길과, 위로받기조차 거절하는 어머니들의 처절한 통곡이 서늘하게 교차합니다. 말씀을 대하는 인간의 군상은 너무도 극명하게 나뉘고, 그 속에서 우리는 ‘참된 경배’가 무엇인지, 그리고 ‘말씀을 아는 것’의 진짜 의미가 무엇인지 아프고도 깊은 질문을 마주하게 됩니다.
+
+## 정답을 아는 입, 엎드리지 않는 몸
+
+어느 날 낯선 동방의 박사들이 예루살렘에 당도하여 묻습니다. "유대인의 왕으로 나신 이가 어디 계시냐." 이 한마디에 거대한 권력을 쥐고 있던 헤롯 왕과 온 예루살렘은 발칵 뒤집힙니다. 불안과 두려움에 휩싸인 헤롯은 즉시 대제사장과 서기관들을 불러 모아 그리스도가 어디서 나겠느냐고 심문하듯 묻습니다. 
+
+이때 종교 지도자들의 대답은 한 치의 망설임도 없이 정확했습니다. 그들은 미가 선지자의 글을 인용하며 "유대 베들레헴이오니 이는 선지자로 이렇게 기록되었으되"라며 명쾌한 정답을 내놓습니다. 놀라운 것은 그 다음입니다. 그들은 메시아가 태어날 장소를 성경을 통해 훤히 꿰뚫고 있었지만, 정작 그 베들레헴으로 발걸음을 옮긴 이는 단 한 사람도 없었습니다. 성경의 기록을 정확히 인용하는 지식과 입술이, 곧바로 그 말씀 앞에 순종하며 나아가는 삶으로 이어지지는 않음을 뼈아프게 보여주는 대목입니다. 
+
+더욱 비극적인 사실은, 그들이 내놓은 이 '완벽한 정답'이 훗날 헤롯이 베들레헴의 죄 없는 사내아이들을 학살하는 잔혹한 좌표로 사용되었다는 것입니다. 우리의 삶도 이와 크게 다르지 않을지 모릅니다. 내가 가진 해박한 지식과 정확한 논리가 누군가를 살리는 생명의 길이 아니라, 도리어 누군가를 해치고 억압하는 차가운 도구로 쓰이고 있지는 않은지 깊이 돌아보아야 합니다. 정답을 읊조리는 입과, 그 말씀 앞에 온전히 엎드리는 몸은 결코 같지 않습니다.
+
+## 거짓된 혀와 상자를 여는 손
+
+정답을 얻은 헤롯 왕은 박사들에게 은밀히 당부합니다. 아기에 대해 자세히 알아보고 찾거든 내게도 알려달라고, "나도 가서 그에게 경배하게 하라"고 말입니다. 하지만 그의 입술에서 흘러나온 ‘경배’라는 단어는 자신의 흉악한 살기를 감추기 위한 소름 끼치는 포장지에 불과했습니다. 헤롯은 경배를 말했지만, 속으로는 칼을 품고 있었습니다. 
+
+반면 별을 따라온 동방의 박사들은 어떠했습니까? 그들은 기나긴 여정의 끝에서 마침내 아기가 있는 곳에 이르렀고, 그 초라한 집 안에서 엎드려 경배합니다. 흥미롭게도 마태복음 2장에는 '경배'라는 단어가 세 번 등장하지만, 실제로 경배가 일어난 것은 박사들이 엎드린 이 순간 단 한 번뿐입니다. 참된 경배는 "경배하러 왔다"는 말이나 "경배하겠다"는 거짓된 다짐에 있지 않았습니다. 
+
+또한 박사들은 빈손으로 엎드리지 않았습니다. 자신의 가장 귀한 보배합을 열어 황금과 유향과 몰약을 아기에게 예물로 드렸습니다. 이처럼 진짜 경배는 입술의 화려한 고백에서 끝나지 않습니다. 그것은 몸을 낮춰 땅에 엎드리는 겸손이며, 내 삶의 굳게 닫힌 상자를 기꺼이 여는 헌신의 손길입니다. 화려한 예배당의 조명 아래서만 드려지는 것이 아니라, 한밤중에 짐을 꾸려 낯선 이국땅으로 국경을 넘어야 했던 요셉과 마리아 같은 이웃들을 향해 손을 뻗는 일입니다. 오늘날에도 벼랑 끝으로 내몰린 이들에게 한 달 치 방세와 따뜻한 밥 한 끼의 온기를 내어주는 실질적인 나눔이 있다면, 그것이 바로 아기 예수께 드리는 가장 아름다운 경배일 것입니다.
+
+## 슬픔 곁에 머무는 다정한 침묵
+
+이 장엄하고 아름다운 탄생의 이야기는 곧바로 피난과 학살이라는 어두운 골짜기로 우리를 이끌고 들어갑니다. 요셉의 가족은 천사의 경고를 따라 깊은 밤 애굽으로 도망쳐 목숨을 건졌지만, 베들레헴에 남겨진 두 살 이하의 어린아이들은 무자비한 헤롯의 칼날을 피하지 못했습니다. 라마에서 들려오는 처절한 통곡 소리, 사랑하는 자식을 잃고 그 어떤 위로도 받기를 거절하는 라헬의 통곡이 성경의 한 페이지를 피눈물로 적십니다. 
+
+우리를 더욱 숙연하게 만드는 것은 성경의 태도입니다. 놀랍게도 마태는 한 아이가 극적으로 살아남았다는 이 구원의 이야기 한가운데에, 죄 없는 아이들의 죽음과 어머니들의 끊어질 듯한 울음을 섣불리 지우지 않고 그대로 둡니다. "이 또한 하나님의 깊은 뜻이었다"거나 "더 큰 목적이 있었다"는 식의 값싼 해석으로 그들의 슬픔을 덮어버리지 않습니다. 슬픔은 슬픔 그 자체로 거룩한 성경의 한 자리를 차지한 채 영원히 기록되었습니다. 
+
+우리 주변에도 어떤 위로의 말로도 닿을 수 없는 깊은 슬픔과 상실에 잠긴 이들이 있습니다. 그럴 때 우리는 서둘러 정답을 제시하거나, 내 알량한 지식으로 그들의 고통을 해석하고 성급하게 위로하려 들지 말아야 합니다. 오히려 위로를 거절하는 그 찢어진 마음을 탓하지 않고, 묵묵히 곁에 앉아 그 통곡을 함께 들어주는 다정한 침묵이 필요합니다. 
+
+마태복음 2장이 우리 앞에 펼쳐 보여주는 지도는 명확합니다. 두 갈래의 길이 한 아기를 향해 뻗어 있습니다. 한 길은 묵묵히 별빛을 따라가 기꺼이 엎드리는 길이고, 다른 한 길은 완벽한 정답을 손에 쥐고도 자신의 욕망을 지키기 위해 칼을 휘두르는 길입니다. 그리고 그 지도의 한 켠에는 잊히지 않는 아픈 통곡이 고스란히 흐르고 있습니다. 당신은 오늘 어느 길 위에서, 누구의 손을 잡고 이 아기의 이름을 부르고 있습니까?
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 02편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

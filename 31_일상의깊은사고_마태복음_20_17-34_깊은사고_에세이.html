@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 31편 &middot; 마태복음 20:17-34</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+예루살렘으로 향하는 발걸음은 무거웠습니다. 예수님은 제자들을 따로 부르시고, 당신이 대제사장들에게 넘겨져 조롱받고 채찍질당하며 마침내 십자가에 못 박힐 것이라고 세 번째로 말씀하셨습니다. 죽음을 넘어선 부활을 약속하셨지만, 그 앞에 놓인 고난의 무게는 결코 가볍지 않았습니다. 
+
+그러나 십자가의 그림자가 짙게 드리운 그 길 위에서, 인간의 욕망은 참으로 끈질기게 피어납니다. 가장 깊은 슬픔과 구원의 신비가 선포된 바로 그 순간, 제자들 사이에서는 가장 높은 자리를 차지하기 위한 다툼이 일어났기 때문입니다.
+
+## 가장 높은 곳을 향한 욕망과 십자가의 역설
+
+세베대의 아들들의 어머니가 다가와 절하며 묻습니다. "나의 이 두 아들을 주의 나라에서 하나는 주의 우편에, 하나는 주의 좌편에 앉게 명하소서." 자신의 목숨을 내어주러 가시는 예수님 앞에서, 그들은 권력과 영광의 자리를 구했습니다. 예수님의 탄식 어린 대답이 이어집니다. "너희는 너희가 구하는 것을 알지 못하는도다."
+
+이 사실을 알게 된 열 제자는 분개했습니다. 하지만 그 분노의 밑바탕에는 '왜 너희가 먼저 그 자리를 선점하려 하느냐'는 똑같은 욕망이 웅크리고 있었습니다. 세상의 권력자들은 사람들을 마음대로 주관하고 권세를 부립니다. 남들보다 높은 곳에 서서 누군가를 호령하는 것, 그것이 세상이 말하는 '성공'이자 '큰 자'의 모습입니다. 예수님의 십자가 여정을 곁에서 걸으면서도, 제자들의 마음은 여전히 세상의 한복판을 헤매고 있었습니다. 
+
+우리는 어떨까요? 교회 안에서, 가정에서, 일터에서 우리 역시 높은 자리를 두고 경쟁하며, 누군가를 지배할 권한을 은밀히 구하고 있지는 않습니까? 
+
+## “너희 중에는 그렇지 않을 것이다” : 섬김이라는 새로운 정체성
+
+예수님은 다투는 제자들을 불러 모으십니다. 그리고 세상의 질서와는 전혀 다른, 하나님 나라의 새로운 질서를 선포하십니다. "너희 중에는 그렇지 아니할 것이다. 너희 중에 크게 되고자 하는 자는 너희를 섬기는 자일 것이다."
+
+원문을 보면, 이 말씀은 단순한 명령이나 도덕적 권면을 넘어선 선언에 가깝습니다. "너희는 섬기는 자가 되어야 한다"며 힘겨운 의무를 지우시는 것이 아니라, "너희는 섬기는 자일 것이다"라며 제자들의 새로운 정체성을 규정해주시는 것입니다. 이 놀라운 정체성의 근거는 바로 예수님 자신입니다. "인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 하고, 자기 목숨을 많은 사람의 대속물로 주려 함이니라." 
+
+우리의 진짜 가치는 얼마나 높은 자리에 앉아 있느냐로 증명되지 않습니다. 우리가 치러야 할 삶의 값은 누군가를 억누르는 권세가 아니라, 기꺼이 내어주는 '자기 목숨'에 있습니다. 매일같이 이익과 손해를 계산하고 스스로의 몸값을 매겨야 하는 팍팍한 세상 속에서, 주님은 우리의 가치가 그분이 대신 치르신 대속물, 즉 그분의 생명에 있음을 가르쳐 주십니다. 
+
+## “무엇을 원하느냐?” : 닫힌 눈이 열리고 참된 길을 걷기까지
+
+예루살렘으로 가는 여정의 끝자락, 여리고를 떠나실 때 길가에 앉은 두 맹인이 소리칩니다. "주여, 우리를 불쌍히 여기소서!" 사람들의 꾸짖음에도 아랑곳하지 않고 그들은 더 크게 외칩니다. 예수님은 걸음을 멈추시고 그들에게 다가가 묻습니다. "너희에게 무엇을 하여 주기를 원하느냐?"
+
+조금 전 제자들의 어머니에게 하셨던 것과 똑같은 질문입니다. 자리를 구했던 어머니와 달리, 철저히 무력하게 길가에 앉아 있던 두 사람은 대답합니다. "주여, 우리의 눈 뜨기를 원하나이다." 그들은 권력도, 명예도 아닌 그저 주님을 제대로 볼 수 있는 '눈'을 구했습니다. 예수님은 그들을 깊이 불쌍히 여기시고 그들의 눈을 어루만져 주십니다. 마침내 눈이 열린 두 사람은 비로소 예수님을 따라나섭니다.
+
+예수님을 따른다는 것은 높은 자리를 얻어 호령하는 것이 아닙니다. 닫힌 눈이 열려 주님의 긍휼을 경험하고, 그 만져주심의 은혜로 십자가의 길을 묵묵히 걸어가는 것입니다. 오늘, 고단한 삶의 길가에 주저앉아 계십니까? 무언가를 해내야 한다는 강박과, 누군가보다 앞서야 한다는 불안에 지쳐 있습니까? 
+
+주님이 우리 곁에 다가와 멈춰 서십니다. 그리고 조용히 물으십니다. "내가 너에게 무엇을 해주기를 원하느냐?" 세상의 헛된 영광이 아닌, 긍휼을 구합시다. 우리의 어두운 눈이 열려 섬기러 오신 주님을 바라보게 해 달라고 기도합시다. 그분의 따뜻한 손길이 우리 눈을 만지실 때, 우리는 마침내 분노와 경쟁을 내려놓고, 누군가를 살리는 '섬김의 길'을 기쁨으로 걸어가게 될 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 31편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

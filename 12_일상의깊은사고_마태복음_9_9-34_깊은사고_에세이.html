@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 12편 &middot; 마태복음 9:9-34</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리의 일상은 수많은 판단과 잣대로 가득 차 있습니다. 누가 옳은지, 누가 그른지, 누구와 밥을 먹어야 하고 누구를 멀리해야 하는지 우리는 끊임없이 선을 긋고 살아갑니다. 마태복음 9장에 펼쳐진 풍경도 지금 우리의 일상과 크게 다르지 않았습니다. 그곳에는 사람들의 따가운 시선을 받던 세리 마태가 있었고, 언제나 율법의 잣대를 들이밀며 비난할 준비가 되어 있는 바리새인들이 있었습니다. 하지만 예수님은 그 팽팽한 긴장 한가운데서 아무도 예상하지 못한 방식으로 은혜의 문을 여십니다. 그리고 오늘, 성급한 정답 대신 우리 스스로 깊이 고민하고 풀어야 할 묵직한 숙제 하나를 건네십니다.
+
+## 1. 세관의 탁자에서 은혜의 식탁으로
+
+예수님은 세관에 앉아 있던 마태를 향해 그저 "나를 따르라"고 말씀하셨습니다. 사람들의 손가락질을 받으며 오직 장부의 숫자만 들여다보던 그 삭막한 탁자가, 주님의 부르심 하나로 은혜의 자리로 변하는 순간이었습니다. 그날 마태의 집에는 수많은 세리와 죄인들이 모여 예수님, 그리고 제자들과 함께 식사를 나누었습니다. 
+
+당연하게도 바리새인들의 날 선 비난이 날아들었습니다. "어찌하여 너희 선생은 세리와 죄인들과 함께 밥을 먹느냐?" 그들은 자신들만의 경건의 선을 그어놓고, 그 선을 훌쩍 넘어버린 예수님을 정죄했습니다. 하지만 주님은 그들을 매섭게 꾸짖는 대신, 옛 선지자 호세아의 말씀을 인용하시며 조용히 말씀하십니다. "너희는 가서, 내가 긍휼을 원하고 제사를 원하지 아니하노라 하신 뜻이 무엇인지 배우라."
+
+예수님은 그 말씀의 뜻을 친절하게 요약해 주지 않으셨습니다. 대신 '가서 배우라'고 하셨습니다. 이 명령은 그 자리에 있던 제자들과 바리새인들뿐만 아니라, 오늘날 사람을 함부로 판단하고 정죄하기에 바쁜 우리 모두에게 주어지는 영적인 과제입니다. 숫자와 이익만을 따지는 우리의 차가운 '세관 탁자'에서 벗어나, 조건 없이 사람을 품어내는 '은혜의 식탁'으로 나아가라는 부르심입니다.
+
+## 2. 삶의 벼랑 끝에서 만난 긍휼
+
+이어진 말씀 속에는 몸과 마음이 무너져 내린 사람들의 행렬이 등장합니다. 갓 숨을 거둔 사랑하는 딸을 둔 관리, 무려 열두 해 동안이나 혈루증을 앓으며 남몰래 주님의 옷자락을 만져야 했던 여인, 빛을 잃고 흑암 속에 갇힌 두 맹인, 그리고 입이 굳어버려 신음조차 내지 못하는 사람까지. 이들은 모두 자신의 힘으로는 도저히 어찌할 수 없는 삶의 벼랑 끝에 서 있었습니다. 
+
+예수님은 그들의 깊은 고통을 외면하지 않으셨습니다. 율법의 규정으로는 부정하다 여겨질 여인의 터치를 꾸짖지 않으시고 "네 믿음이 너를 구원하였다"며 다독이셨고, 보지 못하고 말하지 못하는 이들의 답답함을 친히 풀어주셨습니다. 스스로의 힘으로 주님 앞에 나올 수조차 없었던 이웃을 위해, 사람들은 그들을 데리고 왔고 예수님은 기꺼이 회복의 손길을 내미셨습니다.
+
+새 포도주를 새 부대에 담아야 둘 다 보존되듯이, 주님의 긍휼은 낡은 형식과 편견을 깨뜨리고 결국 사람을 살려냅니다. 우리가 겪는 삶의 고통과 아픔의 현장 속에서, 주님은 섣부른 판단이나 율법의 잣대 대신 따뜻한 긍휼로 우리를 어루만지십니다. 오랜 시간 남몰래 눈물 흘린 이웃에게 다가가 부축하는 팔을 내어주는 것, 혼자서는 걸어올 수 없는 이들의 손을 잡고 함께 걸어가는 것. 그것이 바로 주님이 보여주신 진정한 긍휼이자 우리가 지녀야 할 새 부대의 모습입니다.
+
+## 3. 환호와 비난 사이, 우리에게 남겨진 숙제
+
+놀라운 기적과 회복의 현장을 지켜본 사람들의 반응은 두 갈래로 나뉘었습니다. 한편에서는 "이스라엘 가운데서 이런 일을 본 적이 없다"며 경탄과 환호를 보냈지만, 다른 한편에서는 "그가 귀신의 왕을 의지하여 귀신을 쫓아낸다"며 섬뜩하고 거친 고발을 쏟아냈습니다. 똑같은 회복의 기적을 보고도 누군가는 하늘의 은혜를 발견하고, 누군가는 정죄의 칼을 갈았습니다.
+
+흥미로운 것은 성경이 이 거친 비난과 고발에 대해 즉각적인 판결이나 반박을 내리지 않는다는 점입니다. 예수님은 비난하는 이들과 맞서 싸우지 않으시고, 그 팽팽한 긴장을 그대로 남겨두십니다. 왜 그러셨을까요? 어쩌면 그것은 아직 우리가 풀어야 할 '가서 배우라'는 숙제가 끝나지 않았기 때문일 것입니다. 서둘러 맺음말을 짓기보다, 말씀을 읽는 우리가 그 긴장 속에 머물며 긍휼의 참뜻을 스스로 깨우치기를 원하셨던 것입니다.
+
+우리 삶에서도, 신앙의 여정에서도 이와 같은 엇갈린 반응과 갈등은 끊임없이 일어납니다. 서둘러 내 편과 네 편을 가르고 누군가를 심판하고 싶은 유혹이 들 때마다, 우리는 멈춰 서서 성경을 펴고 주님이 남기신 첫 번째 숙제 앞으로 돌아가야 합니다. 
+
+판결은 우리의 몫이 아닙니다. 오늘 우리가 해야 할 일은 그저 겸손히 주님의 말씀을 펴서 읽고, 삶의 자리에서 긍휼을 배우며 실천하는 것뿐입니다. 세관의 차가운 탁자에서 따뜻한 은혜의 식탁으로, 벼랑 끝의 고통에서 온전한 회복의 자리로 이끄시는 주님의 발자취를 따라가는 것. 그것이 바로 '가서 배우라'는 그 다정하고도 엄숙한 숙제에 대한 우리의 가장 아름다운 대답이 될 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 12편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

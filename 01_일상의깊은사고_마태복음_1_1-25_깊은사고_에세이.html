@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 01편 &middot; 마태복음 1:1-25</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+마태복음의 첫 장을 펴면 지루하게만 느껴지는 족보가 등장합니다. "누가 누구를 낳고, 그가 또 누구를 낳고…" 누군가에게는 수면제처럼 느껴질 이 긴 이름의 나열 속에는 사실, 우리 삶의 가장 깊은 상처와 희망을 어루만지는 놀라운 이야기가 숨겨져 있습니다. 아브라함부터 시작해 무려 서른아홉 번이나 반복되는 '낳고 낳는' 인간의 역사는, 그러나 단 한 곳에서 숨을 고르며 방향을 틉니다. 
+
+### 끊어진 사슬 끝에서 시작된 은혜
+
+"야곱은 마리아의 남편 요셉을 낳았으니, 마리아에게서 그리스도라 칭하는 예수가 나시니라." (마태복음 1:16)
+
+잘 이어지던 혈통의 사슬이 요셉의 자리에서 멈춰 섭니다. 요셉은 예수를 '낳은' 주어가 되지 못하고, 그저 마리아의 남편으로 소개됩니다. 그리고 예수는 누군가에 의해 태어난 것이 아니라, 수동태로 "나시니라"라고 기록됩니다. 인간의 노력과 핏줄이 만들어낸 역사가 끝난 바로 그 지점에서, 성령으로 잉태된 생명이 시작된 것입니다. 
+
+우리 삶에도 무언가 끊어지고 단절된 것처럼 느껴지는 순간이 있습니다. 가족의 상처로 인해 더 이상 이어갈 수 없는 아픔, 자녀가 없어 대가 끊겼다는 상실감, 혹은 내가 도무지 해결할 수 없는 인생의 막다른 골목을 마주할 때가 있습니다. 그러나 성경은 바로 그 끊어진 자리에서 구원이 시작된다고 말합니다. 나에게는 이을 혈통도, 고칠 수 있는 능력도 없지만, 하나님은 그 빈자리에 예수 그리스도를 주어로 세우십니다. 우리의 구원은 내가 잘나서 이어가는 것이 아니라, 그가 우리를 건지시기 때문입니다.
+
+### 상실의 시간도 우리 삶의 마디가 됩니다
+
+족보를 찬찬히 들여다보면 또 하나의 흥미로운 사실을 발견하게 됩니다. 족보를 세 시대로 나누는 기준점에 '사람'이 아닌 '사건'이 등장하기 때문입니다. "바벨론으로 사로잡혀 갈 때에..." 마태는 찬란했던 다윗 왕국의 영광뿐만 아니라, 나라를 잃고 강제로 이주해야 했던 뼈아픈 상실의 역사도 족보의 중요한 마디로 품어냅니다. 
+
+성경이 보여주는 계보는 결코 '성공한 사람들의 화려한 이력서'가 아닙니다. 집을 잃고 떠돌아야 했던 기억, 실패하고 무너졌던 시간조차도 하나님 백성의 역사에서는 결코 지워지지 않는 거룩한 자취가 됩니다. 지금 당신이 겪고 있는 원치 않는 변화나 이별, 그리고 지우고만 싶은 실패의 이력도 마찬가지입니다. 하나님은 그 아픈 시간마저도 우리 삶을 엮어가는 소중한 마디로 사용하고 계십니다. 
+
+### 완벽하지 않은 빈칸 뒤에 사람이 있습니다
+
+마태복음의 족보는 숫자가 완벽하게 맞아떨어지지 않습니다. 열네 대씩 세 번이라고 명시하지만, 실제로 세어보면 숫자가 비거나 겹치고, 구약의 역사적 기록과 비교하면 빠진 왕들의 이름도 존재합니다. 성경은 이 어긋나는 숫자를 억지로 꿰맞추려 하지 않고 있는 그대로 남겨둡니다. 
+
+세무나 회계, 혹은 행정의 현장에서 우리는 종종 서류의 빈칸이나 숫자의 오류를 마주합니다. 그러나 우리는 기억해야 합니다. 그 맞지 않는 칸 뒤에는 강제 이주와 이혼, 남모를 사연을 품고 살아가는 '사람'이 있다는 사실을 말입니다. 완벽한 장부를 만들기 위해 누군가의 아픈 사정을 함부로 지워버려서는 안 됩니다. 
+
+교회 공동체 안에서도 마찬가지입니다. 누군가의 허물이 드러났을 때, 우리는 요셉이 보여준 묵묵한 걸음을 기억해야 합니다. 그는 사랑하는 이의 흠결을 당장 공개적으로 처분하기보다 먼저 멈추어 섰고, 하나님의 말씀 앞에서 자신의 결정을 바꾸었습니다. 구구절절 변명하거나 정죄하는 대신, 말없이 행동으로 아내를 데려오고 아이의 이름을 불렀던 요셉. 그것은 섣부른 판단보다 사람을 먼저 살피고 보호하는 일이 얼마나 고귀한지 가르쳐 줍니다.
+
+지루한 이름들의 나열 같았던 서른아홉 번의 사슬은, 사실 상처 입은 우리를 향한 거대한 사랑의 서사시입니다. 끊어진 사슬 끝에서 피어난 은혜, 상실마저 끌어안는 섭리, 그리고 완벽하지 않은 우리를 있는 그대로 품어주시는 하나님의 사랑. 오늘 당신의 팍팍한 일상 위에도, 다 이해할 수 없는 그 크신 은혜가 조용히 스며들기를 소망합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 01편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

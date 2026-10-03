@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 33편 &middot; 마태복음 21:23-46</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 종종 내게 주어진 삶과 자리가 마치 영원히 내 것인 양 착각하며 살아갑니다. 내 노력으로 일군 성과, 내가 땀 흘려 얻어낸 직분, 그리고 당연하게 누리고 있는 오늘의 시간들이 모두 온전한 내 소유라고 믿고 싶어 합니다. 그러나 이천 년 전, 예루살렘 성전에서 울려 퍼진 예수님의 서늘한 경고는 무감각해진 우리의 일상에 묵직한 파문을 일으킵니다. "하나님의 나라는 너희는 빼앗기고 그 나라의 열매 맺는 백성이 받으리라." 이 말씀은 단지 그 시대의 굳어버린 종교 지도자들만을 향한 것이 아니었습니다. 오늘, 내게 허락된 자리와 일상을 내 마음대로 휘두르며 살아가는 우리 모두를 향한 뼈아픈 판결이자, 동시에 다시 생명으로 나아오라는 따뜻하고도 절박한 초대입니다.
+
+### 1. 남을 찌르는 질문, 나를 돌아보는 침묵
+
+"네가 무슨 권위로 이런 일을 하느냐? 누가 이 권위를 주었느냐?" 성전에서 말씀을 가르치시는 예수님을 향해 대제사장들과 백성의 장로들이 따져 묻습니다. 자신이 쥐고 있는 기득권과 통제력을 잃을까 두려운 사람들은 종종 상대방의 '자격'부터 묻고 봅니다. 내 안온한 세계를 흔드는 진실 앞에서는 내 삶을 돌아보고 바꾸기보다, 상대방의 권위를 깎아내리고 사람들의 여론을 살피며 방어막을 치는 것이 훨씬 쉬운 길이기 때문입니다.
+
+하지만 예수님은 그 권위의 출처를 끝내 속 시원히 밝히지 않으십니다. 오히려 그들의 질문을 거울삼아 단호하게 방향을 돌려버리십니다. '누가 권위를 주었느냐'고 묻는 이들에게, 비유를 통해 '그렇다면 너희는 지금 무엇을 행하고 있느냐'고 되물으신 것입니다. 우리 역시 이들과 크게 다르지 않습니다. 우리는 어쩌면 타인의 자격을 따지고 세상의 부조리를 지적하는 날카로운 질문 뒤에 숨어, 정작 내가 마땅히 감당해야 할 십자가와 수고는 교묘히 피하고 있는지도 모릅니다. 예수님의 서늘한 침묵은 우리의 폐부를 찌릅니다. 남의 권위를 묻기 전에, 지금 너의 두 손과 발에는 어떤 행함이 쥐어져 있느냐고 말입니다.
+
+### 2. 거절 다음 줄에 쓰인 '그 후에'라는 기적
+
+우리 삶의 가장 큰 비극은 단지 주님의 부르심을 거절하고 실패했다는 사실 그 자체가 아닙니다. 진짜 비극은 실패한 그 상태로 인생의 문장을 성급하게 마침표 찍어버리는 데 있습니다. 예수님이 들려주신 두 아들의 비유는 우리의 얄팍한 신앙과 헌신을 벌거벗깁니다. 둘째 아들은 "주여, 가겠나이다"라고 몹시 정중하게 대답했지만, 끝내 포도원에는 가지 않았습니다. 번지르르한 고백과 세련된 종교적 언어는 결코 내 삶의 실제적인 발걸음을 대신할 수 없습니다. 입술의 존경이 삶의 순종을 담보하지 않는다는 뼈아픈 진실입니다.
+
+반면, 맏아들은 처음에 "싫소이다"라며 아버지의 면전에서 퉁명스럽게 거절했습니다. 그러나 은혜롭게도 비유는 거기서 끝나지 않습니다. "그 후에 뉘우치고 갔으며." 성경은 그가 집 밖을 나서서 무엇을 보고 왜 마음을 돌이켰는지 구구절절 설명하지 않습니다. 다만 '그 후에'라는 단어가 주는 먹먹한 울림만이 우리의 가슴을 칩니다. 우리 입술은 이미 수없이 많은 거절을 쏟아냈을지도 모릅니다. 너무 피곤해서, 당장 내 코가 석 자라서, 혹은 억울하고 상처받기 싫어서 하나님의 부르심을 애써 외면했을 수 있습니다. 하지만 주님은 우리가 이미 내뱉어버린 매정한 거절의 말 바로 다음 줄에, 비워진 채로 남은 여백을 허락하셨습니다. '그 후에' 돌이키는 은혜. 비록 한발 늦었을지라도, 모난 자존심을 꺾고 다시 뉘우쳐 묵묵히 걸음을 내디딜 때 비로소 우리 삶에 진정한 순종이 완성됩니다.
+
+### 3. 소유가 아닌, 열매 맺는 자의 나라
+
+마지막으로 예수님은 포도원 농부 비유를 통해 섬뜩할 만큼 차가운 진실을 일깨우십니다. 주인이 정성껏 가꾸어 맡긴 포도원을 제 것인 양 착각한 농부들은 주인이 보낸 종들을 때리고, 마침내 상속자인 아들마저 포도원 밖으로 내쫓아 죽이고 맙니다. 그들의 안중에 주인의 뜻 따위는 없었습니다. 오직 내 몫을 챙기고 쥐고 있는 기득권을 지키는 것만이 전부였습니다. 
+
+이들을 향해 떨어진 판결은 단호하고 무섭습니다. "하나님의 나라는 너희는 빼앗기고, 그 나라의 열매 맺는 백성이 받으리라." 하나님의 나라는 누군가 영원히 쥐고 흔들 수 있는 소유물이 아닙니다. 그 나라는 철저히 '열매 맺는 삶'과 단단히 묶여 있습니다. 오늘 내가 맡은 공동체, 내가 누리는 직장과 가정, 나에게 주어진 시간과 재물은 결코 내가 싸워 쟁취한 전리품이 아닙니다. 언젠가 주인이 당신의 열매를 거두러 오실 때, 우리의 삶은 과연 누구의 손에 그 열매를 바치고 있습니까? 우리는 혹시 주님의 몫마저 내 것으로 가로채려던 비유 속의 악한 농부는 아니었습니까.
+
+### 빈 줄을 남겨두신 은혜의 자리로
+
+어쩌면 우리는 매일같이 내게 맡겨진 포도원을 내 소유로 착각하며 살아가는지도 모릅니다. 입술로는 정중하게 "가겠나이다" 약속해 놓고도 여전히 제자리에 멈춰 서서 한 발자국도 떼지 못하는 우리의 굳어진 발걸음을 돌아봅니다. 남의 몫을 챙겨주려다 부서지고 상처 입는 수고가 두려워, 병상에 누워있거나 삶의 무게에 묶인 이들을 외면한 채 그저 안전한 성전 뜰 안에만 머물러 있으려 했던 지난날을 회개합니다.
+
+하지만 주님은 아직 우리를 포기하지 않으셨습니다. 비록 어제까지 "싫소이다"라고 대답하며 매몰차게 등을 돌렸을지라도, 오늘 우리 앞에는 여전히 새롭게 써 내려갈 수 있는 빈 줄이 하나 놓여 있습니다. 남의 자격과 신앙을 재고 따지기 전에, 내가 지금 이 자리에서 무엇을 행하고 있는지 정직하게 대면하기를 원합니다. 거절과 실패로 얼룩진 우리 삶의 다음 문장이, 기적처럼 '그 후에 뉘우치고'로 다시 시작되기를 간절히 소망합니다. 심판의 돌 위에 떨어져 부서지기 전에, 내 삶을 다시 세우는 은혜의 머릿돌 되신 주님 위에 굳게 서서, 오늘 하루 소박하지만 진실하게 그 나라의 열매를 맺어가는 백성으로 살아가는 우리 모두가 되기를 기도합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 33편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

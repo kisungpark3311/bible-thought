@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 16편 &middot; 마태복음 11:20~12:14</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 저마다 보이지 않는 무거운 짐을 어깨에 짊어지고 살아갑니다. 삶의 무게에 짓눌려 한 걸음 내딛기조차 버거울 때, 우리는 종종 "이 짐만 없었다면 내 삶이 얼마나 홀가분할까" 하고 생각하곤 합니다. 그러나 이천 년 전, 흙먼지 날리는 갈릴리의 길가에서 들려온 예수님의 음성은 우리의 예상과는 사뭇 다른 위로를 건넵니다. 
+
+"수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라." 
+
+너무나 유명하고 따뜻한 이 초대의 말씀 앞뒤에는, 놀랍게도 서늘한 심판의 경고와 서슬 퍼런 종교인들의 살의가 교차하고 있습니다. 어둠이 짙을수록 빛이 선명하게 빛나듯, 이 아슬아슬한 긴장감 속에서 예수님이 약속하신 '진정한 쉼'의 의미는 우리 영혼에 더욱 깊고 묵직한 감동으로 다가옵니다.
+
+### 은혜에 무감각해진 굳은 마음을 향한 아픈 고발
+
+예수님은 지친 자들을 향해 팔을 벌리시기에 앞서, 당신의 기적을 가장 많이 보고도 끝내 돌이키지 않은 도시들을 향해 탄식하십니다. 고라신과 벳새다, 그리고 가버나움. 그곳의 사람들은 눈앞에서 병자가 일어나고 귀신이 쫓겨나는 엄청난 권능을 일상처럼 마주했지만, 정작 그들의 마음은 차갑게 굳어 있었습니다. 만약 이방의 낯선 도시들이나 타락의 대명사로 불리던 소돔이 그 기적을 보았다면 벌써 베옷을 입고 재 위에 앉아 가슴을 치며 회개했을 것이라는 주님의 말씀은, 그들의 완악함을 적나라하게 드러냅니다. 
+
+이 서늘한 경고는 오늘날 은혜를 너무나 당연한 권리처럼 여기며 살아가는 우리의 무감각한 일상을 날카롭게 찌릅니다. 하나님을 아는 참된 지혜는 스스로 똑똑하고 슬기롭다 여기며 자신을 높이는 자들에게는 철저히 감추어져 있습니다. 오직 스스로의 연약함과 영적인 파산 상태를 인정하고, 주님의 긍휼을 갈망하는 '어린아이' 같은 이들에게만 열려 있는 값진 선물입니다. 우리가 마주한 삶의 위기 앞에서 참으로 필요한 것은 내 지식과 의로움을 내세우는 교만이 아니라, 겸손히 무릎 꿇고 은혜를 구하는 돌이킴입니다. 아프지만 준엄한 이 고발은, 역설적이게도 우리를 멸망에서 건져내어 다시 은혜의 자리로 부르시는 하나님의 애타는 사랑의 표현입니다.
+
+### 무거운 짐을 내려놓는 대신 '멍에'를 바꾸는 역설의 안식
+
+이 엄중한 경고의 끝에, 예수님은 삶에 지치고 상한 영혼들을 향해 따뜻한 품을 내어주십니다. "수고하고 무거운 짐 진 자들아 다 내게로 오라." 이 초대에 응하기 위해 우리가 갖추어야 할 자격은 그 어떠한 위대한 성취나 선행이 아닙니다. 그저 무거운 짐을 진 채 헐떡이고 눈물짓는 연약한 '상태' 그 자체가 초대의 유일한 조건입니다. 
+
+그런데 주님이 내리신 처방전은 우리의 기대와는 다릅니다. 당장 우리 어깨의 무거운 짐을 마술처럼 몽땅 없애 주겠다고 약속하지 않으십니다. 대신 "나의 멍에를 메고 내게 배우라"고 말씀하십니다. 참된 안식은 삶의 짐이 완전히 사라진 진공 상태에서 주어지는 것이 아닙니다. 진정한 안식은 '내가 누구의 멍에를 메고 걷느냐'가 바뀔 때 비로소 시작됩니다. 
+
+당시 농경 사회에서 '멍에'는 두 마리의 소가 함께 짐을 끌기 위해 어깨에 걸치는 나무 도구였습니다. 보통 힘세고 경험 많은 어미 소와 아직 밭갈이에 서툰 새끼 소가 한 멍에를 멥니다. 새끼 소는 그저 걸음을 맞추기만 할 뿐, 짐의 실질적인 무게는 온전히 어미 소가 감당합니다. 예수님은 바로 이 멍에 안으로 우리를 부르십니다. 세상이 억지로 지워준 무의미하고 억압적인 짐, 완벽해져야 한다는 강박의 짐을 내려놓고, 주님이 친히 무게를 감당하시는 사랑과 생명의 멍에로 갈아멜 때 우리는 영혼의 깊은 쉼을 경험하게 됩니다. 내가 내 삶의 문제들을 다 해결하고 훌륭한 모습이 된 뒤에야 주님께 나아가는 것이 아닙니다. 상처투성이인 모습 그대로, 버거운 짐을 짊어진 그 상태 그대로 주님 곁으로 다가가 그분의 보폭에 내 발을 맞추는 것. 그것이 바로 주님이 주시는 참된 안식입니다.
+
+### 규칙보다 생명의 아픔을 먼저 품으시는 안식일의 주인
+
+쉼을 향한 이 아름다운 초대는, 이내 회당 안에서 벌어진 차가운 논쟁과 마주하게 됩니다. 그곳에는 한쪽 손이 마른 사람이 있었습니다. 손이 말랐다는 것은 단지 신체적 장애만을 의미하지 않습니다. 누군가의 체온을 느끼며 쓰다듬거나 온전한 노동으로 가족을 부양할 수 없는, 철저히 무너져버린 삶을 상징합니다. 하지만 율법에 갇힌 바리새인들의 눈에 그는 긍휼을 베풀어야 할 대상이 아니라, 단지 예수님을 고발하기 위한 '미끼'에 불과했습니다. "안식일에 병 고치는 것이 옳습니까?"라는 그들의 교묘한 질문 속에는, 찢어진 한 인간의 삶을 향한 애통함이 전혀 없었습니다.
+
+그 숨 막히는 종교적 잣대 앞에서 예수님은 단호하게 선언하십니다. "사람이 양보다 얼마나 더 귀하냐!" 주님에게 안식일은 규칙과 제도를 수호하기 위해 사람의 숨통을 조이는 날이 아니라, 상처받고 억눌린 생명이 참된 자유와 회복을 누리는 날이었습니다. 거룩함이라는 이름으로 포장된 폭력 앞에서, 주님은 주저 없이 그 사람에게 "손을 내밀라"고 말씀하셨습니다. 일어설 힘조차 없던 그가 주님의 음성에 기대어 굽은 손을 내미는 순간, 앙상했던 손은 놀랍게도 생명력을 되찾아 성하게 회복되었습니다. 
+
+가장 묵직한 감동은 이 치유가 불러온 결과에 있습니다. 마른 손이 생명을 되찾던 환희의 순간, 바리새인들은 밖으로 나가 "어떻게 하여 예수를 죽일까" 의논하기 시작했습니다. 예수님은 한 영혼에게 안식과 생명을 선물하기 위해, 기꺼이 당신의 목숨을 앗아갈 십자가의 길을 향해 걸음을 내딛으신 것입니다. 살기가 번뜩이는 고발의 현장에서, 안식일의 주인이신 그분은 스스로 죽음의 위협을 끌어안으며 부서진 한 사람의 일상을 온전하게 회복시키셨습니다.
+
+---
+
+우리의 삶을 가만히 돌아봅니다. 
+스스로 굽은 손을 펼 힘조차 없는 우리에게, 주님은 먼저 다가와 가만히 "내게로 오라" 말씀하시며 쉼을 약속하십니다. 지금 당신의 어깨를 짓누르는 가장 무거운 짐은 무엇입니까? 쉴 틈 없이 몰아치는 팍팍한 일상의 무게, 아무리 애써도 풀리지 않는 관계의 엉킴, 혹은 자기 자신을 끝없이 자책하게 만드는 뼈아픈 실패감일지도 모릅니다.
+
+오늘, 그 짐들을 당신 혼자 힘으로 완벽하게 풀어내려 애쓰지 마십시오. 버거운 일상의 짐, 바싹 메말라 비틀어진 마음을 억지로 포장하지 말고, 있는 그대로 끌어안은 채 그분께 나아가십시오. 준엄한 심판의 주관자이시면서도 기꺼이 당신과 나를 위해 십자가라는 가장 무거운 짐을 지셨던 분, 그 크신 사랑으로 참된 안식을 완성하신 예수 그리스도의 다정한 멍에 아래로 당신을 초대합니다. 당신을 짓누르는 모든 짐을 그분께 맡기고 가만히 걸음을 맞출 때, 비로소 우리의 영혼은 세상이 알 수도, 줄 수도 없는 가장 깊고 안전한 쉼을 누리게 될 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 16편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

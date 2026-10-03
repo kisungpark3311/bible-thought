@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 03편 &middot; 마태복음 3:1-17</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+## 내 열심과 겸손이 주님의 길을 막아설 때
+
+유대 광야에 나타난 세례 요한은 거침이 없는 불꽃 같은 선지자였습니다. 낙타털 옷을 입고 메뚜기와 석청으로 주린 배를 채우며, 위선으로 가득 찬 당대의 종교 지도자들을 향해 "독사의 자식들아!"라며 매서운 고발을 쏟아냈습니다. 그의 입술은 곧 오실 메시아를 손에 키를 들고 알곡과 쭉정이를 가차 없이 가르시는 두려운 심판주로 묘사했습니다. 그런데 정작 요단강에 나타나신 예수님의 모습은 요한의 서슬 퍼런 기대와는 너무나도 달랐습니다. 타작마당을 뒤엎을 위엄찬 심판자가 아니라, 죄인들이 회개하며 서는 세례의 자리로 조용하고 낮게 걸어 들어오신 것입니다.
+
+당황한 요한은 다급히 예수님의 앞을 가로막아 섭니다. "제가 당신에게 세례를 받아야 할 터인데, 어찌 당신이 내게로 오십니까?" 요한의 이 거절은 지극히 당연한 경건이었고, 피조물로서의 마땅한 겸손이었습니다. 그러나 아이러니하게도 그 알량한 '겸손'이 도리어 예수님이 걸어가실 구원의 길을 막아서고 있었습니다. 그때 예수님은 길고 복잡한 논쟁 대신 짧고 단호하게 말씀하십니다. "이제 허락하라." 
+
+우리의 신앙 여정에서도 종종 이와 같은 일이 벌어집니다. 나의 굳은 종교적 신념, 내가 세워놓은 경건의 잣대, 심지어는 '나는 자격이 없다'는 섣부른 자책과 겸손마저도 주님이 일하시는 방식을 가로막을 때가 있습니다. 내 생각의 틀 안에 크신 하나님을 가두려 할 때, 우리는 요한처럼 뻗은 손으로 은혜의 물꼬를 막고 있는 것인지도 모릅니다. 막고 있던 요한의 손이 예수님의 부드러운 명령 앞에 순순히 내려지고 그분의 일하심을 온전히 '허락'했을 때, 비로소 닫혀있던 하늘이 열렸습니다. 우리 역시 내가 단단히 쥐고 있던 고집스러운 경건의 기준을 부드럽게 내려놓을 때, 전혀 상상하지 못했던 은혜의 지평이 열리는 것을 경험하게 됩니다.
+
+## 행위가 아닌, 하늘이 선언하신 이름
+
+요한이 세례를 허락하고 예수님께서 물에서 올라오실 때, 인류 역사상 가장 아름답고 장엄한 광경이 펼쳐집니다. 성령이 비둘기처럼 포근히 내려오고, 찢어지듯 하늘이 열리며 웅장한 소리가 울려 퍼집니다. "이는 내 사랑하는 아들이요, 내 기뻐하는 자라."
+
+이 하늘의 음성에서 우리는 설명할 수 없는 깊은 위로를 발견합니다. 하나님은 예수님을 향해 "네가 참 잘하였다"라고 칭찬하시지 않았습니다. "너"라고 부르며 일대일로 대화하시지도 않았습니다. 대신 온 우주를 향해 선포하듯 "이는"이라고 그분을 자랑스럽게 지목하셨습니다. 예수님이 십자가의 끔찍한 고통을 다 견뎌내시거나 눈부신 기적들을 수없이 행하신 뒤에 주어진 훈장이 아니었습니다. 그저 묵묵히 가장 낮고 탁한 물속으로 내려와 죄인들과 자신을 동일시하신 그 첫걸음의 자리에서, 하나님은 이미 그분을 '사랑하는 아들'로 온전히 확증해 주셨습니다. 
+
+이 선언은 은혜가 무엇인지 우리에게 명확히 일깨워 줍니다. 하나님의 자녀 됨은 우리가 피땀 흘려 무엇인가를 이루어내서 벌어들이는 임금이 아닙니다. 나의 행실과 성과로 증명해 낸 결과물도 아닙니다. 그것은 하늘로부터 일방적으로 부어지는 거룩하고 값없는 선언입니다. 끊임없이 스스로 가치를 증명하라고 윽박지르는 메마른 세상 속에서, 하나님의 사랑은 시작부터 우리를 '내 기뻐하는 자'라는 따뜻한 품으로 덮어버리십니다. 이 거룩한 지목하심이야말로, 요동치는 세상 한가운데서 우리가 닻을 내릴 수 있는 유일하고도 영원한 반석입니다.
+
+## 열매 없는 빈손의 날에도 그분을 붙들다
+
+하지만 요한의 무서운 묵시적 선포와 예수님의 따뜻한 은혜 사이에는 여전히 팽팽한 긴장감이 흐릅니다. "도끼가 나무 뿌리에 놓였으니 좋은 열매를 맺지 아니하는 나무마다 찍혀 불에 던져지리라"는 두려운 경고는 결코 허공으로 사라지지 않았습니다. 매일매일 삶의 장부를 들여다보며 실적과 성과를 계산해야 하는 서늘한 현실 속에서, 우리는 종종 열매 맺지 못한 자신의 빈손을 보며 깊이 절망합니다. 차가운 병상에 누워 아무것도 할 수 없는 이들, 무거운 실패와 중독의 늪에서 아직 빠져나오지 못한 이들은 무자비하게 번뜩이는 도끼날 앞에 선 것처럼 두려워 떨곤 합니다. 
+
+바로 그 캄캄한 절망의 순간, 우리의 시선은 다시 요단강을 향해야 합니다. 심판의 도끼날 앞에 벌벌 떠는 우리를 밀어내지 않으시고, 도리어 죄인들이 눈물로 몸을 담그던 그 탁한 강물 속으로 직접 걸어 들어가신 분이 계십니다. 그리고 하늘은 오직 그 한 분만을 향해 "내가 가장 기뻐하는 자"라고 힘주어 선언하셨습니다. 
+
+우리가 감히 날 선 도끼날 앞에서도 절망하거나 무너지지 않을 수 있는 단 하나의 이유가 여기에 있습니다. 그것은 내 손에 쥐어진 초라하고 앙상한 열매 때문이 아니라, 하늘이 지목하신 단 하나의 아들 예수 그리스도와 우리가 생명으로 단단히 묶여 있기 때문입니다. 내가 아무런 선한 열매를 내놓을 수 없는 비참한 날에도, 심지어 나의 어리석은 연약함 때문에 처참히 넘어지는 그 순간조차도 우리는 하늘이 "이는"이라고 지목하신 '그분'을 악착같이 붙잡을 수 있습니다. 나의 알량한 자격이나 종교적 계보, 타인을 함부로 판단하던 교만한 잣대를 모두 강물에 흘려보내고 오직 그리스도의 옷자락만을 꽉 부여잡을 때, 하늘 아버지의 그 벅찬 기쁨은 예수님을 거쳐 마침내 나의 몫이 됩니다. 
+
+오늘 하루, 내 고집으로 주님을 막아섰던 손을 가만히 내려놓고 주님의 일하심을 온전히 '허락'해 보십시오. 비로소 하늘이 열리고, 당신의 존재 자체를 기뻐하시는 그 깊고 따스한 위로가 당신의 지친 어깨 위로 포근히 내려앉을 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

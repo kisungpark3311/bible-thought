@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 32편 &middot; 마태복음 21:1-22</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+예루살렘으로 향하시는 예수님의 마지막 걸음은 우리가 흔히 기대하는 화려한 영웅의 행진과는 사뭇 달랐습니다. 으리으리한 군마 대신 멍에를 메는 짐승, 나귀의 새끼를 타신 그분의 모습은 이사야와 스가랴 선지자의 예언을 관통하는 ‘겸손’이라는 단어 하나로 요약됩니다. 수많은 무리가 겉옷을 길에 펴고 종려나무 가지를 흔들며 "호산나 다윗의 자손이여!"라고 목청껏 외쳤습니다. 그러나 그 뜨거운 환호와 열광의 끝에서, 성전에 발을 내디딘 예수님이 마주하신 현실은 사람들의 기대만큼 아름답지 않았습니다. 서늘하리만치 차가웠고, 가슴 아플 만큼 속물적이었습니다. 하나님께서 친히 ‘내 집’이라 부르셨던 그 거룩한 성전은 더 이상 기도의 향기가 머무는 곳이 아니었기 때문입니다.
+
+## 환호 뒤에 숨겨진 차가운 현실
+
+성전 문을 열고 들어가신 예수님의 눈앞에 펼쳐진 것은 엎드려 기도하는 무릎이 아니라, 탐욕으로 얼룩진 시장의 풍경이었습니다. 제물로 바쳐질 비둘기를 파는 상인들의 호객 소리, 각국의 돈을 환전하며 남기는 동전들의 쇳소리가 뒤엉켜 거룩한 침묵을 쫓아내고 있었습니다. 이에 예수님은 매매하는 자들을 내쫓으시고, 돈 바꾸는 자들의 상과 의자를 가차 없이 둘러엎으십니다. "내 집은 기도하는 집이라 일컬음을 받으리라 하였거늘, 너희는 강도의 소굴을 만드는도다." 
+
+이 준엄한 고발은 단순히 2천 년 전 예루살렘 성전 안의 상인들만을 향한 과거형의 메아리가 아닙니다. 하나님이 지어주신 본래의 이름('기도하는 집')을 지우고 스스로의 욕망으로 새로운 현실('강도의 소굴')을 지금도 만들어가고 있는 현재 진행형의 우리 삶을 비추는 날카로운 거울입니다. 하나님께서 거룩하게 구별하신 우리의 내면, 매일 땀 흘려 장부를 기록하며 일하는 나의 책상, 그리고 매주 찾아가는 예배의 자리는 지금 어떤 이름으로 불리고 있습니까? 혹시 우리도 모르는 사이에 거룩한 이름을 내걸고 속으로는 나만의 이익과 성공만을 계산하는 ‘강도의 소굴’로 전락시키고 있지는 않은지 깊이 돌아보게 됩니다. 상을 둘러엎으시는 예수님의 거친 분노는, 생명력을 잃고 껍데기만 남은 우리의 신앙을 흔들어 깨우시는 사랑의 매서운 질책입니다.
+
+## 무너진 자리에서 일어나는 조용한 기적
+
+가장 놀랍고 흥미로운 사실은, 성경이 이 차가운 고발과 심판 직후에 전혀 다른 온도의 장면을 아무런 설명 없이 나란히 배치한다는 것입니다. 상이 뒤집히고 의자가 나뒹구는 혼란스러운 성전 한가운데로, 앞을 보지 못하는 맹인과 다리를 저는 자들이 조용히 예수님께 다가옵니다. 그리고 예수님은 방금 전까지 무서운 기세로 상을 엎으셨던 그 손으로, 긍휼을 담아 그들의 망가진 몸을 어루만지고 고쳐 주십니다.
+
+이 짧은 구절에서 성경은 병자들의 굳건한 믿음이나 자격에 대해 단 한 줄도 묘사하지 않습니다. 그저 "나아오매 고쳐 주시니"라고 담담하게 기록할 뿐입니다. 이 덤덤한 서술은 우리에게 이루 말할 수 없는 깊은 위로를 건넵니다. 하나님의 집은 인간의 탐욕으로 인해 책망받고 심판받는 자리이기도 하지만, 동시에 상처 입고 망가진 영혼들이 아무런 조건 없이 고침을 받는 은혜의 자리이기도 하기 때문입니다. 강도의 소굴이라는 고발의 무게는 치유의 은혜로 무마되지 않으며, 반대로 치유의 은혜 역시 고발의 엄중함에 가려지지 않습니다. 고발과 치유, 이 둘은 같은 성전에서 연달아 일어납니다. 자격 없는 우리조차 품어 안으시는 이 조건 없는 사랑이, 엎어진 상들 사이에서 조용하지만 강력하게 피어오른 것입니다.
+
+## 잎만 무성한 삶을 향한 준엄한 사랑
+
+성전에서의 폭풍 같은 하루가 지나고, 다음 날 아침 예수님은 길가의 무화과나무 곁을 지나가십니다. 시장기를 달래려 잎이 무성한 나무에 다가가셨지만, 그곳에는 먹을 수 있는 열매가 단 하나도 없었습니다. "이제부터 영원토록 네가 열매를 맺지 못하리라." 예수님의 단호한 말씀이 떨어지기 무섭게 나무는 곧바로 뿌리째 말라버렸습니다. 
+
+이 사건은 열매 없이 잎만 무성한 우리의 신앙, 곧 모양만 있고 생명력은 잃어버린 화려한 종교 생활을 향한 엄중한 경고입니다. 주님은 우리의 유창한 종교적 언어나 화려한 잎사귀 같은 겉모습에 속지 않으십니다. 주님이 진정으로 찾으시는 것은 우리의 일상에서 맺히는 참된 변화의 열매입니다. 열매 없는 나무에 내린 영원한 금지는 결코 가벼운 위로로 희석될 수 없는 두려운 말씀입니다.
+
+그러나 놀랍게도 이 두려운 경고조차 제자들을 향한 위대한 약속으로 이어집니다. 어찌하여 나무가 곧 말랐냐고 묻는 제자들에게 예수님은 "만일 너희가 믿음이 있고 의심하지 아니하면" 산을 바다에 던지는 일도 가능하다고 말씀하십니다. 두려운 저주의 현장에서, 주님을 따르는 이들에게 ‘의심 없는 믿음’이라는 조건을 달아 무한한 기도의 능력을 열어주신 것입니다. 
+
+때로는 이 ‘조건’이라는 단어가 우리의 어깨를 무겁게 짓누릅니다. ‘내게 산을 옮길 만한 굳건한 믿음이 있는가?’ 자문하며 좌절하기도 합니다. 당장 그 조건을 채우지 못할 것 같은 두려움이 밀려올 때, 우리는 다시 전날 성전으로 걸어 들어왔던 눈먼 자와 다리 저는 자들을 떠올려야 합니다. 그들은 대단한 믿음을 증명해 내서 고침받은 것이 아니었습니다. 그저 자신의 연약함과 절망을 있는 그대로 안고, 상이 엎어지는 성전 한가운데 서 계신 주님께 나아갔을 뿐입니다.
+
+오늘 하루, 당신이 서 있는 자리는 어떤 모습입니까? 화려한 잎사귀로 치장하고 열매 없는 빈약한 삶을 애써 숨기려 하지는 않습니까? 거룩한 이름이 붙은 내 일상과 일터를 나의 욕심을 채우는 강도의 소굴로 만들고 있지는 않습니까? 상이 뒤엎어지는 무서운 책망의 소리에 놀라 뒤로 숨기보다는, 나의 눈멂과 절뚝거림을 안고 다시 기도의 집으로 나아가야 할 때입니다. 
+
+그곳에는 우리의 위선을 향한 엄중한 고발과 함께, 우리의 상처를 어루만지시는 따뜻한 치유의 손길이 기다리고 있습니다. 흔들리는 믿음일지라도 포기하지 않고 나아갈 때, 잎만 무성했던 우리의 삶은 마침내 생명력 있는 열매를 맺으며 참된 ‘기도하는 집’으로 지어져 갈 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 32편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 45편 &middot; 마태복음 27:27-56</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+골고다 언덕, 인류 역사상 가장 비극적이고도 역설적인 장면이 펼쳐집니다. 로마 총독의 군병들은 한 남자를 관정 안으로 끌고 가 홍포를 입히고 가시관을 씌웠습니다. 손에는 갈대를 쥐여주고는 유대인의 왕이라 부르며 침을 뱉고 무자비하게 조롱합니다. 십자가에 못 박힌 그를 향해, 지나가는 사람들은 고개를 젓고 모욕을 퍼부었으며 종교 지도자들마저 합세해 희롱했습니다. 심지어 양옆에 매달린 강도들조차 그를 향해 거친 저주를 뱉어냈습니다. 온 세상의 어둠과 인류의 맹목적인 적의가 단 한 사람을 향해 쏟아지던 그곳, 마태복음 27장이 전하는 십자가의 풍경은 이토록 철저히 차갑고 잔인하기만 합니다. 
+
+## 조롱의 언어 속에 감춰진 눈부신 진실
+
+이 처참한 십자가 아래에서 가장 많이 울려 퍼진 칭호는 역설적이게도 "하나님의 아들"이었습니다. "네가 만일 하나님의 아들이어든 자기를 구원하고 십자가에서 내려오라." 지나가는 이들과 율법에 정통했던 종교 지도자들은 이 거룩한 이름을 가장 날카로운 비수로 바꾸어 예수님의 가슴을 찔렀습니다. 그들에게 '하나님의 아들'이란 세속적인 힘과 권력을 상징하는 무적의 타이틀이었기에, 무기력하게 나무에 매달려 피 흘리는 예수는 철저한 실패자요 가짜일 뿐이었습니다. 
+
+하지만 십자가의 깊은 신비는 인간의 악의적인 조롱을 뚫고 빚어지는 진실에 있습니다. 예수께서 숨을 거두신 직후, 짙은 어둠이 걷히고 땅이 흔들리며 바위가 터지는 것을 두 눈으로 목격한 로마 백부장과 이방 군인들의 입에서 마침내 경외에 찬 고백이 터져 나옵니다. "이는 진실로 하나님의 아들이었도다!" 가장 치욕스러운 희롱으로 시작되었던 칭호가, 아이러니하게도 이방인의 두려움 섞인 경외를 통해 가장 위대한 신앙의 고백으로 완성된 것입니다. 우리 삶에도 때로는 철저한 실패와 무기력처럼 보이는 순간들이 찾아옵니다. 그러나 세상의 잣대로는 결코 가늠할 수 없는 그 십자가의 꺾임 한가운데에, 온 세상을 구원하는 가장 강력한 사랑이 숨 쉬고 있었습니다.
+
+## 허공을 가르는 외로운 질문, "어찌하여 나를 버리셨나이까"
+
+모든 것이 단절된 이 참담한 십자가 위에서, 예수님이 마지막으로 뱉으신 말씀은 무엇이었을까요? 화려하고 장엄한 승리의 선언이나, 원수들을 향한 기품 있는 용서의 기도가 아니었습니다. "엘리 엘리 라마 사박다니." 나의 하나님, 나의 하나님, 어찌하여 나를 버리셨나이까. 그것은 굳게 닫힌 하늘을 향해 던져진, 처절하고도 텅 빈 질문 하나였습니다. 
+
+성경은 하늘의 아버지께서 이 부르짖음에 어떤 응답을 하셨는지 굳이 설명하거나 아름답게 포장하지 않습니다. 그저 무거운 침묵 속에 그 질문을 덩그러니 남겨둘 뿐입니다. 곁에 있던 사람들은 이 단말마의 절규조차 '엘리야를 부른다'며 엉뚱하게 오해했습니다. 예수님은 철저한 오해와 단절, 그리고 뼛속까지 시린 버림받음의 고통을 고스란히 겪어내셔야만 했습니다. 우리는 종종 누군가의 깊은 고난 앞에서 너무 빨리 영적인 정답을 찾으려 하고, 섣부른 위로의 말로 그 고통을 황급히 덮어버리려 합니다. 하지만 성경이 묘사하는 예수님의 마지막 모습은, 때로는 답이 없는 고통 그 자체를 온전히 껴안고 머무르는 것이 얼마나 무겁고 숭고한 일인지 가르쳐 줍니다. 아무리 부르짖어도 하늘이 철저히 침묵하는 것만 같은 우리 인생의 어두운 밤에도, 주님은 그 차디찬 버림받음의 자리를 이미 친히 걸어가셨음을 우리는 기억해야 합니다.
+
+## 찢어진 휘장, 그리고 멀리서 지켜보는 사랑의 시선
+
+예수님께서 마침내 크게 소리 지르시고 영혼을 놓으셨을 때, 굳게 닫혀 있던 성전의 휘장이 위에서 아래로 찢어졌습니다. 누군가 손을 댄 것이 아니라 위에서부터 아래로 찢어진 이 기적은, 말 없는 하늘이 마침내 보여준 주권적인 응답이었습니다. 아무런 답이 없는 듯 보였던 십자가의 고통과 침묵이, 기어코 하나님과 우리 사이를 가로막던 단절의 벽을 허물어뜨린 것입니다.
+
+이 장엄하고 두려운 광경을 떠나지 않고 끝까지 지켜보던 이들이 있었습니다. 바로 갈릴리에서부터 예수님을 섬기며 따라온 여인들이었습니다. 비록 살벌한 로마 병정들의 창칼에 막혀 십자가 가까이 다가가 피 묻은 발을 닦아주지는 못했지만, 그들은 그저 '멀리서' 예수님의 마지막 숨결을 눈물로 지켜보고 있었습니다. 다가갈 수 없는 절망적인 거리감 속에서도 끝까지 시선을 거두지 않았던 이 여인들의 고요한 연대는, 오늘날 우리가 고통받는 이웃의 곁을 어떻게 지켜야 하는지를 묵묵히 일깨워 줍니다. 
+
+내가 그들의 아픔을 대신 짊어지거나 모든 문제를 당장 해결해 줄 수는 없을지라도, 병상의 아픔 속에 있는 이들, 삶의 벼랑 끝에서 홀로 우는 이들을 잊지 않고 멀리서라도 끝까지 지켜보며 기도하는 일. 어쩌면 그것이 십자가 아래 섰던 이름 없는 이들이 보여준 가장 깊고 진실한 사랑의 방식일 것입니다. 
+
+세상의 거친 조롱과 하늘의 깊은 침묵 사이에서, 주님은 묵묵히 자신의 영혼을 내어놓으셨습니다. 쉽게 답을 내릴 수 없는 우리네 삶의 숱한 고난 속에서도, 너무 서둘러 정답을 말하기보다 이 십자가의 조용한 순종을 기억하며 누군가의 곁에 따뜻한 온기로 머무는 우리가 되기를 간절히 소망합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 45편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 39편 &middot; 마태복음 25:1-30</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 일상은 자주 고단하고, 때로는 한없이 버겁습니다. 늦은 밤 교대 근무를 마치고 돌아오는 무거운 발걸음, 아픈 가족의 병상을 지키며 쏟아지는 졸음을 참아내야 하는 새벽, 혹은 삶의 막막한 무게에 짓눌려 마음마저 깊은 잠에 빠져버리고 싶은 날들이 우리에겐 찾아옵니다. 오늘 하루도 무사히 버텨냈다는 안도감과 내일에 대한 막연한 불안이 짙게 교차하는 밤, 성경은 마태복음 25장의 두 가지 이야기를 통해 우리에게 조용히, 그러나 깊은 울림으로 다가옵니다. 열 처녀의 비유와 달란트 비유로 익숙한 이 이야기들은 그저 먼 옛날의 교훈이 아닙니다. 불확실한 '오늘'이라는 벅찬 하루를 살아내는 우리에게 건네는 따뜻한 위로이자, 잠든 영혼을 흔들어 깨우는 서늘한 통찰입니다.
+
+## 1. 쏟아지는 잠을 이길 수 없는 고단한 당신에게
+
+혼인 잔치를 기다리는 열 처녀의 이야기를 읽다 보면, 우리는 흔히 '깨어 있음'을 잠을 자지 않고 버티는 강인한 정신력이나 육체의 체력으로 오해하곤 합니다. 하지만 본문을 가만히 들여다보면 뜻밖의 위로를 발견하게 됩니다. 신랑이 늦어지자, 기름을 준비하지 못한 미련한 다섯 처녀뿐만 아니라 슬기로운 다섯 처녀 역시 똑같이 "다 졸며 잤다"는 것입니다. 
+
+성경은 쏟아지는 잠을 이기지 못하고 쓰러져 잔 그들의 연약함을 결코 꾸짖지 않습니다. 이야기의 운명을 가른 결정적인 차이는 '누가 졸지 않았는가'가 아니라, 잔치에 들어간 자들이 미리 기름을 담아둔 '준비된 이들(헤토이모이)'이었다는 사실에 있습니다. 팍팍한 생계와 고된 노동, 혹은 묵직한 약 기운으로 인해 도저히 눈을 뜨고 있을 수조차 없는 몸을 향해, 주님은 억지로 잠을 쫓으라 다그치지 않으십니다. 오히려 그 엄숙한 명령은 잠들기 전 미리 그릇에 기름을 담아 두는 '모름 앞의 준비'를 향해 있습니다. 
+
+우리는 내일 당장 무슨 일이 일어날지, 주인이 어느 깊은 밤에 찾아올지 그 날과 때를 알지 못합니다. 그러나 그 불확실성 속에서도 나의 한계와 연약함을 인정하고, 일상의 작은 정성들을 그릇에 차곡차곡 담아내는 사람. 잠시 지쳐 깊은 잠에 빠질지라도, 부르시는 목소리에 눈을 뜨는 순간 곧바로 불을 밝힐 수 있는 그 고요한 준비가 바로 진정한 '깨어 있음'입니다. 주님은 우리의 피곤한 육신을 긍휼히 여기시며, 다만 우리의 영혼이 미리 담아둔 그 작은 진심의 기름을 귀하게 보십니다.
+
+## 2. 당신의 수고를 똑같이 안아주시는 완전한 환대
+
+이어진 달란트 비유는 우리가 세상 속에서 얼마나 자주 결과의 크기와 숫자로만 평가받고 있는지를 돌아보게 합니다. 타국으로 떠났던 주인이 돌아오고, 다섯 달란트를 남긴 종과 두 달란트를 남긴 종이 결산의 자리 앞에 섭니다. 세상의 냉혹한 잣대라면, 당연히 더 많은 이윤을 남긴 자에게 더 화려하고 큰 찬사가 돌아갔을 것입니다. 그러나 놀랍게도 주인은 두 종에게 토씨 하나 다르지 않은, 완전히 똑같은 칭찬을 건넵니다.
+
+"잘하였도다 착하고 충성된 종아, 네가 적은 일에 충성하였으매 내가 많은 것으로 네게 맡기리니 네 주인의 즐거움에 참여할지어다."
+
+모든 것을 가진 주인에게는 다섯 달란트라는 거대한 액수조차 '적은 것들(올리가)'에 불과했습니다. 주인을 미소 짓게 한 것은 남겨온 돈의 물리적 크기가 아니었습니다. 주인의 마음을 깊이 헤아려, 자신에게 주어진 삶의 터전에서 충성스럽게 땀 흘린 그들의 '태도'와 '마음'이었습니다. 당신이 오늘 하루 남들보다 눈에 띄는 화려한 성과를 내지 못했더라도, 당신에게 허락된 삶의 자리에서 묵묵히 두 달란트의 몫을 감당해 냈다면 그것으로 눈물겹게 충분합니다. 주님은 우리의 크고 작음을 저울질하며 차별하지 않으십니다. 그분은 그저 당신이 흘린 정직한 눈물과 땀방울을 보시며, 가장 크고 완전한 환대로 당신을 주인의 기쁨 한가운데로 초대하십니다.
+
+## 3. 내 손에 쥐어진 '당신의 것'을 대하는 우리의 온도
+
+그러나 이야기의 마지막은 우리의 가슴을 무겁고 서늘하게 찌릅니다. 한 달란트를 받았던 종은 주인을 굳고 무서운 사람으로 오해하여 그 돈을 땅에 깊이 감추어 두었습니다. 그는 오랜 시간 뒤 원금을 고스란히 돌려주며 "보소서, 당신의 것을 가지셨나이다(토 손)"라고 항변합니다. 그는 물리적으로 단돈 1원도 잃어버리지 않았지만, 주인은 그를 향해 "악하고 게으른 종"이라며 벼락같은 질책을 내립니다.
+
+이 불편한 장면은 남의 것을 맡은 우리의 손이 과연 무엇을 책임져야 하는지를 날카롭게 묻습니다. 종에게 쥐어졌던 달란트의 진짜 임자는 처음부터 끝까지 내가 아닌 '주인(토 에몬)'이었습니다. 세 번째 종의 치명적인 실패는 돈을 잃지 않은 것에만 안도하며 아무런 모험도, 아무런 관계의 역동도 만들어내지 않은 그의 차가운 마음에 있었습니다. 내게 주어진 시간, 내게 허락된 재능, 내 곁에 머무는 소중한 인연들 모두가 실은 주인이 잠시 내게 맡겨두신 귀한 '주인의 것'입니다. 
+
+우리는 가끔 실패가 두려워서, 상처받고 손해 보기 싫어서 우리에게 주어진 삶의 눈부신 기회들을 안전한 땅속 깊이 묻어두고 살아갑니다. 아무것도 시도하지 않으면 아무것도 잃지 않는다고 믿기 때문입니다. 하지만 주님은 우리가 그 맡겨진 것들을 쥐고 삶의 치열한 현장 속으로 뛰어들기를 간절히 원하십니다. 비록 서툴러서 실수하고 때론 넘어질지라도, 주인의 것을 나의 땀방울과 섞어 생명력 있게 일구어내는 그 뜨거운 온도를 원하시는 것입니다. 땅속에 묻힌 채 홀로 안전하기만 한 삶은, 결국 잔치의 문턱을 넘지 못한 채 바깥 어두운 곳에서 슬피 우는 아픈 결말을 맞이할 뿐입니다.
+
+밤중의 굳게 닫힌 문과 땅속에서 꺼낸 먼지 묻은 돈. 마태복음 25장이 우리에게 남긴 이 두 가지 서늘한 장면은 결코 우리를 두려움과 절망에 빠뜨리기 위함이 아닙니다. 오히려 그것은 깨어 있는 내일을 살아가라는 간절한 사랑의 초대입니다. 
+
+그 날과 그 때를 알지 못하는 우리는, 매일 밤 고요히 잠자리에 들며 나의 빈 그릇을 가만히 들여다봅니다. 오늘 하루 나의 그릇에 담아둔 사랑과 진심의 기름은 무엇이었을까. 내게 맡겨주신 작고 평범한 일상에 나는 얼마나 온 마음을 다했을까. 상처받을까 두려워, 실패할까 두려워 차가운 땅에 묻어둔 내 삶의 달란트는 없었을까. 이 밤, 세상의 짐을 내려놓고 고단한 몸을 뉘이는 당신의 마음에 넉넉하고 따뜻한 은혜의 기름이 채워지기를 바랍니다. 주인이 마침내 곁으로 돌아오시는 그 날, 환한 미소로 주인의 즐거움에 기꺼이 뛰어드는 당신이 되기를. 그리하여 눈물겹도록 평범하고 치열했던 당신의 오늘 하루가, 진정으로 아름답게 '깨어 있는' 숭고한 준비였기를 두 손 모아 기도합니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 39편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

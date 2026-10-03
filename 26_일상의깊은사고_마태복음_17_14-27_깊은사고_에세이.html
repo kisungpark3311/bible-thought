@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 26편 &middot; 마태복음 17:14-27</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+## 실패의 자리에서 다시 마주하는 은혜
+
+우리는 종종 삶의 절박하고 다급한 문제들 앞에서 한없는 무력감을 경험합니다. 마태복음 17장에는 불에도 넘어지고 물에도 넘어지는, 심한 간질로 고통받는 아들을 둔 한 아버지가 등장합니다. 그는 지푸라기라도 잡는 애절한 심정으로 예수님의 제자들을 찾아왔지만, 제자들은 그 아이의 병을 고치지 못했습니다. 절망의 끝자락, 아버지는 결국 예수님 앞에 나아가 무릎을 꿇고 긍휼을 구합니다.
+
+아무것도 할 수 없었던 제자들의 초라한 모습은 어쩌면 오늘을 살아가는 우리의 자화상인지도 모릅니다. 누군가의 아픔을 위로하고 돕고 싶었으나 내게 그럴 능력이 없어서, 혹은 마땅히 감당해야 할 책임을 다하지 못해 무력하게 손을 놓고 돌아서야 했던 부끄러운 순간들이 우리 모두에게 있습니다. 주님은 능력을 잃어버린 제자들을 향해 "믿음이 없고 패역한 세대여"라며 엄한 책망을 쏟아내십니다. 그러나 주님의 이 뼈아픈 책망은 결코 그들을 포기하겠다는 단절의 선언이 아니었습니다. 오히려 예수님은 "그를 이리로 내게 데려오라" 말씀하시며, 제자들의 실패를 당신의 완전한 치유와 능력으로 덮어주십니다.
+
+우리가 삶의 사역과 관계에서 실패했을 때, 우리가 취해야 할 가장 아름다운 태도는 그 실패를 변명하거나 숨기는 것이 아닙니다. 조용히 주님 곁으로 다가가 "우리는 어찌하여 하지 못하였나이까?"라고 정직하게 묻는 일입니다. 비록 우리 안에 겨자씨만 한 작은 믿음조차 없었다는 뼈아픈 사실을 들키게 될지라도, 주님 곁에 머물며 우리의 연약함을 고백할 때 비로소 ‘산도 옮길 수 있는’ 새로운 은혜의 역사가 시작됩니다. 주님은 우리의 완전함이 아니라, 실패 속에서도 다시 주님을 찾는 그 정직한 마음을 원하십니다.
+
+## 깊은 슬픔을 품고 걸어가시는 십자가의 길
+
+절망에 빠진 아이를 고치신 기적의 환희가 채 가시기도 전, 예수님은 제자들에게 몹시 무거운 말씀을 꺼내놓으십니다. "인자가 장차 사람들의 손에 넘겨져 죽임을 당하고 제삼일에 살아나리라." 영광스러운 왕국과 승리만을 기대하며 예수님을 따르던 제자들에게 이 십자가의 예고는 벼락과도 같은 충격이었습니다. 성경은 말씀을 들은 제자들이 "심히 근심하더라"고 담담히, 그러나 묵직하게 기록합니다.
+
+여기서 우리가 주목해야 할 점은, 예수님께서 제자들의 그 깊고 어두운 근심을 서둘러 값싼 위로로 무마하려 하지 않으셨다는 사실입니다. 십자가의 길은 그저 섣부른 해피엔딩으로 가볍게 포장할 수 없는, 참혹하고도 무거운 고난의 현실이었기 때문입니다. 
+
+때로는 우리의 신앙 여정 속에서도 도무지 이해할 수 없는 짙은 슬픔과 근심을 마주할 때가 있습니다. 주님은 우리가 그 슬픔을 억지로 지워버리거나 거짓된 기쁨으로 위장하기를 원하지 않으십니다. 오히려 그 무거운 침묵과 고뇌 속에서, 묵묵히 우리의 죄를 짊어지고 고난의 길을 걸어가신 예수님의 측량할 수 없는 사랑을 깊이 묵상하기를 바라십니다. 고통의 무게를 있는 그대로 견뎌내는 그 짙은 근심의 터널을 지나야만, 우리는 비로소 부활의 아침이 주는 참된 환희를 온전히 맞이할 수 있습니다.
+
+## 아들의 자유를 넘어, 타인을 살리는 자발적 헌신
+
+가버나움에 이르렀을 때, 성전세를 걷는 사람들이 다가와 베드로에게 세금을 요구합니다. 만물의 창조주이시며 성전의 참 주인이신 하나님의 아들 예수님께 성전 유지비를 내라는 것은 사실 이치에 맞지 않는 불경한 요구였습니다. 예수님께서도 베드로에게 분명히 일깨워 주십니다. "세상 임금들이 누구에게 세금을 받느냐? 아들에게냐, 타인에게냐? 그렇다면 아들들은 세금을 면제받을 것이다." 
+
+왕의 아들은 세금을 내지 않습니다. 그것은 누구도 침해할 수 없는 아들로서의 당연한 권리이자 완전한 자유입니다. 그러나 놀랍게도 예수님의 말씀은 그 통쾌한 선언에서 멈추지 않습니다. "그러나 우리가 그들을 실족하게 하지 않기 위하여… 네가 바다에 가서 낚시를 던져 먼저 오르는 물고기를 가져 입을 열면 돈 하나를 얻을 것이니, 그것을 가져다가 나와 너를 대신하여 그들에게 주라."
+
+이 짧은 장면은 우리 가슴에 깊고 진한 울림을 남깁니다. 예수님은 자신이 누릴 수 있는 마땅한 권리를 앞세워 무지한 자들을 가르치거나 깎아내리지 않으셨습니다. 오히려 그들이 예수님의 행동으로 인해 상처받거나 믿음에서 걸려 넘어지지 않도록(실족하지 않도록), 기꺼이 당신과 제자의 몫을 지불하십니다. 
+
+진정한 자유는 내가 가진 권리를 마음껏 행사하고 주장하는 데 있지 않습니다. 참된 자유는, 연약한 타인을 위해 나의 정당한 권리조차 기꺼이 내려놓을 수 있는 넉넉하고 온유한 마음씨에 있습니다. 오늘, 치열한 일터와 목회의 현장을 살아가는 우리의 모습은 어떠합니까? 나의 옳음을 증명하고 나의 권리를 지켜내느라, 혹여 곁에 있는 누군가를 실족하게 만들고 있지는 않습니까? 
+
+하나님의 아들로서 누리는 완전한 자유와 당당함 위에서, 상대를 향한 배려와 사랑으로 조용히 지갑을 열어 기꺼이 대가를 지불하는 삶. 그것이 바로 주님이 오늘 본문을 통해 우리에게 보여주신 십자가의 숭고한 정신입니다. 
+
+나의 치명적인 연약함에도 불구하고 결코 포기하지 않으시는 은혜, 깊은 슬픔과 고독 속에서도 우리를 위해 묵묵히 걸어가신 십자가의 길, 그리고 단 한 영혼이라도 실족하지 않게 하시려고 기꺼이 자신의 권리를 포기하신 그 따뜻한 사랑. 오늘 그 사랑의 발자취를 따라, 우리의 가정과 일터에서도 이웃을 살리고 세우는 은혜의 손길로 살아갈 수 있기를 간절히 소망합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 26편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 22편 &middot; 마태복음 15:1-20</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 종종 눈에 보이는 것을 가장 확실한 기준으로 삼곤 합니다. 얼룩진 옷, 씻지 않은 손, 겉으로 드러나는 반듯한 예절 같은 것들 말입니다. 이천 년 전 예루살렘에서 찾아온 바리새인과 서기관들 역시 그러했습니다. 그들은 예수님의 제자들이 식사 전에 손을 씻지 않는 장면을 목격하고는 발끈하여 묻습니다. "당신의 제자들이 어찌하여 장로들의 전통을 범하나이까?" 정결의 예식을 지키는 것은 당대 종교인들에게 당연하고도 중요한 덕목이었습니다. 그러나 예수님의 시선은 제자들의 흙 묻은 손끝이 아니라, 고발자들의 가슴속 깊은 곳을 꿰뚫고 있었습니다.
+
+### 남을 향했던 잣대가 내게로 돌아올 때
+
+누군가를 향해 손가락질하며 잘못을 지적할 때, 우리는 은연중에 스스로를 심판석 위에 올려놓습니다. 바리새인들은 제자들의 행동이 선을 넘었다고, 즉 전통을 '범했다'고 매섭게 추궁했습니다. 하지만 예수님은 그들이 던진 날카로운 단어를 고스란히 그들에게 되돌려주십니다. "너희는 어찌하여 너희의 전통으로 하나님의 계명을 범하느냐." 
+
+이 반문은 우리에게 서늘한 깨달음을 줍니다. 신앙의 이름으로 타인을 정죄하기 위해 빼어 든 잣대가, 실은 언제든 나 자신을 찌르는 칼날로 돌아올 수 있다는 사실입니다. 훌륭한 신앙적 유산을 지킨다는 명분 아래, 그들은 어느새 남을 재고 판단하는 일에만 몰두하고 있었습니다. 하나님을 사랑하기 위해 만들어진 규칙들이 도리어 사람을 얽매고 옥죄는 사슬이 되어버린 것입니다. 혹시 내가 굳게 믿고 있는 신앙의 기준이 누군가의 숨통을 조이는 무기가 되고 있지는 않은지, 우리의 팍팍한 일상을 조용히 돌아보게 됩니다.
+
+### 거룩한 명분 뒤에 숨은 차가운 이기심
+
+예수님은 더 뼈아픈 현실을 드러내십니다. "너희는 하나님께 드릴 예물이 되었다고만 하면, 부모를 공경하지 않아도 된다고 하는구나." 이는 종교적 열심이 일상의 가장 기본적인 사랑과 책임을 어떻게 저버리게 만드는지를 적나라하게 보여줍니다. 
+
+늙은 부모를 부양해야 할 재물에 '하나님께 드리는 예물'이라는 거룩한 이름표를 붙여버리면, 부모에 대한 책임은 마법처럼 면제되었습니다. 가장 경건해 보이는 헌신의 고백이, 사실은 가장 명백하고 무거운 계명인 '부모 공경'을 무효로 만드는 합법적인 도구로 전락한 것입니다. 이는 비단 그 시대만의 이야기가 아닙니다. 오늘날 우리도 신앙적 헌신, 봉사, 거룩한 명분이라는 방패 뒤에 나의 이기심을 숨길 때가 얼마나 많은가요? 교회나 공동체에서의 헌신을 앞세워 정작 내 곁에 있는 가족의 눈물과 삶의 무게를 외면하고 있다면, 그것이야말로 예수님이 탄식하신 '입술로만 공경하는' 빈껍데기 신앙일 것입니다. 진정한 믿음은 거룩한 이름으로 삶의 책임을 회피하는 것이 아니라, 그 책임을 더욱 따뜻하게 끌어안는 데 있습니다.
+
+### 씻지 않은 손보다 치명적인 것
+
+결국 예수님이 가리키시는 문제의 핵심은 바깥에서 안으로 들어가는 것에 있지 않습니다. 입으로 들어가는 음식은 몸을 거쳐 결국 밖으로 배출되지만, 진정으로 사람을 더럽히는 것은 우리 내면, 즉 '마음'에서 출발하여 밖으로 나오는 것들입니다. 악한 생각, 미움, 거짓말, 누군가를 헐뜯고 비방하는 파괴적인 말과 행동은 모두 우리 마음의 깊은 바닥에서 솟아나와 손과 입을 통해 세상에 뿌려집니다. 
+
+예수님은 단호하게 선언하십니다. "이런 것들이 사람을 더럽게 하는 것이지, 씻지 않은 손으로 먹는 것은 사람을 더럽게 하지 못하느니라." 우리는 매일 거울을 보며 얼굴을 씻고 외모를 가꾸는 일에는 열심이지만, 정작 생명의 근원이 되는 마음을 살피는 일에는 너무나 서툽니다. 손에 묻은 먼지는 물로 쉽게 씻어낼 수 있지만, 미움과 교만으로 얼룩진 마음은 쉽게 씻기지 않습니다. 
+
+오늘, 삶의 팍팍함 때문에 정해진 규례조차 제대로 지키지 못해 구석에서 움츠러든 이들에게 예수님은 따뜻한 위로와 넉넉한 자유를 선언하십니다. 반면, 스스로 경건하다 여기며 남의 씻지 않은 손만 쳐다보던 이들에게는 무거운 경종을 울리십니다. 우리는 지금 어디에 서 있습니까? 타인을 향하던 매서운 시선을 거두어, 이제는 내 안에서 무엇이 흘러나오고 있는지 나의 깊은 우물을 정직하게 들여다볼 때입니다. 
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 22편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

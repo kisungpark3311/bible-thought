@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 41편 &middot; 마태복음 26:1-30</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+그 밤은 참으로 기이하고 낯선 밤이었습니다. 한편에서는 향유가 담긴 옥합이 깨지며 짙은 헌신의 향기가 진동하는가 하면, 서늘한 뒷골목에서는 은 삼십 세겔에 사람의 목숨이 거래되고 있었습니다. 누군가는 눈물로 주님의 장례를 준비했지만, 누군가는 주님을 어떻게 팔아넘길지 차갑게 계산기를 두드리고 있었습니다. 마태복음 26장에 기록된 이 모든 엇갈림의 한복판에, 십자가를 이틀 앞둔 예수님의 유월절 식탁이 놓여 있습니다. 배반의 그림자가 가장 짙게 드리워진 그곳에서, 복음서는 우리를 향해 뜻밖의 위로와 묵직한 질문을 동시에 던집니다.
+
+### "주여, 나는 아니지요?" — 우리 모두가 앉아 있는 식탁의 자리
+
+식탁에 둘러앉은 제자들에게 주님은 청천벽력 같은 말씀을 던지십니다. "너희 중의 한 사람이 나를 팔리라." 잔잔하던 평화는 산산조각이 났고, 제자들은 몹시 근심하며 저마다 묻기 시작합니다. "주여, 나는 아니지요?" 놀랍게도 가뇟 유다 역시 묻습니다. "랍비여, 나는 아니지요?" 헬라어 원문을 보면 이 두 질문은 거의 똑같습니다. 오직 마지막에 부르는 호칭 하나, '주님(퀴리에)'과 '선생님(랍비)'에서만 미세하게 갈릴 뿐입니다. 
+
+우리는 종종 이 본문을 읽으며 유다의 위선적인 마음을 꿰뚫어 보려 합니다. '어떻게 팔아넘길 생각을 하면서 저런 뻔뻔한 질문을 할 수 있을까' 하고 정죄하기 쉽습니다. 그러나 성경은 유다의 속내를 해부하는 데 집중하지 않습니다. 오히려 식탁에 앉은 모든 사람이, 예외 없이 똑같이 흔들리며 질문을 던졌다는 사실을 묵묵히 비춰 줍니다. 우리 역시 마찬가지 아닐까요? 우리는 유다를 향해 손가락질하며 나와 그를 분리하고 싶어 하지만, 실상 우리도 그 식탁 한구석에 앉아 "나는 아니지요?"라며 자신의 연약함에 떨고 있는 제자 중 한 명일 뿐입니다. 성경은 유다를 심판하는 도구로써가 아니라, 언제든 예수를 배반할 수 있는 우리 자신의 여린 민낯을 직면하게 하는 거울로 이 질문을 남겨두었습니다.
+
+### 은 삼십에 팔리는 분과 생명의 떡을 내어주시는 분
+
+마태복음 26장의 전반부는 온통 '넘겨짐'의 이야기로 가득합니다. 제자에게 팔리고, 대제사장들에게 넘겨지며, 종국에는 십자가 형틀에 넘겨질 운명. 예수님은 철저하게 사람들의 계산에 따라 값이 매겨지고 이리저리 '넘겨지는' 수동적인 희생양처럼 보입니다. 제자들은 향유의 가치를 돈으로 환산해 아까워했고, 유다는 스승의 몸값을 흥정했습니다. 이처럼 세상은 끝없이 예수님을 향해 계산기를 들이밀며 가격표를 붙였습니다.
+
+그러나 유월절 식탁에 이르러 놀라운 반전이 일어납니다. 줄곧 사람들의 손에 넘겨지던 그분께서, 이제는 친히 떡을 떼어 '주시고' 잔을 '주십니다'. 제자들이 그분을 위해 차리려던 식사는 온데간데없고, 십자가로 걸어가시는 예수님께서 주인이 되셔서 자신의 찢길 몸과 흘릴 피를 친히 나누어 주시는 만찬으로 바뀝니다. 은 삼십이라는 헐값에 매겨져 팔려 가는 분이, 바로 그 배반의 밤에 제자들에게 영원한 생명을 아낌없이 내어주시는 주권자로 우뚝 서 계신 것입니다. 가장 무력하게 넘겨지는 그 순간에, 예수님은 가장 능동적인 사랑으로 자신을 완전히 내어주셨습니다.
+
+### 정해진 길과 화(禍), 그 모든 것을 품어낸 언약의 피
+
+주님은 떡과 잔을 떼시기 직전, 섬뜩한 화(禍)를 선언하십니다. "인자는 자기에 대하여 기록된 대로 가거니와 인자를 파는 그 사람에게는 화가 있으리로다." 하나님의 섭리대로 묵묵히 가시는 길이지만, 배반자의 책임은 결코 지워지지 않는다는 무거운 긴장이 흐릅니다. 예수님은 다가올 은혜의 위로를 서둘러 안겨주기 위해 이 불편한 진실과 뼈아픈 경고를 덮어두거나 건너뛰지 않으셨습니다. 배반의 예고, 제자들의 두려움, 유다의 위선, 그리고 가슴을 찌르는 화의 선언까지 그 모든 어둠을 온전히 다 통과하신 뒤에야 비로소 생명의 떡과 잔을 내어미십니다.
+
+"이것은 죄 사함을 얻게 하려고 많은 사람을 위하여 흘리는 바 나의 피 곧 언약의 피니라." 
+그것은 배신자들을 향한 분노와 고발의 피가 아니라, 그들의 죄를 덮기 위해 십자가에서 '흘려지는' 사랑의 피였습니다. 예수님은 자격 없는 이들, 당장 오늘 밤 당신을 부인하고 뿔뿔이 도망칠 자들 앞에서도 기꺼이 잔을 건네시며 "너희가 다 이것을 마시라"고 초대하십니다. 
+
+우리의 일상도 이 유월절 식탁과 참 많이 닮아 있습니다. 돈과 숫자로 사람의 가치를 매기는 비정한 세상, 어제의 다짐을 오늘 배반하는 나 자신의 초라함, 그리고 피할 수 없는 인생의 무거운 책임들이 복잡하게 뒤엉켜 있습니다. 그러나 그 모든 실패와 배신을 다 겪어낸 바로 그 자리에, 주님은 오늘도 변함없이 떡과 잔을 들고 우리를 기다리십니다. 죄에 대한 화의 선언을 굽히지 않으시면서도, 동시에 기꺼이 죄 사함의 언약을 부어주시는 그 벅찬 은혜. 오늘 우리가 부끄러움을 무릅쓰고 다시 숨을 쉬며 일어설 수 있는 이유는, 당신을 팔아넘긴 그 어두운 밤조차 생명의 식탁으로 바꾸어 내신 주님의 끝없는 사랑 때문입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 41편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

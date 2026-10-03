@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 24편 &middot; 마태복음 16:1-20</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 매일 무언가를 증명하며 살아갑니다. 누군가는 통장의 잔고와 엑셀표의 숫자들로 자신의 유능함을 증명하려 하고, 어떤 공동체는 모이는 사람의 수와 예산의 크기로 자신들이 옳은 길을 가고 있음을 확인받고 싶어 합니다. 2천 년 전 예수님 앞을 막아섰던 바리새인과 사두개인들도 마찬가지였습니다. 그들은 ‘하늘로부터 오는 표적’을 요구했습니다. 눈에 보이는 확실한 증거, 압도적인 기적을 보여준다면 당신을 믿어주겠다는 시험이었습니다. 
+
+그러나 예수님은 그들의 요구에 응답하는 대신, 깊은 탄식과 함께 그 자리를 떠나십니다. 신앙은 눈에 보이는 표적으로 증명받는 거래가 아니기 때문입니다. 주님이 떠나신 바다 건너편, 배 안의 풍경도 크게 다르지 않았습니다. 제자들은 방금 전 칠병이어의 기적을 경험하고도, 당장 손에 떡이 없다는 사실에 사로잡혀 수군거리고 있었습니다. 이미 받은 은혜의 크기는 잊어버린 채, 부족한 결핍의 장부만을 뒤적이는 우리의 모습과 너무나도 닮아 있습니다.
+
+## 없는 것을 세는 불안에서 벗어나기
+
+&gt; "믿음이 작은 자들아 어찌 떡이 없으므로 서로 논의하느냐... 너희가 아직도 깨닫지 못하느냐"
+
+예수님의 꾸중은 날카롭습니다. 오천 명을 먹이고 남은 조각이 몇 바구니였는지, 사천 명을 먹이고 거둔 것이 몇 광주리였는지 숫자를 하나하나 되짚어 주십니다. 세무와 회계의 세계에서 숫자는 냉혹한 현실을 보여주지만, 신앙의 세계에서 숫자는 우리가 받아 누린 은혜의 흔적입니다. 
+
+우리는 종종 결핍만을 계산하느라 불안에 떱니다. 없는 떡을 세느라 이미 곁에 계신 생명의 떡을 보지 못합니다. 주님의 이 엄한 꾸중은 우리를 향한 절망이 아니라, 다시 기억을 더듬어 보라는 사랑의 초청입니다. 내 삶의 장부를 펼쳐 들고 부족한 것만 적어 내려가던 펜을 잠시 멈추고, 이미 내게 채워진 것들의 목록을 헤아려 보아야 할 때입니다. 그제야 비로소 우리는 두려움의 누룩에서 벗어날 수 있습니다.
+
+## 남의 대답이 아닌, 나의 고백으로 서는 자리
+
+예수님은 무리를 떠나, 제자들을 세상의 화려한 우상들이 즐비한 빌립보 가이사랴로 데려가십니다. 그리고 묻습니다. "사람들은 나를 누구라 하느냐?" 제자들은 세례 요한, 엘리야, 예레미야 등 당대 최고의 선지자들 이름을 신나게 나열합니다. 세상이 내린 근사한 평가들입니다. 그러나 주님의 시선은 세상을 향하지 않고 제자들의 눈을 깊이 응시하며 두 번째 질문을 던지십니다.
+
+&gt; "너희는 나를 누구라 하느냐"
+
+이 질문 앞에서는 남의 말을 빌려올 수 없습니다. 유명한 신학자의 글이나 훌륭한 목사님의 설교가 내 대답이 될 수 없습니다. 오직 나와 주님, 단둘이 마주 선 단독자로서의 대답이 필요합니다. 그때 베드로가 입을 엽니다. "주는 그리스도시요 살아 계신 하나님의 아들이시니이다." 
+
+예수님은 이 고백이 베드로의 똑똑함이나 혈육의 지혜에서 나온 것이 아니라, 하늘에 계신 아버지께서 알게 하신 것이라 선언하십니다. 가장 깊은 신앙의 고백은 내가 짜낸 지식이 아니라, 하늘의 은혜가 내 영혼에 부딪혀 빚어내는 거룩한 메아리입니다. 
+
+## 내가 내 교회를 세우리라
+
+베드로의 고백 위에 예수님은 가슴 벅찬 약속을 부어주십니다. "너는 베드로라 내가 이 반석 위에 내 교회를 세우리니 음부의 권세가 이기지 못하리라." 
+
+여기서 우리는 분명히 보아야 합니다. 교회를 세우시는 주체는 ‘예수님 자신’이십니다. 우리가 우리의 지혜와 헌신으로 교회를 세워가는 것 같지만, 실상 교회는 예수님이 당신의 고백 위에 친히 세워가시는 그분의 소유입니다. 그렇기에 교회는 사람의 숫자로 스스로를 증명할 필요가 없습니다. 세상의 평가나 위기에 흔들릴 이유도 없습니다. 음부의 권세조차 이기지 못하는 영원한 생명이 주님께 있기 때문입니다.
+
+더 놀라운 것은, 주님이 이 땅의 척박한 공동체에 '천국 열쇠'를 맡기셨다는 사실입니다. 땅에서 매면 하늘에서도 매이고, 땅에서 풀면 하늘에서도 풀릴 것이라는 이 신비로운 연합. 우리의 연약한 고백과 기도가 하늘의 뜻을 이 땅에 풀어내는 통로가 된다는 것은 얼마나 벅찬 영광인지요. 
+
+오늘, 당신은 어떤 질문 앞에 서 있습니까? 기적을 요구하며 주님을 시험하고 있습니까, 아니면 없는 떡을 세며 불안해하고 있습니까. 주님은 지금도 우리 각자의 이름을 부르시며 물으십니다. "너는 나를 누구라 하느냐." 이 질문 앞에 정직하게 엎드릴 때, 비로소 내 삶을 든든히 세워가시는 주님의 따뜻한 손길을 만나게 될 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 24편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

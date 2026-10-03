@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 36편 &middot; 마태복음 23:1-39</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>
+우리는 종종 삶의 무거운 짐들에 짓눌려 숨을 헐떡이곤 합니다. 때로는 내가 짊어진 삶의 무게만으로도 버거운데, 세상은 우리 어깨 위에 또 다른 의무와 잣대들을 끊임없이 얹어놓습니다. 마태복음 23장에서 예수님이 바라보신 세상의 풍경도 이와 크게 다르지 않았습니다. 종교라는 이름으로, 율법이라는 이름으로 사람들의 어깨에 무거운 짐을 지우면서도, 정작 자신들은 그 짐을 덜어주기 위해 "손가락 하나 까딱하지 않는" 차가운 시대였습니다. 
+</p>
+<p>
+예수님의 시선은 그 서늘한 풍경 너머, 지쳐 쓰러져가는 이들의 굽은 등을 향하고 있었습니다. 준엄한 비판과 "화 있을진저"라는 무서운 심판의 선언들이 쏟아지는 23장의 거친 말씀들 한가운데에는, 역설적이게도 상처받은 자녀들을 자신의 날개 아래 품고자 하시는 예수님의 가장 애절한 눈물이 고여 있습니다. 
+</p>
+
+### 손가락 하나 움직이지 않는 서늘한 세상에서
+
+<p>
+예수님이 고발하신 당시 종교 지도자들의 모습은, 어쩌면 오늘날 성과와 체면이라는 잣대로 무장한 우리 사회의 자화상일지도 모릅니다. 그들은 율법의 세세한 조항들, 심지어 박하와 회향과 근채라는 작은 채소의 십일조까지 완벽하게 계산해 내는 '정확성'을 자랑했습니다. 잔치에서는 윗자리를 차지하고, 시장에서는 깍듯한 인사를 받으며 자신의 의로움을 한껏 뽐냈습니다. 
+</p>
+<p>
+하지만 예수님은 그 화려한 겉모습 속에 감춰진 치명적인 결핍을 꿰뚫어 보셨습니다. 작은 정확성을 지키느라, 정작 사람을 살리는 '정의와 긍휼과 믿음'이라는 가장 중요한 삶의 본질을 내다 버린 것입니다. 숫자의 오차에는 그토록 민감하면서도, 이웃의 아픔과 눈물에는 놀랍도록 무감각해진 마음. 그것은 비단 2천 년 전 바리새인들만의 이야기가 아닐 것입니다. 타인에게는 무거운 기준을 들이밀고 나는 손가락 하나 까딱하려 하지 않는 이기심, 완벽한 업무 처리 뒤에 숨겨진 차가운 비정함이 우리 안에도 고스란히 남아있지 않은지 돌아보게 됩니다. 주님은 작은 정확성이 큰 긍휼을 대신할 수 없다고, 겉을 닦는 일만큼이나 속을 채우는 일이 중요하다고 우리를 다그치십니다.
+</p>
+
+### 끝내 거절당한, 그럼에도 품으려는 날개 아래의 사랑
+
+<p>
+위선으로 가득 찬 이들을 향해 매서운 책망을 쏟아내시던 예수님의 목소리는, 돌연 짙은 탄식으로 바뀝니다. "예루살렘아 예루살렘아!" 두 번 연거푸 부르시는 그 음성에는 억누를 수 없는 슬픔이 배어 있습니다. 예루살렘은 하나님이 보내신 선지자들을 죽이고, 사랑으로 찾아온 이들을 돌로 쳐 내친 완악한 도성이었습니다. 
+</p>
+<p>
+그러나 그 차가운 거절 앞에서도 예수님의 사랑은 멈추지 않았습니다. "암탉이 그 새끼를 날개 아래에 모음 같이 내가 네 자녀를 모으려고 몇 번이나 원하였고…" 예수님은 끝없이 우리를 안고 품기를 '원하셨습니다'. 누군가는 사람의 어깨에 짐을 지운 채 손가락조차 대지 않으려 할 때, 예수님은 당신의 넓은 날개를 펴서 상처 입은 영혼들을 덮어주고자 하셨습니다. 하지만 비극적이게도, 인간은 그 따뜻한 날개 아래로 들어가기를 끝내 "원하지 아니하였습니다." 예수님의 절절한 원함과 인간의 차가운 거절이 팽팽하게 맞서는 이 장면은, 하나님의 끊임없는 구애를 번번이 뿌리치는 우리의 굳은 마음을 아프게 찔러옵니다.
+</p>
+
+### 버려진 집, 그러나 닫히지 않은 은혜의 문
+
+<p>
+사랑이 철저히 거절당한 자리에는 뼈아픈 선언이 남습니다. "보라 너희 집이 버려진 바 되리라." 예수님의 애절한 탄식조차도 공의로운 심판을 지워버릴 수는 없었습니다. 심판의 두려움 속에서도 탄식을 잃지 않으시는 주님, 그 양극단의 긴장 속에서 우리는 죄악을 미워하시되 죄인은 끝까지 사랑하시는 하나님의 찢어지는 마음을 목격합니다.
+</p>
+<p>
+그러나 마태복음 23장의 끝자락은 완전한 절망으로 닫혀 있지 않습니다. "찬송하리로다 주의 이름으로 오시는 이여 할 때까지 네가 나를 보지 못하리라." 이 말씀은 무거운 심판의 선고인 동시에, 우리가 회개하고 다시 주님을 찬송하며 나아올 그날을 향해 문을 열어두시는 끝없는 기다림입니다. 
+</p>
+<p>
+지금 당신의 어깨 위에 놓인 짐이 너무 무거워 주저앉고 싶다면, 기억하십시오. 당신을 정죄하는 그 무거운 짐들은 주님이 지우신 것이 아닙니다. 주님은 오히려 짐 진 자들을 부르시며 당신의 날개 아래로 따뜻하게 초대하고 계십니다. 동시에, 혹여라도 우리가 누군가에게 짐을 지우고 손가락 하나 대지 않으려는 차가운 바리새인의 모습으로 서 있지는 않은지 겸허히 성찰해야 합니다. 정직하고 정확하게 살아가되, 그 작은 정확성이 사람을 향한 긍휼과 사랑의 온기를 결코 앗아가지 않도록 매일 우리의 속을 채워야 할 것입니다. 오늘, 우리를 애타게 부르시며 십자가 위에서 넓게 펼치신 그 은혜의 날개 아래로 깊은 쉼을 얻으러 나아갑시다.
+</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 36편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

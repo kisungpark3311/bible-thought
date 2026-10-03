@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 17편 &middot; 마태복음 12:15-45</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 일상은 끊임없이 무언가를 비워내고 또 채우는 과정의 연속입니다. 방 안의 묵은 먼지를 쓸어내고, 복잡하고 무거운 마음의 짐을 덜어내며 우리는 나름의 안식과 평화를 찾고자 고군분투합니다. 하지만 성경은 겉보기에 평온해 보이는 우리의 삶을 향해 깊고 서늘한 질문 하나를 던집니다. "당신이 정성껏 쓸고 닦아 비워둔 그 마음 한가운데에는, 지금 진짜로 누가 살고 있습니까?"
+
+마태복음 12장에는 인생의 가장 깊은 어둠 속에 갇힌 한 사람이 등장합니다. 그는 귀신이 들려 눈앞의 빛을 보지도 못하고, 마음속의 고통을 입 밖으로 소리 내어 말하지도 못합니다. 스스로의 힘으로는 단 한 걸음도 빛을 향해 나아갈 수조차 없어 누군가의 손에 무기력하게 이끌려 온 그 사람을, 예수님은 아무런 조건이나 대가 없이 고쳐주십니다. 이 놀라운 치유의 현장 위로 이사야 선지자가 오래전 노래했던 '다투지도, 소리치지도 않는 따뜻한 하나님의 영'이 조용하지만 강렬하게 임합니다. 하지만 기적의 온기가 그 사람의 삶을 데우기도 전에, 바리새인들은 차갑고 날 선 비난의 화살을 쏘아 올립니다. 생명을 살리는 치유의 환희와 이를 모독하는 날카로운 언어가 매섭게 부딪히는 이 극명한 대비 속에서, 우리는 오늘 우리의 내면과 일상을 정직하게 비추는 세 가지 거울을 마주하게 됩니다.
+
+### 1. 마음의 창고 : 나의 삶은 지금 무엇을 쏟아내고 있는가
+
+예수님은 기적을 깎아내리는 바리새인들의 비난 앞에서, 우리가 일상적으로 쏟아내는 '말'의 진짜 뿌리가 어디에 있는지를 정확하게 짚어주십니다. "선한 사람은 그 쌓은 선에서 선한 것을 내고, 악한 사람은 그 쌓은 악에서 악한 것을 내느니라." 우리의 입술을 타고 흘러나오는 말들은 결코 혀끝에서 즉흥적으로 만들어지는 가벼운 소리가 아닙니다. 그것은 아주 오랜 시간, 보이지 않는 우리 마음의 창고에 차곡차곡 쌓여온 것들이 임계점을 넘어 마침내 밖으로 쏟아져 나오는 영혼의 결실입니다.
+
+이 거룩한 원리는 우리의 입술을 넘어 우리가 살아가는 모든 일상의 언어로 확장됩니다. 어떤 이에게는 매일 다루는 세무 장부의 '숫자 하나'가 곧 자신이 세상과 하나님 앞에 내어놓는 진실한 '말'이기도 합니다. 누군가에게 무심코 던진 무익하고 차가운 말 한마디, 혹은 정직을 잃어버린 채 부풀려 적어 낸 무익한 숫자 하나는 결국 내 마음의 창고가 메말라 있다는 뼈아픈 증거일 뿐입니다. 반대로 상처 입은 이를 향한 따뜻한 위로, 정직한 땀방울이 배어 있는 투명한 삶의 태도는 내 안에 다투지 않으시는 하나님의 영이 머물고 계심을 증명하는 눈부신 열매입니다. 성경은 우리가 뱉어낸 무익하고 한가한 말 한마디조차 훗날 심판의 저울 위에 오르는 정산의 날이 있다고 경고합니다. 그날, 우리의 창고는 과연 어떤 모습으로 주님 앞에 열리게 될까요? 우리는 지금 내 마음의 깊은 창고에 무엇을 쌓아가고 있는지 두려운 마음으로 돌아보아야 합니다.
+
+### 2. 정돈된 빈집의 비극 : 겉모습을 비워내는 것만으로는 살 수 없습니다
+
+폭풍 같은 치유와 논쟁이 지나간 후, 예수님은 우리 삶의 방향을 뒤흔드는 무서운 비유 하나를 들려주십니다. 어떤 사람에게서 쫓겨났던 더러운 영이 이리저리 떠돌다 다시 예전의 집으로 돌아와 봅니다. 그런데 놀랍게도 그 집이 텅 비어 있고, 아주 깨끗하게 쓸리고 수리되어 있었습니다. 주인이 없는 그 번듯한 빈집을 발견한 악한 영은 쾌재를 부르며, 자기보다 훨씬 더 악한 영 일곱을 데리고 들어와 똬리를 틉니다. 결국 그 사람의 나중 형편은 엉망이었던 처음보다 헤아릴 수 없이 더 비참해지고 맙니다. 
+
+이 서늘한 경고는 '비움'과 '정돈' 그 자체가 결코 삶의 궁극적인 구원이 될 수 없음을 알려줍니다. 우리는 삶의 고통과 상처를 잊기 위해 수없이 마음을 비우려 애쓰고, 남들에게 그럴싸하게 보이기 위해 삶의 겉모습을 꾸미며 살아갑니다. 도덕적인 교양을 쌓고, 흠잡을 데 없이 일상을 번듯하게 정돈하기도 합니다. 하지만 정작 주인이 없는 빈집, 생명으로 채워지지 않은 정돈은 결코 참된 평안이 아니며 언제 무너질지 모르는 위태로운 상태입니다. 진리와 생명으로 그 빈자리를 가득 채우지 않는다면, 그 깨끗한 공간은 결국 세상의 더 허무하고 파괴적인 욕망들에게 고스란히 자리를 내어주고 맙니다. 신앙은 내 마음을 그저 비워내는 '무소유'의 수양에 머무르지 않습니다. 생명의 영이신 성령으로 내 안의 모든 빈방을 틈 없이 채워내는, 뜨겁고 역동적인 사랑의 사귐이어야 합니다.
+
+### 3. 은혜가 머무는 곳 : 스스로 나아올 수 없는 이를 향하여
+
+이 거대한 영적 진리들을 조용히 묵상하다 보면, 다시 이 이야기의 첫 장면으로 시선이 머물게 됩니다. 영혼의 눈이 멀고 입이 굳어버렸던 그 사람은 스스로 치유자이신 주님 앞에 설 용기도, 기적을 달라고 간구할 목소리도 없던 사람이었습니다. 그저 무기력하게 누군가의 손에 이끌려 데려와진 존재였습니다. 하지만 예수님은 그에게 믿음을 증명하라거나 간절히 부르짖으라는 어떠한 조건도 달지 않으셨습니다. 주님은 다투지도 외치지도 않는 깊은 긍휼로, 캄캄한 감옥 같던 그의 삶을 단숨에 끌어안아 눈부시게 온전케 하셨습니다. 
+
+우리가 호흡하며 살아가는 일상의 현장 곳곳에는, 지금 이 순간에도 스스로 예배와 은혜의 자리로 나아올 힘조차 잃어버린 채 웅크려 있는 수많은 이들이 있습니다. 질병의 짐에 눌려 고통받는 이들, 짙은 절망감에 빠져 기도의 언어조차 잃어버린 이들, 팍팍한 삶의 무게에 짓눌려 단 하루의 내일도 꿈꿀 수 없는 이들이 있습니다. 그들에게 정작 필요한 것은 "스스로 이겨내라"는 무익하고 창백한 위로가 아닙니다. 텅 비워진 그들의 춥고 시린 마음에 하늘의 따뜻한 온기가 스며들 수 있도록, 우리가 먼저 다가가 곁을 내어주고 조용히 손을 잡아 은혜의 빛 가운데로 이끌어주는 구체적인 사랑이 필요합니다.
+
+하나님의 영은 텅 빈 가슴을 채우는 생명의 호흡입니다. 무심히 지나치는 오늘 하루, 내 마음의 창고에 차가운 비난 대신 생명을 살리는 따뜻한 말들을 차곡차곡 쌓아 올리기를 소망합니다. 내 마음을 그저 텅 비워둔 채 번듯하게 꾸며진 겉모습에 안심하는 어리석음을 범치 않고, 살아계신 성령의 충만함으로 우리 내면을 가득 채우기를 원합니다. 그리하여 스스로의 힘으로는 홀로 설 수 없어 무너진 누군가의 곁으로 조용히 다가가, 그들을 영원한 치유와 회복의 자리로 이끌어주는 따뜻하고 든든한 주님의 통로가 되기를 간절히 기도합니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 17편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

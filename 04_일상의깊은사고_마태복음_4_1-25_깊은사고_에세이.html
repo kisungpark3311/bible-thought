@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 04편 &middot; 마태복음 4:1-25</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+누구에게나 인생의 광야를 걷는 시간이 찾아옵니다. 거친 모래바람만이 부는 삭막한 곳, 사십 일을 굶주린 사람처럼 영혼과 육신이 극심한 허기와 갈증으로 메말라가는 시간 말입니다. 그 텅 빈 결핍의 한가운데서 우리는 종종 달콤하고도 날카로운 유혹의 목소리를 듣게 됩니다. 
+
+"네가 만일 하나님의 사랑받는 자녀라면, 이 돌을 떡으로 만들어 보아라. 저 높은 성전 꼭대기에서 뛰어내려 보아라. 하나님이 천사들을 보내어 너를 안전하게 지키실 것이다." 
+
+놀랍게도 마귀는 하나님의 말씀인 성경 구절까지 능숙하게 인용하며 다가옵니다. **가장 거룩한 텍스트가 가장 치명적인 유혹의 무기가 되는 이 광야의 시험 속에서, 우리는 우리의 신앙이 서 있는 진짜 자리를 아프게 마주하게 됩니다.**
+
+### 1. 내 요구의 주어로 부르는 신인가, 내가 경배할 하나님인가
+
+광야에서 마귀는 시편 91편을 정확히 인용하며 예수님을 시험했습니다. 하지만 묘하게도 "네 모든 길에서 너를 지키게 하심이라"는 성경의 핵심 단서는 슬쩍 빼놓았습니다. 일상의 길을 지키시겠다는 하나님의 약속을, 성전 꼭대기에서 뛰어내리는 무모한 기적의 도구로 전락시키려 한 것입니다. 
+
+예수님의 대답은 단호하고 명확했습니다. "또 기록되었으되 주 너의 하나님을 시험하지 말라." 마귀와 예수님 모두 "기록되었으되"라며 똑같이 성경을 인용했지만, 그 문장 속에서 하나님이 서 계신 자리는 완전히 달랐습니다. **마귀의 인용문 속에서 하나님은 '내 요구에 즉각 응답하여 기적을 베풀어야만 하는 주어'였습니다. 하지만 예수님의 문장 속에서 하나님은 '말씀이 흘러나오는 근원이시며, 감히 시험해서는 안 될 분, 오직 엎드려 경배받으셔야 할 유일한 대상'이었습니다.**
+
+우리는 매일의 삶에서 하나님의 말씀을 어떻게 쥐고 살아갑니까? 혹시 나의 욕망을 이루고 나의 결핍을 채우기 위해, 내게 불리한 구절은 모른 척 빼버리고 유리한 말씀만 꺼내 들고 있지는 않습니까? **내가 만든 문장 속에서 하나님을 내 요구를 들어주어야 할 주어로만 불러내고 있지는 않은지, 뼈아픈 반성이 필요한 순간입니다.**
+
+### 2. 떡을 부정하지 않되, 생명의 참된 근원을 바라보다
+
+첫 번째 시험은 사십 일을 주리신 예수님의 가장 절박한 육신을 향했습니다. "이 돌들이 떡덩이가 되게 하라." 극심한 허기 속에서 이보다 간절한 요구가 어디 있을까요? 마귀는 "네가 하나님의 아들이어든" 능력을 증명하라고 압박했지만, 예수님은 "사람이" 떡으로만 살 것이 아니라고 묵묵히 대답하십니다. 능력 있는 '하나님의 아들'로서가 아니라, 하나님 말씀 아래 놓인 연약한 '사람'의 자리로 내려가신 것입니다.
+
+**예수님은 결코 우리의 몸과 떡을 가볍게 여기지 않으셨습니다.** "떡으로만" 살 것이 아니라는 부정어는, 역설적으로 사람에게 떡이 반드시 필요하다는 사실을 따뜻하게 인정합니다. 굶주린 몸은 신적인 기적을 증명하기 위한 화려한 무대가 아니라, 그저 긍휼과 말씀 아래 놓인 사람의 몸으로 남아야 합니다. 
+
+우리의 일상도 마찬가지입니다. 매일 아침 출근길에 오르고 생계를 꾸리며 밥벌이를 하는 치열한 노동은 결코 속된 것이 아닙니다. 오히려 그것은 거룩한 삶의 일부입니다. **다만 우리가 잊지 말아야 할 것은, 내 삶을 지탱하는 그 수많은 떡과 일상의 목록들 가장 깊은 근원에는 늘 '하나님의 입으로부터 나오는 말씀'이 든든한 반석처럼 서 있어야 한다는 사실입니다.**
+
+### 3. 부름의 무거운 값, 그리고 누군가를 주님께 데려가는 손
+
+광야의 맹렬한 시험이 끝난 후, 예수님에게 들려온 것은 세례 요한이 잡혀갔다는, 누군가의 손에 넘겨졌다는 차가운 고난의 소식이었습니다. 그러나 주님은 그 억울하고 슬픈 소식을 섣부른 위로로 덮거나 서둘러 해석하지 않으십니다. 해결되지 않은 고통을 곁에 둔 채 묵묵히 갈릴리로 물러가셔서 다시 구원의 말씀을 전하기 시작하십니다.
+
+그리고 바닷가에서 어부들을 부르십니다. 그 부르심은 생계를 잇기 위해 그물을 깁고 땀 흘리던 치열한 삶의 현장, 그 노동의 손 위에 떨어졌습니다. 성경은 그들이 '배와 아버지를 버려 두고' 예수님을 따랐다고 담담히 기록합니다. **신앙의 길을 걷는다는 것은 결코 낭만적인 한 폭의 수채화가 아닙니다. 그것은 나의 사무실, 익숙한 장비, 거래처의 장부를 뒤로하는 결단이며, 때로는 내가 떠남으로써 배에 남겨져야 하는 사랑하는 가족의 무게까지 함께 셈해야 하는 치열한 과정입니다.** 예수님의 부르심은 생계의 현장을 관통하며, 따름이 요구하는 그 무거운 값을 결코 줄여서 말하지 않습니다.
+
+이 깊고 묵직한 마태복음 4장의 이야기는 바닷가를 지나 수많은 무리가 나아오는 장면으로 맺어집니다. 앓는 자, 고통당하는 자, 중풍병자들이 예수님께 고침을 받았습니다. 그런데 성경은 이 장면에서 병자들 스스로 걸어왔다고 말하지 않습니다. *"사람들이 모든 앓는 자를... 데려오니."* 이 짧은 문장 속에서 우리는 참된 교회의 모습을 봅니다. 
+
+오늘 우리의 주위에는 기도할 힘조차 잃어버리고, 스스로 예수님께 나아갈 다리의 힘마저 꺾인 이들이 너무나 많습니다. **우리가 감당해야 할 참된 신앙의 몫은 무엇일까요? 그것은 기꺼이 그들의 휠체어를 밀고, 병실 문을 두드리며, 홀로 설 수 없는 이들을 주님 곁으로 데려가는 따뜻한 손과 발이 되는 것입니다.**
+
+광야에서 들었던 마귀의 유혹과 똑같은 성경 구절을 쥐고도, 우리는 전혀 다른 삶을 살 수 있습니다. 내 욕심을 채우기 위해 빠뜨린 구절을 정직하게 다시 적어 넣고, 생계의 무거운 짐 앞에서도 주님의 부르심을 셈하며, 연약한 이들을 기꺼이 품어 안는 것. 그것이 바로 광야의 시험을 이기고 생명의 길을 걷는 참된 제자의 발걸음일 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 04편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

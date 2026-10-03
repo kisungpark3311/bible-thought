@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 25편 &middot; 마태복음 16:21~17:13</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 누구나 고난을 피하고 싶어 합니다. 삶의 꽃길만 걷기를 바라고, 빛나는 영광의 순간만이 우리 인생에 가득하기를 소망합니다. 어쩌면 그것은 너무나 자연스럽고 당연한 '사람의 마음'일지 모릅니다. 2천 년 전, 예수님의 수제자 베드로 역시 우리와 다르지 않았습니다. 예수님께서 예루살렘으로 올라가 장로들과 제사장들에게 고난을 받고 죽임을 당해야 할 것을 처음으로 밝히셨을 때, 베드로는 다급히 예수님을 붙들고 항변했습니다. "주여 그리 마옵소서. 이 일이 결코 주께 미치지 아니하리이다." 주님을 깊이 사랑하는 마음에서 비롯된 절박한 만류였지만, 그 이면에는 십자가 없는 영광만을 바라는 인간의 얄팍한 본성이 숨어 있었습니다.
+
+### 내 뒤로 물러가라, 그리고 나를 따르라
+
+베드로의 만류를 향한 예수님의 대답은 우리의 예상을 깨고 너무나도 날카로웠습니다. "사탄아, 내 뒤로 물러가라. 너는 나를 넘어지게 하는 자로다." 십자가의 고난만큼은 깎아내고 덜어내어 듣기 좋게 전하고 싶었던 베드로에게 내려진 판정은 가혹해 보이기까지 합니다. 예수님은 베드로가 '하나님의 일'이 아닌 '사람의 일'을 생각하고 있다고 엄히 꾸짖으셨습니다.
+
+하지만 이 본문이 품고 있는 참된 위로와 신비는 이 매서운 꾸짖음이 결코 버림받음의 선언으로 끝나지 않는다는 데 있습니다. "내 뒤로 물러가라"고 말씀하신 예수님은, 그 즉시 제자들을 향해 시선을 돌리시며 이렇게 말씀하십니다. "누구든지 나를 따라오려거든(내 뒤로 오려거든) 자기를 부인하고 자기 십자가를 지고 나를 따를 것이니라."
+
+흥미롭게도 성경 원어를 살펴보면, 꾸짖으실 때 쓰인 '내 뒤'와 제자를 부르실 때 쓰인 '내 뒤'가 같은 단어('오피소 무')입니다. 예수님의 십자가 길을 가로막고 섰던 베드로의 자리는 매서운 꾸짖음을 받았지만, 주님은 그를 완전히 내치지 않으셨습니다. 오히려 주님이 가시는 길을 앞서서 막지 말고, 당신의 '뒤로' 와서 그 길을 함께 걷자고 다시 부르신 것입니다. 걸림돌이 될 뻔한 그 물러섬의 자리가, 비로소 자기 십자가를 지고 걷는 위대한 '따름의 자리'로 변화하는 가슴 벅찬 순간입니다.
+
+### 두려움 속에 엎드린 이들을 일으키시는 손길
+
+십자가의 무거운 말씀을 남기신 지 엿새 후, 예수님은 제자들을 데리고 높은 산에 오르셨습니다. 그리고 그곳에서 얼굴이 해같이 빛나는 영광스러운 모습으로 변화하셨습니다. 빛난 구름 속에서 "이는 내 사랑하는 아들이요 내가 기뻐하는 자니 너희는 그의 말을 들으라"는 장엄한 하나님의 음성이 울려 퍼졌습니다.
+
+제자들은 이 압도적인 신비 앞에서 엎드려 심히 두려워했습니다. 고난의 예고 앞에서도, 영광의 발현 앞에서도 인간은 그저 작고 연약한 존재일 뿐입니다. 그 순간, 일어설 힘조차 잃고 엎드려 떠는 제자들에게 예수님이 조용히 다가오셨습니다. 그리고 따뜻한 손을 대시며 말씀하셨습니다. "일어나라, 두려워하지 말라."
+
+이 대목에서 우리의 가슴을 울리는 사실이 있습니다. 제자들을 향해 "일어나라"고 하신 이 단어('에게이로')는, 불과 엿새 전 예수님이 사흘 만에 '살아나실 것'을 예고할 때 쓰신 바로 그 부활의 단어입니다. 스스로의 힘으로는 도저히 일어설 수 없는 우리 삶의 무너진 자리, 두려움에 짓눌려 엎드린 바로 그곳에 주님이 다가오십니다. 그리고 부활의 생명이 담긴 그 크신 손으로 우리를 어루만지며 다시 일으켜 세워 주십니다. 비록 산을 내려가면 다시 십자가의 고난이 기다리고 있겠지만, 영광의 빛 안에서 주님이 만져주신 그 따뜻한 '일으키심'의 기억은 우리가 묵묵히 고난의 길을 걸어갈 수 있는 단단한 힘이 되어 줍니다.
+
+### 삶의 마지막 장부, 당신은 무엇을 남기겠습니까?
+
+우리는 매일같이 이익과 손해를 치열하게 셈하며 살아가는 시대를 살고 있습니다. 직장이나 사업의 현장에서, 혹은 숫자가 오가는 장부 앞에서 우리의 시선은 자연스레 눈앞의 유익에만 머물기 쉽습니다. 세상은 온 천하를 얻고 남들보다 더 높은 자리에 오르는 것이 인생에서 가장 남는 장사라고 끊임없이 속삭입니다.
+
+그러나 예수님은 우리 영혼의 셈법을 근본적으로 뒤집으십니다. "사람이 만일 온 천하를 얻고도 제 목숨을 잃으면 무엇이 유익하리요?" 내가 얻어낸 눈부신 성취의 이면에 내 소중한 시간과 몸, 그리고 영혼의 생명이 어떻게 스러져가고 있는지 뼈아프게 물으시는 것입니다.
+
+마지막 날, 인자가 영광 중에 천사들과 함께 다시 오실 때, 우리의 인생 역시 엄정한 결산의 시간을 맞이하게 될 것입니다. 그 마지막 장부의 기준은 우리가 세상에서 얼마나 많은 부와 명예를 쌓았는지가 아니라, "각 사람이 행한 대로"라는 준엄한 잣대입니다. 돈을 쓰고, 시간을 나누며, 사람을 대하는 일상의 모든 선택이 결국 내가 '행한 것'으로 고스란히 남아 하나님 앞의 장부에 기록됩니다. 
+
+변화산 위의 눈부신 영광은 산 아래에 놓인 십자가의 고난을 결코 덮어버리지 않습니다. 영광과 고난은 동떨어진 두 개의 운명이 아니라, 우리 주님이 묵묵히 걸어가신 하나의 길입니다. 
+
+그러므로 오늘, 예수님의 앞길을 가로막으며 십자가 없이 영광만 취하려던 '사람의 일'에서 벗어나기를 소망합니다. 한 걸음 물러나, 주님의 '그 뒤'에 겸손히 서기를 결단합시다. 비록 내게 주어진 십자가의 무게가 버겁고 현실의 손해 앞에서 두려워 엎드릴지라도, 안심하십시오. 우리가 엎드린 바로 그 자리에 주님이 다가와 부드러운 손을 얹어 일으켜 주실 것입니다. 그 따스한 부활의 손길에 이끌려, 헛된 영광의 신기루를 버리고 영원한 가치를 향해 뚜벅뚜벅 걸어가는 진실한 제자의 여정이 되기를 간절히 기도합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 25편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

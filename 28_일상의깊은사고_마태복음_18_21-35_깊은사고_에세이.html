@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 28편 &middot; 마태복음 18:21-35</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 살아가며 크고 작은 상처를 주고받습니다. 때로는 누군가의 가시 돋친 말 한마디에 깊이 베이고, 때로는 나의 어리석은 행동이 사랑하는 이의 가슴에 멍을 내기도 합니다. 상처받은 마음은 본능적으로 방어벽을 세우고, 자신이 받은 아픔의 크기만큼 상대방을 정죄하려 합니다. 용서라는 단어는 입술 끝에 맴돌 뿐, 마음속 깊은 곳에서는 여전히 서늘한 계산기가 돌아가고 있는 것이 연약한 우리들의 민낯입니다.
+
+어느 날 베드로가 예수님께 묻습니다. "주님, 형제가 제게 죄를 지으면 몇 번이나 용서해야 합니까? 일곱 번이면 되겠습니까?" 베드로의 질문에는 이미 '내가 참을 수 있는 한계'가 분명히 그어져 있었습니다. 일곱 번이라는 숫자는 당시로서는 대단한 관용이었지만, 그 밑바탕에는 여전히 철저히 셈을 하는 마음이 깔려 있었습니다. 예수님은 그 단단한 한계를 부수십니다. "일곱 번뿐 아니라, 일흔 번씩 일곱 번이라도 용서하여라." 이는 단순히 숫자의 기교를 부리신 것이 아닙니다. 내가 정한 얄팍한 상한선 안에 누군가를 가두려는 계산을 멈추라는, 차원이 다른 은혜와 사랑으로의 초대입니다.
+
+## 셈하는 마음, 스스로를 가두는 감옥
+
+우리의 용서는 종종 조건부입니다. '이번 한 번만 넘어가 주겠다', '세 번까지는 참는다'며 마음속에 단서를 단단히 움켜쥐고 있습니다. 베드로의 "일곱 번까지"라는 질문 속에는 상대를 향한 관용을 가장한 교묘한 통제가 숨어 있습니다. 횟수를 세는 마음은 결국, 그 횟수가 가득 차는 순간 상대를 가차 없이 단죄하고 옥에 가두겠다는 기한을 정하는 것과 같습니다. 
+
+예수님은 용서를 셈하는 우리의 비좁은 마음을 꿰뚫어 보십니다. 일흔 번씩 일곱 번이라는 끝없는 횟수는, 셈하기를 완전히 포기할 때 비로소 진정한 용서가 시작된다는 것을 가르쳐 주십니다. 내가 그어놓은 용서의 한계선이 타인뿐만 아니라 나 자신마저 미움의 감옥에 가두는 차가운 창살이 됨을, 우리는 얼마나 자주 잊고 살아가는지요.
+
+## 만 달란트의 기적, 그리고 백 데나리온의 폭력
+
+예수님은 우리 삶의 모순을 적나라하게 보여주는 비유 하나를 들려주십니다. 만 달란트, 곧 평생을 쉬지 않고 일해도 결코 갚을 수 없는 천문학적인 빚을 진 종이 있었습니다. 그는 벼랑 끝 절망 속에서 엎드려 빕니다. "제게 참아 주십시오. 다 갚겠습니다." 그 참담한 엎드림 앞에서, 주인은 상상할 수도 없는 기적을 베풉니다. 불쌍히 여겨 그 엄청난 빚을 송두리째 탕감해 준 것입니다. 몸과 처자와 모든 소유를 빼앗길 뻔한 절대 절망의 늪에서 그는 값없이 새로운 생명을 얻었습니다.
+
+그런데 이 가슴 벅찬 은혜를 입고 문을 나선 종은, 자신에게 고작 백 데나리온을 빚진 동료를 만납니다. 만 달란트의 탕감을 받은 자가, 푼돈을 빚진 동료의 멱살을 잡고 빚을 갚으라며 윽박지릅니다. 동료는 엎드려 애원합니다. "나를 참아 주십시오. 갚겠습니다." 어디서 많이 듣던 애절한 목소리 아닙니까? 불과 얼마 전, 그 자신이 주인의 발 앞에 엎드려 피를 토하듯 외쳤던 바로 그 간청입니다. 자신이 살기 위해 부르짖었던 기도를 동료의 입에서 똑같이 듣고 있으면서도, 그의 마음은 잔인하게 얼어붙어 있었습니다. 그는 동료를 감옥에 던져 넣고 맙니다. 감격스러웠던 탕감의 은혜는, 정작 자신이 누군가의 빚을 갚아주어야 하는 일상의 자리에서 비참하게 산산조각 나버렸습니다.
+
+## 자비의 잣대로 내 삶을 측량하다
+
+이 기막힌 소식을 전해 들은 주인은 다시 종을 부릅니다. "내가 너를 불쌍히 여김과 같이, 너도 네 동료를 불쌍히 여김이 마땅하지 아니하냐." 주인의 엄중한 꾸짖음 속에는 우리가 평생 가슴에 새겨야 할 영적 진리가 담겨 있습니다. 우리가 타인을 대해야 하는 마땅한 의무와 기준은 '상대방이 내게 얼마나 큰 상처를 주었는가'가 아닙니다. 바로 '내가 하늘로부터 얼마나 거대한 자비를 받았는가'입니다. 
+
+내가 먼저 받은 자비가 내가 세상을 측량하는 유일한 잣대가 되어야 합니다. 그 잣대를 거부하고 다시금 차가운 장부의 언어로 남을 계산하는 순간, 스스로를 율법과 형벌의 감옥으로 다시 밀어 넣게 됩니다. 주인이 그 종을 노하여 다시 옥에 넘긴 것처럼, 탕감의 은혜를 흘려보내지 않는 자에게 임할 준엄한 처분이 선언된 것입니다. 
+
+용서는 결코 감상적인 미덕이나 도덕적 우월감이 아닙니다. 용서는 도저히 갚을 길이 없던 나를 먼저 살리신 그 압도적인 사랑에 대한, 가장 치열하고도 눈물겨운 삶의 응답입니다. 오늘 하루, 우리는 손에 어떤 잣대를 쥐고 서 있습니까? 누군가를 정죄하기 위해 매섭게 치켜들었던 손을 가만히 내려놓고, 내가 받았던 그 한없는 탕감의 은혜를 가슴 깊이 되새겨 봅니다. 내 안의 차가운 계산의 언어가 상처받은 이웃의 손을 잡아주는 따뜻한 자비의 언어로 바뀌어갈 때, 그곳에 비로소 십자가의 기적이 피어날 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 28편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

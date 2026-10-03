@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 11편 &middot; 마태복음 8:18~9:8</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 종종 무언가를 넉넉히 가져야만 다른 사람을 도울 수 있다고 생각합니다. 내 집이 있어야 누군가를 초대할 수 있고, 내 지갑이 두둑해야 이웃의 주린 배를 채워줄 수 있다는 지극히 현실적인 계산 때문입니다. 그래서 우리는 끊임없이 더 많은 것을 소유하고, 더 튼튼하고 안락한 거처를 마련하기 위해 고군분투하며 살아갑니다. 하지만 2천 년 전, 갈릴리 호숫가를 거닐던 한 청년의 삶은 이 당연한 세상의 공식에 고요하면서도 묵직한 물음표를 던집니다.
+
+"여우도 굴이 있고 공중의 새도 거처가 있으되 인자는 머리 둘 곳이 없다." 
+
+그는 스스로를 이렇게 소개했습니다. 밤이슬을 피할 작은 방 한 칸조차 허락되지 않은 삶, 어쩌면 세상의 눈에는 가장 가난하고 초라한 모습일지도 모릅니다. 그러나 놀랍게도, 이토록 철저하게 '가진 것 없는' 그가 세상 그 누구도 흉내 낼 수 없는 가장 위대한 권세를 선포합니다. 그것은 바로 사람의 영혼을 옥죄는 '죄를 용서하는 권세'였습니다. 가장 낮은 곳에 거했던 그분이, 우리 영혼의 가장 깊은 어둠을 걷어내는 참된 빛으로 다가오신 것입니다.
+
+### 풍랑 한가운데서 찾아온 크고 깊은 고요함
+
+인생이라는 바다를 항해하다 보면 누구나 예기치 못한 거센 풍랑을 만나기 마련입니다. 칠흑 같은 어둠 속에서 거대한 파도가 덮쳐올 때, 우리는 물결에 잠기는 배 위의 제자들처럼 다급하게 부르짖습니다. "살려주세요, 우리가 죽게 되었습니다!" 내 힘으로는 도저히 어찌할 수 없는 불가항력적인 두려움이 온몸을 휘감습니다. 죽음의 공포가 내 삶을 송두리째 흔드는 순간입니다.
+
+하지만 그 절체절명의 순간, 예수님은 놀랍도록 평온하십니다. 곤히 주무시던 그분은 일어나 거센 바람과 성난 바다를 향해 단호하게 꾸짖으십니다. 그러자 믿을 수 없는 일이 일어납니다. 집어삼킬 듯 포효하던 대자연이 그분의 말씀 한마디에 엎드려 순종하며, 거짓말처럼 '큰 잔잔함(갈레네 메갈레)'이 찾아옵니다. 
+
+우리는 종종 눈앞의 문제 자체가 사라지기만을 기도하지만, 진짜 기적은 고난의 한가운데서 그분이 누구이신지를 온전히 깨닫는 데 있습니다. 풍랑을 잠잠하게 하신 그분 앞에서 제자들이 품었던 "이 분이 대체 누구이신가?"라는 경외에 찬 질문은, 오늘날 거센 삶의 파도에 이리저리 휩쓸리는 우리에게도 동일하게 주어지는 영적인 초대입니다.
+
+### 아무것도 할 수 없는 자를 향한 첫 마디, "안심하라"
+
+어쩌면 우리 중 누군가는 스스로의 힘으로는 단 한 발자국도 내디딜 수 없는 중풍병자와 같은 처지에 놓여 있을지도 모릅니다. 육신의 질병이든, 마음의 깊은 우울이든, 혹은 삶의 무거운 짐 때문이든 그 자리에 철저히 묶여버린 사람들 말입니다. 그는 예수님께 나아가기 위해 스스로 할 수 있는 것이 단 하나도 없었습니다. 그저 다른 이들의 손에 들린 침상에 무기력하게 누워있었을 뿐입니다.
+
+그런 그를 향해 주님은 어떤 자격이나 조건도 묻지 않으셨습니다. "왜 이렇게 되었느냐"고 다그치지도, 훈계하지도 않으셨습니다. 그분의 입술에서 나온 첫 마디는 너무나도 따뜻하고 다정한 부름이었습니다. "작은 자야, 안심하라. 네 죄 사함을 받았느니라."
+
+일어날 힘조차 없는 이에게 선포된 이 조건 없는 용서의 선언은, 곧 그를 억누르던 모든 결박을 끊어내는 생명의 능력이 되었습니다. 침상을 들고 집으로 걸어가는 그의 뒷모습은 우리에게 웅변합니다. 진정한 구원은 우리가 무엇을 노력해서 얻어내는 것이 아니라, 아무것도 할 수 없는 우리를 먼저 찾아오신 그분의 압도적인 사랑으로 인해 일방적으로 주어지는 것임을 말입니다.
+
+### 장부의 숫자보다 한 영혼을 천하보다 귀하게
+
+때로는 세상의 눈에 납득할 수 없는 일들이 벌어지기도 합니다. 귀신 들려 무덤 사이를 헤매던 두 사람이 온전해졌을 때, 마을 사람들은 그들의 회복을 기뻐하기보다 바다에 몰사한 수많은 돼지 떼의 잃어버린 가치를 먼저 계산했습니다. 장부에 적힌 거대한 재산의 손실 앞에서, 사람들은 그저 두려워하며 예수님께 그 지방을 떠나달라고 간구했습니다. 
+
+우리의 현실 역시 종종 한 사람의 생명이나 아픔보다 눈앞의 이익과 손실을 먼저 계산하게 만듭니다. 그러나 주님은 그 어떤 막대한 경제적 가치보다, 어둠에 갇혀 고통받던 한 영혼의 잃어버린 자유를 훨씬 더 귀하게 여기셨습니다. 우리는 혹여나 내 인생의 장부를 꼼꼼히 채워가는 동안, 그 숫자 곁에 반드시 적혀야만 했던 소중한 '사람'의 이야기가 누락되어 있지는 않은지 돌아보아야 합니다.
+
+머리 둘 곳 없던 그분이 걸어가신 길은 화려한 왕궁이나 높은 성전이 아니었습니다. 거센 물결이 덮치는 위태로운 배 위였고, 아무도 찾지 않는 무덤 사이의 험한 길이었으며, 절망에 빠진 병자의 퀴퀴한 침상 곁이었습니다. 그러나 그분이 닿는 곳마다 기적이 일어났고, 무기력한 자들이 일어났으며, 그 모든 경외감 속에서 사람들은 비로소 하나님께 참된 영광을 돌렸습니다. 
+
+오늘 우리의 삶 속에서도 이 벅찬 찬양이 회복되기를 소망합니다. 세상의 화려한 기준이 아니라, 머리 둘 곳 없으셨던 주님이 지금 이 순간 가장 연약한 자들에게 다가오심을 찬양하기 원합니다. 그리고 이제는 우리가, 내 곁에 누운 누군가의 무거운 침상 한쪽을 기꺼이 함께 들어 올리는 사람이 되기를 기도합니다. 이것이 바로, 머리 둘 곳 없던 그분을 따르는 우리가 묵묵히 걸어가야 할 가장 거룩하고 아름다운 여정일 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 11편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

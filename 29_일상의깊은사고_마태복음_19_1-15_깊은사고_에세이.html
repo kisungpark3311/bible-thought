@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 29편 &middot; 마태복음 19:1-15</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 삶의 복잡한 문제 앞에서 종종 선을 긋고 한계를 묻습니다. "어디까지가 정당한가?", "어떤 조건이 충족되어야 관계를 끝낼 수 있는가?" 권리와 조건을 따지며 자신의 정당성을 확보하려는 이 차가운 질문들 앞에서, 예수님의 시선은 전혀 다른 곳을 향하고 있습니다. 마태복음 19장에 등장하는 사람들은 율법이 허락한 '이혼 증서'를 방패 삼아 관계의 단절을 합리화하려 합니다. 그러나 율법의 논쟁 한가운데서 주님은 애틋한 초대의 말씀을 건네십니다. "본래는 그렇지 아니하니라."
+
+이 말씀은 우리를 향한 매서운 책망이 아닙니다. 하나님께서 사람을 처음 지으시고 서로의 손을 맞잡게 하셨던 그 눈부신 창조의 아침으로 우리를 부르시는 음성입니다. 인간의 마음이 굳어지고 상처를 주고받는 현실 때문에 어쩔 수 없이 내어준 '허락'을, 우리가 당연히 누려야 할 '권리'로 착각해서는 안 된다는 것입니다. 만남과 결합은 단순한 감정의 합의나 사회적 계약을 넘어, 두 사람의 살과 삶이 얽혀 하나님 안에서 하나가 되는 거룩하고 신비로운 기적이기 때문입니다.
+
+## 서류 한 장 뒤에 숨쉬는 삶의 무게
+
+현대 사회에서 관계의 끝은 법원 창구에 서류를 내밀고 차가운 도장을 찍는 일로 맺어지곤 합니다. 마치 오랜 옛날 무미건조하게 이혼 증서를 건네주던 그 씁쓸한 손들처럼 말입니다. 하지만 서류 한 장으로 한 몸이었던 두 사람을 갈라내는 일 뒤에는, 차마 문서의 네모난 칸 안에 다 적어내지 못한 숱한 눈물과 한숨이 고여 있습니다. 
+
+어느 세무사의 낡은 책상 위로 오가는 재산 분할과 부양가족 변경 서류들 사이에도, 묵묵히 버텨내야 할 각자의 막막한 삶이 존재합니다. 종이 한 장 뒤에는 내일 당장 거처를 잃을지도 모르는 불안, 생계의 무거운 압박, 그리고 부모의 뒷모습을 바라보며 상처받는 아이들의 떨리는 눈망울이 있습니다. 주님은 사람들의 권리 다툼 속에서, 단 한 번도 자기 목소리를 내지 못하고 주어로 등장조차 하지 못한 이들을 바라보셨습니다. 그곳에는 율법의 허락이라는 그럴듯한 이름 뒤에 가려진 연약한 생명들이 소리 없이 울고 있었습니다.
+
+## 질서 밖으로 밀려난 이들을 품으시는 시선
+
+만약 예수님의 말씀이 '결혼은 신성한 것이니 절대 깰 수 없다'는 팍팍한 율법의 잣대로만 끝났다면, 실패와 상처로 무너진 자리에 선 이들은 숨을 쉴 수 없었을 것입니다. 어떻게든 손해를 보지 않으려 "그렇다면 차라리 혼자 사는 게 낫겠다"며 투덜대는 제자들 앞에서, 예수님은 뜻밖에도 '고자'들의 이야기를 꺼내십니다. 어머니의 태로부터 그렇게 태어난 사람, 다른 사람에 의해 강제로 그렇게 된 사람, 그리고 천국을 위해 스스로 그 길을 걷는 사람.
+
+창조의 처음 질서를 그토록 아름답게 긍정하셨던 분이, 역설적이게도 세상이 말하는 가정의 질서 테두리 밖으로 밀려나 있는 사람들을 향해 시선을 돌리십니다. 그리고 그들의 존재를 지우지 않고 하나하나 다정하게 부르시며 존재의 자리를 내어주십니다. 세상은 쓸모를 묻고 조건에 미달하면 등을 돌리지만, 주님의 품에는 상처 입고 찢겨진 이들, 세상의 잣대에 들어맞지 않는 이들을 위한 넉넉하고 따뜻한 자리가 늘 마련되어 있습니다.
+
+## 길을 막는 손에서 위로를 얹는 손으로
+
+이 짧은 성경의 풍경 속에는 서로 다른 온도를 지닌 두 개의 손이 등장합니다. 하나는 관계를 어떻게든 합법적으로 끊어내기 위해 증서를 쥐어주고 서류를 밀어내는 차가운 손입니다. 다른 하나는 제자들의 꾸짖음 속에서도 기어이 아이들의 머리 위에 다가가 얹히는 예수님의 따뜻한 안수의 손입니다. 바리새인과 제자들은 계산과 통제로 사람들의 길을 가로막으려 했지만, 예수님은 "내게 오는 것을 금하지 말라" 하시며 기꺼이 그 여리고 약한 몸들에 당신의 체온을 나누어 주셨습니다.
+
+오늘, 우리는 어떤 손을 내밀며 살아가고 있습니까? 법과 권리를 내세우며 누군가와 선을 긋고 심판하는 차가운 손입니까, 아니면 무너진 마음과 상처 입은 삶 위에 조용히 다가가 위로를 건네는 따뜻한 손입니까? 우리를 처음 지으셨던 그 깊고 다정한 사랑을 기억할 때, 우리의 손은 정죄의 무기가 아니라 아픈 생명을 어루만지는 살림의 도구가 될 것입니다. 찢기고 부서진 우리의 삶 위로 오늘도 묵묵히 다가와 얹어 주시는 주님의 그 크고 따스한 손길이, 메마른 우리를 다시 숨 쉬게 합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 29편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

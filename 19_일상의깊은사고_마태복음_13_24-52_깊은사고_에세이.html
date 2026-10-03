@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 19편 &middot; 마태복음 13:24-52</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리의 일상은 때로 억울하고 답답하게 느껴집니다. 선한 의도로 성실하게 살아보려 애쓰지만, 세상은 그리 호락호락하지 않기 때문입니다. 정직하게 흘린 땀방울 곁에는 언제나 누군가의 이기심이 독버섯처럼 피어나고, 사랑으로 품으려 했던 자리에는 상처를 주는 말들이 가시 돋친 잡초처럼 무성하게 자라납니다. 마태복음 13장에 등장하는 '가라지 비유'의 밭은 바로 우리가 발 딛고 살아가는 이 세상의 축소판입니다. 우리는 묻고 싶어집니다. "주님, 왜 이 세상에는 악한 것들이 이토록 버젓이 자라나고 있습니까? 당장 저 가라지들을 뽑아버려야 하지 않겠습니까?"
+
+그러나 밭 주인의 대답은 우리의 조급한 예상을 보기 좋게 빗나갑니다. "둘 다 추수 때까지 함께 자라게 두라." 선과 악이 뒤엉켜 돌아가는 이 모순된 세상을 당장 뒤집어엎지 않으시겠다는 선언입니다. 그렇다면 우리는 이 혼탁한 세상에서 그저 무기력하게 섞여 견뎌내야만 하는 걸까요? 천국은 어떻게 우리 삶에 임하는 것일까요?
+
+## 천국의 아들들, 실수로 떨어진 것이 아니라 '심긴' 존재
+
+예수님은 비유를 풀어주시며 좋은 씨를 뿌리는 이는 인자요, 밭은 세상이라고 말씀하십니다. 여기서 놀라운 반전이 숨어 있습니다. 주님이 세상이라는 밭에 뿌린 '좋은 씨'는 추상적인 진리나 말씀만이 아니라, 바로 '천국의 아들들', 즉 '사람'이라는 사실입니다. 
+
+우리는 종종 가라지가 무성한 세상 속에 덩그러니 남겨진 우리 자신을 보며 절망합니다. 잘못된 시대에, 잘못된 장소에 홀로 버려진 것은 아닌지 외로워하기도 합니다. 그러나 복음은 분명히 말합니다. 우리는 우연히 바람에 날려 세상 구석에 떨어진 씨앗이 아닙니다. 농부이신 주님께서 뚜렷한 목적을 가지고 정확한 자리에 정성껏 '심으신' 존재들입니다. 
+
+내 곁에 가라지가 무성하다는 사실이, 내가 심긴 자리가 틀렸다는 뜻은 아닙니다. 오히려 척박하고 모순된 세상 한복판이야말로 천국이 피어나야 할 가장 눈부신 무대입니다. 하나님은 우리를 세상에서 빼내어 안전한 온실에 두지 않으시고, 상처받고 신음하는 삶의 한가운데로 우리를 파종하셨습니다. 일상의 밭에서 밀어 올리는 작은 싹으로부터 천국의 이야기는 시작됩니다.
+
+## 감추어진 보화, 나의 전부를 내어주는 기쁨의 거래
+
+천국은 마치 밭에 감추어진 보화와 같고, 극히 값진 진주를 구하는 상인과도 같습니다. 이 두 비유는 우리에게 한 가지 묵직한 진실을 던집니다. 바로 천국을 소유하기 위해서는 자신이 가진 '전부'를 내어놓아야 한다는 것입니다. 
+
+우연히 밭에서 보화를 발견한 사람이든, 오랜 시간 좋은 진주를 찾아 헤매던 상인이든, 그들이 마주한 결론은 같았습니다. 자신이 가진 모든 것을 팔아 그것을 샀다는 것입니다. 여기서 주목해야 할 것은 억지스러운 희생이나 손해를 감수하는 비장함이 아닙니다. 밭을 사러 가는 사람의 발걸음은 터질 듯한 '기쁨'으로 가득 차 있었습니다. 
+
+내가 가진 모든 재산, 안정, 자랑거리보다 더 크고 영광스러운 가치를 발견했을 때, 우리는 비로소 진정한 자유를 경험합니다. 세상의 얄팍한 계산법으로는 바보 같은 짓일지 모르지만, 영원의 회계 장부에서는 가장 지혜롭고 압도적인 투자입니다. 오늘 내 마음속 장부에는 이토록 '전부'를 걸어본 계정이 남아 있습니까? 천국은 적당히 남는 시간을 쪼개어 투자하는 가벼운 위안이 아닙니다. 내 삶의 모든 것을 던져서라도 기어이 얻어내고야 마는 충만한 기쁨입니다.
+
+## 섣부른 심판을 내려놓고 기다리는 시간
+
+가라지를 당장 뽑아내려던 종들의 다급한 손길을 주인이 멈춰 세운 이유는 단 하나였습니다. "가라지를 뽑다가 곡식까지 뽑을까 염려하노라." 주님의 시선은 악인의 향한 분노와 심판에 머물지 않고, 단 한 알의 곡식이라도 다치지 않게 품으시려는 깊은 긍휼을 향해 있었습니다. 
+
+우리는 너무도 쉽게 내 좁은 마음의 잣대로 누군가를 가라지라 정죄하고 뽑아내려 합니다. 가정에서, 직장에서, 심지어 신앙의 공동체 안에서도 쉽게 선을 긋고 편을 가르며 스스로 심판자의 자리에 앉으려 합니다. 그러나 알곡과 가라지를 가려내는 일은 우리의 몫이 아닙니다. 바다에 친 넓은 그물 안에서 온갖 물고기들이 섞여 있듯, 우리는 그저 함께 부대끼며 살아갈 뿐입니다. 그것들을 솎아내는 손길은 그물이 뭍으로 끌려 올려지는 마지막 날, 주님의 천사들에 의해 비로소 움직일 것입니다.
+
+그러므로 오늘 우리가 해야 할 일은 곁에 있는 이를 향해 섣불리 심판의 칼날을 휘두르는 것이 아닙니다. 심판의 권한이 온전히 주님께 있음을 겸손히 인정하고, 내가 쥔 잣대를 가만히 내려놓는 것입니다. 가라지가 뒤섞인 거친 밭에서도 밀처럼 묵묵히 나의 하루를 여물어 가는 것, 작고 보잘것없는 겨자씨가 마침내 공중의 새들이 깃드는 넉넉한 나무가 되듯 나에게 주어진 오늘을 성실히 살아내는 것입니다.
+
+마지막 그날, 흔들리는 세상 속에서도 눈물로 씨를 뿌리며 천국을 품고 살아간 이들은 아버지의 나라에서 해와 같이 빛날 것입니다. 이 찬란한 약속이, 오늘 척박한 밭을 일구어가는 우리를 다시 일으켜 세웁니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 19편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

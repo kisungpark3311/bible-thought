@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 30편 &middot; 마태복음 19:16~20:16</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 참 많은 것을 셈하며 살아갑니다. 통장의 잔고를 확인하고, 내가 쏟은 시간과 노력의 가치를 따져보며, 때로는 내가 남에게 베푼 배려의 무게를 저울질하기도 합니다. 이러한 셈법은 어느새 신앙의 영역까지 스며들어, 우리가 하나님 앞에 설 때조차 보이지 않는 장부 하나를 가슴에 품게 만듭니다. '내가 이만큼 헌신했으니', '내가 이토록 노력했으니'라며 은연중에 행위의 마일리지를 쌓아가는 우리에게, 마태복음 19장과 20장의 말씀은 가장 깊은 곳을 찌르는 묵직한 물음을 던져옵니다.
+
+## "무엇을 더 해야 합니까" — 행위를 셈하는 신앙
+
+어느 날, 젊고 부유하며 계명까지 철저히 지켜온 한 청년이 예수님을 찾아옵니다. 그의 질문은 무척이나 당당하고 진지했습니다. *"선생님이여 내가 무슨 선한 일을 하여야 영생을 얻으리이까?"* 이 짧은 질문 속에는 당시 사람들은 물론, 오늘날 우리 안에도 깊이 뿌리박힌 착각이 숨어 있습니다. 바로 '선(善)'을 내가 달성해야 할 어떤 행위나 실적으로 보는 마음입니다. 이 청년은 이미 많은 것을 이루었음에도 불구하고, 영생이라는 궁극의 목표를 향해 "아직도 무엇이 부족합니까?"라며 종교적 체크리스트의 마지막 칸을 채우려 했습니다.
+
+하지만 예수님은 청년의 시선을 완전히 다른 곳으로 돌려놓으십니다. *"어찌하여 선한 일을 내게 묻느냐, 선한 이는 오직 한 분이시니라."* 예수님의 이 대답은 원어를 들여다볼 때 그 의미가 더욱 선명해집니다. 청년이 물었던 '선한 일'은 눈에 보이는 행위를 가리키는 단어였지만, 예수님이 답하신 '선한 이'는 오직 하나님 한 분의 인격을 가리키는 단어였습니다. 참된 구원은 '무엇을 더 할 것인가'의 문제가 아니라, '누가 진정으로 선하신 분인가'를 깨닫는 관계의 문제입니다. 신앙은 내가 해치워야 할 선행의 목록을 지워나가는 것이 아니라, 유일하게 선하신 그분을 나의 주님으로 깊이 마주하는 여정입니다.
+
+## 근심하며 돌아서는 뒷모습, 그리고 하나님의 빈칸
+
+자신의 열심을 자랑하는 청년에게 예수님은 한 가지 말씀을 덧붙이십니다. *"네가 원하면, 가서 네 소유를 팔아 가난한 자들에게 주라... 그리고 와서 나를 따르라."* 주님은 그의 능력이 아니라 가장 깊은 곳에 있는 '의지'를 묻고 계셨습니다. 하지만 그토록 당당하던 청년은 끝내 고개를 떨구고 맙니다. 재물이 너무도 많았기에, 그는 깊은 근심에 잠긴 채 쓸쓸히 예수님을 떠나갑니다. 성경은 그 뒤로 그가 어떻게 되었는지 더 이상 말해주지 않습니다. 그저 굳게 움켜쥔 소유 때문에 영원한 부르심 앞에서 발길을 돌려야 했던 한 인간의 한계를 아프게 비출 뿐입니다.
+
+청년의 뒷모습을 보며 놀란 제자들이 "그렇다면 도대체 누가 구원을 얻을 수 있습니까?"라고 탄식할 때, 주님은 섣부른 위로 대신 놀라운 진리를 선포하십니다. *"사람으로는 할 수 없으나 하나님으로서는 다 하실 수 있느니라."* 우리가 나의 한계와 소유의 무게 앞에서 근심하며 주저앉을 때, 주님은 우리를 그 절망 속에 내버려 두지 않으십니다. 나의 결단이 무너진 바로 그 자리에 '하나님의 가능성'이라는 위대한 빈칸을 열어 두십니다. 내 힘으로는 도저히 바늘귀조차 통과할 수 없음을 철저히 깨닫는 그 순간, 비로소 불가능을 가능케 하시는 하나님의 전적인 은혜가 내 삶에 스며들기 시작합니다.
+
+## 억울함의 저울을 내려놓고 선하심을 바라보다
+
+행위를 셈하던 청년의 이야기는 이어지는 포도원 품꾼의 비유에서 새로운 국면을 맞이합니다. 이른 아침부터 뙤약볕을 견디며 종일 일한 품꾼들은, 해 질 녘이 다 되어서야 와서 고작 한 시간 일한 자들과 자신들이 똑같이 한 데나리온을 받는 것을 봅니다. 그들은 분노하여 주인을 원망합니다. 흥미로운 것은 그들의 불만이 계약 위반 때문이 아니었다는 점입니다. *"어찌 저들을 종일 수고한 우리와 '같게' 취급하십니까?"* 그들은 약속받은 정당한 품삯을 받았음에도, 남의 몫과 내 몫을 나란히 올려놓고 비교하는 순간 벅찬 은혜를 불공평으로 매도해 버렸습니다.
+
+우리 마음속에도 이런 저울이 매일같이 요동칩니다. 가정에서 형제와 배우자 사이의 수고를 비교하고, 직장과 교회에서 내가 흘린 땀방울과 다른 이의 섬김을 나란히 올려놓고 잽니다. 내 몫을 셈하는 악한 눈은, 아무도 써주지 않아 장터에서 서성이던 자들을 거두어 주신 주인의 깊은 '선하심'을 보지 못하게 만듭니다. *"내가 선하므로 네가 악하게 보느냐?"* 주님의 이 아픈 질문은 오늘 이 시대를 살아가는 우리 모두의 좁은 마음을 향하고 있습니다.
+
+이제 우리는 마음속에 펼쳐두었던 장부를 조용히 덮어야 합니다. 내가 무엇을 더 이루었는지 확인받으려던 청년의 오만도, 남보다 덜 대우받았다고 억울해하던 품꾼들의 원망도 선하신 주님 앞에서는 부질없는 것입니다. 차갑고 정확하게 계산하려는 우리의 팍팍한 셈법을 내려놓고, 측량할 수 없는 은혜로 모든 것을 덮어주시는 그분의 넉넉한 품 안으로 들어가십시오. 내가 쥐고 있던 억울함의 저울을 내려놓을 때, 비로소 나중 된 자마저 먼저 된 자로 품어주시는 하나님의 크고 눈부신 사랑이 온전히 보일 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 30편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

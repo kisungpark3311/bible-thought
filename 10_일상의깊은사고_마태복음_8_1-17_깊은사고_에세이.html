@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 10편 &middot; 마태복음 8:1-17</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 누구나 삶의 어느 구석에선가 크고 작은 아픔을 안고 살아갑니다. 어떤 이는 겉으로 드러난 흉터 때문에 세상으로부터 격리된 채 외롭고 시린 밤을 지새웁니다. 어떤 이는 침상에 누워 꼼짝하지 못하는 무력감 속에서 고통스러운 하루하루를 견뎌냅니다. 또 어떤 이는 겉으로는 멀쩡해 보이지만 속을 태우는 지독한 열병에 시달리며 살아갑니다. 마태복음 8장에 등장하는 세 사람 역시 그러했습니다. 율법의 굴레 속에서 진영 밖으로 쫓겨난 나병환자, 누군가의 간절한 청원 없이는 스스로 일어날 수조차 없는 백부장의 하인, 그리고 열병으로 앓아누운 베드로의 장모. 이들은 모두 다치고 상한 우리네 삶의 짙은 그늘을 대변하는 얼굴들입니다.
+
+그리고 어느 저녁, 산에서 내려오신 예수님은 이들의 각기 다른 아픔 곁으로 기꺼이 다가가십니다. 성경은 이 아름다운 치유의 밤을 이사야 선지자의 선포와 연결 짓습니다. “우리의 연약한 것을 친히 담당하시고 병을 짊어지셨도다.” 예수님은 높은 곳에서 우리의 고통을 그저 내려다보며 안타까워만 하시는 분이 아니었습니다. 그분은 진흙탕 같은 우리 삶의 한복판으로 걸어 들어오셔서, 기꺼이 우리의 연약함을 당신의 어깨에 짊어지시는 분이셨습니다.
+
+### 1. 내 상처의 결을 아시는 섬세한 맞춤형 위로
+
+나병환자는 두려움과 떨림 속에서 예수님 앞에 엎드립니다. "주여, 원하시면 저를 깨끗하게 하실 수 있나이다." 율법에 따르면 나병환자는 사람 곁에 다가갈 수 없었고, 누군가 다가오면 스스로 "부정하다, 부정하다" 외치며 경고해야만 했습니다. 철저히 버림받은 그 외로운 몸뚱이에 예수님은 망설임 없이 손을 내밀어 대십니다. "내가 원하노니 깨끗함을 받으라." 
+
+우리는 흔히 아픈 사람들을 '환자' 혹은 '약자'라는 하나의 이름표로 뭉뚱그려 부르곤 합니다. 하지만 예수님은 다르게 대하셨습니다. 헬라어 원어를 깊이 들여다보면, 예수님은 각 사람의 형편에 가장 알맞은 방식으로 치유의 마침표를 찍어 주셨습니다. 사람들의 시선에 억눌려 부정한 취급을 받던 나병환자에게는 '깨끗해지는 정결'을, 사지가 마비되어 누운 하인에게는 육신의 '고침'을, 펄펄 끓는 열병에 갇혀 있던 여인에게는 열병이 '떠나가고 놓아주는' 자유를 주셨습니다. 
+
+우리 각자가 짊어진 삶의 무게와 눈물의 모양이 다르듯, 주님은 우리의 아픔을 도매금으로 넘기지 않으십니다. 그분은 내 상처의 고유한 결을 가장 잘 아시고, 내게 가장 필요한 맞춤형 위로로 다가오십니다. “내가 원하노니.” 주님의 이 다정한 한마디는 내 모든 절망의 끝을 선언하는 가장 강력하고도 따뜻한 위로입니다.
+
+### 2. 거리를 뛰어넘는 말씀, 우리가 대신 짊어져야 할 이름들
+
+가버나움에 이르렀을 때, 로마의 이방인 백부장이 다급히 예수님을 찾습니다. 자신의 소유물에 불과했던 하인이 집에 누워 몹시 괴로워하고 있다는 것입니다. 주님께서 친히 가시겠다고 하시자, 백부장은 뜻밖의 간청을 합니다. "다만 말씀으로만 하옵소서. 그러면 내 하인이 낫겠나이다." 
+
+예수님조차 놀라게 한 이 위대한 믿음 앞에서, 주님은 굳이 그 집까지 수고로운 발걸음을 하지 않으십니다. 대신 "네 믿은 대로 될지어다"라는 말씀 한마디를 띄워 보내십니다. 그 짧은 말씀은 물리적인 거리를 단숨에 뛰어넘어, 방 안에 홀로 누워 앓고 있던 하인의 심장과 신경에 가닿았습니다. 놀라운 기적은 스스로 걸어 나올 힘조차 없는 연약한 자를 위해, 누군가가 집 밖에서 대신 눈물로 부르짖은 간구와 그에 응답하신 주님의 말씀으로 시작되었습니다.
+
+이 장면은 오늘날 우리에게 묵직한 질문을 던집니다. "당신이 예수님 앞으로 들고 갈 이름은 누구입니까?" 지금 이 순간에도 여러 가지 이유로 은혜의 자리에 나아오지 못하는 사람들, 질병과 삶의 무거운 짐에 짓눌려 병상에 매인 이들이 있습니다. 그들에게 섣불리 "믿음이 부족하다"거나 "교회에 나오라"고 강요하기 전에, 우리가 먼저 백부장처럼 그들의 이름을 가슴에 품고 주님께 나아가야 합니다. 오지 못하는 이들의 회복을 위해 기도의 자리를 대신 짊어지는 것, 그것이 곧 단절된 거리를 뛰어넘어 생명을 살려내는 사랑입니다. 
+
+### 3. 일어난 몸이 향해야 할 곳, 눈물겨운 섬김의 자리
+
+예수님께서 베드로의 집에 들어가셨을 때, 장모가 몹시 심한 열병으로 앓아누워 있었습니다. 주님께서 다가가 그녀의 달아오른 손을 어루만지시자 즉시 열병이 떠나갔고, 놀랍게도 그녀는 지체 없이 일어나 예수님을 섬기기 시작합니다. 죽음의 문턱에서 돌아온 회복의 끝은 안락한 휴식이 아니었습니다. 그것은 나를 살리신 그분을 향한 뜨겁고 능동적인 섬김으로 곧장 이어졌습니다.
+
+우리의 삶도 이와 같아야 합니다. 주님께서 친히 다가오셔서 우리의 연약함을 짊어지시고 낫게 하셨다면, 다시 일어선 우리의 발걸음이 향해야 할 곳은 너무도 명확합니다. 마태가 기록한 인용구에 쓰인 ‘짊어지다’라는 단어는 본래 짐꾼들이 무거운 짐을 질 때 사용하는, 실제적인 무게와 고통이 동반되는 말입니다. 누군가의 아픔을 돕고 사랑을 나누는 일은 단지 입술의 위로만으로 되지 않습니다. 병원 가는 길에 나의 시간을 내어 동행하고, 나의 재정을 나누어 약값을 보태며, 따뜻한 밥 한 끼를 위해 체력과 마음을 내어주는 수고로움이 뒤따라야 합니다.
+
+해가 뉘엿뉘엿 져가는 저녁, 주님 앞에는 상처 입고 병든 수많은 이들이 모여들었습니다. 주님은 피곤한 기색 없이 그들을 한 사람씩 맞이하시며 말씀으로 모두 고쳐주셨습니다. 우리의 아픔을 친히 짊어지시기 위해 가장 낮은 곳으로 오신 그 저녁의 예수님. 오늘, 당신의 마음을 짓누르는 삶의 열병과 아픔 위에도 그 크고 따뜻한 주님의 손길이 가만히 닿기를 소망합니다. 주님이 곁에서 말씀하십니다. "내가 원하노니, 이제 깨끗함을 받으라."
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

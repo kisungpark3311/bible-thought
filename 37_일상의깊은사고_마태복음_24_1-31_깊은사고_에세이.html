@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 37편 &middot; 마태복음 24:1-31</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 종종 거대하고 화려한 것들 앞에서 넋을 잃고 압도당하곤 합니다. 이천 년 전, 감람산에 오르던 제자들도 그랬습니다. 그들은 웅장하게 솟아오른 예루살렘 성전의 눈부신 위용을 예수님께 자랑스레 보여드리고 싶어 했습니다. 영원히 무너지지 않을 것만 같은 그 견고한 아름다움 앞에서, 돌아온 예수님의 대답은 서늘하고도 충격적이었습니다. "돌 하나도 돌 위에 남지 않고 다 무너뜨려지리라."
+
+우리가 영원할 것이라고 굳게 믿고 의지하던 모든 것들이 사실은 유한하며 언젠가 산산조각 날 것이라는 뼈아픈 선언. 그 말씀 앞에서 제자들의 마음에는 짙은 두려움과 불안의 그림자가 피어올랐을 것입니다. 그들은 조용히 주님 곁으로 다가가 묻습니다. "도대체 언제 이런 일이 일어나겠습니까? 주의 임하심과 세상 끝날에는 무슨 징조가 있습니까?" 내일을 알 수 없는 인간이 불확실성의 심연 앞에서 꺼내 드는 가장 자연스럽고도 절박한 질문, 바로 '언제(When)'에 대한 물음이었습니다.
+
+### 날짜를 묻는 불안에 '명령'으로 답하시다
+
+제자들은 세상의 끝이 도래하는 '날짜'와 '징조'를 궁금해했지만, 예수님의 대답은 우리의 얄팍한 기대를 빗나갑니다. 주님은 달력의 어느 한 날에 붉은 동그라미를 쳐주시는 대신, 우리의 삶을 뒤흔드는 단호한 명령을 내리십니다. "너희가 사람의 미혹을 받지 않도록 주의하라."
+
+불안에 잠식될 때마다 우리는 어딘가에 숨겨진 비밀스러운 정보를 찾으려 헤맵니다. 저기 후미진 골방에 구원이 있다, 광야에 특별한 계시가 있다며 속삭이는 미혹의 목소리들에 너무도 쉽게 귀를 내어줍니다. 하지만 주님은 그 '언제'에 대한 헛된 호기심을 거두시고, 오늘 우리가 두 발을 딛고 선 이 지난한 자리에서 지켜내야 할 삶의 태도를 쥐여주십니다. 종말의 날짜를 아는 지식이 우리를 구원하는 것이 아니라, 어떤 미혹 앞에서도 끝까지 휩쓸리지 않고 '견디는 사람'이 구원에 이르게 된다는 묵직한 진리입니다. 세상의 끝을 향한 예수님의 대답은 결국, 종말론적 지식을 넘어 '오늘을 어떻게 살아낼 것인가'에 대한 준엄한 부르심으로 되돌아옵니다.
+
+### 흔들리는 우주 속에서 연약한 생명을 껴안으시다
+
+본문이 묘사하는 그날의 풍경은 참으로 두렵고 장엄합니다. 환난이 닥치고, 해가 어두워지며 달이 빛을 잃고, 별들이 하늘에서 떨어지는 우주적 질서의 붕괴가 예고됩니다. 하지만 놀랍게도, 그 광활하고 무서운 묵시록의 한가운데서 주님의 따뜻한 시선은 지극히 작고 연약한 일상의 존재들을 향해 머뭅니다.
+
+지붕 위의 사람, 밭에서 겉옷을 둔 채 일하던 사람, 그리고 무엇보다 '아이 밴 자들과 젖먹이는 자들'의 이름을 다정하게 부르십니다. 무너지는 세상 속에서 스스로 몸을 가누기조차 버거운 이들, 생명의 무게를 짊어지고 감히 달아날 엄두조차 내지 못하는 연약한 이들을 향해 시선을 맞추십니다. 이것은 결코 그들을 향한 질책이나 저주가 아닙니다. 오히려 우주가 무너져 내리는 걷잡을 수 없는 공포 속에서도, 가장 연약한 이들이 짊어진 삶의 무게를 주님께서 낱낱이 알아보고 계신다는 깊고 다정한 위로입니다.
+
+그래서 주님은 도망하는 일이 겨울이나 안식일에 일어나지 않도록 '기도하라'고 하셨습니다. 무거운 몸으로 도망칠 수 없는 생명, 아무것도 할 수 없어 보이는 가장 연약한 자라 할지라도 두 손을 모아 기도할 수 있는 자리를 마련해 주신 것입니다. 온 우주가 요동치는 순간에도, 주님의 말씀은 우리의 소박한 겉옷과 젖먹이의 작은 숨결을 결코 놓치지 않으십니다.
+
+### 무너질 세상에서 끝까지 사랑으로 견디는 삶
+
+"불법이 성하므로 많은 사람의 사랑이 식어지리라." 어쩌면 세상이 끝나는 날의 가장 비극적인 징조는 하늘에서 별이 떨어지는 것이 아니라, 우리 마음속의 사랑이 차갑게 식어가는 것일지 모릅니다. 곳곳에서 들려오는 난리와 재난의 소식 앞에 우리는 번번이 "이제 정말 끝인가요?"라고 묻습니다. 하지만 진정한 신앙은 그 뉴스를 특정한 사건이나 나라에 억지로 꿰맞추며 공포를 조장하는 것이 아닙니다. 오히려 우리 교회와 공동체 안에서, 그리고 내 내면에서 식어가는 사랑의 온기가 어디인지를 아프게 묻는 일이어야 합니다.
+
+세무와 회계의 현장에서 매일같이 장부를 넘기며 건물과 자본의 촘촘한 가치를 매기는 우리의 치열한 일상도 이와 다르지 않습니다. 우리에게 주어진 몫을 다해 정직하게 오늘을 살아가되, 우리 마음속 깊은 영혼의 장부 맨 밑바닥에는 늘 "이 모든 화려한 것들도 언젠가 다 무너져 내릴 것이다"라는 겸허한 진리를 적어두어야 합니다. 영원하지 않은 것들에 목숨을 걸지 않을 때, 은밀한 정보로 이익을 탐하려는 유혹 앞에서 멈춰 설 때, 우리는 비로소 진짜 영원한 것들을 사랑할 수 있습니다.
+
+주님의 오심은 소수만 아는 은밀한 골방에서 몰래 이루어지지 않습니다. 동쪽에서 서쪽까지 온 하늘을 찢으며 번쩍이는 번개처럼, 그 누구도 부인할 수 없는 압도적이고 눈부신 빛으로 오실 것입니다. 그러니 이제 막연한 불안에 떨며 숨은 정보와 골방을 찾아 헤매는 걸음을 멈추어야 합니다.
+
+우리가 붙들어야 할 것은 종말의 시간표가 아니라, 약속의 말씀입니다. 돌 하나도 남지 않을 철저한 무너짐의 선언과, 그럼에도 택하신 자들을 사방에서 모으시겠다는 다정한 구원의 약속을 우리는 함께 품습니다. 팍팍하고 무거운 몸으로 오늘이라는 버거운 하루를 견뎌내는 모든 이들의 곁에, 주님의 십자가 사랑이 든든한 버팀목이 되기를 소망합니다. 번개처럼 찬란하고도 선명하게 임하실 그날을 향해, 우리는 오늘도 식지 않는 사랑을 다짐하며 '끝까지 견디는' 순례의 길을 묵묵히, 그러나 아름답게 걸어갈 것입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 37편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

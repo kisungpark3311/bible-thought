@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 09편 &middot; 마태복음 7:1-29</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리는 때로 인생이라는 거대한 결산의 날 앞에 서 있는 자신의 모습을 조용히 상상하곤 합니다. 그날, 영원의 문턱에서 우리는 과연 어떤 표정을 짓게 될까요? 어쩌면 우리는 지난날 땀 흘려 이룩해 온 찬란한 이력서와 헌신의 목록들을 양손 가득 움켜쥐고 있을지도 모릅니다. "주여, 주여! 제가 주의 이름으로 이렇게 많은 일들을 해내지 않았습니까?" 숨 가쁘게 달려온 삶의 성과를 증명하려 애쓰는 우리의 다급하고도 간절한 항변. 그러나 마태복음 7장의 산상수훈 끝자락에서, 주님은 우리의 그 뜨거운 외침에 참으로 서늘하고도 가슴 시린 대답을 돌려주십니다. "내가 너를 도무지 알지 못한다." 이 단호한 선언은 우리 영혼의 가장 깊은 곳을 찌르며, 우리가 평생을 바쳐 쌓아 올린 삶의 목적이 과연 어디를 향해 있었는지 뼈아프게 되묻습니다.
+
+
+## 착각의 목록들, "우리가 다 하지 않았습니까?"
+
+본문에 등장하여 억울함을 호소하는 사람들은 결코 게으르거나 신앙에 무심한 이들이 아니었습니다. 그들은 주의 이름으로 선지자 노릇을 했고, 귀신을 쫓아내며, 많은 기적과 권능을 몸소 행했습니다. 누구보다 치열하게 종교적 열심을 냈고, 눈에 띄는 성과를 거두었던 사람들입니다. 그들은 자신들이 땀 흘려 이룬 위대한 일의 '목록'을 당당히 내밀며 스스로의 가치를 증명하려 했습니다. 
+
+우리 역시 마찬가지입니다. 우리는 종종 "얼마나 많이 헌신했는가", "얼마나 대단한 성과를 이루었는가" 하는 잣대로 우리의 신앙과 삶을 확인하려 합니다. 화려한 직분, 거창한 사역의 결과물, 성공적인 프로젝트가 곧 하나님 앞에서의 내 안전한 자리라고 착각하기 쉽습니다. 
+
+하지만 주님의 대답은 그들의 화려한 업적이 사실이었는지를 따져 묻지 않습니다. 주님은 단 한 줄의 말씀으로 모든 헛된 자랑을 무너뜨리십니다. "나는 너를 한 번도 안 적이 없다." 충격적인 이 선언은 우리에게 가장 중요하고도 본질적인 진실을 일깨워 줍니다. 천국의 문을 여는 것은 우리가 내민 행위의 빽빽한 목록이 아니라, 그 이름의 주인이 '나를 진정으로 아시는가'라는 깊고 내밀한 관계의 문제라는 사실입니다. 방향을 잃은 종교적 열심은 허공을 치는 공허한 메아리에 불과합니다. 내 삶이 얼마나 크고 화려했는가보다 중요한 것은, 지금 내 삶의 시선이 하늘 아버지를 향해 온전히 맞춰져 있는가 하는 정직한 '방향성'입니다.
+
+
+## 폭풍이 오기 전에 놓여야 할 삶의 주춧돌
+
+예수님은 이 준엄한 말씀을 두 채의 집을 짓는 비유로 이어가십니다. 인생에는 예외 없이 비가 내리고, 창수가 나며, 거센 바람이 부는 날이 찾아옵니다. 폭풍은 반석 위에 지은 집이나 모래 위에 지은 집을 가리지 않고 공평하고도 무자비하게 몰아칩니다. 고난과 시련, 상실과 아픔은 누구에게나 예고 없이 닥쳐옵니다. 그러나 그 무서운 비바람이 휩쓸고 지나간 자리에 남는 결과는 너무도 다릅니다. 하나의 집은 굳건히 버티어 서서 평안을 누리지만, 다른 집은 형편없이 무너져 내려 처참한 잔해만 남게 됩니다.
+
+여기서 우리가 가슴 깊이 새겨야 할 진리가 있습니다. 폭풍이 몰아치는 그 캄캄한 한가운데서는 결코 주춧돌을 새롭게 놓을 수 없다는 사실입니다. 모진 바람 앞에서도 흔들리지 않는 굳건함은, 폭풍이 오기 '전'에 맑고 고요한 날들에 이미 놓여 있던 반석, 곧 삶의 기초에서 비롯됩니다. 예수님은 그 반석을 "나의 이 말을 듣고 행하는 자"라고 분명히 말씀하십니다. 
+
+거창한 기적이나 화려한 무대가 아니어도 좋습니다. 하루하루 살아가는 일상의 작고 평범한 순간들 속에서, 하나님의 뜻을 묵묵히 살아내는 그 작고도 위대한 순종이 우리 삶의 가장 단단한 주춧돌이 됩니다. 이웃의 아픔을 외면하지 않고 내미는 따뜻한 손길, 정직한 땀방울이 서린 치열한 일터, 타인을 속이지 않는 깨끗한 장부, 그리고 고통 속에서도 묵묵히 견뎌내는 병상의 기도 자리야말로 우리가 흔들리지 않는 반석을 다지는 진짜 현장입니다.
+
+
+## 내 눈의 들보를 마주하는 가장 정직한 시간
+
+이 놀라운 산상수훈의 마지막 장은 흥미롭게도 '비판하지 말라'는 금지의 말씀으로 시작하여, 서로를 성급히 판단하기 전에 '먼저 네 눈 속의 들보를 빼라'는 뼈아픈 성찰의 초대로 우리를 이끕니다. 우리는 얼마나 자주 남의 눈에 있는 작은 티끌을 기어이 찾아내어 차가운 비판의 잣대를 들이대는지요. 사역의 성과나 세상의 기준으로 이웃의 가치를 재단하고, 타인을 딛고 서서 나의 의로움을 증명하려는 태도야말로 모래 위에 집을 짓는 가장 위태로운 모습일 것입니다.
+
+주님이 원하시는 진정한 앎과 행함은, 십자가 앞에서 나 자신의 철저한 무력함과 부끄러운 죄성을 깊이 깨닫는 정직한 자기 대면에서 출발합니다. 타인을 향해 있던 날 선 시선을 거두어 내 안의 흉측한 들보를 바라보며 가슴을 칠 때, 비로소 우리는 엎드려 하늘 아버지의 긍휼을 구하게 됩니다. 
+
+혹여 깊은 병상에 누워 아무런 사역도, 봉사도 할 수 없는 무력한 시간에 갇혀 있다 할지라도 결코 절망할 필요가 없습니다. 화려한 이력서나 내세울 만한 헌신의 목록이 없어도 괜찮습니다. 우리에게는 여전히 "구하라, 그러면 너희에게 주실 것이요"라는 하늘 아버지의 다정하고도 든든한 초대가 남아 있기 때문입니다. 그저 상하고 통회하는 심령으로 주님의 옷자락을 붙잡으며 은혜를 구하는 그 가난한 마음을, 우리 아버지는 결코 외면하지 않으시고 가장 좋은 것으로 채워주실 것입니다.
+
+오늘, 우리는 어떤 주춧돌 위에 하루라는 이름의 집을 지어 올리고 있습니까? 세상 사람들의 박수갈채와 환호성이 아닌, 조용히 나를 바라보시며 "내가 너를 참 잘 안다, 내 사랑하는 아이야"라고 다정하게 미소 지어 주실 주님의 그 따뜻한 음성만을 소망해 봅니다. 어떤 거센 폭풍 앞에서도 결코 무너지지 않는, 작지만 단단하고 진실한 생명의 집을 지어가는 우리 모두의 벅찬 하루가 되기를 간절히 소망합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 09편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

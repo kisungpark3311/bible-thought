@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 18편 &middot; 마태복음 12:46~13:23</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+우리 삶에는 수많은 소리가 스쳐 지나갑니다. 누군가의 진심 어린 조언, 책 속의 빛나는 한 줄, 그리고 매주 강단에서 흘러나오는 설교의 말씀들. 하지만 그 모든 소리가 내 안에서 의미를 맺고 삶을 변화시키는 것은 아닙니다. 어느 날 예수님은 바닷가에 띄운 배 위에서 수많은 무리를 향해 씨 뿌리는 자의 비유를 들려주셨습니다. 왜 비유로 말씀하시느냐는 제자들의 질문에, 그분의 대답은 서늘할 만큼 단호했습니다. "그들이 보아도 보지 못하며, 들어도 듣지 못하며, 깨닫지 못함이니라." 
+
+## 보아도 보지 못하는 병, 들어도 듣지 못하는 비극
+
+우리는 흔히 말씀을 듣는 자리에 앉아 있다는 사실만으로, 내가 그 말씀을 온전히 '보고 듣고 있다'고 착각하곤 합니다. 하지만 마태복음이 전하는 예수님의 말씀은 만약의 가정이 아니라 냉혹한 현실에 대한 진술입니다. 마음이 완악해진 상태에서는 아무리 귀를 열고 눈을 크게 떠도 진리가 닿지 못합니다. 그저 듣고 있다는 사실이 깨닫고 있다는 증거가 될 수는 없기 때문입니다.
+
+때로는 설교자로서 강단에 서서 무수히 많은 말을 쏟아내며 조급해질 때가 있습니다. '과연 이 말씀이 저들의 마음에 닿아 깨달음으로 이어지고 있을까?' 그러나 생명의 깨달음은 인간의 화려한 설득 기술로 채워지는 것이 아니라, 오직 위로부터 '주어지는' 은혜의 영역에 있습니다. 무수히 쏟아지는 말씀의 홍수 속에서 우리는 스스로에게 아프고도 정직하게 물어야 합니다. "나는 그저 소리를 듣고 흘려보내고 있는가, 아니면 진정으로 깨닫고 있는가?"
+
+## 씨앗은 죄가 없다, 다만 밭이 다를 뿐
+
+농부가 씨를 뿌리러 나갑니다. 그의 손을 떠난 씨앗은 길가에도, 얕은 돌밭에도, 가시덤불 속에도, 그리고 좋은 땅에도 공평하게 떨어집니다. 여기서 이야기의 무게 중심은 씨앗의 질이나 씨를 뿌리는 자의 능력이 아닙니다. 바로 씨앗을 품어내는 '땅', 곧 우리의 마음 밭입니다.
+
+길가에 떨어진 말씀은 미처 깨닫기도 전에 악한 자에게 허망하게 빼앗겨 버립니다. 돌밭에 떨어진 말씀은 환난과 박해의 뜨거운 볕을 견디지 못하고 이내 뿌리째 말라붙고 맙니다. 똑같은 은혜가 부어져도, 그 은혜가 생명의 열매로 맺히기까지는 각자의 밭이 감당하고 견뎌내야 할 몫이 있습니다. 성경은 좋은 땅 안에서도 왜 어떤 것은 백 배, 육십 배, 또 삼십 배의 결실로 차이가 나는지 구태여 원인을 따져 묻지 않습니다. 중요한 것은 오직 하나, 기적 같은 열매는 '말씀을 듣고 깨닫는 자'에게서만 맺힌다는 변함없는 진실입니다.
+
+## 염려의 무게와 풍요의 함정을 넘어
+
+말씀이 자라지 못하게 숨통을 조이는 가시덤불에는 두 가지 치명적인 가시가 숨어 있습니다. 바로 '세상의 염려'와 '재물의 유혹(부의 속임)'입니다. 이 둘은 전혀 다른 얼굴을 하고 교묘하게 우리의 영혼을 잠식합니다.
+
+치열한 일터에서 마감 일정에 쫓기고 산더미 같은 업무량에 짓눌릴 때 우리의 마음을 덮치는 것은 팍팍한 '염려'입니다. 늘 무언가 부족하다는 결핍의 불안이 우리를 흔듭니다. 반면, 통장에 수입이 쌓이고 "이만하면 넉넉하다, 살 만하다"고 안도하는 순간 조용히 찾아오는 것은 달콤한 '부의 속임'입니다. 바빠서 은혜를 놓치는 것과, 배가 불러서 은혜를 외면하는 것은 다릅니다. 결핍될 때는 염려가, 넉넉할 때는 교만이 따로따로 찾아와 말씀이 자랄 자리를 빼앗습니다.
+
+오늘 하루를 마감하며 내 인생의 장부를 덮을 때, 나의 영적 성장을 가로막은 것이 결핍의 불안이었는지, 아니면 풍요의 착각이었는지 그 이름을 명확히 마주해야 합니다. 같은 손에서 뿌려진 동일한 생명의 씨앗이 오늘도 내 삶의 밭에 떨어집니다. 섣부른 위로로 덮어두기엔 생명의 진실이 너무나도 묵직합니다. 
+
+지금 당신의 마음은 어떤 밭입니까? 세상의 불안한 소음과 재물의 달콤한 속삭임을 넘어, 오늘 하루가 '듣고 깨닫는 자'에게 허락된 풍성한 열매의 시간이 되기를 간절히 기도합니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 18편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

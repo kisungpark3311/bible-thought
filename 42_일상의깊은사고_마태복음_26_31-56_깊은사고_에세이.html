@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묵상 에세이</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 마태복음 제 42편 &middot; 마태복음 26:31-56</span>
+      <h1>묵상 에세이</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리의 굳은 결심은 때로 짙은 어둠 앞에서 너무나 쉽게 무너져 내립니다. "내가 주와 함께 죽을지언정 주를 부인하지 않겠나이다." 베드로의 호언장담이었고, 다른 모든 제자의 뜨거운 다짐이기도 했습니다. 그러나 겟세마네의 차가운 어둠 속에서 그 다짐은 무거운 눈꺼풀을 이기지 못하고 깊은 잠에 빠져듭니다. 무장한 무리가 들이닥치자, 제자들은 결국 모두 예수를 버리고 어둠 속으로 도망치고 맙니다. 철저히 혼자가 된 밤, 모두가 흩어진 그 참담한 자리에서 예수님은 얼굴을 땅에 대고 홀로 엎드려 계십니다. 그리고 우리를 향한, 또 아버지를 향한 가장 깊고 눈물겨운 기도를 올려 드리십니다.
+
+## 가르치신 기도를 스스로 살아내신 밤
+
+"내 아버지여 만일 할 만하시거든 이 잔을 내게서 지나가게 하옵소서 그러나 나의 원대로 마시옵고 아버지의 원대로 하옵소서." 
+
+겟세마네에서 드려진 예수님의 기도는 시간이 지날수록 선명한 하나의 초점으로 모아집니다. 첫 번째 기도에서 '잔이 지나가기'를 구하시던 예수님은, 두 번째 기도에 이르러 "내가 마시지 않고는 이 잔이 내게서 지나갈 수 없거든 아버지의 원대로 되기를 원하나이다"라며 온전히 아버지의 뜻에 자신을 내어 맡기십니다. 
+
+이 기도는 우리에게 낯설지 않습니다. "뜻이 하늘에서 이루어진 것 같이 땅에서도 이루어지이다." 언젠가 산 위에서 무리에게 가르치셨던 주기도문의 한 구절입니다. 찬란한 산 위에서 영광스럽게 가르치셨던 그 기도를, 이제 예수님은 제자들마저 잠든 외롭고 비좁은 고난의 자리에서 땀방울이 핏방울이 되도록 스스로 살아내고 계십니다. 우리가 무심코 내뱉는 "뜻이 이루어지이다"라는 간구는, 사실 피할 수 없는 십자가의 잔 앞에서 주님이 온몸으로 통과해 내신 처절한 순종의 눈물이었습니다.
+
+## 칼이 난무하는 밤, 기꺼이 무력함을 선택하시다
+
+예수님이 제자들에게 원하신 것은 대단한 헌신이나 거창한 용맹함이 아니었습니다. 그저 "나와 함께 깨어 있으라"는, 외로운 곁에 머물러 달라는 작은 부탁이었습니다. 그러나 예수님 곁에 머물던 자 중 하나는 두려움과 분노를 참지 못하고 칼을 빼어 듭니다. 폭력에 폭력으로 맞서려는, 어쩌면 우리 모두가 가진 지극히 인간적인 본능입니다.
+
+하지만 예수님은 그를 향해 단호히 말씀하십니다. "네 칼을 도로 칼집에 꽂으라." 예수님은 열두 군단도 넘는 천사를 당장에라도 부르실 수 있는 분이었습니다. 그러나 그분은 칼의 힘이나 천사의 권능이 아니라, 오직 "성경이 어떻게 이루어지리요" 하시며 스스로 무력함의 길을 걸어가십니다. 
+
+오늘날 우리도 무언가를 지키겠다는 명목으로, 혹은 나의 정당함을 증명하겠다는 이유로 너무나 쉽게 날 선 칼을 빼어 듭니다. 세상을 향해서, 때로는 교회 안에서도 우리는 쉽게 분노의 몽치를 듭니다. 그러나 칼과 몽치가 난무하는 밤, 주님은 기꺼이 포박당하시며 우리에게 칼을 거둘 것을 명령하십니다. 진정한 구원은 칼끝에 있지 않고, 묵묵히 아버지의 뜻에 순종하는 십자가의 무력함 속에 있음을 친히 보여주신 것입니다.
+
+## 우리의 도망보다 앞서 기다리시는 약속
+
+"이에 제자들이 다 예수를 버리고 도망하니라." 
+
+마태복음 26장은 제자들의 철저한 실패로 끝을 맺습니다. 목숨을 걸겠다던 자들은 뿔뿔이 흩어졌고, 주님 곁에는 아무도 남지 않았습니다. 어쩌면 우리의 삶도 이와 크게 다르지 않습니다. 주님을 위해 살겠다고 눈물로 다짐하지만, 삶의 무게와 피곤함에 짓눌려 영적인 잠에 빠져들 때가 얼마나 많은지요. 위기가 닥치면 주님을 모른 척하며 뒷걸음질 치는 우리의 연약한 모습은 겟세마네의 제자들과 너무도 닮아 있습니다.
+
+그러나 본문은 놀랍게도 우리의 실패를 덮어버리지 않으면서도, 결코 절망으로 끝을 맺지 않습니다. 제자들이 예수님을 버리고 도망하기 전, 주님은 이미 이렇게 약속하셨습니다. "그러나 내가 살아난 후에 너희보다 먼저 갈릴리로 가리라." 
+
+우리의 실패와 도망보다 주님의 약속이 먼저 주어졌습니다. 그들이 실족할 것을 아셨고, 뿔뿔이 도망칠 것을 아셨지만, 주님은 그들을 포기하지 않으시고 부활의 아침에 먼저 가서 기다리겠다고 말씀하십니다. 겟세마네의 밤은 깊고 캄캄합니다. 피곤함에 지쳐 쓰러진 우리를 향해 주님은 정죄 대신 "이제는 자고 쉬라"는 깊은 긍휼을 베푸십니다. 그리고 우리가 버리고 도망친 그 고독한 자리에서, 홀로 십자가의 잔을 마시며 우리의 구원을 완성하십니다. 
+
+오늘 하루, 무거운 눈꺼풀을 이기지 못해 쓰러질지라도, 내 손에 들린 분노의 칼을 다 내려놓기를 소망합니다. 그리고 "아버지의 원대로 되기를 원하나이다"라고 엎드리셨던 주님의 그 기도를 우리도 조용히 따라 부르기를 원합니다. 도망친 우리보다 먼저 가셔서 기다리시는 그 갈릴리의 다함 없는 은혜가, 오늘 흩어지고 상한 우리의 삶을 다시 따뜻하게 안아주실 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      마태복음 제 42편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
