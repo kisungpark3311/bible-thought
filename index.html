@@ -120,10 +120,6 @@
 <p>일상의 깊은 사고와 성경적 인격 형성<br/>나를 채우는 묵상 에세이 모음</p>
 </div>
 
-        <h2 class="section-title">북유럽 여행기</h2>
-        <div class="list-group" id="travel-list"></div>
-
-
         <h2 class="section-title">요한복음 해설서 PDF (합본)</h2>
         <div class="list-group">
             <a href="./요한복음_해설서_A4.pdf" class="list-item" target="_blank" download>
@@ -550,22 +546,6 @@
                 link.className = 'list-item';
                 link.innerHTML = `<div class='item-info'><h3>마태복음 블로그 (${idx + 1}편)</h3><p>${item.title}</p></div><div class='arrow'>→</div>`;
                 matthewBlogContainer.appendChild(link);
-            });
-        }
-
-        const travelContainer = document.getElementById('travel-list');
-        const travelFiles = [
-        {"file": "20261003_북유럽여행_침몰은끝이아니었다.html", "title": "침몰은끝이아니었다"},
-        {"file": "20261004_북유럽여행_숨결이소리가되어사명이되다.html", "title": "숨결이소리가되어사명이되다"},
-    ];
-        if (travelContainer) {
-            travelContainer.innerHTML = ''; // clear
-            travelFiles.forEach((item, idx) => {
-                const link = document.createElement('a');
-                link.href = `./${item.file}`;
-                link.className = 'list-item';
-                link.innerHTML = `<div class='item-info'><h3>북유럽 여행기 ${(idx + 1)}편</h3><p>${item.title}</p></div><div class='arrow'>→</div>`;
-                travelContainer.appendChild(link);
             });
         }
 
