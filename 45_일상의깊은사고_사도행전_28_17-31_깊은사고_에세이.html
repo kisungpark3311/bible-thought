@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>셋집의 열린 문턱에서: 마침표 없는 삶이 아름다운 이유</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 45편 &middot; 사도행전 28:17-31</span>
+      <h1>셋집의 열린 문턱에서: 마침표 없는 삶이 아름다운 이유</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 분명하고 매끄러운 결말을 갈망합니다. 시작한 일에는 그에 합당한 보상이 주어져야 하고, 갈등의 끝에는 명쾌한 화해가 뒤따라야 하며, 오랜 수고와 눈물의 끝자락에는 화려한 승리의 축포가 터져야 마땅하다고 여깁니다. 인생이라는 무대 위에서 마침표가 흐릿하거나 결말이 유보된 채 끝나버리는 이야기를 우리는 좀처럼 견디지 못합니다. 무언가 닫히지 않고 열려 있을 때 밀려오는 불안, 정리되지 않은 관계와 풀리지 않은 상황 앞에서 우리는 서둘러 자기만의 단정을 짓고 억지로 문장을 매듭짓곤 합니다.</p>
+<p>그러나 성경에서 가장 역동적인 책, 복음이 국경과 대양을 건너 세계의 심장부로 진격하는 숨 가쁜 여정을 담아낸 사도행전의 마지막 장은 우리의 이러한 기대를 완전히 비껴갑니다. 그곳에는 찬란한 승전보도, 거대한 로마 제국을 무릎 꿇린 영웅의 개선식도 없습니다. 지중해의 거친 풍파와 난파의 위기를 뚫고 제국의 수도 로마에 도착한 사도 바울의 발걸음이 멈추어 선 곳은, 웅장한 원형경기장도 아니고 황제의 법정도 아닌, 작고 허름한 셋집 한 칸이었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">쇠사슬에 매인 셋집, 세상을 품는 가장 넓은 문이 되다</h3>
+<p>바울은 자유인이 아니었습니다. 그의 손목에는 차가운 쇠사슬이 채워져 있었고, 밤낮으로 그를 지키는 로마 군인의 거친 숨소리가 좁은 방 안에 늘 머물렀습니다. "내가 이 쇠사슬에 매인 바 되었노라." 바울 스스로 고백하듯, 그는 단 한 걸음도 자기 의지로 문지방을 넘어설 수 없는 갇힌 몸이었습니다. 온 세상을 누비며 교회를 세우고 복음의 불길을 지피던 위대한 사도가, 인생의 황혼에 이르러 낯선 이국의 셋방에 연금된 채 무려 두 해라는 긴 시간을 흘려보내야 했습니다.</p>
+<p>세상의 눈으로 보기에 이 자리는 철저한 고립이자 막다른 골목처럼 보입니다. 사방이 벽으로 가로막히고, 가진 것이라곤 매달 감당해야 하는 셋방과 손목을 옥죄는 쇠사슬뿐일 때, 사람은 쉬이 깊은 무력감과 원망의 늪에 빠져들기 마련입니다. "내가 주를 위해 평생을 바쳐 달려왔는데, 내 인생의 종착역이 고작 이 비좁은 셋방이란 말인가?"라는 탄식이 터져 나와도 이상하지 않은 자리입니다.</p>
+<p>그러나 사도행전은 바울의 그 어떤 억울함이나 탄식도 기록하지 않습니다. 그의 처지를 불쌍히 여기거나 영웅적인 투혼으로 미화하지도 않습니다. 성경이 담담하게 기록하는 것은 오직 한 줄의 거룩하고 담백한 일상입니다. "바울이 온 이태를 자기 셋집에 유하며 자기에게 오는 사람을 다 영접하고."</p>
+<p>그는 자기 발로 세상 밖으로 나갈 수 없었기에, 도리어 자기 셋집의 문을 두드리는 모든 이를 아무런 조건 없이 맞이했습니다. 높은 신분의 유대 지도자부터 천대받는 이방인과 이름 없는 노예에 이르기까지, 찾아오는 모든 이를 온 마음으로 품어 안았습니다. 결박된 몸이 머무는 좁은 방 한 칸이, 실상은 로마 제국 전체에서 가장 넓고 따뜻한 환대의 식탁이 된 것입니다. 결핍과 구속의 장소가 거룩한 만남의 성소가 되는 신비로운 역설이 그 셋집에서 피어났습니다.</p>
+<p>우리의 삶도 때로는 원치 않는 셋집에 갇히곤 합니다. 질병의 쇠사슬, 경제적인 결핍의 벽, 뜻대로 풀리지 않는 진로와 가족이라는 피할 수 없는 무게 앞에 서서, 우리는 '내가 여기서 무엇을 할 수 있겠는가'라며 주저앉곤 합니다. 하지만 바울의 셋집은 우리에게 말을 건넵니다. 자유를 빼앗긴 자리에서도 사랑할 자유는 빼앗기지 않는다고, 더 넓은 세상으로 달려 나갈 수 없을 때 비로소 내 곁에 다가오는 한 영혼을 남김없이 환대할 수 있는 가장 깊은 가슴이 열린다고 말입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">갈라진 마음들을 억지로 꿰매지 않는 정직한 기다림</h3>
+<p>바울이 그 셋집에서 쏟아부은 것은 결코 가벼운 위로가 아니었습니다. 그는 동족 유대인들을 청하여 아침부터 저녁까지 모세의 율법과 선지자의 글을 들어 하나님 나라를 증언하고 예수 그리스도를 간절히 변증했습니다. 온종일 자신의 전부를 쏟아부은 눈물겨운 증언이었습니다. 그렇다면 그 자리에 모인 이들은 일제히 감동하여 눈물을 흘리며 하나가 되었을까요?</p>
+<p>성경의 기록은 놀랍도록 냉정하고 정직합니다. "그 말을 믿는 사람도 있고 믿지 아니하는 사람도 있어 서로 맞지 아니하여 흩어지니."</p>
+<p>하루 종일 온 힘을 다해 복음을 전했음에도 사람들의 마음은 정확히 둘로 갈라졌습니다. 누군가는 믿음으로 반응했지만, 누군가는 끝내 의심하며 돌아섰습니다. 그들은 하나로 뭉쳐지지 못한 채 서로 맞지 않아 뿔뿔이 흩어졌습니다.</p>
+<p>더욱 놀라운 것은 성경이 이 쓰라린 갈라짐을 서둘러 수습하거나 억지로 봉합하려 들지 않는다는 사실입니다. "그래서 바울이 마침내 그들을 다 설득했다"거나 "그들이 결국 후회하며 돌아왔다"는 식의 매끄러운 결말을 덧붙이지 않습니다. 성경은 믿은 자가 몇 명이고 믿지 않은 자가 몇 명인지 숫자조차 헤아리지 않습니다. 다만 사람의 마음이 완악하여 보고도 보지 못하고 들어도 깨닫지 못하는 그 안타까운 영적 실상을, 옛 선지자 이사야의 말씀을 빌려 담담하게 비출 뿐입니다. 바울은 그 심판의 말씀을 자신의 감정으로 둔갑시켜 상대를 공격하는 칼로 쓰지 않고, 하나님의 말씀 층위에 그대로 둔 채 물러섭니다.</p>
+<p>우리는 관계 속에서 갈등과 분열이 생길 때 그것을 좀처럼 견디지 못합니다. 내 진심이 통하지 않거나, 최선을 다한 수고가 상대방의 냉담한 거절로 돌아올 때 조급함에 사로잡힙니다. 억지로 상대의 멱살을 잡고 설득하려 들거나, 반대로 상대를 모질게 비난하며 관계를 단칼에 베어버리곤 합니다. 내가 옳다는 것을 기필코 증명해 내야만 직성이 풀립니다.</p>
+<p>하지만 바울의 셋집은 우리에게 멈추어 서는 법을 가르쳐 줍니다. 사람의 닫힌 마음을 돌이키는 것은 나의 유창한 웅변이나 조급한 강요가 아니며, 갈라진 틈을 억지로 기워 맞추려는 인간적인 욕망은 오히려 더 깊은 상처를 남길 뿐입니다. 성경이 갈라진 마음들을 억지 봉합 없이 그대로 둔 채 침묵하듯, 우리 역시 때로는 내 뜻대로 풀리지 않는 관계와 타인의 거절 앞에서 말을 아끼고, 그 아픈 결핍과 갈라짐을 하나님의 크신 섭리 앞에 온전히 맡겨두는 정직한 기다림이 필요합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">마침표가 사라진 자리, 삶으로 이어지는 거침없는 걸음</h3>
+<p>사도행전의 가장 눈부신 신비는 바로 그 마지막 절(28:31)에 숨겨져 있습니다. "하나님의 나라를 전파하며 주 예수 그리스도에 관한 모든 것을 담대하게 거침없이 가르치더라."</p>
+<p>우리가 읽는 한글 성경은 당당하고 완결된 문장으로 끝을 맺습니다. 그러나 놀랍게도 원어 성경의 마지막 절에는 문장을 떠받치고 닫아주는 주동사가 단 하나도 존재하지 않습니다. 문장을 끝맺는 마침표 같은 동사가 사라지고, 그 자리에는 '선포하며', '가르치되'라는 이어지는 딸린 동사꼴들과, 맨 마지막 자리에 홀로 선 부사 하나만이 남아 있습니다. 바로 '아콜뤼토스(ἀκωλύτως)', 즉 "아무런 금함도 없이, 거침없이"라는 낱말입니다.</p>
+<p>열일곱 개의 낱말로 이루어진 마지막 절의 맨 끝자리에서, 성경은 마침표를 찍지 않은 채 문장을 뚝 멈추어 버립니다. 바울이 이후에 황제의 재판에서 풀려났는지, 아니면 순교의 피를 흘렸는지 성경은 단 한마디도 들려주지 않습니다. 바울이라는 이름조차 주어 자리에 오지 않습니다.</p>
+<p>이것은 기록자의 부주의나 결함이 아닙니다. 이것은 성령이 기록하게 하신 가장 웅장하고 거룩한 침묵입니다. 성경은 바울이라는 한 위대한 영웅의 전기를 완성하려는 생각이 애초에 없었습니다. 복음은 바울이라는 한 사람의 생애에 갇힐 수 없으며, 하나님 나라의 역사는 로마 셋집의 닫힌 문 뒤에서 끝나지 않기 때문입니다. 문장의 끝을 닫아버리는 마침표를 지워버림으로써, 성경은 그 마지막 절 뒤편에 무한한 영적 여백을 활짝 열어두었습니다.</p>
+<p>마침표가 사라진 그 자리에서, 복음의 선포는 결코 멈추지 않는 현재진행형이 됩니다. 비록 바울의 두 손은 쇠사슬에 묶여 있고 좁은 셋집 안에 갇혀 있을지라도, 그가 전한 하나님 나라는 세상의 그 어떤 권력이나 장벽도 가로막을 수 없이 '거침없이' 온 땅으로 흘러갑니다. 그리고 그 열린 문장의 끝자락은, 이천 년의 세월을 건너뛰어 오늘 매일의 셋집 같은 일상을 살아가는 바로 우리의 삶의 자리로 이어집니다.</p>
+<p>우리는 종종 내 인생의 문장이 매끄럽게 닫히지 않아 불안해합니다. 아직 이루어지지 않은 기도 제목들, 여전히 불투명한 내일, 풀리지 않는 삶의 매듭들 앞에서 "왜 내 인생은 이렇게 미완성으로 끝나는가"라며 조바심을 냅니다. 그러나 하나님은 우리에게 인생의 성급한 마침표를 찍으라고 다그치지 않으십니다. 본문이 닫지 않은 자리를 우리가 억지로 닫으려 하지 않고, 비어 있는 자리를 침묵으로 견뎌내는 것 자체가 거룩한 순종입니다.</p>
+<p>결말을 서둘러 규정짓지 않고, 닫히지 않은 삶의 여백을 믿음으로 끌어안는 용기. 비록 오늘 내 발걸음이 작은 셋집에 매여 있을지라도, 오늘 내게 찾아온 한 영혼에게 마음의 문을 열어주고, 서로 맞지 않아 돌아선 이들을 정직하게 기다리며, 내게 주어진 일상의 자리를 담대하게 지켜내는 것. 바로 그 마침표 없는 삶의 한복판에서, 하나님의 나라는 지금도 거침없이(아콜뤼토스) 쓰여지고 있습니다.</p>
+<p>두 해의 셋집, 쇠사슬에 매인 손, 둘로 갈라진 청중, 그리고 끝맺는 동사 없이 홀연히 멈추어 선 성경의 마지막 줄. 이 거룩한 비워둠 앞에서 우리는 비로소 깊은 숨을 내쉽니다. 내 손으로 억지 마침표를 찍으려 했던 조급한 교만을 내려놓고, 주님이 남겨두신 그 너른 여백 속에 우리의 일상을 조용히 얹어놓습니다. 오늘도 우리의 셋집 문턱은 활짝 열려 있습니다. 이제 마침표 없는 그분의 거룩한 이야기를, 우리의 삶으로 담대하게 써 내려갈 차례입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 45편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

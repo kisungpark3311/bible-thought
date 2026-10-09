@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>어둠 속으로 내민 손과 기한이 있는 침묵</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 20편 &middot; 사도행전 13:1-12</span>
+      <h1>어둠 속으로 내민 손과 기한이 있는 침묵</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>
+    인생의 무게를 온몸으로 견뎌내다 보면, 문득 세상의 모든 결단과 성패가 오롯이 내 두 어깨 위에 얹혀 있는 것처럼 느껴질 때가 있습니다. 밤잠을 줄여가며 빈틈없는 계획을 세우고, 마주한 사람들과 손을 맞잡으며 결의를 다지지만, 막상 한 걸음을 내딛는 순간 밀려오는 것은 미래에 대한 아득한 불안과 왜소한 자아의 그림자뿐입니다. 우리는 늘 우리가 역사를 만들어가고 있다고, 내가 결심하고 내가 기도하여 하나님을 움직이고 있다고 은연중에 믿곤 합니다. 
+  </p>
+<p>
+    그러나 성경이 기록한 생명의 역사는 전혀 다른 지점에서 시작됩니다. 시리아 안디옥의 소박하고도 다채로운 예배당, 흑인 시므온과 아프리카 구레네 출신의 루기오, 분봉 왕 헤롯의 젖동생으로 귀족적 배경을 지닌 마나엔, 위로의 사람 바나바, 그리고 한때 교회를 짓밟았던 사울에 이르기까지, 도무지 한자리에 어울릴 수 없을 것 같은 이들이 한자리에 모여 있었습니다. 그들이 주를 섬기며 끼니를 끊고 조용히 엎드렸을 때, 하늘에서 울려 퍼진 음성은 뜻밖에도 인간의 기획을 훨씬 앞지르고 있었습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">우리의 결단보다 언제나 한 걸음 앞서 계셨던 부르심</h3>
+<p>
+    "내가 불러 시키는 일을 위하여 바나바와 사울을 따로 세우라."
+  </p>
+<p>
+    성령께서 건네신 이 첫마디 속에서 '불러 시킨다'는 헬라어 낱말(프로스케클레마이, προσκέκλημαι)은 놀랍게도 '이미 완료되어 효력이 지속되고 있는' 과거의 부름을 가리킵니다. 안디옥 교회의 성도들이 금식하며 땀 흘려 논의한 결과로 선교의 청사진이 빚어진 것이 아니었습니다. 그들이 무릎을 꿇기 훨씬 이전에, 그들이 비장한 각오로 밥상을 물리기 훨씬 이전에, 하나님의 부르심은 이미 완전하게 서 있었습니다. 
+  </p>
+<p>
+    교회가 한 일은 대단한 정책을 만들어낸 것이 아니었습니다. 단지 끼니를 잊은 가난한 몸으로 엎드려, 이미 앞서 행하고 계신 하나님의 걸음 앞에 떨리는 손을 얹어 축복하고 그들을 배에 태워 떠나보낸 것뿐이었습니다. 성경은 그들의 심정이 얼마나 비장했는지, 그들의 열정이 몇 도였는지 한 줄도 적지 않습니다. 그저 묵묵히 밥을 굶고, 손을 얹고, 돛을 올렸다고 담담히 기록할 뿐입니다. 
+  </p>
+<p>
+    우리의 신앙과 일상도 이와 같지 않을까요. 우리가 무언가를 대단하게 결단하고 헌신해야만 하나님이 비로소 움직이시는 것이 아닙니다. 참된 평안은 내 각오의 비장함에서 오는 것이 아니라, 내가 미처 알기도 전에 이미 나를 지목하여 부르시고 일하고 계셨던 주님의 주권에 내 거친 숨을 포갤 때 찾아옵니다. 우리는 새 길을 개척하는 영웅이 아니라, 이미 시작된 은혜의 큰 물줄기를 알아채고 그 물결에 조용히 손을 얹는 목격자들입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">심판의 짙은 어둠 속에도 기한을 남겨두시는 긍휼</h3>
+<p>
+    바다를 건너 구브로 섬에 당도한 사도들의 여정은 결코 탄탄대로가 아니었습니다. 섬의 수도 바보에 이르렀을 때, 로마 총독 서기오 바울이라는 지성인이 복음을 듣고자 사도들을 청합니다. 그러나 그 문턱에서 권력자의 곁을 지키며 사리사욕을 채우던 마술사 바예수(엘루마)가 맹렬히 훼방을 놓습니다. 진리의 빛이 한 사람의 영혼 속에 비쳐 드는 것을 온몸으로 틀어막으려 했던 것입니다.
+  </p>
+<p>
+    바로 그 순간, 본문은 사울이라는 히브리식 이름 곁에 '바울'이라는 로마식 이름을 나란히 적어둡니다. 누가 누구의 자리를 대신 차지했는지, 왜 이름이 바뀌었는지 장황한 설명을 덧붙이지 않은 채, 성령으로 충만해진 바울의 입을 통해 서슬 퍼런 선고가 터져 나옵니다. 
+    "보라 이제 주의 손이 네 위에 있으니, 네가 소경이 되어 얼마 동안 해를 보지 못하리라."
+  </p>
+<p>
+    말을 뱉은 것은 바울의 입이었지만, 그 사람의 눈을 덮은 것은 바울의 권세가 아닌 '주의 손(χεὶρ κυρίου)'이었습니다. 그리고 그 두려운 징계의 문장 끝자락에는 눈을 의심하게 만드는 자비로운 단서가 붙어 있었습니다. 바로 '아크리 카이루(ἄχρι καιροῦ)', 즉 '얼마 동안만, 정해진 기한까지만'이라는 꼬리표였습니다.
+  </p>
+<p>
+    하나님의 선고는 사람을 영원한 파멸과 저주의 구렁텅이로 밀어 넣는 잔인한 복수가 아니었습니다. 진리를 가로막고 기고만장하던 교만의 불을 잠시 끄시고, 자신이 얼마나 연약하고 왜소한 존재인지를 뼈저리게 깨닫게 하시는 '기한이 있는 어둠'이었습니다. 바울 자신 역시 다메섹 도상에서 찬란한 빛 앞에 엎드러져 사흘 동안 칠흑 같은 암흑을 지났던 사람이었습니다. 그 캄캄한 침묵의 기한이 지나고 눈에서 비늘 같은 것이 벗겨졌을 때에야 그는 비로소 참된 빛을 볼 수 있었습니다. 
+  </p>
+<p>
+    우리의 삶에도 때로 감당하기 힘든 좌절과 어둠이 찾아옵니다. 하던 일이 멈추고, 앞길이 꽉 막혀 한 치 앞도 분간할 수 없는 짙은 안개가 내 영혼을 에워쌀 때가 있습니다. 그러나 성경은 그 어둠 속에서도 우리에게 희망을 속삭입니다. 하나님이 허락하신 밤에는 언제나 '끝나는 때'가 정해져 있습니다. 우리를 낮추시는 하나님의 손길은 멸망을 향한 채찍질이 아니라, 교만한 내 시야를 거두어 참된 진리를 바라보게 하시려는 거룩하고 지혜로운 인큐베이터인 것입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">스스로 걷지 못할 때 비로소 내미는 작은 손</h3>
+<p>
+    선고가 떨어지자마자 안개와 어둠이 바예수를 덮쳤습니다. 방금 전까지 총독의 귓가에서 미래를 예언하고 세상을 호령하듯 군림하던 권세가가 순식간에 어린아이보다 못한 처지가 되었습니다. 그리고 이어지는 성경의 묘사는 인간 실존의 가장 밑바닥을 서글프고도 처연하게 비추어 줍니다.
+    "인도할 사람을 두루 구하는지라."
+  </p>
+<p>
+    본문에 쓰인 '손 이끄는 사람들(χειραγωγούς, 케이고구스)'이라는 단어는, 타인의 손을 붙잡지 않고는 단 한 걸음도 내딛을 수 없는 절대적인 무력함을 의미합니다. 자신이 온 세상의 길을 다 알고 있다고 자부했던 자가, 이제는 제발 내 손 좀 잡아달라고 보이지 않는 허공을 향해 필사적으로 손을 휘젓고 있는 것입니다.
+  </p>
+<p>
+    얼마나 정직하고 역설적인 은혜의 순간입니까. 인간은 제 두 눈이 밝고 제 두 다리에 힘이 들어가 있을 때에는 결코 곁에 선 사람의 손을 잡지 않습니다. 하나님은 물론이요 이웃의 따스한 온기조차 거추장스럽게 여깁니다. 그러나 내 오만하던 눈이 감기고, 사방이 캄캄한 어둠에 갇혀 한 걸음도 혼자 뗄 수 없게 되었을 때, 우리는 비로소 비명을 지르며 곁을 향해 손을 내밉니다. 나를 이끌어줄 손, 나를 붙들어줄 단 한 사람의 온기를 간절히 찾게 되는 것입니다.
+  </p>
+<p>
+    이 기이한 광경을 지켜보던 총독 서기오 바울은 맹인이 된 마술사의 비참함 때문이 아니라, 그 배후에 계신 '주의 가르치심'에 압도되어 마침내 주님을 믿게 되었습니다. 제국의 높은 관직에 앉아 수많은 이들을 호령하던 총독조차, 눈에 보이는 화려한 마술이나 권력이 아니라 눈에 보이지 않는 진리의 엄위 앞에 자신의 지성을 굴복시킨 것입니다.
+  </p>
+<p>
+    우리의 인생길에서도 참된 신앙은 내가 강하고 유능할 때 증명되지 않습니다. 내 손의 힘이 빠지고, 내 계획이 수포로 돌아가며, 의지하던 모든 빛이 사그라졌을 때, 우리는 비로소 허공을 향해 조심스레 손을 뻗습니다. "주님, 혼자서는 걸을 수 없습니다. 누군가 제 손을 잡아 주십시오." 그 가난하고 떨리는 손 내밈이야말로, 우리를 헛된 교만의 감옥에서 건져내어 참된 생명의 길로 인도하는 가장 복된 기도의 시작입니다.
+  </p>
+<p>
+    성경은 이 길 뒤편에서 슬그머니 짐을 싸서 예루살렘으로 돌아가 버린 마가 요한의 이탈에 대해서도 끝내 그 이유를 따져 묻거나 비난하지 않습니다. 사람의 연약함과 실패, 이해할 수 없는 헤어짐의 공백을 섣부른 판단으로 메우지 않고 그저 침묵 속에 남겨둡니다. 
+  </p>
+<p>
+    우리의 삶에도 수많은 결핍과 해석되지 않는 어둠의 계절이 지나갑니다. 그러나 기억하십시오. 부르심은 언제나 우리의 작당보다 앞서 있었고, 우리를 덮친 어둠에는 분명 자비로운 끝이 예비되어 있으며, 혼자 걷지 못해 내민 연약한 손끝에서 비로소 하나님의 역사가 시작됩니다. 오늘도 캄캄한 인생의 길목에서 서성이고 있다면, 주저하지 말고 힘을 뺀 손을 가만히 내밀어 보십시오. 그곳에 당신의 손을 잡아 이끄실 신실한 주의 손과 다정한 이웃들의 온기가 가만히 기다리고 있을 것입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 20편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

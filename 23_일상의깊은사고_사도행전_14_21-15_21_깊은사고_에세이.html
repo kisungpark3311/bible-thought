@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내가 지지 못하는 멍에를 내려놓고, 함께 앉는 식탁을 차릴 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 23편 &middot; 사도행전 14:21~15:21</span>
+      <h1>내가 지지 못하는 멍에를 내려놓고, 함께 앉는 식탁을 차릴 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    우리는 살아가며 수많은 기준과 틀을 만듭니다. 그리고 어느 순간 그 틀을 다른 사람의 삶 위에 엄격하게 들이대기 시작합니다. 부모는 자녀에게 "이 정도는 해내야 인정받을 수 있다"는 높은 잣대를 얹고, 직장에서는 "이 방식만이 유일한 정답"이라며 동료를 옥죄며, 공동체 안에서는 자신들의 관습과 결에 맞추지 못하는 이들을 은근한 시선으로 밀어냅니다. 그러나 가만히 우리 자신을 돌아보면, 정작 그 무거운 기준을 우리 스스로도 온전히 감당하지 못해 비틀거릴 때가 허다합니다. 내가 온전히 져내지 못한 삶의 무게를 타인의 어깨에 슬그머니 얹어놓는 것, 그것이 우리 인간이 지닌 가장 흔하면서도 서글픈 연약함입니다.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    사도행전 15장은 바로 이 아프고 날 선 인간의 본성을 정면으로 마주하는 거대한 분기점입니다. 1차 전도여행의 모진 환난 속에서도 복음의 열매를 거둔 바울과 바나바가 이방인들에게 믿음의 문이 활짝 열렸다는 기쁜 소식을 안고 돌아왔을 때, 예루살렘의 어떤 사람들은 굳은 얼굴로 그들을 가로막아 섰습니다. "너희가 모세의 법대로 할례를 받지 아니하면 능히 구원을 얻지 못하리라." 수천 년간 자신들의 긍지이자 울타리였던 율법의 문턱을 세워, 이제 막 하나님께로 발걸음을 돌린 이방인들의 숨통을 틀어막으려 한 것입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">우리가 메지 못하는 멍에를 누구의 목에 걸고 있는가</h3>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    적지 않은 다툼과 변론이 교회를 뒤흔들 때, 베드로가 일어섭니다. 그리고 사람들의 폐부를 찌르는 단호하고도 정직한 질문을 던집니다. <em>"지금 너희가 어찌하여 하나님을 시험하여 우리 조상과 우리도 능히 메지 못하던 멍에를 제자들의 목에 두려느냐."</em>
+</p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    베드로가 가리킨 '멍에'는 단순한 종교적 예식이 아니었습니다. 그것은 '내 완벽한 행위와 자격으로 의로움에 이르겠다'는 헛된 열심이자, 역사 속에서 조상들도 우리도 감당하지 못해 늘 넘어지고 탄식했던 무거운 짐이었습니다. 베드로는 정직했습니다. "나조차 지지 못했던 짐을, 왜 저 갓 태어난 영혼들에게 짊어지우려 하는가?" 이 외침은 타인을 판단하기 전에 자기 자신의 바닥과 연약함을 솔직하게 들여다본 사람만이 터뜨릴 수 있는 거룩한 참회였습니다.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    우리의 일상도 이와 얼마나 닮아 있습니까. 나 역시 지키지 못하는 도덕적 완벽주의로 타인을 재단하고, 나조차 감당할 수 없는 기대를 자녀와 배우자에게 요구하며 상처를 줍니다. 잣대의 칼날을 타인에게 휘두를 때 관계는 숨이 턱 끝까지 막혀오지만, "나도 지지 못했던 멍에"임을 겸손히 고백할 때 비로소 은혜의 숨구멍이 열립니다. 구원과 회복은 인간의 까다로운 자격 요건에 있는 것이 아니라, 오직 거저 주시는 주 예수의 은혜 안에 있음을 믿을 때 비로소 타인의 목을 조이던 밧줄을 풀어줄 수 있습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">다툼의 소란을 잠재우는 침묵과 경청의 힘</h3>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    예루살렘 공의회가 오늘 우리에게 전하는 또 하나의 깊은 교훈은 갈등을 마주하는 그들의 성숙한 태도입니다. 본문은 사도와 장로들이 모여 치열하게 논쟁하던 긴장의 한가운데에 찾아온 거룩한 정적을 기록합니다. <em>"온 무리가 가만히 있어 바나바와 바울이 하나님이 자기들로 말미암아 이방인 중에서 행하신 표적과 기사 고하는 것을 듣더니."</em>
+</p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    성경은 이 만남을 '모임', '침묵', '들음', 그리고 '대답'이라는 네 개의 단순한 동사로 담담하게 엮어냅니다. 자신의 주장을 관철하고 상대를 제압하려던 격앙된 공간에 고요한 침묵이 내려앉았습니다. 그리고 온 회중은 한 덩이가 되어, 하나님이 저 낯선 이방 땅에서 어떤 사랑의 역사를 이루셨는지를 끝까지 귀 기울여 들었습니다.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    갈등이 불거질 때 세상은 더 큰 소리로 상대를 제압하라고 부추깁니다. 그러나 매듭을 푸는 지혜는 내 목소리를 높이는 데 있지 않고, 내 말을 그치고 하나님의 일하심을 듣는 데 있습니다. 앞서 바울과 바나바가 교회의 일꾼들을 세우며 그들을 '그 믿은 바 주께 부탁(맡김)'했던 것처럼, 예루살렘의 사도들 역시 인간의 통제권을 내려놓고 하나님께 모든 결과를 맡겨드렸습니다. 내 고집을 내려놓고 침묵할 때, 비로소 상대의 상처와 그 안에서 일하시는 하나님의 손길이 또렷하게 보이기 시작합니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">괴롭게 하지 않고 서로를 품는 최소한의 배려</h3>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    깊은 경청의 시간을 지나 교회의 어른이었던 야고보가 입을 엽니다. 그의 입에서 나온 결론은 복음의 너그러운 본질을 응축한 따뜻한 한 문장이었습니다. <em>"그러므로 내 의견에는 이방인 중에서 하나님께로 돌아오는 자들을 괴롭게 말고."</em>
+</p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    이 얼마나 깊고 다정한 선언입니까. 참된 진리는 사람을 괴롭히고 얽매는 것이 아니라, 자유케 하고 살리는 것입니다. 온갖 상처와 방황 끝에 겨우 하나님께로 마음을 돌려 은혜의 품으로 걸어 나오는 이들을, 우리의 사소한 종교적 규칙과 번거로운 문턱으로 지치게 만들지 말자는 결단이었습니다. 문턱을 낮추어 환대의 품을 활짝 열어젖힌 것입니다.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    야고보는 이어서 우상의 더러운 것과 음행과 목매어 죽인 것과 피를 멀리하라는 편지를 쓰자고 제안합니다. 이것은 그들을 얽매기 위한 또 다른 율법이 아니었습니다. 오랜 세월 관습을 지켜온 유대인과 새로운 자유를 얻은 이방인이, 혐오와 거리낌 없이 한 식탁에 마주 앉아 빵을 뗄 수 있도록 마련한 '최소한의 예의이자 사랑의 배려'였습니다. 성경은 복잡한 조례를 만들지 않고 단지 "편지하는 것이 가하니"라는 멈춤에서 말을 맺습니다. 모든 것을 하나의 획일적인 틀로 맞추려 하지 않고, 각자의 자리에서 모세의 글을 읽는 이들과 새로운 은혜를 누리는 이들이 공존할 수 있는 숨 쉴 여백을 남겨둔 것입니다.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    오늘 우리의 삶은 어떠합니까. 지금 곁에 있는 가족과 이웃, 동료의 목에 내가 지지도 못할 무거운 멍에를 얹어 그들을 괴롭게 하고 있지는 않습니까. 내가 옳다고 믿는 신념이 도리어 누군가가 주님께로, 혹은 우리 곁으로 다가오는 길을 가로막는 차가운 문턱이 되어버리지는 않았습니까.
+  </p>
+<p style="line-height: 1.85; color: #2c3e50; font-size: 1.05rem; margin-bottom: 1.3rem;">
+    사랑은 멍에를 얹는 것이 아니라 멍에를 벗겨주는 일입니다. 믿음은 문턱을 높여 자격을 따지는 것이 아니라, 문턱을 낮추어 연약한 발걸음을 품어 안는 일입니다. 그리고 서로 다른 우리가 한 밥상에 둘러앉아 기쁨을 나눌 수 있도록, 내 고집을 한 걸음 물려 작은 배려의 자리를 비워두는 일입니다. 본문이 말을 아끼고 멈추어 선 그 절제의 자리에서, 우리 역시 정죄와 독선의 고집을 멈추어야 합니다. 그 멈춤의 자리에서 비로소 서로를 옥죄던 멍에가 벗겨지고, 온전한 은혜의 식탁이 우리 일상 가운데 풍성하게 차려질 것입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 23편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

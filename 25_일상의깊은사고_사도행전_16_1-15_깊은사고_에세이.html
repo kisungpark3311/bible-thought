@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>닫힌 문 곁에서 듣는 밤의 부름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 25편 &middot; 사도행전 16:1-15</span>
+      <h1>닫힌 문 곁에서 듣는 밤의 부름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p style="font-size: 1.15rem; line-height: 1.85; color: #2c3e50; margin-bottom: 24px; word-break: keep-all; font-weight: 500;">
+    살아가다 보면 아무리 머리를 싸매고 곱씹어도 도무지 납득할 수 없는 순간들이 찾아옵니다. 평생을 함께할 줄 알았던 소중한 동역자와 사소한 불씨로 갈라서야 하는 이별의 자리, 혹은 하나님을 향한 순전한 열정으로 달려왔음에도 굳게 닫혀버리는 인생의 문턱 앞에서 우리는 늘 서글픈 탄식을 뱉어냅니다. "하나님, 왜입니까? 도대체 이유가 무엇입니까?" 
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    우리는 언제나 삶의 모든 사건 뒤에 명쾌한 설명과 이유가 적혀 있기를 기대합니다. 고통에도 정답이 적힌 해설서가 붙어 있어야만 겨우 안도의 한숨을 내쉬는 나약한 존재들이기 때문입니다. 그러나 성경이 증언하는 믿음의 여정은 때로 우리의 기대를 완전히 빗나갑니다. 사도행전 15장의 끝자락과 16장의 첫머리에 걸쳐 있는 바울의 걸음은, 인생에서 마주하는 가장 아프고 당혹스러운 침묵의 심연을 고스란히 보여줍니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">갈라선 자리의 침묵, 비워둔 이유</h3>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    1차 전도여행의 모진 풍파를 함께 이겨냈던 믿음의 벗, 바울과 바나바가 갈라섭니다. 지난 여행에서 도중에 발길을 돌렸던 마가를 다시 데려갈 것인가를 두고 두 사람은 심하게 다투었습니다. 본문은 이 충돌을 날카로운 격분을 뜻하는 '파록쉬스모스(παροξυσμός)'라는 단어로 기록합니다. 그런데 놀라운 사실은 성경이 이 쓰라린 갈라섬을 묘사하면서 그 누구의 편도 들지 않는다는 점입니다.
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    성경은 바울의 원칙이 옳았는지, 아니면 바나바의 품어주는 사랑이 더 거룩했는지 시비를 가리지 않습니다. 본문 어디에도 '왜냐하면'이라는 접속사는 단 하나도 등장하지 않습니다. 그저 갈라섰다는 사태만이 오롯이 적혀 있을 뿐, 두 사람의 잘잘못을 가르는 판결문은 비어 있습니다. 우리는 갈등이 생기면 끝끝내 정죄와 변명으로 빈칸을 채우려 들지만, 성경은 그 아픈 빈자리를 억지로 메우지 않고 그대로 둡니다. 바나바는 마가를 데리고 구브로로 떠났고, 바울은 교회의 축복 속에 실라와 함께 길을 떠납니다. 성경이 한쪽의 떠남에 주의 은혜를 덧붙인 것은 다른 쪽에 대한 정죄가 아니었습니다. 갈라섬의 상처 속에서도 하나님의 섭리는 두 갈래의 물줄기가 되어 세상을 더 넓게 적시기 시작했습니다. 때로 하나님은 우리가 설명할 수 없는 이별과 균열 앞에서도 묵묵히 자신의 길을 내어가십니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">설명 대신 몸에 새긴 사랑, 낮아짐의 결단</h3>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    그렇게 길을 떠난 바울은 루스드라에서 충성스러운 청년 디모데를 만납니다. 그리고 이 대목에서 성경은 매우 낯선 광경을 연출합니다. 다툼과 갈라섬에는 단 한 번도 쓰이지 않았던 '이유'를 나타내는 표지들이, 유독 디모데의 살갗에 칼이 닿는 한 절(16:3)에 무려 세 번이나 겹쳐 등장합니다. 헬라인 아버지를 둔 디모데에게 바울이 할례를 행한 것입니다.
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    앞서 예루살렘 공의회에서는 이방인 신자들에게 더 이상 율법과 할례의 멍에를 씌우지 않기로 공식 결정했습니다. 교리적으로나 명분상으로나 디모데는 할례를 받을 하등의 의무가 없었습니다. 그러나 바울은 '그 지역에 있는 유대인들 때문에' 디모데에게 할례를 행합니다. 이것은 비겁한 타협이나 교리의 후퇴가 아니었습니다. 율법의 칼끝이 구원의 조건이 아니라, 아직 복음을 온전히 알지 못하는 영혼들에게 다가가기 위한 거룩한 낮아짐의 표지가 된 것입니다. 본문은 논쟁이나 사상에는 이유를 달지 않았지만, 한 사람의 몸에 닿은 수고와 희생에는 구구절절 그 이유를 달아줍니다. 참된 신앙은 머릿속 논리로 옳고 그름을 따지는 데 있지 않고, 잃어버린 영혼을 품기 위해 내 몸의 기득권을 깎아내고 기꺼이 상처를 짊어지는 자리에 머뭅니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">닫혀버린 문 앞에서 듣는 밤의 부름</h3>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    그러나 이 눈물겨운 헌신과 낮아짐 끝에 사도 일행을 기다리고 있던 것은 활짝 열린 탄탄대로가 아니었습니다. 아시아에서 말씀을 전하려 하자 성령이 그들을 막아서셨고, 발길을 돌려 비두니아로 가고자 애썼으나 예수의 영이 허락하지 않으셨습니다. 가로막힘이 연이어 두 번이나 닥쳤습니다. 사리사욕을 채우려는 걸음도 아니었고 오직 주를 위한 열심이었건만, 하나님은 연거푸 길을 막으셨습니다. 그리고 본문은 이번에도 '왜' 막으셨는지 단 한마디의 이유도 들려주지 않습니다.
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    막히는 문 앞에서 이유를 알지 못할 때 인간은 깊은 절망과 원망에 빠집니다. 그러나 바울은 멈춰 서서 주저앉거나 섭리를 캐물으며 따지지 않았습니다. 막힌 채로, 이유를 모른 채로, 그저 묵묵히 발걸음을 옮겨 바다 끝 항구 드로아로 내려갔습니다. 그리고 바로 그 어두운 밤, 침묵을 찢는 환상 하나가 열립니다. 마게도냐 사람 하나가 서서 애타게 손짓하며 외칩니다. "건너와서 우리를 도우라(βοήθησον)!"
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    이 열다섯 절의 긴 여정 속에서 유일하게 울려 퍼진 명령형 동사는, 하나님의 근엄한 훈계가 아니라 고통받는 사람의 연약한 절규였습니다. 하나님은 바울에게 앞길이 왜 막혔는지 지도를 펼쳐 보여주지 않으셨습니다. 천국의 청사진을 해설해 주지도 않으셨습니다. 다만 바다 건너편에서 신음하며 도움을 구하는 한 영혼의 목소리를 들려주셨을 뿐입니다. 아시아와 비두니아의 문이 닫히지 않았다면 바울은 결코 드로아의 밤바다에 서지 못했을 것이며, 유럽을 향해 복음의 돛을 올리지도 못했을 것입니다.
+  </p>
+<p style="font-size: 1.05rem; line-height: 1.85; color: #34495e; margin-bottom: 24px; word-break: keep-all;">
+    지금 당신의 삶에서도 소중한 관계가 이유 없이 갈라서고 있습니까? 정성을 다해 달려온 길목마다 원치 않는 막힘과 거절을 경험하고 있습니까? 하나님께서 침묵하신다고 해서 그분의 일하심이 멈춘 것은 아닙니다. 그분은 우리에게 해답을 쥐여주는 대신, 묵묵히 오늘 하루의 성실한 걸음을 걷게 하십니다. 그리고 캄캄한 밤의 끝자락에서, 지금 나를 필요로 하는 이웃의 아픈 부름에 귀를 기울이게 하십니다. 해명되지 않은 고통 속에서도 은혜는 우리를 떠나지 않습니다. 하나님께서 문을 닫으실 때는, 언제나 우리가 상상하지 못했던 더 넓은 바다와 새로운 부르심의 문을 열어두시기 때문입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 25편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

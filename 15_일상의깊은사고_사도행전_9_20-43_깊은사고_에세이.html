@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>낫게 하시는 분의 이름 앞에서 내 자리를 비울 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 15편 &middot; 사도행전 9:20-43</span>
+      <h1>낫게 하시는 분의 이름 앞에서 내 자리를 비울 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생의 긴 여정을 걷다 보면 누구나 무력감의 벼랑 끝에 서는 순간을 마주합니다. 아무리 애써도 풀리지 않는 매듭 앞에서, 혹은 칠흑 같은 절망의 침상에 갇혀 버렸을 때 우리는 스스로에게 묻곤 합니다. '내가 무엇을 더 해야 이 어둠을 벗어날 수 있을까.' 세상은 끊임없이 우리에게 능력을 증명하라 요구하고, 스스로의 힘으로 상황을 반전시킬 주어가 되라고 다그칩니다. 신앙의 자리에서조차 우리는 종종 '내가 더 뜨겁게 기도하면', '내가 더 온전하게 헌신하면'이라는 조건을 덧붙이며, 은혜의 문장 한가운데에 슬그머니 내 열심과 이름을 밀어 넣으려 합니다.</p>
+<p>그러나 사도행전 9장의 후반부가 들려주는 이야기는 사뭇 다른 길을 비춥니다. 박해자 사울의 극적인 회심이라는 거대한 폭풍이 지나간 자리, 다메섹의 좁은 골목에서부터 예루살렘과 룻다, 그리고 지중해 바람이 불어오는 욥바의 해변 마을에 이르기까지, 성경은 화려한 영웅담 대신 지극히 구체적이고 소박한 일상의 사물들을 카메라에 담아냅니다. 낡은 광주리 하나, 8년 동안 굳어 있던 침상, 가난한 과부들의 눈물이 젖어 든 옷자락, 그리고 가죽 냄새가 진동하는 무두장이의 남루한 거처가 그것입니다. 그 투박한 삶의 소품들 사이로, 성경은 회복의 주어가 누구인지를 조용하지만 단호한 어조로 가르쳐 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">서슬 퍼런 성벽 아래서 광주리를 내리는 사람들</h3>
+<p>다메섹에서 사울이 예수를 증언하기 시작했을 때, 그를 맞이한 것은 환호가 아니라 서슬 퍼런 살의였습니다. 밤낮으로 성문을 지키며 그를 죽이려는 음모가 도시를 에워쌌습니다. 생사의 갈림길에 선 사울을 구원한 것은 하늘에서 쏟아지는 불길이나 기적의 번개가 아니었습니다. 어둠이 짙게 깔린 밤, 성벽 위에서 밧줄을 엮고 광주리에 한 사람의 몸을 담아 성 밖으로 조용히 달아내린 제자들의 거친 손길이었습니다. 광주리를 붙잡은 손가락에 전해지는 묵직한 무게감과 껍질이 벗겨지는 통증 속에서, 하나님의 구원은 이처럼 사람과 사람 사이의 말 없는 연대로 흘러가고 있었습니다.</p>
+<p>그렇게 목숨을 건져 찾아간 예루살렘에서도 차가운 불신과 두려움이 사울을 기다리고 있었습니다. 어제의 박해자를 오늘의 형제로 받아들일 수 없었던 공동체는 굳게 문을 닫아걸었습니다. 그 불신의 벽을 허문 것 역시 '바나바'라는 단 한 사람의 온유한 품이었습니다. 모두가 의심하며 물러설 때 사울의 곁으로 다가가 그의 손을 잡고 사도들에게 데려간 바나바의 중재가 있었기에, 사울은 비로소 교회의 일원으로 숨을 쉴 수 있었습니다. 성경은 증오와 구출, 두려움과 환대가 한 도시와 한 공동체 안에 공존하는 현실을 감추지 않습니다. 세상은 여전히 위협으로 가득 차 있지만, 그 살벌한 성벽 아래서 기꺼이 광주리의 밧줄을 쥐어 주는 사람들, 타인의 억울함과 외로움을 품어 안는 바나바 같은 이들이 있기에 복음의 걸음은 멈추지 않습니다.</p>
+<p>이러한 사람들의 묵묵한 순종이 모여 온 유대와 갈릴리와 사마리아의 교회가 평안을 누리며 든든히 서 갑니다. 성경은 지리적으로 흩어져 있고 오랜 역사적 반목을 지닌 세 지역을 언급하면서도, 놀랍게도 '교회'라는 단어를 단수로 기록합니다. 지역은 셋으로 나뉘어 있어도, 주를 경외함과 성령의 위로라는 하나의 맥박으로 숨 쉬는 공동체는 오직 하나였습니다. 숫자의 확장이나 거대한 조직이 교회의 본질이 아니라, 흩어진 자리마다 서로를 향해 밧줄을 내리고 주를 바라보는 단 하나의 마음이 교회를 교회 되게 만듭니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">회복의 문장에서 내 이름을 지워낼 때 일어나는 기적</h3>
+<p>이야기는 룻다라는 조용한 평지 마을로 이어집니다. 그곳에는 중풍병으로 인해 침상에 누운 지 무려 8년이 된 애니아라는 사람이 있었습니다. 여덟 해라는 시간은 단순한 숫자가 아닙니다. 젊음이 바래고, 가족들의 한숨이 깊어지며, 스스로에 대한 희망마저 풍화되어 체념의 먼지가 두껍게 쌓여 버린 세월입니다. 누워 있는 애니아가 할 수 있는 일은 아무것도 없었습니다. 스스로 일어날 힘도, 성전으로 달려갈 다리도 없었습니다. 그런데 성경은 이 절망적인 사람을 향해 믿음을 보이라거나 눈물로 결단하라는 무거운 짐을 단 한 마디도 지우지 않습니다.</p>
+<p>침상 곁에 선 베드로의 입에서 선포된 말은 우리의 기대를 완전히 뒤흔듭니다. "애니아야, 예수 그리스도께서 너를 낫게 하시니 일어나 네 자리를 정돈하라." 베드로는 놀라운 치유를 선포하면서도, 결코 자기 자신을 그 사건의 주어로 세우지 않았습니다. 헬라어 원문에서 '낫게 하신다'는 동사의 주인 자리에는 베드로가 아닌 '예수 그리스도'의 이름만이 온전히 새겨져 있습니다. 베드로는 단지 말하는 입이었을 뿐, 고치시고 생명을 불어넣으시는 주권자의 자리에 자신의 손길이나 영적 권위를 단 한 뼘도 침범시키지 않았습니다.</p>
+<p>우리는 얼마나 자주 내 삶의 회복을 내 손으로 이루어 내려 몸부림칩니까. 혹은 타인을 도우면서도 '내가 이만큼 베풀었다'는 내 이름을 문장 한가운데에 새겨 넣고 싶어 합니까. 그러나 참된 기적은 회복의 문장에서 내 이름을 지워낼 때 시작됩니다. 누워 있던 애니아가 들었던 것은 베드로의 재주가 아니라, 여덟 해의 침묵을 뚫고 찾아오신 예수 그리스도의 이름이었습니다. 주께서 고치신다는 선포 뒤에 주어지는 명령은 그저 "네 자리를 정돈하라"는 지극히 소박한 일상의 회복뿐이었습니다. 오늘 아무것도 할 수 없는 무력한 자리에 누워 있다면 기억하십시오. 하나님께서 우리에게 요구하시는 것은 거창한 공로가 아니라, 고치시는 분의 이름 앞에 내 무거운 짐을 내려놓고 주어의 자리를 온전히 주님께 내어드리는 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">눈물 젖은 옷자락과 피장의 집에서 이어지는 일상</h3>
+<p>마지막 시선은 욥바의 어느 다락방을 향합니다. 그곳에는 가난한 이웃과 과부들을 지극정성으로 섬기며 선행을 베풀었던 다비다라는 여제자가 차디찬 주검으로 누워 있었습니다. 베드로가 다락방에 들어섰을 때, 방 안을 가득 채운 과부들은 베드로의 곁에 둘러서서 하염없이 눈물을 흘렸습니다. 그리고 울음 사이로 떨리는 손을 내밀어 다비다가 살아생전 자신들을 위해 지어준 속옷과 겉옷을 하나하나 꺼내 보였습니다. 성경은 기적의 장엄함을 서술하기에 앞서, 여인들이 쏟아낸 '울음'을 먼저 기록합니다.</p>
+<p>그 눈물 젖은 옷자락이야말로 한 사람이 세상에 남긴 가장 거룩한 흔적이었습니다. 다비다의 생애는 화려한 직함이나 거창한 업적이 아니라, 추위에 떠는 이웃의 시린 어깨를 감싸주었던 바느질 자국과 한 땀 한 땀 스며든 사랑의 온기로 증명되었습니다. 성경은 슬픔을 손쉽게 건너뛰지 않습니다. 다비다가 다시 살아나는 놀라운 부활의 환희 속에서도, 그 전에 흘려진 과부들의 애통과 소박한 겉옷들은 결코 지워지지 않고 본문 한가운데 오롯이 남겨집니다. 주님은 우리의 가슴 아픈 눈물과 손때 묻은 사랑의 수고를 결코 헛되이 흩어버리지 않으십니다.</p>
+<p>다비다가 눈을 떠 일어나고 온 동네가 기쁨으로 술렁이는 거대한 기적의 순간, 이 긴 단락의 대미를 장식하는 마지막 문장은 뜻밖에도 너무나 평범하고 건조합니다. "베드로가 욥바에 여러 날 있어 시몬이라 하는 피장의 집에서 유하니라." 죽은 자가 살아나는 경이로운 사건의 종착지가 화려한 궁전이나 안락한 환영의 자리가 아니라, 죽은 짐승의 가죽을 다루며 온갖 악취와 편견을 감내해야 했던 무두장이 시몬의 누추한 집이었습니다. 사도는 기적의 흥분에 도취되지 않고, 비린내 나는 노동의 냄새가 배어 있는 가장 낮고 거친 일상의 자리로 조용히 걸어 들어가 여러 날을 머물렀습니다.</p>
+<p>우리가 살아가는 신앙의 본질 또한 바로 이 피장의 집에 있습니다. 광주리와 밧줄, 낡은 침상과 정돈된 자리, 다락방의 눈물 젖은 옷자락, 그리고 가죽 다루는 손이 지켜내는 고단한 일터. 성경은 기적을 이야기하면서도 한 번도 우리를 이 남루한 현실 밖으로 도피시키지 않습니다. 매일 마주하는 장부와 영수증, 지친 몸을 뉘는 작은 방, 가족을 위해 묵묵히 밥을 짓고 일터를 지키는 우리의 평범한 일상은 결코 신앙과 분리된 속된 영역이 아닙니다. 회복의 주인이신 주님을 마음에 품고 살아가는 사람에게는, 땀 냄새 가득한 그 일상의 자리야말로 주님의 생명이 조용히 꽃피는 가장 거룩한 성소입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 15편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

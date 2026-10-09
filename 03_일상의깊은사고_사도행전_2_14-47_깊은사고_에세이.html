@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>주께서 날마다 더하신다: 돌아오지 않는 하루 위에 서는 끝나지 않는 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 03편 &middot; 사도행전 2:14-47</span>
+      <h1>주께서 날마다 더하신다: 돌아오지 않는 하루 위에 서는 끝나지 않는 은혜</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생을 살아가다 보면 문득 우리가 지나온 어떤 특별했던 하루를 끊임없이 되돌아보게 됩니다. 가슴 벅찬 성취를 맛보았던 날, 모든 것이 뜻대로 풀려 세상의 중심에 선 것만 같았던 그 하루 말입니다. 우리는 종종 그 눈부셨던 날의 기억을 붙들고 오늘의 빈곤을 견디려 하거나, 반대로 어제의 성공을 오늘 다시 재현해 내지 못해 깊은 무력감에 빠지곤 합니다. 내가 주어가 되어 인생을 멋지게 일구어 보겠다는 열망은, 어느 순간 피로와 불안이라는 무거운 그림자를 드리웁니다.</p>
+<p>사도행전 2장의 마지막 풍경은 바로 그 조급하고 지친 우리에게 조용하지만 거대한 시선의 전환을 건넵니다. 그곳에는 인류 역사상 다시 보기 힘든 영적 대각성의 하루와, 그 하루의 열기가 지나간 뒤 비로소 시작된 소박하고 깊은 일상의 날들이 나란히 놓여 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">가슴을 꿰뚫는 찔림에서 피어난 약속</h3>
+<p>베드로의 입술을 통해 선포된 오순절의 설교는 사람들의 귀를 즐겁게 하는 감언이설이 아니었습니다. 다윗의 무덤이 여전히 눈앞에 남아 있음을 지적하며, 너희가 법 없는 자들의 손을 빌려 십자가에 못 박아 죽인 예수를 하나님이 다시 살리셔서 주와 그리스도가 되게 하셨다는 서슬 퍼런 선언이었습니다. 거룩하신 하나님의 작정과 인간의 비열한 죄책이 핑계 없이 마주하는 엄중한 자리였습니다.</p>
+<p>그 말을 들은 무리의 반응은 놀라웠습니다. 성경은 그들이 "마음에 찔려" 베드로와 사도들에게 "형제들아 우리가 어찌할꼬"라고 부르짖었다고 적습니다. 원문에 쓰인 '찔려'(κατενύγησαν)라는 말은 수동태입니다. 스스로 도덕적인 자책감을 만들어 낸 것이 아니라, 진리의 말씀이 날카로운 창이 되어 심장 깊숙한 곳을 사정없이 꿰뚫어 버린 것입니다. 숨길 수도 없고 변명할 수도 없는 자신의 비참함을 정직하게 마주했을 때 터져 나오는 영혼의 비명, 그것이 바로 "우리가 어찌할꼬"라는 탄식이었습니다.</p>
+<p>막다른 골목에서 터져 나온 그 절박한 물음을 향해 베드로는 세 가지를 제시합니다. "회개하라", "각각 세례를 받으라", 그리고 "성령의 선물을 받으리라." 우리는 종종 이 구절들을 보며 신앙을 끝없는 의무와 과제의 연속으로 오해하곤 합니다. 구원도, 용서도, 성령의 충만함도 내가 피땀 흘려 무언가를 증명해 내야만 쟁취할 수 있는 숙제처럼 짊어집니다. 그러나 본문의 문법을 가만히 들여다보면 가슴 뭉클한 복음의 질서가 드러납니다. 방향을 돌이키라는 '회개'와 자기 부인의 고백인 '세례'는 요청과 명령이지만, 뒤따르는 '성령의 선물'은 명령이 아니라 직설법 미래형의 순전한 '약속'입니다.</p>
+<p>하나님은 찔린 가슴을 안고 주께로 돌아선 사람들에게 또 다른 짐을 얹어주지 않으십니다. 성령은 성취해야 할 목표가 아니라, 값없이 거저 안겨주시는 하늘의 선물입니다. 우리가 회한의 눈물을 흘리며 주님 앞에 빈손으로 설 때, 주님은 그 부서진 마음 위에 당신의 영을 약속으로 부어 주십니다. 신앙은 무거운 과제를 수행하는 고된 노동이 아니라, 신실하신 하나님의 약속을 선물로 받아 누리는 안식입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">지나간 하루의 기적을 넘어 날마다 흐르는 동사</h3>
+<p>그 말씀이 가슴에 닿았을 때, 경이로운 열매가 맺혔습니다. 세례를 받은 이들이 무려 삼천 명이나 더해졌습니다. 단 하루 만에 일어난 엄청난 역사였습니다. 세상의 기준에서 본다면 그것은 일생일대의 눈부신 업적이었고, 기념비를 세워 대대손손 자랑해야 할 성공의 정점이었습니다.</p>
+<p>그러나 사도행전의 기록은 그 거대한 숫자에 도취되지 않습니다. 성경은 담담하게 그 삼천 명이 '약(ὡσεί) 삼천'이었다고 말하며 인간적인 통계의 엄밀함을 내려놓게 합니다. 무엇보다 그 삼천 명이 더해진 사건은 '그날 하루'에 일어난 닫힌 과거였습니다. 그 눈부신 하루는 찬란했지만, 다시는 똑같은 모습으로 돌아오지 않는 하루였습니다. 우리는 얼마나 자주 과거의 특정한 하루에 갇혀 사는지 모릅니다. 내가 뜨겁게 은혜받았던 그 시절, 사업이 번창했던 그 전성기, 사역이 폭발적으로 부흥했던 그 하루를 붙들고, 오늘의 메마름을 자책하거나 타인을 정죄합니다. 어제의 하루를 오늘의 우상으로 만드는 것입니다.</p>
+<p>하지만 성경의 시선은 멈추어 선 과거의 하루를 딛고 저 멀리 일상의 지평으로 나아갑니다. 사도행전 2장의 마지막 절은 이렇게 선언합니다. "주께서 구원 받는 사람을 날마다 더하게 하시니라." 여기에 말할 수 없이 깊은 신학적 반전이 있습니다. 삼천 명이 더해진 것은 과거의 한 시점에 끝난 부정과거형 동사였지만, 삶의 터전에서 이어지는 '더하심'은 끝없이 이어지는 미완료 시제의 동사(προσετίθει)로 서 있습니다. 그리고 결정적으로, 그 일의 주어가 바뀝니다. 위대한 설교자 베드로도, 헌신적인 제자들도 아닙니다. 사람의 동사가 멈추어 선 자리에서, 오직 '주(ὁ κύριος)'께서 친히 주어가 되셔서 날마다 구원의 역사를 이어가십니다.</p>
+<p>내가 주어가 되어 무언가를 더하려고 아등바등할 때 인생은 탈진하지만, 더하시는 분이 주님이심을 고백할 때 영혼은 비로소 자유를 얻습니다. 하루의 삼천이라는 기적도 위대하지만, 주님이 주어가 되셔서 우리의 보잘것없는 일상 위에 날마다 더해 가시는 신실한 은혜는 더욱 위대합니다. 돌아오지 않는 어제의 성취에 매이지 않고, 오늘이라는 시간 속에서 쉬지 않고 일하시는 주님의 발걸음을 신뢰하는 것, 그것이 매일을 살아가는 성도의 참된 평안입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">밥상 위의 나눔과 세상 한가운데 선 담담한 걸음</h3>
+<p>주께서 친히 주어가 되신 사람들의 일상은 과연 어떤 모습으로 채워졌을까요? 그들은 거창한 종교적 구호를 외치거나 세상을 뒤흔들 정치적 체제를 만들지 않았습니다. 그들은 날마다 마음을 같이하여 성전에 모이기를 힘쓰고, 집에서 떡을 떼며 기쁨과 순전한 마음으로 음식을 나누었습니다. 그들의 거룩함은 성전의 제단에만 갇혀 있지 않고, 매일 마주하는 식탁의 밥상 위로 흘러넘쳤습니다.</p>
+<p>그들은 자신의 재산과 소유를 팔아 각 사람의 '필요(χρεία)'를 따라 나누어 주었습니다. 세상의 모든 일터와 경제는 철저하게 공로와 기여도를 따집니다. 능력에 따라 줄을 세우고, 이익을 낸 만큼 보상하며, 쓸모가 다하면 냉정하게 등을 돌리는 것이 세상의 엄격한 계산법입니다. 그러나 은혜의 지배를 받는 공동체의 기준은 자격이나 공로가 아니라 오직 '필요'였습니다. 연약한 이의 결핍과 아픔이 곧 나눔의 유일한 이유가 되었습니다. 본문은 이것을 차가운 법이나 강제적인 의무로 명령하지 않습니다. 율법의 명령법 어형은 단 하나도 쓰이지 않았습니다. 십자가의 헤아릴 수 없는 사랑을 먼저 맛본 이들이, 자발적인 사랑으로 기꺼이 자신의 손을 펴서 연약한 이웃의 필요에 닿게 한 따뜻한 삶의 서술이었습니다.</p>
+<p>하지만 성경은 우리를 값싼 낙관주의로 이끌지 않습니다. 본문은 그들이 "온 백성에게 칭송을 받았다"고 아름답게 기록하지만, 성경의 책장을 단 한 장만 넘기면 사도들이 체포되고 위협당하는 차가운 감옥의 풍경이 곧바로 이어집니다. 백성의 칭송과 권력자의 체포라는 극단적인 두 현실이 한 호흡 사이에 맞닿아 있습니다. 만약 우리가 세상의 환호와 칭송만을 좇는다면 작은 비난과 오해 앞에서도 쉽게 무너져 내릴 것입니다. 반대로 세상의 반대와 체포만을 지나치게 의식한다면 두려움에 사로잡혀 아무것도 하지 못할 것입니다. 성경은 이 두 가지 현실을 억지로 짜맞추어 지우지 않고, 있는 그대로 나란히 우리 앞에 펼쳐 놓습니다. 세상의 갈채가 영원한 보증이 될 수 없듯, 세상의 차가운 눈총 역시 주님의 생명을 멈추게 할 수 없습니다.</p>
+<p>어쩌면 오늘 우리가 마주한 하루도 어제의 기적 같았던 감격은 아득히 멀어지고, 냉혹한 숫자의 계산과 차가운 현실의 무게만이 가득할지 모릅니다. 내가 아무런 선언도 할 수 없을 만큼 초라하게 느껴지는 날일 수도 있습니다. 그러나 낙심하지 않아도 되는 이유는, 구원을 이루시고 인생을 자라게 하시는 주어가 내가 아니라 바로 우리 주님이시기 때문입니다. 어제 있었던 하루의 성공에 교만할 필요도, 어제의 실패에 절망할 이유도 없습니다. 그 하루는 지나갔고, 오늘 우리 앞에는 끝나지 않는 주님의 미완료 동사가 기다리고 있습니다. 거창한 무언가를 증명하려 애쓰기보다, 오늘 내 곁에 있는 누군가의 가냘픈 필요에 내 손길을 가만히 내어주는 것, 그리고 주께서 날마다 더하실 은혜를 기대하며 소박한 식탁을 감사로 채우는 것. 그것이야말로 돌아오지 않는 하루 위에서 영원을 살아가는 가장 아름다운 믿음의 발걸음일 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

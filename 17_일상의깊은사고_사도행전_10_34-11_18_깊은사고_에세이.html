@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>허공을 떠돌던 말씀이 따뜻한 밥상이 되기까지</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 17편 &middot; 사도행전 10:34~11:18</span>
+      <h1>허공을 떠돌던 말씀이 따뜻한 밥상이 되기까지</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>말이 넘쳐나는 세상을 살아갑니다. 아침에 눈을 떠 밤에 잠들기까지 우리는 수없이 많은 말의 파도 속에 휩쓸립니다. 스마트폰 화면 너머로 쏟아지는 자극적인 주장들, 직장과 일터에서 오가는 날 선 대화들, 자신을 증명하기 위해 쉼 없이 토해내는 수많은 말들이 공중을 어지럽게 날아다닙니다. 하지만 그토록 많은 말이 쏟아져도 우리의 마음은 왜 이토록 헛헛하고 쓸쓸할까요? 그것은 그 말들이 정작 누군가의 마음에 가닿아 머물지 못한 채, 차가운 허공만을 맴돌다 흩어지기 때문일 것입니다.</p>
+<p>사도행전 10장, 로마 백부장 고넬료의 집에서 입을 열었던 사도 베드로의 설교 속에도 참으로 기이하고 낯선 문장 하나가 숨겨져 있습니다. 베드로는 예수 그리스도의 복음을 선포하며 이렇게 입을 뗍니다. "만유의 주 되신 예수 그리스도로 말미암아 화평의 복음을 전하사 이스라엘 자손들에게 보내신 말씀……."(행 10:36). 그런데 놀랍게도 그리스어 원문 성경을 가만히 들여다보면, 이 문장 속 '말씀(톤 로곤, τὸν λόγον)'이라는 목적어를 받아줄 서술어가 끝내 나타나지 않습니다. 문법적으로 짝을 이루어야 할 동사가 사라진 채, '하나님이 보내신 말씀'이라는 묵직한 낱말 하나가 아무런 받침대도 없이 허공에 붕 떠 있는 것입니다. 장엄하게 선포된 하늘의 말씀은 도대체 어디로 가버린 것일까요?</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">허공을 맴돌던 말씀이 가닿은 가난한 귀</h3>
+<p>공중에 홀로 떠돌던 그 말씀이 마침내 자기의 짝을 찾아 온전히 안착한 자리는 뜻밖의 곳이었습니다. 그것은 베드로의 화려한 웅변 속도, 사도라는 권위 있는 직분의 입술도 아니었습니다. 이야기가 흘러 사도행전 10장 44절에 이르렀을 때, 성경은 숨 막히는 한 장면을 보여줍니다. "베드로가 이 말 할 때에 성령이 말씀 듣는 모든 사람에게 내려오시니."</p>
+<p>바로 이 순간, 갈 곳을 몰라 허공을 떠돌던 '그 말씀(톤 로곤)'이 문장 안에서 마침내 제자리를 얻습니다. '듣고 있는 사람들(투스 아쿠온타스, τοὺς ἀκούοντας)'의 목적어 자리로 스며들어 비로소 완벽한 문장을 이루어낸 것입니다. 하나님이 보내신 하늘의 말씀이 머물러 닻을 내린 곳은 다름 아닌, 가난한 마음으로 귀를 기울이던 이방인들의 열린 '귀'였습니다.</p>
+<p>우리는 흔히 믿음의 자리에서 무언가를 대단하게 말하고, 유창하게 가르치고, 거창하게 선포해야만 능력이 나타난다고 여깁니다. 그러나 성경이 침묵 속에서 증언하는 진실은 전혀 다릅니다. 말씀이 살아 움직여 생명이 되는 거룩한 자리는 말하는 자의 혀끝이 아니라, 침묵 속에서 그 말씀을 온몸으로 받아내는 가난한 이들의 '듣는 귀'입니다. 고넬료와 그의 가족들은 어떠한 종교적 공로나 화려한 직함도 내세우지 않았습니다. 그들에게 붙여진 유일한 동작은 오직 하나, '듣고 있는 중'이라는 분사 하나뿐이었습니다. 어쩌면 오늘 하루, 세상의 거대한 함성에 주눅 들어 아무런 성과도 내지 못하고 그저 무력하게 엎드려 있는 이들이 있을지 모릅니다. 그러나 오늘 내 삶에 붙어 있는 유일한 동사가 겨우 '듣는 중' 하나라 할지라도 결코 낙심할 필요가 없습니다. 성령은 스스로 외치는 자가 아니라, 들을 귀를 열어두는 연약하고 겸손한 자리 위로 가장 짙은 은혜의 단비처럼 쏟아져 내리기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">심판석에서 내려와 은혜의 통로로 서는 겸손</h3>
+<p>베드로가 고넬료의 문턱을 넘어설 때 고백했던 첫마디는 놀랍게도 자기부정이었습니다. "내가 참으로 하나님은 사람의 외모를 취하지 아니하시는 줄 깨달았도다." 평생 동안 유대인이라는 울타리, 정결과 부정이라는 이분법적 잣대에 갇혀 살았던 사도의 견고한 편견이 산산이 부서져 내리는 순간이었습니다. 그는 '누가 구원받을 자격이 있는가'를 계산하던 높은 심판관의 자리에서 스스로 걸어 내려왔습니다.</p>
+<p>본문에서 하나님이 성령과 능력으로 기름을 부으신 대상은 오직 한 분, 나사렛 예수 그리스도뿐이었습니다. 마귀에게 눌린 자들을 고치시고, 나무에 달려 죽으셨으나 부활하셔서 산 자와 죽은 자의 재판장으로 정해지신 분은 오직 예수 한 분뿐입니다. 그 자리에 베드로나 사도들의 이름을 집어넣으면 성경의 문장은 여지없이 무너지고 맙니다. 산 사람 전체와 죽은 사람 전체를 심판하는 심판석에는 그 어떤 위대한 인간도 올라설 수 없습니다. 베드로 자신도, 복음을 전하는 전도자도 결국 '죽을 수밖에 없는 죄인'의 명단에 이름을 올린 가련한 존재에 불과하기 때문입니다. 자신이 심판받아야 할 무리 속에 속해 있는 자는 결코 남을 심판하는 재판장이 될 수 없습니다.</p>
+<p>우리는 일상 속에서 얼마나 자주 타인의 허물을 정죄하며 심판석에 앉으려 합니까? 직장에서, 가정에서, 심지어 신앙 공동체 안에서도 '저 사람은 자격이 없어', '저 사람은 구제불능이야'라며 손쉽게 남의 외모와 처지를 재단하곤 합니다. 그러나 사도의 자격은 심판자가 되는 데 있지 않고, 단지 은혜의 명령을 받아 전하는 심부름꾼이 되는 데 있었습니다. 베드로는 자신의 권위를 자랑하지 않았습니다. 그는 명령을 받은 자의 자리에 서서, 나사렛 예수의 이름을 가리키는 손가락이 되었을 뿐입니다. 우리가 딛고 서 있는 직장의 책상, 숫자가 적힌 장부 한 줄, 영수증 한 묶음, 땀방울이 배인 노동의 현장에서 의를 행하는 삶(에르가조메노스) 역시 내 의로움을 증명하기 위함이 아닙니다. 심판관의 오만한 법복을 벗어 던지고, 은혜의 문턱 앞에 겸손히 무릎 꿇을 때 비로소 우리는 타인을 참된 생명으로 인도하는 맑은 통로가 될 수 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">부활을 증언하는 가장 따뜻한 자리, 함께 나눈 식탁</h3>
+<p>그렇다면 십자가와 부활이라는 인류 역사상 가장 거대한 신비를 증언할 '증인'의 자격은 어디에서 올까요? 베드로는 부활의 증인을 설명하면서 대단한 영적 체험이나 심오한 신학 철학을 들이대지 않습니다. 그는 가슴을 울리는 지극히 평범하고도 소박한 언어로 증인의 자격을 정의합니다. "오직 미리 택하신 증인, 곧 죽은 자 가운데서 일어나신 후 모시고 음식을 함께 먹고 마신 우리라."</p>
+<p>부활의 가장 확실하고 거룩한 증거는 현학적인 이론이 아니라, 바로 '함께 둘러앉아 나눈 밥상(쉬네파고멘 카이 쉬네피오멘)'이었습니다. 갈릴리 바닷가에서 숯불을 피워놓고 생선을 구워주시던 주님의 거친 손길, 빵을 떼어 건네주시던 그 따뜻한 온기, 주님과 마주 앉아 씹어 삼키던 한 끼의 식사가 그들의 몸과 뼈에 부활의 생생한 증거로 아로새겨졌습니다. 부활은 머리로 증명하는 논리가 아니라, 식탁의 교제 속에서 체화된 생명의 살과 피였습니다.</p>
+<p>성령이 폭포수처럼 임하고, 이방인들이 세례를 받은 후 이 위대한 이야기의 마지막 장면은 어떻게 매듭지어집니까? 거창한 부흥회가 열리거나 교단의 규칙이 세워진 것이 아니었습니다. 고넬료와 그의 가족들은 베드로에게 단 한 가지 간청을 올립니다. "수일 더 머물러 주시기를 청하니라." 그들은 함께 며칠을 더 머물며(에피메이나이), 아침과 저녁으로 밥상을 마주하고, 숟가락을 부딪치며, 일상의 호흡을 나누었습니다. 목회와 신앙의 다음 발걸음은 장황한 훈계가 아니라, 밥상을 함께 차리고 마주 앉아 온기를 나누는 식탁의 머무름이었습니다.</p>
+<p>우리의 신앙이 자주 메마르고 차가워지는 까닭은 복음을 너무 거창한 관념의 구름 위에 올려두기 때문인지 모릅니다. 그러나 복음의 종착지는 언제나 우리의 고단한 일상, 따뜻한 김이 피어오르는 밥상머리입니다. 하루의 피로를 짊어지고 돌아온 가족에게 건네는 따뜻한 국 한 그릇, 외롭고 상처받은 이웃을 위해 차려낸 소박한 식탁, 함께 밥을 먹으며 서로의 한숨과 눈물을 묵묵히 들어주는 며칠간의 머무름 속에 부활의 신비가 숨 쉬고 있습니다.</p>
+<p>허공을 맴돌던 하늘의 말씀은 가난한 귀를 만나 비로소 머물 곳을 찾았고, 오만한 심판의 칼날은 은혜의 겸손 앞에서 녹아내렸으며, 부활의 위대한 증언은 소박한 밥상 위에서 따뜻하게 피어났습니다. 오늘 하루, 내게 맡겨진 일상이 버겁고 초라하게 느껴질지라도 멈추어 서서 귀를 기울여 보십시오. 주님은 가장 낮은 곳에서 말씀하고 계시며, 오늘 저녁 우리가 마주할 작은 식탁 위에서 부활의 생명으로 우리를 기다리고 계십니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 17편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>마음이 다 정리되지 않아도, 우리는 길을 떠납니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 14편 &middot; 사도행전 9:1-19</span>
+      <h1>마음이 다 정리되지 않아도, 우리는 길을 떠납니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+살다 보면 누군가를 마주하러 가는 발걸음이 유독 무겁게 느껴지는 날이 있습니다. 마음속에 이미 들어앉은 편견, 건너 건너 전해 들은 불편한 평판, 혹은 손에 쥔 상처의 기억들이 앞길을 가로막기 때문입니다. 모든 것이 명쾌하게 해명되고, 내 안의 의구심과 두려움이 말끔히 사라진 뒤에야 비로소 편안한 얼굴로 나설 수 있을 것 같지만, 세상의 많은 일들은 결코 그런 완전한 안심을 허락하지 않습니다. 여전히 마음 한구석에는 주저함과 반발심이 가득하고, 도무지 납득되지 않는 상황 속에서도 우리는 문을 열고 한 걸음을 내딛어야 하는 순간을 마주합니다.
+
+사도행전 9장에 기록된 다메섹 도상의 이야기는 기독교 역사상 가장 극적인 회심의 순간으로 기억됩니다. 피비린내 나는 박해자 사울이 하늘의 빛 앞에 엎드러지고, 위대한 이방인의 사도로 거듭나는 거대한 전환점입니다. 그러나 성경의 문장들을 가만히 들여다보면, 그 장엄하고 눈부신 기적의 이면에 지극히 인간적이고 떨리는 숨결들이 고스란히 묻어 있음을 발견하게 됩니다. 기세등등하게 길을 나서던 한 인간의 철저한 무력화, 그리고 주님의 부르심 앞에서도 차마 발걸음이 떨어지지 않아 조심스레 자신의 두려움을 토로하던 또 다른 한 사람의 망설임이 그곳에 나란히 놓여 있습니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">완벽한 확신이 아니라 흔들리는 발걸음으로</h3>
+
+다메섹에 살던 제자 아나니아에게 임한 주님의 명령은 가혹할 정도로 버거운 것이었습니다. "일어나 직가라 하는 거리로 가서 유다의 집에서 다소 사람 사울이라 하는 자를 찾으라." 그 이름을 듣는 순간 아나니아의 가슴은 차갑게 내려앉았을 것입니다. 사울이 누구입니까. 예루살렘에서 수많은 성도를 옥에 가두고 흩어버린 주동자였으며, 지금 다메섹에 온 이유 역시 대제사장에게서 받은 체포 공문을 쥐고 주의 이름을 부르는 자들을 모조리 결박하기 위함이었습니다.
+
+아나니아의 항변은 지극히 상식적이고 정당했습니다. "주여, 이 사람에 대하여 내가 여러 사람에게 듣사온즉 그가 예루살렘에서 주의 성도에게 적지 않은 해를 끼쳤다 하더니, 여기서도 주의 이름을 부르는 모든 자를 결박할 권세를 대제사장들에게 받았나이다." 그는 뜬소문을 늘어놓은 것이 아니었습니다. 객관적인 사실과 명백한 위험을 근거로 자신의 두려움을 정직하게 아뢰었습니다. 우리가 사회생활을 하며 거래처의 평판을 따지고, 사람을 대할 때 조심스러운 경계심을 품는 것과 조금도 다르지 않은 지극히 합리적인 반응이었습니다.
+
+놀라운 것은 주님의 대답입니다. 주님은 아나니아의 의심을 불신앙이라 꾸짖지 않으셨습니다. "네가 믿음이 없구나"라며 억지 확신을 강요하거나, 사울이 겪은 환상을 장황하게 설명하며 그를 설득하려 들지도 않으셨습니다. 아나니아가 품은 정당한 염려를 취소하지 않으신 채, 주님은 그저 나직하게 말씀하십니다. "가라, 이 사람은 내 이름을 위하여 택한 나의 그릇이다." 
+
+더욱 인상적인 대목은 성경 어디에도 아나니아의 두려움이 눈 녹듯 사라졌다거나, 그가 모든 의문을 털어내고 확신에 넘쳐 기쁘게 달려갔다는 묘사가 없다는 사실입니다. 아나니아의 마음속 반대와 의문은 여전히 남아 있었습니다. 그러나 그는 일어났고, 길을 떠나 사울이 있는 집으로 들어갔습니다. 믿음이란 모든 불안과 반대가 완전히 해소된 뒤에야 움직이는 안일함이 아닙니다. 두려움의 안개가 여전히 짙게 깔려 있고 마음이 다 정리되지 않았음에도, 나를 보내시는 분의 한마디를 붙들고 흔들리는 다리로 발을 떼는 것, 그것이 성경이 우리에게 보여주는 순종의 참모습입니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">눈을 떴으나 앞을 보지 못하는 무력함의 시간</h3>
+
+한편, 다메섹 길바닥에 고꾸라진 사울의 형편은 참담했습니다. 불과 몇 시간 전만 해도 그는 대제사장의 권한이 적힌 공문을 가슴에 품고, 살기와 확신으로 가득 차 말을 달리던 유력자였습니다. 자신이 하나님을 위해 가장 의로운 일을 하고 있다고 한 치의 의심도 없이 확신하던 종교적 엘리트였습니다. 그러나 정오의 태양보다 밝은 빛이 그를 에워싸는 순간, 그 견고하던 자기 확신의 성벽은 단숨에 무너져 내렸습니다.
+
+본문은 매우 낯설고 깊은 역설을 전합니다. "사울이 땅에서 일어나 눈은 떴으나 아무것도 보지 못하고." 눈을 분명히 뜨고 있는데 아무것도 보이지 않는 상태, 그것은 물리적인 시력의 상실인 동시에 그동안 세상을 바라보던 그의 모든 시선과 세계관의 전적인 파산이었습니다. 자신이 가장 잘 보고 있다고 자부하던 순간에 그는 영적인 맹인이었음을 폭로당한 것입니다.
+
+기세등등하던 박해자는 이제 "사람의 손에 끌려" 다메섹으로 들어갑니다. 남들을 포박하여 끌고 가려던 자가, 이제는 다른 이의 손을 잡지 않고는 단 한 걸음도 내딛지 못하는 지극히 연약하고 비참한 처지가 되었습니다. 사울은 그렇게 사흘 동안 보지 못하고, 먹지도 마시지도 않은 채 깊은 침묵 속에 머물렀습니다. 성경은 이 사흘의 어둠을 가리켜 결코 '벌'이나 '저주'라고 부르지 않습니다. 본문 어디에도 형벌을 뜻하는 단어는 등장하지 않습니다. 
+
+그 사흘은 자기 힘으로 세상을 쥐고 흔들려던 자의 손이 힘을 빼는 시간이었습니다. 자신의 똑똑한 눈과 혈기로 달음질치던 걸음을 멈추고, 타인의 손을 잡아야만 비로소 살아갈 수 있는 존재임을 온몸으로 체득하는 은혜의 공백기였습니다. 인생을 살아가다 보면 우리에게도 불현듯 모든 시야가 닫히는 사흘의 어둠이 찾아옵니다. 내 판단이 가장 옳다고 믿었던 신념이 꺾이고, 쥐고 있던 직함과 권한이 한낱 무력한 종잇조각처럼 여겨질 때가 있습니다. 그러나 그 막막한 어둠은 인생의 끝이 아니라, 비로소 하나님의 손길과 이웃의 손을 겸손히 구하게 만드는 가장 거룩한 멈춤의 시간입니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">비늘이 벗겨진 자리에서 나누는 따뜻한 한 끼</h3>
+
+마침내 두 사람의 마주침이 이루어집니다. 여전히 두려움의 잔영을 품은 채 문을 열고 들어선 아나니아, 그리고 사흘간의 굶주림과 흑암 속에서 기도하고 있던 사울. 그 어색하고 긴장된 침묵 속에서 아나니아가 사울의 머리에 조심스럽게 손을 얹으며 던진 첫마디는 성경에서 가장 아름다운 호칭 중 하나로 남아 있습니다.
+
+"형제 사울아."
+
+그 한마디에 모든 장벽이 무너져 내렸습니다. 어제까지만 해도 교회를 짓밟던 원수였고, 공포의 대명사였던 사람을 아나니아는 주저 없이 '형제'라고 불렀습니다. 사울의 과거가 훌륭해서도, 그가 충분한 죗값을 치러서도 아니었습니다. 오직 그들이 함께 부르는 한 이름, 예수 그리스도의 이름이 그들을 한 가족으로 묶어주었기 때문입니다. 성도와 교회를 규정하는 것은 사람의 뛰어난 명성이나 과거의 행적이 아니라, 바로 그 이름을 부르고 그 이름 아래 모였다는 단 하나의 사실뿐이었습니다.
+
+안수하는 순간 사울의 눈에서 비늘 같은 것이 벗겨져 다시 보게 되었습니다. 그는 곧바로 일어나 세례를 받았습니다. 그런데 이 장엄한 영적 회복의 피날레를 장식하는 본문의 마지막 문장은 뜻밖에도 너무나 소박하고 일상적인 한 장면입니다.
+
+"음식을 먹으매 강건하여지니라."
+
+성경은 사울이 눈을 뜨자마자 거대한 비전을 선포했다거나 하늘의 신비를 노래했다고 적지 않습니다. 사흘을 굶주려 탈진해 있던 지친 몸 앞에 따뜻한 밥상이 차려졌고, 그 음식을 씹어 삼키며 그가 비로소 기력을 되찾았다고 묵묵히 서술합니다. 웅장한 신학적 회심의 마침표는 다름 아닌 다정한 밥상머리 한 끼였습니다. 원수였던 자를 형제로 맞아들이고, 그의 굶주린 배를 채워주기 위해 빵을 떼어 건넸을 아나니아와 제자들의 손길이야말로 복음이 빚어낸 가장 눈부신 기적이었습니다.
+
+우리의 일상 속 회복도 이와 다르지 않습니다. 상처 입은 영혼을 살리고 틀어진 관계를 잇는 것은 거창한 교리 논쟁이나 화려한 웅변이 아닙니다. 비늘처럼 덮여 있던 편견의 눈꺼풀을 벗겨내고, 상대의 연약한 몸 앞에 정성껏 차려내는 따뜻한 밥 한 그릇의 온기입니다. 내가 먼저 내미는 손, 상대의 허기를 채워주는 밥상 하나가 사흘의 어둠 속에 갇혀 있던 한 사람을 다시 일으켜 세웁니다.
+
+마음이 다 정리되지 않았습니까. 저 사람을 정말로 품을 수 있을지 여전히 두렵고 망설여집니까. 주님은 우리에게 완벽한 감정의 정리를 먼저 요구하지 않으십니다. 의문과 두려움이 여전할지라도, 주께서 "가라" 말씀하신 그 자리를 향해 흔들리는 발걸음을 옮겨 보십시오. 눈을 떴으나 앞이 보이지 않는 이들의 손을 잡아주고, 비늘이 떨어진 그 자리에 따뜻한 위로의 밥상을 내어줄 때, 우리는 비로소 알게 될 것입니다. 그 길의 시작도, 흔들리던 우리를 보내신 이도, 그리고 마침내 서로를 형제로 껴안게 하신 분도 오직 한 분 주님이셨음을 말입니다.
+
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 14편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

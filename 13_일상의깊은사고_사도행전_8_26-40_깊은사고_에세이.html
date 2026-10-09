@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>걸려서 멈춘 자리에서 시작되는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 13편 &middot; 사도행전 8:26-40</span>
+      <h1>걸려서 멈춘 자리에서 시작되는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+끝없이 이어지는 황량한 흙먼지 길, 예루살렘에서 가사로 내려가는 인적 드문 광야 길 위에 마차 한 대가 덜컹거리며 나아갑니다. 그 안에는 이역만리 에디오피아 여왕의 모든 국고를 총괄하는 한 사람이 타고 있었습니다. 수많은 장부를 열고 닫으며 한 제국의 거대한 재정을 빈틈없이 계산해 내던 권력자였습니다. 세상의 눈으로 보면 더할 나위 없이 성공한 인생이었고, 무엇 하나 아쉬울 것 없는 자리였을 것입니다. 그는 종교적 열심을 품고 먼 길을 달려와 예루살렘의 화려한 성전에서 예배까지 마쳤습니다. 그러나 수레를 타고 돌아가는 그의 가슴 한구석에는 여전히 메울 길 없는 허기와 알 수 없는 목마름이 고여 있었습니다. 세상의 모든 셈을 끝마쳤지만, 정작 자기 영혼의 장부는 결산되지 않았기 때문입니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+수레의 덜컹거림 속에서 그는 두루마리 성경을 소리 내어 읽고 있었습니다. 바퀴 소리와 말발굽 소리에 섞여 광야의 허공으로 흩어지는 고대의 활자들. 매일의 결산과 생존의 무게를 짊어진 채 숨 가쁘게 달려가는 오늘날 우리의 모습도 이와 다르지 않습니다. 남부럽지 않은 직함을 얻고 손에 쥔 것은 늘어났지만, 문득 멈춰 선 삶의 한 모퉁이에서 '나는 대체 어디로 가고 있는가'라는 근원적인 물음 앞에 서성이는 우리의 모습 말입니다. 성경은 바로 그 황량한 길 위에서 일어난 한 기적 같은 조우를 들려줍니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">전부를 쥐고도 비어 있는 손으로 묻는 사람</h3>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+성경은 이 사람을 '에디오피아 여왕 간다게의 모든 국고를 맡은 큰 권세가 있는 내시'라고 소개합니다. 사도행전은 그를 신체적 한계나 이방인이라는 사회적 결핍의 시선으로 바라보지 않습니다. 그를 불쌍한 동정의 대상으로 격하하지도 않습니다. 오히려 본문은 그를 당당한 주어로 세웁니다. 그가 예배하러 올라갔고, 그가 글을 읽었으며, 그가 길 가던 나그네 빌립을 수레 위로 청했고, 그가 물었습니다. 그는 결핍으로 주눅 든 사람이 아니라, 진리를 향해 스스로 묻고 결단하며 걸어가는 존엄한 인격이었습니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+주목할 만한 것은, 제국의 국고 '전부'를 손에 쥐었던 그가 멈춰 선 곳이 성경의 한 작은 대목, 곧 '글의 범위' 앞이었다는 사실입니다. 세상의 모든 것을 관리하고 통제할 수 있었던 거대한 손이, 정작 두루마리 속 몇 줄의 문장 앞에서 길을 잃고 멈추어 섰습니다. 그러나 그는 아는 체하며 체면을 차리지 않았습니다. 높은 권세와 직함을 내세워 모르는 것을 포장하지도 않았습니다. 그는 마차 곁으로 달려온 낯선 전도자 빌립을 향해 아이처럼 솔직하게 털어놓습니다. "지도해 주는 사람이 없으니 어찌 깨달을 수 있겠습니까?"
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+우리는 종종 가진 것이 많아질수록 모르는 것을 숨기려 애씁니다. 직급이 올라가고 나이가 들수록, 내 영혼이 길을 잃었다는 사실을 들키지 않으려 더 두터운 가면을 씁니다. 그러나 참된 구원과 배움은 내가 쥐고 있는 전부를 내려놓고, 빈손으로 정직하게 질문을 던질 때 시작됩니다. "내가 읽고 있는 이 인생의 문장은 대체 무슨 뜻입니까?" 전부를 쥔 손으로 자신의 한계를 고백하는 그 순수한 질문의 자리로, 하나님의 은혜가 조용히 스며들기 시작합니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">설명의 숲을 지나 한 이름을 마주하는 침묵</h3>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+내시가 읽다가 멈춰 선 본문은 이사야 53장의 예언이었습니다. "그가 도살자에게로 가는 양과 같이 끌려갔고, 털 깎는 자 앞에서 잠잠한 어린양처럼 그의 입을 열지 아니하였도다. 그가 낮아졌을 때에 공평한 판단을 받지 못하였으니 누가 그의 세대를 말하리요, 그의 생명이 땅에서 빼앗김이로다." 내시의 눈길을 붙잡은 이 대목에는 사람의 당당한 이름이 적혀 있지 않았습니다. 오직 끌려가고, 소리가 없고, 판단을 빼앗기고, 생명이 들려진 어떤 고난받는 자의 고독한 침묵만이 가득했습니다. 내시는 깊은 혼란 속에서 묻습니다. "청컨대 묻노니, 선지자가 이 말 한 것이 누구를 가리킴입니까? 자기 자신입니까, 아니면 다른 사람입니까?"
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+그는 둘 중 하나를 고르는 양자택일의 질문을 던졌습니다. 하지만 빌립의 대답은 뜻밖이었습니다. 빌립은 이 사람인가 저 사람인가를 따지는 지루한 학술적 논쟁이나 교리적 변증으로 빠져들지 않았습니다. 성경은 기록합니다. "빌립이 입을 열어 이 글에서 시작하여 예수를 가르쳐 복음을 전하니." 빌립은 내시가 읽다가 걸려 넘어진 바로 그 자리, 슬픔과 빼앗김의 활자가 적힌 바로 그 지점에서 출발했습니다. 그리고 복잡한 설명의 숲을 단숨에 건너뛰어, 오직 한 분 '예수 그리스도'라는 이름을 건넸습니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+원문에서 이 대목의 동사는 놀랍도록 단순합니다. 여러 미사여구와 조건절이 사라지고, 복음을 받는 '내시'와 전해진 유일한 내용인 '예수'라는 한 이름만이 서로 마주 봅니다. 우리는 누군가의 고통과 의문 앞에 설 때, 종종 나의 지식과 긴 훈계로 상대를 덮어버리려 합니다. 하지만 영혼을 살리는 것은 사람의 화려한 말이 아니라, 고난받아 침묵하셨던 십자가 예수의 이름 그 자체입니다. 부당하게 판단받고 생명을 빼앗겼던 그 어린양 예수가 내 아픔의 자리에 서 계신다는 사실을 깨닫는 순간, 길고 긴 의문은 비로소 해갈됩니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+말씀이 열리자 메마른 광야에 기적이 일어납니다. 길을 가다 마주친 물가에서 내시는 외칩니다. "보라, 물이 있으니 내가 세례를 받음에 무슨 거리낌이 있느뇨!" 그러자 빌립은 망설임 없이 그와 함께 마차에서 내려섭니다. 성경은 "둘 다 물에 내려가"라고 증언합니다. 가르치는 선생이라 하여 마차 위에서 명령만 내리지 않았습니다. 빌립은 내시와 함께 자신의 옷자락을 적시며 같은 물속으로 발을 담갔습니다. 진정한 복음은 높은 자리에서 쏟아내는 지시가 아니라, 누군가의 목마른 생애 속으로 함께 발을 적시며 내려가는 동행입니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">안내자가 사라진 자리에서 비로소 흔연히 걷는 길</h3>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+그러나 감격스러운 세례의 순간 직후, 이야기는 뜻밖의 이별로 이어집니다. 두 사람이 물에서 올라오자마자 주의 영이 빌립을 이끌어 가신 것입니다. 눈 깜짝할 사이에, 영혼의 눈을 열어주었던 유일한 스승이자 다정한 동행자였던 빌립이 시야에서 완전히 사라졌습니다. 방금 전까지 함께 걷던 둘만의 길은 순식간에 혼자 남겨진 외길로 바뀌었습니다. 사방을 둘러보아도 거친 모래바람뿐인 광야 한가운데, 내시는 오롯이 홀로 남겨졌습니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+만약 그가 빌립이라는 사람을 의지했다면, 이 갑작스러운 부재 앞에서 당황하고 낙심하여 주저앉았을 것입니다. "내게 말씀을 가르쳐 주던 저 사람은 어디로 갔는가? 앞으로 남은 의문은 누구에게 물어야 하는가?" 그러나 성경은 그 어디에도 내시의 탄식이나 불안을 적어 넣지 않았습니다. 오히려 그 자리에 눈부신 한 단어를 새겨 넣습니다. "내시는 흔연히 길을 가므로 그를 다시 보지 못하니라."
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+'흔연히'라는 말은 기쁨에 겨워 가슴 벅차게 길을 떠났다는 뜻입니다. 어떻게 그럴 수 있었을까요? 빌립은 떠나갔지만, 빌립이 가리켜 준 예수 그리스도는 내시의 심장 한가운데 영원히 살아남았기 때문입니다. 빌립은 훌륭한 길잡이였지만, 결국 목적지가 아닌 이정표에 불과했습니다. 이정표는 길을 가리킨 후 뒤편으로 사라져야 비로소 여행자가 온전히 제 갈 길을 갈 수 있습니다. 가르쳐 준 입은 사라졌으나, 전해진 이름은 남아 있었습니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+오늘 우리에게도 가르쳐 준 사람이 사라진 쓸쓸한 자리가 있습니다. 어릴 적 손잡고 기도해 주시던 부모님이 세상을 떠나셨거나, 영적 길잡이가 되어주던 스승과 멀어졌거나, 의지하던 공동체가 흩어져 버린 텅 빈 들판 위에 혼자 서 있을 때가 있습니다. 그때 우리는 홀로 남겨졌다는 두려움에 사로잡혀 발걸음을 멈추곤 합니다. 그러나 성경은 우리에게 억지로 기뻐하라고 다그치지 않습니다. 그저 혼자 남겨진 내시가 마침내 온전한 기쁨으로 제 갈 길을 걸어갔다는 사실을 담담히 보여줄 뿐입니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+안내자가 사라진 자리에서 비로소 한 인간의 진짜 신앙이 시작됩니다. 사람의 소리가 그친 광야에서 우리는 내 안에 새겨진 그 한 이름의 무게를 온전히 느끼게 됩니다. 손에 쥔 모든 국고와 장부를 다시 펼쳐야 할 고단한 일상으로 돌아가는 길이지만, 이제 내시는 예전의 그 사람이 아닙니다. 그는 결핍을 두려워하는 권력자가 아니라, 천국의 기쁨을 소유한 자유로운 순례자가 되었습니다.
+</p>
+<p style="line-height: 1.85; font-size: 1.05rem; margin-bottom: 1.5rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+어쩌면 오늘 우리가 마주한 삶의 광야도 이와 같을지 모릅니다. 읽다가 걸려 넘어진 고통스러운 삶의 한 구절, 풀리지 않는 수많은 의문, 그리고 곁에 아무도 없다는 외로움이 우리를 엄습할 때가 있습니다. 그러나 기억하십시오. 내가 걸려 멈추어 선 바로 그 자리에서 복음은 다시 시작됩니다. 사람의 설명은 언젠가 멎고 친절한 길잡이들도 언젠가 떠나가겠지만, 우리 영혼을 적신 은혜의 물과 십자가 예수라는 한 이름은 결코 지워지지 않습니다. 그러므로 오늘, 가르쳐 준 입이 사라진 텅 빈 길 위에서도 고개를 들고 다시 한 걸음을 내딛으십시오. 그 이름 하나 품고 걷는 그 길 끝에서, 우리 또한 흔연히, 가슴 벅찬 기쁨으로 우리만의 순례길을 완주하게 될 것입니다.
+</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 13편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

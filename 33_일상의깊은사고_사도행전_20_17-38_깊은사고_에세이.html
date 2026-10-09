@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>알지 못하는 내일로 걸어갈 때 남겨지는 것들</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 33편 &middot; 사도행전 20:17-38</span>
+      <h1>알지 못하는 내일로 걸어갈 때 남겨지는 것들</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 늘 내일을 알고 싶어 합니다. 내가 선택한 이 길이 과연 평탄할지, 지금 쏟아붓는 수고가 어떤 열매를 맺을지, 다가올 시간 속에 어떤 위험이 도사리고 있는지 미리 확인하고 안심하고 싶어 합니다. 미래를 내다보는 혜안이야말로 지혜의 척도라 믿고, 모든 위험을 예측하고 통제하려 애쓰는 것이 현대인의 본능이기도 합니다. 그러나 인생의 가장 숭고한 걸음들은 대개 모든 것이 보장된 안전한 꽃길에서 시작되지 않습니다. 오히려 한 치 앞도 내다볼 수 없는 짙은 안개 속에서, 그럼에도 불구하고 걸어야만 하는 거역할 수 없는 부르심에 온 삶을 맡길 때 비로소 시작됩니다.</p>
+<p>사도 바울의 밀레도 고별 설교는 바로 그 불확실성의 한복판에서 피어난 가장 장엄하고도 애절한 고백입니다. 예루살렘을 향해 급히 배를 몰던 그는 에베소의 장로들을 바닷가 항구 밀레도로 불러 모읍니다. 그곳에서 그는 자신의 지나온 삼 년을 돌아보고, 앞으로 닥쳐올 시간을 응시합니다. 그런데 그가 내놓는 미래의 청사진은 우리가 흔히 기대하는 승리나 성공의 약속이 아니었습니다. 그는 너무나 담담하게, 그러나 듣는 이들의 심장을 먹먹하게 만드는 고백을 털어놓습니다. "보라 이제 나는 심령에 매임을 받아 예루살렘으로 가는데, 저기서 무슨 일을 만날는지 알지 못하노라."</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">알지 못하는 길을 향해 이미 매여 걷는 발걸음</h3>
+<p>바울이 고백한 "매임을 받았다"는 말은 결코 체념이나 마지못한 굴복이 아닙니다. 원어의 깊은 결을 들여다보면, 그것은 '이미 묶여 있는 상태'를 의미합니다. 세상 사람들은 자신이 무엇을 만나게 될지 똑똑히 알아야만 비로소 발을 뗍니다. 보장된 보상과 계산된 안전이 확인되어야 안심하고 걷습니다. 하지만 바울은 정반대의 길을 걷습니다. 그는 무슨 일이 기다리는지 전혀 알지 못합니다. 유일하게 그를 기다리고 있는 것은 '결박과 환난'이라는 성령의 증언뿐이었습니다.</p>
+<p>어떻게 환난이 기다린다는 사실을 알면서도, 구체적인 내일의 결과는 알지 못한 채 앞으로 나아갈 수 있을까요? 그것은 그가 이미 더 크고 거룩한 사랑에 묶여 있었기 때문입니다. 그의 발걸음을 이끄는 힘은 당장의 안락함이나 미래에 대한 완벽한 통제력이 아니었습니다. 자신을 부르시고 사명을 맡기신 분의 신실하심에 영혼이 완전히 매여 있었기에, 그는 다가올 고난 앞에서도 뒷걸음질 치지 않을 수 있었습니다.</p>
+<p>우리의 일상도 이와 다르지 않습니다. 우리는 매일 가족을 위해, 공동체를 위해, 혹은 양심과 소명을 위해 내일을 알 수 없는 길로 들어섭니다. 헌신과 희생의 길을 걷다 보면 '과연 이 길의 끝에 무엇이 있을까', '헛수고로 끝나지는 않을까' 하는 두려움이 엄습하곤 합니다. 그러나 참된 소명은 결과를 완벽히 계산해 둔 사람의 것이 아니라, 비록 내일의 형태는 알지 못할지라도 오늘 나를 붙드시는 사랑에 스스로를 묶을 줄 아는 사람의 것입니다. 바울의 걸음은 우리에게 묻습니다. 당신은 당신의 계획과 안락에 매여 있습니까, 아니면 당신을 이끄시는 거룩한 뜻에 기꺼이 매여 있습니까?</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">자기 것을 주장하지 않는 손과 거룩한 삼감</h3>
+<p>바울의 고별사에서 또 하나 가슴을 울리는 것은 그가 교회를 부르고 대하는 태도입니다. 그는 장로들에게 "하나님이 자기 피로 사신 교회를 보살피라"고 당부하며, 무엇보다 "너희 자신과 온 양 떼를 위하여 스스로 삼가라"고 간곡히 권면합니다. 그가 피땀 흘려 개척하고 삼 년 동안 눈물로 일구어낸 교회였지만, 그는 단 한 번도 그 공동체를 '자신의 업적'이나 '자기 소유'로 여기지 않았습니다. 그곳은 오직 십자가의 보혈이라는 가장 값비싼 대가를 치르고 사신 하나님의 것이었습니다.</p>
+<p>우리는 무언가에 온 마음을 쏟아부을수록 그것을 자기 것으로 독점하려는 은밀한 유혹에 빠지기 쉽습니다. 내가 세운 사역, 내가 가꾼 일터, 내가 키운 자녀와 가정을 향해 '내가 이만큼 헌신했으니 내 마음대로 할 권리가 있다'는 보상 심리가 고개를 듭니다. 그러나 헌신이 권력으로 변질되는 바로 그 순간, 거룩했던 사랑은 변색되고 공동체는 상처를 입습니다. 바울은 이 위험을 꿰뚫어 보았습니다. 그렇기에 그는 자신이 떠난 뒤 닥쳐올 이리의 위험을 경고하면서도, 가장 먼저 지도자들에게 '스스로를 삼가라'고 명령합니다. 삼간다는 것은 자신의 경계를 지키고, 스스로를 낮추며, 내 손으로 쥐려던 권리를 내려놓는 거룩한 절제입니다.</p>
+<p>그 절제는 그의 투박한 두 손에서 가장 웅변적으로 증명되었습니다. 바울은 청중들을 향해 자신의 손을 들어 보이며 말합니다. "내가 아무의 은이나 금이나 의복을 탐하지 아니하였고, 여러분이 아는 바와 같이 이 손으로 나와 내 동행들의 쓸 것을 감당하였습니다." 그의 손은 특권을 누리던 종교 지도자의 매끄러운 손이 아니었습니다. 거친 천막을 꿰매느라 굳은살이 박이고 상처투성이가 된 노동자의 손이었습니다. 그는 말로만 희생을 가르치지 않고, 땀 흘려 일하는 손으로 약한 자들을 돕는 모범을 보였습니다. "주는 것이 받는 것보다 복이 있다"는 주님의 말씀을 자신의 닳아빠진 손으로 삶 속에 번역해 낸 것입니다. 참된 권위는 큰 목소리나 높은 자리에서 나오지 않고, 섬김의 굳은살이 박인 정직한 손에서 피어납니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말이 멈춘 자리에 남겨진 무릎과 뜨거운 배웅</h3>
+<p>바울의 길고 간절했던 설교가 마침내 끝이 났을 때, 밀레도 바닷가에는 무거운 침묵과 함께 말보다 더 진한 몸의 언어가 펼쳐집니다. 성경은 그 순간을 한 편의 흑백 영화처럼 생생하게 기록합니다. 바울은 말을 마치자마자 그 자리에 무릎을 꿇고 사람들과 함께 기도합니다. 그러자 모든 사람이 참았던 슬픔을 터뜨리며 크게 울기 시작합니다. 그들은 앞다투어 바울의 목을 끌어안고 입을 맞추며 떨어질 줄 모릅니다.</p>
+<p>그들을 그토록 아프게 한 것은 "다시 내 얼굴을 보지 못할 것"이라는 바울의 마지막 작별 인사였습니다. 이제 이 배를 타면 다시는 살아서 서로를 마주 볼 수 없다는 냉혹한 현실 앞에서도, 그들은 원망하거나 절망에 주저앉지 않았습니다. 대신 그들은 흐르는 눈물을 닦으며 바울을 배가 떠나는 바닷가까지 함께 걸어가 배웅합니다.</p>
+<p>이 작별의 장면에는 허황된 위로나 감상적인 포장이 없습니다. 본문은 이별의 슬픔을 억지로 부인하지 않고, 헤어짐의 통증을 고스란히 담아냅니다. 그러나 동시에 그들의 사랑은 말의 차원을 넘어 무릎과 목, 눈물과 입맞춤, 그리고 끝까지 곁을 지키는 '배웅'이라는 구체적인 몸의 움직임으로 완성됩니다. 그리스도인의 사랑은 말이 다 닳아 없어진 자리에서도 끝내 남아 있는 온기입니다. 비록 이 땅에서의 만남은 이것으로 끝일지라도, 함께 꿇었던 무릎의 기억과 서로를 부둥켜안았던 포옹의 체온은 그 어떤 박해와 환난 속에서도 흔들리지 않을 거룩한 흔적으로 남게 됩니다.</p>
+<p>오늘 우리에게도 떠나보내야 할 소중한 순간들이 있고, 기약 없는 이별 앞에 가슴을 쥐어짜는 날들이 있습니다. 내일이 어떻게 펼쳐질지 도무지 알 수 없어 밤잠을 설치고, 내가 쏟은 정성과 헌신이 모래성처럼 흩어질까 두려울 때가 있습니다. 그럴 때 밀레도 바닷가에 남겨진 바울과 사람들의 모습을 떠올려 봅니다.</p>
+<p>내일을 알지 못해도 좋습니다. 우리를 부르신 그 신실하신 손에 내 영혼이 이미 매여 있다면 족합니다. 내 손으로 움켜쥐려 하지 않고, 땀 흘려 섬기는 거친 손으로 오늘 내게 맡겨진 이들을 아끼고 삼갈 수 있다면 그것으로 충분합니다. 그리고 마침내 모든 말이 멈추는 순간, 기꺼이 무릎을 꿇고 서로의 목을 끌어안으며 마지막까지 곁을 지켜주는 그 묵묵한 배웅의 사랑이 우리 안에 있다면, 우리는 어떤 내일 앞에서도 결코 흔들리지 않고 담대히 걸어갈 수 있을 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 33편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

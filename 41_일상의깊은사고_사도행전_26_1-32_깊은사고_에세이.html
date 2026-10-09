@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>쇠사슬에 묶인 손이 건네는 가장 자유로운 소망</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 41편 &middot; 사도행전 26:1-32</span>
+      <h1>쇠사슬에 묶인 손이 건네는 가장 자유로운 소망</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생의 법정 앞에 서 본 적이 있습니까. 우리는 저마다 손목을 옥죄는 현실의 결박을 안고 살아갑니다. 풀리지 않는 삶의 무게, 지나온 날들의 뼈아픈 과오와 후회, 그리고 남들에게 쉽게 털어놓지 못할 결핍과 고단함이 때로는 무거운 쇠사슬처럼 우리의 발걸음을 붙듭니다. 사도행전 26장에 이르면, 당대 최고의 권력자들인 아그립바 왕과 총독 베스도, 그리고 고위 관료들이 화려한 위엄을 뽐내며 앉아 있는 법정 한가운데로 초라한 죄수 한 사람이 걸어 나옵니다. 바로 사도 바울입니다. 그러나 그는 위축되거나 구차하게 목숨을 구걸하지 않습니다. 쇠사슬이 짤랑이는 소리 속에서 그는 조용히 손을 들어 담담하게 자기 삶의 이야기를 풀어놓기 시작합니다. 손은 비록 차디찬 쇠사슬에 묶여 있었지만, 그가 길어 올리는 고백과 영혼의 울림은 그 자리에 앉은 그 어떤 군왕의 금관보다 눈부시게 빛나고 있었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">거대한 집단의 그늘 뒤로 숨지 않는 정직함</h3>
+<p>바울은 자신의 부끄러운 과거를 고백할 때 놀라울 정도로 비겁한 변명을 늘어놓지 않습니다. 스데반을 죽음으로 몰아넣고 수많은 성도를 감옥에 가두었던 어두운 기억을 회상하면서, 그는 “당시 교권과 제도가 시킨 일이었다”거나 “시대의 광기 때문이었다”며 거대한 집단 뒤로 숨지 않습니다. 헬라어 성경 원문을 보면 박해를 묘사하는 모든 동사의 주어는 오직 ‘나’라는 한 사람으로 적혀 있습니다. “내가 행하였고, 내가 가두었으며, 내가 형벌하였고, 내가 핍박하였다.” 그는 심지어 성도들을 사형에 처할 때 자신이 투표함에 작은 돌 하나를 집어던졌던(κατήνεγκα ψῆφον) 그 구체적인 손의 동작 하나까지 자기 몫의 책임으로 온전히 헤아립니다.</p>
+<p>우리는 일상 속에서 얼마나 자주 집단의 익명성 뒤로 비겁하게 숨곤 합니까. “조직의 관행이었으니까”, “남들도 다 그렇게 사니까”, “위에서 시킨 일이니까”라는 핑계로, 내가 올린 서류 한 줄, 내가 찍은 도장 하나, 내가 무심코 누군가의 가슴에 던진 차가운 말 한마디의 무게를 슬그머니 지워버리려 합니다. 그러나 바울이 보여준 영성의 출발점은 정직함이었습니다. 대제사장의 권한을 빌려왔을망정 내 손이 움직인 그 한 칸의 책임마저 타인에게 떠넘길 수는 없다는 통렬한 자기 직시였습니다. 장부의 한 칸, 서명 한 줄도 결국 누군가의 살갗에 닿고 누군가의 끼니와 거처를 흔드는 일임을 아는 것, 나의 죄와 허물을 시대의 탓으로 돌리지 않고 오롯이 내 주어로 고백하는 용기에서 참된 회복과 자유가 시작됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">여럿의 아픔을 홀로 품어 안으시는 음성</h3>
+<p>그 정직한 참회의 한가운데에서 바울은 다메섹 도상에서 마주했던 신비로운 음성을 증언합니다. 한낮의 태양보다 밝은 빛 가운데 들려온 소리는 이러했습니다. “사울아 사울아, 네가 어찌하여 나를 핍박하느냐.” 사울이 잡아 가두고 피눈물 흘리게 했던 이들은 이름 없는 갈릴리의 무명 성도들이었고, 골방에서 숨죽여 기도하던 연약한 사람들이었습니다. 그들은 수많은 ‘여럿’이었습니다. 그런데 하늘에서 울려 퍼진 음성의 주인은 그 여럿의 고통을 결코 남의 일로 여기지 않으셨습니다. “나는 네가 핍박하는 예수라.”</p>
+<p>이 고백은 가슴을 먹먹하게 만듭니다. 힘없는 성도들이 길바닥에서 흘린 피와 차디찬 감옥에서 삼킨 눈물을, 주님은 숫자로 환산되는 타인의 아픔으로 두지 않으시고 온전히 당신 한 분의 상처로 껴안으신 것입니다. 약한 자가 당한 매질을 당신의 살갗에 닿은 아픔으로 받으시고, 슬퍼하는 이들의 신음을 당신의 고통으로 동일시하시는 사랑입니다. 우리는 종종 이웃의 고통을 통계 수치나 먼 이야기로 소비하곤 합니다. 그러나 하나님은 세상의 가장자리에서 짓밟힌 지극히 작은 자 하나의 눈물을 당신 자신의 눈물로 받으십니다. 곁에서 울고 있는 이의 아픔을 내 아픔으로 품어주는 일, 고통받는 자 곁에 묵묵히 서 계시는 그 음성을 기억하는 것이야말로 메마른 세상 속에서 그리스도인이 지녀야 할 진정한 긍휼의 온도입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">결박된 손으로 건네는 가장 눈부신 축복</h3>
+<p>바울의 열정적인 증언을 듣던 아그립바 왕이 “네가 적은 말로 나를 권하여 그리스도인이 되게 하려 하는도다”라며 냉소 섞인 거리를 둘 때, 바울은 인류 역사상 가장 고결하고 눈부신 한마디를 남깁니다. “말이 적으나 많으나 당신뿐 아니라 오늘 내 말을 듣는 모든 사람도 다 이렇게 결박한 것 외에는 나와 같이 되기를 하나님께 원하나이다.”</p>
+<p>자신을 조롱하고 심문하는 이들을 향해 쇠사슬에 묶인 그 앙상한 손을 활짝 펴 들며 건네는 영혼의 소원(Εὐξαίμην)이었습니다. “내가 겪고 있는 이 수치스러운 사슬과 결박은 빼고, 내 안을 가득 채우고 있는 부활의 생명과 구원의 기쁨, 하늘의 평안만큼은 당신들도 전부 누리기를 원합니다.” 비단옷을 입고 보좌에 앉아 있으나 탐욕과 두려움이라는 보이지 않는 결박에 매여 있던 권력자들에게, 비록 몸은 쇠사슬에 묶였으나 영혼만은 티 없이 맑고 자유로웠던 한 죄수가 건네는 지극한 사랑과 축복이었습니다.</p>
+<p>성경은 이 감동적인 장면 뒤에 손쉬운 기적이나 해피엔딩을 억지로 덧붙이지 않습니다. 아그립바와 베스도는 바울의 무죄를 인정하면서도 “황제에게 상소하지만 않았어도 놓일 수 있었을 텐데”라는 공허한 말만 남긴 채 자리를 떠납니다. 바울의 손목에 감긴 쇠사슬은 그날 풀리지 않았습니다. 성경은 그가 여전히 묶인 채로 로마를 향해 나아가는 그 결박의 빈자리를 정직하게 비워 둡니다.</p>
+<p>우리의 삶도 그럴 때가 있습니다. 간절히 기도하고 온 힘을 다해 성실히 살아가도, 내 삶을 옥죄는 질병의 사슬, 경제적인 결박, 오해와 고단함의 매듭은 단번에 풀리지 않곤 합니다. 그러나 성경이 증언하는 신앙의 신비는, 결박이 풀려야만 비로소 자유로워지는 것이 아니라는 사실에 있습니다. 내 손목에 여전히 차가운 사슬이 감겨 있을지라도, 원망과 비탄에 갇히는 대신 내 흉터 너머로 타인의 영혼을 축복할 수 있는 마음. 그것이야말로 세상의 어떤 감옥과 권력도 가둘 수 없는 참된 영혼의 자유입니다. 비록 손은 묶여 있을지라도, 사랑과 소망을 잃지 않는 한 우리는 이미 가장 눈부신 하늘의 자유를 살아가고 있는 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 41편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

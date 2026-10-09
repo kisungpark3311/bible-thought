@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>바닷가의 무릎과 풀리지 않는 짐 사이에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 34편 &middot; 사도행전 21:1-16</span>
+      <h1>바닷가의 무릎과 풀리지 않는 짐 사이에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    살다 보면 온 힘을 다해 앞으로 달려가고 싶지만, 보이지 않는 닻에 걸린 듯 제자리에 멈춰 서야만 하는 시간들이 있습니다. 마음은 이미 저 먼 목적지에 가 닿아 있는데, 발걸음은 뜻하지 않은 항구의 모래밭에 묶여 한 걸음도 떼지 못할 때 우리는 깊은 조급함과 자책에 휩싸이곤 합니다. 내가 무능해서 뒤처진 것은 아닌지, 이번에도 길을 잘못 든 것은 아닌지 스스로를 다그치며 마음에 생채기를 내기도 합니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    그러나 사도 바울의 마지막 예루살렘 여정을 조용히 따라가다 보면, 우리의 멈춤과 지체가 결코 버려진 시간이 아니었음을 깨닫게 됩니다. 사도행전 21장의 여정은 쉼 없이 팽팽하게 바람을 안고 달리는 배의 기록이 아닙니다. 오히려 뜻밖의 자리에서 닻을 내리고 무거운 짐을 풀며, 거친 바닷가 모래밭에 무릎을 대었던 지극히 인간적이고도 거룩한 멈춤들의 연속이었습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">짐을 풀어야 떠날 수 있기에 머무는 날들</h3>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    배가 두로에 닿았을 때, 누가는 아주 소박하고 물리적인 이유 하나를 기록해 둡니다. "거기서 배가 짐을 풀려 함이러라." 바울 일행이 그곳에서 이레 동안 머물러야 했던 까닭은 거창한 영적 결단 때문이 아니었습니다. 배 밑바닥에 실린 무거운 화물들을 하나하나 육지로 부려놓아야 하는 일상의 노동과 물리적 시간이 필요했기 때문입니다. 그 짐이 다 풀려 배가 비워지기 전까지는, 사명에 불타는 사도라 할지라도 바다로 다시 나아갈 수 없었습니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    우리의 일상도 이와 다르지 않습니다. 서두르고 싶지만 거래처의 장부가 닫히지 않고, 병실의 검사 결과가 나오지 않으며, 풀리지 않은 관계의 매듭과 삶의 무거운 짐들이 우리를 한자리에 붙잡아 둘 때가 있습니다. 세상은 그 시간을 '지체'라 부르고 '정체'라 질책하지만, 성경은 그 멈춤을 결코 누군가의 결함이나 인생의 공백으로 적지 않습니다. 두로에서의 이레, 돌레마이에서의 하루, 가이사랴에서의 여러 날처럼, 성경은 머물렀던 날수마다 정직하고 소중하게 숫자를 달아 기억합니다. 지금 내가 머물러 있는 이 답답한 자리 역시 잃어버린 시간이 아니라, 내 삶의 묵은 짐들이 하나님의 손길 아래 풀려나고 있는 정직한 과정인 것입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말이 멈추는 자리에서 모래밭에 닿는 무릎</h3>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    두로에서 이레를 보낸 후 다시 길을 떠날 때, 참으로 뭉클하고 아름다운 풍경이 펼쳐집니다. 성도들이 그들의 아내와 어린아이들의 손을 잡고 성문 밖 바닷가까지 바울을 배웅하러 나온 것입니다. 그리고 거친 파도 소리가 철썩이는 백사장 모래밭에서, 그들은 다 함께 무릎을 꿇고 기도를 올립니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    어른들의 비장한 이별의 자리에 어린아이들의 조그만 발자국과 아내들의 눈물이 함께 섞여 있었습니다. 그곳에는 화려한 신학적 웅변이나 유려한 작별의 연설이 없었습니다. 다가올 위험과 이별의 슬픔 앞에서 말은 한없이 초라해졌고, 말이 멈춘 그 자리에서 사람들은 모래밭에 무릎을 대었습니다. 선지자 아가보가 말 대신 바울의 허리띠로 자기 손발을 묶어 보였듯, 삶의 거대한 파도 앞에서 진실한 믿음은 종종 현란한 말이 아니라 겸손한 몸의 태도로 증명됩니다. 바닥이 있는 곳이라면 어디서나 무릎은 닿을 수 있습니다. 모래가 묻고 바닷바람이 뺨을 스쳐도, 내 가장 연약한 무릎을 바닥에 내려놓는 순간 그곳은 곧 거룩한 제단이 됩니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">눈물의 만류를 넘어 주의 뜻에 기대는 침묵</h3>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    가이사랴에 이르렀을 때, 예루살렘에서 기다리는 결박과 환난의 소식을 들은 사람들은 울음을 터뜨렸습니다. "예루살렘으로 올라가지 마십시오." 그 만류는 믿음이 없어서가 아니었습니다. 바울을 너무나 아끼고 사랑했기에 터져 나온 절절한 애통이었습니다. 바울 역시 "너희가 어찌하여 울어 내 마음을 상하게 하느냐"라며 그들의 눈물에 가슴이 미어지는 고통을 토로합니다. 사랑하기에 막아서는 사람들과, 사랑하기에 죽음까지 각오하고 나아가려는 한 사람의 결단이 팽팽하게 맞부딪칩니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    성경은 놀랍게도 이 두 마음 중 누구의 손도 일방적으로 들어주지 않습니다. 누구의 말이 더 영적인지 가리지 않고, 그 아픈 사랑의 긴장을 고스란히 담아냅니다. 그리고 바울이 뜻을 굽히지 않자, 동역자들은 그를 비난하거나 억지로 꺾으려 하지 않았습니다. "우리가 주의 뜻대로 이루어지이다 하고 그쳤노라." 그들은 자신의 염려와 고집을 내려놓고 침묵을 택했습니다. 그것은 무기력한 포기가 아니라, 내 사랑의 한계를 인정하고 사랑하는 이를 온전히 주님의 손에 맡겨드리는 거룩한 이양(移讓)이었습니다. 말이 그친 그 깊은 고요 속에서, 그들은 다시 짐을 꾸려 바울과 함께 예루살렘으로 올라갑니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 20px; font-size: 1.05rem; color: #2c3e50; text-align: justify; word-break: keep-all;">
+    우리의 삶에도 수많은 말과 염려, 가로막는 장애물과 풀리지 않는 짐들이 얽혀 있습니다. 그러나 주님은 우리가 짐을 풀기 위해 머물러야 했던 서글픈 날들을 하나하나 세고 계시며, 우리가 파도치는 세상 한가운데서 눈물로 꿇었던 무릎을 기억하십니다. 오늘 내 뜻대로 상황이 움직이지 않고 가슴 먹먹한 지체가 찾아온다면, 조급함으로 자신을 괴롭히지 마십시오. 다만 무릎을 댈 모래밭을 찾고, 내 염려의 말을 그친 채 "주의 뜻대로 이루어지이다"라는 고요한 신뢰를 고백해 보십시오. 그 거룩한 침묵 끝에, 하나님께서는 마침내 우리를 당신이 예비하신 목적지로 온전히 인도하실 것입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 34편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

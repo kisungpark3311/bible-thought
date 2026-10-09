@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>위협을 거두어 달라는 대신, 마주 설 담대함을 구하는 밤</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 05편 &middot; 사도행전 4:1-31</span>
+      <h1>위협을 거두어 달라는 대신, 마주 설 담대함을 구하는 밤</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가다 보면 세상이라는 거대한 벽 앞에서 한없이 작아지는 순간을 마주합니다. 세상은 언제나 냉정한 눈금으로 우리를 측정합니다. 손에 쥔 학위, 이력서에 적힌 경력과 자격증, 사회적인 지위나 통장의 잔고 같은 것들로 한 사람의 가치와 발언의 무게를 매깁니다. 그 촘촘한 평가의 그물망 앞에서 우리는 자주 주눅이 들고, 뜻밖의 위협이나 억울한 처지에 놓일 때면 가슴을 쥐어짜며 기도하곤 합니다. "제발 이 고통스러운 상황이 지나가게 해 주십시오. 저 차가운 현실의 벽을 내 눈앞에서 치워 주십시오." 위협이 사라져야만 비로소 숨을 쉴 수 있을 것 같은 무력감이 우리를 짓누르기 때문입니다.</p>
+<p>이천 년 전, 예루살렘의 한 차가운 법정에 섰던 두 사람의 처지도 이와 다르지 않았습니다. 나면서부터 걷지 못해 성전문 곁에 주저앉아 구걸하던 마흔 살의 남자를 일으켜 세운 베드로와 요한이었습니다. 그 기적은 많은 이들에게 희망을 주었지만, 성전을 장악하고 있던 권력자들에게는 자신들의 기득권을 뒤흔드는 불온한 사건이었습니다. 제사장들과 성전 경비대장, 사두개인들은 날이 저물자 두 사도를 가두었고, 다음 날 아침 날 선 심문이 시작되었습니다. 감옥에서 보낸 그 하룻밤 동안 두 사도의 마음속을 스쳐 지나갔을 수많은 두려움과 불안을 우리는 짐작할 수 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">세상의 눈금과 초라한 자격증 너머에서</h3>
+<p>이튿날 열린 최고 법정 공회에서 권력자들이 두 사도를 보며 가장 먼저 느낀 것은 당혹감이었습니다. 갈릴리 촌구석 출신의 어부들이 권력의 서슬 퍼런 위압감 앞에서도 기탄없이, 한 치의 흐트러짐 없이 자신들의 믿음을 증언했기 때문입니다. 성경은 공회가 그들을 바라보며 '본래 학문 없는 범인(凡人)'으로 여겼다고 기록합니다. 글을 제대로 배우지 못한 무학자(아그람마토이)이자 공인된 전문 지식을 갖추지 못한 평범한 사람(이디오타이)이라는 낙인이었습니다. 세상의 잣대는 그때나 지금이나 참으로 냉정합니다. 어떤 자격을 갖추었는지, 어디에 속한 사람인지를 따져 그 사람의 말에 귀를 기울일 가치가 있는지를 결정합니다.</p>
+<p>그러나 그 어떤 화려한 권위와 궤변으로도 부인할 수 없는 하나의 물증이 법정에 함께 서 있었습니다. 바로 평생을 바닥에 주저앉아 있다가 이제는 온전한 두 발로 사도들 곁에 나란히 서 있는 마흔 살의 사내였습니다. 사도행전은 그 병 나은 사람이 그들과 "함께 서 있는 것을 보고 힐난할 말이 없는지라"라고 적습니다. 베드로는 유창한 수사학이나 복잡한 철학적 논증을 펼치지 않았습니다. 다만 하나님이 한 사람의 상처 입은 육체에 행하신 그 분명한 생명의 회복을 가리켰을 뿐입니다. 세상의 논리가 만들어 낸 차가운 눈금은, 하나님이 연약한 인생 한가운데 새겨 넣으신 살아있는 은혜의 증거 앞에서 힘없이 무너져 내립니다.</p>
+<p>우리의 삶도 마찬가지입니다. 우리는 종종 세상이 요구하는 자격증이나 스펙이 부족하다는 이유로 위축됩니다. 내가 가진 배경이 초라해서, 내 말에 실릴 무게가 없어서 침묵을 강요당한다고 느낍니다. 하지만 하나님께서 우리에게 원하시는 증거는 세상의 타이틀이 아닙니다. 깨어지고 주저앉았던 내 일상이 하나님의 자비로 다시 일어섰다는 그 삶의 흔적, 고단한 시간과 상처 속에서도 여전히 그분 곁에 묵묵히 버텨 서 있는 우리의 존재 자체가 세상이 반박할 수 없는 가장 강력한 증언이 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">위협을 치워달라는 대신 담대함을 구하는 기도</h3>
+<p>명백한 표적 앞에서 어찌할 바를 모르던 공회는 결국 타협책을 내놓습니다. "도무지 예수의 이름으로 말하지도 말고 가르치지도 말라." 그들은 처벌할 명분을 찾지 못해 두 사도를 석방하면서도, 끝내 서슬 퍼런 위협을 덧붙였습니다. 풀려남의 안도와 함께 여전히 목을 죄어오는 현실의 공포가 공존하는 상태였습니다. 세상은 결코 쉽게 물러서지 않습니다. 한 번의 고비를 넘겼다고 해서 삶의 위협이 완전히 사라지는 것은 아닙니다. 오히려 더 교묘하고 무거운 침묵의 압박이 일상을 옭아매곤 합니다.</p>
+<p>풀려난 사도들이 찾아간 곳은 동료들이 모여 있던 공동체의 기도 자리였습니다. 그곳에서 그들은 하늘을 지으신 대주재 하나님을 부르며 시편 2편의 노래를 소리 내어 읊기 시작했습니다. "세상의 군왕들이 나서며 관원들이 함께 모여 주와 그 그리스도를 대적하도다." 놀랍게도 성경 기자는 시편 속에 적힌 대적들의 '모임'을 뜻하는 낱말(쉬네크테산)을, 헤롯과 빌라도와 유대 백성이 예수를 대적하여 한자리에 '모였다'는 자신들의 역사적 비극을 고백할 때 철자 하나 틀리지 않고 똑같이 사용합니다. 옛 성경의 언어가 바로 오늘 내가 통과하고 있는 가쁜 숨과 억울한 눈물의 현실을 정확하게 비추어 주는 등불이 된 것입니다.</p>
+<p>그리고 이어진 그들의 간구는 우리의 얄팍한 기도를 부끄럽게 만듭니다. 그들은 "주여, 저들의 입을 틀어막아 주옵소서", "우리를 협박하는 저 차가운 권력을 당장 꺾어 주옵소서"라고 구하지 않았습니다. 그들의 기도는 이렇게 이어집니다. "주여 이제도 저희의 위협함을 하감하옵시고, 또 종들로 하여금 담대히 하나님의 말씀을 전하게 하여 주옵시며." 그들은 위협을 없애 달라고 조르지 않았습니다. 하나님께서 저 위협을 굽어보고 계심을 신뢰하면서, 그 위협의 한복판에 그대로 선 채로 진실을 말할 수 있는 담대함(파레시아)을 구했을 뿐입니다. 위협이 사라진 안전한 온실을 바란 것이 아니라, 거친 눈보라 속에서도 꺾이지 않는 영혼의 담대함을 간청한 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">흔들리는 것은 세상이 아니라 우리의 심장이어야 하기에</h3>
+<p>기도가 끝나자 어떤 일이 일어났습니까? 본문은 모인 곳이 진동하고 무리가 다 성령이 충만하여 담대히 하나님의 말씀을 전했다고 증언합니다. 성경은 공회의 위협이 하루아침에 안개처럼 걷혔다고 말하지 않습니다. 사도들을 감시하고 억압하던 권력의 눈초리는 여전히 성전 골목마다 번뜩이고 있었습니다. 세상은 단 한 치도 변하지 않았고, 그들이 딛고 서 있는 현실의 칼바람도 조금도 잦아들지 않았습니다. 변한 것은 세상이 아니라, 그 가혹한 현실을 마주 대하는 사람들의 마음이었습니다.</p>
+<p>땅이 흔들리고 성령의 충만함을 받는 것은 하늘로부터 주어지는 거룩한 은혜였습니다. 그러나 그렇게 은혜를 덧입은 사람들은 가만히 주저앉아 환상에 머물지 않았습니다. 그들은 제 발로 일어나 다시 세상을 향해 걸어 나갔고, 침묵을 강요하는 권력자들의 위협 앞에서 다시금 진리의 말씀을 전하기 시작했습니다. 흔들린 것은 그들이 발을 딛고 있던 바닥이었고, 채워진 것은 그들의 상한 심장이었습니다. 그리고 말하는 것은 다시 그들의 몫이었습니다. 하늘의 응답은 사람의 걸음을 지우지 않고, 오히려 두려움에 떨던 발걸음에 새로운 호흡과 용기를 불어넣어 줍니다.</p>
+<p>참된 담대함은 고난이 말끔히 사라진 평화로운 날에 찾아오지 않습니다. 나를 위축시키는 수많은 세상의 소리와 불안의 그림자가 여전히 짙게 드리워져 있을 때, 그것을 다 알고 계시는 하나님 앞에 무릎을 꿇는 사람만이 그 담대함을 선물로 받습니다. "우리는 보고 들은 것을 말하지 아니할 수 없다"고 고백했던 사도들의 외침처럼, 우리 역시 각자의 일상이라는 법정 한가운데 서 있습니다. 굳이 세상의 자격증을 손에 쥐지 못했어도, 내 삶을 붙들고 계신 하나님의 손길을 기억한다면 우리는 위협 앞에서 물러서지 않을 수 있습니다. 상황이 흔들리기를 바라기 전에, 먼저 하늘의 위로로 내 심장이 거룩하게 진동하기를 구할 때, 우리는 비로소 오늘 하루를 살아낼 담대한 용기를 얻게 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 05편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

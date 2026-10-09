@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>닫히지 않은 문장들의 밤, 곁에 서시는 분이 계시기에</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 37편 &middot; 사도행전 22:30~23:11</span>
+      <h1>닫히지 않은 문장들의 밤, 곁에 서시는 분이 계시기에</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가다 보면 아무리 앞뒤를 맞추어 보아도 도무지 인과관계가 설명되지 않는 날들을 만납니다. 묵묵히 정직하게 한 길을 걸어왔는데 느닷없이 날아든 오해의 화살에 가슴이 베이고, 최선을 다해 사랑하고 섬겼을 뿐인데 돌아오는 것은 차가운 외면이나 뜻밖의 결박일 때가 있습니다. 그런 날이면 우리는 몹시 조급해집니다. "도대체 내가 무엇을 잘못했을까?", "하나님은 왜 나를 이런 억울하고 캄캄한 막다른 골목에 던져두셨을까?" 우리는 서둘러 그 고통에 그럴듯한 이유를 붙이려 애쓰고, 어떻게든 이 난처한 상황을 말끔한 문장으로 서둘러 매듭짓고 싶어 합니다.</p>
+<p>그러나 성경이 보여주는 사도 바울의 예루살렘 체포 장면(사도행전 22장 30절~23장 11절)을 가만히 들여다보면, 성경은 우리의 이런 조급함에 놀라울 만큼 담담한 침묵으로 응답합니다. 바울이 겪는 억울한 결박과 수모 앞에서 성경은 그를 비장한 영웅으로 치켜세우지도 않고, 그가 품었을 복잡하고 비통한 심정에 대해 단 한 줄의 미사여구도 덧붙이지 않습니다. 그저 거친 현실 속에서 부딪치고 깨어지는 한 인간의 몸과, 끝내 말끔하게 닫히지 않은 채 열려 있는 사건들의 모순을 있는 그대로 펼쳐 보일 뿐입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">채찍과 결박 사이, 설명할 수 없는 삶을 묵묵히 견딜 때</h3>
+<p>바울을 신문하려던 로마 천부장은 당당하게 자신의 자격을 과시합니다. "나는 돈을 많이 들여 이 시민권을 얻었노라." 이에 바울은 군더더기 없는 담백한 네 마디로 답합니다. "나는 나면서부터로라." 세상의 장부에는 언제나 숫자로 계산되는 '값'만이 화려하게 기록됩니다. 천부장은 얼마나 많은 대가를 치렀는지를 내세우며 자신의 권리를 주장하지만, 바울은 거저 주어진 생래적 은혜 위에 조용히 서 있을 뿐입니다. 그러나 성경은 이 두 신분 가운데 어느 쪽이 더 우월한지 값을 매기거나 비교하지 않습니다. 세상은 언제나 우리가 치른 대가와 손에 쥔 스펙으로 사람의 가치를 저울질하지만, 성경은 그저 각자가 선 자리를 담담히 바라볼 뿐입니다.</p>
+<p>이어서 전개되는 장면에서 바울의 몸은 철저하게 '당하는 자리'에 놓입니다. 가죽줄로 결박당하고, 잔혹한 채찍질의 공포 앞에 서며, 종교 지도자들 앞에서는 말 한마디를 꺼냈다는 이유로 "그 입을 치라"는 모욕적인 손찌검을 당합니다. 흥미로운 사실은 바울을 채찍질하라 명할 때와, 그의 결박을 풀어주라 명할 때, 그리고 공회의 소동 속에서 그를 건져내어 영내로 끌어가라 명할 때 쓰인 성경의 명령 어형이 놀랍도록 똑같다는 점입니다. 로마 군대의 힘은 때로는 그를 위협하는 채찍이 되었다가, 때로는 그를 풀어주는 방패가 되기도 합니다. 본문은 군대를 온전한 보호자로 미화하지도 않고, 일방적인 가해자로만 낙인찍지도 않습니다.</p>
+<p>우리의 일상도 이와 얼마나 닮아 있습니까. 어제의 든든한 울타리가 오늘은 나를 가두는 벽이 되고, 나를 돕던 사람이나 환경이 한순간에 나를 옥죄는 가시로 돌변하기도 합니다. 성경은 바울이 그 고통을 얼마나 위대하게 참아냈는지 영웅담으로 포장하지 않습니다. 아픔을 당하는 몸을 있는 그대로 둘 뿐입니다. 때로는 삶에 찾아온 고난에 억지로 거창한 의미를 부여하려 애쓰지 않고, 그저 묵묵히 그 자리를 견뎌내는 것 자체가 가장 정직한 신앙의 걸음일 수 있음을 성경의 담담한 어조는 우리에게 일깨워 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">메워지지 않는 틈과 닫히지 않은 문장을 그대로 품는 용기</h3>
+<p>공회 앞에 선 바울의 입에서는 얼핏 모순처럼 보이는 두 가지 고백이 흘러나옵니다. 그는 처음에 "여러분 형제들아 오늘날까지 내가 범사에 양심을 따라 하나님을 섬겼노라"고 당당하게 선언하지만, 불과 몇 절 뒤에서는 대제사장을 알아보지 못해 분노를 터뜨린 후 "형제들아 나는 그가 대제사장인 줄 알지 못하였노라"고 자신의 무지와 한계를 인정합니다. 내 삶 전체를 하나님 앞에서 부끄럼 없이 살아왔다는 드높은 확신과, 눈앞의 상황조차 제대로 분별하지 못한 채 실수하고 마는 연약한 인간의 모습이 한 사람의 입에서 나란히 나온 것입니다. 성경은 이 두 고백 사이의 어색한 틈을 메우기 위해 변명하거나 그럴듯한 설명을 덧붙이지 않습니다. 그저 모순을 품은 인간의 모습을 있는 그대로 나란히 둔 채 다음 장면으로 걸어갑니다.</p>
+<p>이뿐만이 아닙니다. 바울의 부활 변론으로 인해 바리새인과 사두개인 사이에 격렬한 다툼이 일어났을 때, 바리새파 서기관들이 바울을 두둔하며 외쳤던 말은 충격적이게도 미완성으로 끝납니다. "혹 영이나 혹 천사가 저더러 말하였으면…." 원문 성경에서 이 문장은 뒷말(귀결절)이 뚝 끊긴 채 맺어지지 않습니다. 폭풍처럼 번져가는 소란과 아우성 속에서 문장은 끝내 닫히지 못했고, 사건은 어떤 명쾌한 결론도 내리지 못한 채 미완의 상태로 남겨졌습니다.</p>
+<p>우리는 살면서 모든 일에 분명한 마침표를 찍고 싶어 합니다. 흑과 백을 명확히 가르고, 내 안의 모순을 어떻게든 합리화해야만 안도합니다. 풀리지 않는 갈등이나 매듭짓지 못한 관계를 견디지 못해 불안해합니다. 그러나 성경은 닫히지 않은 문장, 메워지지 않는 인간의 연약한 틈을 억지로 봉합하려 하지 않습니다. 때로는 인생의 수많은 질문들에 당장 완벽한 정답을 내리지 못해도, 풀리지 않은 숙제를 마음에 품은 채 불완전한 나 자신을 너그럽게 받아들이는 성숙한 기다림이 필요합니다. 하나님은 우리가 모든 것을 빈틈없이 해명해 내는 모범생이 아니라, 모순과 한계 속에서도 그분 앞에 서 있는 진실한 순례자가 되기를 바라시기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">사방이 고요해진 깊은 밤, 곁에 서서 건네시는 “담대하라”</h3>
+<p>낮 동안의 고성과 아우성, 옷을 찢고 티끌을 날리던 격렬한 분노와 공회의 소동이 썰물처럼 빠져나간 뒤, 마침내 차가운 영내 감옥에 깊은 어둠이 찾아옵니다. 홀로 남겨진 바울의 마음은 어떠했을까요. 모욕당한 뺨의 화끈거림, 사방을 둘러싼 적의, 그리고 앞을 내다볼 수 없는 막막한 내일 앞에서 그는 깊은 외로움과 탈진을 마주했을 것입니다.</p>
+<p>바로 그 가장 캄캄하고 고요한 밤, 성경은 놀라운 한 장면을 우리에게 선물합니다. "그 날 밤에 주께서 바울 곁에 서서 이르시되 담대하라 네가 예루살렘에서 나의 일을 증거한 것 같이 로마에서도 증거하여야 하리라." 성경 기자는 이 긴박한 체포와 심문의 이야기 속에서 한 번도 주님의 이름을 전면에 내세우지 않다가, 세상의 모든 소음이 잦아든 가장 적막한 밤에 이르러서야 비로소 주님을 문장의 명확한 주어로 우뚝 세웁니다.</p>
+<p>바울은 공회 앞에서 그저 자신이 붙들고 살아온 신앙, 곧 '죽은 자들의 소망과 부활'이라는 진리를 증언했을 뿐이었습니다. 그런데 그 밤에 찾아오신 주님은 바울의 그 외로운 고투를 향해 "네가 예루살렘에서 나의 일을 증거했다"고 말씀하십니다. 바울이 겪은 오해와 고통, 그 모욕당한 입술과 묶인 몸으로 증언했던 부활의 소망을, 주님께서는 온전히 "나의 일", 곧 당신 자신의 일로 품어 안아 주신 것입니다. 세상은 바울을 죄수로 가두고 분란의 주동자로 몰아붙였지만, 주님은 그의 눈물겨운 씨름을 당신의 역사 한가운데로 받아들이셨습니다.</p>
+<p>주님은 바울에게 낮 동안 겪었던 억울한 채찍질을 없던 일로 되돌려주겠다고 약속하지 않으셨습니다. 공회의 억지 고발을 당장 통쾌하게 뒤집어엎어 주지도 않으셨습니다. 부서진 현실은 여전히 그대로였고, 내일의 운명 역시 불투명했습니다. 그러나 주님은 홀로 웅크린 바울의 곁에 바짝 다가와 서셨습니다. 그리고 단 한마디의 명령을 건네십니다. "담대하라." 이 한마디는 단순한 구호를 넘어, "내가 지금 네 곁에 서 있으니, 이 어둠 속에서도 너는 결코 혼자가 아니다"라는 신실한 임재의 선언이었습니다.</p>
+<p>우리의 삶에도 낮 동안의 소란과 갈등이 휩쓸고 지나간 뒤, 홀로 덩그러니 남겨지는 외롭고 시린 밤이 찾아옵니다. 여전히 삶의 문제들은 해결되지 않았고, 억울한 오해는 풀리지 않았으며, 내 인생의 문장은 미완성인 채 뚝 끊겨버린 것만 같은 막막한 순간들 말입니다. 그러나 기억하십시오. 세상의 화려한 조명이 꺼지고 모든 이들이 나를 떠나간 그 깊은 밤이야말로, 주님이 내 곁에 가장 가까이 다가와 서시는 시간입니다. 세상은 우리의 결박과 상처를 보며 실패라 부를지 몰라도, 주님은 주를 향한 우리의 작은 신음과 눈물겨운 인내를 "나의 일"이라 부르시며 당신의 품에 보듬어 안아 주십니다.</p>
+<p>그러므로 아직 닫히지 않은 인생의 문장 앞에서 조급해하거나 절망하지 맙시다. 설명되지 않는 고난을 억지로 짜맞추려 하지 않아도 괜찮습니다. 오늘 밤, 침묵 속에 내 곁에 다가와 조용히 등을 토닥이시며 "담대하라" 말씀하시는 그분의 온기를 느낄 수 있다면, 우리는 다시 내일을 살아갈 힘을 얻습니다. 그 든든한 임재를 힘입어, 우리는 아직 끝나지 않은 삶의 여백 위에 믿음이라는 또 하나의 담대한 발걸음을 새겨 넣게 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 37편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

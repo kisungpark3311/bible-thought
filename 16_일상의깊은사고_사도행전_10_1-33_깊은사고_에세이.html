@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>하나님이 깨끗하게 하신 삶에는 함부로 그을 수 없는 경계가 있다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 16편 &middot; 사도행전 10:1-33</span>
+      <h1>하나님이 깨끗하게 하신 삶에는 함부로 그을 수 없는 경계가 있다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 종종 거룩함이란 티끌 하나 없는 완벽한 순종에서만 피어난다고 믿습니다. 하늘의 음성이 들려오면 단 한 치의 망설임도 없이 모든 것을 내려놓고 일어서는 결단, 의심 없는 확신만이 참된 믿음의 증거라고 생각하기 쉽습니다. 그러나 성경이 보여주는 사람들의 기도는 뜻밖에도 몹시 허기지고 고단하며, 때로는 당혹스러운 거절과 주저함으로 얼룩져 있습니다. 정오의 뙤약볕이 내리쬐는 옥상 위에서 시장함에 지쳐 비몽사몽간에 엎드린 한 어부 출신의 사도와, 식민지 땅의 바닷바람 속에서 남모를 갈망으로 하늘을 향해 손을 뻗던 로마 제국의 백부장. 이 두 사람이 만나는 거대한 구원의 전환점은 웅장한 승리의 합창이 아니라, 세 번이나 물러서는 사람의 연약함과 투박한 일상의 골목길에서 조용히 시작되었습니다.</p>
+<p>누구나 가슴속에 자신만의 확고한 경계선 하나쯤은 품고 살아갑니다. 이것은 옳고 저것은 그르며, 이 사람까지는 품을 수 있지만 저 사람만큼은 결코 용납할 수 없다는 보이지 않는 울타리입니다. 때로 그 울타리는 신앙의 열심이라는 이름으로, 혹은 스스로를 지키기 위한 오랜 방어기제로 더욱 단단해집니다. 그러나 하나님은 바로 그 견고한 성벽 한가운데로 찾아오셔서, 우리가 평생 옳다고 믿어온 기준들을 뒤흔드시며 더 넓고 깊은 은혜의 바다로 우리를 초대하십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">세 번의 거절 앞에서도 책망 대신 기다려주시는 음성</h3>
+<p>욥바의 해변, 가죽을 다루는 피장 시몬의 집 지붕 위로 올라간 베드로는 기도하려 했으나 몹시 시장했습니다. 아래층에서는 점심 식사를 준비하는 부산한 소리와 구수한 냄새가 피어오르고 있었을 것입니다. 바로 그 지극히 평범하고 인간적인 허기 속에서 하늘이 열리고 큰 보자기 하나가 네 귀가 매여 땅으로 내려옵니다. 그 안에는 유대인의 율법으로는 평생 손을 댈 수도, 입에 넣을 수도 없었던 온갖 부정한 짐승과 기는 것들이 가득 담겨 있었습니다. 그리고 공중에서 명령이 떨어집니다. “베드로야, 일어나 잡아먹으라.”</p>
+<p>그 순간 베드로의 입에서 튀어나온 대답은 망설임 없는 순종이 아니라 본능적인 거절이었습니다. “주여, 그럴 수 없나이다. 속되고 깨끗지 아니한 물건을 내가 언제든지 먹지 아니하였삽나이다.” 그의 반응은 불신앙의 반항이 아니었습니다. 태어나서 단 한 번도 하나님의 법을 어기지 않고 정결하게 살아왔다는 자부심, 거룩함을 지키기 위해 흘려온 수많은 눈물과 절제가 담긴 진심 어린 방어였습니다. 자신이 평생 지켜온 신념의 바운더리가 통째로 흔들리는 순간, 사람은 누구나 두려움으로 뒷걸음질 치기 마련입니다.</p>
+<p>그런데 본문 어디를 보아도, 하나님께서 베드로의 이 거절을 두고 괘씸히 여기시거나 불순종이라 꾸짖으시는 대목은 없습니다. 벼락같은 질책 대신 들려온 것은 조용하고도 단호한 하나의 선언이었습니다. “하나님께서 깨끗하게 하신 것을 네가 속되다 하지 말라.” 그리고 성경은 이 장면을 축약하지 않고 그대로 셈하여 전합니다. 이런 일이 세 번 있은 후에야 그 그릇이 다시 하늘로 올라갔다고 말입니다. 베드로는 세 번 물러섰고, 하나님은 그 세 번의 망설임을 고스란히 기다려 주시며 같은 말씀을 세 번 들려주셨습니다. 하나님은 우리의 더딘 이해와 고집스러운 두려움을 단번에 꺾지 않으십니다. 사람의 머뭇거림을 책망하지 않으시고, 그 연약한 한계를 채우실 때까지 조용히 같은 자리에 서 계시는 분이 바로 우리가 믿는 하나님이십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">환상과 현실 사이, 뜻 모를 의심을 안고 걷는 열한 절의 시간</h3>
+<p>보자기가 하늘로 거두어지고 난 후, 베드로의 마음에 즉각적인 깨달음과 환희가 찾아온 것은 아니었습니다. 성경은 그가 “본 바 환상이 무슨 뜻인지 속으로 의심하더니”라고 솔직하게 기록합니다. 하늘의 신비를 직접 보고도 마음속에서는 물음표가 가시지 않았던 것입니다. 신앙생활을 하다 보면 우리 역시 이런 막막한 지점을 마주합니다. 기도는 드렸고 분명 하나님의 손길을 경험한 것 같은데, 눈을 뜨면 여전히 현실은 모호하고 가야 할 길은 안개에 싸여 있는 시간 말입니다.</p>
+<p>성경은 환상이 끝난 자리에서 곧바로 베드로가 고넬료의 집으로 건너가 해답을 선포하게 만들지 않습니다. 그 사이에는 무려 열한 절이라는 길고 침묵에 찬 여정이 놓여 있습니다. 하늘에서 내려왔던 것은 짐승들이 담긴 보자기였는데, 그것이 어떻게 살아 숨 쉬는 ‘사람’의 구원으로 연결되는지 베드로는 아직 알지 못했습니다. 짐승이라는 사물에서 피와 살을 지닌 구체적인 사람으로 시선이 옮겨가기까지, 그는 의심을 품은 채 낯선 이방인들의 노크 소리를 듣고 계단을 내려가야 했습니다.</p>
+<p>성령은 베드로에게 모든 신학적 정답을 미리 다 설명해 주시지 않았습니다. 다만 “일어나 내려가 의심하지 말고 함께 가라. 내가 저희를 보내었느니라” 하고 등을 떠미셨을 뿐입니다. 욥바에서 가이사랴로 이어지는 먼지 나는 해변 길을 걸어가는 동안, 베드로는 자신의 의심과 씨름했을 것입니다. 우리가 걷는 인생의 가장 깊은 성숙은 모든 질문에 답을 얻었을 때가 아니라, 답을 알지 못하는 혼란 속에서도 하나님을 신뢰하며 오늘 내게 주어진 한 걸음을 묵묵히 내딛는 그 ‘열한 절의 구간’에서 이루어집니다. 하나님은 우리가 서성이는 그 침묵의 시간 속에서 우리의 좁은 시야를 조금씩 허무시고, 마침내 타인을 환대할 수 있는 넓은 가슴으로 빚어가십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">서툰 말들과 거친 일상의 틈새로 임하는 거룩한 환대</h3>
+<p>마침내 가이사랴의 백부장 고넬료의 집에 도착했을 때, 마주 선 두 세계는 결코 하나가 될 수 없어 보였습니다. 칼을 쥐고 군대를 호령하는 이방인 점령군의 장교와, 이방인과의 접촉조차 부정하다고 여겨온 유대인 어부. 그러나 그 두 사람을 잇는 다리는 거창한 외교적 수사나 철학적 논쟁이 아니었습니다. 백부장이 군영의 거친 일과 속에서도 가난한 이웃을 돕기 위해 내어주었던 소박한 동전들, 정해진 시간에 무릎을 꿇었던 눈물의 기도, 그리고 바닷바람과 비린 가죽 냄새 속에서 묵묵히 하루를 살아내던 피장 시몬의 작업장이 그 배경이었습니다. 거룩함은 세상을 떠난 고결한 수도원이 아니라, 땀과 냄새와 생계의 무게가 얹힌 일상의 한복판에서 피어나는 것이었습니다.</p>
+<p>본문에서 참으로 감동적인 것은, 천사가 고넬료를 찾아왔던 단 하나의 사건이 성경 안에서 무려 네 번이나 각기 다른 사람의 입을 통해 되풀이되어 말해진다는 사실입니다. 성경의 서술자가 말하고, 하인들이 전하며, 고넬료 자신이 털어놓고, 베드로가 다시 그것을 고백합니다. 그런데 신기하게도 그 네 번의 이야기는 한 치의 오차도 없는 표준화된 문장이 아닙니다. 기억하는 단어가 다르고, 쓰는 표현이 조금씩 어긋나며, 어떤 대목은 빠지고 어떤 대목은 덧붙여집니다. 세상의 서류라면 오차와 불일치라 여겨졌을 그 투박한 문장들을, 하나님은 말끔하게 다듬거나 하나로 통일시키지 않으시고 네 사람의 서툰 목소리 그대로 성경에 남겨두셨습니다. 하나님은 우리의 어눌한 언어, 각자의 형편과 상처가 묻어나는 불완전한 고백들을 있는 그대로 소중히 받아 적으시는 분이기 때문입니다.</p>
+<p>고넬료는 이미 경건하여 온 집으로 하나님을 경외하고 항상 기도하던 사람이었습니다. 그러나 그는 자신의 경건을 공로로 내세우지 않고, 무릎을 꿇어 베드로를 맞이하며 말합니다. “이제 우리는 주께서 당신에게 명하신 모든 것을 듣고자 하여 다 하나님 앞에 있나이다.” 이미 기도하던 사람이었지만, 여전히 하나님의 새로운 은혜와 말씀을 듣기 위해 빈 마음으로 기다리고 있었던 것입니다. 그리고 그 겸손한 갈망 앞에서 베드로는 마침내 평생을 얽매어 온 편견의 껍질을 벗어던집니다. “하나님께서 내게 지시하사 아무도 속되다 하거나 깨끗지 않다 하지 말라 하시기로.” 지붕 위에서 사물을 향했던 하나님의 음성이, 마침내 살갗을 맞댄 사람을 향한 무조건적인 환대로 꽃을 피우는 순간입니다.</p>
+<p>오늘 우리의 하루도 가죽을 무두질하는 일터처럼 고단하고, 직장의 장부와 가계부의 숫자처럼 팍팍할지 모릅니다. 기도하는 자리에서조차 하나님의 뜻을 온전히 가늠하지 못해 물러서고 망설이는 우리의 믿음은 여전히 연약합니다. 그러나 하나님은 그 세 번의 거절을 꾸짖지 않으시고, 뜻을 몰라 서성이던 열한 절의 시간을 헛되다 하지 않으시며, 서투른 우리의 고백과 일상을 하나님 앞의 거룩한 기억으로 올려두셨습니다. 하나님이 이미 피 흘려 깨끗하게 하신 당신의 삶을, 그리고 당신 곁의 이웃을 결코 속되다 하거나 보잘것없다고 스스로 밀어내지 마십시오. 우리가 그어둔 좁은 경계를 지우고 하나님의 넓은 시선으로 서로를 바라볼 때, 우리의 밥상과 일터와 머뭇거리는 모든 순간은 하늘의 은혜가 임하는 거룩한 성전이 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 16편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

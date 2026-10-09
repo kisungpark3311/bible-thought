@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>소외된 식탁에서 천사의 얼굴까지</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 08편 &middot; 사도행전 6:1-15</span>
+      <h1>소외된 식탁에서 천사의 얼굴까지</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사람이 모이고 부흥의 온기가 가득한 곳일수록 그림자는 더 짙게 드리워지곤 합니다. 사도행전 6장의 시작은 눈부신 성장의 한가운데였습니다. 제자의 수가 날마다 더 많아졌고, 새로운 역사의 숨결이 예루살렘을 가득 채우고 있었습니다. 그러나 성경은 그 찬란한 성공 신화 뒤편에 숨은 그늘을 조금도 가리지 않고 정직하게 드러냅니다. 공동체 안쪽에서 새어 나온 작은 파열음, 그것은 다름 아닌 날마다 마주하는 '밥상'에서 터져 나왔습니다. 헬라파 유대인들이 히브리파 사람들을 향해 쏟아낸 서러운 원망이었습니다. 그들의 과부들이 매일 음식을 나누는 구제의 자리에서 거듭 빠지고 누락되었기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">밥상머리에서 지워진 이들을 향한 거룩한 멈춤</h3>
+<p>생각해 보면 참으로 사소해 보일 수 있는 일입니다. 위대한 복음이 온 세상을 향해 거침없이 뻗어나가야 할 중차대한 시기에, 과부 몇 사람의 끼니가 빠진 일이 과연 온 교회가 멈춰 서야 할 만큼 중대한 문제였을까요? 세상의 조직이나 효율을 앞세우는 집단이었다면 "좋은 게 좋은 것"이라며 서둘러 덮었거나, 거룩한 대의를 앞세워 불평을 잠재우려 했을지도 모릅니다. 결핍과 억울함을 토로하는 약자들의 목소리를 향해 "믿음이 부족하여 원망을 쏟아낸다"며 영적인 잣대를 들이대 입을 막아버렸을 수도 있습니다.</p>
+<p>그러나 초대교회는 결코 그렇게 하지 않았습니다. 누락된 것은 단순한 한 끼의 식사가 아니라, 가장 힘없고 목소리를 낼 수 없는 이들의 존엄 그 자체였기 때문입니다. 성경 원어가 세밀하게 증언하듯, 과부들의 빠짐은 어쩌다 발생한 한 번의 실수가 아니라 날마다 거듭되던 쓸쓸한 소외였습니다. 배식 명부와 장부에서 번번이 지워져 빈손으로 돌아섰을 그들의 마른 눈물을, 교회는 결코 사소하게 넘기지 않았습니다. 사도들은 그 원망을 불신앙으로 정죄하지 않았습니다. 오히려 그 작은 탄식을 하나님의 엄중한 경고로 받아들여, 자신들의 모든 사역 배치와 질서를 전면적으로 재조정하는 거룩한 멈춤의 계기로 삼았습니다. 가장 연약한 자의 밥상이 무너진 자리에는 그 어떤 웅장한 신학도 세워질 수 없음을 분명히 알았기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말씀과 식탁을 잇는 단 하나의 이름, 디아코니아</h3>
+<p>열두 사도는 "우리가 하나님의 말씀을 제쳐놓고 접대를 일삼는 것이 마땅하지 않다"고 말하며 공동체 앞에 새로운 일꾼 일곱을 세울 것을 요청합니다. 얼핏 들으면 말씀 전하는 일은 거룩하고 고상하며, 밥상을 돌보고 살림을 꾸리는 일은 부차적이고 번거로운 일처럼 여겨질 수도 있습니다. 그러나 성경이 사용한 단어를 깊이 들여다보면 전혀 다른 진실을 마주하게 됩니다.</p>
+<p>본문은 날마다 밥상을 차려 구제하는 일도 '디아코니아'(섬김)라 부르고, 기도하며 말씀을 전하는 사도들의 직무 역시 똑같이 '디아코니아'라는 한 단어로 부릅니다. 진리를 선포하는 사도의 입술이나, 굶주린 이웃의 식탁에 빵을 건네는 따뜻한 손길이나, 하나님 앞에서는 조금의 경중도 높낮이도 없는 동일한 예배요 거룩한 사명이었던 것입니다. 사도들이 일곱 사람을 택한 것은 귀찮은 잡무를 떠넘기기 위함이 아니었습니다. 소외된 이들의 밥상을 말씀만큼이나 온전하고 거룩하게 받들기 위해, 성령과 지혜가 충만하고 칭찬받는 탁월한 이들을 식탁의 청지기로 세운 것입니다.</p>
+<p>그렇게 세워진 일곱의 명단 속에는 이방 도시 안디옥 출신의 개종자 니골라까지 포함되어 있었습니다. 차별과 배제가 머물던 자리에 가장 너른 환대의 경계가 펼쳐진 것입니다. 일상의 끼니를 대충 때우는 일로 여기지 않고 정직하고 투명하게 돌보았을 때, 하나님의 말씀은 예루살렘을 넘어 더욱 왕성하게 자라났고, 기득권의 상징이던 제사장들마저 그 진리 앞에 무릎을 꿇었습니다. 교회의 참된 부흥은 거창한 구호가 아니라, 식탁의 눈물을 닦아주는 정직한 분배와 섬김에서 싹텄습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">충만함이 안전을 뜻하지 않는 자리에서 피어난 얼굴</h3>
+<p>그러나 이야기는 여기서 안락한 해피엔딩으로 닫히지 않습니다. 성경은 온 무리의 기쁨과 교회의 부흥 직후, 아주 낯설고 서늘한 긴장을 나란히 배치합니다. 일곱 일꾼 중 가장 성령과 믿음이 충만했던 사람, 은혜와 권능이 넘쳐 백성들 앞에서 기사를 행하던 스데반이 거짓 증인들의 모함에 휘말려 공회로 끌려간 것입니다.</p>
+<p>우리는 흔히 성령이 충만하고 하나님께 헌신하면 모든 길이 평탄하고 안전하리라 기대합니다. 그러나 성경은 충만함이 결코 세상의 안전을 보장하는 보증수표가 아니라고 담담히 증언합니다. 거짓을 사주받은 자들은 "우리가 들었다"며 가장 단호한 어조로 그를 참소했고, 흥분한 군중과 종교 권력자들은 그를 결박해 법정 한복판으로 몰아넣었습니다. 홀로 선 스데반의 곁에는 그 어떤 정치적 방패도, 안전을 담보할 권력도 없었습니다.</p>
+<p>그러나 바로 그 가장 위태롭고 부당한 폭력의 한복판에서, 성경은 가장 눈부신 신비의 장면을 비춥니다. 공회에 둘러앉아 스데반을 서슬 퍼렇게 노려보던 모든 사람의 눈에 비친 그의 얼굴은, 다름 아닌 '천사의 얼굴'이었습니다. 억울함에 치를 떨거나 두려움에 일그러진 얼굴이 아니었습니다. 소외된 이들의 밥상을 돌보며 체득했던 그 낮아짐의 온기, 생명의 말씀에 온 삶을 내던진 자만이 누릴 수 있는 하늘의 평화가 그의 얼굴 가득 환하게 피어오른 것입니다.</p>
+<p>세상은 그를 결박하고 죽음의 위협 앞으로 끌고 갔지만, 주님의 섬김으로 빚어진 그의 내면은 결코 무너뜨릴 수 없었습니다. 진정한 신앙의 품격은 모든 것이 평화롭고 형통할 때의 거룩한 모양새에 머물지 않습니다. 억울한 오해와 거친 비바람 앞에서도 원망 대신 사랑을 품고, 불안 대신 하늘의 평안을 비추어내는 고요한 얼굴에 있습니다. 오늘 우리의 시선은 어디를 향하고 있습니까. 잊혀진 이들의 밥상을 돌아보는 섬세한 손길, 그리고 거친 세상 한복판에서도 하늘의 빛을 잃지 않는 천사의 얼굴을 품은 하루가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 08편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

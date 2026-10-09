@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이름을 지우지 않는 바람, 각 사람이 태어난 자리로 찾아온 언어</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 02편 &middot; 사도행전 2:1-13</span>
+      <h1>이름을 지우지 않는 바람, 각 사람이 태어난 자리로 찾아온 언어</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가다 보면 세상이 우리를 다루는 방식에 문득 쓸쓸해질 때가 있습니다. 효율과 속도를 앞세우는 사회는 한 사람 한 사람의 사연을 찬찬히 들여다볼 여유를 갖지 못합니다. 수많은 삶은 그저 통계의 숫자나 ‘외 몇 명’, 혹은 장부 귀퉁이의 ‘기타’라는 편리한 괄호 속으로 묶여 사라지곤 합니다. 내가 어떤 환경에서 태어났는지, 어떤 상처와 사투를 벌이며 오늘 여기까지 걸어왔는지, 내 안에 고여 있는 말들이 얼마나 서툰지는 거대한 시스템 앞에서 쉽게 지워집니다. 너도나도 중심의 언어, 강자의 언어를 배우지 못하면 외톨이가 되는 세상에서, 우리는 저마다의 모국어를 잃어버린 채 침묵하는 법을 먼저 배웁니다.</p>
+<p>그러나 이천 년 전, 예루살렘의 한 평범한 집을 흔들었던 바람은 세상의 방식과 완전히 다른 방향으로 불어왔습니다. 오순절의 다락방, 그곳을 채운 것은 추상적인 관념이 아니었습니다. 귀를 때리는 거친 바람 소리였고, 눈에 보이고 살갗으로 느껴지는 불꽃의 형상이었으며, 숨을 쉬고 모여 앉은 사람들의 구체적인 몸이었습니다. 그리고 그 만져지는 현실 한가운데서, 인류 역사상 가장 다정하고도 장엄한 언어의 기적이 일어났습니다. 하나님은 사람을 무더기로 묶어 부르지 않으시고, 각 사람의 가장 고유한 삶의 자리로 직접 찾아와 말을 건네기 시작하셨습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">채워진 은혜를 내 솜씨로 바꾸지 않는 겸비</h3>
+<p>사도행전 2장 4절의 짧은 한 문장 안에는 신비로운 영적 비밀이 숨겨져 있습니다. 성경은 그들이 성령으로 채워졌다고 말하면서, 동시에 그들에게 말하기를 주신 분 역시 성령이시라고 증언합니다. 한 절 안에서 성령은 사람을 가득 채우는 ‘선물의 내용’이 되시면서, 동시에 그 입술을 열어 말하게 하시는 ‘주권자’의 자리에 함께 서 계십니다. 채움은 단번에 일어난 충만한 은혜였지만, 말을 주시는 일은 숨결처럼 계속해서 이어지는 폭이었습니다.</p>
+<p>우리는 종종 무언가로 채워지는 순간을 경험합니다. 가슴 벅찬 깨달음이나 남다른 통찰, 가슴 뜨거운 은혜를 경험하고 나면, 슬그머니 고개를 드는 옛 버릇이 있습니다. 방금 받은 그 거룩한 선물을 마치 처음부터 내 실력이었던 양, 내 손재주와 말솜씨로 포장해 휘두르고 싶어 하는 유혹입니다. 은혜를 내 영향력의 도구로 삼으려 하고, 내 뜻대로 타인을 움직이는 권세로 오해하곤 합니다.</p>
+<p>하지만 오순절 다락방에 임했던 이들은 그 주객전도의 유혹에 빠지지 않았습니다. 그들은 끝까지 선물을 받는 자, 즉 은혜의 수혜자 자리에 머물렀습니다. 채우신 분도 성령이시기에, 입술을 열어 쏟아내는 언어의 통제권조차 자신의 지혜에 두지 않았습니다. 참된 영성은 내 안에 채워진 것을 내 솜씨로 뽐내는 것이 아니라, 말씀하시는 분의 뜻 앞에 나의 혀와 마음을 온전히 내어드리는 깊은 겸비에서 시작됩니다. 내가 주인 노릇 하려는 손을 내려놓을 때, 비로소 우리의 말은 누군가를 살리는 생명의 소리가 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내가 선택하지 않은 삶의 자리로 찾아오는 언어</h3>
+<p>그렇게 터져 나온 말들은 놀랍게도 예루살렘 거리에 머물던 이들의 귓가에 저마다의 ‘난 곳 방언’으로 가닿았습니다. 성경은 이 장면을 묘사하며 사람들을 한 무리로 뭉뚱그리지 않습니다. ‘각각 자기의 방언으로’, ‘우리가 난 곳 방언으로’ 듣고 놀랐다고 세심하게 기록합니다. 여기서 ‘난 곳’이라는 표현은 가슴 뭉클한 울림을 줍니다.</p>
+<p>생각해 보면, 내가 어느 나라, 어느 마을, 어떤 부모 밑에서 태어났는가는 내가 선택한 조건이 아닙니다. 가난한 시골 마을이었을 수도 있고, 거칠고 험한 변방이었을 수도 있습니다. 유년 시절의 사투리, 가난의 냄새, 남들에게 선뜻 내세우지 못하는 출생의 배경은 때로 삶의 지울 수 없는 흉터처럼 느껴지기도 합니다. 중심의 언어를 구사하지 못한다는 열등감에 주눅 들 때도 많습니다.</p>
+<p>그러나 하늘의 바람은 그 거칠고 투박한 자리를 결코 부끄러워하지 않았습니다. 거대한 로마 제국의 공용어나 종교 엘리트들의 권위적인 언어로 획일화하지 않으시고, 각 사람이 태어나 숨 쉬며 눈물 흘렸던 바로 그 ‘난 곳의 언어’로 찾아오셨습니다. 내가 선택하지 못한 내 삶의 가장 깊은 조건, 어쩌면 가장 숨기고 싶었던 그 모국어의 자리가 바로 하나님의 가장 큰 일을 듣는 거룩한 통로가 된 것입니다. 주님은 우리의 약함과 출생의 조건을 지워버리고 말씀하시는 분이 아니라, 그 결핍의 언어를 온전히 끌어안으시며 말을 건네시는 다정한 아버지이십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">열여섯 번의 이름을 적는 수고와 서툰 짐작을 멈추는 용기</h3>
+<p>누가는 그 신비로운 날의 풍경을 기록하면서 기이할 만큼 고집스러운 문학적 선택을 합니다. 2장 9절과 10절에는 움직임을 나타내는 동사가 단 하나도 없습니다. 문장의 뼈대를 이루는 서술어를 멈춰 세운 채, 그 빈자리를 열여섯 개의 고유명사로 빽빽하게 채워 넣습니다. 파르티아, 메디아, 엘람에서부터 저 아라비아에 이르기까지, 지도 위에 흩어진 땅과 민족의 이름을 하나하나 소리 내어 부르듯 적어 내려갔습니다.</p>
+<p>“온 세상 각지에서 사람들이 몰려왔다”라고 단 한 줄로 축약해 버리면 그만이었을 텐데, 서술자는 왜 굳이 열여섯 번이나 잉크를 덧칠하며 고유명사를 늘어놓았을까요? 그것은 한 사람도 익명의 군중 속에 잃어버리고 싶지 않은 사랑의 태도였습니다. 회계 장부에서 정직한 신뢰가 ‘잡비’나 ‘기타’ 대신 구체적인 적요를 적는 수고에서 오듯, 영혼을 향한 환대 역시 뭉뚱그려진 범주를 찢고 각 사람의 이름을 정성껏 불러주는 수고에서 시작됩니다.</p>
+<p>그러나 이 경이로운 광경 앞에서도 어떤 이들은 차가운 냉소를 던졌습니다. 이해할 수 없는 타인의 고백과 낯선 눈물을 마주했을 때, 그들은 “새 술에 취했다”라며 상대의 몸 상태로 모든 것을 손쉽게 환원해 버렸습니다. 상대를 깊이 이해하려 애쓰는 대신, “피곤해서 저러겠지”, “원래 예민한 성격 탓이겠지”라며 몇 마디 편견으로 규정해 버리는 모습은 오늘 우리 안에도 여전히 살아 있는 슬픈 자화상입니다. 타인의 거룩한 진실을 가벼운 조롱과 짐작으로 지워버리는 것은 언제나 쉽고 잔인합니다.</p>
+<p>우리는 이제 편리한 짐작을 멈추어야 합니다. 모임의 한구석, 언어가 통하지 않아 어색한 미소만 짓고 있는 이주민의 고단함을 들여다보아야 합니다. 마음의 상처로 인해 말이 나오지 않아 찬송을 입으로 따라 부르지 못하는 지체의 침묵에 귀를 기울여야 합니다. 그리고 내 삶의 장부에서 무심코 ‘기타’로 분류해 두었던 이들의 이름을 하나씩 찾아 정성껏 적어 내려가야 합니다.</p>
+<p>오순절의 성령은 사람을 무더기로 구원하지 않으셨습니다. 각 사람 위에 혀처럼 갈라진 불꽃을 하나씩 얹어주셨고, 각 사람이 나고 자란 가장 남루한 언어로 하나님의 위대한 사랑을 들려주셨습니다. 이번 한 주, 우리 역시 누군가를 뭉뚱그려 바라보던 시선을 거두고, 그의 이름을 부르며 그가 알아들을 수 있는 다정한 언어로 다가설 수 있기를 소망합니다. 이해되지 않을 때 섣부른 판단을 삼키고 가만히 물어보는 그 작은 인내가, 바로 우리 일상에 성령의 바람을 다시 불어넣는 따스한 기적의 시작일 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 02편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

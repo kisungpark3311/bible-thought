@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>쇠사슬이 풀린 밤, 우리는 신발을 꿰어 신는다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 19편 &middot; 사도행전 12:1-25</span>
+      <h1>쇠사슬이 풀린 밤, 우리는 신발을 꿰어 신는다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<style>
+  #sermon {
+    max-width: 780px;
+    margin: 0 auto;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    line-height: 1.85;
+    color: #2d3748;
+    background-color: #ffffff;
+    padding: 30px 20px;
+  }
+  #sermon p {
+    margin-bottom: 1.6em;
+    font-size: 1.05rem;
+    text-align: justify;
+    word-break: keep-all;
+  }
+</style>
+<p>살다 보면 도무지 앞뒤가 맞지 않는 날들을 지나야 할 때가 있습니다. 왜 어떤 고통은 기적처럼 문이 열려 벗어나고, 왜 어떤 아픔은 아무런 해명도 없이 칼날 아래 무참히 꺾이고 마는지, 인생의 수많은 의문은 우리를 깊은 침묵 속으로 밀어 넣습니다. 기도의 간절함이 모자라서였을까요, 믿음의 크기가 달라서였을까요. 세상은 언제나 손쉬운 원인과 결과를 찾아 헤매지만, 삶의 가장 어두운 골짜기에서 우리는 번번이 그 인과율의 허탈한 붕괴를 목격하곤 합니다.</p>
+<p>사도행전 12장을 열면 바로 그 잔인하도록 서늘하고 정직한 현실이 펼쳐집니다. 교회를 핍박하던 헤롯 왕은 칼을 들어 요한의 형제 야고보를 처형합니다. 성경은 초대교회의 거둥과도 같았던 사도 야고보의 죽음을 기록하면서, 놀랍게도 단 일곱 낱말만을 남깁니다. “요한의 형제 야고보를 칼로 죽이니.” 그 자리에는 어떤 애도의 수사도, 야고보의 마지막 신앙고백도, 왜 그가 희생되어야 했는지에 대한 하나님의 해명도 적혀 있지 않습니다. 그리고 곧이어 베드로가 붙잡혀 서슬 퍼런 옥에 갇힙니다. 한 사람은 칼날 아래 스러졌고, 한 사람은 깊은 옥에 갇혔습니다. 이 불공평하고 이해할 수 없는 생의 무게 앞에서 성경은 침묵합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">설명 없는 침묵 앞에서 섣부른 해석을 거둘 때</h3>
+<p>우리는 누군가의 고난이나 비극을 바라볼 때, 조급하게 이유를 만들어 붙이려는 유혹에 빠집니다. 야고보는 왜 죽어야 했고 베드로는 왜 살아나야 했는가? 우리는 그 빈칸에 저마다의 그럴싸한 설명을 채워 넣고 싶어 합니다. "교회가 베드로를 위해서는 간절히 기도했기 때문"이라거나, "야고보는 순교의 때가 찼고 베드로는 아직 할 일이 남았기 때문"이라는 식의 해석들입니다. 그러나 성경 본문을 원문까지 샅샅이 뒤져보아도, 두 사람의 결말을 가르는 접속사나 이유를 설명하는 문장은 단 한 줄도 나오지 않습니다.</p>
+<p>성경은 침묵을 침묵 그대로 둡니다. 그 빈칸을 신학적 궤변이나 인간적인 당위로 메우지 않는 것, 그것이 사도행전이 우리에게 가르쳐주는 가장 거룩하고 정직한 시선입니다. 본문이 적지 않은 이유를 우리가 함부로 적어 넣는 순간, 그것은 하나님의 섭리를 읽는 것이 아니라 하나님을 향한 우리의 억지스러운 요구와 평가가 되고 맙니다.</p>
+<p>인생에는 이유를 알 수 없는 고통과 헤어짐이 있습니다. 사랑하는 이를 먼저 떠나보내고 하염없이 눈물 흘리는 이에게 "더 큰 뜻이 있을 것"이라거나 "기도가 부족해서"라는 식의 말을 얹는 것은 위로가 아니라 또 다른 칼날이 될 뿐입니다. 때로는 텅 빈 공백을 공백 그대로 마주하며, 하나님의 섭리 앞에 우리의 섣부른 혀를 거두는 것이 더 깊은 신앙입니다. 사도행전 12장은 설명할 수 없는 삶의 부조리를 억지로 봉합하려 하지 않고, 있는 그대로의 슬픔과 긴장을 끌어안은 채 다음 장면으로 걸어갑니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">기적의 한복판에서도 신을 신고 겉옷을 여미는 일</h3>
+<p>베드로의 옥중 장면은 기이할 정도로 고요합니다. 내일이면 형장에 끌려 나가 처형당할지도 모르는 사형수가 네 명씩 네 패로 나뉜 삼엄한 파수꾼 틈에서, 두 개의 쇠사슬에 묶인 채 깊은 잠에 빠져 있습니다. 성경은 그 밤 베드로가 어떤 심정이었는지 묘사하지 않습니다. 그저 쇠사슬 둘과 군사 둘 사이에 그가 누워 자고 있었다는 사실만을 담담히 전할 뿐입니다.</p>
+<p>홀연히 주의 천사가 임하여 감옥 안에 눈부신 광채가 비칩니다. 천사는 잠든 베드로의 옆구리를 쳐서 깨우고, 그 순간 그의 두 손을 짓누르던 차가운 쇠사슬이 힘없이 스르륵 벗겨집니다. 기적이 일어난 것입니다. 그런데 그 웅장하고 신비로운 구원의 한복판에서, 천사가 베드로에게 건넨 첫마디는 뜻밖에도 너무나 소박하고 구체적인 일상의 동작들이었습니다.</p>
+<p>"허리띠를 띠어라. 신을 신어라. 겉옷을 입고 따라오라."</p>
+<p>하늘의 초자연적인 능력으로 쇠사슬은 끊어졌지만, 풀려난 발에 신발을 꿰어 신고 흘러내린 허리띠를 조여 매며 겉옷을 여미는 일은 베드로 자신의 몫이었습니다. 기적은 우리를 마술처럼 아무런 수고도 없이 목적지로 순간이동 시켜주는 환상이 아닙니다. 하나님께서 감옥의 쇠사슬을 부수어 주실 때, 우리가 해야 할 일은 그 자리에서 일어나 흐트러진 띠를 여미고 내 발로 신발 끈을 고쳐 매는 일입니다.</p>
+<p>삶의 절망이 너무 깊어 손가락 하나 까딱할 수 없을 것 같은 날이 있습니다. 아무것도 바꿀 수 없을 것 같은 무기력 속에서 우리는 거대한 기적만을 바라보며 주저앉아 울곤 합니다. 그러나 하나님은 우리에게 우주를 들어 올리라고 요구하지 않으십니다. 쇠사슬이 벗겨진 자리에서, 오늘 내가 몸으로 할 수 있는 아주 작은 일 하나를 하라고 말씀하십니다. 헝클어진 머리를 빗고, 양말을 찾아 신고, 외투를 걸치고 현관문을 열어 신선한 공기를 들이마시는 일. 그 작고 구체적인 일상의 몸짓이야말로 절망의 감옥을 빠져나오는 가장 위대한 첫걸음입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">온전히 알지 못해도 우리를 이끄시는 보이지 않는 손</h3>
+<p>쇠사슬을 벗고 신을 신은 베드로는 천사를 따라 옥을 빠져나옵니다. 첫째 파수를 지나고, 둘째 파수를 지나, 시내로 통하는 육중한 쇠문 앞에 다다릅니다. 그러자 그 무거운 철문이 아무도 손대지 않았는데 스스로 스르륵 열립니다. 하지만 그 모든 기적의 길을 걸어가는 동안에도 베드로는 자신이 겪는 일이 진짜 현실인 줄을 알지 못했습니다. 본문은 그가 "환상을 보는가 생각했다"고 기록합니다.</p>
+<p>구원은 언제나 우리의 인식을 앞서 달려갑니다. 우리는 흔히 모든 상황을 명쾌하게 이해하고, 하나님의 뜻을 완벽히 깨달아야만 안심하고 발을 뗄 수 있다고 여깁니다. 그러나 베드로는 자신이 지금 어디로 가고 있는지, 이 일이 꿈인지 생시인지 분간조차 하지 못한 채 그저 비틀거리며 빛을 따라 걸었을 뿐입니다.</p>
+<p>그가 정신을 차린 것은 천사가 밤거리 저편으로 훌쩍 떠나버린 뒤였습니다. 서늘한 밤공기 속에 홀로 남겨졌을 때에야 그는 비로소 고백합니다. "내가 이제야 참으로 주께서 그의 천사를 보내어 나를 건져내신 줄 알겠노라." 깨달음은 언제나 걸음 뒤에 옵니다. 우리가 어둠 속에서 어리둥절한 채 헤매며 발을 옮기던 바로 그 순간에도, 하나님의 구원은 이미 성실하게 작동하고 있었습니다. 사태가 참이었던 동안, 걷고 있던 사람은 그것이 참인 줄 미처 쥐지 못했을 뿐입니다.</p>
+<p>베드로가 찾아간 마리아의 집 풍경은 우리의 신앙을 참으로 부끄럽고도 따스하게 비추어 줍니다. 교인들은 베드로를 위해 밤새 모여 눈물로 부르짖어 기도하고 있었습니다. 옥에서 풀려난 베드로가 대문을 두드리자, 로데라는 어린 여종이 뛰어나와 그의 목소리를 알아듣습니다. 너무 기쁜 나머지 문을 열 생각도 잊은 채 안으로 달려 들어가 "베드로 사도가 문밖에 서 계신다!"고 외칩니다.</p>
+<p>그러나 그 기적 같은 응답을 마주한 기도자들의 반응은 무엇이었습니까? "네가 미쳤다." 그들은 베드로의 석방을 위해 목 놓아 기도하면서도, 정작 문 앞에 찾아온 응답을 믿지 못했습니다. 어린아이 같은 로데가 참말이라고 힘써 외치자 그들은 "그렇다면 베드로가 아니라 그의 천사이겠지"라며 합리화합니다. 기도를 드리면서도 응답을 믿지 못하는 이 모순적인 불신앙의 자화상.</p>
+<p>놀랍게도 성경은 그들의 의심과 불신을 꾸짖거나 책망하지 않습니다. 믿음이 크든 작든, 온전히 이해하든 못 하든, 하나님은 그들의 불완전한 기도를 넘어 친히 문밖에 베드로를 세워 두셨습니다.</p>
+<p>이야기는 헤롯의 허망한 몰락을 지나 마지막 한 구절로 귀결됩니다. "하나님의 말씀은 흥왕하여 더하더라." 권력을 쥐고 사람의 목숨을 쥐락펴락하던 제왕은 벌레 한 마리에 스러져 역사의 뒤안길로 사라지지만, 이유 없는 고난 속에서도 묵묵히 신을 신고 걸어온 사람들의 발자국 위에 하나님의 말씀은 생명력 넘치게 자라납니다.</p>
+<p>오늘 우리 앞에도 여전히 풀리지 않는 침묵의 공백이 놓여 있을지 모릅니다. 왜 나에게 이런 일이 일어났는지, 앞으로 내 삶이 어떻게 펼쳐질지 도무지 알 수 없어 몽롱한 안개 속을 걷고 있을 수도 있습니다.</p>
+<p>그러나 다 알지 못해도 괜찮습니다. 지금은 그저 쇠사슬이 풀린 자리에서 조용히 일어나 띠를 띠고 신을 꿰어 신으십시오. 오늘 내게 주어진 작은 외투를 여미고, 앞서 비추시는 은혜의 빛을 따라 한 걸음씩 걸어가십시오. 저 차가운 쇠문이 열리고 밤안개가 걷히는 그 길 끝에서, 우리는 마침내 무릎을 치며 고백하게 될 것입니다.</p>
+<p>"내가 이제야 참으로 주께서 나와 함께 걸어오셨음을 알겠노라."</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 19편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

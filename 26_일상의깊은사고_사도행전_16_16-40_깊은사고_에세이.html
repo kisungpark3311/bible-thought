@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>적히지 않은 행간에서 피어난 환대의 식탁</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 26편 &middot; 사도행전 16:16-40</span>
+      <h1>적히지 않은 행간에서 피어난 환대의 식탁</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생을 살아가다 보면 아무리 깊이 생각해도 앞뒤 인과를 명쾌하게 설명할 수 없는 캄캄한 밤을 마주할 때가 있습니다. 분명 선한 뜻으로 걸어왔고 누군가의 묶인 사슬을 풀어주었을 뿐인데, 돌아오는 것은 차가운 오해와 억울한 모함, 그리고 옷이 찢긴 채 내던져지는 깊은 감옥의 차디찬 바닥일 때가 있습니다. 사도행전 16장에 기록된 빌립보 감옥의 이야기는 우리에게 매우 익숙한 장면입니다. 우리는 흔히 이 본문을 떠올릴 때 "한밤중에 찬송하고 기도했더니 지진이 일어나 옥문이 열렸다"는 통쾌하고 극적인 승리의 도식으로 기억하곤 합니다. 하지만 성경의 기록을 한 글자 한 글자 조심스럽게 따라가다 보면, 본문이 일부러 비워둔 무수한 침묵과 설명되지 않는 행간의 빈자리들이 가만히 눈에 들어옵니다. 성경은 인간의 고통과 모순을 손쉬운 결론으로 덮어버리지 않으며, 바로 그 침묵의 틈새에서 피어나는 진짜 은혜와 회복의 온기를 우리에게 증언합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">계산된 이익이 무너진 자리와 사라진 이름</h3>
+<p>빌립보의 거리에서 바울 일행을 집요하게 따라다니며 소리치던 한 여종이 있었습니다. 귀신 들려 점을 치며 주인들에게 막대한 재산상의 이익을 안겨주던 가련한 영혼이었습니다. 바울은 그를 억누르고 있던 어둠을 향해 예수 그리스도의 이름으로 떠나갈 것을 명했고, 여종을 옭아매던 결박은 그 즉시 풀려났습니다. 한 인간이 오랜 착취와 억압에서 벗어나 비로소 자유와 온전함을 되찾은 순간이었습니다. 그러나 그 놀라운 해방의 사건 앞에서 세상이 보인 반응은 지극히 냉혹했습니다. 그 거리에 한 영혼의 회복을 함께 기뻐해 주는 사람은 아무도 없었습니다. 주인들의 시선이 닿은 곳은 오직 하나, "자기 이익의 소망이 끊어진 것"뿐이었습니다.</p>
+<p>사람의 생명과 영혼의 존엄보다 자기 주머니의 이익을 앞세우는 세상의 셈법 앞에서, 복음은 격렬한 반발을 마주합니다. 분노한 주인들은 바울과 실라를 장터의 관원들에게 끌고 갔고, 군중의 선동과 함께 재판다운 재판도 없이 두 사도의 옷을 찢어 벗기고 무자비하게 매를 때렸습니다. 그리고 깊은 감옥에 가두어 그들의 발을 단단한 나무 착고에 채웠습니다. 그런데 본문에서 우리를 더욱 먹먹하게 만드는 것은, 그 여종의 뒷이야기가 성경에 단 한 줄도 적히지 않는다는 사실입니다. 억압에서 풀려난 여종은 과연 어디로 갔을까요? 참된 평안을 얻었을까요, 아니면 돈벌이가 끊긴 주인들에게 또 다른 학대를 받았을까요? 성경은 침묵합니다. 우리는 이야기의 빈칸을 서둘러 아름다운 해피엔딩으로 채워 넣고 싶어 하지만, 본문은 설명되지 않는 세상의 거친 폭력과 이름 없이 사라진 이의 행방을 묵묵한 여백으로 남겨둡니다. 우리의 일상에서도 때로 온 마음으로 선을 베풀었으나 뜻밖의 손해와 상처로 되돌아오고, 계산적인 시선에 난도질당한 채 홀로 버려지는 억울한 밤이 찾아오곤 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">인과를 뛰어넘는 밤의 노래와 멈추어 선 발걸음</h3>
+<p>살갗이 찢기고 피멍이 든 채 깊은 옥에 갇힌 바울과 실라는 한밤중에 깨어 있었습니다. 온몸을 옥죄는 착고의 무게 속에서 그들이 한 일은 하나님을 향해 기도하고 찬미하는 것이었습니다. 그것은 기적을 일으켜 감옥을 탈출하겠다는 계산된 전략이 아니었습니다. 아무것도 할 수 없는 무력한 어둠 한가운데서, 그들이 드릴 수 있는 유일한 숨결이자 하나님을 향한 신뢰의 표현이었을 뿐입니다. 그리고 그 밤, 홀연히 큰 지진이 일어나 옥터가 흔들리고 닫혔던 문들이 일제히 열리며 모든 사람의 매인 결박이 벗겨졌습니다.</p>
+<p>우리는 무의식중에 "기도했더니 지진이 일어났다"는 편리한 인과관계를 덧붙이곤 합니다. 그러나 성경 본문을 원어로 엄밀하게 들여다보면, 밤중의 기도와 지진 사이에는 원인과 결과를 묶는 접속사가 단 하나도 존재하지 않습니다. 성경은 찢긴 몸으로 드린 기도와 느닷없이 닥친 지진을 그저 담담하게 나란히 적어둘 뿐입니다. 이것이 우리에게 얼마나 깊은 위로가 되는지 모릅니다. 만약 '기도가 곧 지진의 원인'이라는 공식이 절대적이라면, 우리가 간절히 부르짖어도 감옥 문이 열리지 않고 지진조차 일어나지 않는 고단한 밤에는 우리의 믿음이 실패한 것이 되고 맙니다. 그러나 성경은 그런 책망을 하지 않습니다. 기도는 상황을 마술처럼 바꾸어내는 주문이 아니라, 어떤 처지에서도 하나님 앞에 내 영혼을 의탁하는 거룩한 머무름이기 때문입니다.</p>
+<p>더욱 놀라운 복음의 신비는 문이 열린 그 다음에 펼쳐집니다. 지진으로 옥문이 열린 것을 본 간수는 죄수들이 모두 도망친 줄 알고 칼을 빼어 자결하려 했습니다. 로마법 아래서 죄수를 놓친 간수의 운명은 가혹한 죽음뿐이었기 때문입니다. 바로 그 절체절명의 순간, 어둠 속에서 바울의 우렁찬 외침이 터져 나왔습니다. "네 몸을 상하지 말라! 우리가 다 여기 있노라!" 쇠사슬이 풀렸고 문이 활짝 열렸음에도, 바울과 실라와 죄수들은 아무도 어둠 밖으로 뛰쳐나가지 않았습니다. 자신들이 도망치면 간수가 목숨을 끊어야 한다는 사실을 알았기에, 그들은 마땅히 누릴 수 있었던 탈출의 기회를 내려놓고 기꺼이 멈추어 섰습니다. 타인의 절망과 죽음을 딛고 서는 해방은 복음이 아닙니다. 내 자유를 잠시 유보하면서까지 한 영혼의 파멸을 막아선 그 거룩한 멈춤이야말로, 흔들리는 옥터보다 더 찬란하게 빛난 생명의 기적이었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">상처를 씻기고 식탁을 차리는 거룩한 회복</h3>
+<p>어둠 속에서 등불을 밝히며 두려움에 떨며 엎드린 간수는 묻습니다. "선생들이여, 내가 어떻게 하여야 구원을 얻으리이까." 바울은 주 예수의 이름을 전했고, 복음의 말씀은 그 밤 간수와 그의 온 집안에 울려 퍼졌습니다. 그러나 구원의 역사는 관념적인 교리의 동의나 입술의 고백으로만 끝나지 않았습니다. 그 캄캄한 밤의 끝자락에서 성경은 지극히 구체적이고 따스한 두 가지 인간적인 동작을 우리 앞에 펼쳐 보여줍니다.</p>
+<p>간수는 그 밤 그 시에 바울과 실라를 데려다가, 채찍에 맞았던 그 쓰라린 상처 자리를 손수 물로 씻겨주었습니다. 그리고 그들을 자기 집으로 인도하여 정성껏 음식을 장만해 식탁을 차려주었습니다. 불과 몇 시간 전만 해도 죄수의 발에 가차 없이 착고를 채우던 서슬 퍼런 감시자가, 이제는 상처를 어루만지는 치유자가 되고 밥상을 나누는 형제가 된 것입니다. 본문은 바울이 맞았던 매의 고통을 손쉽게 낭만화하거나 지워버리지 않습니다. 로마 시민권자의 억울한 매질과 깊은 상처는 여전히 그들의 육체에 고스란히 남아 있었습니다. 그러나 하나님의 나라는 그 지워지지 않은 아픈 상처 위로 흘러내리는 맑은 물과, 함께 둘러앉아 빵을 떼는 따뜻한 밥상 위에서 시작되었습니다. 상처를 씻기는 손길이 먼저 있었고, 그 후에 세례와 기쁨의 잔치가 뒤따랐습니다.</p>
+<p>우리의 삶에도 여전히 다 풀리지 않는 억울한 질문들과, 왜 내게 이런 일이 일어났는지 설명되지 않는 침묵의 시간들이 있습니다. 간절히 엎드려도 삶의 벽이 무너지지 않는 긴 밤이 있고, 때로는 선을 행하다가도 깊은 오해의 수렁에 빠져 몸과 마음에 지워지지 않는 멍 자국을 안고 살아갑니다. 그러나 빌립보의 그 밤은 우리에게 조용히 가르쳐줍니다. 구원은 기적 같은 탈출에만 머무는 것이 아니라, 칠흑 같은 어둠 속에서도 영혼의 찬미를 잃지 않고, 벼랑 끝에 몰린 이웃을 향해 "우리가 여기 있다"며 걸음을 멈추어 주며, 서로의 찢긴 상처를 따스한 물로 씻겨주고 식탁의 온기를 나누는 그 거룩한 손길 안에 깃들어 있습니다. 오늘 우리가 마주하는 삶의 침묵과 메워지지 않는 빈자리 속에서도, 서로의 아픔을 보듬고 환대의 식탁을 차려내는 거룩한 은혜가 우리의 일상 가운데 깊고 그윽하게 머물기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 26편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

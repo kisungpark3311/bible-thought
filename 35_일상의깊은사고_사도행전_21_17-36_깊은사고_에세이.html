@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>주어에서 밀려난 날에도 남겨진 손짓처럼</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 35편 &middot; 사도행전 21:17-36</span>
+      <h1>주어에서 밀려난 날에도 남겨진 손짓처럼</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리는 살아가며 언제 가장 깊은 무력감과 허탈함을 마주하게 될까요? 내가 인생의 당당한 주어가 되어 모든 일을 계획하고 이끌어가던 순간이 지나가고, 어느 날 갑자기 내 의지와는 상관없이 세상의 거친 소용돌이에 휘말려 하나의 무력한 ‘목적어’로 전락해 버릴 때일 것입니다. 내가 쏟아부었던 선의와 진심은 온데간데없이 사라지고, 알 수 없는 오해와 억측의 쇠사슬에 묶여 타인의 손에 질질 끌려가는 듯한 순간, 우리는 마음에 깊은 상처를 입고 깊은 절망의 늪으로 가라앉곤 합니다.
+
+사도행전 21장의 무대 위에 서 있는 바울의 모습이 바로 그러했습니다. 그는 온갖 고난을 뚫고 이방 지역을 누비며 복음을 전한 뒤 예루살렘 교회로 돌아왔습니다. 그리고 하나님께서 자신의 작은 섬김을 통해 이방인들 가운데 행하신 놀라운 일들을 낱낱이 보고했습니다. 그 거룩한 사역의 보고를 들은 성도들은 일제히 하나님께 영광을 돌렸습니다. 그곳까지는 모든 것이 하나님의 은혜였고, 모든 이야기의 주어는 오직 ‘하나님’이셨습니다.
+
+그러나 가슴 벅찬 찬양이 잦아들자마자 본문은 전혀 다른 풍경으로 급변합니다. 놀랍게도 그 뒤로 성경 본문에는 ‘하나님’을 주어로 하는 동사가 단 한 번도 등장하지 않습니다. 거룩한 계시와 찬란한 기적 대신, 그 자리를 채운 것은 사람들의 얄팍한 셈법과 불안, 헛소문과 오해, 서원과 비용, 그리고 마침내 온 성을 뒤흔드는 폭력과 두 쇠사슬, 군사들의 거친 숨소리였습니다. 은혜의 높은 봉우리에서 차가운 현실의 밑바닥으로 곤두박질치는 순간이었습니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">짐작을 확신으로 둔갑시키는 세상의 그늘</h3>
+
+예루살렘에 도착한 바울을 맞이한 것은 환대만이 아니었습니다. 유대인 신자들 수만 명이 율법에 열심을 품고 있었고, 그들 사이에는 "바울이 모세를 배반하고 할례를 금지한다"는 출처를 알 수 없는 헛소문이 파다하게 퍼져 있었습니다. 누군가 악의로 흘린 말이 전해지고 전해져 거대한 불신의 벽을 쌓아 올린 것입니다. 
+
+하지만 소문보다 더 무서운 것은 ‘짐작’이 ‘확신’으로 둔갑하는 순간이었습니다. 아시아에서 온 유대인들은 예루살렘 성내에서 에베소 사람 드로비모가 바울과 함께 있는 것을 보았습니다. 그저 거리에서 함께 걷는 것을 보았을 뿐인데, 그들은 바울이 그 이방인을 거룩한 성전에까지 데리고 들어가 성전을 더럽혔다고 단정 짓고 목청을 높여 소리쳤습니다. 
+
+성경 기자는 이 잔인한 광기 뒤에 숨은 실체를 서늘할 만큼 명확한 한마디로 폭로합니다. "이는 바울이 저를 성전에 데리고 들어간 줄로 생각함일러라." 원문이 밝히고 있는 ‘에노미존(ἐνόμιζον)’, 즉 ‘그저 그렇게 짐작하고 생각했을 뿐’이라는 것입니다. 눈앞에 명백한 증거가 있어서가 아니었습니다. 보고 싶은 것만 보고, 믿고 싶은 대로 상상한 그 작은 ‘짐작’ 하나가 사람들의 가슴속에서 맹렬한 불길이 되어 온 성을 불태우는 고발의 무기로 변한 것입니다.
+
+우리의 일상도 이 잔인한 메커니즘에서 자유롭지 못합니다. 얼마나 많은 관계가 사실이 아닌 ‘짐작’ 때문에 무너져 내립니까? 직장에서, 가정에서, 심지어 가장 거룩해야 할 신앙의 공동체 안에서조차 우리는 누군가의 행동 하나를 보고 그의 동기 전체를 제멋대로 재단합니다. "저 사람은 분명 이래서 그랬을 거야", "저 말 속에는 나를 무시하는 의도가 깔려 있어." 확인되지 않은 짐작이 확신이라는 가면을 쓰는 순간, 상대방을 향한 비난과 정죄는 걷잡을 수 없이 터져 나옵니다. 성경은 고발자들이 쏟아낸 험악한 독설들을 ‘그들의 짐작’이라는 좁은 서랍 속에 가두어 둠으로써, 우리가 얼마나 쉽게 허구의 확신에 사로잡혀 이웃을 파멸로 모는지 엄중하게 경고하고 있습니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">해명 없는 침묵으로 타인의 무게를 짊어질 때</h3>
+
+오해와 불신이 팽배했을 때, 예루살렘의 지도자 야고보는 바울에게 한 가지 제안을 건넵니다. 나실인의 서원을 품은 네 사람을 데리고 가서 함께 결례를 행하고, 그들이 머리를 깎을 수 있도록 결례에 필요한 적지 않은 비용을 바울이 대신 부담하라는 것이었습니다. 그렇게 하면 바울이 율법을 무시한다는 소문이 거짓임을 모든 사람이 알게 될 것이라는 기대였습니다.
+
+여기서 성경은 참으로 기이하고도 먹먹한 침묵을 지킵니다. 본문은 이 터무니없어 보이는 제안을 마주한 바울의 ‘속내’를 단 한 글자도 적어 넣지 않았습니다. 그가 억울해했는지, 아니면 자신의 사도적 권위를 깎아내리는 처사에 자존심이 상했는지, 혹은 교회의 평화를 위해 마지못해 타협한 것인지, 성경은 그의 감정과 동기의 칸을 깨끗이 비워둔 채 묵묵히 건너뜁니다. 
+
+성경이 우리에게 보여주는 것은 오직 단 하나의 건조하고도 육중한 사실뿐입니다. 바울은 이튿날 군소리 없이 그 사람들을 데리고 성전으로 들어갔으며, 타인의 서원을 위해 제 주머니를 털어 묵묵히 죗값을 치르듯 비용을 지불했다는 사실입니다. 머리를 깎고 몸으로 서원을 감당하는 것은 다른 네 사람이었지만, 그 무거운 짐을 끝까지 감당할 수 있도록 물질의 무게를 짊어진 것은 바울이었습니다. 
+
+우리의 인생길에도 이처럼 억울하고 무거운 자리가 찾아옵니다. 내가 지어낸 오해도 아니고, 내가 벌인 일도 아닌데, 깨어진 평화를 깁기 위해 내 시간과 물질과 자존심을 쏟아부어야 할 때가 있습니다. 남들의 엉킨 실타래를 풀어주기 위해 아무런 해명도 하지 못한 채 묵묵히 내 지갑을 열고 내 몸을 낮추어야 하는 순간 말입니다. 세상은 그런 사람을 보며 어리석다고, 바보 같은 타협이라고 손가락질할지 모릅니다. 그러나 바울은 자신의 억울함을 증명하려 들지 않았습니다. 자신의 마음속 칸을 변명과 원망으로 채우는 대신, 타인의 연약함을 품어주는 침묵의 사랑과 묵묵한 희생으로 채워 넣었습니다. 해명할 수 없는 억울함 속에서도 평화를 위해 조용히 제 몫의 비용을 지불하는 사람, 그가 바로 십자가의 흔적을 몸에 새긴 사람입니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">목적어로 밀려난 층대 위에서 건네는 고요한 손짓</h3>
+
+그러나 바울의 이러한 눈물겨운 헌신과 양보에도 불구하고, 돌아온 현실의 응답은 차갑고 잔혹했습니다. 칠 일간의 결례 기간이 거의 끝나갈 무렵, 아시아에서 온 유대인들의 선동으로 성전 전체가 거대한 폭력의 소용돌이에 휩싸였습니다. 성난 군중은 결례를 행하던 바울을 성전 밖으로 질질 끌어내었고, 성전의 문들은 매정하게 닫혀버렸습니다. 군중은 바울을 둘러싸고 무자비하게 폭행하며 그를 죽이려 했습니다.
+
+이 지점에서 본문의 문법은 가슴 아프게 요동칩니다. 바울은 더 이상 무언가를 결단하고 행동하는 ‘주어’가 아니었습니다. 그는 사납게 달려든 백성들에게 ‘붙잡히고’, 성전 밖으로 ‘끌려 나가며’, 천부장이 채운 ‘두 쇠사슬에 묶이고’, 마침내는 폭도들의 포행을 피해 로마 군사들의 어깨 위에 ‘들려가는’ 철저한 수동태의 존재, 즉 인생의 ‘목적어’로 처참하게 전락하고 말았습니다. 복음을 전하며 수많은 기적을 일으키던 위대한 사도가, 이제는 군홧발과 쇠사슬 소리 사이에서 이리저리 들려 다니는 가련한 죄수의 몸이 된 것입니다.
+
+인생의 무대에서 주도권을 완전히 빼앗긴 채, 거친 운명의 파도에 이리저리 휩쓸리는 목적어의 자리. 그곳은 인간이 느낄 수 있는 가장 깊은 수치와 무력감의 심연입니다. 그런데 바로 그 절체절명의 순간, 군사들의 어깨에 들려 안토니아 요새의 계단(층대) 위로 올라간 바울에게서 실로 놀라운 반전이 일어납니다.
+
+온몸이 피투성이가 되고 두 팔에 무거운 쇠사슬이 덜렁거리는 그 계단 위에서, 바울은 결코 무너지지 않았습니다. 그는 먼저 자신을 체포한 천부장에게 유창하고 품격 있는 헬라어로 정중하게 대화를 청합니다. 자신을 흉악한 폭도로 오해했던 천부장은 바울의 깊은 학식과 의연한 태도에 압도되어 그의 발언을 허락합니다. 
+
+그리고 마침내 성경은 사도행전 전체를 통틀어 가장 감동적이고 아름다운 한 장면을 우리 눈앞에 펼쳐 보입니다. "바울이 층대 위에 서서 백성에게 손짓하여 크게 종용히 한 후에." 군사들에게 들려가던 무력한 수동태의 자리에서, 바울은 쇠사슬 묶인 두 손을 들어 자신을 죽이려 광기를 부리던 저 아래 군중을 향해 조용히 손을 내젓습니다. 저주와 비명, 증오와 살기가 뒤엉켜 용광로처럼 끓어오르던 예루살렘의 한복판에, 쇠사슬을 흔드는 한 사람의 평화로운 손짓이 드리워진 것입니다.
+
+그러자 거짓말 같은 기적이 일어났습니다. 성경은 그 순간을 "큰 침묵(πολλῆς σιγῆς γενομένης)이 일어났다"고 기록합니다. 하늘에서 벼락이 떨어진 것도, 군사들의 칼날이 번뜩인 것도 아니었습니다. 온몸으로 고난을 받아내면서도 분노 대신 온유함을 잃지 않았던 한 사람의 조용한 손짓 앞에서, 세상을 집어삼킬 듯 날뛰던 광기의 함성이 일순간 얼어붙고 거룩한 침묵이 성전을 뒤덮은 것입니다.
+
+우리는 삶의 주어 자리에서 밀려나는 것을 몹시 두려워합니다. 내가 상황을 통제하지 못하고, 오해를 받아 목적어처럼 끌려다니는 처지가 될 때 세상이 끝난 것처럼 절망합니다. 그러나 성경은 바울의 계단을 통해 우리에게 깊은 위로와 도전을 건넵니다. 
+
+인생의 모든 주도권을 빼앗기고 억울한 쇠사슬에 묶여 계단 위로 들려가는 날에도, 우리에게는 여전히 잃어버릴 수 없는 것이 있습니다. 상대를 존중하는 품격 있는 언어와, 증오의 물결을 잠재우는 화해의 손짓입니다. 세상이 나를 아무리 거칠게 다루며 목적어의 자리로 내동댕이칠지라도, 하나님 앞에서 내 영혼의 태도만큼은 여전히 내가 선택할 수 있는 거룩한 주어로 남아 있습니다. 
+
+오늘 당신의 삶을 뒤흔드는 억울한 오해가 있습니까? 내 뜻대로 풀리지 않는 현실의 무게에 짓눌려 쇠사슬에 묶인 채 끌려가는 듯한 무력감을 느끼고 계십니까? 그렇다면 층대 위에 서 있던 바울을 기억하십시오. 분노의 고함을 지르는 대신, 변명의 칼을 휘두르는 대신, 상처 입은 두 손을 가만히 들어 세상을 향해 온유한 평화의 손짓을 건네어 보십시오. 세상의 소란을 잠재우고 마침내 영혼을 뒤흔드는 하나님의 ‘큰 침묵’은, 바로 그 고요하고 당당한 손짓 끝에서 시작될 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 35편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

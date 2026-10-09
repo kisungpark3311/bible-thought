@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>연기된 판결과 묶여 있는 몸: 기쁨의 태도로 건너는 기다림의 시간</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 39편 &middot; 사도행전 24:1-27</span>
+      <h1>연기된 판결과 묶여 있는 몸: 기쁨의 태도로 건너는 기다림의 시간</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생을 살아가다 보면 내 삶의 운전대가 내 손에서 완전히 벗어났다고 느껴지는 아득한 계절을 마주하곤 합니다. 병원 복도 의자에 홀로 앉아 의사의 입에서 나올 조직검사 결과를 기다릴 때, 몇 날 며칠 밤을 지새워 제출한 서류가 누군가의 책상 위에서 결재 도장만을 하염없이 기다리고 있을 때, 혹은 억울한 오해와 비난이 쏟아지는데도 당장 그것을 바로잡을 힘이 없어 그저 묵묵히 처분만을 바라보아야 할 때가 그렇습니다. 내가 통제할 수 있는 영역은 사라지고, 내 존재의 향방이 온전히 타인의 손과 기분에 내맡겨져 있다는 그 무력감은 서늘한 칼바람처럼 마음 깊은 곳을 파고듭니다.</p>
+<p>성경 사도행전 24장은 바로 그런 극단적인 무력감의 한복판에 서 있던 한 사람, 바울의 모습을 비춥니다. 로마 총독 벨릭스가 다스리던 가이사랴의 화려한 법정. 그곳에는 당대 종교 권력의 정점에 서 있던 대제사장 아나니아와 장로들이 있었고, 그들이 거액을 들여 고용한 당대 최고의 달변가 더둘로가 서 있었습니다. 반면 그들 앞에 불려 나온 바울은 쇠사슬에 묶인 채 홀로 선 무력한 죄수에 불과했습니다. 일방적인 권력의 비대칭 속에서, 세상은 힘과 말재주로 한 사람의 인생을 손쉽게 짓밟으려 하고 있었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말하기 전에 삶의 말투를 먼저 정하는 용기</h3>
+<p>법정에 선 두 사람이 입을 뗄 때, 그들이 첫마디 앞에 내어놓은 단 한 낱말은 두 사람이 살아온 삶의 결을 고스란히 드러냅니다. 고발자로 나선 변사 더둘로는 총독을 향해 '짧게'(συντόμως, 쉰토모스) 대강 아뢸 테니 너그러이 들어달라며 혀를 굴립니다. 권력자를 향한 아첨과 감언이설로 시작된 그의 발언은 이내 독기 어린 낙인으로 번져갑니다. "우리가 보니 이 사람은 전염병 같은 자요, 온 천하의 유대인을 소요케 하는 자며 나사렛 이단의 괴수입니다." 그러나 원문의 문장 구조를 가만히 들여다보면 기이한 사실을 발견하게 됩니다. 그 화려하고 자극적인 수사학 아래에는 고발의 내용을 떠받쳐 주는 든든한 뼈대 동사가 단 하나도 존재하지 않는다는 점입니다. 사실의 입증이나 진실의 무게 대신, 권력자의 환심을 사기 위한 공허한 소음과 악의적인 선동만이 허공을 맴돌 뿐이었습니다.</p>
+<p>반면, 모든 사람의 손가락질을 받으며 죄수의 자리에 서 있던 바울이 변론을 시작하며 내건 낱말은 놀랍게도 '기쁘게'(εὐθύμως, 유튀모스)였습니다. 비굴한 동정을 구하는 탄원도, 부당한 현실에 대한 저주나 분노의 탄식도 아니었습니다. 그는 담담하고도 맑은 목소리로 "내 사건에 대하여 기쁘게 변명하나이다"라고 선언합니다. 바울은 군중의 익명성 뒤에 숨어 웅성거리는 '우리가'라는 말을 단 한 번도 쓰지 않았습니다. 대신 그는 정직한 1인칭 단수, '내가'라는 고백으로 여덟 개의 동사를 단단하게 이어갑니다. "나는 조상의 하나님을 섬기고, 율법과 선지자의 글에 기록된 것을 다 믿으며, 의인과 악인의 부활이라는 하나님을 향한 소망을 품고 있습니다. 그렇기에 나는 하나님과 사람을 대하여 항상 양심에 거리낌이 없기를 힘씁니다."</p>
+<p>바울에게서 배웁니다. 세상이 온갖 억측과 소음으로 우리를 흔들 때, 우리가 지켜내야 할 것은 목소리의 크기가 아니라 영혼의 품격입니다. 남들이 나를 어떻게 규정하든, 내 삶이 어떤 처지에 놓여 있든, 내 영혼이 하나님 앞에 단독자로 서 있다면 우리는 말하기 전에 삶의 태도를 '기쁨'으로 먼저 선택할 수 있습니다. 결과가 어떻게 흘러갈지 알 수 없는 불안의 법정에서도, 하나님과 사람 앞에서의 양심이라는 자기 내면의 중심추를 굳게 붙드는 사람. 그런 사람의 고백은 화려한 웅변을 넘어 조용하지만 거대한 울림으로 시대를 관통합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">처결이 남의 책상에 놓여 있는 긴 침묵의 자리</h3>
+<p>바울의 맑고 당당한 변론 앞에서 진실은 이미 백일하에 드러났습니다. 로마 총독 벨릭스는 기독교의 '도(道)'에 관해 어설프게 아는 사람이 아니었습니다. 본문은 그가 이 도에 관해 '더 자세히'(ἀκριβέστερον) 알고 있었다고 적습니다. 바울에게 국가를 뒤흔들 반역의 혐의나 성전을 모독한 죄가 없다는 사실을 그는 너무나 명백하게 꿰뚫어 보고 있었습니다. 만약 그가 공의로운 재판관이었다면, 바울의 쇠사슬을 그 자리에서 풀어주고 무죄를 선언해야 마땅했습니다.</p>
+<p>그러나 총독의 입에서 흘러나온 말은 비겁한 '연기(Ἀνεβάλε토)'였습니다. "천부장 루시아가 내려오거든 너희 일을 처결하리라." 벨릭스는 결정을 미룹니다. 그는 틈이 날 때마다 바울을 불러 아내 드루실라와 함께 그리스도 예수를 믿는 도를 들었습니다. 바울이 그 거대한 권력자 부부 앞에서 타협 없는 목소리로 의와 절제, 그리고 피할 수 없는 장차 올 하나님의 심판을 강론했을 때, 벨릭스의 마음속에는 서늘한 두려움(ἔμφοβος)이 일어났습니다. 그러나 그 거룩한 전율조차 그를 진정한 회개와 결단으로 이끌지는 못했습니다. "지금은 가라. 내가 틈이 있으면 너를 부르리라."</p>
+<p>벨릭스가 자기 자신에 관해 말하는 모든 어조는 언제나 아직 오지 않은 미래형 시제 속에 갇혀 있었습니다. '처결하리라', '부르리라'. 그는 오늘 감당해야 할 진실의 무게를 내일로 유예했습니다. 그 미룸의 이면에는 바울에게서 석방의 대가로 은밀한 뇌물을 바라는 탐욕스러운 기대가 똬리를 틀고 있었고, 유대 종교 지도자들의 환심을 사서 자신의 정치적 입지를 굳히려는 얄팍한 타산이 도사리고 있었습니다. 그렇게 한 통치자의 비겁한 미룸과 탐욕의 그늘 아래서, 며칠이면 끝났어야 할 재판 위로 무려 '이태(2년, Διετία)'라는 기나긴 세월이 무심히 흘러가 버렸습니다.</p>
+<p>사도행전은 그 잔인한 2년의 세월 동안 바울이 감옥 안에서 어떤 기도를 올렸는지, 어떤 탄식을 삼켰는지 한 줄도 적지 않습니다. 하나님께서 왜 천사를 보내 감옥 문을 부수지 않으셨는지, 왜 벨릭스의 마음을 단번에 꺾지 않으셨는지 설명해 주지 않습니다. 성경은 그저 침묵을 침묵인 채로 고스란히 비워둡니다. 우리 삶에도 이처럼 '처결되지 않은 채 흘러가는 2년'의 겨울이 찾아옵니다. 간절히 부르짖어도 하늘은 놋쇠처럼 굳게 닫혀 있는 것 같고, 내 억울함과 아픔을 해결해 주어야 할 사람들은 저마다의 잇속과 게으름으로 결정을 미루는 시간. 그 긴 침묵의 자리에서 우리는 종종 버림받았다는 절망감에 휩싸이곤 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">금하지 않음의 틈새로 스며드는 따뜻한 돌봄</h3>
+<p>그러나 성경의 카메라는 그 적막한 2년의 시간 속에서 아주 작고 소박한 한 줄기 빛을 포착합니다. 벨릭스는 바울을 석방하지는 않았지만, 백부장에게 명령하여 한 가지 지침을 내립니다. "바울을 지키되 자유를 주며, 친구 중 아무나 수종하는 것을 금하지 말라." 여기서 '자유'로 번역된 헬라어 '아네시스(ἄνεσις)'는 쇠사슬을 아주 풀어준다는 뜻이 아니라, 결박의 끈을 조금 느슨하게 풀어준다는 뜻입니다. 그리고 그 느슨함 곁에 붙은 또 하나의 명령이 바로 '금하지 말라(μηδένα κωλύειν)'였습니다.</p>
+<p>그것이 전부였습니다. 감옥 문이 열린 것도 아니었고, 억울한 죄명의 굴레가 벗겨진 것도 아니었습니다. 사도행전 24장의 마지막은 여전히 바울이 '묶여 있는 상태(δεδεμένον)'로 끝을 맺습니다. 그러나 국가 권력이 굳게 닫아 건 감옥의 문턱 위로, '금하지 않음'이라는 작은 틈새가 열리자 놀라운 일들이 시작되었습니다. 바울의 친구들이 그 좁은 문을 넘어 그를 찾아오기 시작한 것입니다. 쇠사슬을 차고 차가운 바닥에 앉아 있는 바울을 위해, 이름을 알 수 없는 믿음의 동역자들이 먼 길을 마다하지 않고 찾아왔습니다. 그들은 바울의 땀에 전 옷가지를 받아다 빨래를 해왔고, 정성스레 지은 따뜻한 밥 한 그릇을 건넸으며, 묶인 그의 손을 감싸 쥐고 함께 눈물의 기도를 드렸습니다.</p>
+<p>우리는 흔히 하나님의 역사를 감옥 터가 흔들리고 옥문이 일순간에 활짝 열리는 웅장한 기적 속에서만 찾으려 합니다. 그러나 하나님은 때로 우리의 상황을 단번에 뒤집어엎지 않으시고, 결박된 상태 그대로 둔 채 '금하지 않음'이라는 아주 작은 틈새를 통해 일하십니다. 중환자실 앞 차가운 복도에서 건네받는 따뜻한 보온병 속 차 한 잔, 인생의 막다른 골목에 선 친구의 어깨를 묵묵히 토닥여주는 손길, "내가 널 위해 기도하고 있어"라는 짧은 문자 메시지 한 줄. 본문이 적은 거룩한 허락의 크기는 거창한 승리의 팡파르가 아니라, 바로 이 소박한 '수종(ὑπηρετεῖν)'과 돌봄의 크기였습니다.</p>
+<p>오늘, 삶의 판결이 남의 책상 위에 올려진 채 하염없이 멈추어 있는 분이 계십니까? 내 힘으로는 도무지 어찌할 수 없는 답답한 구류의 시간 속에 갇혀 계십니까? 그렇다면 바울처럼 먼저 내 삶의 말투를 정돈해 보십시오. 불평과 원망 대신, 하나님을 향한 흔들리지 않는 신뢰로 '기쁨'과 '양심'의 옷깃을 여미십시오. 그리고 거대한 반전만을 기다리느라 내 곁에 스며드는 작은 온기들을 놓치지 마십시오. 나를 찾아와 밥 한 끼를 건네고 손을 잡아주는 이들의 사랑을 기꺼이 받아들이며, 나아가 나 자신 역시 누군가의 묶여 있는 시간 곁으로 조용히 다가가 빨래 한 바구니를 대신 들어주는 그 한 사람이 되어 주십시오. 비록 여전히 몸은 묶여 있을지라도, 사랑이 오가는 그 느슨한 틈새로 하나님의 가장 깊고 따스한 은혜가 이미 우리를 안식케 하고 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 39편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

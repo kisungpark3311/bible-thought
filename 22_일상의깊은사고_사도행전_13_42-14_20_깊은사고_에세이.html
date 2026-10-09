@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>함부로 묶지 않는 마음과 다시 일어서는 걸음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 22편 &middot; 사도행전 13:42~14:20</span>
+      <h1>함부로 묶지 않는 마음과 다시 일어서는 걸음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살다 보면 사람에게 실망하고 세상에 다치는 날이 찾아옵니다. 그럴 때 우리는 마음의 빗장을 걸어 잠그며 손쉬운 말을 내뱉곤 합니다. "그 사람들은 다 똑같아", "요즘 것들은 어쩔 수 없어", "그쪽 사람들과는 상종도 말아야 해." 한 사람의 고유한 얼굴과 사연을 지워버리고, 거대한 이름표 하나로 통째로 묶어 규정해 버릴 때 우리는 잠시 편리해질지 모릅니다. 나와 그들을 가르고, 적과 아군을 나누며 마음의 방패를 세우는 것입니다. 그러나 그렇게 대상을 한 덩어리로 뭉뚱그려 내칠 때, 정작 우리 안에서 메말라가는 것은 타인의 슬픔을 알아채는 섬세한 시선과 사랑의 자리입니다.</p>
+<p>사도행전의 오래된 기록을 가만히 들여다보면, 뜻밖의 서늘하고도 따스한 아름다움을 만나게 됩니다. 바울과 바나바가 복음을 전하며 지나간 안디옥과 이고니온, 루스드라의 길목에는 환대와 박해가 숨 가쁘게 엇갈렸습니다. 그런데 성경의 기록자는 놀랍게도 갈등의 맞은편에 선 이들을 결코 하나의 덩어리로 거칠게 몰아붙이지 않았습니다. 그들은 그냥 '반대자들'이나 '유대인들'이라는 단 하나의 낙인으로 불리지 않았습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">섣부른 낙인을 지우고 한 사람의 결을 바라보는 일</h3>
+<p>원문의 기록을 짚어보면, 성경은 같은 집단의 이름을 부르면서도 그 앞에 붙는 꼬리표를 아홉 번이나 바꾸어 달았습니다. 어떤 이들은 간절한 마음으로 사도들을 뒤따랐고, 어떤 이들은 마음이 흔들려 시기했으며, 또 어떤 이들은 다른 도시에서부터 선동을 받고 몰려왔습니다. 성경은 그들을 도매금으로 넘겨 "저들은 악하다"고 단정하지 않습니다. 많은 무리가 믿음을 고백한 자리도 또렷이 기록했고, 선동에 휩쓸린 이들의 어리석음도 있는 그대로 적었으며, 거부하는 이들조차 스스로를 영생에 합당치 않은 자로 여겼을 뿐 하나님이 먼저 버리신 것이 아니라고 적었습니다.</p>
+<p>이것이 성경이 세상을 바라보는 눈길이었습니다. 거대한 집단명 뒤에 숨겨진 개개인의 연약함과 고뇌, 그리고 결을 함부로 뭉개지 않는 조심스러움입니다. 우리는 얼마나 자주 가족이나 동료, 이웃을 대할 때 "너는 늘 그래", "그 부서는 항상 저 모양이야"라며 굵은 붓으로 먹칠을 해버리곤 합니까. 그러나 누군가를 진정으로 이해하고 품는다는 것은, 그 사람 앞에 붙은 거친 일반화의 껍질을 한 겹 한 겹 벗겨내는 일입니다. 저 사람이 왜 저토록 날카로워졌는지, 어떤 결핍과 불안이 그의 말을 사납게 만들었는지를 들여다보는 섬세한 여백, 본문이 집단의 이름을 여섯 가지 꼴로 달리 부르며 남겨둔 그 조심스러운 틈이야말로 오늘 우리가 회복해야 할 마음의 품격입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">거창한 신화보다 오늘 내리는 비와 따뜻한 밥 한 끼</h3>
+<p>루스드라에 이르렀을 때, 나면서부터 한 번도 걸어보지 못한 한 사람이 길가에 앉아 있었습니다. 성경은 그 사람의 과거나 죄의 무게를 묻지 않았습니다. 그가 얼마나 큰 믿음을 가졌는지 저울질하지도 않았습니다. 쉰일곱 번의 수많은 문장이 흘러가는 동안 본문이 품고 있던 유일한 명령은 단 하나였습니다. "네 발로 바로 일어서라." 주저앉은 자에게 요구된 것은 거창한 종교적 고행이나 영웅적인 결단이 아니었습니다. 그저 삶의 자리에서 발을 딛고 제 힘으로 일어서는 소박한 첫걸음이었습니다.</p>
+<p>그 사람이 벌떡 일어나 걷기 시작하자, 놀란 군중은 두 사도를 신들의 이름으로 부르기 시작했습니다. 제우스와 헤르메스가 사람의 형상으로 내려왔다며 소와 화관을 끌고 와 제사를 드리려 했습니다. 사람들은 기적을 보면 곧장 신화를 만들고, 특별한 사람을 영웅으로 숭배하려 합니다. 그러나 바울과 바나바는 옷을 찢으며 군중 속으로 몸을 던졌습니다. "여러분, 어찌하여 이런 일을 합니까! 우리도 여러분과 똑같은 성정을 지닌 사람일 뿐입니다."</p>
+<p>그리고 그들이 신전 문 앞에서 건넨 말은 높고 아득한 천상의 신학이 아니었습니다. 그것은 바로 '비와 계절과 음식'이었습니다. "하늘에서 비를 내리시며, 철마다 무르익는 열매를 주시고, 음식과 기쁨으로 여러분의 마음에 만족을 주시는 분." 이 얼마나 눈물겹도록 다정한 복음입니까. 하나님은 화려한 제단 위에 갇혀 계신 분이 아니라, 가문 땅을 적시는 빗방울 속에, 땀 흘려 가꾼 밭에서 익어가는 열매 속에, 지친 하루 끝에 식구들과 둘러앉아 나누는 따뜻한 밥 한 그릇 속에 당신의 선하심을 가득 담아두셨다는 고백입니다. 우리는 매일 매출을 계산하고 장부의 숫자에 쫓기느라 창밖의 계절을 잊고 살아갑니다. 그러나 진짜 은혜는 거창한 신화 속에 있지 않습니다. 오늘 내 머리 위에 내리는 비, 바람을 따라 번지는 계절의 냄새, 그리고 허기진 배를 채워주는 소박한 끼니 속에 깃들어 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">돌에 맞아 쓰러진 자리에서도 다시 일어나는 조용한 연대</h3>
+<p>인생이란 참으로 기이하고 위태롭습니다. 며칠 전까지만 해도 신이라 부르며 제사를 지내려던 바로 그 군중이, 선동에 휘말려 돌을 집어 듭니다. 바울은 무자비한 돌팔매에 맞아 피투성이가 된 채 성 밖으로 내동댕이쳐졌습니다. 사람들은 그가 죽은 줄로만 알았습니다. 환호와 찬사가 저주의 돌팔매로 뒤바뀌는 데는 그리 오랜 시간이 걸리지 않았습니다.</p>
+<p>그런데 성경은 바울의 부서진 몸이 얼마나 처참했는지, 그 억울함과 고통이 얼마나 깊었는지에 대해 한마디도 보태지 않습니다. 기쁨과 돌팔매질이 인생의 한 장면에 그저 나란히 놓여 있을 뿐입니다. 다만 성경이 고요히 비추는 것은 그다음 장면입니다. 차갑게 버려진 그의 몸 둘레에 제자들이 모여듭니다. 그들은 요란한 탄식을 쏟아내지도, 복수를 다짐하지도 않았습니다. 그저 쓰러진 그의 곁을 묵묵히 지키며 둥글게 둘러섰습니다.</p>
+<p>그리고 바로 그 침묵의 연대 한가운데서, 죽은 줄 알았던 바울이 일어납니다. 성 밖으로 버려졌던 그가 먼지를 털고 일어나 다시 걸어간 곳은, 놀랍게도 자기를 향해 돌을 던졌던 바로 그 성문 안이었습니다. 자기를 내친 세상 속으로, 상처를 주었던 그 사람들의 얼굴이 있는 일상 속으로 아무 일도 없었다는 듯 묵묵히 다시 들어간 것입니다.</p>
+<p>우리의 매일도 이와 다르지 않습니다. 어떤 날은 칭찬과 인정을 받지만, 어떤 날은 예기치 못한 비난과 차가운 거절의 돌에 맞아 마음이 만신창이가 됩니다. 왜 내게 이런 일이 일어났는지 이유를 알 수 없어 밤새 가슴을 칠 때도 있습니다. 그러나 삶의 모든 모순을 억지로 설명하려 애쓰지 마십시오. 성경이 침묵했듯, 때로는 이해할 수 없는 아픔을 있는 그대로 나란히 두고 견뎌내는 용기가 필요합니다. 그리고 쓰러져 누운 우리의 곁에 말없이 둘러서 주는 따스한 눈빛들, 오늘 내린 비와 따스한 밥 한 끼의 위로를 힘입어 다시 신발 끈을 묶어야 합니다. 우리를 내동댕이쳤던 그 삶의 복판으로, 다시 조용히 걸어 들어가는 힘은 그렇게 시작됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 22편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

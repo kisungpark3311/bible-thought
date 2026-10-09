@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이름 붙지 않은 밤에도 생명은 숨 쉬고 있다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 32편 &middot; 사도행전 20:1-16</span>
+      <h1>이름 붙지 않은 밤에도 생명은 숨 쉬고 있다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 세상의 무대 중심에서 스스로를 또렷한 '주어'로 증명하며 살아가기를 원합니다. 내가 주도권을 쥐고 일상을 이끌어야 안도하고, 나의 의지와 수고로 맺은 결실에 이름을 붙여 세상에 내보일 때 비로소 안식할 수 있다고 믿습니다. 그래서일까요. 내 뜻대로 상황이 굴러가지 않거나 무력하게 손발이 묶여 누군가의 처분만 바라보아야 하는 순간이 오면, 우리는 마치 무대 뒤로 매정하게 퇴장당한 실패자가 된 것처럼 깊은 불안에 휩싸이곤 합니다.</p>
+<p>그러나 사도행전이 기록하는 바울과 그 일행의 여정을 가만히 들여다보면, 우리의 굳은 통념을 깨뜨리는 낯설고도 따뜻한 풍경을 마주하게 됩니다. 에베소의 거센 소요가 잦아든 뒤, 바울은 마게도냐와 헬라를 거쳐 수리아로 향하고자 했습니다. 하지만 길목마다 위협과 음모가 도사리고 있었고, 그 치열하고 긴박한 복음의 행로 한가운데서 기록자인 누가가 자신을 포함한 일행을 성경 무대에 처음으로 등장시키는 방식은 참으로 뜻밖이었습니다. 그들은 무언가를 성취해 낸 당당한 주어가 아니라, 그저 목적어의 자리에 머물러 있었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">아무것도 하지 못하는 자리에서 누군가의 기다림이 될 때</h3>
+<p>"그들은 먼저 가서 드로아에서 우리를 기다리더라." 성경 원문에서 저자가 자신들을 가리켜 처음 적어 넣은 낱말은 주격이 아니라 '우리를'이라는 목적격(헤마스)이었습니다. 그 절에서 '우리'는 바다를 가르며 기적을 일으키지도, 거창한 선교의 업적을 자랑하지도 않습니다. 아무런 동작도 스스로 행하지 못한 채, 오직 먼저 가 있는 동역자들의 시선 안에서 '기다려지는 존재'로 조용히 자리 잡고 있을 뿐입니다.</p>
+<p>살다 보면 내가 세상을 향해 아무것도 할 수 없는 무력한 계절을 통과할 때가 있습니다. 질병으로 병상에 눕거나, 예기치 않은 실패로 앞길이 캄캄해졌을 때, 우리는 내가 아무 쓸모 없는 존재로 전락해 버린 것은 아닌지 두려워합니다. 그러나 성경은 분명하게 보여줍니다. 주어로 분주하게 움직이지 못하고 그저 '우리를'이라는 수동의 자리에 머물러 있는 시간조차도 하나님과 함께 걷는 거룩한 여정의 온전한 한 부분이라는 사실을 말입니다. 내가 아무것도 할 수 없는 동안에도 우리는 결코 은혜의 명단에서 지워지지 않습니다.</p>
+<p>기다려지기만 하던 '우리'가 다시 주어가 되어 배에 오르고 드로아로 건너가기까지는 무교절의 날들과 닷새의 항해가 필요했습니다. 무력함에서 다시 일상의 주어로 일어서기까지는 반드시 채워져야 할 시간의 무게가 있는 법입니다. 지금 삶의 무기력한 자리에 멈추어 서 있다면, 억지로 시간을 건너뛰려 발버둥 치기보다 그 기다림의 날수 안에 가만히 머물러 보십시오. 누군가가 나를 애타게 기다려 주고 있으며, 주님이 여전히 내 이름을 당신의 품에 품고 계신다는 사실을 신뢰하면서 말입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">이름 붙이지 않아도 온전히 남겨지는 위로의 밤</h3>
+<p>그렇게 도착한 드로아에서 잊을 수 없는 한 밤의 사건이 펼쳐집니다. 안식 후 첫날, 떠남을 앞둔 바울의 설교는 밤중까지 이어졌고 모인 윗다락방에는 수많은 등불이 켜져 있었습니다. 그 좁고 후텁지근한 공간, 등불의 열기와 그을음 속에서 창가에 걸터앉아 말씀을 듣던 유두고라는 청년이 있었습니다. 하루의 고단한 노동에 지쳤던 것일까요, 아니면 깊어가는 밤의 무게를 견디지 못했던 것일까요. 그는 깊은 잠에 끌려 내려가다가 결국 삼층 누에서 바닥으로 떨어지고 맙니다.</p>
+<p>사람들이 비명을 지르며 달려 내려가 일으켜 보았을 때 청년은 이미 숨이 끊어진 듯했습니다. 그러나 성경 본문 어디를 보아도 이 연약한 청년을 향한 책망의 단어는 단 한 글자도 찾아볼 수 없습니다. "어찌 거룩한 말씀의 자리에서 졸다 떨어졌느냐"는 영적 핀잔도, 그의 부족한 믿음을 탓하는 꾸짖음도 없습니다. 성경은 그저 육체를 지닌 한 인간이 피로와 어둠 속에서 버티지 못하고 무너져 내린 가냘픈 상태를 있는 그대로 연민 어린 시선으로 바라볼 뿐입니다.</p>
+<p>바울은 지체 없이 계단을 내려가 차디차게 식어가는 청년의 몸 위에 엎드렸습니다. 그리고 두 팔로 그를 품에 안은 채 동요하는 사람들을 향해 나직하지만 힘 있는 목소리로 말합니다. "떠들지 말라, 생명이 그에게 있다."</p>
+<p>참으로 놀라운 것은 성경이 이 밤의 사건에 '부활의 기적'이라거나 '신유의 권능' 같은 거창한 교리적 이름을 붙이지 않는다는 점입니다. 그것이 기적이었는지, 아니면 일시적 기절에서의 회복이었는지 본문은 굳이 규정하지 않고 그저 열어둔 채 지나갑니다. 거창한 해석을 덧붙이지 않아도, 다시 다락방으로 올라가 떡을 떼어 나누고 날이 새기까지 나눈 소박한 대화 속에서 사람들은 "적지 않은 위로"를 받았습니다.</p>
+<p>우리는 일상에서 일어나는 모든 일에 너무 서둘러 이름을 붙이려 합니다. 이것은 징벌인가 은혜인가, 나의 영적 태만 때문인가 우연한 비극인가를 따지며 스스로를 옥죕니다. 그러나 하나님은 거창한 이름표가 붙지 않은 그 밤에도 일하고 계셨습니다. 무너져 내린 연약한 몸을 말없이 끌어안는 사랑, "생명이 아직 그 안에 있다"고 선언해 주는 따뜻한 확신, 그리고 새벽빛이 밝아올 때까지 함께 나누는 떡 한 조각의 온기만으로도 상처 입은 영혼들은 다시 살아갈 힘을 얻는 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">소란한 세상의 음모를 넘어 묵묵히 내딛는 고요한 걸음</h3>
+<p>날이 밝자 드로아의 밤은 지나가고, 사람들은 다시 각자의 바다로 나아갑니다. 앞서 바울은 배를 타고 수리아로 가려 했으나, 자기를 해하려는 유대인들의 은밀한 공모를 알아차리고 마게도냐로 돌아가는 결단을 내렸습니다. 본문은 대적자들의 음모를 문장의 주인으로 세우지 않습니다. 세상의 악의와 위협이 아무리 거세 보여도 그것은 곁가지에 불과할 뿐, 인생을 실제로 떠받치고 이끄는 것은 그 위협 앞에서 침착하게 길을 바꾸기로 작정하는 사람의 담담한 걸음이기 때문입니다.</p>
+<p>더욱이 바울은 일행을 먼저 배에 태워 보내고, 자신은 홀로 앗소까지 걸어가기로 작정합니다. 동역자들과 함께 배를 타면 훨씬 편안하고 빠르게 갈 수 있었을 터인데, 왜 그는 먼지 나는 해안 길을 홀로 걸었을까요? 성경은 그 이유를 구태여 설명하지 않습니다. 홀로 걸으며 지난 밤 유두고를 안았던 가슴의 진동을 하나님 앞에 고요히 올려드리고 싶었을 수도 있고, 다가올 예루살렘의 고난을 앞두고 오직 주님과만 독대하는 침묵의 시간이 간절했을지도 모릅니다.</p>
+<p>참된 신앙의 성숙이란 세상의 소란스러움에 일일이 반응하며 핏대를 세우는 것이 아닙니다. 예기치 않은 음모가 길을 가로막을 때면 조용히 우회로를 택하고, 설명할 수 없는 은혜와 슬픔이 교차한 뒤에는 홀로 흙먼지 길을 걸으며 하나님과 보폭을 맞추는 것입니다. 그리고 다시 약속된 항구에서 동역자들을 만나 배에 오르고, 미둘레네와 기오와 사모를 지나 다음 항구인 밀레도로 묵묵히 나아가는 일상의 지속이야말로 가장 위대한 믿음의 꼴입니다.</p>
+<p>주어가 되지 못해 그저 기다려지기만 하던 무력한 날도, 육체의 한계에 굴복하여 깊은 잠에 떨어졌던 부끄러운 밤도, 그 어떤 거창한 신앙의 이름이 붙지 않아도 괜찮습니다. 바울이 유두고를 안고 속삭였듯, 당신이 통과하고 있는 그 어두운 자리 한가운데에도 하나님의 생명은 여전히 꺼지지 않고 숨 쉬고 있습니다. 소란한 파도를 등뒤로 하고 오늘 내게 주어진 삶의 길을 한 걸음씩 묵묵히 걸어갈 때, 하나님이 예비하신 그 '적지 않은 위로'가 마침내 우리의 온 삶을 포근하게 감싸 안아줄 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 32편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

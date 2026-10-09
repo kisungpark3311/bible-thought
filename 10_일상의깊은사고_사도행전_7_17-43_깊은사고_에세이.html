@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>밀려난 그 사람을 하나님은 바꾸지 않으십니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 10편 &middot; 사도행전 7:17-43</span>
+      <h1>밀려난 그 사람을 하나님은 바꾸지 않으십니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생의 어느 모퉁이에서 자신이 세상으로부터 매정하게 밀려났다고 느끼는 순간이 있습니다. 선한 뜻으로 내민 손이 냉소와 배척으로 되돌아오고, 모든 열정을 쏟았던 자리가 한순간에 무너져 내릴 때 우리는 깊은 고립과 침묵 속으로 빠져듭니다. 구약의 위대한 지도자 모세의 생애에서도 가장 뼈아픈 분기점은 바로 그 ‘밀려남’의 순간이었습니다.</p>
+<p>나이 마흔, 왕궁의 화려한 신분과 지혜를 갖추었던 그는 학대받는 동족의 고통을 차마 외면하지 못하고 분연히 일어섰습니다. 억울하게 맞는 형제를 돕고 불의를 막아섰을 때, 그는 자신의 동족들이 하나님께서 자기 손을 통해 구원의 길을 내고 계심을 알아채리라 기대했습니다. 그러나 돌아온 반응은 차갑고 모질었습니다. “누가 너를 우리의 관원과 재판장으로 세웠느냐?” 형제를 품으려던 그의 열정은 하루아침에 살인자의 도망길로 전락했고, 그는 미디안 광야의 모래바람 속으로 자취를 감추었습니다. 세상의 잣대로 보면 그날의 모세는 완전한 낙오자였고, 스스로에게도 지울 수 없는 실패자였습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">밀려난 자리에서 묵묵히 흘려보낸 사십 년의 침묵</h3>
+<p>성경은 모세가 광야로 도망친 뒤 흘려보낸 시간에 대해 단 한마디로 적어 내려갑니다. “사십 년이 차매.” 우리는 성경을 읽으며 이 사십 년이라는 숫자를 너무도 담담하게 넘기곤 합니다. 그러나 마흔에서 여든에 이르는 사십 년은 한 인간의 생애에서 가장 찬란한 역량과 꿈이 통째로 묻혀 버린 시간입니다. 어제까지 왕궁의 왕자로 살아가던 사람이 오늘은 아무도 알아주지 않는 황량한 들판에서 남의 양 떼를 먹이는 나그네가 되었습니다. 어떠한 책임도, 어떠한 소명도 주어지지 않은 채 메마른 바람과 적막만이 그의 곁을 지켰습니다.</p>
+<p>스데반의 설교는 이 사십 년의 시간에 어떠한 위로의 수식어도 붙이지 않습니다. 조금만 더 버티라거나 희망을 품으라는 종교적 훈계조차 두지 않고, 그저 ‘사십 년’이라는 물리적 시간의 길이 자체를 있는 그대로 우리 앞에 펼쳐 놓습니다. 살다 보면 우리 삶에도 이처럼 설명할 길 없는 공백의 계절이 찾아옵니다. 아무것도 이루지 못한 채 시간만 속절없이 흘러가는 것 같고, 나의 존재는 세상의 기억 속에서 영영 잊혀진 것만 같은 고독한 순간들입니다. 이력서의 빈칸처럼 남겨진 적막한 시간 앞에서 우리는 하나님마저 나를 잊으신 것은 아닌지 깊은 회의에 휩싸이기도 합니다.</p>
+<p>그러나 성경은 그 침묵의 세월 속에서도 하나님의 시선이 결코 멈춘 적이 없었음을 증언합니다. “내 백성이 애굽에서 괴로움 받음을 내가 정녕히 보고 그 탄식하는 소리를 듣고 저희를 구원하려고 내려왔노라.” 하나님은 고통받는 백성의 짓눌린 신음을 단 한 순간도 놓치지 않으셨으며, 광야 한구석에서 늙어가는 모세의 메마른 숨결을 잊지 않으셨습니다. 우리가 아무런 일도 맡지 못한 채 그저 견디기만 하던 그 긴 시간조차, 하나님의 섭리 안에서는 결코 무의미하게 버려진 시간이 아니었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">실패한 그 사람을 끝내 바꾸지 않으시는 은혜</h3>
+<p>사도행전 7장 35절은 성경 전체를 통틀어 가장 감격적인 은혜의 신비를 품고 있습니다. “저희 말이 누가 너를 관원과 재판장으로 세웠느냐 하며 거절하던 그 모세를 하나님은 가시나무 떨기 가운데서 보이던 천사의 손을 의탁하여 관원과 속량하는 자로 보내셨으니.” 본문은 매몰차게 거절당했던 모세와 하나님이 보내시는 모세를 결코 다른 사람으로 나누지 않습니다. 동족에게 내쳐졌던 ‘바로 그 모세’를 하나님은 교체하지 않으시고, 그 사람 그대로 다시 불러 세우셨습니다.</p>
+<p>세상의 문법은 한없이 비정합니다. 한번 결정적인 실수를 저지르거나 쓰임새가 다했다고 여겨지면 가차 없이 다른 유능한 인재로 대체됩니다. 조직과 효율의 냉혹한 저울 위에서 실패자는 쉽게 교체되고 지워지는 존재일 뿐입니다. 만약 세상의 방식이었다면 하나님께서도 실패로 얼룩진 모세를 버려두고, 왕궁의 교육을 완벽히 마친 더 젊고 유망한 영웅을 새로이 발탁하셨을 것입니다. 그러나 하나님의 섭리는 세상의 셈법을 훌쩍 뛰어넘습니다. 과거의 조급함과 혈기로 좌절했던 사람, 사십 년간 광야의 모래먼지를 뒤집어쓰며 자존감이 바닥까지 내려앉은 그 여든 살의 목자를 하나님은 끝내 포기하지 않으셨습니다.</p>
+<p>더욱 마음을 뭉클하게 하는 것은 하나님이 그를 홀로 내보내지 않으셨다는 사실입니다. 성경은 하나님께서 “천사의 손을 의탁하여” 그를 보내셨다고 덧붙입니다. 젊은 날 제 힘과 혈기만을 믿고 주먹을 휘두르다 도망쳤던 그 초라한 손을, 이제는 하늘의 보이지 않는 신비로운 손으로 부드럽게 감싸 안아 주십니다. 내가 실패했던 그 자리, 내 인생의 가장 부끄러운 상처와 좌절이 묻혀 있는 바로 그 자리에서, 하나님은 우리를 바꾸지 않으시고 상처 입은 모습 그대로 다시 일으켜 은혜의 도구로 삼으십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">손가락을 거두고 ‘우리’의 이름을 부를 때 열리는 길</h3>
+<p>스데반이 전하는 모세의 이야기가 오늘 우리 영혼을 더욱 깊이 울리는 까닭은 그가 역사를 바라보는 정직한 시선 때문입니다. 스데반은 모세를 배척하고 금송아지를 만들어 우상 앞에 환호했던 과거의 비극을 증언하면서, 그 완악함을 타인들의 탓으로 돌리지 않았습니다. 거부와 배신의 주체를 역사에 기록하는 단 한 자리에서 그는 주저 없이 “우리 조상들”이라는 말을 선택했습니다.</p>
+<p>우리는 얼마나 자주 실패와 상처의 원인을 남에게서 찾습니까. 나를 배척하고 밀쳐낸 사람들을 손가락질하고, 세속의 부조리를 매섭게 비판하면서 자신만은 언제나 흠 없는 피해자의 자리에 서 있으려 합니다. 그러나 스데반은 손가락을 밖으로 향하지 않았습니다. 거절과 배은망덕의 어두운 유산 한복판에서 “우리 조상들”이라는 1인칭 복수를 정직하게 발음하며, 자신 역시 그 나약하고 허물 많은 인간성의 연약함을 공유하고 있음을 고백한 것입니다. 타인을 겨누던 날 선 손가락을 거두고 나의 부끄러움을 ‘우리’라는 아픈 이름으로 품어 안을 때 비로소 진정한 참회와 회복의 문이 열립니다.</p>
+<p>아울러 본문은 오늘 우리의 손이 빚어내고 있는 일상의 무게를 돌아보게 합니다. 광야의 이스라엘은 자기 손으로 우상을 만들어 놓고 그 피조물의 기쁨에 취해 있었습니다. 오늘 우리 역시 내 손으로 일구어 낸 작은 성취와 스펙, 책상 위에서 결정하는 사소한 권력에 도취되어 하나님의 통치를 잊고 살아가지는 않습니까. 일터의 책상 위에서 무심코 결재하고 넘기는 서류 한 장조차 실은 누군가의 소박한 끼니와 거처, 곧 한 사람의 연약한 몸에 깊숙이 닿아 있습니다. 내가 만든 작은 송아지에 도취될 때 하나님은 등을 돌리시지만, 고통받는 이들의 탄식과 이웃의 아픔을 헤아릴 때 하나님의 손길이 우리 삶에 머뭅니다.</p>
+<p>인생의 기나긴 광야를 지나며 지쳐 계십니까. 선한 뜻이 오해받고 배척당해 아무것도 할 수 없는 깊은 무력감 속에 머물러 계십니까. 기억하십시오. 하나님은 실패했던 당신을 다른 누군가로 바꾸지 않으십니다. 아무도 찾지 않던 침묵의 사십 년 속에서도 당신의 숨죽인 탄식을 다 듣고 계셨던 그분이, 오늘 당신의 떨리는 손을 붙잡아 다시 세우실 것입니다. 세상으로부터 밀려났던 바로 그 자리에서, 하나님의 가장 거룩한 부르심이 타오르는 떨기나무 불꽃이 다시 피어오를 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 삶의 주어 칸을 그분의 이름으로 비워 둘 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 04편 &middot; 사도행전 3:1-26</span>
+      <h1>내 삶의 주어 칸을 그분의 이름으로 비워 둘 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>
+    화려한 대리석 기둥과 황금빛 장식이 찬란하게 빛나는 성전의 동쪽 문에는 '미문(美門)', 즉 아름다운 문이라는 이름이 붙어 있었습니다. 수많은 사람들이 정해진 기도 시간이 되면 정결한 옷을 차려입고 경건한 표정으로 그 문을 드나들었습니다. 그러나 그 눈부신 아름다움의 문턱 바로 아래에는, 그 화려함과 가장 어울리지 않는 한 사람이 웅크리고 앉아 있었습니다. 나면서부터 한 번도 자신의 두 발로 땅을 딛고 서 본 적 없는 사람, 매일 아침 누군가의 손에 들려와 그 차가운 돌바닥에 던져지듯 놓여야 했던 걸인이었습니다.
+  </p>
+<p>
+    그의 하루에는 스스로 선택할 수 있는 것이 아무것도 없었습니다. 가고 싶은 곳으로 향하는 발걸음도, 자신의 뜻대로 움직일 수 있는 몸의 자유도 없었습니다. 아침이면 타인의 등에 실려 문가에 '내려놓아졌고', 저녁이 되면 다시 타인의 손에 이끌려 돌아가야 했습니다. 그 무력한 일상 속에서 그가 품을 수 있었던 단 하나의 삶의 목적은 오직 '구걸'이었습니다. 성전 안으로 들어가는 사람들의 자비심에 기대어 동전 몇 닢을 얻어내는 것, 그것이 그가 세상과 맺을 수 있는 유일한 끈이었습니다. 성전 문은 늘 열려 있었지만, 그는 단 한 번도 그 문턱을 넘어 거룩한 성소의 품으로 들어가지 못했습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">일어서지 못한 날들의 무게를 먼저 바라보시는 은혜</h3>
+<p>
+    사도행전 3장이 전하는 이야기에서 깊은 감동을 주는 것은, 성경이 이 사람을 묘사하는 세밀하고 따뜻한 시선입니다. 성경은 그를 향해 왜 더 열심을 내지 않느냐고, 왜 믿음으로 스스로 일어서 보려 하지 않느냐고 다그치지 않습니다. 오히려 그가 모태에서부터 걸을 수 없었던 신체적 한계, 다른 사람들의 손에 실려 와 매일 문가에 '놓여야만 했던' 수동적인 처지, 그리고 구걸이 하루의 전부가 될 수밖에 없었던 서글픈 현실을 있는 그대로 서술합니다. 성경 문장의 주어는 그의 의지가 아니라, 그를 메고 와 그곳에 내려놓은 다른 사람들의 동작이었습니다.
+  </p>
+<p>
+    우리 삶에도 내 뜻대로 일어설 수 없었던 무력한 계절이 있습니다. 남들의 속도에 맞추지 못한 채 세상의 문턱 바깥에 주저앉아 있어야 했던 날들, 내 힘으로는 어찌할 수 없는 결핍과 상처를 안고 그저 하루하루를 버텨내는 것만이 유일한 목표였던 시간들이 존재합니다. 사람들은 쉽게 결과만을 묻고 성과만을 요구하지만, 하나님은 우리가 온전히 일어서지 못했던 그 길고 지난한 날들의 무게를 결코 지나치지 않으십니다. 아무것도 자랑할 것 없이 문가에 웅크리고 있던 그 무력한 하루도 그분의 기록과 시선에서 단 한 줄도 빠지지 않았다는 사실은, 오늘 지친 걸음으로 주저앉아 있는 우리 영혼에 깊은 안도와 위로를 건넵니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내 결핍을 인정할 때 비로소 건네지는 이름</h3>
+<p>
+    성전을 향해 올라가던 베드로와 요한이 그 자리에 멈추어 섰습니다. 그리고 동전 한 닢을 기대하며 손을 내미는 그를 똑바로 응시했습니다. 그때 베드로의 입에서 흘러나온 첫마디는 뜻밖에도 결핍의 고백이었습니다. "은과 금은 내게 없거니와." 세상의 기준에서 볼 때 그것은 무능함의 자백처럼 보입니다. 세상을 살아가는 데 가장 절실해 보이는 물질적 자산이 자신에게는 없다는 고백이었습니다. 그러나 베드로는 결핍에 머물러 좌절하지 않았습니다. 내게 없는 것을 정직하게 털어놓은 바로 그 자리에서, 그는 자신이 진정으로 소유하고 있는 단 하나의 보배를 꺼내어 놓았습니다. "내게 있는 것으로 네게 주노니, 곧 나사렛 예수 그리스도의 이름으로 걸으라."
+  </p>
+<p>
+    우리는 종종 내가 가진 것, 내 손에 쥔 은과 금으로 사람을 돕고 세상을 바꾸려 합니다. 그러다 가진 것이 바닥나면 아무것도 해줄 수 없다는 무력감에 빠지곤 합니다. 그러나 성경이 보여주는 참된 회복의 역사는 가진 자의 넉넉한 시혜에서 시작되지 않았습니다. 오히려 내 빈손을 정직하게 마주하고, 내 한계를 인정하는 자리에서 비로소 '예수 그리스도'라는 위대한 이름이 생명의 통로로 흘러나오기 시작했습니다. 베드로가 그의 오른손을 잡아 일으키자, 평생 힘을 써보지 못했던 발과 발목이 즉시 힘을 얻었습니다. 기적은 사도의 풍요에서 나온 것이 아니라, 세상의 자산을 비워낸 자리에 들어선 거룩한 이름의 권능이었습니다.
+  </p>
+<p>
+    기적을 목격한 사람들은 경악하며 베드로와 요한을 영웅처럼 에워쌌습니다. 사람들의 찬사와 시선이 사도들에게 집중되던 바로 그 순간, 베드로는 단호하게 그 열광을 가로막았습니다. "이스라엘 사람들아, 왜 우리를 주목하느냐? 우리의 개인적인 권능이나 경건으로 이 사람을 걷게 한 것처럼 왜 우리를 쳐다보느냐?" 베드로는 치유의 결과 보고서에서 자신의 이름을 철저하게 지워버렸습니다. 그리고 그 비워진 주어의 자리에 오직 한 분, '그 이름'을 올려놓았습니다. 사람을 살리고 온전하게 하는 주어는 결코 인간의 열심이나 능력이 될 수 없음을 분명히 한 것입니다. 일터와 사역의 현장에서 열매가 맺히고 성취가 찾아올 때, 우리는 얼마나 쉽게 주어 칸에 내 수고와 이름을 적어 넣고 싶어 합니까. 그러나 참된 신앙은 내 이름을 지우고 그 자리에 주님의 이름을 남겨두는 거룩한 양보에서 완성됩니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">체념의 문가에서 생명의 중심부로 걸어 들어가는 길</h3>
+<p>
+    베드로의 설교는 사람들을 비난하거나 정죄하여 절망에 빠뜨리기 위한 것이 아니었습니다. 십자가의 죽음을 방조하고 거부했던 사람들을 향해 다섯 번에 걸쳐 준엄하게 죄를 짚어내면서도, 베드로는 곧이어 따뜻한 음성으로 부릅니다. "형제들아, 너희가 알지 못하여 그리하였음을 내가 아노라." 고발은 파멸을 선고하기 위함이 아니라, 참된 생명으로 돌아서게 하기 위한 사랑의 전초전이었습니다. 하나님은 우리의 무지와 연약함을 다 아시며, 그 실수의 자리에서 다시 시작할 수 있는 돌이킴의 은혜를 예비해 두셨습니다.
+  </p>
+<p>
+    사도행전의 원문 문장들을 가만히 묵상해 보면, 놀라운 문법적 이동이 눈에 들어옵니다. 본문의 시작에서 한 사람의 하루를 지배했던 문법은 '구걸하기 위하여(투 아이테인)'라는 수동적인 목적이었습니다. 남의 손에 들려와 마지못해 던져진 인생의 목표는 고작 몇 푼을 비는 것이었습니다. 그러나 예수의 이름이 그의 삶에 닿았을 때, 그 문법은 온전한 '걸음(투 페리파테인)'으로 바뀌었고, 죄를 씻어내는 '씻김(토 엑살레이프테나이)'을 지나, 마침내 하나님을 향해 삶의 방향을 전인격적으로 돌이키는 '돌이킴(토 아포스트레페인)'으로 확장됩니다.
+  </p>
+<p>
+    누군가에 의해 성전 문가에 던져지듯 살아가던 수동적인 존재가, 이제는 제 발로 걷고 뛰며 성전 안으로 당당히 걸어 들어갔습니다. 그는 더 이상 문턱 바깥에서 동전을 구걸하는 자가 아니라, 성전 한복판에서 하나님을 찬미하는 예배의 주체가 되었습니다. 그리고 이 놀라운 회복은 성전 뜰에 모인 모든 이들에게 각자의 삶을 돌이키라는 거룩한 초대로 이어집니다. 무리 속에 숨어 막연하게 살아가는 것이 아니라, '각 사람'이 스스로 악함을 버리고 주님께 돌아오는 인격적인 결단으로 나아가게 한 것입니다.
+  </p>
+<p>
+    오늘 우리의 삶은 어디에 머물러 있습니까. 여전히 인생의 문턱 바깥에서 누군가의 도움만을 바라보며 체념 섞인 손을 내밀고 있지는 않습니까. 혹은 내가 거둔 작은 성공의 열매 앞에 내 이름 석 자를 주어로 적어 넣느라 영혼의 갈증을 겪고 있지는 않습니까. 복음은 우리에게 말합니다. 은과 금이 없어도 괜찮다고, 우리를 일으켜 세우는 진짜 능력은 세상의 자산에 있지 않다고 속삭입니다. 내 결핍을 주님 앞에 정직하게 내어놓고, 내 삶의 주어 칸을 그분의 이름으로 온전히 채워 넣을 때, 우리는 주저앉아 있던 그 문가를 박차고 일어나 생명의 깊은 은혜 속으로 당당히 걸어 들어가게 될 것입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 04편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

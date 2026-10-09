@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>보와 밤길 사이, 침묵으로 남겨진 삶의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 27편 &middot; 사도행전 17:1-15</span>
+      <h1>보와 밤길 사이, 침묵으로 남겨진 삶의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 언제나 결말이 선명한 이야기를 갈망합니다. 숱한 고난 끝에 마침내 거두는 눈부신 승전보, 희생을 감내한 이들에게 주어지는 통쾌한 보상, 그리고 땀과 눈물로 일군 사역의 당당한 결산서 같은 것들 말입니다. 결말이 명쾌해야 지나온 수고가 헛되지 않았음을 증명할 수 있다고 믿기 때문입니다. 그러나 성경이 기록하는 현실의 발자취는 종종 우리의 기대와 조급함을 정면으로 빗겨갑니다. 사도행전 17장에 펼쳐진 데살로니가와 베뢰아, 그리고 아덴으로 이어지는 세 도시의 여정을 가만히 따라가다 보면, 당혹스러울 만큼 미완성으로 열려 있는 삶의 단면들과 마주하게 됩니다.</p>
+<p>그곳에는 거창한 승리의 환호성이 없습니다. 대신 성난 군중의 거친 고발과 관청에 서둘러 넘겨진 담보물, 황급히 옷깃을 여미며 나서야 했던 차가운 밤길, 그리고 아무런 결론도 맺지 못한 채 흩어지는 아테네 광장의 웅성거림만이 쓸쓸하게 자리를 지키고 있습니다. 성경은 왜 이 세 도시의 여정을 영웅적인 무용담으로 채색하지 않고, 이토록 건조하고도 정직하게 남겨두었을까요? 그 불완전해 보이는 여백 속에서, 우리는 오늘을 살아가는 우리 자신의 숨은 얼굴을 발견하게 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">보를 치르고 침묵으로 남겨진 야손의 집</h3>
+<p>데살로니가에 복음이 전해졌을 때, 경건한 헬라인의 큰 무리와 적지 않은 귀부인들이 주님께 돌아왔습니다. 그러나 복음의 빛이 비치는 곳에는 어김없이 어둠의 그림자가 짙게 드리워졌습니다. 시기심에 사로잡힌 이들이 저자의 불량배들을 동원해 도시를 소동케 했습니다. 그들은 사도들을 잡기 위해 야손의 집을 습격했고, 바울 일행을 찾지 못하자 집주인 야손과 그 자리에 있던 형제들을 관원들 앞으로 거칠게 끌고 갔습니다.</p>
+<p>이 장면에서 우리의 마음을 깊이 흔드는 인물은 바로 야손입니다. 그는 대중 앞에서 담대하게 진리를 외친 설교자도 아니었고, 기적을 행한 사도도 아니었습니다. 그저 낯선 나그네 전도자들에게 자기 집의 문을 열어주고, 기꺼이 쉴 자리를 내어준 평범한 일상의 신앙인이었을 뿐입니다. 그런데 성경은 야손의 입에서 나온 말 한마디조차 기록하지 않습니다. 그는 자신의 억울함을 호소하지도 못했고, 위풍당당한 신앙의 결기를 토해내지도 않았습니다. 그저 거친 비난과 고발 속에서 죄인처럼 서 있었을 뿐입니다.</p>
+<p>그리고 사건은 허탈하리만큼 현실적인 방식으로 매듭지어집니다. 관원들은 야손과 형제들에게 ‘보(保)’를 받고 그들을 놓아줍니다. 여기서 ‘보’로 번역된 헬라어 ‘토 히카논(τὸ ἱκανὸν)’은 법적 구금을 면하기 위해 관청에 지불해야 했던 현실적인 담보물과 벌금을 의미합니다. 세상의 눈으로 보면 이것은 명백한 손해이자 수치스러운 뒷수습이었습니다. 신앙을 품었다는 이유로 집이 난장판이 되고, 관청에 불려 가 벌금을 물고 풀려난 사람. 남들이 부흥의 열매를 이야기할 때, 뒤편에 남아 부서진 세간을 정리하고 지갑을 털어 대가를 치러낸 사람이 바로 야손이었습니다.</p>
+<p>우리는 흔히 사역의 영웅담을 적을 때 이런 부끄럽고 초라한 손실의 칸을 슬그머니 지워버리고 싶어 합니다. 그러나 성경은 그 담보물이 건너간 사실과 사람이 풀려난 현실을 결코 지우지 않았습니다. 바울의 거룩한 전도 습관과 야손이 치러낸 담보물의 무게를 문법적으로 동등한 자리에 올려놓고, 어느 것이 더 우월하거나 거룩한지 서열을 매기지 않았습니다. 말 한마디 남기지 못한 채 일상의 무게와 재정적 손실을 묵묵히 짊어진 사람, 주님은 화려한 언변 대신 그 침묵의 대가(代價) 속에서 복음의 자리를 지켜내고 계셨습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">명령 없는 일상의 상고와 바다로 이어진 밤길</h3>
+<p>소동을 피해 바울과 실라는 야음을 틈타 베뢰아로 몸을 피합니다. 베뢰아 사람들은 데살로니가에 있는 사람들보다 훨씬 너그럽고 신사적이어서, 간절한 마음으로 말씀을 받고 이것이 과연 그러한가 하여 날마다 성경을 깊이 상고했습니다. 우리는 종종 이 구절을 마주할 때마다 ‘베뢰아인들처럼 성경을 날마다 열심히 연구해야 한다’는 종교적인 훈계와 의무를 서둘러 덧붙이곤 합니다.</p>
+<p>그러나 원문을 찬찬히 들여다보면 뜻밖의 사실을 발견하게 됩니다. 이 본문 어디에도 “너희도 성경을 상고하라”는 식의 도덕적 명령형 어미가 붙어 있지 않습니다. 문장의 중심을 떠받치는 유일한 행동은 그저 말씀을 ‘기쁨으로 받았다’는 사실뿐이었습니다. 날마다 성경을 상고한 일은 무거운 율법적 의무가 아니라, 생명의 말씀이 가슴에 닿았을 때 영혼 깊은 곳에서 피어오른 자연스러운 반응이자 일상의 호흡이었던 것입니다. “과연 이 말씀이 그러한가”를 묻고 되새기는 잔잔한 숙고, 그것은 억지로 쥐어짜 낸 열심이 아니라 은혜를 품은 자들이 누리는 고요한 일상의 특권이었습니다.</p>
+<p>하지만 그 아름답고 평화로운 묵상의 시간조차 현실의 거친 파도를 영원히 막아서지는 못했습니다. 소식을 접한 데살로니가의 유대인들이 베뢰아까지 원정을 와서 또다시 군중을 선동했습니다. 결국 바울은 베뢰아에서도 오래 안식하지 못한 채, 형제들의 손에 이끌려 바다로 황급히 길을 떠나야 했습니다. 성경이 이 거룩한 도시의 사역 끝에 남겨둔 풍경은 무엇입니까? 어두운 ‘밤 시간’이라는 도피의 시간표, 바다까지 걸어가야 했던 먼 거리, 그리고 멀어져 가는 바울을 배웅하며 뒤편에 남겨진 실라와 디모데의 모습뿐이었습니다.</p>
+<p>성경은 그들이 왜 남아야 했는지, 바울이 왜 떠나야 했는지 구구절절 설명하지 않습니다. 밤의 적막과 바닷가의 바람, 그리고 서로를 아끼며 배웅하던 손길만을 정직하게 기록합니다. 신앙의 길이란 언제나 박수갈채를 받으며 개선행진을 하는 자리가 아닙니다. 때로는 말씀 하나 가슴에 품고 어두운 밤길을 묵묵히 걸어야 하며, 때로는 사역의 현장에 홀로 남아 흩어진 자리들을 지켜내는 ‘배웅하는 삶’ 자체가 신앙의 본질임을 성경은 묵묵히 증언하고 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">결산 없는 미완의 광장에 홀로 서 있는 말씀</h3>
+<p>바울이 당도한 마지막 도시 아덴은 당대 문명과 지성의 심장부였습니다. 도시 전체에 가득한 우상을 보며 바울은 심령에 깊은 격분을 느끼고, 회당과 저잣거리에서 날마다 만나는 이들과 치열하게 변론했습니다. 에피쿠로스와 스토아 철학자들은 바울을 향해 “이 말장이가 무슨 말을 하려느냐”며 냉소적인 호기심을 드러냈고, 그를 아레오바고 광장으로 데려갔습니다.</p>
+<p>그러나 아덴 사람들의 관심은 진리 그 자체가 아니었습니다. 그들은 오직 ‘가장 새로운 것’을 말하고 듣는 데에만 자신의 모든 시간을 소비하던 구경꾼들이었습니다. 바울은 그 철학의 심장부에서 천지를 지으신 하나님과 예수 그리스도의 부활을 혼신을 다해 증거했습니다. 하지만 본문 21절은 그들이 새로운 이야기만을 탐닉했다는 쓸쓸한 관찰에서 멈춰 섭니다. 데살로니가나 베뢰아에서처럼 믿는 자의 수가 많아졌다거나 위대한 교회가 세워졌다는 식의 가시적인 결말은 찾아볼 수 없습니다. 들은 이들이 어떻게 되었는지, 사역의 결과가 성공이었는지 실패였는지를 성경은 끝내 결산하지 않은 채 그 광장의 문을 닫아버립니다.</p>
+<p>세 도시의 끝에는 공통적으로 인간적인 승리의 결산이 결여되어 있습니다. 데살로니가는 보를 치르고 풀려난 사람들의 멍에로 끝났고, 베뢰아는 파도 소리 자욱한 밤길의 피신으로 끝났으며, 아덴은 덧없는 말들이 오가는 광장의 공허함 속에서 멈췄습니다. 성경은 왜 우리의 사역과 헌신을 이토록 미완성의 여백 속에 남겨두었을까요?</p>
+<p>그것은 우리의 신앙이 세상이 요구하는 숫자의 크기나 성공의 결산표에 갇혀 있지 않기 때문입니다. 성경은 결말을 억지로 꾸며내거나 인간의 성취를 포장하지 않습니다. 다만 그 모든 소동과 도피와 공허함 한가운데서, 인간의 성과 대신 단 한 가지를 문장의 진짜 주어로 우뚝 세워놓습니다. 베뢰아의 소동 속에서도 성경이 기록한 단 하나의 명징한 사실은 바울의 영웅적인 능력이 아니라, “베뢰아에서도 전해진 것이 하나님의 말씀이었다(ὁ λόγος τοῦ θεοῦ)”는 진실이었습니다.</p>
+<p>발언 한 줄 남기지 못하고 조용히 재산의 손해를 떠안았던 야손처럼, 화려한 사역의 무대 뒤편에서 밤길을 배웅하며 묵묵히 자기 자리를 지켰던 무명의 형제들처럼, 우리의 일상 역시 때로는 아무런 화려한 결실도 맺지 못한 채 텅 빈 것처럼 보일 수 있습니다. 수고했으나 알아주는 이 없고, 선을 행했으나 손해만 떠안은 것 같은 쓸쓸한 밤길을 지날 때가 있습니다. 그러나 세상의 눈에는 미완성으로 보이는 그 침묵과 결산 없는 자리 한가운데, 하나님의 말씀은 여전히 살아서 일하고 계십니다. 사람의 결산이 멈춘 바로 그곳에서, 보이지 않는 하나님의 신실하심이 우리의 고단한 일상을 가장 깊고 온전하게 떠받치고 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 27편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

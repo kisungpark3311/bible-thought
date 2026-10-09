@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>결판나지 않은 하루를 안고 돌아가는 당신에게</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사도행전 제 31편 &middot; 사도행전 19:21-41</span>
+      <h1>결판나지 않은 하루를 안고 돌아가는 당신에게</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>땅거미가 짙게 내려앉는 퇴근길, 지하철 유리창에 비친 지친 얼굴을 물끄러미 마주할 때가 있습니다. 온종일 무언가에 쫓기듯 정신없이 달렸고, 책상 위에는 끝없는 서류와 숫자가 오갔으며, 메신저 창에는 붉은 알림이 쉴 새 없이 깜빡였지만, 문득 차가운 밤공기 속에 홀로 서면 가슴속에서 서늘한 질문 하나가 고개를 듭니다. '나는 오늘 도대체 무엇을 위해 그토록 치열했던가?'</p>
+<p>누군가 오늘 하루 무엇을 했느냐고 묻는다면, 똑 부러지게 한 문장으로 설명할 말조차 궁색해집니다. 특별히 거창한 무언가를 이룬 것도 없고, 복잡하게 얽힌 문제를 시원하게 매듭지은 것도 없이, 그저 온갖 소음과 관계의 파편들에 이리저리 치이다가 녹초가 되어버린 하루. 그 허탈한 침묵 속에서 우리는 종종 깊은 자책과 무력감에 젖어들곤 합니다.</p>
+<p>그런데 약 2천 년 전, 고대 지중해의 가장 번화했던 무역 도시 에베소의 한복판에서도 오늘 우리의 하루와 너무도 닮은 소란스럽고도 쓸쓸한 풍경이 펼쳐졌습니다. 사도행전 19장이 전하는 에베소의 거대한 소동은, 인간의 삶이 얼마나 불안에 취약하며, 군중의 열기라는 것이 얼마나 덧없는 소음인지, 그리고 우리가 살아가는 수많은 날들이 얼마나 미완성의 상태로 저물어 가는지를 거울처럼 정직하게 비춰 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">불안한 밥벌이가 가장 거룩한 분노로 둔갑할 때</h3>
+<p>도시 전체를 일순간에 뒤흔든 거대한 소요의 출발점은 놀랍게도 숭고한 신학적 논쟁이나 위대한 진리 수호의 투쟁이 아니었습니다. 소동의 방아쇠를 당긴 것은 은장색 데메드리오의 지갑과 생계였습니다. 그는 에베소를 대표하는 아데미 여신의 은 모형 신전을 만들어 직공들에게 적지 않은 돈을 벌게 해주던 장인이자 사업가였습니다. 바울이라는 이방 전도자가 들어와 "사람의 손으로 만든 것은 신이 아니다"라고 선언하자, 도시의 종교 시장과 은제품 상권이 흔들리기 시작했습니다.</p>
+<p>직공들을 불러 모은 데메드리오의 입에서 터져 나온 첫마디는 너무나도 솔직하고 적나라합니다. "여러분도 알거니와 우리의 유족한 생활이 이 업에 있는데." 그는 신앙이나 거룩함을 앞세우지 않았습니다. 당장 내 통장의 잔고와 밥그릇이 위태로워졌다는 현실의 공포를 맨 먼저 꺼내놓은 것입니다. 그러나 사적인 생존의 불안은 군중 앞에서 곧바로 거대한 사회적 공분으로 둔갑합니다. "아데미의 신전도 무시당하고 그의 위엄도 떨어질까 하노라."</p>
+<p>인간은 참으로 묘한 존재입니다. 내 이익이 침해당하고 생존이 흔들릴 때, 우리는 본능적인 두려움을 느낍니다. 하지만 그 두려움을 "내 밥그릇을 지키겠다"는 날것의 욕망으로 드러내기는 민망하기에, 우리는 가장 거룩하고 장엄한 명분을 끌어와 덧씌웁니다. 정의, 원칙, 진리, 신앙이라는 화려한 외투를 입고 분노를 터뜨리는 것입니다. 우리 일상에서도 그렇지 않습니까? 유난히 목소리가 커지고 양보할 수 없는 원칙이라며 언성을 높이는 자리의 밑바닥을 가만히 들여다보면, 어김없이 숫자가 걸려 있고, 손해 보기 싫은 자존심과 불안한 밥벌이가 웅크리고 있을 때가 많습니다. 가장 거룩한 분노의 가면 뒤에 숨어 있는 초라한 인간의 불안, 그것이 에베소 소동의 적나라한 시작이었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">까닭도 모른 채 소리치며 흘려보낸 두 시간의 소음</h3>
+<p>데메드리오의 선동에 불이 붙자, 성난 사람들은 바울의 동행자들을 붙잡아 수만 명을 수용할 수 있는 거대한 야외 연극장으로 몰려갔습니다. 도시 전체가 들끓는 용광로처럼 아수라장이 되었습니다. 그런데 성경의 기록자는 그 살벌한 아비규환의 한복판을 스케치하며 아주 서늘하고도 뼈아픈 한 문장을 남깁니다.</p>
+<p>"사람들이 외쳐 어떤 이는 이런 말을, 어떤 이는 저런 말을 하니 모인 무리가 분란하여 태반이나 어찌하여 모였는지 알지 못하더라."</p>
+<p>수천, 수만의 사람이 모여 연극장이 떠나갈 듯 함성을 지르고 있었지만, 정작 그들 대부분은 자신이 왜 이 자리에 와 있는지, 무엇 때문에 주먹을 쥐고 화를 내고 있는지 까닭조차 알지 못했습니다. 그저 옆 사람이 뛰어가니 함께 뛰었고, 앞사람이 소리를 지르니 덩달아 목청을 돋우었을 뿐입니다.</p>
+<p>그 무의미한 맹목은 마침내 유대인 알렉산더가 무리 앞에 나서서 해명하려 하자 폭발합니다. 군중은 그가 유대인이라는 사실을 알자마자, 이성적인 대화와 설명을 완전히 거부한 채 단 하나의 구호를 연호하기 시작합니다. "크다 에베소 사람의 아데미여!" 그 외침은 무려 두 시간 동안이나 쉬지 않고 연극장을 가득 메웠습니다.</p>
+<p>두 시간 동안 한목소리를 냈다고 해서 그들의 뜻이 하나가 된 것은 아니었습니다. 군중의 함성은 뜨거웠으나 그 속은 텅 비어 있었습니다. 이것은 고대 에베소만의 풍경이 아닙니다. 오늘 우리가 살아가는 세상이야말로 '까닭 모를 분노'의 거대한 연극장이 아닙니까? 자극적인 뉴스에 흥분하고, 소셜 미디어의 뜨거운 타임라인에 휩쓸려 누군가를 향해 손가락질하며, 정작 내 영혼을 갉아먹는 분노의 실체가 무엇인지도 모른 채 소중한 시간과 에너지를 탕진하는 우리의 모습. 두 시간 동안 핏대를 세우며 소리를 질렀으나 공허함만 남는 연극장의 군중은, 현대인의 일상을 비추는 서글픈 자화상입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">해결되지 않은 하루를 품고 집으로 돌아가는 길</h3>
+<p>광기 어린 두 시간의 외침을 가라앉힌 것은 하늘에서 내린 불이나 기적적인 회심이 아니었습니다. 뜻밖에도 도시의 행정을 맡은 현실적인 관료, '서기장'이었습니다. 그는 차분하게 무리를 진정시키며 서늘한 현실의 언어를 들이댑니다. "오늘 아무 까닭도 없는 이 일에 우리가 소요의 죄목으로 책망받을 위험이 있고, 우리는 이 불법 집회에 관하여 보고할 재료가 없다."</p>
+<p>그는 덧붙여 만일 시비가 있거든 정식 재판 날에 총독들에게 가서 법대로 고소하라고, 법적 절차를 밟으라고 권합니다. 그러고는 짤막한 한마디로 사건의 막을 내립니다. "이에 그 모임을 흩어지게 하니라."</p>
+<p>이 결말을 가만히 들여다보십시오. 성경은 소동이 '해결되었다'거나 '매듭지어졌다'고 적지 않습니다. 그저 '모임이 흩어졌다'고 적을 뿐입니다. 악한 자들이 회개한 것도 아니고, 바울 일행의 안전이 영구히 보장된 것도 아니며, 데메드리오의 먹고사는 불안이 해소된 것도 아닙니다. 그토록 요란하고 폭력적이었던 소동은, 아무런 영적 결단도, 감동적인 화해도, 깔끔한 해소도 없이 그저 모래알처럼 흩어지며 끝이 났습니다. 상부에 "보고할 재료가 아무것도 없는" 무력하고 허망한 하루로 닫힌 것입니다.</p>
+<p>우리는 언제나 기승전결이 분명한 신앙을 원합니다. 기도 한 번에 갈등이 봄눈 녹듯 사라지고, 결단 한 번에 모든 얽힌 문제가 완벽하게 풀려나가는 통쾌한 결말을 바랍니다. 하지만 우리의 진짜 삶은 에베소의 그날과 훨씬 더 닮아 있습니다. 아무리 애를 써도 풀리지 않는 인간관계의 매듭, 여전히 불투명한 생계의 불안, 왜 그토록 시달렸는지 명쾌하게 이유조차 말할 수 없는 고단한 하루들. 우리는 종종 아무런 결판도 내지 못한 채, 가방을 챙겨 터덜터덜 집으로 돌아오는 수많은 저녁을 맞이합니다.</p>
+<p>그러나 성경이 이 결판나지 않은 하루를 삭제하지 않고 있는 그대로 기록해 두었다는 사실 자체가 우리에게는 깊은 위로가 됩니다. 하나님은 우리의 인생에서 '보고할 재료가 없는 날'조차 부끄러워하거나 외면하지 않으십니다. 아무런 결론을 내리지 못하고 그저 흩어지듯 끝난 하루라 할지라도, 그 막막한 미완성의 시간 한가운데서 우리를 지키시고 숨 쉬게 하십니다.</p>
+<p>오늘 당신의 손에 쥐어진 결과물이 초라하다고 해서 낙심하지 마십시오. 왜 이토록 지쳤는지 이유를 명쾌하게 설명할 수 없어도 괜찮습니다. 해결되지 않은 숙제와 불안을 그대로 품은 채 집으로 돌아가는 당신의 무거운 발걸음은 결코 헛되지 않습니다. 소동이 풀리지 않아도 하나님은 여전히 역사의 주인이시며, 설명할 재료가 없는 날에도 은혜는 침묵 속에서 우리의 내일을 짓고 계십니다. 오늘 밤, 결판나지 않은 하루의 짐을 가만히 내려놓고, 흩어진 자리에서 조용히 평안을 누리시기를 바랍니다. 내일은 또 내일의 은혜가 우리를 기다리고 있을 테니까요.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사도행전 제 31편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
