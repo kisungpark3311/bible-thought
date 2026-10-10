@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 몫의 칸을 온유함으로 채우고, 결과의 자리는 비워둘 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 16편 &middot; 디모데후서 2:14-26</span>
+      <h1>내 몫의 칸을 온유함으로 채우고, 결과의 자리는 비워둘 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    우리는 날마다 크고 작은 말의 전쟁터 한가운데를 살아갑니다. 가정에서, 일터에서, 그리고 화면 너머의 수많은 관계 속에서 생각의 차이는 쉽게 다툼으로 번집니다. 상대방의 논리적 허점을 파고들어 "내가 맞았다"는 통쾌함을 쥐어보려 하지만, 이상하게도 그 승리의 끝에 찾아오는 것은 가슴 벅찬 평화가 아니라 서늘한 허탈감과 차가워진 관계뿐입니다. 한편으로는 세상의 눈부신 기준 앞에서 투박한 내 모습에 낙심하기도 하고, 내가 아끼는 사람이 내 뜻대로 변화되지 않을 때 깊은 무력감과 분노에 휩싸이기도 합니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    로마의 차가운 지하 감옥에서 마지막 순교를 앞두고 있던 사도 바울이 영적 아들 디모데에게 보낸 편지, 디모데후서 2장의 문장들은 오늘 우리의 고단한 어깨를 가만히 짚어 줍니다. 바울은 세상을 바꾸려 안간힘을 쓰거나 자신의 정당성을 증명하느라 지쳐 있던 젊은 목회자에게, 인생의 참된 무게중심이 어디에 놓여야 하는지를 조용하고도 단호한 필치로 일러줍니다. 그 말씀을 가만히 따라가다 보면, 우리가 인생이라는 장부 위에서 그동안 얼마나 엉뚱한 칸을 내 힘으로 채우려 애써왔는지를 깊이 깨닫게 됩니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말다툼의 계산서는 듣는 이의 마음으로 청구됩니다</h3>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    바울은 디모데를 향해 "말로 다투지 말라"고 간곡히 당부합니다. 헬라어로 '로고마케인', 곧 말로 벌이는 전쟁을 멈추라는 것입니다. 놀라운 것은 그 금지의 이유입니다. 내 체면이 깎인다거나 교리적 논쟁에서 밀리기 때문이 아닙니다. 바울이 응시한 것은 다툼의 자리가 남기는 파편이었습니다. "이는 유익이 하나도 없고 도리어 듣는 자들을 망하게 함이라." 여기서 '망하게 한다'는 말은 건물이 기초부터 무너져 내리는 참담한 붕괴(카타스트로페)를 뜻합니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    우리는 누군가와 논쟁을 벌일 때 오직 상대방의 얼굴과 허점만을 쳐다봅니다. 어떻게든 상대를 굴복시키고 내 옳음을 증명하려 서슬 퍼런 칼날 같은 말들을 쏟아냅니다. 그러나 우리가 승리의 쾌감에 취해 칼을 휘두르는 동안, 정작 치명적인 상처를 입고 믿음의 기초가 무너져 내리는 사람은 대화의 상대방이 아니라 그 곁에서 조용히 숨죽이고 있던 제3자, 곧 '듣는 이들'입니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    식탁에서 부모가 옳고 그름을 따지며 날을 세울 때 무너지는 것은 어린 자녀의 연약한 영혼입니다. 일터에서 동료들이 정당성을 주장하며 언성을 높일 때 낙심하는 것은 그 조직의 미래를 불안하게 지켜보는 후배들입니다. 교회와 공동체 안에서 정의를 외치며 벌이는 치열한 공방 뒤편에서, 상처 입은 초신자들은 하나님을 향한 기대마저 접고 등을 돌립니다. 말다툼의 승패는 아무것도 살려내지 못하지만, 그 다툼으로 깨어진 영혼의 계산서는 고스란히 곁에서 듣던 이들의 몫으로 청구됩니다. 이길 수 있는 순간에도 듣는 이들의 영혼을 위해 입술을 닫는 온유함이야말로, 가장 숭고한 신앙의 용기입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">주인이 찾으시는 것은 빛나는 금이 아니라 비워진 깨끗함입니다</h3>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    우리는 끊임없이 세상의 화려한 기준에 맞춰 스스로를 금이나 은으로 포장하려 애씁니다. 더 높은 학벌, 더 많은 재물, 남들이 부러워할 번듯한 지위를 가져야만 인생이라는 큰 집에서 주인의 눈에 띄어 귀하게 쓰일 것이라 믿기 때문입니다. 그래서 내 손에 쥐어진 삶이 투박한 흙이나 거친 나무토막 같을 때, 우리는 깊은 열등감에 빠져 스스로를 무가치한 존재로 낙인찍곤 합니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    그러나 바울이 들려주는 큰 집의 그릇 비유는 세상의 모든 가치관을 단숨에 전복시킵니다. 큰 집에는 금과 은의 그릇뿐 아니라 나무와 질그릇도 함께 놓여 있습니다. 세상은 금이냐 흙이냐 하는 재질의 등급으로 그릇의 서열을 매기지만, 이어지는 말씀에서 바울은 그 네 가지 재료의 이름을 단 한 번도 다시 부르지 않습니다. 본문은 질그릇더러 금그릇이 되라고 요구하지 않으며, 재료를 바꾸라는 말은 성경 어디에도 적혀 있지 않습니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    주인이 쓰시는 유일한 조건은 '자기를 깨끗하게 씻어내는 일' 하나뿐입니다. 그리고 그 앞에는 "누구든지"라는 은혜로운 부름이 활짝 열려 있습니다. 아무리 눈부신 황금 대접이라 할지라도 그 안에 더러운 오물이 묻어 있다면 어떤 주인도 그곳에 귀한 음식을 담지 않습니다. 반대로 거친 진흙으로 빚은 소박한 질그릇이라도, 자기를 깨끗이 비워 씻어낸 채 얌전히 놓여 있다면, 목마른 주인이 가장 먼저 손을 뻗어 입을 맞추는 복된 그릇이 됩니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    우리의 일터와 삶의 자리에서도 마찬가지입니다. 화려한 직함이나 거창한 성공이 쓰임새를 결정하는 것이 아닙니다. 오늘 내 손에 쥐어진 장부 한 줄, 서류 한 장에서 타협을 씻어내고, 미루어 두었던 부끄러움을 털어내며 정결한 양심을 회복하는 것, 바로 그 씻어냄이야말로 모든 선한 일에 합당하게 쓰임받는 거룩한 시작입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내가 채울 온유함의 칸과 하나님께 맡겨둘 은혜의 칸</h3>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    인생을 살아가며 우리를 가장 깊은 탈진과 좌절로 몰아넣는 것은 '사람이 변하지 않는다'는 현실입니다. 자녀를 위해, 가족을 위해, 혹은 공동체의 지체를 위해 온 힘을 다해 권면하고 바른길을 일러주었건만, 상대방이 도리어 거역하고 엇나갈 때 우리는 참을 수 없는 무력감과 분노에 사로잡힙니다. "내가 그렇게까지 했는데 어떻게 저럴 수 있을까" 하는 배신감은 결국 사랑을 포기하고 냉소의 문을 닫아걸게 만듭니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    하지만 디모데후서 2장 25절은 우리의 이 성급한 조급증을 단번에 무장해제 시킵니다. "거역하는 자를 온유함으로 징계할지니 혹 하나님이 저희에게 회개함을 주사 진리를 알게 하실까 하며." 원문 성경에서 이 문장의 배치는 경이로울 정도로 정교합니다. 앞부분에서 거역하는 사람을 '온유함으로 바로잡는 것'은 우리가 순종해야 할 명령으로 적혀 있습니다. 그러나 뒷부분에서 그들이 회개하고 진리를 깨닫는 일 앞에는 '메포테(혹시나 ~하실까)'라는 간절한 바람의 접속사가 붙어 있으며, 회개함을 주는 주체는 내가 아니라 오직 '하나님'으로 적혀 있습니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    성경은 내가 써야 할 칸과 하나님이 쓰실 칸을 엄격히 구분해 두었습니다. 내게 적힌 칸의 이름은 '온유함' 하나뿐입니다. 상대방이 완고하게 거역할지라도 온유의 자리를 지키는 것이 내 몫의 순종입니다. 반면에 그 사람의 완악한 마음이 무너지고 영혼이 깨어나는 돌이킴의 열매는 내 손이 닿지 않는 하나님의 칸에 적혀 있습니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    우리가 분노하고 절망했던 진짜 이유는, 내 칸을 다하지 못해서가 아니라 하나님만이 채우실 수 있는 결과의 칸까지 내 힘으로 억지로 채우려 했기 때문입니다. 사람을 돌이키시는 것은 나의 유창한 말이나 서슬 퍼런 훈계가 아니라, 오직 하나님의 신비로운 은혜입니다. 결과의 칸을 온전히 하나님의 자비에 맡겨드릴 때, 우리는 비로소 실패감의 사슬을 끊고 참된 평안을 회복하게 됩니다.
+  </p>
+<p style="line-height: 1.85; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.05rem;">
+    오늘 우리에게 주어진 삶의 시험지 앞에서, 내가 써야 할 답안과 주님이 채우실 여백을 분별하는 맑은 지혜를 구합니다. 이기려던 말다툼의 입술을 닫아 듣는 이들의 영혼을 지키고, 남들의 번쩍이는 금그릇을 부러워하기보다 내 투박한 질그릇을 정갈하게 씻어내며, 사람의 변화를 조급하게 재촉하는 대신 온유함으로 그분을 기다리는 삶. 그렇게 내 몫의 빈칸을 온유함으로 묵묵히 채우고 결과의 자리를 주님께 비워둘 때, 우리의 작고 평범한 일상은 주인의 손에 가장 귀하게 들려 축복의 생수를 흘려보낼 것입니다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 16편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>비어 있는 채점표와 채워지는 일상: 우리를 살리는 섬김의 깊은 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 06편 &middot; 디모데전서 3:8-13</span>
+      <h1>비어 있는 채점표와 채워지는 일상: 우리를 살리는 섬김의 깊은 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가면서 우리는 언제나 무수한 시험대 위에 올려집니다. 학창 시절의 빼곡한 성적표부터 사회에서 마주하는 성과 지표, 그리고 사람과 사람 사이에서 끊임없이 요구받는 기대의 무게에 이르기까지, 세상은 늘 우리에게 자격을 증명하라고 다그칩니다. 조금이라도 기준에 미치지 못하면 낙오자가 될 것 같은 불안 속에서, 우리는 매일 스스로를 채찍질하며 거친 숨을 몰아쉽니다.</p>
+<p>이러한 피로감은 신앙의 영역에 들어설 때도 쉬이 가라앉지 않습니다. 디모데전서 3장에 적힌 집사의 요건들을 마주할 때가 그렇습니다. 단정함, 일구이언하지 않음, 많은 술에 매이지 않음, 부끄러운 이득을 탐하지 않음, 깨끗한 양심과 믿음의 비밀. 줄지어 서 있는 엄격한 덕목들 앞에서 많은 이들이 숨이 턱 막히는 까닭은, 그 목록을 나를 옭아매고 심판하는 또 하나의 '합격 기준표'로 읽기 때문입니다. "과연 나는 이 기준에 부합하는 사람인가? 나는 하나님의 일을 감당할 자격이 있는가?"라는 자책이 가슴을 짓누릅니다.</p>
+<p>그러나 원문의 결을 찬찬히 쓰다듬어 보면, 우리는 본문이 남겨 둔 뜻밖의 침묵과 다정한 배려를 마주하게 됩니다. 놀랍게도 이 여섯 절의 본문 안에는 우리에게 "이 기준을 반드시 지켜내라"고 등을 떠미는 명령 동사가 하나도 들어있지 않습니다. 요건들은 스스로 법조문이 되어 사람을 짓누르지 않습니다. 그 목록은 홀로 서 있는 것이 아니라, 우리를 먼저 부르시고 품어 안으신 하나님의 크신 은혜라는 문장 밖의 배경에 가만히 매달려 있을 뿐입니다. 요건을 손에 쥐고 자기를 재는 사람이 그 요건을 세워주신 은혜의 출처를 잊어버리면, 그는 목록 전체를 혼자 힘으로 떠받치려다 지쳐 쓰러지고 맙니다. 그리고 결국 목록의 높이를 억지로 깎아내려 타협하거나, 반대로 자격 없는 자신을 모질게 깎아내리며 깊은 자괴감에 빠지게 됩니다. 성경은 우리에게 스스로 그 목록의 하중을 홀로 짊어지라고 요구하지 않습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">채점표가 없는 자리에서 비로소 시작되는 숨</h3>
+<p>성경은 "이에 이 사람들을 먼저 시험하여 보고 그 후에 책망할 것이 없으면 집사의 직분을 하게 할 것이요"라고 권면합니다. 세상의 시험은 언제나 차가운 채점표를 쥐고 있습니다. 1번부터 100번까지 정답을 매기고, 줄을 세우며, 커트라인 아래로 떨어진 사람에게는 가혹한 탈락의 낙인을 찍습니다. 그래서 우리는 '시험'이라는 단어만 마주해도 날카로운 붉은 펜과 주눅 든 수험생의 떨리는 손을 떠올립니다.</p>
+<p>하지만 성경을 가만히 들여다보십시오. 본문에는 시험을 집행하는 주체가 누구인지, 무엇을 묻고 검증해야 하는지, 채점표의 항목이 몇 개인지, 그리고 기준에 미치지 못한 사람을 어떻게 처분해야 하는지에 대한 말이 단 한 줄도 적혀 있지 않습니다. 본문이 적어 둔 것은 오직 '먼저'와 '그 후'라는 잔잔한 시간의 순서뿐입니다. 시험이 먼저이고, 섬기는 일이 그 다음이라는 순서 외에 성경은 침묵을 지킵니다.</p>
+<p>인간의 조급한 마음은 언제나 이 거룩한 공백을 견디지 못합니다. 기준이 모호해 보이면 기어이 내 손으로 빽빽한 채점표를 만들어 다른 형제자매의 이마에 들이대고 싶어 합니다. "저 사람은 말이 너무 가벼워", "저 사람은 헌신이 부족해"라며 남을 재단하는 시험관의 자리에 냉큼 올라앉습니다. 그러나 성경이 적지 않은 빈자리 앞에서 채점표를 만들려는 손을 멈추는 것, 그것이야말로 말씀 앞에서의 첫 번째 순종입니다.</p>
+<p>아직 시험의 때가 닿지 않은 이들이 있습니다. 다스릴 가정이 아직 없거나, 삶의 무게와 질병으로 섬김의 자리에서 잠시 비켜서 있는 이들도 있습니다. 세상은 그들을 향해 지체되고 뒤처졌다며 냉정한 점수를 매기지만, 성경은 그 기다림의 시간을 함부로 평가하지 않습니다. 그 침묵은 탈락의 선고가 아니라, 한 영혼이 하나님 앞에서 여물어가기를 기다려 주시는 넉넉한 은혜의 여백입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">거룩함은 매일 만지는 살림살이의 틈새에 있다</h3>
+<p>우리는 흔히 거룩함이란 현실을 초월한 고매하고 신령한 종교 언어 속에 있다고 착각합니다. 그러나 성경이 섬기는 이들에게 요구하는 덕목들은 지극히 투박하고 땀 냄새 나는 일상의 사물들로 가득 차 있습니다. 저녁 밥상머리의 술잔, 정직하게 땀 흘려 얻는 양식, 매일 마주하는 자녀들의 눈빛, 그리고 먼지를 쓸고 닦는 작고 분주한 살림집이 바로 거룩함의 현장입니다.</p>
+<p>본문이 경계하는 것은 막연한 탐욕이 아니라 '부끄러운 이득'입니다. 성경 원문에는 화폐를 가리키는 직접적인 명사가 등장하지 않습니다. 숫자는 장부상으로 오차 없이 맞아떨어질지라도, 그 이득을 얻는 과정에서 타인의 아픔을 밟았거나 양심의 떳떳함을 저버린 자리가 있다면 성경은 바로 그곳을 부끄러운 자리라 지목합니다. 액수의 많고 적음을 따지기 전에 내 손에 쥐어진 결과물의 출처가 과연 하나님과 이웃 앞에서 맑은지를 묻는 것, 그것이 깨끗한 양심의 모습입니다.</p>
+<p>또한 본문은 말의 무게를 준엄하게 묻습니다. 성경은 '비난받을 틈이 없는 깨끗한 상태'를 요청하면서, 동시에 다른 이를 헐뜯고 참소하는 고발의 행위를 엄격히 금합니다. 우리는 너무나 쉽게 남의 허물을 고발하는 검사의 자리에 서서 한 입으로 두 말을 쏟아냅니다. 누군가를 치켜세우다가도 돌아앉아 쉽게 깎아내립니다. 그러나 참된 영성은 저 높은 강단의 웅변에 있지 않습니다. 오늘 내가 가족과 이웃에게 건네는 말 한마디의 온도, 계산대 앞에서 건네는 정직한 손길, 집 문을 열고 들어오는 가족의 고단함을 품어주는 따스한 눈빛 속에 영성의 진면목이 깃들어 있습니다. 매일 만지는 살림살이의 틈새에서 깨끗한 양심을 지켜내는 것이야말로 가장 빛나는 믿음의 비밀입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">우리를 버티게 하는 것은 완벽함이 아닌 은혜의 터전</h3>
+<p>단락의 마지막에 이르러, 성경은 묵묵히 하루를 견뎌낸 섬김의 사람들을 향해 눈부신 약속의 문장을 건넵니다. "집사의 직분을 잘한 자들은 아름다운 지위와 그리스도 예수 안에 있는 믿음에 큰 담력을 얻느니라." 이 구절 속에는 가슴 뭉클한 신학적 통찰이 담겨 있습니다. 본문은 '아름다운 지위'에는 아무런 수식어를 덧붙이지 않았지만, '큰 담력'에는 반드시 '그리스도 예수 안에 있는 믿음'이라는 단단한 닻을 걸어두었습니다.</p>
+<p>우리는 흔히 담력이나 당당함이 나의 뛰어난 능력이나 흠 없는 성취에서 나온다고 믿습니다. 내가 남들보다 더 완벽하게 규칙을 지키고, 더 많이 헌신하며, 자격 요건의 빈칸을 빠짐없이 채웠을 때 비로소 고개를 들 수 있다고 여깁니다. 그러나 그러한 자기 확신에서 비롯된 담력은 모래성처럼 위태롭습니다. 작은 비판이나 예기치 못한 실패 한 번에 사정없이 허물어지고 맙니다.</p>
+<p>성경이 우리에게 선물하는 참된 담력은 나의 완전함에서 피어나지 않습니다. 그것은 '그리스도 예수 안에 있는 믿음'이라는 든든한 반석 위에 뿌리를 내릴 때만 샘솟는 은혜의 선물입니다. 나 같은 연약한 사람을 포기하지 않으시고 끝내 붙들어주시는 주님의 신실하심을 바라볼 때, 우리는 비로소 세상의 거친 비바람 앞에서도 물러서지 않는 거룩한 담력을 얻게 됩니다.</p>
+<p>섬김을 아름답게 잘 감당한 날에는, 그 열매를 내 공로로 삼지 않고 나를 세워주신 그리스도의 은혜를 조용히 찬송하십시오. 반대로 내 부족함이 여실히 드러나고 일상의 무게에 짓눌려 스스로 자격 없다고 낙심하는 날에는, 성경이 침묵으로 우리를 품어주었듯 스스로를 모질게 다그치던 채찍을 내려놓으십시오. 우리를 부르신 주님은 채점표를 쥐고 감시하는 가혹한 감독관이 아니라, 우리의 남루한 식탁과 지친 일상 한가운데로 찾아와 조용히 발을 씻겨주시는 사랑의 주님이십니다. 그 크신 품 안에서, 우리는 오늘도 비어 있는 채점표의 두려움을 벗고 은혜로 가득 찬 하루의 섬김을 시작할 수 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 06편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

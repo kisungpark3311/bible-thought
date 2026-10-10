@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 몫이 아닌 짐을 내려놓고, 이미 건네받은 온기를 품다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 08편 &middot; 디모데전서 4:6-16</span>
+      <h1>내 몫이 아닌 짐을 내려놓고, 이미 건네받은 온기를 품다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>어느 날 문득 삶이 버겁게 느껴질 때가 있습니다. 아침에 눈을 뜨자마자 머릿속을 스쳐 지나가는 수많은 할 일의 목록, 타인에게 인정받아야 한다는 무언의 압박, 그리고 뒤처지지 않기 위해 더 많은 것을 증명해 내야 한다는 강박이 어깨를 짓누릅니다. 우리는 언제나 "더 해내야 한다", "더 강해져야 한다", "누구에게도 얕보이지 않아야 한다"는 팽팽한 긴장 속에서 하루를 살아갑니다.</p>
+<p>성경 디모데전서 4장 6절에서 16절에 이르는 본문을 언뜻 읽으면, 마치 그런 우리의 숨 가쁜 일상을 그대로 옮겨 놓은 것처럼 보입니다. 바울은 젊은 지도자 디모데를 마주 세워두고 쉴 틈 없이 권면을 쏟아냅니다. 무려 열두 번에 걸쳐 "이것을 권하라", "연습하라", "본이 되라", "전심전력하라"며 단호한 당부를 이어갑니다. 겉으로만 보면 이 본문은 지친 이에게 또 하나의 무거운 짐을 얹어주는 엄격한 채찍질처럼 느껴질지도 모릅니다. 하지만 글의 결을 따라 한 걸음만 더 깊이 들어가 보면, 그 안에는 우리의 숨통을 틔워 주는 놀라운 지혜와 깊은 해방의 위로가 숨어 있습니다. 성경은 결코 우리가 감당할 수 없는 짐까지 억지로 떠안으라고 다그치는 법이 없습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">타인의 시선이라는 무거운 짐을 내려놓을 때</h3>
+<p>단락 안에 촘촘히 박힌 열두 번의 지침을 가만히 세어보면 흥미로운 사실 하나를 발견하게 됩니다. 그중 열한 가지는 분명 디모데, 곧 "너"라는 한 사람을 향해 있습니다. 그런데 유독 단 하나의 문장만이 주어가 다릅니다. "누구든지 네 연소함을 업신여기지 못하게 하고"라는 구절입니다. 우리는 이 말씀을 흔히 '내가 젊고 부족하더라도 남들에게 무시당하지 않도록 당당하게 기를 펴고 맞서 싸워야 한다'는 뜻으로 읽곤 합니다. 그러나 원문의 문맥을 가만히 짚어보면, 이 문장의 주어는 디모데가 아니라 '아무도' 혹은 '남들'입니다.</p>
+<p>남이 나를 어떻게 평가하고, 나를 얕잡아볼지 존중할지는 애초에 내가 통제할 수 있는 영역이 아닙니다. 사람의 마음과 시선은 내 뜻대로 쥐락펴락할 수 있는 것이 아니기 때문입니다. 그런데도 우리는 얼마나 자주 남들의 시선이라는 무거운 짐을 스스로 짊어지고 전전긍긍합니까. 타인의 차가운 눈빛 하나에 온종일 마음을 졸이고, 나를 향한 오해나 편견을 바로잡겠다며 가진 에너지를 모조리 소진해 버립니다. 나를 증명하려는 불안, 남들의 인정을 갈구하는 조급함은 결국 나를 깊은 탈진으로 몰아넣습니다.</p>
+<p>성경은 남들의 마음을 바꾸는 불가능한 과제를 우리 손에 맡기지 않았습니다. 본문이 온전히 디모데에게 건넨 몫은 바로 그 뒤에 이어지는 "오직 말과 행실과 사랑과 믿음과 정절에 대하여 믿는 자에게 본이 되라"는 짧고 담담한 권면이었습니다. 남들이 나를 어떻게 바라보든, 그 시선에 일희일비하며 맞서 싸우는 대신 내 삶의 자리에서 묵묵히 따뜻한 말을 건네고, 정직하게 걷고, 신실하게 사랑하는 것. 그것만이 우리가 감당해야 할 정직한 몫입니다. 열두 가지 짐 가운데 내 몫이 아닌 그 하나의 짐—타인의 시선을 통제하려는 헛된 욕망—을 내려놓는 순간, 비로소 우리의 마음에 진정한 쉼과 자유가 찾아옵니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">일상의 땀방울을 긍정하며 더 깊은 지평으로 걷는 길</h3>
+<p>삶의 헛된 짐을 덜어낸 우리에게 본문은 또 하나의 따뜻한 균형을 제시합니다. "육체의 연습은 약간의 유익이 있으나 경건은 범사에 유익하니 금생과 내생에 약속이 있느니라." 우리는 흔히 이 구절을 읽으며 육체를 단련하거나 일상의 생업에 땀 흘리는 일은 가치가 없고, 오직 영적이고 숭고한 것만이 참된 가치라고 성급하게 선을 긋곤 합니다. 일상의 고단한 노동이나 건강을 돌보는 일을 하찮게 여기는 극단적인 금욕주의에 빠지거나, 반대로 몸의 쾌락과 물질의 풍요만을 좇는 물질주의로 기울어지는 것입니다.</p>
+<p>그러나 본문은 어느 한쪽을 깎아내리거나 버리지 않습니다. 성경은 '유익하다'는 단어를 육체의 훈련과 경건의 훈련 양쪽에 고스란히 나누어 사용합니다. 몸을 단련하고, 성실하게 일터에서 땀 흘리며, 정직하게 하루의 끼니를 챙기고 삶을 가꾸는 일은 결코 무의미하지 않습니다. 그것은 우리가 발을 딛고 살아가는 현실 속에서 분명한 유익과 활력을 줍니다. 본문이 하고자 하는 일은 일상의 가치를 빼앗는 것이 아니라, 다만 그 유익이 미치는 '범위'를 섬세하게 잴 뿐입니다.</p>
+<p>육체의 돌봄과 일상의 수고가 이 땅에서의 한 시절을 건강하게 지탱해 주는 소중한 도구라면, 마음의 결을 다듬고 영혼을 빚어가는 경건의 연습은 지금의 삶뿐 아니라 영원의 지평에까지 맞닿아 있습니다. 그러므로 우리는 매일의 분투를 무가치하다고 한탄할 필요가 없습니다. 책상 앞에서 서류를 넘기고, 거친 일터에서 땀을 흘리며, 가족을 위해 밥상을 차리는 평범한 몸놀림 속에서도 우리는 살아 계신 하나님께 소망을 둘 수 있습니다. 일상의 수고와 고단함을 긍정하면서도, 그 수고가 머무는 시야를 영원이라는 더 넓은 하늘로 확장하는 것. 그것이 바로 성경이 가르쳐 주는 건강하고 깊은 일상의 태도입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내가 지어내지 않은, 이미 건네받은 사랑을 기억하며</h3>
+<p>때로는 몸이 몹시 아프거나 마음이 완전히 무너져 내려, 일상의 수고조차 감당할 수 없을 만큼 지치는 날이 찾아옵니다. 경건의 연습은커녕 숨을 쉬는 것조차 버겁고, 세상의 수많은 요구 앞에서 아무것도 해낼 수 없는 무력감에 휩싸일 때가 있습니다. "더 노력하라", "진보를 나타내라"는 말조차 가슴을 짓누르는 채찍처럼 느껴지는 그런 날, 과연 우리는 무엇을 붙들어야 할까요.</p>
+<p>본문은 그런 우리를 향해 가장 깊고 부드러운 위로를 건넵니다. "네 속에 있는 은사 곧 장로의 회에서 안수 받을 때에 예언으로 말미암아 받은 것을 조심 없이 말며." 놀랍게도 이 구절에는 새로운 무언가를 이루어 내라는 무거운 요구가 없습니다. 단지 "이미 받은 것을 소홀히 하지 말라"고 이야기할 뿐입니다. 더 놀라운 것은, 그 귀한 선물을 건네준 주체의 이름조차 적혀 있지 않다는 사실입니다. 본문에는 그저 머리 위에 조용히 얹혔던 따뜻한 손길들, 나를 위해 울며 빌어주던 기도의 음성, 그리고 아무런 대가 없이 내 안에 스며든 '받은 선물'만이 적혀 있습니다.</p>
+<p>우리는 종종 내가 가진 모든 것을 스스로의 힘으로 일구어 냈다고 착각하거나, 반대로 지금 손에 쥔 것이 아무것도 없다고 자책하곤 합니다. 하지만 눈을 감고 가만히 내면을 들여다보십시오. 지금의 내가 존재하기까지, 내 머리 위에는 얼마나 많은 이들의 이름 모를 사랑과 축복의 손길이 얹혀 있었습니까. 부모의 희생, 스승의 격려, 곁에서 묵묵히 자리를 지켜준 벗들의 온기, 그리고 보이지 않는 곳에서 나를 붙들어 주신 신의 은혜가 있었습니다. 지금 내 안에 머무는 작은 성품과 재능, 숨 쉬는 생명조차 내가 만들어 낸 것이 아니라 모두 값없이 '건네받은 것'들입니다.</p>
+<p>그러니 오늘 더 이상 나아갈 힘이 없다고 해서 절망할 필요가 없습니다. 성경이 우리에게 요구하는 것은 마른 수건을 쥐어짜듯 새로운 성과를 짜내는 것이 아니라, 내 안에 이미 심겨 있는 그 은혜의 불씨를 꺼뜨리지 않고 가만히 보듬는 일입니다. "당신이 쥐고 있는 것 가운데, 당신이 스스로 만들지 않은 것은 무엇입니까?" 이 질문 앞에 설 때, 우리는 비로소 알게 됩니다. 삶은 무거운 의무의 연속이 아니라, 이미 넘치도록 받은 선물 위에 세워진 은혜의 여정이라는 사실을 말입니다.</p>
+<p>내 몫이 아닌 타인의 시선이라는 짐을 과감히 내려놓으십시오. 오늘 내게 주어진 일상의 자리를 따뜻하게 긍정하며, 내 안에 이미 쥐여진 사랑의 흔적들을 소중히 기억하십시오. 받은 것이 먼저이고, 우리의 작은 순종은 그 은혜에 대한 감사의 응답일 뿐입니다. 그 깊은 깨달음 속에서 오늘 하루도 조용하고 넉넉한 평안이 당신의 마음에 깃들기를 바랍니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 08편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

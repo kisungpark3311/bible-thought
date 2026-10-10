@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아무도 곁에 없던 날, 그 빈자리에 서신 분</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 21편 &middot; 디모데후서 4:16-22</span>
+      <h1>아무도 곁에 없던 날, 그 빈자리에 서신 분</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가다 보면 누구나 세상에 홀로 남겨진 것 같은 순간을 마주합니다. 수많은 사람들로 북적이던 거리가 한순간에 낯선 적막으로 변하고, 그토록 믿었던 이들이 썰물처럼 빠져나간 자리에서 홀로 서늘한 바람을 맞아야 할 때가 있습니다. 인생이라는 무대에서 가장 절실하게 누군가의 지지와 온기가 필요했던 결정적인 순간, 둘러보아도 내 편은 단 한 사람도 없다는 차가운 현실을 확인하는 일은 가슴을 시리게 만듭니다.</p>
+<p>사도 바울의 생애에서 가장 처절했던 순간 역시 그러했습니다. 로마의 음습하고 차디찬 지하 감옥, 죽음의 그림자가 턱밑까지 다가온 노사도가 붓을 들어 남긴 마지막 서신 디모데후서의 끝자락에는 눈물겨운 고백이 담겨 있습니다. "내가 처음 변명할 때에 나와 함께 한 자가 하나도 없고 다 나를 버렸으나."</p>
+<p>로마 제국의 서슬 퍼런 법정, 목숨이 오가는 엄중한 공판 자리에 피고인 바울과 함께 앉아 그의 무죄를 변호해 줄 동석자의 수는 정확히 '0'이었습니다. 어제까지 함께 복음을 나누고 눈물로 기도하던 동역자들도, 은혜를 입었다고 고백하던 성도들도 서슬 퍼런 칼날 앞에서는 모두 등을 돌렸습니다. 성경은 그 비정함을 에둘러 표현하지 않고 "하나도 없고", "다 나를 버렸다"는 날 선 단어 그대로 기록합니다. 한 사람의 생애가 도달한 마지막 풍경치고는 너무나 쓸쓸하고 황량한 고립이었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">동석자 수 0의 법정, 그 빈자리에 찾아온 발걸음</h3>
+<p>하지만 성경의 시선은 그 쓸쓸한 '0'의 자리에 마침표를 찍지 않습니다. 4장 16절에서 "나와 함께 한 자가 하나도 없던" 그 텅 빈 법정의 풍경은, 바로 다음 절인 17절에 이르러 숨이 멎을 듯한 반전을 맞이합니다. 본문은 장황한 신학적 설명이나 변명을 늘어놓지 않고, 오직 주어 하나만을 바꾼 채 우리를 침묵하게 만듭니다.</p>
+<p>"주께서 내 곁에 서서 나를 강건하게 하심은."</p>
+<p>4장 16절에서 사람의 발길이 끊겨 휑하니 비어 있던 '내 곁'이라는 바로 그 자리에, 17절에 이르러 '주께서' 성큼 걸어 들어와 서신 것입니다. 원문이 전하는 '파레스테(곁에 섰다)'라는 단어는 추상적인 영적 감상이 아닙니다. 법정에서 피고인의 바로 옆자리에 나란히 서서 그의 억울함과 두려움을 온몸으로 함께 짊어지는 변호자의 실재적인 현존을 뜻합니다. 세상 모든 사람이 도망치고 외면했던 그 절대 고독의 한복판, 누구도 앉으려 하지 않던 차가운 피고석의 빈자리에 주님이 친히 다가와 서셨습니다.</p>
+<p>우리는 종종 이 대목을 묵상하며 "바울이 홀로 남았음에도 굳센 믿음으로 씩씩하게 버텼다"고 오해하곤 합니다. 그러나 성경 어디에도 바울의 강철 같은 영웅적 의지나 결기를 칭송하는 말은 없습니다. 주어는 바울이 아니라 주님이셨습니다. 서 계신 분도 주님이셨고, 기력이 다해 떨리던 한 노인의 육체에 힘을 불어넣으신(에네뒤나모센) 분도 주님이셨습니다.</p>
+<p>내가 내 힘으로 고독을 이겨내고 버틴 것이 아닙니다. 다리가 풀려 주저앉을 수밖에 없던 그 자리, 아무도 오지 않던 바로 그 결핍의 공간에 주님이 찾아오셔서 내 육신을 붙들어 세우셨기에 비로소 숨을 쉴 수 있었던 것입니다. 내 삶의 동석자가 0이 되는 날은, 역설적이게도 오직 주님만이 내 곁에 오롯이 서 계심을 가장 선명하게 목도하는 은혜의 순간이 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">상처와 결핍을 서둘러 미화하지 않는 성경의 정직함</h3>
+<p>본문이 건네는 또 하나의 깊은 울림은, 인간의 아픔과 현실의 한계를 성급하게 덮거나 미화하지 않는 정직함에 있습니다. 우리는 흔히 은혜를 경험하면 모든 갈등이 눈 녹듯 사라지고, 모든 문제가 마법처럼 해결되어야 한다고 생각합니다. 배신당한 상처도 즉시 아름답게 승화되고, 원망하던 사람들과도 단숨에 얼싸안고 화해하는 해피엔딩을 기대합니다.</p>
+<p>그러나 디모데후서의 마지막 장은 결코 그런 환상을 심어주지 않습니다. 16절에서는 "다 나를 버렸다"고 적었던 바울이, 21절에 이르러서는 로마에 있는 "모든 형제"의 안부를 전합니다. 성경은 떠나간 '모든 사람'과 문안을 보내는 '모든 형제' 사이에 그 어떤 작위적인 화해의 드라마나 그럴듯한 변명을 끼워 넣지 않습니다. 버림받았던 상처의 기억을 지우지도 않고, 돌아오지 않은 사람들의 자리를 억지로 포장하지도 않습니다. 배신은 배신대로, 남아 있는 동역자들의 따스함은 따스함대로 그 자리에 나란히 둡니다.</p>
+<p>어디 그뿐입니까. 함께 복음을 전하던 동역자 트로피모는 중한 병에 걸려 밀레도에 남겨두어야 했습니다. 그가 기적처럼 깨끗이 나았다는 후일담 같은 것은 어디에도 적혀 있지 않습니다. 사랑하는 믿음의 아들 디모데를 향해서는 "너는 겨울 전에 어서 오라"며 애틋한 그리움을 토로합니다. 지중해의 험한 파도와 겨울이라는 자연의 계절 앞에서는 사도 바울의 열정도 발이 묶일 수밖에 없었습니다. 인간의 성의나 믿음만으로는 당길 수 없는 기한이 있고, 뛰어넘을 수 없는 물리적 거리와 아픈 몸의 한계가 실재함을 성경은 있는 그대로 드러냅니다.</p>
+<p>우리의 일상도 이와 다르지 않습니다. 열심히 기도하고 살아가지만, 통장 잔고는 여전히 빠듯하고, 몸의 질병은 쉬이 떠나지 않으며, 풀리지 않는 관계의 매듭과 야속한 시간의 기한 앞에 발을 동동 구르며 멈추어 서야 할 때가 많습니다. 성경은 그런 우리에게 억지로 상처를 덮고 괜찮은 척 웃으라고 강요하지 않습니다. 기한에 묶여 멈춰선 일과 가지 못해 안타까운 거리를 정직하게 인정하듯, 내 곁에 아무도 없던 날의 고통과 지금 내 곁을 지켜주는 고마운 사람들의 온기를 따로따로 헤아려 보라고 권면합니다. 아픔을 왜곡하지 않는 정직함이야말로 진짜 은혜가 뿌리내리는 토양이기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">서술어를 비워둔 채 우리 몫으로 남겨진 마지막 침묵</h3>
+<p>이 위대한 사도의 마지막 편지는 어떻게 끝을 맺을까요? 우리는 흔히 성경의 마지막 대목에서 가슴을 울리는 웅장한 승리의 선언이나 명쾌한 결론을 기대합니다. 그러나 디모데후서 4장 22절, 신약성경에서 바울의 육성이 담긴 가장 마지막 구절은 우리의 예상을 깨뜨립니다. 놀랍게도 원문에는 문장을 맺어줄 동사, 즉 '서술어'가 단 하나도 존재하지 않습니다.</p>
+<p>"주께서 네 심령에. 은혜가 너희와 함께."</p>
+<p>우리말 성경에는 읽는 이의 이해를 돕기 위해 '바라노니', '계실지어다'와 같은 서술어가 덧붙여져 있지만, 헬라어 원문에는 아무런 동작도, 명령도, 기원의 서술어도 놓여 있지 않습니다. 오직 '주님'과 '네 심령', 그리고 '은혜'라는 명사들만이 덩그러니 놓인 채, 성경은 깊고 고요한 침묵 속으로 서신을 닫습니다.</p>
+<p>왜 성경은 마지막 문장에 마땅히 있어야 할 서술어를 비워 두었을까요? 그것은 이제 그 빈자리를 읽는 이들의 삶으로 살아내야 하기 때문입니다. "주께서 하셨다"는 과거의 감사와 "주께서 건지실 것이다"라는 미래의 소망 사이에서, 지금 여기를 살아가는 오늘의 성도들에게 성경은 성급하게 정답을 내려주지 않습니다. 대신 질문을 던지듯 서술어의 자리를 텅 비워둔 채 독자의 품에 건넵니다.</p>
+<p>주님이 지금 내 상하고 지친 심령 곁에 계신다는 그 엄연한 사실 하나만을 가슴에 품은 채, 오늘을 어떻게 살아낼 것인가. 겨울의 추위처럼 매섭게 옥죄어오는 현실 속에서, 내 결핍과 한계를 마주하며 어떤 호흡으로 한 걸음을 내딛을 것인가. 성경은 그 서술어를 성급하게 채우지 않는 결단, 침묵 속에서 주님의 임재를 가만히 응시하는 멈춤을 우리에게 요구합니다.</p>
+<p>오늘, 당신의 마음속 법정에 동석자의 수가 0인 것처럼 느껴지십니까? 믿었던 이들이 떠나고, 계획했던 일들이 계절과 기한에 묶여 멈추어 섰으며, 아픈 몸과 지친 영혼만이 덩그러니 남아 있습니까? 조급하게 상황을 바꾸려 애쓰거나 상처를 억지로 지우려 하지 마십시오. 아무도 오지 않던 그 텅 빈 자리에, 지금 주께서 다가와 당신 곁에 가만히 서 계십니다.</p>
+<p>그리고 서술어가 비어 있는 그 거룩한 여백 속에서, 주님은 당신의 지친 몸에 조용히 힘을 불어넣고 계십니다. 서둘러 결론을 내리지 않아도 괜찮습니다. "주께서 네 심령에." 이 말 없는 동행 하나만으로도, 우리는 다시 오늘을 살아갈 충분한 용기를 얻게 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 21편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

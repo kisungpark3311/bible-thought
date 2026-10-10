@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>삶의 규칙에 쫓기던 걸음을 멈추고, 지으신 분의 밥상에 앉다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 07편 &middot; 디모데전서 3:14~4:5</span>
+      <h1>삶의 규칙에 쫓기던 걸음을 멈추고, 지으신 분의 밥상에 앉다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>매일 아침 눈을 뜨면 세상은 저마다의 목소리로 빽빽한 삶의 매뉴얼을 들이밉니다. 어떻게 행동해야 뒤처지지 않는지, 어떤 표정을 짓고 어떤 계산을 마쳐야 손해 보지 않는지, 우리는 늘 ‘어떻게 처신해야 하는가’라는 무거운 물음표를 등에 지고 하루를 시작합니다. 치열한 생존의 현장뿐만이 아닙니다. 거룩하고 평안해야 할 신앙의 자리에서조차 우리는 종종 “믿는 자로서 어떻게 살아야 마땅한가”라는 당위의 멍에를 짊어진 채 숨 가빠하곤 합니다.</p>
+<p>사도 바울이 믿음의 아들 디모데에게 편지를 띄우며 “하나님의 집에서 어떻게 행하여야 할지를 알게 하려 함이라”고 적었을 때, 우리는 뒤이어 촘촘한 행동 규범과 엄격한 계명들이 쏟아져 나올 것이라 지레 짐작합니다. 그러나 원문의 결을 가만히 짚어보면 뜻밖의 숨결을 마주하게 됩니다. 바울이 써 내려간 이 여덟 구절 안에는 사람을 다그치거나 옥죄는 단 하나의 명령형 동사도 존재하지 않습니다. 스물일곱 개의 동사 형태를 샅샅이 뒤져보아도 명령의 표지는 단 하나도 발견되지 않습니다.</p>
+<p>사도는 우리가 어떻게 행동해야 하는지를 조목조목 따지기 전에, 먼저 우리가 발을 딛고 서 있는 그 자리가 누구의 자리인지를 조용히 가리킵니다. “이 집은 살아 계신 하나님의 교회요 진리의 기둥과 터이니라.” 성경은 처신의 기술보다 소속을 먼저 묻습니다. 내가 얼마나 흠 없이 처신하느냐를 불안해하기 전에, 지금 내가 머물고 있는 이 집의 주인이 살아 계신 하나님이라는 사실을 먼저 기억하라는 것입니다. 규칙보다 소속이 앞서고, 인간의 분주한 의무보다 주인의 품에서 누리는 안식이 먼저라는 이 선언은, 오늘도 잘 살아야 한다는 강박으로 어깨가 굳어 있는 우리에게 깊고 아늑한 숨을 불어넣어 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">규칙을 따지기 전에 머무는 집의 주인을 묻다</h3>
+<p>교회가 아득한 옛적부터 가슴에 품고 고백해 온 장엄한 찬송시가 3장 16절에 펼쳐집니다. “그는 육신으로 나타난 바 되시고 영으로 의롭다 하심을 입으시고 천사들에게 보이시고 만국에서 전파되시고 세상에서 믿은 바 되시고 영광 가운데서 올리셨느니라.” 여섯 번 이어지는 이 짧고 단단한 문장들은 한결같이 ‘그가 겪으신 일’, 곧 온전한 수동의 형태로 기록되어 있습니다. 나타나셨고, 의롭다 함을 입으셨고, 보이셨으며, 전파되셨고, 믿어졌으며, 들려 올려지셨습니다.</p>
+<p>놀라운 것은 이 웅장한 여섯 구절 그 어디에도 ‘누가 그 일을 행하셨는지’를 밝히는 주어가 문장 안에 적혀 있지 않다는 사실입니다. 교회의 가장 오래된 신앙고백은 주체의 이름을 인간의 언어로 한정하지 않은 채, 오직 은혜로 입은 일과 건짐을 받은 사실만을 겸허하게 열거합니다. 그 일을 이루신 하나님의 섭리와 신비를 문장 너머에 계신 분께 온전히 맡겨둔 것입니다. 신앙이란 내가 주어가 되어 무언가를 증명해 내는 성취의 기록이 아니라, 내 삶에 일어난 은혜를 바라보며 그분의 주권 앞에 고개 숙이는 순전한 신뢰임을 이 침묵의 고백은 웅변하고 있습니다.</p>
+<p>그 반대편에는 언제나 인간의 불안을 자극하여 스스로 거룩을 획득하려는 목소리들이 도사리고 있습니다. 4장에 등장하는 이들은 “혼인을 금하고 음식을 멀리하라”고 가르칩니다. 몸의 본능을 누르고, 사랑과 결합을 차단하며, 밥상의 기쁨을 금기시해야만 더 고결한 영성에 도달할 수 있다는 엄격주의입니다. 그러나 본문은 그 기만적인 요구자들의 거창한 이름이나 얼굴을 일일이 밝히지 않습니다. 그저 양심에 화인을 맞아 감각을 잃어버린 ‘어떤 사람들’일 뿐입니다. 그들은 금지해야 할 목록을 높이 쌓아 올리며 사람들을 통제하려 하지만, 성경은 그들의 헛된 권위에 결코 무게를 실어주지 않습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">비어 있는 문장과 친히 지으신 분의 이름</h3>
+<p>바로 이 엄격한 금기의 소음 속에서, 본문 전체를 통틀어 가장 눈부신 반전이 찾아옵니다. 다른 모든 곳에서 주어를 감추셨던 하나님께서, 오직 한 자리에서 당당히 문장의 주어로 걸어 나오십니다. “식물은 하나님이 지으신 바니 진리를 아는 자들이 감사함으로 받을 것이니라.”(4:3) 인간이 불결하다며 멀리하라 했던 그 일상의 음식, 땀 흘려 거두어 식탁에 올리는 투박한 끼니를 두고, 성경은 하나님이 친히 손으로 빚어 만드신 피조물이라고 선언합니다.</p>
+<p>세상은 영적인 것과 물질적인 것을 잔인하게 편 가르고, 거룩함이란 현실의 흙먼지를 털어내고 육신의 필요를 부정할 때 얻어지는 것이라 속삭입니다. 그러나 창조의 하나님은 인간이 깎아내린 그 평범한 밥상 한가운데로 찾아오셔서 “내가 지었노라”고 말씀하십니다. 우리의 몸을 지탱하는 곡식 한 톨, 목을 축이는 물 한 모금, 사랑하는 이와 숟가락을 부딪치며 나누는 온기 어린 식사가 결코 타락이나 유혹의 덫이 아니라, 창조주의 선한 지혜가 깃든 거룩한 터전이라는 선언입니다.</p>
+<p>우리가 일터에서, 가정에서 마주하는 수많은 규칙과 처리의 과정들을 돌아봅니다. 우리는 때로 장부와 문서 속에서 ‘처리되었다’, ‘반영되었다’는 식의 주어 없는 수동의 문장 뒤로 책임을 숨기곤 합니다. 그러나 하나님은 창조의 자리에서 결코 당신의 책임을 숨기지 않으셨습니다. 세상을 짓고 우리를 먹이시는 일에 주어로 서시기를 주저하지 않으셨습니다. 그 거룩한 주어가 우리 일상의 바닥을 든든하게 받치고 있기에, 우리는 더 이상 세상의 금기와 거짓된 규율 앞에 주눅 들 필요가 없습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">투박한 밥상 위에서 시작되는 거룩한 감사</h3>
+<p>“하나님이 지으신 모든 것이 선하매 감사함으로 받으면 버릴 것이 없나니 하나님의 말씀과 기도로 거룩하여짐이라.”(4:4-5) 이 말씀은 단순히 식사 전 형식적으로 읊조리는 짧은 기도를 넘어, 일상을 대하는 우리의 근본적인 태도를 뒤흔듭니다. 세상은 쉴 새 없이 쓸모와 효율을 따져 묻고, 가치 없는 것은 가차 없이 내다 버리라 종용하지만, 지으신 분의 섭리 안에서는 그 어떤 생명도, 그 어떤 일상의 순간도 함부로 버려질 수 없습니다.</p>
+<p>그러나 이 은혜로운 선언 앞에서 우리는 정직한 침묵의 자리를 남겨두어야 합니다. 오늘 우리의 곁에는 이 풍성한 밥상에 온전히 앉을 수 없는 이들이 여전히 존재하기 때문입니다. 병상의 침상에서 차가운 금식 팻말을 바라보며 마른침을 삼켜야 하는 이들, 갇힌 자리에서 자신의 뜻과는 무관하게 주어지는 거친 배급에 하루를 견디는 이들, 지독한 가난의 무게에 짓눌려 가족의 끼니를 줄여야만 하는 수많은 이웃들이 있습니다. 본문은 그들이 겪는 결핍과 눈물의 시간을 섣부른 안심이나 값싼 위로로 메우지 않습니다. 그 고통의 이유를 함부로 재단하지 않고 가만히 아파하는 것, 그것이야말로 성경이 남겨둔 빈칸 앞에서 우리가 지켜야 할 진실한 사랑의 예의일 것입니다.</p>
+<p>그렇기에 오늘 내 앞에 놓인 소박한 밥상은 결코 마땅한 권리가 아닌, 눈물겨운 기적입니다. 본문이 이 모든 피조물을 대하는 방식으로 두 번이나 거듭 힘주어 부른 말은 오직 하나, ‘감사함으로’(메타 유카리스티아스)입니다. 감사는 메마른 식탁을 살아 계신 하나님의 성찬으로 탈바꿈시키는 거룩한 숨결입니다. 감사가 깃들 때 비로소 우리는 무엇을 먹을까 무엇을 입을까 하는 염려의 감옥에서 벗어나, 지으신 분의 품 안에 안긴 평안을 맛보게 됩니다.</p>
+<p>지친 하루를 마치고 돌아와 마주하는 밥상 앞에서, 세상의 무거운 규칙과 처신의 불안을 잠시 내려놓으십시오. 규칙을 묻기 전에 내가 머무는 이 집의 주인이 누구인지 먼저 기억하십시오. 온 세상을 친히 지으시고 오늘 나를 먹이시는 하나님의 선하심을 향해 나직이 감사의 기도를 올릴 때, 숟가락 하나가 놓인 우리의 누추한 식탁은 이미 하늘의 영광이 머무는 가장 거룩한 성소가 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 07편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

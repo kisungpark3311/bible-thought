@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>비워 둔 자리에서 비로소 시작되는 돌봄</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 09편 &middot; 디모데전서 5:1-16</span>
+      <h1>비워 둔 자리에서 비로소 시작되는 돌봄</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>
+세상은 종종 타인의 불행이나 고독 앞에서 잔인할 만큼 성급하게 이유를 묻곤 합니다. "어쩌다 저렇게 되었을까?", "무슨 잘못을 했기에 저 지경에 이르렀을까?" 사람들은 스스로 납득할 수 있는 원인과 결과를 찾아내어 타인의 삶 위에 덮어씌운 뒤에야 비로소 안도합니다. 그것이 자신의 안위를 확인하는 가장 손쉬운 방식이기 때문입니다. 그러나 헤아릴 길 없는 상처와 상실을 안고 살아가는 이들에게 정말로 필요한 것은 날카로운 인과관계의 분석이나 건조한 판단이 아닙니다. 말없이 그 고단한 무게 곁에 다가와 조용히 숨을 고를 자리를 내어주는 다정한 온기입니다.
+</p>
+<p>
+사도 바울이 젊은 목회자 디모데에게 보낸 편지 속에는 교회가 '과부'를 어떻게 대우하고 돌보아야 하는지에 대한 세밀한 지침이 담겨 있습니다. 얼핏 보면 고대 공동체의 복지 행정 규정이나 자격 요건처럼 읽히는 이 문장들 사이에는, 사실 사람의 연약함과 곤경을 대하는 성경의 깊고 눈물겨운 태도가 숨쉬고 있습니다. 그 행간을 가만히 더듬어 내려가다 보면, 오늘날 효율과 평가의 잣대로 서로를 재단하기 바쁜 우리 시대를 정면으로 부끄럽게 만드는 거룩한 침묵과 사랑의 실체를 마주하게 됩니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">홀로 남겨진 시간을 섣불리 재단하지 않는 시선</h3>
+<p>
+바울은 교회가 참으로 존중하고 공경해야 할 사람으로 '외로운 자', 곧 '홀로 남겨진 자'를 호명합니다. 헬라어 원문에서 이 상태를 가리키는 말은 오직 '홀로 되어 그 상태가 계속 이어지고 있다'는 사실만을 건조하게 서술할 뿐입니다. 놀랍게도 성경은 그를 홀로 남겨지게 만든 원인이나 행위자가 누구인지에 대해 단 한 마디도 언급하지 않습니다. 그가 무모한 선택을 해서인지, 세상의 매정한 풍파에 휩쓸린 탓인지, 아니면 어쩔 수 없는 생로병사의 비극 때문인지 그 누구에게도 책임을 돌리거나 핑계를 묻지 않습니다. 행위자의 자리를 텅 비워 둔 것입니다.
+</p>
+<p>
+우리는 얼마나 자주 타인의 곤경을 바라보며 스스로 심판관의 자리에 앉아 혀를 차곤 합니까. "준비를 더 철저히 했어야지", "그때 그런 선택을 하지 말았어야지" 하며 상대의 아픔에 손쉬운 꼬리표를 붙입니다. 하지만 본문은 그렇게 하지 않습니다. 원인이 무엇이었든 간에, 지금 그 사람이 겪고 있는 외로움과 고독의 무게를 그저 있는 그대로 바라보아 줍니다. 
+</p>
+<p>
+그 사람을 분별하는 첫 번째 기준은 빛나는 업적이나 화려한 이력서가 아니었습니다. 기댈 곳 없는 자리에서 하나님께 소망을 두고 밤낮으로 탄식하며 이어온 고요한 기도의 시간, 그 이어져 온 삶의 상태 그 자체였습니다. 누군가를 진정으로 존중한다는 것은, 그의 삶에 내 멋대로 원인을 달아 단정하지 않고 그가 통과해 온 쓸쓸한 시간의 결을 묵묵히 긍정해 주는 일에서 비로소 시작됩니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">명부의 까다로운 조건보다 앞서는 흙먼지 묻은 손길</h3>
+<p>
+본문은 교회의 공식적인 부양 명부에 이름을 올리기 위한 여러 요건들을 나열합니다. 나이의 하한선을 두고, 한 남편의 아내였는지, 자녀를 양육하고 나그네를 대접했는지를 꼼꼼하게 따져 묻습니다. 겉으로만 보면 매우 엄격하고 깐깐한 서류 심사처럼 느껴집니다. 그러나 그 차가운 요건표의 한복판에서 우리의 심장을 쿵 하고 내려앉게 만드는 지극히 구체적인 몸의 언어가 하나 튀어나옵니다. 바로 "성도들의 발을 씻기며"라는 구절입니다.
+</p>
+<p>
+자격을 심사하고 조건을 저울질하는 서류의 손들 사이로, 불쑥 누군가의 거칠고 냄새나는 발을 조용히 어루만지던 살아 있는 손이 불려 나옵니다. 성경이 인정하는 참된 삶의 흔적은 고상한 언어의 유희나 서류 위의 도장이 아니라, 길 위에서 묻혀 온 타인의 흙먼지를 기꺼이 자신의 손으로 닦아내 주었던 겸손한 낮아짐이었습니다. 명부를 작성하는 일은 행정의 영역이지만, 발을 씻기는 일은 온몸의 온도를 나누는 생명의 일입니다.
+</p>
+<p>
+더 나아가 본문은 "자기가 먼저 도와주고 교회로 짐지지 말게 하라"고 권면합니다. 이 말은 약자에 대한 책임을 공동체나 제도 뒤로 미루지 말라는 준엄한 요청입니다. 우리는 흔히 사회적 복지 제도나 교회의 시스템이 모든 결핍을 해결해 줄 것이라 믿으며 자신의 몫을 슬그머니 내려놓곤 합니다. 그러나 사랑은 언제나 가장 가까운 곳, '나의 손'에서부터 시작되어야 합니다. 내가 먼저 곁에 있는 가족과 이웃의 손을 잡아줄 때, 비로소 공동체는 가장 취약하고 기댈 곳 없는 '참 과부'를 온전히 품어 안을 수 있는 여백과 힘을 얻게 됩니다. 참된 돌봄은 거대한 제도의 구호가 아니라, 내 손으로 직접 타인의 발을 씻기고 짐을 나누어 질 때 비로소 완성됩니다.
+</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">심판의 자리를 비워두고 사랑의 곁을 내어주는 일</h3>
+<p>
+본문 후반부에는 '심판'이나 '배반' 같은 서늘하고 무거운 단어들이 연이어 등장합니다. 젊은 시절의 흔들림이나 처음 품었던 순수한 서원을 저버린 이들의 위태로운 걸음걸이를 묘사할 때, 본문의 어조는 결코 가볍지 않습니다. 그러나 이 엄중한 경고 속에서도 놀라운 침묵이 흐릅니다. 본문은 무거운 처분을 적어 두면서도, 정작 그 심판을 내리고 집행할 권한을 결코 사람의 손에 쥐여주지 않습니다. 집행자의 자리는 끝끝내 비워져 있습니다.
+</p>
+<p>
+우리는 타인의 연약함이나 실족을 목격할 때마다 얼마나 성급하게 돌을 집어 들곤 합니까. 하지만 성경은 사람이 사람을 정죄하는 칼을 휘두르지 못하도록 막아섭니다. 심판의 영역을 하나님의 주권 속에 남겨둠으로써, 인간이 서로를 향해 휘두를 수 있는 잔인한 판단의 폭력을 멈추게 한 것입니다. 섣부른 조언으로 타인의 빈칸을 난도질하는 것은 위로가 아니라 상처일 뿐입니다.
+</p>
+<p>
+오늘 우리에게 진정으로 필요한 영성은 모든 것을 규명하고 판단하려는 날카로움이 아닙니다. 성경이 비워 둔 자리를 나의 조급한 잣대로 채우려 하지 않고, 그 빈칸을 그대로 남겨둔 채 묵묵히 곁을 지켜주는 성숙함입니다. 누군가가 깊은 상실의 밤을 지날 때, 왜 그렇게 되었는지 묻지 않고 가만히 손을 잡아주는 것, 판단의 말을 삼키고 지친 그의 발 아래 조용히 대야와 수건을 내려놓는 것. 그것이야말로 차가운 서류와 조건의 세상을 넘어, 십자가의 다정한 심장으로 이 시대를 따뜻하게 살아내는 그리스도인의 참된 실력일 것입니다.
+</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 09편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

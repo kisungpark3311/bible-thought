@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>은혜는 종착역이 아닌 밑그림으로 남는다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 02편 &middot; 디모데전서 1:12-20</span>
+      <h1>은혜는 종착역이 아닌 밑그림으로 남는다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사람은 누구나 자신의 지난날을 돌아볼 때 말문이 막히는 어두운 그늘 하나쯤 품고 살아갑니다. 지우고 싶지만 지워지지 않는 과오, 무심코 내뱉었던 가시 돋친 말, 혹은 누군가의 마음에 깊은 생채기를 남겼던 잔인한 순간들. 우리는 그 기억 앞에서 서둘러 변명을 늘어놓거나, 타인의 허물을 더 크게 부각하며 스스로를 정당화하려 애씁니다. 세상의 수많은 관계와 공동체가 깨어지는 지점도 바로 여기에 있습니다. 모두가 피해자의 자리에 서서 심판관의 잣대를 휘두를 뿐, 자신이 행한 가해의 무게 앞에서는 눈을 감아버리기 때문입니다.</p>
+<p>그러나 바울의 고백은 전혀 다른 곳에서 출발합니다. 그는 디모데에게 편지를 쓰며 자신의 지난 시간을 조금도 미화하거나 포장하지 않습니다. "내가 전에는 훼방자요 핍박자요 포행자였으나." 남의 신앙을 비방하고, 뒤쫓아 박해하며, 완력으로 짓밟았던 잔혹한 과거를 아무런 완곡어법 없이 날것 그대로 마주합니다. 그는 '어쩔 수 없는 시대의 흐름이었다'고 핑계 대지 않습니다. 자신의 가장 부끄럽고 치명적인 치부를 온 세상 앞에 정직하게 드러내며, 그는 구원의 복음이라는 거대한 신비 앞에 스스로를 가장 낮은 자리로 밀어 넣습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">스스로를 목록의 가장 낮은 자리에 둘 때 열리는 은혜</h3>
+<p>"미쁘다 이 말이여 모든 사람이 받을 만하도다 그리스도 예수께서 죄인을 구원하시려고 세상에 임하셨다 하였도다 죄인 중에 내가 괴수니라." 이 유명한 문장에서 우리가 주목해야 할 것은 사람의 숫자가 아닙니다. 원문에서 '받을 만하다'는 말은 다수가 동의했다는 통계적 합의가 아니라, 사람의 영혼이 취할 수 있는 '온전하고 완전한 받아들임(아포도케)'을 의미합니다. 세상의 진리는 종종 얼마나 많은 사람이 지지하는가로 그 정당성을 증명하려 하지만, 십자가의 복음은 그 말을 대하는 한 사람의 전 인격적인 응답과 수용의 깊이를 요구합니다.</p>
+<p>놀라운 것은, 바울이 이 장엄한 구원의 선언을 듣고 가장 먼저 달려간 자리입니다. 그는 남들을 향해 손가락질하며 "너희 같은 죄인들에게 이 말이 필요하다"고 외치지 않았습니다. 오히려 그 구원의 문장 한복판에 자리한 '죄인'이라는 목록의 맨 윗자리, 가장 구제받기 힘든 '괴수'의 자리에 자기 자신의 이름을 적어 넣었습니다. 은혜는 스스로를 심판자의 높은 보좌에 올려놓은 사람에게는 결코 임하지 않습니다. 관객석에 팔짱을 끼고 앉아 타인의 결함을 분석하는 지적인 오만함으로는 하늘의 자비를 맛볼 수 없습니다. 내가 바로 그 구원이 가장 절박하게 필요한 깨어진 존재임을 고백하며, 스스로를 목록의 가장 낮은 자리에 내려놓을 때 비로소 닫혀 있던 은혜의 문이 활짝 열리는 것입니다.</p>
+<p>자신을 괴수로 인정하는 일은 비굴한 자기비하가 아닙니다. 그것은 자신의 한계와 죄성을 정직하게 응시한 자만이 도달할 수 있는 가장 맑은 영적 자각입니다. 나의 밑바닥을 속속들이 아시는 분 앞에서 더 이상 감출 것이 없어질 때, 역설적으로 우리는 거짓된 자존심의 감옥에서 벗어나 참된 자유와 평안을 호흡하게 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">나의 흉터가 누군가의 길을 비추는 밑그림이 될 때</h3>
+<p>그렇다면 그토록 흠 많고 거칠었던 한 사람에게 어째서 그토록 분에 넘치는 긍휼이 부어졌을까요? 바울은 그 해답을 매우 독특하고 시각적인 단어로 풀어냅니다. "내가 긍휼을 입은 까닭은 예수 그리스도께서 내게 먼저 일절 오래 참으심을 보이사 후에 주를 믿어 영생 얻는 자들에게 본이 되게 하려 하심이니라." 여기서 '본'으로 번역된 헬라어 '휘포튀포시스'는 화가가 본격적인 채색을 시작하기 전에 화폭 아래에 연필로 먼저 옅게 그려 넣는 '밑그림'이나 윤곽선을 뜻합니다.</p>
+<p>긍휼은 그것을 받아 누린 사람 안에서 멈추는 저수지가 아닙니다. 나 하나 위로받고 잘되었다고 해서 닫혀버리는 종착역이 아닙니다. 내가 입은 은혜는 내 뒤를 따라 걸어올 수많은 연약한 영혼들을 위해 하얗게 펼쳐진 세상 위에 먼저 그려지는 거친 밑그림입니다. 바울이 말한 "내게 먼저"라는 표현은 결코 영적 우월감이나 먼저 믿었다는 공로의 훈장이 아닙니다. 그것은 단지 용서받은 순서일 뿐입니다. 가장 악독했던 나 같은 사람도 그리스도의 한없는 오래 참으심으로 용서받고 생명을 얻었다면, 앞으로 올 그 어떤 절망과 죄책감에 빠진 사람도 결코 버림받지 않을 것이라는 살아있는 증거가 되기 위함입니다.</p>
+<p>우리가 인생의 질곡 속에서 얻은 상처와 부끄러운 흉터는, 은혜의 빛 아래에서 놀라운 변모를 겪습니다. 그것은 더 이상 숨겨야 할 수치가 아니라, 캄캄한 밤길을 헤매는 또 다른 방황자들에게 "나도 그 낭떠러지에 서 보았지만, 그곳에서도 붙드시는 자비의 손길이 있었다"고 말해주는 희망의 밑그림이 됩니다. 내 연약함이 누군가의 회복을 돕는 밑그림으로 쓰일 수 있다는 것, 이것이야말로 고통과 실패마저 헛되지 않게 만드시는 하나님의 가장 감동적인 섭리입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내 손안의 소유가 아닌 곁에 머무는 것을 지키는 용기</h3>
+<p>인생의 밑그림으로 부름받은 우리가 끝까지 경계해야 할 유혹이 있습니다. 그것은 바로 내게 베풀어진 은혜와 직분, 그리고 곁에 주어진 소중한 가치들을 내 손안의 '소유'로 착각하는 일입니다. 바울은 젊은 디모데에게 사명을 위탁하며 "이 경계로써 명하노니"라고 말하지만, 원문의 속뜻은 '곁에 조심스럽게 놓아두다(파라티테미)'라는 깊은 의미를 지니고 있습니다. 직분도, 믿음도, 심지어 우리가 맡은 사명과 사랑하는 사람들까지도 내 마음대로 주무르고 지배할 수 있는 내 소유가 아닙니다. 그것은 주인이 잠시 내 곁에 맡겨두신 거룩한 신탁(信託)입니다.</p>
+<p>그러나 많은 이들이 소유와 보관의 경계를 잊어버립니다. 신앙의 자리를 자신의 권력으로 바꾸고, 곁에 맡겨진 사람들을 자신의 영광을 위한 도구로 삼으려 합니다. 바울은 바로 그런 자들의 말로를 서늘하게 고발합니다. "믿음과 착한 양심을 가지라 어떤 이들이 이것을 버리고 그 믿음에 관하여는 파선하였느니라." 착한 양심을 밀어내고 욕망을 쥐려 했던 이들의 배는 거친 풍랑 속에서 산산조각이 나고 말았습니다. 인생이라는 바다에서 믿음과 양심이라는 나침반을 잃어버릴 때, 아무리 화려했던 배라도 결국 난파를 피할 수 없습니다.</p>
+<p>파선(破船)은 추상적인 비유가 아닙니다. 오늘날 우리의 일터와 가정, 그리고 일상의 관계 속에서 양심을 저버리고 이익을 좇다가 삶의 전부가 깨어져 나가는 비극은 너무나 빈번하게 일어납니다. 맡겨진 것을 내 것으로 가로채지 않는 겸손함, 내 곁에 잠시 머무는 순결한 양심의 목소리에 귀를 기울이는 정직함이야말로, 거센 인생의 격랑 속에서도 우리 영혼의 닻을 안전하게 지켜내는 유일한 힘입니다.</p>
+<p>바울의 고백 한가운데에는 영원하신 왕을 향한 웅장한 찬송이 흐릅니다. "만세의 왕 곧 썩지 아니하고 보이지 아니하고 홀로 하나이신 하나님께 존귀와 영광이 세세토록 있을지이다." 이 송영에는 특이하게도 문장을 완결 짓는 동사가 생략되어 있습니다. 억지로 결론을 닫으려 하지 않고, 하나님의 크심 앞에 말을 아끼며 침묵과 찬탄으로 열어둔 것입니다. 삶은 결코 우리가 원하는 대로 매끄럽게 정리되지 않습니다. 긍휼의 감격과 파선의 위기, 그리고 하나님의 신비가 뒤엉켜 있는 것이 우리가 마주하는 일상의 실상입니다.</p>
+<p>그러하기에 우리는 오늘 다시 깊은 생각에 잠깁니다. 내게 주어진 은혜를 내 자랑의 성벽으로 쌓아 올리지 않고, 지친 이웃을 위한 따뜻한 밑그림으로 내어줄 수 있기를. 내 손에 쥐어진 것을 내 소유라 우기지 않고, 두렵고 떨리는 마음으로 착한 양심을 지켜내기를. 거친 바다를 항해하는 우리의 깨어진 삶 위로, 끝내 우리를 놓지 않으시는 한없는 긍휼이 맑은 바람처럼 불어오기를 가만히 기도해 봅니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 02편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

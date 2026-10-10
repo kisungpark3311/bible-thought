@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>흠 없는 것은 내가 아니라 내 손에 쥐여진 부탁이었습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 12편 &middot; 디모데전서 6:11-21</span>
+      <h1>흠 없는 것은 내가 아니라 내 손에 쥐여진 부탁이었습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살아가다 보면 문득 내가 서 있는 자리가 너무도 초라하고 부끄럽게 느껴질 때가 있습니다. 세상은 늘 빈틈없는 이력과 단단한 자격을 요구하고, 상처와 실패로 얼룩진 내면을 마주할 때마다 우리는 자꾸만 뒤로 물러서게 됩니다. 누군가를 진심으로 위로하기에도, 거룩한 소명을 입에 담기에도 내 삶은 너무나 투박하고 연약해 보이기 때문입니다. "내가 조금 더 온전한 사람이 되면, 내 영혼의 상처가 말끔히 아물고 더 단단해지면 그때 맡겨진 일들을 감당해야지" 하며 소중한 부르심을 자꾸만 먼 훗날의 약속으로 유예해 두었던 기억이 우리 모두의 가슴 한구석에 남아 있습니다.</p>
+<p>그러나 바울이 젊은 동역자 디모데에게 보낸 편지의 마지막 장을 가만히 넘기다 보면, 짓눌려 있던 우리의 어깨를 가만히 어루만지며 숨통을 틔워 주는 놀라운 복음의 시선을 만나게 됩니다. 바울은 디모데에게 대단한 영웅이 되라고 재촉하지 않습니다. 스스로의 완벽함으로 신앙의 탑을 쌓으라고 요구하지도 않습니다. 대신 그는 지치고 불안해하는 한 청년의 시선을 돌려, 우리보다 앞서 걸어가신 한 분의 고백과, 보이지 않으나 만물을 살리시는 분의 광대한 품을 바라보게 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내 작은 떨림이 가장 숭고한 고백과 묶일 때</h3>
+<p>디모데전서 6장의 문을 열면, 바울은 디모데가 많은 증인 앞에서 남겼던 '선한 고백'을 떠올립니다. 그리고 곧이어 그 고백의 자리를 본디오 빌라도 앞에서 선한 증거를 증거하신 그리스도 예수의 자리와 나란히 겹쳐 놓습니다. 성경 원문에서 이 두 고백은 '호모로기아(ὁμολογία)'라는 완전히 같은 한 낱말로 적혀 있습니다. 거대한 제국의 총독 빌라도 앞에서 침묵과 진실로 십자가의 길을 증언하셨던 예수 그리스도의 숭고한 고백과, 낯선 이방의 도시 에베소에서 수줍고 연약한 손을 모았던 청년 디모데의 떨리는 고백이 놀랍게도 같은 무게의 이름으로 묶여 있는 것입니다.</p>
+<p>우리는 흔히 내 고백에 무게가 실리려면, 내 목소리가 우렁차고 내 믿음의 결단이 남들보다 비장해야 한다고 생각합니다. 화려한 무대 위에서 박수를 받는 확신이어야만 하나님 앞에서도 가치가 있을 것이라 오해하곤 합니다. 하지만 성경은 결코 고백하는 사람의 담력이나 환경의 극적인 크기를 묻지 않습니다. 디모데의 작은 고백이 영원한 가치를 얻은 까닭은, 그 고백 자체가 완벽해서가 아니라 십자가를 향해 묵묵히 걸어가신 예수 그리스도의 고백이라는 거대한 사슬에 단단히 잇대어져 있었기 때문입니다.</p>
+<p>오늘 우리가 일상에서 내뱉는 작은 믿음의 한숨, 불의 앞에서 침묵하지 않고 조용히 지켜낸 작은 양심, 비틀거리면서도 주님을 놓지 않으려 내미는 떨리는 손길 역시 마찬가지입니다. 그 고백이 비록 사람들의 눈에는 보잘것없어 보일지라도, 빌라도 앞에서 진리를 증언하신 그리스도의 고백과 이미 한 이름으로 묶여 있습니다. 그러니 내 믿음의 크기가 작다고 주눅 들 필요가 없습니다. 내 고백의 무게는 내 담력의 크기가 아니라, 나와 함께 묶여 계신 주님의 신실하심에서 오기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">완벽해진 후에 걷는 것이 아니라 흠 없는 진실을 쥐고 걷는 길</h3>
+<p>이어지는 본문에서 바울은 숨이 멎을 듯한 당부를 건넵니다. "우리 주 예수 그리스도께서 나타나실 때까지 흠도 없고 책망받을 것도 없이 이 명령을 지키라." 이 구절을 마주할 때마다 우리는 숨이 턱 막히는 부담을 느끼곤 합니다. 과연 내 삶의 어느 구석에 흠이 없고 티가 없단 말입니까. 어제도 넘어졌고 오늘도 부끄러운 실수를 거듭한 내가 어떻게 '점 없는 사람'으로 설 수 있겠습니까. 그러나 본문의 원어를 한 꺼풀 벗겨 들여다보면, 우리의 굳은 가슴을 울리는 따스한 해방의 진실이 드러납니다.</p>
+<p>원문에서 '점 없고 책망받을 것이 없다'는 수식어가 겨누고 있는 대상은 지키는 사람인 디모데가 아니라, 그가 지켜내야 할 '명령(엔토레)', 즉 주님께로부터 건네받은 복음의 진실 그 자체입니다. 성경은 결코 사람의 인격과 이력이 완벽한 무결점이 되어야만 사명을 맡을 수 있다고 말하지 않습니다. 흠 없음의 과녁은 내 이력서의 완전함이 아니라, 내 볼품없는 손을 통과해 다음 세대로 흘러가는 복음의 본질이 깎이거나 왜곡되지 않는 것에 있었습니다.</p>
+<p>마치 비바람 속을 달려온 우체부의 행색과 같습니다. 흙탕물이 튀어 옷자락이 해어지고 신발 코가 닳아 빠졌을지라도, 가슴속 깊은 품에 안고 온 편지 봉투의 봉인이 온전히 지켜져 있다면 그 우체부는 자기 소임을 다한 것입니다. 우리는 종종 나 자신이 온전한 그릇이 된 뒤에야 은혜의 물을 담을 수 있다고 착각합니다. 하지만 주님은 금이 가고 깨어진 질그릇 같은 우리에게 가장 고귀한 보배를 맡기셨습니다. 상처 입은 손으로 전할지라도, 우리 손에 들려 있는 십자가의 복음은 여전히 흠이 없고 온전합니다. 내 완전함을 증명하려 애쓰는 대신, 내게 맡겨진 그 순전한 사랑을 변색시키지 않고 묵묵히 전하는 것, 그것이 바로 주님이 우리에게 바라시는 진정한 지킴입니다.</p>
+<p>더욱이 본문은 그 명령의 증인이신 하나님을 가리켜 "아무 사람도 보지 못하였고 또 볼 수 없는 자"라고 적어 둡니다. 우리는 만물을 살리시는 거룩한 하나님 '앞에' 서 있지만, 동시에 그분을 눈으로 직접 '볼 수는 없는' 기묘한 긴장 속에 살아갑니다. 눈앞에 손에 잡히는 기적이나 선명한 표적이 없더라도, 아직 오지 않은 기약의 날을 기다리며 보이지 않는 하나님 앞에서 신실하게 살아가는 일. 성경은 그 보이지 않는 침묵의 시간을 억지로 뛰어넘으려 하지 말고, 그 시간 동안 다만 맡겨진 것을 우직하게 지켜내라고 권면합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">쌓기를 멈추는 대신 영원의 창고로 주소를 옮기는 삶</h3>
+<p>편지의 말미에서 바울의 시선은 현실의 가장 뜨거운 자리인 '재물'의 문제로 향합니다. 그는 세상의 부유함을 향해 무조건 손을 털고 빈손이 되라거나 소유 자체를 죄악시하지 않습니다. 대신 인간의 깊은 곳에 자리 잡은 '쌓아 두려는 갈망'의 주소를 바꾸어 놓습니다. "정함이 없는 재물에 소망을 두지 말고... 너그러운 자가 되며 너그러운 마음으로 나누어 주는 자가 되게 하라 이것이 장래에 자기를 위하여 좋은 터를 쌓아 참된 생명을 취하는 것이니라."</p>
+<p>본문에서 쓰인 '쌓아 둔다'는 말은 본래 재물을 저축하고 곳간에 곡식을 모으는 행위를 뜻합니다. 성경은 인간이 무언가를 소중히 모으고 쌓아 올리는 그 손길 자체를 부정하지 않습니다. 다만 그 손길이 향하는 창고의 문을 바꾸어 놓을 뿐입니다. 바람 불면 흩어질 불확실한 통장의 잔고에 영혼의 닻을 내리는 대신, 이웃을 향해 손을 펴고 선한 일을 도모하는 자리에 차곡차곡 인생의 걸음을 쌓아가라는 초대입니다. 쌓는 동작은 멈추지 않되, 쌓이는 자리를 영원으로 옮겨가는 지혜입니다.</p>
+<p>이 지혜는 결코 거창한 종교적 수사가 아닙니다. 우리의 가장 소박하고 구체적인 일상에서 꽃피어납니다. 지친 동료의 무거운 짐을 가만히 덜어주었던 한 시간, 수고한 이에게 넉넉하게 건넨 따뜻한 밥 한 끼, 억울한 이의 사정을 묵묵히 곁에서 들어주었던 어느 저녁의 시간들. 세상의 계산법으로는 허공으로 사라져 버린 손해 같지만, 하늘의 장부에는 바로 그 순간들이 '좋은 터'로, 그 어떤 비바람에도 흔들리지 않을 영원한 주춧돌로 견고하게 쌓여 갑니다. 가진 것의 많고 적음이 나눔의 자격을 결정하지 않습니다. 작은 물 한 모금이라도 진실한 온기로 건넬 때, 우리는 이미 하늘의 부요함을 호흡하는 사람이 됩니다.</p>
+<p>이 긴 편지는 두 번의 다정한 부름으로 앞뒤가 봉인되어 있습니다. 11절에서 "오 하나님의 사람아"라는 거룩한 직분으로 문을 열었던 바울은, 마지막 20절에 이르러 마침내 "오 디모데야, 네게 부탁한 것을 지키라"며 그의 떨리는 이름을 나직이 부릅니다. 직책이나 사명이라는 무거운 옷을 입기 전에, 하나님은 이미 우리의 고유한 이름을 알고 계셨습니다. 보이지 않는 세상의 수많은 군중 속에서 하나님은 결코 우리를 스쳐 지나가지 않으시고, 다정하게 우리 이름을 부르시며 두 손에 귀한 편지 한 장을 쥐여 주십니다.</p>
+<p>우리는 결코 흠이 없어서 부름받은 위인이 아닙니다. 상처 입고 모자란 투성이이지만, 우리 품에 안겨진 복음이 흠 없고 고귀하기에 오늘도 담대히 걸어갈 수 있습니다. 보이지 않는 하나님 앞에서, 아직 오지 않은 약속의 날을 바라보며, 오늘 내 곁의 사람에게 따뜻한 진실 한 조각을 건네는 삶. 내 손에 쥐여진 그 아름다운 부탁을 묵묵히 지켜내며 걷는 우리의 평범한 하루는, 이미 영원을 향해 가장 눈부시게 쌓여 가고 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 12편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

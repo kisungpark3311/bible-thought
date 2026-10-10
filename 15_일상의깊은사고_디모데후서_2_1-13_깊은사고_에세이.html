@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>묶인 손으로 건네는 매이지 않는 희망</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 15편 &middot; 디모데후서 2:1-13</span>
+      <h1>묶인 손으로 건네는 매이지 않는 희망</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>차가운 로마의 지하 감옥, 습기 찬 벽에 기댄 노사도의 손목에는 무거운 쇠사슬이 채워져 있었습니다. 세상은 그를 흉악한 죄를 지은 악행자 취급을 하며 빛 한 줌 들지 않는 어둠 속에 밀어 넣었습니다. 육신의 자유를 송두리째 빼앗긴 채 죽음의 문턱을 바라보던 바울이 떨리는 손으로 펜을 들어 멀리 에베소에 있는 젊은 동역자에게 편지를 씁니다. 그런데 그 편지의 첫머리를 채운 것은 신세 한탄이나 원망의 독백이 아니었습니다. 세상에서 가장 다정하고 따뜻한 목소리, "내 아들아"라는 부름이었습니다.</p>
+<p>손발이 꽁꽁 묶인 사람이 성벽 밖에서 두려움에 떨고 있는 젊은이를 품어 안으며 강건해지라 권면하고, 복음의 짐을 함께 나누어 지자고 손을 내밉니다. 결박된 몸과 명령하는 입술이 공존하는 이 역설적인 풍경은, 오늘 메마른 현실의 벽 앞에 갇혀 무력감을 느끼는 우리 영혼의 밑바닥을 조용히 뒤흔듭니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">쇠사슬에 묶인 자가 건네는 가장 자유로운 초대</h3>
+<p>바울은 자신이 복음을 위해 악한 일을 저지른 사람처럼 쇠사슬에 매이는 데까지 고난을 받았다고 담담히 고백합니다. 그러나 그 처절한 고백 바로 뒤편에 찬란한 반전의 깃발을 꽂아 둡니다. "하나님의 말씀은 매이지 아니하니라." 세상의 권력은 복음을 전하는 한 사람의 육신을 감옥에 가두고 쇠사슬로 결박할 수 있었지만, 그를 통해 온 세상으로 흘러가는 생명의 말씀까지 결박할 수는 없었습니다.</p>
+<p>우리는 살아가며 수많은 쇠사슬을 마주합니다. 때로는 예기치 못한 질병이, 풀리지 않는 경제적 결핍이, 혹은 차가운 인간관계와 실패의 멍에가 우리의 손발을 묶어 버립니다. 아무것도 할 수 없을 것만 같은 무력감 속에서 우리는 스스로가 완전히 갇혀 버렸다고 절망합니다. 하지만 성경은 단호하게 선언합니다. 묶인 것은 우리의 손발일 뿐, 우리 안에 심긴 하나님의 진리와 사랑은 그 어떤 쇠사슬로도 묶어 둘 수 없다는 사실을 말입니다. 내가 멈추어 선 그 어두운 자리에서도 하나님의 신비로운 은혜는 여전히 살아서 일하며 온 세상을 향해 뻗어 나갑니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">스스로의 지혜가 아닌 주어지는 총명으로 걷는 일상</h3>
+<p>바울은 감옥의 어둠 속에서 환상적인 영웅담을 늘어놓지 않습니다. 대신 지극히 일상적인 세 사람의 얼굴을 불러냅니다. 부름받은 목적에 집중하느라 사사로운 집착에 얽매이지 않는 군사, 경기장의 엄격한 규칙과 원칙을 지키며 땀 흘려 달리는 운동선수, 그리고 이른 새벽부터 거친 흙을 일구어 묵묵히 수고한 끝에 첫 곡식을 맛보는 농부입니다. 이는 정직한 원칙과 절차를 지켜야만 하는 세무와 회계의 현장처럼, 그리고 매일의 성실한 노동으로 가정을 지탱해 내는 우리의 고단한 일터와 꼭 닮아 있습니다.</p>
+<p>하루하루 버텨내기에도 벅찬 일상 속에서 우리는 끊임없이 스스로에게 묻습니다. "내가 과연 이 복잡한 인생의 문제를 풀어낼 역량이 있는가? 내 머리로 이 위기를 헤쳐 나갈 수 있을까?" 그러나 바울은 지친 우리의 어깨를 어루만지듯 나직이 덧붙입니다. "내가 말하는 것을 생각하라. 주께서 범사에 네게 총명을 주시리라."</p>
+<p>놀랍게도 이 단락 전체에서 '주님'이라는 신성한 이름이 문장의 주어로 당당히 나서는 자리는 이곳 단 한 곳뿐입니다. 길을 묻고 고민하는 것은 우리의 몫이지만, 그 길을 꿰뚫어 볼 수 있는 깊은 분별력과 총명은 오직 위로부터 부어지는 선물이라는 뜻입니다. 우리는 모든 지혜를 스스로 갖추어야만 인생이라는 경주를 완주할 수 있다고 믿으며 불안해하지만, 복음은 정반대의 안식을 선사합니다. 깨닫고 알아듣는 일조차 주님의 손에 달려 있으니, 내 역량의 부족함 때문에 지레 낙심할 필요가 없다는 거룩한 해방감입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">흔들리는 우리의 부실함을 덮는 변함없는 신실함</h3>
+<p>인생의 모진 바람 앞에서 우리는 얼마나 자주 흔들립니까. 거창하게 충성을 다짐했다가도 작은 손해와 두려움 앞에서 비겁하게 물러서는 것이 우리의 연약한 본모습입니다. 바울은 우리의 이 부끄러운 밑천을 감추려 하지 않습니다. 오히려 거울을 비추듯 정직하게 마주 세웁니다. "우리는 미쁨이 없을지라도, 주는 항상 미쁘시니 자기를 부인하실 수 없으시리라."</p>
+<p>'미쁘다'는 말은 한결같이 믿음직하고 신실하다는 뜻입니다. 세상의 모든 관계는 철저한 기브 앤 테이크의 법칙으로 돌아갑니다. 내가 믿음직한 모습을 보여주지 못하면 세상은 가차 없이 우리를 버리고 계약을 파기합니다. 그러나 십자가의 복음은 그 잔인한 계산법을 완전히 깨뜨립니다. 우리의 신실함이 바닥나고 믿음이 흔들릴 때조차, 주님은 결코 신실하심을 거두지 않으십니다. 그분은 우리와의 약속을 지키시는 일에서 결코 물러서지 않으십니다. 왜냐하면 신실함이야말로 그분의 본질이며, 스스로를 부인할 수 없는 그분의 사랑이기 때문입니다.</p>
+<p>그러므로 우리가 오늘을 버텨낼 수 있는 힘은 '내가 얼마나 강하고 믿음직한가'에 있지 않습니다. 오직 '그분의 약속이 얼마나 참되고 미쁜가'에 있습니다. 나의 손발이 쇠사슬에 묶이고 내 역량이 초라하게 느껴지는 순간에도, 매이지 않는 말씀이 우리를 이끌고 계십니다. 스스로의 영리함을 내려놓고 위로부터 주어지는 총명을 구할 때, 흔들리는 우리를 변함없이 품어 안으시는 미쁘신 주님의 품 안에서 우리는 마침내 참된 평안과 새로운 용기를 얻게 됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 15편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

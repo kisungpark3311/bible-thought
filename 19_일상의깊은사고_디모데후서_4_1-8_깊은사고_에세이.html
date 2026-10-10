@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>무거운 명령 앞에 먼저 선 은혜, 그리고 끝내 주어지는 선물</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 19편 &middot; 디모데후서 4:1-8</span>
+      <h1>무거운 명령 앞에 먼저 선 은혜, 그리고 끝내 주어지는 선물</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>
+    우리의 삶은 종종 무거운 당위와 요구들로 숨이 가쁩니다. 하루를 시작하기도 전에 마주하는 끝없는 할 일의 목록들, 일터에서 쏟아지는 책임, 그리고 신앙의 여정 속에서 들려오는 "더 헌신하라", "더 열심을 품으라"는 다그침 앞에 우리는 쉽게 주눅이 들곤 합니다. 가끔은 성경을 펼치는 일조차 버겁게 느껴집니다. 그 안에 빼곡히 적힌 거룩한 계명들이 마치 연약한 내 어깨로는 도저히 짊어질 수 없는 거대한 바위처럼 다가오기 때문입니다.
+  </p>
+<p>
+    사도 바울이 자신의 영적 아들이자 젊은 목회자였던 디모데에게 남긴 마지막 유언과도 같은 디모데후서 4장 1절부터 8절까지의 말씀 역시, 언뜻 읽으면 숨이 턱 끝까지 차오르는 비장한 명령의 연속처럼 보입니다. 말씀을 전파하라, 때를 얻든지 못 얻든지 힘쓰라, 경책하고 권하라, 고난을 받으라, 네 직무를 다하라…. 쏟아지는 요구들 앞에서 우리는 또다시 자책의 늪으로 빠져들기 쉽습니다. "나는 이 명령들을 온전히 살아낼 수 있을까? 오늘 하루도 이 아홉 가지 중 절반도 해내지 못했는데, 나는 과연 자격이 있는 사람일까?" 
+  </p>
+<p>
+    그러나 성경 원문의 결을 가만히 어루만지며 문장의 호흡을 따라가다 보면, 우리는 그 거친 명령의 표면 아래 흐르는 하나님의 깊고 다정한 온기를 발견하게 됩니다. 이 단락은 결코 인간의 초인적인 결심이나 메마른 의무감으로 문을 열지 않으며, 우리를 짓누르는 채찍질로 닫히지도 않습니다. 그곳에는 우리가 미처 보지 못했던 거룩한 질서와 놀라운 반전이 숨겨져 있습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">명령의 무게보다 먼저 서 있는 거룩한 호칭</h3>
+<p>
+    우리가 가장 먼저 주목해야 할 놀라운 사실은, 디모데후서 4장의 문이 결코 명령이나 요구로 열리지 않는다는 점입니다. 무언가를 행하라는 명령이 시작되기 전, 본문은 가장 먼저 웅장하고 거룩한 '호칭'을 우리 시선 앞에 우뚝 세워 놓습니다.
+  </p>
+<p>
+    원문에서 이 단락을 여는 전치사는 '에노피온(~앞에서)'이라는 단 한 마디입니다. 이 전치사 하나가 하나님과 그리스도 예수를 접속사로 통째로 묶어 거룩한 임재의 자리로 우리를 이끕니다. 그리고 그 뒤를 이어 "산 자와 죽은 자를 심판하려 하시는 이"라는 장엄한 수식어가 주 예수 그리스도의 이름 뒤에 매달립니다. 이 문장의 가장 무거운 통사적 하중을 짊어지고 있는 것은 전도자의 각오나 비장한 결의가 아니라, 바로 그 거룩한 분을 가리키는 관사와 호칭입니다.
+  </p>
+<p>
+    이것이 우리에게 전해주는 위로는 참으로 깊습니다. 왜 바울은 아홉 가지나 되는 벅찬 명령을 쏟아내기에 앞서, 심판자이신 주님의 호칭을 먼저 세웠을까요? 그것은 요구를 떠받치는 힘이 결코 그 요구를 받는 인간의 역량에 있지 않음을 선언하기 위함입니다. 산 자와 죽은 자를 심판하시는 위엄과 권능은 오직 그리스도께만 속한 것입니다. 우리더러 온 세상을 심판하고 구원하는 역사의 주재가 되라는 것이 아닙니다. 
+  </p>
+<p>
+    우리가 서 있는 자리는 심판자의 자리가 아니라, 그 크고 자비로우신 심판자 '앞(에노피온)'입니다. 나를 짓누르는 벅찬 사명보다 먼저 와서 나를 감싸 안고 계신 분의 임재가 있습니다. 그분의 호칭이 내 부족한 각오보다 앞서 서 계시기에, 우리는 사명의 무게에 짓눌려 부서지는 대신 그분의 크심에 기대어 비로소 숨을 쉴 수 있습니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">하나의 짐으로 묶을 수 없는 아홉 가지 삶의 자리</h3>
+<p>
+    그렇다면 본문에 등장하는 아홉 개의 명령은 도대체 어떤 의미일까요? 디모데후서 4장 2절에는 다섯 개의 명령이 모여 있고, 4장 5절에는 네 개의 명령이 모여 있습니다. 우리는 흔히 이 아홉 가지 요구를 '온전한 충성'이라는 하나의 거대한 바위로 뭉뚱그려 생각하곤 합니다. 그리고 그 거대한 덩어리를 통째로 들어 올리지 못하는 자신을 보며 무력감에 젖어 듭니다.
+  </p>
+<p>
+    그러나 성경 원문은 이 아홉 가지 요구를 하나의 맹목적인 결심으로 평탄화하지 않습니다. 아홉 개의 명령은 저마다 전혀 다른 '받는 말(보충어)'을 품고 있습니다. 어떤 명령은 '말씀'을 받고, 어떤 명령은 '전도인의 일'을 받으며, 어떤 명령은 '네 직무'를 채우라고 요구합니다. 심지어 "모든 일에 신중하라"는 명령은 맑은 정신을 유지하라는 요청이며, "고난을 받으라(카코파테손)"는 명령은 아무런 수식어나 목적어도 없이 오롯이 홀로 외롭게 서 있습니다. 받는 자리가 다르면, 요구하시는 삶의 무게와 결도 완전히 다른 법입니다.
+  </p>
+<p>
+    게다가 바울은 4장 2절에서 "때를 얻든지 못 얻든지(유카이로스, 아카이로스)"라는 두 부사를 그 흔한 접속사 하나 없이 거칠게 맞붙여 놓았습니다. 이는 우리의 일상이 결코 이상적인 환경을 마련해 주지 않는다는 냉엄한 현실을 보여줍니다. 일터의 결산 마감과 고단한 업무, 헝클어진 인간관계는 결코 우리가 은혜를 누리기에 좋은 때만을 골라주지 않습니다. 듣기 싫은 차가운 현실의 숫자를 마주해야 하는 순간, 메마른 일상의 사막 한가운데가 바로 '때를 얻든 못 얻든'의 자리입니다.
+  </p>
+<p>
+    세상은 자기 귀가 가려워서 자기 사욕을 채워줄 달콤한 이야기와 선생들을 좇아 분주하게 돌아갑니다. 그 혼탁하고 소란스러운 소용돌이 속에서 바울은 "그러나 너는(쉬 데)"이라 부르며 한 사람 디모데를 구별해 세웁니다. 오늘 당신이 이 아홉 가지 요구를 전부 완벽하게 완수하지 못했다고 해서 낙심할 필요가 없습니다. 본문은 아홉을 한꺼번에 해치우라고 강요하지 않습니다. 
+  </p>
+<p>
+    어떤 날에는 웅변처럼 말씀을 전하는 날이 있겠지만, 또 어떤 날에는 아무런 보충어도 없이 홀로 서 있던 그 명령처럼, 그저 묵묵히 찾아온 아픔과 외로움을 온몸으로 견뎌내는 '고난을 받으라'는 단 하나의 명령만을 겨우 살아내는 날도 있습니다. 오늘 내가 감당한 것이 비록 그 고난 하나를 말없이 버텨낸 것뿐일지라도, 그것은 아홉 가지 중에서 오늘 내 몫으로 주어진 고유한 자리를 온전히 지켜낸 거룩한 순종입니다.
+  </p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">요구로 시작된 길의 끝에서 선물을 받는 자리</h3>
+<p>
+    이 단락이 우리 영혼을 가장 깊이 울리는 대목은 바로 마지막에 찾아오는 눈부신 자리바꿈입니다. 4장 6절과 7절에 이르러, 늙은 사도 바울은 자신의 삶을 회고하며 지극히 인간적이고 육체적인 고백을 쏟아냅니다. 제단 위에 쏟아지는 포도주처럼 자신의 마지막 피 한 방울까지 남김없이 부어지고 있음을(스펜도마이), 닻을 올리고 항구를 떠나듯 이 세상을 떠날 기약(아날뤼세오스)이 바로 눈앞에 다가왔음을 직감합니다. 
+  </p>
+<p>
+    "나는 선한 싸움을 싸우고 나의 달려갈 길을 마치고 믿음을 지켰으니." 여기서 바울이 사용한 어휘들은 공중에 뜬 종교적 수사가 아닙니다. 흙먼지 날리는 원형 경기장에서 숨이 턱까지 차오르며 맞부딪치던 거친 경기(아고나), 심장이 터질 듯 헐떡이며 내달렸던 주로(드로몬)의 피로와 땀방울이 고스란히 묻어 있는 몸의 언어입니다. 그는 관념으로 신앙생활을 한 것이 아니라, 뻐근한 육체와 찢긴 가슴으로 그 길을 걸어냈습니다.
+  </p>
+<p>
+    그리고 마침내 4장 8절, 이 여덟 절 전체의 무게 중심이 실린 위대한 반전이 펼쳐집니다. 
+    "이제 후로는 나를 위하여 의의 면류관이 예비되었으니 주 곧 의로우신 재판장이 그 날에 내게 주실 것이며…."
+  </p>
+<p>
+    보십시오. 앞선 구절에서 아홉 번이나 무겁게 요구를 받으며 거친 숨을 몰아쉬던 연약한 인간이, 단락의 맨 끝에 이르러서는 마침내 두 손을 벌려 거룩한 면류관을 건네받는 '수령(受領)의 자리'에 놓입니다! 요구로 시작되었던 단락이, 측량할 수 없는 은혜의 선물로 닫히는 것입니다.
+  </p>
+<p>
+    더욱 놀라운 것은 주어의 위치입니다. 이 단락 전체에서 오직 단 한 번, 주님이 주격으로 서서 동사를 거느리시는 자리가 바로 여기입니다. 돌려주시는 분, 갚아주시는 분(아포도세이)의 주어는 오직 한 분, '호 퀴리오스(주님)'이십니다. 우리가 애써 쟁취하는 것이 아니라, 마침내 그날에 주님이 친히 당신의 손으로 건네주시는 것입니다. 
+  </p>
+<p>
+    그리고 그 면류관은 홀로 고독하게 달려온 위대한 사도 바울 한 사람만을 위한 월계관에 머물지 않습니다. "내게만 아니라 주의 나타나심을 사모하는 모든 자에게니라." 그 자리는 오늘이라는 남루한 현실 속에서 때로는 때를 얻고 때로는 때를 얻지 못해 넘어지면서도, 고단한 몸을 이끌고 다시 일어나 주님의 얼굴을 고요히 기다려 온 이 땅의 모든 평범한 순례자들을 향해 활짝 열려 있습니다.
+  </p>
+<p>
+    오늘 하루, 내 손에 쥐어진 삶이 너무 무겁게 느껴지십니까? 아홉 개의 명령을 다 해내지 못해 자책하고 계십니까? 어깨에 힘을 빼고 먼저 우리 앞에 우뚝 서 계신 그 거룩한 호칭을 바라보십시오. 아홉을 한꺼번에 짊어지려 하지 말고, 오늘 내게 허락된 단 하나의 작은 걸음을 소중히 품어 안으십시오. 거친 숨을 몰아쉬며 오늘을 버텨낸 우리를 기다리고 있는 것은 준엄한 문책이 아니라, 의로우신 재판장께서 친히 두 손으로 씌워주실 영광스러운 면류관입니다. 그 거룩한 수령의 날을 바라보며, 오늘도 우리에게 주어진 길을 묵묵히, 그러나 따스한 소망으로 걸어갑시다.
+  </p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 19편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

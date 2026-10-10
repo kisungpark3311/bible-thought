@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>고요한 살림의 자리에서 만나는 지극한 중보</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 03편 &middot; 디모데전서 2:1-7</span>
+      <h1>고요한 살림의 자리에서 만나는 지극한 중보</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 흔히 기도를 지극히 거룩하고 초월적인 세계에 속한 것으로 여깁니다. 흙먼지 날리는 일상의 번잡함과 피로를 털어내고, 저 높은 하늘의 신비에 닿으려 애쓰는 고결한 행위로만 생각하기 쉽습니다. 그러나 거친 세상살이에 이리저리 치이고 돌아와 지친 몸을 뉘일 때면, 기도는커녕 마음속에 한 줄기 탄식조차 길어 올리지 못해 자책하곤 합니다. 당장 이번 달의 생활비와 세금, 일터에서의 위태로운 자리, 그리고 가족의 안녕을 염려하느라 짓눌린 마음에 거룩한 기도가 파고들 틈이 과연 있을까 회의가 들기도 합니다.</p>
+<p>그런 우리에게 사도 바울이 디모데에게 보낸 편지, 디모데전서 2장의 첫머리는 뜻밖에도 지극히 구체적이고 현실적인 삶의 맨얼굴을 비추며 다가옵니다. 성경은 기도를 저 높은 구름 위에 떠 있는 추상적인 관념으로 다루지 않습니다. 오히려 우리가 매일 밥을 짓고, 땀 흘려 벌어먹으며, 세상의 온갖 권력과 제도 속에서 흔들리는 그 남루하고 애틋한 생명의 자리 한가운데로 기도를 깊숙이 끌어당깁니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">기도가 닿아야 할 가장 낮은 자리, 먹고사는 살림</h3>
+<p>바울은 모든 사람과 높은 지위에 있는 이들을 위해 간구와 기도와 도고와 감사를 드리라고 권면합니다. 그러면서 그 기도가 가닿아야 할 궁극의 목적을 이렇게 밝힙니다. "우리가 모든 경건과 단정한 중에 고요하고 평안한 생활을 하려 함이니라."</p>
+<p>여기서 우리의 시선을 멎게 하는 눈부신 진실이 있습니다. 본문에서 ‘생활’로 번역된 헬라어 원어는 영혼의 영원하고 신령한 생명을 뜻하는 ‘조에(ζωή)’가 아닙니다. 그것은 아침에 일어나 일터로 나가고, 땀을 흘려 끼니를 잇고, 밤이면 고단한 몸을 뉘어 잠을 청하는 우리의 물리적인 살림살이, 곧 ‘비온(βίον)’입니다. 성경이 가리키는 기도의 지향점은 신비로운 영적 도취가 아니었습니다. 바로 오늘 하루 먹고사는 우리의 연약한 살림이 깨어지지 않고, 부당한 권력과 세상의 소란 속에서도 고요하고 평안하게 보존되는 것이었습니다.</p>
+<p>더욱이 놀라운 것은 이 자리에 군림하는 억지 명령이 없다는 사실입니다. 흔히 우리는 "기도하라"는 단호한 훈계로 이 구절을 읽지만, 원문에는 우리를 짓누르는 명령형 꼴이 존재하지 않습니다. 이것은 벅찬 권면이자 가냘픈 탄식입니다. 세상의 거친 폭력과 불의한 권력에 의해 이미 삶의 터전이 산산조각 난 이들에게, 무조건 높은 자들을 축복하고 기도하라는 요구는 또 다른 잔인한 폭력이 될 수 있습니다. 성경은 그 아픈 간격을 외면하지 않습니다. 아직 살림을 회복하지 못한 이의 메마른 목구멍에 억지 기도를 쑤셔 넣지 않고, 관청과 세금, 정치와 경제라는 거친 세속의 현실을 지우지 않은 채 정직하게 기도의 식탁 위에 올려놓습니다. 기도는 우리의 비루한 밥상과 노동을 외면하는 도피처가 아니라, 바로 그 깨어지기 쉬운 살림을 지켜내기 위한 거룩한 방패인 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">하늘과 땅의 아득한 틈새에 사람으로 서신 중보자</h3>
+<p>그렇다면 이처럼 거칠고 무거운 세상 속에서, 힘없는 우리의 살림은 어떻게 고요한 평안을 얻을 수 있습니까? 본문은 곧이어 성경 전체를 통틀어 가장 깊고 아름다운 한 문장을 선포합니다. "하나님은 한 분이시요 또 하나님과 사람 사이에 중보도 한 분이시니 곧 사람이신 그리스도 예수라."</p>
+<p>이 구절에서 우리의 가슴을 울리는 고백은 바로 ‘사람이신 그리스도 예수’라는 부름입니다. 중보자라는 자리는 본래 서로 다른 두 세계 사이에 홀로 서는 고독한 자리입니다. 하늘의 높고 거룩하신 한 하나님과, 땅 위에서 죄와 슬픔으로 얼룩진 수많은 ‘사람들’ 사이에 누군가 서야만 했습니다. 그런데 그 사이에 서신 예수 그리스도는 저 멀리서 군림하는 초월자의 모습으로 서지 않으셨습니다. 그분은 우리와 똑같이 살과 피를 지니고, 배고픔과 피로를 아시며, 억울한 눈물과 피땀을 흘리셨던 완전한 ‘사람’의 모습으로 그 아득한 틈새에 서셨습니다.</p>
+<p>뿐만 아니라 그분은 말로만 다리를 놓지 않으셨습니다. "그가 모든 사람을 위하여 자기를 속전으로 주셨으니." 여기서 ‘속전(ἀντίλυτρον)’이란 노예의 몸값을 대신 치르고 해방을 살 때 쓰이던 지극히 세속적이고 물질적인 경제와 셈의 언어입니다. 예수님은 관념적인 사랑의 수사를 늘어놓으신 것이 아니라, 자기 자신의 몸과 생명이라는 가장 실재적인 값을 온전히 쏟아부어 우리를 사셨습니다.</p>
+<p>하늘과 땅 사이의 그 건널 수 없던 절망의 심연에, 자신의 온몸을 던져 다리가 되어 주신 한 사람 예수 그리스도. 그분이 그 자리에서 양손으로 하나님과 우리의 손을 맞잡고 계시기에, 흙먼지투성이인 우리의 일상은 결코 버려진 들판이 아니라 하나님의 보좌와 잇대어진 거룩한 성소가 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">우리의 작고 고요한 평안에서 온 세상을 향한 긍휼로</h3>
+<p>사도 바울은 이 편지에서 두 개의 커다란 액자를 한 벽에 나란히 걸어둡니다. 하나의 액자 속에는 ‘우리 구주 하나님’ 품 안에서 누리는 소박하고 고요한 살림이 담겨 있고, 또 하나의 거대한 액자 속에는 ‘모든 사람이 구원을 받으며 진리를 아는 데 이르기를 원하시는’ 하나님의 광대한 열망이 담겨 있습니다.</p>
+<p>우리는 때때로 ‘우리’라는 좁은 울타리에 안주하려 합니다. 내 가족의 평안, 내 일터의 안락함, 내가 사랑하는 몇몇 사람의 안녕에만 기도의 지경을 묶어두려 합니다. 혹은 반대로 온 인류를 구원하겠다는 거창한 이상에 취해, 정작 내 곁에서 고단하게 살아가는 이웃의 깨어진 밥상을 하찮게 여기기도 합니다.</p>
+<p>그러나 디모데전서는 이 두 액자 사이의 간격을 억지로 꿰매거나 어느 한쪽을 지워버리지 않습니다. 본문에서 ‘모든’이라는 단어가 거듭 울려 퍼지듯, 하나님의 마음은 우리가 그어놓은 편협한 경계선을 훌쩍 뛰어넘습니다. 내가 도저히 품기 어려운 원수, 나와 생각이 다른 이웃, 거리의 이름 없는 가난한 이와 권력의 정점에 선 자들까지, 그 모든 생명이 하나님의 긍휼의 시선 아래 있음을 묵묵히 일깨웁니다.</p>
+<p>우리가 드리는 기도는 내 작은 살림의 고요함을 지키는 데서 출발하지만, 결코 그 자리에만 고여 있지 않습니다. 한 사람이신 예수 그리스도의 넓은 품을 통과할 때, 우리의 기도는 마침내 담장을 넘어 온 세상을 품는 하나님의 거대한 사랑으로 확장됩니다. 오늘도 묵묵히 밥을 짓고, 땀 흘려 일하며, 정직한 하루를 살아내는 당신의 살림은 결코 초라하지 않습니다. 그 고요한 살림살이의 한구석에서 하늘을 우러러 내뱉는 작은 탄식과 기도는, 하늘과 땅 사이에 우뚝 서신 그리스도 예수의 손에 들려 마침내 온 세상을 치유하는 거룩한 숨결이 될 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

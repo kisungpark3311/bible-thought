@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>흔들리는 계절, 내가 서 있는 자리의 출처를 묻다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 18편 &middot; 디모데후서 3:10-17</span>
+      <h1>흔들리는 계절, 내가 서 있는 자리의 출처를 묻다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+우리는 참으로 분주하고 소란한 계절을 살아갑니다. 매일 아침 눈을 뜨면 새로운 지식과 트렌드가 쏟아져 나오고, 세상은 더 그럴듯한 확신과 더 빠른 성공의 길을 제시합니다. 조금이라도 멈칫하면 뒤처질 것 같은 불안 속에서, 사람들은 저마다의 깃발을 치켜들며 자신의 옳음을 증명하려 애씁니다. 그러나 주위를 둘러보면, 누군가를 속이는 일과 속임을 당하는 일이 실타래처럼 엉켜 있습니다. 남을 속이며 득의양양하던 사람이 어느새 다른 속임수에 걸려 넘어지고, 가해자와 피해자의 경계마저 흐릿해진 세상 속에서 우리는 깊은 피로감을 느낍니다. 도대체 우리는 어디로 가고 있으며, 무엇을 붙잡아야 흔들리지 않을 수 있을까요?
+
+바로 이 혼돈의 소용돌이 한가운데서, 감옥에 갇힌 노사도 바울은 젊은 동역자 디모데에게 편지를 띄웁니다. 수많은 조언이나 거창한 청사진을 펼쳐놓는 대신, 그는 아주 단호하고도 고요한 한 낱말을 건넵니다. "너는 머물러라." 세상이 온통 더 멀리, 더 빨리 달려가라고 등을 떠밀 때, 성경은 뜻밖에도 '머무름'을 명령합니다. 어디로 도망치거나 새로운 환상을 찾아 헤매지 말고, 네가 이미 서 있는 그 자리, 네가 배우고 확신한 일 안에 그대로 머물라는 것입니다. 과연 이 머무름은 무엇을 의미하는 것일까요? 그것은 지루한 정체나 현실 도피가 아니라, 내가 딛고 선 삶의 '출처'가 어디인지를 정직하게 헤아리는 깊은 영혼의 호흡입니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">화려한 확신보다 깊은 머무름, 나를 빚어낸 이들의 기억</h3>
+
+우리는 종종 자신의 성취와 확신이 오롯이 스스로의 지혜와 노력에서 비롯되었다고 착각합니다. "이것은 내 생각이고, 내 실력이며, 내 신념이다"라고 말할 때의 확신은 매력적으로 보이지만, 출처를 잊어버린 확신은 쉽게 독선으로 변질되고 맙니다. 바울은 디모데에게 "네가 누구에게서 배운 것을 알라"고 권면합니다. 흥미롭게도 원문에서 '누구'를 가리키는 말은 단수가 아닌 여럿, 곧 복수를 가리킵니다. 디모데를 자라게 한 것은 어느 한 사람의 독점적인 가르침이나 카리스마 넘치는 영웅의 그림자가 아니었습니다.
+
+어머니 유니게와 외조모 로이스의 따뜻한 무릎, 어린 시절 골목 어귀에서 건네받은 다정한 눈빛, 이름도 남기지 않고 스쳐 지나간 수많은 믿음의 선배들이 함께 디모데라는 한 사람의 내면을 빚어냈습니다. 그들의 기도와 눈물, 서툴지만 진실했던 손길들이 모여 디모데의 영혼에 단단한 기초를 놓아준 것입니다. 그러므로 배운 것 안에 머문다는 것은, 나를 여기까지 이끌어준 수많은 이들의 얼굴과 사랑의 빚을 잊지 않는 겸손입니다.
+
+오늘 우리 자신에게도 조용히 물어보아야 합니다. 지금 내가 가진 생각과 언어, 내가 붙들고 있는 신앙과 가치관은 과연 누구에게서 온 것입니까? 나를 가르치고 품어주었던 이들의 이름을 종이 위에 하나씩 적어 내려가 보십시오. 그 이름들을 마주하는 순간, 우리는 홀로 우뚝 선 존재가 아니라 무수한 이들의 헌신 위에 덧입혀진 존재임을 깨닫게 됩니다. 출처를 기억하는 사람은 결코 오만해질 수 없으며, 쉬이 허무에 빠지지도 않습니다. 내 삶의 뿌리가 어디에 닿아 있는지 아는 사람만이, 거센 비바람이 불어닥쳐도 그 자리에 묵묵히 머물 수 있기 때문입니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">상처 입은 몸으로 짊어진 짐과 건져내심의 은혜</h3>
+
+바울이 말하는 머무름의 자리는 결코 아늑하거나 낭만적인 꽃길이 아닙니다. 그는 디모데에게 편지를 쓰며 안티오키아, 이고니온, 루스드라라는 세 도시의 이름을 담담하게 불러냅니다. 이 이름들은 단순한 여행의 경로가 아닙니다. 돌에 맞아 피를 흘리고, 매를 맞으며 쫓겨나야 했던, 고스란히 그의 몸에 가해진 박해와 고통의 흔적이 새겨진 자리들입니다. 도시의 이름이 바뀔 때마다 바울은 그 무거운 짐을 회피하지 않고, 자신의 연약한 육체로 고스란히 짊어지고 견뎌냈습니다.
+
+그리고 그는 놀라운 한 줄의 결산을 남깁니다. "주께서 이 모든 것 가운데서 나를 건지셨느니라." 이 고백은 고통이 없었다는 뜻이 아닙니다. 고통의 한복판을 온몸으로 통과하면서, 그 바닥에서 건져 올리시는 하나님의 신실한 손길을 경험했다는 뜻입니다. 그런데 바울은 이 감격적인 감사의 바로 다음 줄에, 우리를 당혹스럽게 만드는 또 하나의 문장을 나란히 배치합니다. "무릇 그리스도 예수 안에서 경건하게 살고자 하는 자는 박해를 받으리라."
+
+과거의 모든 것에서 건짐을 받았다는 승리의 선언과, 앞으로도 모두가 박해를 받으리라는 냉엄한 현실 인식이 한 문맥 안에서 숨 쉬고 있습니다. 바울은 이 둘 사이의 긴장을 억지로 봉합하려 하지 않습니다. 건짐을 받았다고 해서 고난이 완전히 사라지는 것도 아니며, 다시 고난이 찾아온다고 해서 지난날의 구원이 헛된 것이 되지도 않습니다. 신앙이란 고통이 전혀 없는 온실로 숨어드는 것이 아니라, 고난과 건져내심이 교차하는 거친 일상 속에서도 주님을 신뢰하며 오늘을 견뎌내는 거룩한 끈기입니다. 우리는 인생의 모순과 아픔 앞에서도 조급하게 결론을 내리지 않고, 그 신비로운 긴장을 품은 채 묵묵히 삶을 이어가는 법을 배워야 합니다.
+
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">차가운 교리를 넘어 마침내 손끝으로 닿는 사랑</h3>
+
+그렇다면 우리가 마지막까지 머물러야 할 궁극적인 자리는 어디입니까? 바울은 디모데에게 어려서부터, 곧 젖먹이 시절부터 성경을 알아왔음을 상기시킵니다. 여기서 '어려서부터'라는 말은 단순히 오랜 세월을 뜻하는 감상적인 표현이 아니라, 어머니의 품에 안긴 유아기부터 말씀이 그의 몸과 영혼에 스며들었음을 가리킵니다. 만약 누군가가 어려서 말씀을 듣지 못하고 뒤늦게 진리를 만났다 해도 결코 낙심할 필요가 없습니다. 성경이 우리에게 요구하는 것은 화려한 과거의 이력이 아니라, 오늘 내 삶이 그 말씀의 호흡 안에 젖어 있는가 하는 현재의 응답이기 때문입니다.
+
+하나님의 숨결로 빚어진 성경은 우리를 교조적인 이론가로 만들기 위해 주어지지 않았습니다. 머릿속에 지식을 빼곡히 채워 남을 비판하고 정죄하는 도구로 전락한 말씀은 결코 사람을 살리지 못합니다. 본문이 보여주는 성경의 참된 목적은 분명합니다. 가르침과 책망과 바르게 함과 의로 교육함을 거쳐, 마침내 "모든 선한 일을 행할 능력을 온전하게 갖추는 것"입니다.
+
+말씀의 종착지는 차가운 머리나 뜨거운 입술이 아니라, 다정하고 부지런한 '손끝'입니다. 오늘 나의 손은 무엇을 하고 있습니까? 지친 이웃의 어깨를 토닥이고 있습니까, 낙심한 이의 손을 잡아 일으키고 있습니까, 아니면 일터에서 정직한 땀을 흘리며 작지만 따뜻한 밥상을 차려내고 있습니까? 성경이 살아 움직이는 자리는 서재의 책장 위가 아니라, 우리가 몸으로 살아내는 일상의 현장입니다. 진정한 영성은 높고 거창한 담론에 있지 않고, 묵묵히 선을 행하는 손끝의 노동 속에서 비로소 완성됩니다.
+
+<br/>
+우리는 다시금 "머물러라" 하신 그 음성 앞에 섭니다. 머무름은 물러섬이 아닙니다. 자기가 어디에서 사랑을 받았는지를 기억하고, 고통과 은혜가 교차하는 삶의 무게를 묵묵히 짊어지며, 마침내 내 손으로 선한 사랑을 짓는 가장 용기 있는 선택입니다. 속이고 속는 소란한 세상의 소음에 마음을 빼앗기지 마십시오. 오늘 당신이 서 있는 그 자리, 당신을 빚어낸 따뜻한 기억들과 변함없는 말씀의 품 안에 깊이 뿌리를 내리십시오. 그 머무름 속에서, 우리는 비로소 세상을 이기는 참된 평안과 아름다운 열매를 맛보게 될 것입니다.
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 18편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

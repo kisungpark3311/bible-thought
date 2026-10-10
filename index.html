@@ -121,6 +121,12 @@
 </div>
 
         
+        
+        <h2 class="section-title">디모데전후서 일상의 깊은 사고 (1~21편)</h2>
+        <div class="list-group" id="timothy-deep-list">
+        <!-- 자바스크립트로 리스트 렌더링 -->
+        </div>
+
         <h2 class="section-title">사도행전 일상의 깊은 사고 (1~45편)</h2>
         <div class="list-group" id="acts-deep-list">
         <!-- 자바스크립트로 리스트 렌더링 -->
@@ -566,6 +572,20 @@
                 link.className = 'list-item';
                 link.innerHTML = `<div class='item-info'><h3>사도행전 일상의 깊은 사고 (${idx + 1}편)</h3><p>${item.title}</p></div><div class='arrow'>→</div>`;
                 actsDeepContainer.appendChild(link);
+            });
+        }
+
+
+        const timDeepContainer = document.getElementById('timothy-deep-list');
+        const timDeepFiles = [{"file": "01_일상의깊은사고_디모데전서_1_1-11_깊은사고_에세이.html", "title": "모든 규율의 끝은 언제나 사랑이어야 한다"}, {"file": "02_일상의깊은사고_디모데전서_1_12-20_깊은사고_에세이.html", "title": "은혜는 종착역이 아닌 밑그림으로 남는다"}, {"file": "03_일상의깊은사고_디모데전서_2_1-7_깊은사고_에세이.html", "title": "고요한 살림의 자리에서 만나는 지극한 중보"}, {"file": "04_일상의깊은사고_디모데전서_2_8-15_깊은사고_에세이.html", "title": "비어 있는 이름과 채워진 삶의 자리"}, {"file": "05_일상의깊은사고_디모데전서_3_1-7_깊은사고_에세이.html", "title": "거룩함은 언제나 일상의 식탁과 담장 밖에서 시작된다"}, {"file": "06_일상의깊은사고_디모데전서_3_8-13_깊은사고_에세이.html", "title": "비어 있는 채점표와 채워지는 일상: 우리를 살리는 섬김의 깊은 자리"}, {"file": "07_일상의깊은사고_디모데전서_3_14-4_5_깊은사고_에세이.html", "title": "삶의 규칙에 쫓기던 걸음을 멈추고, 지으신 분의 밥상에 앉다"}, {"file": "08_일상의깊은사고_디모데전서_4_6-16_깊은사고_에세이.html", "title": "내 몫이 아닌 짐을 내려놓고, 이미 건네받은 온기를 품다"}, {"file": "09_일상의깊은사고_디모데전서_5_1-16_깊은사고_에세이.html", "title": "비워 둔 자리에서 비로소 시작되는 돌봄"}, {"file": "10_일상의깊은사고_디모데전서_5_17-25_깊은사고_에세이.html", "title": "사람의 앞과 하나님 앞, 그 침묵의 틈에서"}, {"file": "11_일상의깊은사고_디모데전서_6_1-10_깊은사고_에세이.html", "title": "장부의 숫자 곁에 남겨둔 자족, 고단한 하루를 견디는 힘"}, {"file": "12_일상의깊은사고_디모데전서_6_11-21_깊은사고_에세이.html", "title": "흠 없는 것은 내가 아니라 내 손에 쥐여진 부탁이었습니다"}, {"file": "13_일상의깊은사고_디모데후서_1_1-7_깊은사고_에세이.html", "title": "꺼져가는 불씨 앞에서 숙제를 거두시는 사랑"}, {"file": "14_일상의깊은사고_디모데후서_1_8-18_깊은사고_에세이.html", "title": "차가운 사슬 곁에서 숨을 틔우는 사랑"}, {"file": "15_일상의깊은사고_디모데후서_2_1-13_깊은사고_에세이.html", "title": "묶인 손으로 건네는 매이지 않는 희망"}, {"file": "16_일상의깊은사고_디모데후서_2_14-26_깊은사고_에세이.html", "title": "내 몫의 칸을 온유함으로 채우고, 결과의 자리는 비워둘 때"}, {"file": "17_일상의깊은사고_디모데후서_3_1-9_깊은사고_에세이.html", "title": "알라는 부르심과 돌아서는 용기: 소란한 시절, 일상에서 길어 올리는 경건"}, {"file": "18_일상의깊은사고_디모데후서_3_10-17_깊은사고_에세이.html", "title": "흔들리는 계절, 내가 서 있는 자리의 출처를 묻다"}, {"file": "19_일상의깊은사고_디모데후서_4_1-8_깊은사고_에세이.html", "title": "무거운 명령 앞에 먼저 선 은혜, 그리고 끝내 주어지는 선물"}, {"file": "20_일상의깊은사고_디모데후서_4_9-15_깊은사고_에세이.html", "title": "겉옷을 부탁하는 용기와 갚음을 넘기는 평안"}, {"file": "21_일상의깊은사고_디모데후서_4_16-22_깊은사고_에세이.html", "title": "아무도 곁에 없던 날, 그 빈자리에 서신 분"}];
+        if (timDeepContainer) {
+            timDeepContainer.innerHTML = '';
+            timDeepFiles.forEach((item, idx) => {
+                const link = document.createElement('a');
+                link.href = `./${item.file}`;
+                link.className = 'list-item';
+                link.innerHTML = `<div class='item-info'><h3>디모데전후서 일상의 깊은 사고 (${idx + 1}편)</h3><p>${item.title}</p></div><div class='arrow'>→</div>`;
+                timDeepContainer.appendChild(link);
             });
         }
 

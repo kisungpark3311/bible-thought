@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>꺼져가는 불씨 앞에서 숙제를 거두시는 사랑</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 디모데전후서 제 13편 &middot; 디모데후서 1:1-7</span>
+      <h1>꺼져가는 불씨 앞에서 숙제를 거두시는 사랑</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생의 어느 모퉁이를 돌다 보면, 도무지 아무것도 다시 시작할 수 없을 것만 같은 무력한 순간을 마주합니다. 가슴속에 품었던 열정의 불꽃은 차갑게 식어 가고, 남은 것이라곤 부끄러운 재와 희미한 연기뿐일 때가 있습니다. 세상은 그런 우리를 향해 끊임없이 다그칩니다. "더 힘을 내야지", "마음을 다잡고 다시 일어나야지", "믿음이 있다면 이겨내야지." 위로라는 이름으로 다가오는 그 수많은 조언들은 때로 가장 무거운 멍에가 되어, 이미 탈진한 영혼을 벼랑 끝으로 내몹니다. 우리가 정작 견디기 힘든 것은 넘어진 현실 그 자체보다, 넘어진 채로 또다시 무언가를 증명해내야 한다는 강요된 '숙제'입니다.</p>
+<p>그런 지친 마음에 디모데후서 1장은 놀랍도록 낯설고 깊은 숨을 불어넣어 줍니다. 차디찬 로마의 지하 감옥, 언제 사형장으로 끌려갈지 모르는 노사도 바울이 사랑하는 영적 아들 디모데에게 써 내려간 마지막 편지의 첫머리에는 기이하게도 단 하나의 명령도 등장하지 않습니다. 두려움에 떨며 홀로 남겨질 청년 목회자를 향해 "당당해져라", "복음을 위해 목숨을 걸어라", "낙심하지 말라"는 식의 당위나 결단을 단 한 줄도 요구하지 않습니다. 바울은 무언가를 서둘러 해내야 한다는 과제를 던지는 대신, 그저 한 사람의 진솔한 입술로 조용히 읊조립니다. "내가 너에게 다시 생각나게 하노니."</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">명령이 멈춘 자리에 찾아온 기억의 온기</h3>
+<p>바울이 건네는 것은 새로운 과업이 아니라 '상기(想起)', 곧 잊고 있던 기억을 가만히 길어 올리는 일입니다. 그런데 그 기억의 여정이 참으로 따스하고 구체적입니다. 그는 높은 신학적 관념이나 거창한 교리를 먼저 앞세우지 않습니다. 대신 지극히 인간적이고 애틋한 일상의 조각들을 하나씩 어루만집니다. 그것은 바로 디모데가 흘렸던 '눈물'이며, 그에게 안수할 때 맞닿았던 거친 '손'이고, 서로를 가슴에 품고 밤을 지새우던 '밤낮의 시간'입니다.</p>
+<p>우리가 삶의 무게에 짓눌릴 때 가장 먼저 찾아오는 것은 차가운 고립감입니다. 매일 아침 무거운 몸을 이끌고 일터로 향하며 흘렸던 남모를 눈물, 마감 기한을 맞추려 밤낮으로 장부와 서류를 넘기며 거칠어진 손끝, 아무도 알아주지 않는 자리에서 고독하게 감내했던 시간들은 대개 쓸쓸한 패배의 흔적으로 치부되곤 합니다. 그러나 바울은 그 눈물과 손과 밤낮의 시간을 실패의 증거로 보지 않습니다. 오히려 하나님의 은혜가 머물렀던 가장 생생한 기억의 재료로 받아들입니다.</p>
+<p>바울은 "네 속에 있는 은사를 다시 불일듯 일어나게 하라"고 권면하지만, 이 문장조차 멱살을 잡고 등을 떠미는 명령형이 아닙니다. "그 은사가 지금 네 안에 있다"는 사실을 그저 확인해 주는 진술입니다. 지금 당장 스스로 불씨를 되살릴 힘이 없다 해도 괜찮습니다. 불을 지피지 못해 웅크리고 있는 당신의 무기력함이, 당신 안에 이미 선물로 주어진 그 거룩한 불씨 자체를 없던 것으로 만들 수는 없기 때문입니다. 성경은 오늘 당신이 그것을 되살려냈는지 묻지 않고, 그저 그것이 여전히 "네 안에 있다"고 담담히 증언합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">불안을 주지 않으신 분의 손을 다시 바라볼 때</h3>
+<p>디모데후서 1장 1절부터 7절까지 이어지는 흐름 속에서, 하나님이 주어로 등장하여 무언가를 행하시는 문장은 단 하나뿐입니다. 그리고 그 유일한 문장은 놀랍게도 하나님이 우리에게 '무엇을 주지 않으셨는가'를 부정하는 말로 시작됩니다. "하나님이 우리에게 주신 것은 두려워하는 마음이 아니요."</p>
+<p>우리는 흔히 가슴속에 불안과 공포가 밀려오면 깊은 자괴감에 빠집니다. "내가 믿음이 부족해서 이렇게 겁이 많은 걸까?", "하나님이 나를 기뻐하지 않으시는 것은 아닐까?" 스스로의 나약함을 자책하며 하나님 앞에서도 고개를 들지 못합니다. 그러나 바울은 우리의 흔들리는 내면 상태를 달아보거나 재단하지 않습니다. 대신 우리에게 온갖 좋은 것을 건네주시는 하나님의 '손'을 바라보게 합니다. 우리가 겪고 있는 그 서글픈 위축감과 비겁한 떨림은, 결코 하나님이 당신의 손으로 건네주신 선물이 아니라는 선언입니다.</p>
+<p>하나님은 우리에게 겁을 쥐여주신 적이 없습니다. 그러므로 지금 내 안에 두려움이 엄습했다고 해서, 하나님의 신실하심이 흔들리거나 취소되는 것은 아닙니다. 두려움은 하나님께로부터 오지 않았기에 내 삶의 영원한 주인이 될 수 없습니다. 그분이 우리에게 정말로 건네주신 것은 어떠한 절망도 뚫고 나갈 '능력'이며, 상처 입은 세상을 끝까지 품어 안는 '사랑'이고, 격랑 속에서도 고요히 중심을 잡는 '맑고 단정한 마음(근신)'입니다. 우는 사람에게 눈물을 당장 그치라고 윽박지르지 않으면서도, 그 눈물이 당신의 본질이 될 수 없음을 깨우쳐 주는 이 거룩한 배려 앞에 우리의 굳은 마음은 비로소 무장해제됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내 공로가 아닌 은혜의 품에 깃든 믿음</h3>
+<p>그렇다면 우리가 오늘 하루를 버텨낼 수 있는 힘은 어디서 비롯되는 것일까요? 본문은 디모데의 믿음을 칭찬하면서도, 그 믿음의 주인을 결코 디모데 자신으로 삼지 않습니다. 성경은 "네가 믿음을 성취했다"고 말하지 않고, "믿음이 네 속에 거하였다"고 말합니다. 문장의 주어는 사람이 아니라 '믿음' 그 자체입니다.</p>
+<p>그 믿음이 머물렀던 궤적을 바울은 조용히 짚어줍니다. 외할머니 로이스의 품에 먼저 깃들었던 믿음, 어머니 유니게의 삶에 머물렀던 그 신실한 믿음이 마침내 디모데라는 한 청년의 영혼 속으로 흘러들어와 자리를 잡았습니다. 디모데는 자신이 태어날 가문을 스스로 선택하지 않았습니다. 외할머니와 어머니의 눈물 어린 기도와 신앙의 손길은 디모데가 치열하게 쟁취해낸 업적이 아니었습니다. 그것은 그가 태어나 숨을 쉬기도 전에, 앞선 이들의 거룩한 무릎을 통해 거저 건네받은 순전한 은혜의 유산이었습니다.</p>
+<p>우리의 신앙도 마찬가지입니다. 오늘 우리가 비틀거리면서도 완전히 엎드러지지 않고 이 자리에 서 있는 것은, 내 믿음의 결단이 대단하거나 열심이 특출해서가 아닙니다. 내가 알지 못하던 어린 날 나를 위해 무릎 꿇었던 부모의 기도, 방황하던 청년 시절 말없이 곁을 지켜주었던 이름 모를 동역자의 손길, 그리고 시대를 건너 우리에게 복음의 불씨를 건네준 수많은 '로이스'와 '유니게'들이 있었기 때문입니다. 내 믿음의 첫 자리와 둘째 자리가 나의 공로가 아니었기에, 오늘 내가 무기력하게 멈추어 섰다고 해서 그 믿음의 역사가 실패로 끝나지 않습니다.</p>
+<p>오늘 하루, 아무것도 새로 시작할 힘이 남아 있지 않다면 무언가를 억지로 이루려 애쓰지 마십시오. 오늘 우리에게 필요한 것은 새로운 각오나 비장한 다짐이 아닙니다. 하나님께서 내게 결코 두려움을 주신 적이 없다는 사실을 기억하는 것, 나보다 앞서 이 길을 걸으며 믿음을 전해준 고마운 이름들을 가만히 불러보는 것, 그리고 지친 내 영혼 안에 여전히 꺼지지 않은 채 깃들어 있는 그 작고 온유한 불씨를 그저 있는 그대로 바라보는 것입니다. 과제를 거두어 가시고 은혜의 품을 먼저 내어주시는 그분의 나직한 음성이, 오늘 당신의 피곤한 무릎을 조용히 일으켜 세울 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      디모데전후서 제 13편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
