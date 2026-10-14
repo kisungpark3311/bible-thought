@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오늘이라 불리는 시간 속에서 서로의 굳어 가는 마음을 어루만지다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 07편 &middot; 히브리서 3:7-19</span>
+      <h1>오늘이라 불리는 시간 속에서 서로의 굳어 가는 마음을 어루만지다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>마음이 굳어진다는 것은 대개 소리 없이 찾아오는 일입니다. 거창한 배교나 요란한 반항으로 시작되기보다, 하루하루의 피로와 속임수 속에서 하나님의 음성에 반응하던 결이 조금씩 무뎌지다가 어느 날 문득 살아 계신 하나님에게서 멀찍이 떨어져 나와 있는 자신을 발견하게 되는 것입니다. 히브리서 3장 후반부는 옛 광야의 기억을 길게 불러내면서, 우리에게 지금 당장 행해야 할 두 가지 분명한 걸음을 건넵니다. 하나는 우리 가운데 그 누구도 믿지 아니하는 악한 마음을 품고 살아 계신 하나님에게서 떨어질까 조심하여 살피는 일이고, 다른 하나는 오늘이라 일컫는 동안에 매일 피차 권면하여 죄의 유혹으로 마음이 완고해지는 것을 막아 주는 일입니다.</p>
+<p>우리가 흔히 읽는 번역본에서는 너희 마음을 완고하게 하지 말라는 구절들이 모두 강한 명령형처럼 보이지만, 원문의 결을 따라가 보면 그 구절들은 성령이 들려주시는 옛 시편의 인용문 안에 놓인 간절한 당부입니다. 정작 히브리서의 저자가 오늘의 독자들을 향해 직접 내리는 현재형 명령은 오직 살피라는 말과 서로 권면하라는 두 마디뿐입니다. 내 마음을 혼자서 다잡고 채찍질하라는 고독한 명령 대신, 함께 걸어가는 이들을 살피고 날마다 서로에게 따뜻한 말을 건네라는 공동체의 호흡이 문장의 중심을 잡고 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">끝나는 날짜를 적지 않은 채 주어로 우뚝 선 오늘</h3>
+<p>이 단락에서 유독 우리의 눈길을 붙잡는 단어는 세 번 거듭 등장하는 오늘이라는 시간입니다. 시편을 처음 인용할 때도, 뒤에서 다시 인용할 때도 오늘은 문장을 여는 부사로 쓰이지만, 오직 한 자리, 서로 권면하라고 명령하는 13절에서만 그 오늘 앞에 정관사가 붙어 당당한 명사가 되고 문장의 주어로 우뚝 섭니다. 오직 그 오늘이라 일컬어지는 동안에 날마다 서로를 권면하라는 말씀입니다.</p>
+<p>누가 지금 이 시간을 오늘이라고 불러 주시는지 본문은 주어를 굳이 밝히지 않습니다. 더구나 그 오늘이라는 은혜의 기한이 언제 끝나는지 마감 시한을 적어 놓지도 않았습니다. 우리는 흔히 남은 날짜를 계산하며 초조하게 자신을 몰아붙이거나 타인을 재촉하곤 하지만, 성경은 종말의 시계를 들이미는 대신 지금 우리에게 허락된 시간이 여전히 오늘이라고 불리고 있다는 사실 하나만을 조용히 들려줍니다. 내일의 불안을 앞당겨 계산하지 않고, 오늘이라 불리는 이 하루의 폭 안에서 옆 사람의 안부를 묻고 말씀을 나누는 것이 우리가 감당할 몫입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">이미 그리스도와 함께 참여한 자가 되었다는 흔들리지 않는 뿌리</h3>
+<p>날마다 서로를 살피고 권면해야 하는 이유가 이어지는 14절에 나타나는데, 원문의 단어 순서는 우리 성경의 어순과 사뭇 다른 울림을 줍니다. 우리는 시작할 때에 확실한 것을 끝까지 잡으면 장차 그리스도와 함께 참여한 자가 될 것이라는 미래의 약속처럼 읽기 쉽지만, 원문은 문장의 가장 앞머리에 왜냐하면 우리가 이미 그리스도와 함께 참여한 자가 되었기 때문이라는 완료형 선언을 먼저 박아 놓습니다. 이 단락의 스물여섯 개 동사 가운데 이미 그렇게 되어 있다는 완료의 옷을 입은 동사는 오직 이 한 단어뿐입니다.</p>
+<p>물론 그 문장의 뒷자락에는 처음 확신을 끝까지 단단히 붙들고 있다면이라는 조건절이 나란히 붙어 있습니다. 본문은 이미 이루어진 은혜의 신분과 끝까지 붙들어야 하는 삶의 태도를 어느 한쪽으로 흡수해 버리지 않고 한 문장 안에 팽팽하게 함께 세워 둡니다. 이미 구원받았으니 아무렇게나 살아도 된다는 방종으로도, 조금만 흔들리면 이미 주신 은혜마저 취소된다는 공포로도 읽지 못하게 하는 성경의 정직한 균형입니다. 다만 분명한 것은, 우리가 서로를 붙들어 줄 수 있는 가장 깊은 근거가 우리의 미래 성과가 아니라 이미 그리스도께 속한 자가 되었다는 그 첫 은혜에 뿌리를 두고 있다는 사실입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">마음의 다짐을 넘어 지친 몸이 놓인 자리를 묻는 돌봄</h3>
+<p>이 단락의 문법이 보여 주는 가장 뭉클한 대조는, 살피고 권면하라는 요구는 너희라는 여럿에게 주어지는데, 그 요구가 막아 내려는 위험은 너희 중의 누군가라는 단 한 사람으로 좁혀진다는 점입니다. 한 사람이 홀로 죄의 유혹에 속아 마음이 굳어져 갈 때, 그 한 사람을 잃지 않기 위해 공동체 전체가 날마다 서로의 손을 잡아야 한다는 뜻입니다. 그러므로 병상에서 긴 밤을 견디거나 고된 야간 노동과 돌봄으로 녹초가 된 이에게 필요한 것은 더 굳세게 결심하라는 차가운 훈계가 아니라, 오늘 그를 찾아가 대신 말씀을 읽어 주고 안부를 물어 주는 한 사람의 목소리입니다.</p>
+<p>광야 사십 년의 이야기가 결국 마음의 상태를 넘어 광야에 쓰러진 몸의 자리로 기록되어 있듯, 누군가의 신앙을 돌본다는 것은 그의 마음만 다그치는 일이 아니라 그가 지난밤 얼마나 잠을 잤는지, 따뜻한 끼니는 챙겼는지, 그의 지친 발걸음이 오늘 어디에 머물고 있는지를 먼저 살피는 일입니다. 장부의 세 줄이 겉보기에는 같은 질문 같아도 누가 했는가와 누구에게 했는가에 따라 전혀 다른 내역을 담고 있듯, 우리도 섣부른 평균이나 단정으로 형제의 삶을 재단하지 않기를 원합니다. 아직 오늘이라 불리고 있는 이 은혜의 날에, 본문이 비워 둔 결론을 내 손으로 서둘러 적는 대신 내 곁에 있는 한 사람의 이름을 부르며 따뜻한 위로의 한 마디를 건네는 하루가 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 07편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>같은 비를 머금은 한 밭에서, 허락하시는 손에 우리의 걸음을 맡기다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 10편 &middot; 히브리서 5:11~6:8</span>
+      <h1>같은 비를 머금은 한 밭에서, 허락하시는 손에 우리의 걸음을 맡기다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>무언가를 오랫동안 해왔다는 시간의 무게가 때로는 우리를 가장 아프게 찌릅니다. 신앙의 연수가 쌓이고 일터의 경력이 십 년을 훌쩍 넘기면, 사람들은 당연히 누군가를 가르치고 이끌 만한 자리에 섰으리라 기대합니다. 그러나 정작 내 안을 들여다보면 단단한 음식은커녕 여전히 첫걸음의 설명조차 다시 들어야 할 것 같은 초라함에 고개를 떨구게 됩니다. 히브리서 5장 11절부터 6장 8절까지의 말씀은 바로 그 무거운 정체의 자리, 때가 오래되었으므로 마땅히 선생이 되었을 터인데 다시 하나님의 말씀의 초보를 배워야 하는 처지를 아프게 짚어내며 시작됩니다.</p>
+<p>장부와 신고서를 수없이 다루어 온 일터에서도 연차가 곧바로 자격을 만들어 주지는 않습니다. 경력은 남에게 설명해 주어야 할 의무를 먼저 지우지만, 실제 우리의 상태는 여전히 누군가의 도움을 받아야 하는 자리에 머물러 있곤 합니다. 그런데 성경의 시선이 참으로 놀라운 것은, 앞선 네 절에서 너희라고 부르며 매섭게 책망하던 목소리가 정작 앞으로 나아가자고 요구하는 6장 1절의 문턱에 이르러서는 우리라는 부름으로 조용히 바뀐다는 사실입니다. 꾸짖던 이가 듣는 이의 곁으로 내려와 그 무거운 걸음을 함께 짊어집니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">혼자 힘쓰는 명령이 아니라 함께 실려 가는 허락의 걸음</h3>
+<p>이 열두 절의 본문 안에는 너희가 스스로 해내라고 다그치는 명령형 문장이 단 하나도 없습니다. 유일한 요구인 완전한 데 나아갈지니라(6:1)라는 말조차, 원어의 결을 가만히 살펴보면 우리가 두 다리로 억지로 돌진한다는 능동의 꼴이 아니라 누군가의 손에 이끌려 함께 실려 간다는 수동의 모양으로 적혀 있습니다. 게다가 성경이 버리라고 한 것은 그리스도 도의 초보라는 젖먹이의 머무름이지, 교훈의 터 자체가 아닙니다. 터는 부수어 버리는 것이 아니라 이미 한 번 놓였으니 두 번 다시 닦느라 제자리를 맴돌지 말라는 뜻입니다.</p>
+<p>더욱 큰 위로는 그 유일한 권면 바로 뒤에 이어지는 6장 3절의 고백에 있습니다. 하나님께서 허락하시면 우리가 이것을 하리라. 더 성숙한 자리로 나아가는 일은 내 결심의 강도에 달린 것이 아니라, 전적으로 하나님의 허락하심이라는 넓은 손바닥 위에 올려져 있습니다. 지금 앞으로 나아갈 힘이 전혀 남아 있지 않은 사람이라도, 교회가 건네는 성숙의 부름 앞에서 홀로 버려지지 않는 까닭이 바로 이 따뜻한 문법 안에 숨어 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">권유의 문장 밖에 홀로 서 있는 무거운 경계의 자리</h3>
+<p>그러나 본문은 이 다정한 위로 뒤에 우리가 함부로 매끄럽게 설명해 버릴 수 없는 세 절(6:4-6)을 나란히 세워 둡니다. 한 번 빛을 받고 하늘의 은사를 맛보고 성령에 참여한 바 되고 하나님의 선한 말씀과 내세의 능력을 맛보고도 타락한 자들은 다시 새롭게 하여 회개하게 할 수 없다는 무거운 말씀입니다. 이 세 절은 앞선 권면의 문장에 종속되지 않은 채, 끝맺는 동사 하나 없이 불가능하다는 서늘한 형용사 하나로 우뚝 자립해 있습니다. 심지어 원문에는 만일이라는 가정의 단서조차 들어 있지 않고, 한 번 받은 은혜의 네 가지 모양이 하나의 관사 아래 단단히 묶여 있을 뿐입니다.</p>
+<p>설교자나 독자는 흔히 이 본문의 날카로운 무게를 덜어내려고 앞절의 부드러운 권면으로 이 경고를 덮거나, 반대로 이 무서운 경고를 들어 지금 연약해져 있는 성도를 추궁하고 싶어 합니다. 하지만 성경은 앞서 젖을 먹는다고 책망받은 우리와 이 세 절에 적힌 사람들을 같은 인물로 묶지 않으며, 두 문장 사이에 억지 다리를 놓지도 않습니다. 정박해야 할 소망의 권유와 결코 가볍게 여길 수 없는 경계의 무게를 나란히 세워 두고, 본문이 세운 경계를 사람이 임의로 지우거나 옮기지 못하게 하는 정직한 침묵이 거기에 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">젖과 단단한 음식, 그리고 같은 비를 맞은 한 밭의 진실</h3>
+<p>이 단락을 채우고 있는 낱말들은 내면의 추상적인 관념이 아니라 전부 우리의 몸과 흙이 겪어내는 물질의 언어들입니다. 젖과 단단한 식물, 그것을 씹어 삼키는 힘과 오랜 훈련으로 길러진 감각, 그리고 하늘에서 자주 내리는 비를 흡수하는 땅과 채소, 가시와 엉겅퀴와 불사름입니다. 아픈 몸으로 병상에 누워 끼니를 제대로 삼키지 못하는 이들에게, 혹은 한 해 농사를 지으며 하늘만 바라보던 이들에게 이 단어들은 비유이기 이전에 삶의 절박한 현실입니다.</p>
+<p>특히 마지막 6장 7절과 8절에서 가시와 엉겅퀴를 내는 땅은 다른 곳에 있는 별개의 땅이 아닙니다. 원문에서 땅이라는 낱말은 7절에 단 한 번 놓여, 같은 비를 자주 흡수한 바로 그 한 땅이 채소를 내기도 하고 가시와 엉겅퀴를 내기도 하는 두 산출의 갈림을 보여 줍니다. 우리말 성경에는 밭 가는 자나 만일이라는 말이 덧붙여져 사람의 노력 여하에 따라 수확이 갈리는 것처럼 읽히기 쉬우나, 본래 문장에는 사람의 이름도 없고 수확이 갈린 까닭에 대한 설명도 적혀 있지 않습니다.</p>
+<p>성경은 같은 은혜의 비를 맞고도 왜 산출이 갈리는지 그 원인을 우리 손에 쥐여 주어 남을 정죄하게 하지 않습니다. 대신 우리를 그 한 밭 한가운데에 겸손히 세워 두고, 이 열두 절에서 하나님이 유일하게 문장의 주인으로 서신 그 한 줄, 하나님께서 허락하시면 우리가 이것을 하리라(6:3)는 고백 앞으로 우리를 데려갑니다. 까닭을 다 알 수 없는 갈림길 앞에서도 내 설명을 끼워 넣지 않고, 오늘도 같은 비를 내리시며 걸음을 허락하시는 그 손길에 우리의 더딘 하루를 조용히 맡겨 드립니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

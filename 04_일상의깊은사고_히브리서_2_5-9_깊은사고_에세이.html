@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>아직 만물의 복종은 보이지 않아도 눈을 들어 한 사람을 보다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 04편 &middot; 히브리서 2:5-9</span>
+      <h1>아직 만물의 복종은 보이지 않아도 눈을 들어 한 사람을 보다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>믿음의 언어로 선포된 고백과 우리가 매일 두 눈으로 마주하는 현실 사이에 깊은 골짜기가 패어 있을 때가 있습니다. 하나님이 만물을 남김없이 그 발아래 복종하게 하셨다는 장엄한 선언을 방금 읽었는데, 고개를 들어 바라본 나의 일상과 세상은 여전히 무질서하고 아픔과 한숨으로 가득 차 있을 때 우리는 말할 수 없는 당혹감을 느낍니다. 놀랍게도 히브리서 2장 8절은 우리의 그 당혹감을 숨기거나 꾸짖지 않고 한 구절 안에 나란히 적어 놓습니다. 복종하지 않은 것이 하나도 없다고 힘주어 말해 놓고는, 숨도 고르기 전에 곧바로 지금 우리가 만물이 아직 그에게 복종한 것을 보지 못한다고 정직하게 덧붙이는 것입니다.</p>
+<p>성경은 보이지 않는 것을 억지로 보인다고 우기는 책이 아닙니다. 만물이 복종했다는 약속의 선언과 아직 우리 눈에 아무것도 복종한 것처럼 보이지 않는 현실의 어긋남 사이에, 본문은 그저 그러나라는 작은 접속사 하나만을 놓아둡니다. 그리고 그 접속사 하나를 건너가며 우리의 시선이 머물 대상을 조용히 바꾸어 놓습니다. 아직 만물의 완전한 복종은 보지 못하지만, 오직 우리가 죽음의 고난을 받으심으로 말미암아 영광과 존귀로 관을 쓰신 한 사람, 예수를 본다는 고백입니다. 해결되지 않은 현실을 지워 버리는 대신, 우리가 바라보는 대상을 현상에서 한 사람에게로 옮겨 놓는 전환이 여기서 일어납니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">머릿속의 추상이 아니라 두 발이 닿는 땅의 이야기</h3>
+<p>이 단락을 여는 첫 문장은 장차 오는 세상을 천사들에게 복종하게 하신 것이 아니라고 선언합니다. 여기서 장차 오는 세상으로 번역된 낱말은 구름 너머의 막연한 저세상이 아니라 사람이 발을 딛고 집을 짓고 살아가는 구체적인 거주지를 가리킵니다. 뒤이어 시편의 노래를 불러오면서도 본문은 누가 어디서 말했는지 이름을 밝히지 않은 채, 사람이 무엇이기에 주께서 그를 기억하시며 인자가 무엇이기에 그를 돌보시나이까 묻는 탄성을 그대로 들려줍니다.</p>
+<p>원문의 시편 인용 구간 스물아홉 낱말을 낱낱이 살펴보면, 그나 그것이라고 대상을 콕 집어 주는 한정 표시가 내내 단 한 번도 등장하지 않다가 오직 한 단어, 만물을 그 발아래 복종하게 하셨다는 구절의 발에만 선명하게 붙어 있습니다. 시인의 노래가 온 우주를 떠돌다 마침내 한 사람의 발끝에 내려앉는 셈입니다. 이 단락이 우리를 데리고 가는 자리는 머릿속으로만 그리는 추상적인 위로의 자리가 아니라, 먼지 묻은 두 발이 실제로 땅에 닿고 고난의 무게가 몸으로 전해지는 삶의 자리임을 이 작은 표시 하나가 또렷이 증언합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">죽음의 고난과 영광의 관이 한 몸에 겹쳐진 자리</h3>
+<p>우리가 눈을 들어 바라보는 예수님은 어떤 모습으로 서 계십니까. 9절 한 구절 안에는 죽음이라는 단어가 두 번이나 거듭 새겨져 있습니다. 죽음의 고난을 받으셨다는 말과 모든 사람을 위하여 죽음을 맛보려 하셨다는 말입니다. 본문 전체에서 무엇을 하려 하셨다는 목적의 문장은 오직 죽음을 맛본다는 이 한 자리에만 쓰였습니다. 스쳐 지나가듯 죽음을 구경하신 것이 아니라, 쓴잔을 입술에 대고 삼키듯 인간의 죽음과 낮아짐을 온몸으로 맛보셨다는 뜻입니다.</p>
+<p>더욱 깊은 신비는 그 죽음을 맛보신 자리에 놓인 원문의 두 갈래 읽기입니다. 우리가 익숙하게 읽는 번역은 하나님의 은혜로 말미암아 죽음을 맛보셨다고 적고 있지만, 오래된 원문 사본의 한 줄기는 그 자리를 하나님 없이 죽음을 맛보셨다고 읽습니다. 십자가 위에서 버림받음의 심연까지 내려가신 그 고독을 떠올리게 하는 대목입니다. 우리는 어느 한쪽을 섣불리 지우지 않고 두 읽기가 품은 무게를 함께 간직합니다. 천사들보다 잠깐 동안 못하게 하심을 입은 낮아짐과 영광과 존귀로 관을 쓰신 높아짐이 시간의 선후로 갈라지지 않고 한 분 예수 그리스도의 몸 위에 나란히 겹쳐져 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">어긋남을 지우지 않는 정직함으로 드리는 오늘의 기도</h3>
+<p>삶의 자리에서 도무지 아무것도 해결되지 않아 속이 타들어 가는 성도에게, 믿음이 없으니 그렇게 보이는 것이라며 다그치는 말은 얼마나 모진 상처가 되는지 모릅니다. 오늘 본문은 눈앞이 캄캄하여 아무것도 보이지 않는다고 울먹이는 사람에게, 성경이 이미 이천 년 전에 우리가 아직 보지 못한다는 그 한 줄을 먼저 적어 두었다고 따뜻하게 손을 잡아 줍니다. 회계 장부에서 장부상의 선언과 실제 잔고의 실사가 어긋날 때 억지로 숫자를 맞추어 분개 한 줄로 덮어 버리는 것이 허위이듯, 신앙에서도 아직 보이지 않는 현실의 아픔을 있는 그대로 인정하는 것이 하나님 앞에서의 정직함입니다.</p>
+<p>이 다섯 구절의 시편 인용 속에는 하나님의 이름이 직접 불리지 않지만, 주께서 기억하시고 주께서 돌보신다는 간절한 부름의 상대는 분명히 살아 계십니다. 완벽한 신학적 언어로 이름을 부를 힘이 남아 있지 않아도, 나를 기억하시고 돌보시는 분을 향해 솔직한 탄식을 건네는 순간 이미 기도는 시작됩니다. 주님, 만물이 복종했다는 말씀과 제 눈에 보이는 고단한 현실이 아직 맞물리지 않음을 숨기지 않고 고백합니다. 그러나 그 어긋남을 거짓 위로로 메우는 대신, 우리를 위해 죽음을 맛보시고 고난과 영광의 관을 함께 쓰신 예수님을 오늘 제 두 눈으로 가만히 바라봅니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 04편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>비어 있는 장부의 칸들과 그리스도의 이름이 매긴 단 하나의 값</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 25편 &middot; 히브리서 11:23-31</span>
+      <h1>비어 있는 장부의 칸들과 그리스도의 이름이 매긴 단 하나의 값</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>히브리서 11장 23절부터 31절까지의 말씀을 찬찬히 읽어 내려가다 보면, 우리의 시선을 가장 오래 붙드는 곳은 성경이 화려하게 설명해 놓은 대목이 아니라 의도적으로 비워 둔 침묵의 칸들입니다. 단락의 첫 구절인 23절은 모세가 태어났을 때 그를 석 달 동안 숨긴 주체가 '그의 부모(원문에서는 그의 아버지들)'였음을 분명하게 밝힙니다. 여기서 모세는 무언가를 해낸 주인공이 아니라 부모의 손길 아래 숨겨진 연약한 아기일 뿐입니다. 그런데 이야기가 뒤로 흘러갈수록 본문은 행위의 주체나 사건의 인과관계를 밝히지 않는 빈칸들을 점점 더 많이 남겨 둡니다. 여리고 성이 무너진 사건을 기록한 30절에는 누가 그 성을 둘러쌌는지조차 적혀 있지 않고, 라합을 기록한 31절 역시 순종하지 아니한 자들과 함께 멸망하지 않았다는 두 결과를 나란히 붙여 둘 뿐 그 둘을 가른 내막을 길게 설명하지 않습니다.</p>
+<p>만약 우리가 이 아홉 구절을 위대한 신앙 위인들의 무용담이나 본받아야 할 성공 비결의 목록으로 읽으려 한다면, 성경이 조용히 비워 둔 그 수많은 칸을 인간의 짐작과 자기 과시로 채워 넣게 될 것입니다. 그러나 칸이 여럿 비어 있는 이 장부 같은 본문 속에서 유일하게 정확한 '값'이 매겨져 있는 칸이 단 하나 있습니다. "그리스도를 위하여 받는 능욕을 애굽의 모든 보화보다 더 큰 재물로 여겼으니 이는 상 주심을 바라봄이라"(히 11:26). 여기서 '더 큰 재물'이라는 비교의 저울이 기운 쪽은 세상의 눈부신 보화가 아니라 모욕과 수모를 뜻하는 '능욕'이었고, 그 능욕이 보화보다 더 값진 까닭은 모세의 뛰어난 안목 때문이 아니라 그 능욕에 '그리스도'라는 이름이 달려 있었기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">같은 물에서 갈라진 두 결말과 본문이 비워 둔 인과의 자리</h3>
+<p>본문이 남겨 둔 여백의 엄중함은 홍해 사건을 다루는 29절에서 가장 선명하게 드러납니다. "믿음으로 저희가 홍해를 육지 같이 건넜으나 애굽 사람들은 이것을 시험하다가 빠져 죽었으며." 이 한 구절 안에는 똑같은 붉은 바다에 발을 들여놓은 두 무리가 등장합니다. 한 무리는 물을 육지처럼 건넜고, 다른 무리는 그것을 시험하다가 물에 빠져 생을 마감했습니다. 그런데 본문은 똑같은 물속에서 벌어진 이 두 갈래의 결말을 한 문장 안에 나란히 붙여 두었을 뿐, 왜 한쪽은 건너고 한쪽은 빠졌는지를 분석하거나 두 무리의 자격을 비교해 가르는 설명문을 따로 덧붙이지 않습니다.</p>
+<p>원어 자료를 다루다 보면 문장 첫머리에 대문자로 쓰인 '붉은(에뤼트로스)'이라는 단어와 소문자로 쓰인 단어가 기계적인 분류 과정에서 서로 다른 표제어로 쪼개져, 실제로는 두 번 쓰인 말이 '단 한 번뿐인 단어'라는 잘못된 수치로 집계되는 경우를 보게 됩니다. 도구가 내놓는 숫자조차 문맥을 살피지 않으면 본문의 사실을 왜곡하듯, 성경이 침묵으로 비워 둔 인과의 자리에 우리가 섣부른 도덕적 판정을 끼워 넣는 순간 그것은 성경의 말씀이 아니라 내 생각의 산물이 되고 맙니다. 본문이 우리 손에 넘겨준 것은 같은 물에서 두 결말이 갈라졌다는 엄연한 사실까지이며, 그 사이의 빈칸을 인간의 우월감이나 정죄의 언어로 메우지 않는 것이 말씀 앞에 서는 경외의 태도입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">밝혀 적힌 이름과 침묵으로 남겨 둔 성벽의 무너짐</h3>
+<p>성경은 행한 사람을 밝혀 적을 줄 몰라서 빈칸을 남겨 둔 것이 아닙니다. 23절에서는 '그의 아버지들에 의하여'라는 문법 구조를 또렷이 사용하여 아기를 숨긴 이들을 명시했지만, 30절의 여리고 성 이야기에서는 칠 일 동안 성이 둘러싸였다는 말도 수동태로 적고 성이 무너졌다는 말만 남긴 채 그 주위를 돈 사람들의 이름을 과감히 생략했습니다. 밝혀 적힌 자리와 밝혀 적히지 않은 자리가 한 단락 안에 나란히 있다는 것 자체가 성경의 메시지입니다. 또한 28절의 '장자를 멸하는 자'나 31절의 '함께 멸망하다' 같은 단어들은 히브리서 전체에서 다른 비교 용례가 없는 단어들이기에, 거기에 과도한 상상을 덧붙여 꾸밈말을 고유한 이름처럼 둔갑시키지 않고 본문이 둔 그대로 조용히 읽어 내야 합니다.</p>
+<p>무엇보다 우리의 가슴을 먹먹하게 하는 것은 25절과 27절이 남겨 둔 삶의 긴장입니다. 모세는 잠시 죄악의 낙을 누리는 것보다 하나님의 백성과 함께 고난 받기를 더 좋아하여 분명한 선택을 내렸지만, 이 아홉 구절 안에서 그가 그 결과로 무엇을 손에 받아 쥐었는지를 기록한 결과 칸은 끝내 비어 있습니다. "상 주심을 바라봄이라"라는 말 역시 바라보았다는 뜻이지 이미 수령했다는 뜻이 아닙니다. 또한 "보이지 아니하는 자를 보는 것 같이 하여 참았으며"(11:27)라는 말씀에서도 문장의 중심을 지탱하는 진짜 동사는 신비한 체험을 뜻하는 '보았다'가 아니라 묵묵히 '버티어 참았다'는 동사입니다. 선택은 분명히 마쳤으나 결과 칸이 아직 비어 있는 자리, 보이지 않는 분을 어렴풋이 바라보며 그저 오늘을 버티어 참아 내는 자리야말로 지금 우리가 앉아 있는 신앙의 현주소입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">설명을 멈추고 곁에 앉아 종이 영수증을 손에 쥐는 하루</h3>
+<p>이 말씀의 여백을 품고 살아가는 오늘, 우리의 첫 번째 걸음은 고통 속에서 "왜 나에게 이런 일이 일어났습니까"라고 설명을 구하는 이웃 곁에 조용히 의자를 끌어다 놓고 앉는 일입니다. 29절의 본문이 두 결말을 가른 이유를 문장으로 지어 넣지 않았듯, 우리 역시 섣부른 인과응보의 해석이나 값싼 조언을 내놓는 대신 그저 그 사람 곁에 가만히 앉아 아픔의 시간을 함께 견뎌 주는 것입니다. 두 번째로, 세무와 회계를 다루는 일터에서는 컴퓨터 화면의 숫자만 보지 말고 종이로 된 전표나 영수증 한 묶음을 직접 손에 쥐고 한 장씩 넘겨 보십시오. 누가 지출했는지 적혀 있는 영수증과 적혀 있지 않은 영수증을 두 무더기로 나누되, 적혀 있지 않은 빈칸에 내 짐작으로 이름을 추정해 적어 넣지 마십시오. 성경이 밝힌 자리와 비워 둔 자리를 구분했듯, 우리의 장부에서도 확인된 사실과 비어 있는 칸을 정직하게 구분하는 손길이 곧 일터의 영성입니다.</p>
+<p>마지막으로, 오늘 몸의 질병이나 힘겨운 형편 때문에 아무것도 해내지 못해 자책하는 분들에게 이 아홉 구절은 그 어떤 분발이나 다그침의 명령도 걸어 놓지 않는다는 사실을 전해 드리고 싶습니다. 이 단락에는 당신을 향해 무언가를 해내라고 요구하는 동사가 단 하나도 없으니, 이번 주에는 그저 이 말씀을 조용히 소리로 한 번 들어 보십시오. 그동안 성경이 비워 둔 자리에 내 짐작과 설명을 얹어 마치 하나님의 뜻인 양 말해 왔던 우리의 교만을 내려놓습니다. 비록 우리가 선택한 믿음의 길 끝에 결과 칸이 아직 비어 있을지라도, 오직 그리스도의 이름이 매겨 주신 그 가치 하나를 붙들고 오늘의 자리에서 묵묵히 참아 내는 주님의 사람들이 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 25편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

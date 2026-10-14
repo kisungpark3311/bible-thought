@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>스스로 취한 자리가 아닌 곳에서, 눈물로 올린 기도가 우리의 거처가 될 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 09편 &middot; 히브리서 4:14~5:10</span>
+      <h1>스스로 취한 자리가 아닌 곳에서, 눈물로 올린 기도가 우리의 거처가 될 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살다 보면 내 손에 쥔 직분이나 자격을 스스로 지켜내야 한다는 압박감에 숨이 막힐 때가 있습니다. 반대로 아무것도 해낼 힘이 남아 있지 않아, 신앙의 자리에서조차 나만 뒤처진 것 같은 자책에 사로잡히는 날도 있습니다. 그러나 히브리서 4장 14절부터 5장 10절까지의 말씀은 우리를 다그치는 명령어 하나 없이, 말하는 이가 듣는 이의 곁에 나란히 서서 건네는 따뜻한 초대장으로 문을 엽니다. 우리가 믿는 도리를 굳게 잡자, 은혜의 보좌 앞으로 담대히 나아가자고 부르는 두 권면은 위에서 아래로 내리꽂는 지시가 아니라, 함께 손을 잡고 걸어가자는 동행의 부름입니다.</p>
+<p>이 열세 절 전체를 관통하는 단 하나의 중심 생각은 우리가 가진 분이 얼마나 대단한가를 자랑하는 데 있지 않고, 그 어느 것도 스스로 취한 자리가 아니라는 진실에 있습니다. 우리가 붙잡는 신앙의 고백도 거저 받은 것이며, 그리스도께서 우리의 대제사장이 되신 것 또한 스스로 영광을 취하심이 아니요 오직 부르신 이에게서 받은 자리입니다. 내 힘으로 자격을 증명하고 자리를 쟁취해야 하는 세상의 법칙이 이 은혜의 문턱 앞에서는 조용히 멈추어 섭니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">명령이 아닌 동행의 언어로, 전치사 없이 열리는 은혜의 보좌</h3>
+<p>우리말 성경은 4장 14절과 16절을 각각 굳게 잡을지어다와 나아갈 것이니라로 옮겨, 마치 하나는 엄중한 명령이고 하나는 먼 날의 예고처럼 들리게 합니다. 그러나 본래의 문장 속에서 이 두 말은 똑같이 우리가 함께하자고 청하는 나란한 권면입니다. 더욱이 16절의 긍휼하심을 받고 때를 따라 돕는 은혜를 얻기 위하여라는 구절은 우리가 해내야 할 추가 과제가 아니라, 그저 보좌로 나아가는 걸음 하나에 자연스럽게 따라오는 목적으로 묶여 있습니다. 성경은 지친 사람에게 세 가지를 동시에 요구하지 않고, 그저 나아가는 걸음 하나만을 조용히 권할 뿐입니다.</p>
+<p>우리가 붙잡으라고 권면받는 것도 흔들리는 내 안의 믿음 감정이 아니라, 승천하신 자 곧 하나님의 아들 예수라는 이름을 함께 부르는 공동체의 고백입니다. 흥미롭게도 고백을 붙잡는 자리에는 그 대상을 일부를 어루만지듯 조심스레 받는 표현이 쓰인 반면, 은혜의 보좌로 나아가는 자리에는 앞에라는 거리를 두는 말조차 없이 보좌 그 자체가 곧바로 도착점으로 놓여 있습니다. 지금 아무것도 할 수 없는 처지에 놓인 사람이라도, 아무런 조건이나 문턱 없이 그 보좌의 품으로 곧장 걸어 들어갈 수 있도록 문법의 문턱마저 낮추어 두신 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말이 되지 못한 통곡과 눈물이 기도의 재료로 적히는 자리</h3>
+<p>본문이 그분의 대제사장 되심을 그리는 방식은 우리의 가슴을 더욱 깊숙이 울립니다. 우리에게 있는 대제사장은 우리의 연약함을 동정하지 못하실 이가 아니라는 말씀은 부정에 부정을 겹쳐 놓아, 그분이 우리의 아픔을 외면하실 가능성을 아예 지워 버립니다. 그러면서 우리 연약함이라는 말 앞뒤에는 어떤 단서나 자격 조건도 달아 두지 않았습니다. 그 이유를 설명하는 5장 7절에는 유독 몸의 어휘들이 빽빽하게 몰려 있습니다. 육체에 계실 때, 죽음, 심한 통곡과 눈물이 한 절 안에서 숨 가쁘게 이어집니다.</p>
+<p>정돈된 문장이나 유창한 미사여구가 아니라, 말이 되지 못한 채 터져 나온 거친 울음소리와 뺨을 적신 눈물이 성경 한가운데에 기도의 정당한 재료로 또렷이 기록되어 있습니다. 심지어 원문에는 그 기도를 올린 이의 이름도, 기도를 들으신 이의 이름도 직접 적혀 있지 않고, 오직 죽음에서 능히 구원하실 이에게 올렸다는 절박한 관계만 남아 있습니다. 우리의 연약함을 함께 아파하시는 체휼과, 무식하고 미혹되어 끌려간 이들을 보듬는 용납과, 아들이시라도 몸소 겪으신 고난은 모두 아픔을 함께 겪는다는 하나의 뿌리에서 피어난 세 송이 꽃입니다. 스스로 길을 잃은 것이 아니라 어찌할 바를 몰라 휩쓸려 간 백성 전체가 이 눈물의 제사 안에 빠짐없이 품어집니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">스스로 취하지 않은 이름 앞에서 내려놓는 우리의 계산서</h3>
+<p>일터에서 세무와 회계의 장부를 다룰 때 가장 엄격히 가려야 하는 것은 서류상의 명의와 그 자리의 값을 실제로 누가 가져갔는가 하는 실질의 구분입니다. 히브리서 5장은 바로 이 취하다라는 말을 세 가지 결로 엄밀하게 가릅니다. 사람 가운데서 뽑혀 세움을 입는 수동의 자리(5:1)와, 아무나 스스로 자기 손에 거머쥐려는 능동의 자리(5:4), 그리고 은혜의 보좌에서 긍휼을 받아 안는 자리(4:16)가 서로 다릅니다. 이 존귀는 아무나 스스로 취하지 못하고 오직 하나님의 부르심을 입은 자라야 한다는 말씀은, 직함과 자리가 자기 과시나 소유가 아니라 부르신 분의 몫임을 분명히 일깨웁니다.</p>
+<p>그리스도께서 온전하게 되신 것도, 들으심을 얻은 것도, 멜기세덱의 반차를 따른 대제사장이라 일컬음을 받으신 것도 본문에서는 모두 스스로 쟁취한 능동이 아니라 잠잠히 받아들인 수동의 모양으로 적혀 있습니다. 옛 시편의 인용문 안에 있던 멜기세덱의 반차를 따라라는 구절이 저자의 서술 속에 토씨 하나 다르지 않게 그대로 다시 놓일 때, 거기에는 시간을 가르는 동사조차 없이 영원한 현재의 부르심만이 고요히 빛납니다.</p>
+<p>제 손에 쥐어진 작은 역할과 일상의 자리들을 마치 내가 애써 취한 성취인 양 세어 오던 날들을 이 말씀 앞에 부끄러이 내려놓습니다. 붙잡으라는 따뜻한 권면을 내 결심의 명령서로 바꾸어 읽느라 스스로를 몰아세웠던 긴장을 풀고, 말이 되지 않는 탄식과 눈물까지도 기도의 재료로 받아 주시는 그 보좌 앞으로 오늘 우리의 연약한 몸과 이웃의 이름을 있는 그대로 데려갑니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 09편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

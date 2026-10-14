@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>갚겠다는 다짐을 내려놓을 때, 평강의 하나님이 우리 앞에 놓아두신 그 은혜</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 34편 &middot; 히브리서 13:20-25</span>
+      <h1>갚겠다는 다짐을 내려놓을 때, 평강의 하나님이 우리 앞에 놓아두신 그 은혜</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>누군가에게서 과분한 선물을 받았을 때 우리가 가장 먼저, 그리고 가장 조급하게 하는 일은 무엇입니까. 고맙다는 인사가 미처 끝나기도 전에 이제 내가 무엇으로 이 은혜를 갚을지, 앞으로 내가 얼마나 더 열심히 살아 보일지를 내 입술의 다짐과 계획으로 바꾸어 놓는 일입니다. 그냥 거저 받는 자리에 가만히 머물러 있는 것이 어쩐지 빚진 것처럼 불안하고 민망하기 때문입니다. 그런데 길고도 깊은 편지의 대단원을 닫는 히브리서 13장 20절부터 25절까지의 말씀은, 받은 은혜를 곧장 내 결심의 문장으로 바꾸려는 우리의 조급한 손을 조용히 멈추어 세웁니다. 이 마지막 여섯 절은 우리가 앞으로 해내야 할 거창한 과제를 하나 더 얹어 주는 대신, 평강의 하나님이 이미 이루어 놓으신 일 위에 우리가 그저 받아 누려야 할 것 하나를 살포시 놓아둔 채 멈추기 때문입니다.</p>
+<p>단락을 여는 20절과 21절은 숨이 벅차오를 만큼 장엄한 하나의 문장으로 이어져 있습니다. 양의 큰 목자이신 우리 주 예수를 영원한 언약의 피로 죽은 자 가운데서 이끌어 내신 평강의 하나님께서, 모든 선한 일에 우리를 온전하게 하사 자기 뜻을 행하게 하시고 그 앞에 즐거운 것을 우리 속에 이루시기를 빈다는 축복의 선언입니다. 이 여섯 절에 등장하는 하나님의 이름과 그리스도의 호칭 다섯 토막 가운데 문장의 주어로 우뚝 선 이름은 오직 평강의 하나님 하나뿐입니다. 죽은 자 가운데서 목자를 이끌어 내신 일도, 우리를 온전하게 하시는 일도, 우리 안에서 기뻐하시는 뜻을 이루시는 일도 모두 그분이 주어가 되어 행하시는 일로 적혀 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">내가 원하노라가 아니라 그분이 이루시기를 비는 기도의 자리바꿈</h3>
+<p>이 첫 문장을 원문과 우리말 성경으로 나란히 비교해 읽다 보면, 번역이 지켜 낸 아름다운 진실 하나와 번역이 덧붙여서 생긴 미묘한 착시 하나를 동시에 만나게 됩니다. 먼저 20절의 영원한 언약의 피라는 구절은 원문의 단어 순서가 피, 언약, 영원한으로 놓여 있습니다. 우리말 어순과 정반대이지만, 헬라어에서 영원한을 뜻하는 아이오니우의 문법적 형태는 피가 아니라 언약과 정확히 일치합니다. 꾸미는 말을 앞에 두는 우리말에서 만약 원문 순서대로 언약의 영원한 피라고 옮겼다면 걸림이 어긋났을 텐데, 번역자가 순서를 뒤집어 영원한 언약의 피로 옮겨 준 덕분에 언약이 영원하다는 원문의 진실이 온전히 지켜졌습니다.</p>
+<p>반면 바로 다음 절인 21절 끝의 이루시기를 원하노라에서는 정반대의 일이 일어납니다. 우리말 성경은 원하노라라는 1인칭 동사를 보충해 넣어, 마치 글 쓰는 한 사람이 내가 간절히 원한다고 자기 소원을 말하는 것처럼 읽히게 만듭니다. 그러나 원문에는 1인칭 동사가 아예 없으며, 오직 3인칭 주어로 평강의 하나님 그분이 이루시기를 기원하는 동사만 서 있습니다. 우리가 기도할 때 가장 쉽게 빠지는 함정이 바로 이 주어의 자리바꿈입니다. 하나님이 하실 일을 두고 비는 기도가 어느새 내가 품은 소원의 크기와 내 간절함의 온도를 증명하는 내 문장으로 바뀌어 버리는 것입니다. 번역이 보충한 원하노라를 걷어내고 원문의 자리를 회복할 때, 비로소 기도의 무게중심은 내 열심에서 평강의 하나님의 손길로 온전히 옮겨 갑니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">받는 자리에 먼저 서신 주님, 그리고 우리에게 맡겨진 받는 몫</h3>
+<p>하나님이 홀로 주어가 되어 일하신 이 거대한 은혜의 문장 뒤로, 22절부터 24절까지 사람 쪽에 남겨진 요구는 단 두 가지뿐입니다. 권면의 말을 용납하라는 22절의 당부와 인도하는 자들과 모든 성도에게 문안하라는 24절의 인사입니다. 놀랍게도 원문에서 용납하라는 아네케스테와 문안하라는 아스파사스테는 둘 다 내가 먼저 빈손으로 나서서 쟁취하는 능동의 형태가 아니라, 누군가 내게 먼저 건네준 말과 인사를 받아들이고 응답하는 형태입니다. 성경은 여기서 인간의 무능함을 꾸짖지 않으며, 다만 사람에게 맡겨진 마땅한 몫이 은혜와 말을 받아들이는 자리임을 담담히 보여 줍니다.</p>
+<p>더욱 눈물겨운 사실은 이 단락에서 받는 자리에 선 이가 사람만이 아니라는 점입니다. 이 여섯 절에 네 번 등장하는 예수 그리스도의 이름은 단 한 번도 문장의 주어로 서지 않고, 전부 동사의 목적어나 전치사구 같은 받는 자리에 서 있습니다. 죽은 자 가운데서 이끌어 내심을 받은 분으로, 그리고 하나님이 우리 속에 기뻐하시는 것, 곧 히브리서에 단 한 번 쓰인 유아레스톤을 이루실 때 지나는 유일한 통로인 예수 그리스도로 말미암아라는 자리에 서 계십니다. 받는 자리에 서는 것을 무능력이나 부끄러움으로 여기지 마십시오. 양의 큰 목자이신 우리 주님께서 우리보다 먼저 그 받는 자리에 서셔서 부활의 생명을 입으셨고, 지금도 은혜가 흘러오는 통로가 되어 주셨기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">동사 없이 놓인 마지막 은혜 앞에서 말하고 앉고 일어서는 일상</h3>
+<p>그리하여 히브리서 전체를 닫는 마지막 25절은 다섯 토막의 짧은 단어들로 멈추어 섭니다. 은혜가 너희 모든 사람에게 있을지어다라는 축도입니다. 우리말 성경에는 있을지어다라는 동사가 들어 있지만, 원문에는 이 마지막 절을 다스리는 동사가 안에도 밖에도 단 한 개도 없습니다. 원문이 맨 마지막에 가만히 내려놓은 것은 정관사가 붙은 명사 하나, 하 카리스, 곧 그 은혜와 너희 모든 사람과 함께라는 전치사구뿐입니다. 내가 이제 무엇을 하겠다고 바꿔 끼울 동사조차 주지 않은 채, 평강의 하나님이 차려 놓으신 그 은혜 하나를 우리 눈앞에 그대로 놓아두고 편지는 마침표를 찍습니다. 본문이 끝내 하나로 닫지 않고 열어 둔 영광의 대상이나 디모데의 소식, 이달리야의 전치사 같은 다섯 가지 문법적 여백들조차 억지로 내 설명을 보태어 닫으려 하지 않을 때, 그 놓인 은혜의 깊이는 더욱 선명해집니다.</p>
+<p>오늘 우리 앞에 조용히 놓인 그 은혜를 대하는 방식은 세 가지 일상의 몸짓으로 피어납니다. 첫째로 지금 누군가의 돌봄이나 도움을 일방적으로 받기만 하고 되돌려 줄 것이 하나도 없어 마음이 위축된 분이 계시다면, 이번 주에 한 사람 앞에서 내가 지금 거저 받고만 있는 것 하나를 소리 내어 말해 보십시오. 언젠가 꼭 갚겠다는 다짐을 그 문장 끝에 붙이지 말고, 말을 용납하라는 말씀처럼 받는 자리에 정직하게 머물러 보시기 바랍니다. 둘째로 공동체에서 늘 앞에 서서 인사하고 가르치던 자리에 계신 분이라면, 인도하는 자들을 문안을 받는 자리에 세워 둔 24절 말씀처럼 이번 달에 한 번은 앞자리를 비우고 성도들 사이 의자에 앉아 문안을 받기만 하는 시간을 비워 두십시오. 셋째로 서류와 숫자를 빈틈없이 설명해야만 직성이 풀리는 일터의 자리에서, 오늘은 조서와 서류를 상대방 앞에 놓아둔 채 구구절절한 설명을 조금 남겨 두고 자리에서 조용히 일어서 보십시오. 상대가 그것을 집어 드는 몫까지 내가 통제하려 하지 않고 놓인 그대로 두고 일어설 때, 우리는 비로소 평강의 하나님이 우리 앞에 놓아두신 그 온전한 은혜의 품을 살아가게 됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 34편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

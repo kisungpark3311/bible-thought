@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이미 앉으신 보좌의 자리에서 오늘의 경주를 달리는 법</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 27편 &middot; 히브리서 12:1-3</span>
+      <h1>이미 앉으신 보좌의 자리에서 오늘의 경주를 달리는 법</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>긴 마라톤 경주를 달리는 사람에게 가장 두려운 순간은 다리의 근육이 뭉치는 때가 아니라, 저 앞의 결승선이 도무지 보이지 않아 내가 왜 달리고 있는지조차 흐려지는 순간입니다. 우리는 흔히 누군가를 격려할 때 "조금만 더 참고 달리면 앞에 좋은 보상이 기다리고 있을 거야"라며 미래의 가능성을 당겨 와 눈앞에 걸어 주곤 합니다. 그러나 히브리서 12장 1절부터 3절까지의 말씀이 우리의 지친 걸음을 일으켜 세우는 방식은 세상의 응원법과 전혀 다릅니다. 본문에 기록된 동작들을 시간의 흐름에 따라 나란히 줄지어 놓아 보면, 지금 당장 요구되는 일("인내로써 우리 앞에 당한 경주를 경주하며", "참으신 자를 생각하라")과 이미 지나간 과거의 일("십자가를 참으사 부끄러움을 개의치 아니하시더니"), 그리고 이미 완전히 끝나서 지금도 흔들림 없이 서 있는 일("하나님 보좌 우편에 앉으셨느니라")이라는 세 칸이 또렷이 드러납니다.</p>
+<p>놀랍게도 이 세 구절의 원문에는 앞으로 이루어질 일을 가리키는 미래 시제의 동사가 단 한 개도 없으며, "만약 네가 이렇게 하면" 하고 조건을 다는 접속사조차 단 하나도 등장하지 않습니다. 우리말의 "경주하자"나 "생각하라"는 권면이 언뜻 미래를 향한 다짐처럼 들릴지 모르지만, 원어가 가리키는 시간은 오직 '지금 이 순간'입니다. 성경은 아직 오지 않은 불확실한 미래의 보상을 미끼로 우리를 달리게 하지 않습니다. 오히려 이미 모든 고난을 통과하여 하나님 보좌 우편에 완전히 앉아 계신 예수 그리스도의 그 끝난 자리를 유일한 근거로 삼아, 아직 끝나지 않은 우리의 오늘을 달리게 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">히브리서의 네 번의 앉으심 가운데 홀로 빛나는 완료의 자리</h3>
+<p>히브리서 전체를 통틀어 예수님께서 하나님 우편에 '앉으셨다'고 기록한 구절은 모두 네 번 등장합니다. 우리말 성경으로 읽으면 네 구절 모두 '앉으시다'라는 똑같은 말로 번역되어 있어 그 차이를 알아채기 어렵습니다. 우리말에는 그 미세한 시간의 결을 구분해 실어 나르는 문법 장치가 없기 때문입니다. 그러나 원문의 헬라어를 펼쳐 놓고 네 자리를 나란히 비교해 보면, 앞선 세 번의 앉으심은 모두 과거의 한 시점에 일어난 동작을 점처럼 찍어 보여 주는 형태인 반면, 오직 이곳 히브리서 12장 2절의 "앉으셨느니라(케카티켄)" 단 한 자리만이 과거에 이루어진 일이 지금 이 순간까지도 변함없는 상태로 지속되고 있음을 나타내는 '완료형'으로 적혀 있습니다.</p>
+<p>이 작은 문법의 차이가 오늘 숨이 턱에 차도록 달리고 있는 우리에게 건네는 위로는 실로 큽니다. 아직 경주가 끝나지 않아 땀과 눈물을 흘리며 달려야 하는 사람에게, 성경이 눈을 들어 바라보라고 가리키는 자리는 '앞으로 앉으실 자리'가 아니라 '이미 앉으셔서 지금도 그대로 계신 자리'입니다. 더욱이 이 세 구절 안에서 앞날을 내다보는 목적절은 오직 3절의 "너희가 피곤하여 낙심치 않기 위하여" 한 군데뿐인데, 그조차 미래에 따낼 화려한 전리품이 아니라 우리의 영혼이 지쳐 쓰러지지 않도록 피하게 하려는 보호의 목적입니다. 만약 우리가 앞날에 얻을 무언가를 근거로 달린다면 그것이 안개에 가려 보이지 않는 날에는 어김없이 걸음을 멈추게 되지만, 이미 끝나 있는 주님의 보좌를 근거로 달린다면 앞이 캄캄해 아무것도 보이지 않는 날에도 우리가 딛고 선 근거는 조금도 흔들리지 않습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">우리의 인내와 그분의 참으심이 한 뿌리에서 만나는 순간</h3>
+<p>본문 3절은 우리에게 단 하나의 직접적인 명령을 건넵니다. "죄인들의 이같이 자기에게 거역한 일을 참으신 자를 생각하라." 여기서 '생각하라'는 동사가 목적어로 받아 안는 대상은 어떤 추상적인 교훈이나 굳센 결심이 아니라 '참으신 자'라는 한 인격입니다. 그리고 원문에서 이 '참으신 자(휘포메메네코타)' 역시 보좌에 앉으셨다는 말과 똑같은 '완료형 분사'로 적혀 있습니다. 지금 우리가 마음을 모아 깊이 생각해야 할 분은, 죄인들의 거역과 모순을 이미 끝까지 다 참아 내시고 그 인내의 완성을 몸에 지니고 계신 주님이십니다.</p>
+<p>더욱 가슴 벅찬 사실은 1절에서 우리에게 요구된 '인내(휘포모네)'라는 명사와, 2절에서 예수님이 십자가를 '참으사(휘페메이넨)'라고 할 때의 동사, 그리고 3절의 '참으신 자'라는 분사가 원어에서는 모두 똑같은 하나의 어근에서 뻗어 나온 한 가족의 낱말이라는 점입니다. 우리말로는 '인내'와 '참으심'으로 나뉘어 들리지만, 원문의 귀로 들으면 오늘 우리가 경주하며 내딛는 인내의 걸음은 내 안에서 억지로 짜내어 새로 발명해야 하는 낯선 고행이 아니라, 주님께서 이미 십자가에서 끝까지 완수하신 바로 그 참으심과 똑같은 이름으로 불리는 은혜의 호흡입니다. 물론 본문 안에는 모든 무거운 것과 얽매이기 쉬운 죄를 벗어 버리는 동작과 달리는 동작 사이의 선후 관계가 문법적으로 고정되어 있지 않다는 열린 긴장도 함께 남아 있습니다. 다 벗은 뒤에야 비로소 달릴 수 있다고 다그치지도 않고, 그저 주님의 끝난 자리를 바라보며 벗음과 달림의 현재를 살아가게 하십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">끝까지 들어 주고 되돌려 받을 셈 없이 건네며 걸어가는 발걸음</h3>
+<p>이미 보좌 우편에 앉아 계신 주님을 생각하며 오늘을 달리는 우리는 구체적인 삶의 현장에서 세 가지 걸음을 옮겨 볼 수 있습니다. 첫째로, 목회와 상담의 자리에서 누군가 이미 지나간 아픈 일을 꺼내어 말할 때, 중간에 말을 끊거나 섣불리 고쳐 주려 하지 말고 끝까지 가만히 들어 주십시오. 지금 우리가 생각해야 할 주님의 참으심이 이미 끝난 완료의 형태로 적혀 있듯, 상처 입은 사람에게도 지나간 일을 억지로 다시 헤집어 분석하는 것보다 끝난 일을 끝난 일로 내려놓도록 끝까지 들어 주는 귀가 훨씬 더 절실합니다. 둘째로, 세무와 회계의 바쁜 결산 일정 속에서 내 시간의 한 칸이나 물질, 혹은 무거운 서류 한 건의 짐을 되돌려 받을 계산 없이 동료나 이웃에게 내어 주십시오. 나중에 돌아올 보상을 계산하는 순간 그것은 본문에 없는 미래의 조건을 근거로 삼는 일이 됩니다. 내 손에서 대가 없이 실제로 떠나보낸 것만이 진정으로 '벗어 버린' 가벼움이 됩니다.</p>
+<p>마지막으로, 끝나기를 기다리던 고난의 세월이 너무나 길어져서 이제는 더 이상 기다릴 힘조차 남아 있지 않은 분들에게 조용히 손을 내밉니다. 성경이 지친 이들에게 적어 둔 결핍은 오직 영혼의 피곤과 낙심뿐이며, 거기에 믿음이 부족하다는 식의 다른 책망을 보태지 않습니다. 그러니 오늘은 무언가를 성취하려는 목적 없이, 하루에 한 번 집 밖의 가까운 곳까지라도 천천히 몸을 옮겨 걸어가 보십시오. 미래의 끝이 보이지 않아 숨이 막히는 날에도, 이미 십자가를 다 참으시고 하나님 보좌 우편에 앉아 계신 주님의 그 완료된 자리가 우리의 지친 걸음을 오늘도 넉넉히 떠받치고 있습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 27편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

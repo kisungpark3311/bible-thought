@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>무엇을 바치라는 독촉 이전에, 함께 고개를 들어 한 사람을 바라보는 일</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 12편 &middot; 히브리서 7:1-10</span>
+      <h1>무엇을 바치라는 독촉 이전에, 함께 고개를 들어 한 사람을 바라보는 일</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 성경에서 십분의 일이라는 단어를 만나면 본능적으로 내가 무엇을 얼마나 내놓아야 하는가 하는 의무와 계산부터 떠올리곤 합니다. 그러나 멜기세덱과 아브라함의 옛 만남을 소환하는 히브리서 7장 1절부터 10절까지의 본문은, 우리에게 무언가를 바치라고 요구하는 대신 단 하나의 조용한 명령만을 건넵니다. 이 사람의 어떻게 높은 것을 생각하라(7:4). 열다섯 개의 끝맺는 동사가 이어지는 이 단락 전체에서, 읽는 우리에게 걸려 있는 명령은 오직 이 한 마디뿐입니다.</p>
+<p>더욱 흥미로운 점은 그 명령이 놓이기 전까지 첫 세 절에는 무엇이 어떠하다고 단정 짓는 마침표 동사가 아예 없다는 사실입니다. 살렘 왕이요 지극히 높으신 하나님의 제사장이라는 호칭, 여러 임금을 쳐서 죽이고 돌아오는 아브라함을 만나 복을 빈 장면, 아비도 없고 어미도 없고 족보도 없고 시작한 날도 없고 생명의 끝도 없어 하나님의 아들과 방불하다는 묘사들이 동사 없이 겹겹이 쌓여 올라갑니다. 그리고 그 모든 묵직한 풍경이 마침내 아브라함이 일체 십분의 일을 그에게 나누어 주었다는 한 동작과, 이 사람이 얼마나 높은지를 함께 바라보라는 한 줄의 부름으로 수렴됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">혼자 치르는 과제가 아니라 여럿이 함께 서서 바라보는 시선</h3>
+<p>4절의 생각하라로 번역된 원어(테오레이테)는 골방에서 혼자 머리를 싸매고 궁리하라는 뜻이 아니라, 극장이나 광장에서 여럿이 함께 서서 한 대상을 찬찬히 응시하고 관찰하라는 복수의 부름입니다. 신앙의 걸음이 지칠 때마다 우리는 모든 말씀을 나 혼자 해내야 할 개인의 숙제로 좁혀 읽곤 하지만, 성경은 지친 개인의 손에 계산기를 쥐여 주는 대신 공동체 전체가 함께 고개를 들어 한 분의 높으심을 바라보라고 손짓합니다. 본문은 그 바라봄 뒤에 우리가 당장 실행해야 할 어떤 행동 지침도 덧붙이지 않은 채, 함께 보는 그 자리 자체를 유일한 요구로 남겨 둡니다.</p>
+<p>일터에서 숫자와 장부를 다루다 보면, 같은 이름으로 묶인 항목이라도 그 품사와 성질이 전혀 다른 경우를 자주 마주합니다. 우리말 성경에는 십분의 일이라는 말이 일곱 번 똑같이 등장하지만, 원문에서는 명사로 쓰인 네 자리와 동사로 쓰인 세 자리가 엄격히 나뉘어 있고 그 일곱 자리 어디에도 우리가 주어로 서서 바친다는 문장은 없습니다. 조상이라는 말도, 제사장이라는 말도 원문에서는 서로 다른 낱말들이 각기 다른 결을 이루고 있습니다. 한 이름 아래 서로 다른 성질을 뭉뚱그려 헌금 규정이나 인간의 의무로 환산해 버리면, 본문이 정작 보여 주고자 했던 한 분의 높으심은 숫자 뒤에 가려지고 맙니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">자기 손으로 쥐어지지 않고 오직 위에서 아래로 흐르는 복</h3>
+<p>이 단락에서 복을 빈다는 말은 세 번 등장하는데, 앞의 두 번은 멜기세덱이 아브라함에게 복을 빌어 주는 능동의 모양이고 마지막 한 번(7:7)은 낮은 자가 높은 자에게서 복 빎을 받는다는 수동의 모양입니다. 십분의 일을 가리키는 동사 역시 6절에서는 받는 쪽에서 취하는 모양으로, 9절에서는 아브라함으로 말미암아 바쳐지는 수동의 모양으로 적혀 있어 방향이 서로 마주 봅니다. 복은 이 본문 안에서 단 한 번도 사람이 자기 손으로 만들어 내거나 거머쥐는 법이 없으며, 언제나 높은 곳에서 낮은 곳으로 흘러내려 받아 안는 선물로만 기록됩니다.</p>
+<p>흔히 7절의 폐일언하고 낮은 자가 높은 자에게 복 빎을 받느니라라는 말씀을 두고 어느 민족이 더 우월한가를 가리는 승패의 저울로 읽으려 하지만, 원문의 문법은 그런 오해를 단호히 가로막습니다. 비교되는 두 항 가운데 낮은 쪽은 사람에게만 한정되지 않는 넓은 중성의 꼴로 문장의 주어 자리에 서 있고, 높은 쪽만 인격적인 남성의 꼴로 서 있으며, 이 단락 전체에 민족을 가리키는 낱말은 단 한 번도 나오지 않습니다. 성경은 민족과 민족의 우열을 겨루는 것이 아니라, 옛 제사 직분과 율법의 명령이 더 높은 한 분의 복 앞에서 어떻게 자리를 내어주는지를 조용히 보여 줄 뿐입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">아직 태어나지도 않은 허리의 자리에서 이미 셈에 들어간 은혜</h3>
+<p>무엇보다 이 단락이 우리의 마음을 가장 따뜻하게 감싸 안는 대목은 마지막 9절과 10절입니다. 십분의 일을 받는 레위도 아브라함으로 말미암아 십분의 일을 바쳤다고 말할 수 있는 까닭은, 멜기세덱이 아브라함을 만날 때에 레위가 아직 자기 조상의 허리에 있었기 때문이라고 성경은 적습니다. 이 단락은 허리, 쳐 죽임, 노략물, 죽는 사람들과 살아 계신 이처럼 지극히 생생한 몸과 물질의 어휘들로 가득 차 있는데, 그중에서도 허리라는 한 낱말은 이미 몸 밖으로 태어나 나온 자리(7:5)와 아직 태어나지 못한 채 품 안에 머물러 있던 자리(7:10)라는 두 방향을 동시에 품고 있습니다.</p>
+<p>레위는 그 만남의 현장에서 아무것도 하지 않았고, 아직 태어나지도 않았기에 아무것도 할 수 없었습니다. 그러나 성경은 그가 무엇을 행했느냐가 아니라 그때 그가 누구의 허리 안에 있었느냐는 존재의 자리로 그를 그 은혜의 사건 안에 당당한 당사자로 세워 줍니다. 심지어 7절에서 폐일언하고라며 단호하게 논증을 닫았던 저자가, 9절에서는 이른바 말하자면(할 수 있나니)이라는 겸손한 단서를 덧붙이며 신비의 여백을 남겨 두는 대목에서도 성경의 깊은 온기가 느껴집니다.</p>
+<p>오늘 몸의 아픔이나 삶의 형편 때문에 아무것도 해내지 못해 스스로를 쓸모없는 사람처럼 여기는 분이 있다면, 이 본문은 당신이 오늘 무엇을 성취했는지가 아니라 당신이 지금 누구 안에 속해 있는지로 당신을 셈에 넣는다고 속삭입니다. 본문이 비워 둔 복의 구체적인 내용이나 닮게 하신 이의 이름을 내 조급한 결론으로 채우려던 교만을 내려놓고, 오늘도 여럿과 함께 서서 우리를 품고 계신 그 높은 분을 조용히 올려다봅니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 12편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

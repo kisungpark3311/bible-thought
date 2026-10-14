@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>잃어버린 것은 선명하고 남은 약속이 아득한 날에</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 22편 &middot; 히브리서 10:32-39</span>
+      <h1>잃어버린 것은 선명하고 남은 약속이 아득한 날에</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살다 보면 우리가 손에 쥐고 있던 것들이 허무하게 빠져나가는 날을 마주하곤 합니다. 억울한 비방과 환난 속에서 사람들의 구경거리가 되기도 하고, 아끼던 일터나 산업을 빼앗기듯 내려놓아야 하는 순간도 찾아옵니다. 신기하게도 우리의 마음은 언제나 남아 있는 것보다 잃어버린 것을 훨씬 더 또렷하게 기억합니다. 히브리서 10장 34절의 원문 문장을 가만히 들여다보면, 빼앗긴 재산을 가리키는 말 앞에는 그것을 콕 집어 정해 주는 작은 관사가 두 번이나 붙어 있는 반면, 더 낫고 영구히 남아 있는 산업 앞에는 그런 표지가 하나도 붙어 있지 않습니다. 마치 상실의 아픔은 손에 잡힐 듯 날카롭고 선명한데, 앞으로 받을 영원한 약속은 손끝에 닿지 않아 아득하고 흐릿하게 느껴지는 우리의 일상과 꼭 닮아 있습니다.</p>
+<p>바로 그처럼 잃은 것이 더 선명하고 남은 것이 더 흐릿한 자리에 서 있는 이들에게, 히브리서는 지난날 빛을 받은 뒤에 고난의 큰 싸움을 견뎌 냈던 시간을 다시 떠올려 보라고 조용히 말을 건넵니다. "너희에게 인내가 필요함은 너희가 하나님의 뜻을 행한 후에 약속을 받기 위함이라"(히 10:36). 그리고 이어지는 고백은 흔들리는 우리의 발걸음을 단단히 붙들어 줍니다. "우리는 뒤로 물러가 침륜에 빠질 자가 아니요 오직 영혼을 구원함에 이르는 믿음을 가진 자니라"(히 10:39). 성경은 아픔을 겪는 이들에게 섣부른 위로를 건네는 대신, 우리가 지나온 자리에 남겨진 사랑의 흔적과 우리 손에 맡겨진 하나님의 뜻을 차분히 짚어 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">사람의 손에 건네진 하나님의 뜻과 그 사이의 인내</h3>
+<p>히브리서 10장 32절부터 39절까지 이어지는 여덟 구절을 천천히 읽어 내려가다 보면 한 가지 놀라운 사실을 발견하게 됩니다. 이 단락 전체에서 하나님의 이름이 등장하는 곳은 오직 36절의 "하나님의 뜻"이라는 표현 단 한 자리뿐입니다. 그것도 하나님이 주어로 나서서 무언가를 직접 말씀하시거나 움직이시는 형태가 아니라, 사람이 행해야 할 '뜻'의 주인이 누구인지를 밝혀 주는 소유의 형태로만 조용히 자리하고 있습니다. 즉 이 본문의 무게 중심은 하늘에서 갑작스럽게 떨어지는 기적에 걸려 있는 것이 아니라, 하나님의 뜻이 온전히 사람의 두 손에 건네져 있다는 사실에 걸려 있습니다. 그 뜻을 행하는 오늘과 약속을 받아 안는 내일, 그 아득한 간격 사이에 놓인 시간을 성경은 '인내'라고 부릅니다.</p>
+<p>그 인내의 시간이 구체적으로 어떤 모습이었는지는 33절과 34절의 나란히 선 두 단어에서 생생하게 드러납니다. 하나는 그들이 겪어야 했던 '환난'이고, 다른 하나는 그들이 찾아가 마음을 나누었던 '갇힌 자'입니다. 우리말 성경에서는 서로 다른 조사로 번역되어 있지만, 원어에서는 두 낱말이 문장 안에서 완전히 똑같은 격의 자리에 놓여 있습니다. 다만 앞의 '환난'은 그들이 수동적으로 당한 일의 자리이고, 뒤의 '갇힌 자'는 그들이 능동적으로 다가간 사랑의 자리입니다. 더욱 인상적인 것은 그들에게 고난을 안겨 준 가해자가 누구인지는 문장에서 완전히 비워 둔 채, 오직 옥에 갇힌 이의 곁에 다가서서 아픔을 함께 나눈 성도들의 따뜻한 몸짓만을 분명한 주어로 기록해 두었다는 점입니다. 폭력을 행한 이들의 이름은 지워지고, 고난당하는 이웃 곁에 서 준 사랑의 행동만이 영원한 문장으로 남았습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">물러섬의 자리에서 우리를 건져 올리는 믿음의 연대</h3>
+<p>고난이 길어지면 누구에게나 뒷걸음질 치고 싶은 유혹이 찾아옵니다. 본문 38절은 옛 성경의 한 구절을 인용하며 "나의 의인은 믿음으로 말미암아 살리라 또한 뒤로 물러가면 내 마음이 저를 기뻐하지 아니하리라"라고 전합니다. 그리고 곧바로 이어지는 39절에서 저자는 그 인용문 속에 있던 '뒤로 물러가다'라는 동사와 같은 뿌리를 가진 명사를 그대로 집어 들어 자신의 문장을 짓습니다. "우리는 뒤로 물러가 침륜에 빠질 자가 아니요 오직 영혼을 구원함에 이르는 믿음을 가진 자니라." 옛 경전의 엄중한 경고를 자기 손으로 받아 안아, 독자들을 향한 정죄의 칼날로 쓰는 대신 "우리는 결코 그쪽 사람이 아니다"라는 따뜻한 연대의 선언으로 바꾸어 놓은 것입니다.</p>
+<p>여기서 저자가 끝까지 '너'라는 단수가 아니라 '우리'와 '너희'라는 복수의 호칭을 사용한다는 사실은 큰 위로를 줍니다. 믿음의 걸음은 홀로 외줄을 타며 탈락을 두려워하는 고독한 시험이 아니라, 흔들리는 서로의 손을 맞잡고 같은 편에 서는 공동체의 여정입니다. 또한 본문은 "잠시 잠깐 후면 오실 이가 오시리니"(10:37)라고 말하면서도 그 '오실 이'의 구체적인 이름을 못 박지 않고, "나의 의인"이라 부르는 이가 누구인지도 설명으로 닫아 버리지 않습니다. 성경이 여백으로 남겨 둔 신비의 자리를 인간의 조급한 정의로 채우지 않고, 오실 분의 걸음을 잠잠히 기다리는 것 또한 인내의 한 부분이기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">갇힌 이에게 걸어가고 멈추어 숨을 고르는 오늘</h3>
+<p>그렇다면 잃어버린 것이 더 또렷해 보이는 오늘의 일상 속에서 우리는 어떻게 하나님의 뜻을 행하며 약속을 기다릴 수 있을까요. 첫째로, 이번 주에는 병실이나 외로운 자취방, 혹은 마음의 감옥에 갇혀 있는 한 사람을 떠올리며 실제로 시간과 거리를 들여 그곳까지 몸을 옮겨 가 보기를 권합니다. 혹여 문 앞에서 얼굴을 보지 못하고 돌아 나오게 되더라도, 누군가를 위해 내 발걸음을 옮긴 그 시간 자체가 이미 주님의 뜻을 행한 자리가 됩니다. 둘째로, 세무와 회계를 비롯한 우리의 일터에서 남이 건넨 숫자나 말을 내 서류로 옮겨 적기 전에 잠시 손을 멈추는 정직함이 필요합니다. 저자가 인용문의 한 단어를 자기 문장으로 가져오는 순간 그것이 자신의 고백이 되었듯, 타인이 산출한 수치를 어떤 기준과 범위에서 센 것인지 확인하지 않은 채 내 장부에 적는 순간 그것은 나의 진술이 되기 때문입니다.</p>
+<p>마지막으로, 지난날의 상처가 아직 너무 아파서 도무지 옛 기억을 꺼내 볼 엄두조차 나지 않는 분들에게는 이 회상의 권면을 잠시 미루어 두어도 좋다고 말씀드리고 싶습니다. 성경은 지난날을 돌아보라고 말하지만, 반드시 오늘 당장 그 아픈 기억을 헤집어야 한다고 시한을 정해 두지 않았습니다. 그때 내 곁에 아무도 없었다는 외로움에 짓눌려 있다면, 오늘은 그저 때에 맞추어 따뜻한 밥을 먹고, 제시간에 누워 잠을 청하고, 하루에 한 번 바깥의 맑은 공기를 마시는 일만 제자리에 두십시오. 몸이 할 수 있는 작은 일상을 돌보는 자리에서부터 지난날을 다시 마주할 영혼의 근육이 자라납니다. 빼앗긴 것의 선명함에 속지 않고, 행한 뒤에 주실 약속을 기다리며 서로의 곁을 지키는 우리의 걸음 위에 주님의 평안이 머물기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 22편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

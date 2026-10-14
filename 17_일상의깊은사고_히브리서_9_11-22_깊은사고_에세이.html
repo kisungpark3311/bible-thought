@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 손으로 끝낼 수 없는 양심의 밤을 건너게 하시는 단 한 번의 걸음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 17편 &middot; 히브리서 9:11-22</span>
+      <h1>내 손으로 끝낼 수 없는 양심의 밤을 건너게 하시는 단 한 번의 걸음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>마음 깊은 곳에 무거운 돌덩이 하나가 내려앉은 것처럼 양심에 걸린 문제가 떠나지 않는 날이 있습니다. 아무리 손을 씻고 다짐을 새로 적어 보아도, 내 힘으로는 도무지 그 일을 끝낼 길이 보이지 않아 막막해지는 밤입니다. 히브리서 9장 11절부터 22절까지의 말씀은 바로 그렇게 스스로의 힘으로는 정결함에 이를 수 없는 우리의 무력한 자리 한복판으로, 단 한 분의 결연한 발걸음을 데려옵니다. 이 열두 절의 긴 단락을 지탱하는 중심 기둥은 오직 하나, 들어가셨느니라라는 짧고도 힘찬 동사 하나입니다.</p>
+<p>흥미롭게도 이 열두 절 전체를 통틀어 문장의 주어가 그리스도라는 이름으로 또렷하게 적힌 주된 문장은 이 첫머리 한 곳뿐입니다. 그 뒤로 이어지는 문장들에서는 주어가 사물로 바뀌거나 아예 생략된 채 흐려집니다. 더구나 이 단락에는 듣는 우리를 주어로 삼아 무엇을 하라고 시키는 명령어조차 단 하나도 없습니다. 마치 무대 위의 모든 조명이 오직 한 분의 걸음에만 집중되듯, 성경은 우리가 무엇을 해야 하는지를 말하기 전에 그리스도께서 이미 무엇을 이루셨는지를 숨죽여 바라보게 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">남의 피가 아닌 자기 피로 성소의 문턱을 넘으신 한 분</h3>
+<p>그분이 성소로 들어가실 때 이전의 모든 제사와 결정적으로 갈라진 지점은 바로 그 손에 들린 수단이었습니다. 염소와 송아지의 피로 아니하고 오직 자기 피로 영원한 속죄를 이루사 단번에 성소에 들어가셨느니라. 한 절 안에서 피라는 단어가 두 번 나란히 서는데, 앞의 피는 짐승의 피요 뒤의 피는 자기 자신의 피입니다. 이 열두 절 안에서 피라는 말이 아홉 번이나 거듭 등장하지만, 자기라는 말이 붙은 자리는 오직 이 12절 단 한 번뿐입니다. 남의 생명을 빌려 해마다 두려움 속에 문턱을 넘어야 했던 오랜 세월이, 자기 생명을 온전히 내어주신 단 한 번의 걸음으로 마침내 끝이 난 것입니다.</p>
+<p>여기서도 본문은 이 놀라운 사건을 다른 사람이나 다른 민족을 깎아내리는 비교의 도구로 사용하지 않습니다. 더 크고 온전한 장막으로 들어가셨다고 말할 뿐, 무엇보다 더 낫다는 식으로 비교 대상을 줄 세우지 않는 것입니다. 갈라진 것은 사람의 우열이 아니라 오직 속죄의 수단, 곧 남의 피인가 아니면 자기 피인가 하는 차이에만 있습니다. 우리가 영원한 속죄라는 선물을 받아 안을 수 있는 까닭은 우리에게 어떤 자격이 있어서가 아니라, 그분이 치르신 대가가 다른 무엇으로도 대체할 수 없는 자기 자신이었기 때문입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">죽은 행실에서 우리 양심을 씻어 내는 진짜 주어의 이름</h3>
+<p>이어지는 13절과 14절은 이 단 한 번의 들어감이 오늘 우리의 내면에 어떤 일을 일으키는지를 생생하게 들려줍니다. 염소와 황소의 피와 암송아지의 재가 부정한 자에게 뿌려져 그 육체를 정결하게 하고 거룩하게 하거든, 하물며 영원하신 성령으로 말미암아 흠 없는 자기를 하나님께 드린 그리스도의 피가 어찌 너희 양심으로 죽은 행실에서 깨끗하게 하고 살아 계신 하나님을 섬기게 못하겠느뇨. 여기서 우리의 눈을 번쩍 뜨게 하는 것은, 우리 양심을 깨끗하게 하는 동사의 주어가 우리의 결단이나 참회가 아니라 바로 그리스도의 피라는 사실입니다.</p>
+<p>우리는 양심에 걸린 죽은 행실을 발견할 때마다 내 손으로 그것을 어떻게든 지워 보고 수습해 보려고 애를 씁니다. 그러나 본문에서 부정한 자와 부르심을 입은 자는 모두 스스로의 힘으로 그 자리에 선 사람들이 아니라, 밖으로부터 주어진 은혜를 받아들이는 수동의 자리에 놓인 사람들입니다. 드리는 이도 그리스도이시고 드려진 제물도 흠 없는 자기 자신이신 그 신비로운 헌신 안에서, 피가 친히 주어가 되어 우리의 어두운 양심을 죽은 행실로부터 씻어 냅니다. 내 손으로 끝낼 수 없는 양심의 짐을 마주할 때, 그 일을 끝내는 주어가 내가 아니라 그분의 피라는 사실을 고백하는 것만으로도 우리의 영혼은 비로소 살아 계신 하나님을 향한 숨을 되찾게 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">거의 모든 것의 한계를 넘어 사함의 자리를 세우신 생명의 값</h3>
+<p>단락의 후반부로 갈수록 문장들은 더욱 절제된 형태로 이어집니다. 유언은 유언한 자가 죽어야만 효력을 얻고 살았을 때에는 언제든지 효력이 없다는 16절과 17절의 진술은, 심지어 주된 본동사조차 생략된 채 죽음이라는 엄연한 사실 위에 약속의 효력을 단단히 묶어 둡니다. 유언장과 상속 서류를 다루는 일터에서 서류 한 장의 효력이 사람의 생사라는 가장 무거운 현실에 걸려 있음을 보듯, 우리가 받아 누리는 영원한 기업의 약속 또한 새 언약의 중보자이신 그분의 죽음이라는 실재 위에서만 흔들림 없이 작동합니다.</p>
+<p>마침내 22절에 이르러 저자는 율법을 좇아 거의 모든 물건이 피로써 정결케 되나니 피흘림이 없은즉 사함이 없느니라고 글을 맺습니다. 우리는 흔히 뒷부분만 떼어 내어 피를 흘려야만 용서받는다거나 우리가 더 큰 희생을 바쳐야 한다는 차가운 격언처럼 인용하곤 합니다. 그러나 원문은 모든이라는 단어 앞에 거의라는 작고도 신중한 부사 하나를 붙여 섣부른 일반화를 막아 두고, 뒷문장의 주어를 피가 아닌 사함이라는 은혜의 결과에 두었습니다. 이 문장은 우리에게 또 다른 피와 희생을 요구하는 청구서가 아니라, 우리가 값없이 누리는 이 사함이라는 선물이 그분의 피흘림 없이는 결코 설 수 없었던 가장 귀한 자리임을 일깨우는 감사의 고백입니다.</p>
+<p>이번 한 주간, 송아지의 피와 물과 붉은 양털과 우슬초와 책과 그릇처럼 손에 닿는 일상의 물질들을 매만지며 살아갈 때, 내 손에 실제로 닿은 일 하나와 내 힘으로는 도무지 끝낼 수 없는 양심의 일 하나를 나란히 적어 보십시오. 내가 만든 평균이나 짐작으로 삶의 빈칸을 억지로 메우려 하지 않고, 오직 자기 피로 단 한 번 성소에 들어가신 그분의 걸음에 내 죽은 행실을 맡겨 드릴 때, 사함의 은혜가 우리의 고단한 일상을 조용히 덮어 줄 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 17편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

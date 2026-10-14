@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>수많은 명령 사이 동사 없이 서 계신 그분, 영문 밖으로 나아가 품으로 돌아오는 길</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 33편 &middot; 히브리서 13:7-19</span>
+      <h1>수많은 명령 사이 동사 없이 서 계신 그분, 영문 밖으로 나아가 품으로 돌아오는 길</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>해야 할 일들이 쉼 없이 몰아치는 날에는 아무것도 요구하지 않는 고요한 문장 하나가 우리 숨통을 틔워 줍니다. 히브리서 13장 7절부터 19절까지의 단락은 앞뒤로 아홉 번의 지시가 촘촘히 들어서 있는 말씀입니다. 앞서 하나님의 말씀을 전하고 믿음의 길을 걸어간 인도자들을 기억하며 그들의 행실의 종말을 주의하여 보고 믿음을 본받으라는 7절의 명령으로 시작하여, 여러 가지 다른 교훈에 끌리지 말라는 9절의 명령, 그리고 선을 행함과 나누어 주기를 잊지 말고 인도자들에게 순종하며 우리를 위해 기도하라는 16절부터 18절까지의 명령들이 숨 가쁘게 이어집니다. 그런데 그 팽팽한 명령들의 한복판인 8절에, 마치 폭풍 속의 고요한 섬처럼 전혀 다른 모양의 문장 하나가 우뚝 서 있습니다.</p>
+<p>예수 그리스도는 어제나 오늘이나 영원토록 동일하시니라라는 8절의 고백입니다. 놀랍게도 열한 개의 단어로 이루어진 이 원문 문장 안에는 동사가 단 한 개도 없습니다. 문장을 끝맺는 동사도, 분사도, 부정사도 없으며, 우리말 성경의 동일하시니라에 해당하는 이다라는 동사와 존칭 어미는 번역자가 뜻을 살려 보충해 넣은 것입니다. 원문이 문장의 맨 끝에 놓아둔 것은 정관사가 붙은 대명사 하나, 호 아우토스, 곧 바로 그 동일하신 분이라는 한 마디뿐입니다. 어제와 오늘과 영원이라는 세 시간이 어떤 동사의 변화에 매달려 있는 것이 아니라, 동사조차 필요 없이 스스로 계신 그분의 이름 위에 곧바로 얹혀 있습니다. 앞뒤로 줄지어 선 수많은 명령들 사이에서 단 한 가지도 요구하지 않는 이 동사 없는 한 절이, 정작 우리가 그 모든 부름을 감당하며 기댈 수 있는 유일한 안식처가 되어 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">영문 밖으로 나아가자 하신 부름과 공동체 안으로 돌아오려는 간청</h3>
+<p>그 동일하신 주님께 기대어 선 사람에게 본문은 이제 걸음의 방향을 가리켜 보입니다. 11절부터 13절까지 세 절에 걸쳐 똑같은 전치사 하나가 연달아 세 번 울려 퍼집니다. 무엇의 밖을 뜻하는 헬라어 전치사 엑소입니다. 히브리서 전체를 통틀어 딱 세 번 등장하는 이 단어가 오직 이 세 절에만 모두 모여 있습니다. 짐승의 육체가 영문 밖에서 불살라진 것처럼 예수께서도 자기 피로써 백성을 거룩하게 하려고 성문 밖에서 고난을 받으셨으니, 이제 우리도 그 능욕을 지고 영문 밖으로 그에게 나아가자는 13절의 권유가 이 단락 전체의 중심축을 이룹니다. 원문이 두 절에서는 영문이라 적고 가운데 한 절에서는 성문이라 적어 둔 두 단어의 미세한 어휘 차이는 우리가 가진 사전 자료의 한계 너머에 있어 섣부른 상상으로 메우지 않고 열어 두지만, 세 번이나 거듭된 밖으로라는 방향만큼은 조금도 흔들리지 않습니다.</p>
+<p>그런데 참으로 깊고도 따뜻한 반전이 단락의 후반부에 기다리고 있습니다. 중심축인 13절은 분명히 영문 밖으로 나아가자고 바깥을 가리키는데, 그 뒤를 이어 16절부터 18절까지 모인 네 개의 명령은 하나같이 공동체 안쪽을 가리킵니다. 서로 나누어 주기를 잊지 말라, 인도하는 자들에게 순종하라, 우리를 위하여 기도하라는 말씀은 모두 홀로 광야로 흩어지는 걸음이 아니라 지체들의 품 안으로 스며드는 걸음입니다. 심지어 마지막 19절에서 글 쓰는 이는 단락 처음으로 나라는 1인칭 단수를 두 번이나 꺼내 놓으며, 내가 더 속히 너희에게 돌아가기를 위하여 기도해 달라고 간절히 청합니다. 밖으로 나아가자는 부름과 안으로 돌아가게 해 달라는 기도가 한 단락 안에 나란히 공존하고 있는 것입니다. 성경이 말씀하시는 영문 밖으로의 걸음은 결코 공동체를 등지고 떠나는 고립이 아닙니다. 돌아갈 따뜻한 품과 나를 위해 기도해 주는 지체들의 자리가 있는 사람이 비로소 두려움 없이 세상 밖 고난의 자리로 걸어 나갈 수 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">안에서 먹는 규례를 걷어내고 입술과 손으로 드리는 두 가지 제사</h3>
+<p>밖으로 나아가 안으로 돌아오는 이 걸음 속에서 우리의 예배 또한 새롭게 빚어집니다. 9절은 여러 가지 다른 교훈에 끌리지 말라고 한 번 부정하고, 마음은 은혜로써 굳게 함이 아름답고 식물로써 할 것이 아니라고 다시 한번 부정합니다. 내 배를 채우고 내 안의 자격을 증명하려는 음식 규례들을 두 번의 부정으로 깨끗이 걷어낸 자리에, 15절과 16절은 우리가 하나님께 드려야 할 두 가지 참된 제사를 나란히 올려놓습니다. 하나는 예수로 말미암아 항상 드리는 찬미의 제사, 곧 튀시아 아이네세오스요 그 이름을 증거하는 입술의 열매이며, 다른 하나는 선을 행함과 나누어 주는 손길입니다.</p>
+<p>성경은 하나님이 받으시는 제사를 머릿속의 고상한 생각이나 마음 안쪽의 다짐에 가두어 두지 않고, 반드시 입술을 통해 밖으로 흘러나오는 열매와 손을 통해 밖으로 건네지는 나눔에 두었습니다. 이 열세 절의 단락 전체에서 하나님이 문장의 주어로 직접 서시는 유일한 한 자리가 바로 16절의 이같은 제사는 하나님이 기뻐하시느니라라는 말씀입니다. 원문의 어형은 그러한 제사들로 말미암아 하나님께서 기쁨을 받으신다는 수동의 결을 담고 있습니다. 우리의 작은 입술이 주님의 이름을 고백하고 우리의 거친 손이 가진 것을 떼어 나눌 때, 영원토록 동일하신 하나님께서 친히 그 작은 두 가지를 기쁨으로 받아 주신다는 사실이 우리의 평범한 일상을 거룩한 제단으로 바꾸어 놓습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">말하고 앉고 서는 세 자리에서 만나는 동일하신 주님</h3>
+<p>영구한 도성이 없는 이 땅에서 장차 올 도성을 찾으며 걸어가는 우리에게, 오늘 말씀은 거창한 구호 대신 지금 내 몸이 있는 자리에서 시작할 수 있는 세 가지 정직한 동작을 건넵니다. 첫째는 한 사람을 앞에 두고 입을 열어 말하는 일입니다. 이번 주간에 구체적인 한 사람을 정하여, 우리보다 앞서 믿음의 길을 걸어간 이가 어떻게 그 삶의 끝자락을 아름답게 맺었는지 내 입술의 말로 직접 들려주십시오. 골방에서 혼자 소리 내어 읽는 독백이 아니라, 내 말을 듣는 한 사람이 눈앞에 마주 서 있는 자리에서 믿음의 기억은 살아 있는 유산으로 이어집니다.</p>
+<p>둘째는 아직 영문 밖으로 일어설 엄두조차 내지 못해 주저앉아 있는 분들을 향한 위로의 동작입니다. 13절의 영문 밖으로 나아가자는 말씀은 차가운 명령형이 아니라, 글 쓰는 이가 자기 자신을 우리라는 이름 안에 함께 묶어 건네는 다정한 권유입니다. 오늘 도무지 일어설 힘이 없다면 억지로 몸을 일으키려 애쓰지 마시고, 해야 할 일 하나를 조용히 접어 둔 채 그 시간만큼 그 자리에 그대로 앉아 계셔도 좋습니다. 주님의 권유가 품은 우리라는 울타리는 아직 일어서지 못해 앉아 있는 사람까지 이미 온전히 안고 있기 때문입니다. 그리고 셋째로 물질과 값이 실제로 오가는 일상에서 지갑을 열거나 셈을 치르는 그 순간, 곧바로 계산하고 돌아서지 말고 단 한 번만 그 자리 앞에 가만히 멈추어 서 보십시오. 동사 하나 없이도 어제나 오늘이나 영원토록 동일하게 우리 곁에 서 계신 예수 그리스도께서, 말하고 앉고 서는 우리의 그 작은 일상 한복판에서 오늘도 기쁨의 제사를 받으십니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 33편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

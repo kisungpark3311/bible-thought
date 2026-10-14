@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>맹세의 저울 끝에 서신 한 이름, 죽음이 가로막지 못하는 영원한 보증</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 14편 &middot; 히브리서 7:20-28</span>
+      <h1>맹세의 저울 끝에 서신 한 이름, 죽음이 가로막지 못하는 영원한 보증</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>살다 보면 사람의 약속이나 제도가 얼마나 쉽게 바래고 끊어지는지를 절감할 때가 많습니다. 아무리 촘촘하게 설계된 조직이나 든든해 보이는 인력도 세월과 한계 앞에서는 결국 자리를 비우게 마련입니다. 히브리서 7장 20절부터 28절까지의 아홉 절은 바로 그 끊어짐의 슬픔 한복판에 한 대의 정교한 저울을 내려놓습니다. 20절이 맹세 없이 된 것이 아닌 만큼이라는 말로 저울의 한쪽 접시를 달아 올리면, 22절이 이와 같이 그만큼 예수는 더 좋은 언약의 보증이 되셨느니라라는 선언으로 다른 쪽 접시를 단단히 받아냅니다.</p>
+<p>이 아홉 절 전체에는 우리에게 무엇을 해내라고 요구하는 명령형 문장이 단 하나도 없으며, 열한 개의 끝맺는 동사가 전부 우리가 아닌 제삼자를 주어로 삼아 흘러갑니다. 성경은 지친 우리의 어깨 위에 또 다른 분발의 짐을 얹는 대신, 맹세의 있음과 없음이 갈라놓은 그 저울의 눈금 끝에 예수라는 단 한 분의 이름이 어떻게 영원한 보증으로 서 계신지를 조용히 비추어 줍니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">이중 부정으로 꺾어 잰 맹세의 무게와 언약의 보증</h3>
+<p>본문에서 저자가 맹세를 언급하는 방식은 매우 독특합니다. 저자 자신의 설명 속에서는 맹세(호르코모시아)가 네 번 모두 움직이는 동사가 아니라 단단한 명사로만 놓이고, 정작 맹세하셨다는 동사는 주께서 맹세하시고 뉘우치지 아니하시리니라는 옛 시편의 인용문 안에만 단 한 번 등장합니다. 게다가 20절은 예수께서 제사장이 되신 일을 두고 맹세와 함께 되었다고 곧장 말하지 않고, 맹세 없이 된 것이 아니니라며 부정에 부정을 겹쳐 두 번 꺾어 말합니다. 맹세 없이 세워졌던 옛 제사장들의 자리와 얼마나 근본적으로 다른지를 독자가 멈추어 서서 저울질해 보게 하려는 깊은 배려입니다.</p>
+<p>세무와 회계의 현장에서 보증서나 확인서를 다룰 때, 철회할 수 있는 약정과 결코 무를 수 없는 보증의 차이는 천지 차이입니다. 본문 22절에서 예수가 되셨다고 선포된 보증(엥귀오스)은 이미 그렇게 되어 지금도 변함없이 그 상태로 서 계심을 뜻하는 완료의 문법으로 적혀 있습니다. 그리고 그 보증이 책임지고 거느리는 대상은 변덕스러운 사람들의 무리가 아니라 더 좋은 언약 그 자체입니다. 주께서 한 번 맹세하시고 결코 돌이키지 않으신다는 그 인용문 한 줄의 무게만큼, 우리를 향한 언약의 보증 또한 흔들리지 않는 현재로 서 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">죽음이 가로막은 자리에 숫자가 아닌 한 분의 머무름이 설 때</h3>
+<p>이어지는 23절과 24절은 왜 옛 제사장들이 그토록 많은 수효로 교체되어야만 했는지를 짚어냅니다. 저희 제사장 된 자는 죽음을 인하여 항상 있지 못함이로되 예수는 영원히 계시므로 그 제사 직분도 갈리지 아니하나니. 원문의 어순이 맨 먼저 가리키는 원인은 사람들의 게으름이나 제도 설계의 결함이 아니라 죽음이라는 거대한 한계였습니다. 죽음이 머무름을 가로막았기 때문에 어쩔 수 없이 많은 사람이 뒤를 이어야 했던 것입니다.</p>
+<p>따라서 머무름의 문제는 사람의 숫자를 더 늘리거나 당번을 더 촘촘히 세운다고 해서 해결될 수 있는 성질의 것이 아닙니다. 원문 24절은 직분이 갈리지 않는다는 수동적 서술을 넘어, 영원히 머무시는 그 한 분이 다른 누구에게도 넘어가지 않는 직분을 친히 손에 쥐고 계신다고 증언합니다. 이 단락의 동사들이 미래의 막연한 희망이 아니라 이미 이루어진 네 번의 완료형과 지금도 이어지는 네 번의 현재형으로만 짜여 있는 까닭도 여기에 있습니다. 자기를 힘입어 하나님께 나아가는 자들을 온전히 구원하실 수 있는 힘은, 죽음을 넘어 항상 살아 계셔서 우리를 위하여 간구하시는 그 한 분의 끊임없는 현존에서 흘러나옵니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">약점을 가진 사람들을 꾸짖지 않고 제도의 어깨를 바꾸시는 은혜</h3>
+<p>마지막 26절에서 28절은 거룩하고 악이 없고 더러움이 없고 죄인에게서 떠나 계시고 하늘보다 높이 되신 대제사장의 모습을 다섯 겹의 수식어로 그려낸 뒤, 율법은 약점을 가진 사람들을 제사장으로 세웠거니와 율법 후에 하신 맹세의 말씀은 영원히 온전하게 되신 아들을 세웠느니라로 매듭을 짓습니다. 여기서 문장의 주어로 맞서고 있는 것은 약한 개인과 강한 개인이 아니라, 율법이라는 제도와 맹세의 말씀이라는 두 체계입니다. 심지어 뒤쪽의 맹세의 말씀 마디에는 세웠다는 동사조차 생략되어, 오직 영원히 온전하게 되신 아들이라는 존재 자체가 여운처럼 남습니다.</p>
+<p>이 문법은 오늘 교회와 일터에서 반복되는 피로를 대하는 우리의 시선을 근본적으로 바꾸어 놓습니다. 본문은 약점을 가진 사람들을 단 한 줄도 꾸짖거나 게으르다고 정죄하지 않습니다. 병상에 누워 몸을 움직일 수 없는 이에게, 교대 근무로 주일 예배의 자리를 지킬 수 없는 이에게, 차비와 생활비를 세며 한숨짓는 이에게 성경은 왜 더 열심히 나아오지 못하느냐고 다그치지 않습니다. 공동체 안에서 되풀이되는 소진 역시 한 사람의 헌신 부족으로만 돌릴 것이 아니라, 그 일을 날마다 되풀이되게 만든 구조와 제도의 한계를 먼저 돌아보라고 일깨웁니다.</p>
+<p>본문은 그분이 지금 우리를 위해 구체적으로 무엇을 간구하시는지, 또 누가 아들을 영원히 온전하게 하셨는지 그 빈자리를 끝내 말로 다 채우지 않은 채 고요히 멈춥니다. 내 죄를 남의 죄 뒤로 미루어 두거나 죄인에게서 떠나 계신다는 거룩한 말씀을 값싼 위안으로만 소비하던 습관을 내려놓고, 내가 다 메울 수 없는 침묵의 자리 앞에서 오직 맹세로 우리의 보증이 되신 예수 그리스도 그 한 이름만을 조용히 의지합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 14편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

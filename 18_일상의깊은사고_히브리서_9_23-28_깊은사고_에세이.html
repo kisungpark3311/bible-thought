@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>단번에 드리신 은혜의 기억 위에서 두 번째 나타나심을 기다리는 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 18편 &middot; 히브리서 9:23-28</span>
+      <h1>단번에 드리신 은혜의 기억 위에서 두 번째 나타나심을 기다리는 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>기다림이 길어질 때 사람이 가장 견디기 힘든 것은 언제 끝날지 모른다는 막막함보다, 내가 지금 무엇을 더 해야만 그 날이 앞당겨질까 하는 불안함입니다. 내 힘으로 당장 바꿀 수 없는 현실의 벽 앞에서 우리는 자꾸만 내 손의 분주함으로 불안의 빈칸을 메우려 합니다. 그러나 히브리서 9장의 마지막 여섯 절은 우리가 무엇을 해야 한다는 다그침을 단 한 줄도 적어 놓지 않은 채, 우리의 시선을 오직 한 분이 걸어가신 시간의 궤적 위로 조용히 끌어올립니다. 이 여섯 절의 중심축은 마지막 28절에 놓인 두 번째 나타나시리라라는 단 하나의 미래 선언입니다.</p>
+<p>우리말 성경으로 이 단락을 읽다 보면 나타나시다라는 똑같은 표현이 세 절에 걸쳐 나란히 반복되는 것을 보게 됩니다. 이제 우리를 위하여 하나님 앞에 나타나시고, 이제 자기를 단번에 제사로 드려 죄를 없게 하시려고 세상 끝에 나타나셨느니라, 그리고 자기를 바라는 자들에게 두 번째 나타나시리라. 표면적으로는 한 단어가 세 번 되풀이되는 것처럼 읽히지만, 원어의 깊은 층위를 들여다보면 이 세 자리는 사전에 실린 단어부터 시제에 이르기까지 저마다 전혀 다른 세 개의 단어로 정교하게 교대되고 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">세 번의 나타나심에 담긴 서로 다른 시간과 은혜의 방향</h3>
+<p>첫 번째인 24절의 나타남은 참 하늘로 들어가신 그리스도께서 지금 이 순간 우리를 대신하여 하나님의 얼굴 앞에 친히 서 계신다는 법정적이고도 인격적인 현존을 가리킵니다. 두 번째인 26절의 나타남은 영원 속에 감추어져 있던 구원의 비밀이 세상 끝에 성육신과 십자가의 제사를 통해 역사 한복판에 밝히 드러났으며, 그 효력이 지금도 여전히 살아 있음을 보여 주는 완료의 선언입니다. 그리고 세 번째인 28절의 나타남은 장차 마지막 날에 모든 기다리는 이들의 눈앞에 가림 없이 보이실 영광스러운 미래의 사건을 가리킵니다.</p>
+<p>이 세 번의 나타나심이 서로 다른 단어와 시제로 직조되어 있다는 사실은 우리에게 참으로 큰 위로를 건넵니다. 우리의 과거는 세상 끝에 나타나사 단번에 죄를 없게 하신 십자가의 은혜로 덮여 있고, 우리의 현재는 하나님 앞에서 우리를 위해 서 계신 대제사장의 중보로 붙들려 있으며, 우리의 미래는 구원에 이르게 하기 위해 다시 보이실 주님의 약속으로 보장되어 있기 때문입니다. 특히 마지막 두 번째 나타나심의 자리에는 언제 오실지를 계산하는 날짜나 시계의 바늘이 적혀 있지 않고, 오직 두 번째라는 확실한 순서의 표지만이 놓여 있어 우리의 조급한 셈법을 잠재웁니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">해마다 되풀이되던 발걸음을 멈추게 한 참 하늘로의 들어감</h3>
+<p>나타나심의 세 단어가 서로 다른 어휘의 교대라면, 24절과 25절에 나란히 놓인 들어감이라는 표현은 반대로 똑같은 한 단어의 두 가지 서로 다른 얼굴을 보여 줍니다. 대제사장이 해마다 다른 것의 피로써 손으로 만든 성소에 들어가는 일은 끝없이 반복되는 현재의 굴레로 적혀 있는 반면, 그리스도께서 참 것의 그림자인 손으로 만든 성소에 들어가지 아니하시고 오직 참 하늘에 들어가신 일은 단 한 점으로 완결된 사건으로 적혀 있습니다. 같은 들어감이라는 단어를 쓰면서도, 본문은 해마다 되풀이되는 사람의 걸음과 단 한 번으로 완성된 주님의 걸음을 선명하게 갈라 놓습니다.</p>
+<p>만일 그리스도의 제사가 땅의 제사장들처럼 되풀이되어야 했다면, 그분은 창세로부터 시작하여 수도 없이 고난을 받으셔야 했을 것입니다. 그러나 본문은 손으로 만든 것과 참 하늘, 다른 것의 피와 자기 자신, 해마다와 단 한 번을 대조할 뿐, 어떤 사람이나 민족의 무리를 끌어들여 우열을 가리지 않습니다. 죄를 없게 하시려는 목적은 온전히 주님 자신의 단번의 드려지심에 걸려 있으며, 우리의 변덕스러운 결심이나 반복되는 종교적 열심에 매달려 있지 않습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">담당하신 죄의 무게를 내려놓고 바라는 자로 서는 일상의 기다림</h3>
+<p>마지막 27절과 28절은 마치 두 날개가 맞물리듯 한 쌍의 문장으로 묶여 있습니다. 한번 죽는 것은 사람에게 정하신 것이요 그 후에는 심판이 있으리니, 이와 같이 그리스도도 많은 사람의 죄를 담당하시려고 단번에 드리신 바 되셨고 구원에 이르게 하기 위하여 죄와 상관 없이 자기를 바라는 자들에게 두 번째 나타나시리라. 원문에서 28절을 이끄는 두 중심 단어, 곧 드리신 바 되셨고와 나타나시리라는 둘 다 수동의 형태로 적혀 있습니다. 단번에라는 말은 이미 끝난 드려지심 쪽에 단단히 붙어 있고, 아직 오지 않은 미래 쪽에는 두 번째라는 말이 붙어 있습니다.</p>
+<p>일터에서 수많은 숫자와 장부를 다루다 보면, 때로 장부 너머에 있는 한 사람의 구체적인 이름을 잊은 채 분모와 합계를 내 마음대로 줄이거나 늘리고 싶어질 때가 있습니다. 신앙에서도 우리는 주님이 담당하신 많은 사람의 죄라는 분모를 내 임의로 좁히거나, 반대로 두 번째 나타나실 주님께 붙은 죄와 상관 없이라는 표현을 마치 내가 이미 죄와 아무 상관 없는 완전한 사람이 되어야만 한다는 조건으로 잘못 끌어오곤 합니다. 그러나 우리의 고백과 결단은 오직 주님이 이미 담당하신 그 자리에만 조용히 내려놓아야 합니다.</p>
+<p>이번 한 주간, 내 힘으로는 도무지 손댈 수 없는 삶의 무거운 문제 하나와 내 몸이 감당하기 벅찬 한계 하나를 정직하게 적어 보십시오. 본문이 심판이라는 단어 뒤에 아무런 값싼 위로의 말을 덧붙이지 않고 비워 둔 그 엄숙한 여백을 내 말로 섣불리 메우지 마십시오. 대신 단번에 드리신 바 되신 주님께 내 죄의 짐을 온전히 맡겨 드리고, 장부 속 숫자 너머에 있는 한 사람의 이름을 불러 안부를 묻듯, 오늘 나의 일상 속에서 두 번째 나타나실 주님을 간절히 바라는 자의 자리에 조용히 서는 복된 시간이 되기를 바랍니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 18편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

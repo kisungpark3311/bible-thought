@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>열려 있는 휘장 앞에서 혼자가 아닌 우리가 함께 내딛는 세 걸음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 20편 &middot; 히브리서 10:19-25</span>
+      <h1>열려 있는 휘장 앞에서 혼자가 아닌 우리가 함께 내딛는 세 걸음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>굳게 닫혀 있던 무거운 문이 열렸다는 소식을 들어도, 정작 문턱 너머로 첫발을 내딛기까지는 적지 않은 용기가 필요합니다. 오랫동안 문밖에서 서성이던 기억과 내 안의 자격지심이 발목을 붙잡기 때문입니다. 히브리서 10장 19절부터 25절까지의 말씀은 바로 그렇게 열린 문 앞에서 주저하고 있는 이들을 향해, 형제들아라고 다정하게 이름을 부르며 손을 내미는 초청장입니다. 이 일곱 절의 중심을 관통하는 기둥은 네가 혼자서 해내라는 차가운 명령이 아니라, 우리가 함께 발을 떼자고 권하는 세 번의 따뜻한 청유입니다.</p>
+<p>우리말 성경으로 이 단락을 읽으면 참 마음과 온전한 믿음으로 하나님께 나아가자라는 22절과 그 날이 가까움을 볼수록 더욱 그리하자라는 25절, 이렇게 두 곳에서만 청유의 목소리가 들리는 듯합니다. 그러나 원문의 문장 줄기를 따라가 보면 본줄기에 나란히 우뚝 서 있는 청유의 동사는 정확히 세 개입니다. 하나님께 나아가자, 우리가 믿는 도리의 소망을 움직이지 않고 굳게 잡자, 그리고 서로 돌아보아 사랑과 선행을 격려하자. 번역 과정에서 뒤의 두 동사가 연결형으로 부드럽게 이어졌을 뿐, 원문은 세 가지 걸음을 대등한 무게로 나란히 세워 두고 세 걸음 모두의 주어를 내가 아닌 우리로 묶어 두었습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">문을 먼저 열어 보이신 뒤에야 들려오는 세 번의 따뜻한 초청</h3>
+<p>더욱 놀라운 것은 이 세 번의 권유가 등장하기 전에, 19절부터 22절까지가 원문에서는 숨 한 번 끊어지지 않고 이어지는 단 하나의 긴 문장으로 이루어져 있다는 사실입니다. 저자는 나아가자라는 첫 번째 권유를 꺼내기 전에 무려 세 절에 걸쳐 왜 우리가 담대히 발을 뗄 수 있는지를 먼저 차곡차곡 깔아 놓습니다. 우리가 성소에 들어갈 담력을 얻은 것은 우리의 경건이나 결심 때문이 아니라 오직 예수의 피를 힘입은 까닭이며, 우리 앞에 놓인 길은 휘장 가운데로 열어 놓으신 새롭고 산 길이요 그 휘장은 곧 주님의 육체라는 것입니다. 게다가 하나님의 집을 다스리는 큰 제사장이 우리에게 계시다는 사실이 그 뒤를 든든히 받쳐 줍니다.</p>
+<p>성경은 언제나 발을 떼라고 말하기 전에 열려 있는 문을 먼저 보여 줍니다. 나아감의 근거를 이루는 예수의 피와 그의 육체와 큰 제사장이라는 세 가지 보화가 문장의 본줄기 바깥에서 든든한 주춧돌처럼 전체를 떠받치고 있기에, 비로소 본줄기에 선 우리는 나아가고 굳게 잡고 서로 돌아보는 세 걸음을 내딛을 수 있습니다. 만약 이 문장에서 예수의 피라는 한 단어를 빼 버린다면, 우리의 모든 다짐과 권유는 허공에 뜬 구호처럼 무너져 내리고 말 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">비어 있는 이름을 내 짐작으로 채우지 않고 떠받치는 피의 근거</h3>
+<p>22절 한 절 안에는 마음이라는 단어가 두 번 등장하는데, 원어의 결을 살펴보면 앞의 참 마음은 단수로 적혀 있고 뒤의 마음에 뿌림을 받아 악한 양심으로부터 벗어나고라는 구절의 마음은 복수로 적혀 있습니다. 게다가 마음에 뿌림을 받는 일은 전적으로 밖으로부터 은혜를 입는 수동의 형태이고, 누가 그 피를 뿌려 주셨는지조차 본문은 굳이 주어를 적어 넣지 않은 채 은혜의 신비로 남겨 둡니다. 안쪽 양심이 씻기는 일은 내가 내 힘으로 만들어 낸 성취가 아니라, 거저 받아 누린 선물임을 문장의 형태 자체가 증언하고 있는 셈입니다.</p>
+<p>23절의 약속하신 이는 미쁘시니라는 구절 역시 동사 하나 없이 미쁘다는 형용사와 약속하신 분이라는 분사 하나로만 조용히 서 있습니다. 일터에서 회계 장부와 결산 서류를 다루다 보면, 금액과 날짜는 정확히 맞아떨어지는데 정작 거래 상대방의 이름 칸이 비어 있는 서류를 만날 때가 있습니다. 그때 숫자를 빨리 맞추겠다는 조급함으로 빈칸에 내 짐작을 적어 넣는 것이 가장 흔하고도 위험한 사고입니다. 시간이 더 걸리고 수고롭더라도 빈칸을 그대로 둔 채 정확한 이름을 확인해야 하듯, 우리 신앙 또한 성경이 의도적으로 비워 둔 자리에 내 섣부른 짐작이나 과녁을 억지로 채워 넣지 않는 정직함이 필요합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">홀로 나아갈 힘조차 없는 이의 곁에서 우리가 되어 주는 걸음</h3>
+<p>세 번째 권유인 서로 돌아보아 사랑과 선행을 격려하며 모이기를 폐하는 어떤 사람들의 습관과 같이 하지 말고 오직 권하여 그 날이 가까움을 볼수록 더욱 그리하자는 말씀은 오늘 공동체를 지키는 이들에게 깊은 성찰을 남깁니다. 원문에서 폐하지 말라고 경계하는 대상은 다른 누군가의 모임이 아니라 바로 우리 자신의 모임입니다. 우리는 흔히 빈자리를 보며 나오지 않은 어떤 사람들을 탓하기 쉽지만, 본문의 화살 끝은 남이 아니라 우리 자신을 향해 있습니다. 보이지 않는 사람을 정죄하기 전에, 우리가 먼저 그만두어 버린 환대와 돌봄의 자리 하나를 정직하게 돌아보라는 부르심입니다.</p>
+<p>오늘 삶의 무게에 짓눌려 내 발로는 도무지 한 걸음도 앞으로 나아갈 수 없다고 느끼는 분들이 있습니다. 이 일곱 절 전체를 아무리 찾아보아도 너 혼자서 힘써 나아가라고 다그치는 이인칭 단수 명령은 단 한 곳도 없습니다. 나아가는 일도, 소망을 굳게 잡는 일도, 서로를 깊이 헤아려 돌아보는 일도 모두 우리라는 복수의 주어에 걸려 있습니다. 내가 걸을 수 없을 때 내 곁의 형제가 함께 걸어 주는 걸음, 그것이 주님의 피로 열린 새롭고 산 길의 풍경입니다.</p>
+<p>이번 한 주간, 내 힘으로 당장 나아갈 수 없는 막막한 일 하나가 있다면 억지로 혼자 해결하려 애쓰지 말고 그대로 남겨 두십시오. 대신 같은 말씀을 읽고 같은 은혜의 문턱 앞에 서 있는 한 사람에게 그 솔직한 마음 한 줄을 나누어 보십시오. 열려 있는 휘장 앞에서 내가 혼자가 아니라 우리로 부름받았음을 기억하며, 나아가고 굳게 잡고 서로를 따뜻하게 돌아보는 세 걸음을 함께 내딛는 복된 한 주가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 20편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

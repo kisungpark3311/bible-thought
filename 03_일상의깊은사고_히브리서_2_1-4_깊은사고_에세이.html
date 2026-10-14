@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>흘러 떠내려가는 강물 위에서 서로의 손을 잡고 말씀에 정박하다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 03편 &middot; 히브리서 2:1-4</span>
+      <h1>흘러 떠내려가는 강물 위에서 서로의 손을 잡고 말씀에 정박하다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>강가에 매어 둔 작은 배가 언제부터 떠내려가기 시작했는지 정확히 알아채기는 쉽지 않습니다. 거센 폭풍이 몰아치지 않아도, 밧줄을 단단히 묶어 두지 않은 채 그저 물결에 몸을 맡기고 있다 보면 어느새 원래 있던 나루터에서 아득히 멀어져 있는 자신을 발견하곤 합니다. 히브리서 2장의 첫 문장은 바로 그 조용한 표류를 향해 그러므로 우리가 들은 것들에 더욱 간절히 붙어 있어야 한다고 말문을 엽니다. 우리가 흔히 기억하듯 떠내려가지 않도록 조심하자는 소극적인 걱정이 문장의 주인이 아니라, 이미 들은 말씀에 단단히 마음을 매어 두어야 한다는 마땅한 당위가 문장의 중심 기둥으로 서 있습니다.</p>
+<p>흥미로운 점은 본문이 이 무거운 당위를 어느 한 사람의 외로운 어깨 위에 지우지 않는다는 사실입니다. 이 짧은 네 구절 안에는 너라고 손가락질하는 단수 대명사도, 혼자서 해내라는 명령형 어조도 전혀 등장하지 않습니다. 말씀을 적는 저자 자신이 우리라는 복수의 자리 안으로 깊이 걸어 들어와, 함께 들은 것들에 함께 매달려 있어야 한다고 나지막이 고백합니다. 떠내려갈까 하는 염려는 그 마땅한 붙듦 뒤에 딸려 오는 결과일 뿐입니다. 두려움이 우리를 이끄는 동력이 아니라, 우리가 함께 들은 말씀의 무게가 우리를 한자리에 묶어 두는 닻이 됩니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">전달자의 이름보다 더 단단하게 서 있는 말씀의 무게</h3>
+<p>우리가 왜 그토록 들은 말씀에 마음을 매어 두어야 하는지 설명하면서, 본문은 천사들을 통하여 전해진 옛 말씀도 견고하게 서서 모든 범죄함과 불순종이 마땅한 보응을 받았다는 사실을 상기시킵니다. 원문의 어순을 가만히 살펴보면, 문장의 맨 앞에 놓인 그라는 작은 가리킴말은 천사들과 짝을 이루지 않고 문장 끝에 놓인 말씀과 짝을 이룹니다. 그 말씀이라는 큰 테두리 안에 천사들을 통하여 전해졌다는 경로가 조용히 끼어 들어가 있는 모양새입니다.</p>
+<p>문장의 중심 무게는 전달자인 천사들에게 쏠리지 않고 오직 전해진 말씀 자체에 실려 있습니다. 더구나 그 말씀은 누군가가 능동적으로 외쳤다는 표현 대신 전해졌다는 수동의 옷을 입고 있어서, 정작 그 말씀을 발화하신 분의 이름은 문장 표면 뒤에 고요히 숨겨져 있습니다. 반면에 이어지는 구절에서 이같이 큰 구원을 말할 때는 주어를 통하여 처음 말씀하신 것이 들은 자들을 통해 우리에게 확증되었다고 그 전달의 손길들을 분명히 밝힙니다. 성경이 비워 둔 자리는 비워 둔 채로 경외하고, 성경이 밝혀 적은 증인들의 걸음은 또렷이 기억하는 것이 말씀을 대하는 정직한 태도입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">평균 내지 않고 하나씩 세어 놓은 하나님의 증언들</h3>
+<p>이 구원의 확증 뒤에는 하나님의 함께하시는 증언이 겹겹이 받쳐 주고 있습니다. 본문은 하나님이 표적들과 기사들과 여러 가지 능력과 자기 뜻을 따라 성령이 나누어 주신 것들로 함께 증언하셨다고 기록합니다. 여기서 놀라운 것은 이 네 가지 증거를 두루뭉술하게 한 덩어리로 묶어 부르지 않고, 그리고라는 연결어를 일일이 덧붙여 가며 하나씩 손가락으로 세듯 나열하고 있다는 점입니다. 표적 하나, 기사 하나, 여러 능력 하나, 나누어 주심 하나를 각각 또렷하게 세어 놓음으로써 우리가 받은 구원이 막연한 감정이 아니라 삶 속에서 구체적으로 확인된 사건들 위에 서 있음을 보여 줍니다.</p>
+<p>그러면서도 이 마지막 구절은 마침표를 찍는 완결된 동사 없이, 하나님이 함께 증언하시면서라는 열린 분사 형태로 문장을 끝맺습니다. 앞 절에서 우리가 이같이 큰 구원을 등한히 여기면 어찌 피하리요라고 던진 물음 역시 이 단락 안에서는 어떤 대답도 얻지 못한 채 열린 물음표로 남아 있습니다. 결국 피할 수 없다는 절망의 단정도, 그래도 무조건 안전하다는 값싼 안심도 본문은 섣불리 적어 넣지 않습니다. 구체적으로 세어 둘 수 있는 든든한 증거들을 발아래 받쳐 주면서도, 물음과 증언을 끝내 열어 두어 오늘 우리가 그 말씀 앞에서 깨어 서 있게 만드는 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">혼자 듣지 못하는 밤에 서로의 귀가 되어 주는 공동체</h3>
+<p>이 본문의 문법이 우리라는 복수에 걸려 있다는 사실은, 오늘 몸과 마음이 지쳐 도저히 말씀에 주의를 쏟을 수 없는 이들에게 한 줄기 따뜻한 숨통을 틔워 줍니다. 깊은 병환으로 열이 오르는 밤을 지나는 이들에게, 끝없는 야간 교대근무와 가족 돌봄으로 잠이 조각난 이들에게 성경은 혼자서 결사적으로 말씀을 붙들라고 다그치지 않습니다. 내가 지쳐서 귀가 어두워진 날에는 내 곁에 있는 지체가 대신 말씀을 듣고 내 손에 쥐여 주며, 내가 깨어 있는 날에는 지친 형제의 몫까지 귀 기울여 들어 주는 것, 그것이 우리가 함께 들은 것에 붙어 있는 방식입니다.</p>
+<p>장부와 문서를 다루는 일상의 자리에서도 우리는 문서로 확증된 지시와 아직 구두로만 전해진 말을 어설프게 평균 내지 않고 정직하게 구분하여 적어 둡니다. 신앙의 가계부 또한 마찬가지입니다. 오늘 저녁 가족과 함께, 혹은 조용한 골방에서 내가 분명히 받은 은혜의 증거들과 내가 무심코 흘려보내고 등한히 여겼던 순간들을 정직하게 세어 봅니다. 본문이 답을 적어 넣지 않은 물음표를 내 조급한 결론으로 지워 버리지 않고, 그 거룩한 물음 앞에 겸손히 서서 이번 주 내가 대신 말씀을 들어 전해 줄 한 사람의 이름을 마음의 노트에 조용히 적어 봅니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

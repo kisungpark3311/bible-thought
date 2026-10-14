@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>축 늘어진 손과 무릎에 찾아온 복수의 부름, 주를 보는 거룩함의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 29편 &middot; 히브리서 12:12-17</span>
+      <h1>축 늘어진 손과 무릎에 찾아온 복수의 부름, 주를 보는 거룩함의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>오래 달린 사람의 몸에는 말보다 먼저 내려앉는 자리들이 있습니다. 설명할 기력조차 남지 않아 축 늘어진 손과, 체중을 온전히 버텨내지 못해 덜컥거리는 무릎입니다. 히브리서 12장 12절부터 17절까지의 말씀은 거창한 교리나 날 선 책망으로 문을 열지 않고, 바로 그 지친 몸의 부위들을 조용히 호명하며 시작합니다. 피곤한 손과 연약한 무릎을 일으켜 세우라는 이 첫 문장 앞에서 우리가 먼저 마주하는 것은, 성경이 우리의 상태를 기록하는 시선의 결입니다. 원문이 손과 무릎에 붙여 놓은 수식어들은 누가 그렇게 만들었는지 책임을 추궁하지 않습니다. 그저 오랜 세월과 무거운 걸음 끝에 이미 그렇게 풀리고 지쳐 버린 상태를 있는 그대로 적어 둘 뿐입니다. 본문이 비워 둔 책임의 자리에 섣부른 정죄나 자기 학대를 채워 넣지 않는 것, 아직 일어서지 못한 손과 무릎 한복판에 하나님의 부름이 먼저 도착했다는 사실을 받아들이는 것이 이 말씀을 읽는 첫걸음입니다.</p>
+<p>더욱 마음을 울리는 사실은 이 부름이 걸려 있는 인칭의 무게입니다. 이 단락 전체에서 듣는 이를 가리키는 말은 단 한 번도 너라는 단수로 서지 않고, 처음부터 끝까지 너희라는 복수로만 기록되어 있습니다. 축 늘어진 손을 다시 올리고 떨리는 무릎을 추스르라는 요청은, 골방에 홀로 남겨진 개인에게 네 힘으로 버텨내라고 던져진 외로운 명령이 아닙니다. 이미 기력이 다한 한 사람의 손을 곁에 선 다른 이들이 함께 붙들어 올리고, 절뚝거리는 다리가 어긋나지 않도록 서로의 보폭을 맞추어 길을 내라는 공동체 전체를 향한 부름입니다. 오늘 내 힘으로는 도무지 그 일을 해낼 수 없는 자리에 주저앉아 있다면, 미안하다는 변명이나 구차한 설명을 보태지 않고 누군가 나를 대신해 감당해 준 수고의 이름을 그 사람의 입을 통해 조용히 끝까지 듣는 것만으로도 우리는 이미 그 복수의 부름 안에 함께 서 있는 셈입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">화평과 바꾸어 쓸 수 없는 단 하나의 이름, 거룩함</h3>
+<p>일어선 걸음이 향해야 할 방향을 가리키며 본문은 모든 사람으로 더불어 화평함과 거룩함을 좇으라고 권면합니다. 그리고 곧바로 이것이 없이는 아무도 주를 보지 못하리라는 엄중한 문장을 이어 붙입니다. 우리말로만 읽으면 화평과 거룩함 두 가지 모두가 주님을 뵙는 조건처럼 보이지만, 헬라어 원문의 문법은 놀라울 만큼 정확한 눈금으로 그 자리를 갈라 놓습니다. 뒤따라오는 이것이라는 관계대명사는 오직 단수 명사인 거룩함, 곧 하기아스모스 하나만을 가리킵니다. 모든 사람과 화평을 누리는 일도 마땅히 추구해야 할 귀한 걸음이지만, 정작 주님의 얼굴을 마주 보는 일에 직접 묶여 있는 낱말은 거룩함 하나뿐이라는 뜻입니다. 성경은 결코 거룩함을 좋은 관계나 평화로운 분위기와 같은 말로 흐려 놓지 않습니다.</p>
+<p>그러면서도 본문은 이 문장을 네가 이만큼의 자격을 갖추면 주를 보여 주겠다는 식의 조건문으로 만들지 않습니다. 이 단락에는 조건을 표시하는 문법 형태가 단 한 개도 쓰이지 않았습니다. 주님을 보는 일은 우리가 도덕적 총량을 채워 획득하는 거래의 보상이 아니라, 거룩함이라는 길을 따라 걸어가는 이들이 마침내 마주하게 될 약속의 자리입니다. 동시에 이 여섯 절의 범위는 그 거룩함을 누가 어떻게 우리에게 주시는지까지 미리 다 설명해 버리지 않고, 주를 보는 일이 아직 우리 앞에 놓여 있다는 긴장을 그대로 유지합니다. 본문이 말하지 않은 인간의 무능을 억지로 지어내어 빈칸을 메우려 하기보다, 화평이라는 이름으로 거룩함의 고유한 자리를 대체하지 않겠다는 정직한 고백이 우리에게 필요합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">나무라는 말 없이 갈라 놓은 단 한 끼와 복수의 명분</h3>
+<p>이어지는 15절부터 본문에는 직접 명령하는 동사가 하나도 등장하지 않고, 대신 돌아보라는 분사 하나와 함께 한 사람의 옛 거래 이야기가 조용히 펼쳐집니다. 한 그릇 식물을 위하여 장자의 명분을 판 에서의 이야기입니다. 놀랍게도 성경은 이 거래를 기록하면서 어리석다거나 망령되다거나 아깝다는 식의 평가하는 형용사를 단 한 글자도 덧붙이지 않습니다. 대신 원문은 오직 숫자의 대비만으로 그 거래의 실상을 우리 눈앞에 올려놓습니다. 에서가 넘겨준 장자의 명분, 곧 프로토토키아는 복수형으로 적혀 있고, 그가 맞바꾸어 치른 값인 한 끼 식물, 안티 브로세오스 미아스는 단수형으로 적혀 있습니다. 셀 수 없이 겹쳐진 복수의 기업을 단 한 번의 끼니와 바꾼 셈입니다.</p>
+<p>본문이 나무라는 말 대신 수만 갈라 둔 이유는, 저울에 올려 무게를 달아 보는 그 셈을 읽는 우리 자신의 몫으로 남겨 두기 위함입니다. 인생의 어긋난 거래는 그것을 넘기는 바로 그 순간에는 좀처럼 모양이 보이지 않습니다. 당장의 허기와 눈앞의 시급함에 쫓겨 도장을 찍고 손을 넘길 때는 단수 하나가 전부처럼 보이지만, 시간이 흐르고 난 뒤에야 내가 내어준 것이 실은 복수의 명분이었음이 뼈아프게 드러납니다. 숫자가 매일 갈리고 뒤바뀌는 일터와 삶의 현장에서 우리가 던져야 할 질문도 바로 여기에 있습니다. 장부 위의 숫자를 조정하고 눈앞의 이익을 계산할 때, 이 선택으로 인해 상대방과 내가 실제로 잃어버리는 복수의 가치는 무엇인지 묻는 사람이 되어야 합니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">눈물로도 되돌리지 못한 자리 앞에서 몸으로 걷는 길</h3>
+<p>단락의 마지막 절인 17절은 세 개의 동사로 걸어가며 깊은 침묵을 남깁니다. 너희가 아는 바와 같이, 그가 버린 바가 되어, 회개할 기회를 얻지 못하였다는 세 마디입니다. 번역된 문장으로는 한 사람의 비극적인 사연처럼 한 줄로 흘러가지만, 원문에서 이 세 동사의 주체는 서로 다릅니다. 첫째 동사인 안다는 말은 이 글을 함께 읽고 있는 복수의 공동체를 가리키고, 둘째 동사인 버린 바 되었다는 말은 누가 그렇게 했는지 주체를 밝히지 않은 수동태로 서 있으며, 셋째 동사인 찾지 못했다는 말은 에서 한 사람이 마침내 돌이킬 자리, 곧 토폰을 발견하지 못했음을 가리킵니다. 그는 뒤늦게 눈물을 흘리며 구했으나, 눈물이라는 전치사구 하나가 이미 넘어간 자리를 되찾아 주지는 못했습니다. 성경은 눈물을 만능의 보증수표로 세지 않으며, 동시에 그가 눈물로 구한 그것이 축복인지 회개인지 문법적으로 열려 있는 자리를 섣불리 닫아 한 사람의 영원한 구원 여부를 함부로 재단하지도 않습니다.</p>
+<p>오늘 말씀은 손과 무릎, 발과 길, 한 끼의 음식과 눈물을 마음속의 추상적인 다짐 하나로 뭉뚱그리지 않고 하나씩 몸의 자리에 따로 놓아두었습니다. 그러므로 이 말씀을 받은 우리의 응답 역시 머릿속의 결심이 아니라 몸으로 시간과 거리를 들이는 걸음이어야 합니다. 이번 한 주간, 내 힘으로 설 수 없을 때는 곁의 지체가 대신해 준 일의 이름을 겸손히 듣고, 숫자가 갈리는 일터에서는 잃어버리는 것의 무게를 먼저 물으며, 돌봐야 할 이들 가운데 가장 멀리 떨어진 이의 집을 전화 한 통으로 대신하지 않고 두 발로 직접 찾아가는 우리가 되기를 소망합니다. 이미 지쳐 버린 우리의 손과 무릎 위로 찾아오신 주님의 부름을 함께 붙들고, 화평 너머 주님을 뵙는 거룩함의 자리를 향해 오늘의 한 걸음을 내딛습니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 29편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

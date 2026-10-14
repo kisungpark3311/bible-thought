@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>오르라는 명령 대신 이미 이르렀다 적어 주신 시온의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 히브리서 제 30편 &middot; 히브리서 12:18-24</span>
+      <h1>오르라는 명령 대신 이미 이르렀다 적어 주신 시온의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>숨이 턱끝까지 차오르는 가파른 비탈길 앞에서 누군가 우리에게 저 꼭대기까지 기어코 올라오라고 소리친다면, 이미 걸음을 옮길 힘조차 바닥난 사람은 그 자리에서 주저앉고 말 것입니다. 그런데 히브리서 12장 18절부터 24절까지의 말씀은 우리의 예상을 완전히 뒤집는 문장으로 문을 엽니다. 일곱 절에 걸쳐 숨 가쁘게 펼쳐지는 이 장엄한 단락에는 그렇게 살라거나 그리로 올라가라는 명령형 동사가 단 한 번도 등장하지 않습니다. 대신 18절과 22절의 중심을 단단히 붙들고 있는 동사는 프로셀렐뤼타테, 곧 너희가 이미 이르렀다는 완료형 선언 하나뿐입니다. 우리가 아직 떨리는 다리로 제자리를 맴돌고 있는 것 같은 날에도, 성경은 우리를 향해 어서 자격을 갖추어 도달하라고 채근하지 않고 너희가 이미 그 자리에 와 있다고 먼저 도장을 찍어 줍니다.</p>
+<p>본문은 우리가 이르지 않은 옛 자리와 이미 이르러 서 있는 새 자리를 두 더미의 목록으로 마주 세웁니다. 앞선 18절과 19절의 목록에는 만질 만한 것과 타오르는 불, 흑운과 흑암과 폭풍, 나팔 소리와 말씀의 소리가 잇달아 쏟아집니다. 흥미롭게도 우리말 성경이 불 붙는 산이라고 옮긴 자리에 원문에는 산이라는 명사가 아예 적혀 있지 않습니다. 그저 손에 닿을 듯 타오르는 두려운 현상들이 이름조차 없이 여섯 혹은 일곱 갈래로 나열될 뿐입니다. 반면 22절부터 펼쳐지는 우리가 이미 도착한 자리의 목록에는 비로소 구체적인 지명과 인명들이 선명하게 등장합니다. 시온 산과 살아 계신 하나님의 도성인 하늘의 예루살렘, 천만 천사와 하늘에 기록된 장자들의 총회, 만민의 심판자이신 하나님과 온전하게 된 의인의 영들, 그리고 새 언약의 중보자이신 예수와 뿌린 피까지 여덟 항목이 한 줄로 나란히 적혀 있습니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">더 듣지 않기를 청하던 떨림조차 내치지 않는 말씀</h3>
+<p>두 더미의 목록을 가만히 들여다보면, 성경이 인간의 두려움과 연약함을 다루는 방식에서 깊은 위로를 얻게 됩니다. 앞선 더미에서 가장 긴 문장인 19절은 그 위엄찬 소리를 듣던 이들이 더 말씀하지 않기를 간절히 구했다는 사실을 기록합니다. 원문의 파레테산토라는 단어는 청한 사람 자신의 절박함이 고스란히 되걸리는 형태인데, 성경은 말씀을 감당하지 못해 귀를 막고 물러서려 했던 사람들의 그 연약한 간청을 한 줄로 가볍게 무시하지 않고 가장 긴 절을 할애하여 정중하게 적어 두었습니다. 이어지는 20절과 21절은 단락에서 가장 짧은 두 절로 옛 기록을 인용하는데, 거기에는 모세조차 내가 심히 두렵고 떨린다며 고백했던 세 단어가 한 절 안에 고스란히 모여 있습니다.</p>
+<p>원문의 문법은 그 두려움의 단어 셋 중 하나는 눈에 보이는 광경의 무서움에 걸어 두고, 나머지 둘은 말을 꺼낸 사람 자신의 떨림에 걸어 둡니다. 하나님의 말씀을 먼저 받아 전하는 자리에 섰던 사람조차 온몸이 흔들리는 두려움을 겪었다는 사실이 성경 안에 지워지지 않고 남아 있는 것입니다. 물론 히브리서 전체에서 새 언약의 중보자라는 직분은 오직 예수 그리스도 한 분에게만 세 차례 쓰이기에 모세의 떨림을 중보자의 자리로 오해해서는 안 되지만, 동시에 본문은 그 떨림을 믿음이 부족해 어서 벗어버려야 할 부끄러운 미성숙으로 취급하지도 않습니다. 오늘 삶의 무게와 말씀의 엄중함 앞에서 더 듣기가 두려워 움츠러든 마음이라 할지라도, 주님은 그 떨리는 마음을 문밖으로 내치지 않으십니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">열네 개의 목록 끝에서 한 사람을 콕 짚어 세우는 손가락</h3>
+<p>이 일곱 절의 원문을 따라 읽다 보면 문법이 만들어 내는 놀라운 시선의 집중을 경험하게 됩니다. 헬라어에는 명사 앞에 붙어 대상을 또렷이 짚어 주는 정관사, 곧 우리말의 그에 해당하는 작은 낱말이 있습니다. 그런데 앞선 더미의 여섯 항목과 뒤따르는 더미의 여덟 항목을 합친 열네 개의 거대한 목록 머리에는 그 정관사가 단 한 번도 붙지 않습니다. 불도, 폭풍도, 시온 산도, 하늘의 예루살렘도, 심지어 천만 천사와 심판자이신 하나님이라는 표현 앞에도 짚어 주는 관사 없이 숨 가쁜 여격의 사슬로 쏟아져 내립니다. 그러다 마침내 마지막 24절의 맨 끝자락, 비교의 자리에 이르러서야 단 하나의 정관사가 등장하여 한 사람의 이름을 콕 짚어 냅니다. 바로 톤 하벨, 그 아벨입니다.</p>
+<p>우리말 번역은 아벨의 피보다 더 낫게 말하는 뿌린 피라고 옮겨 피와 피를 나란히 비교한 것처럼 읽히지만, 원문의 비교 칸에는 피라는 단어가 없이 오직 그 아벨이라는 사람 이름 하나만 서 있습니다. 땅에서 억울하게 피 흘려 죽어간 그 한 사람, 인류의 첫 상실과 아픔을 간직한 그 이름을 성경은 잊지 않고 유일한 정관사로 또렷이 짚어 준 것입니다. 그리고 그 옆에 새 언약의 중보자이신 예수와 아벨보다 더 낫게 말하는 뿌린 피를 나란히 세워 둡니다. 더 낫게 말한다는 분사 랄룬티가 문법적으로 바로 앞의 뿌린 피에 걸리는지 아니면 일곱째 칸의 예수라는 이름에 걸리는지는 원문이 두 갈래로 열어 두었으나, 어느 쪽으로 읽든 분명한 사실은 하나입니다. 억울함과 죽음으로 닫혔던 아벨의 자리 너머에서, 우리를 살리고 용서하시는 더 나은 말씀이 지금도 그치지 않고 울려 퍼지고 있다는 것입니다.</p>
+<h3 style="color: #173f35; border-bottom: 2px solid #b7863c; padding-bottom: 8px; margin-top: 40px;">이미 도착한 사람이 오늘 걸어가는 가장 짧은 한 걸음</h3>
+<p>우리는 흔히 신앙을 아직 도달하지 못한 먼 산을 향해 끊임없이 나를 채찍질하는 등반으로 생각하곤 합니다. 그러나 히브리서가 우리에게 들려주는 복음은 우리가 이미 살아 계신 하나님의 도성과 심판하시는 하나님과 새 언약의 중보자 예수께서 한 줄로 서 계신 그 자리에 도착해 있다는 선언입니다. 번역어의 표면만 따라가며 나아간다는 단어의 횟수만 세다 보면 정작 너희가 이미 이르렀다고 선언하는 이 유일한 두 자리가 셈에서 통째로 빠져버리기 쉽지만, 우리의 구원과 일상은 바로 이 이미 이르렀다는 완료형 은혜 위에 서 있습니다.</p>
+<p>그러므로 오늘 몸과 마음이 지쳐 한 걸음도 내딛기 힘든 분이 계시다면, 멀리 가려고 애쓰지 말고 방에서 창가까지든 문 앞까지든 내가 걸을 수 있는 가장 짧은 거리를 한 번 걸어 보시기 바랍니다. 그 짧은 걸음으로도 충분한 까닭은 주님이 우리에게 이르라고 명령하신 것이 아니라 이미 이르렀다고 적어 주셨기 때문입니다. 결산과 마감으로 숨 돌릴 틈 없이 서서 버티는 일터에 계신 분이라면 오늘 가장 바쁜 시간 한 칸을 떼어 의자에 끝까지 깊숙이 앉아 일을 처리해 보시고, 누군가를 돌보는 자리에 계신 분이라면 더 듣기조차 버거워하는 한 사람 앞에 마주 앉아 그가 말을 다 마칠 때까지 내 답을 얹지 않고 끝까지 들어 주시기 바랍니다. 우리가 이미 도착한 하늘의 도성은 그렇게 한 걸음을 걷고, 한 자리에 앉으며, 한 사람의 떨리는 목소리를 끝까지 들어 주는 오늘의 자리에서 조용히 빛을 발합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      히브리서 제 30편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
