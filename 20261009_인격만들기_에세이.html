@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>답이 없는 자리에서 피어난 청원: 진정한 성경적 인격의 탄생</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">성경적 사고와 인격 만들기 &middot; 2026년 10월 09일 &middot; 역대상 21:9-17</span>
+      <h1>답이 없는 자리에서 피어난 청원: 진정한 성경적 인격의 탄생</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생을 살다 보면 도무지 이해할 수 없는 재난이나 고통 앞에서 "도대체 왜 이런 일이 일어났습니까?" 하고 묻게 되는 순간이 있습니다. 우리는 본능적으로 납득할 만한 '이유'와 '명확한 답'을 찾으려 애를 씁니다. 하지만 성경의 기록들을 가만히 들여다보면, 우리의 간절한 물음 뒤에 아무런 답이 오지 않는 낯선 장면을 마주하게 됩니다. 구약성경 역대상 21장, 다윗 왕이 오르난의 타작마당에서 이스라엘 전역을 휩쓰는 무서운 전염병을 마주했을 때의 일입니다.</p>
+<p>다윗의 인구조사로 시작된 이 재난 앞에서, 무려 칠만 명의 백성이 목숨을 잃습니다. 칼을 빼어 든 천사가 예루살렘을 향해 서 있는 절체절명의 위기 앞에서 다윗과 장로들은 굵은 베옷을 입고 얼굴을 땅에 대며 엎드립니다. 그리고 하늘을 향해 피 끓는 자백과 함께 질문을 던집니다. "명령하여 백성을 계수하게 한 자가 내가 아니니이까 범죄하고 악을 행한 자는 곧 나이니이다 이 양 떼는 무엇을 행하였나이까?" 자신이 잘못을 저질렀는데, 왜 죄 없는 백성들이 이 끔찍한 고통을 받아야 하느냐는 뼈아픈 항변이었습니다.</p>
+<h3 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-top: 35px; font-weight: 900; font-size: 1.3em;">답이 오지 않는 침묵, 새로운 문이 열리는 자리</h3>
+<p>우리의 일상적인 상식이라면, 이런 절박한 질문 뒤에는 마땅히 해명이 따라와야 합니다. "이 고통은 누구의 잘못 때문이다" 혹은 "이런 영적인 이유가 있다"는 식으로 말입니다. 그러나 하늘은 철저히 침묵합니다. 그들의 잘못이 무엇인지, 이 재난이 왜 이토록 혹독한지에 대한 어떠한 답도 주어지지 않습니다. 우리는 흔히 기도의 자리에서 경험하는 하늘의 침묵을 거절이나 결핍으로 여깁니다. 그러나 이 본문을 깊이 들여다보면, 이 침묵은 단순한 단절이 아님을 깨닫게 됩니다.</p>
+<p>만약 하늘에서 "누구의 책임이다"라는 분명한 판결이 내려왔다면 어떻게 되었을까요? 아마도 모든 상황은 차가운 책임 전가와 변명으로 끝났을 것입니다. 물음표 뒤에 섣부른 답이 오지 않았기에, 오히려 전혀 다른 종류의 대화가 시작됩니다. 하늘의 침묵으로 인해 비워진 그 여백은 스스로를 던지는 위대한 '청원'이 들어설 거룩한 공간이 됩니다. 답을 얻지 못한 사람이 스스로 그 빈칸을 사랑과 헌신으로 채워 넣을 수 있는 조건이 완성된 것입니다.</p>
+<h3 style="color: #8e44ad; border-bottom: 2px solid #9b59b6; padding-bottom: 8px; margin-top: 35px; font-weight: 900; font-size: 1.3em;">재앙의 크기를 줄이지 않고, 고지서의 주소를 바꾸다</h3>
+<p>침묵의 빈칸을 채운 것은 다윗의 이 한마디였습니다. "청하건대 나의 하나님 여호와여 주의 손이 나와 내 아버지의 집을 치시고 주의 백성에게 재앙을 내리지 마옵소서."</p>
+<p>우리는 흔히 고통의 순간에 직면하면 "재앙의 크기를 줄여달라"거나 "벌을 가볍게 해달라"고 간구합니다. 이른바 '감형'을 요청하는 것입니다. 하지만 놀랍게도 다윗의 기도에는 무서운 재앙을 당장 "거두소서"라거나 "깎아주소서"라는 말이 없습니다. 그는 다가오는 심판의 크기나 무게를 줄여달라고 하늘과 흥정하지 않습니다. 대신, 그 무서운 재앙이 닿을 '수신처'를 바꾸어 달라고 간구합니다.</p>
+<p>이것은 마치 누군가 반드시 짊어져야 할 거대한 세금 고지서에서, 납부해야 할 금액 자체는 1원도 깎지 않은 채 수취인의 이름표만 떼어내고 자신의 이름을 꾹꾹 눌러쓰는 것과 같습니다. 성경이 말하는 중보(仲保)란 단순한 동정심이나 연민이 아닙니다. 비극적인 재난이 쏟아지는 문장의 '목적어 칸'에서 타인의 이름을 지우고, 그 자리에 기꺼이 자기 이름을 적어 넣는 숭고한 행위입니다.</p>
+<h3 style="color: #d35400; border-bottom: 2px solid #e67e22; padding-bottom: 8px; margin-top: 35px; font-weight: 900; font-size: 1.3em;">내밀 수 없는 두 손, 온몸으로 받아내는 십자가의 사랑</h3>
+<p>이 고결한 청원의 순간을 신체적인 감각으로 눈앞에 그려보십시오. 다윗은 베옷을 입고 얼굴을 완전히 땅에 댄 채 엎드려 있었습니다. 몸의 자세가 주는 메시지는 강렬합니다. 얼굴을 땅에 대고 두 손을 바닥에 짚은 자세에서는 하늘을 향해 무엇을 달라고 손을 뻗을 수도, 다가오는 재앙을 막으려 손을 휘두를 수도 없습니다. 자기 자신을 방어할 수 있는 모든 수단을 내려놓은, 가장 무력하고 전적으로 낮아진 자세입니다.</p>
+<p>손을 쓸 수 없는 그 완전한 엎드림 속에서 그가 "주의 손이 내게 있게 하소서"라고 말할 때, 그것은 더 이상 안전한 자리에서 건네는 악수나 계산된 거래가 아닙니다. 그것은 자신의 '온몸'을 징벌의 과녁으로 내어놓는 일입니다. 백성들을 향해 "이 양 떼가 무엇을 했습니까"라고 울부짖던 다윗의 마음은, 시대를 건너뛰어 위대한 신학적 울림을 만들어냅니다. 목자가 양을 대신해 재앙의 손길을 온몸으로 받아내려는 이 모습은, 훗날 잃어버린 양을 굽어살피시는 에스겔서의 하나님을 지나, 양들을 위해 기꺼이 자기 목숨을 버리시는 요한복음 10장의 '선한 목자' 예수 그리스도의 십자가로 아름답게 이어집니다.</p>
+<h3 style="color: #27ae60; border-bottom: 2px solid #2ecc71; padding-bottom: 8px; margin-top: 35px; font-weight: 900; font-size: 1.3em;">왜라는 질문을 넘어, 나를 내어주는 인격으로의 초대</h3>
+<p>흥미롭게도 역대상의 이 짧은 기록은, 다윗의 이 엄청난 청원이 곧바로 받아들여졌는지 결과를 서둘러 적지 않습니다. 마치 청원 그 자체가 지니는 가치를 오래도록 묵상하라는 듯, 응답 없는 하늘 아래서 기꺼이 자신을 재앙의 목적어 칸에 써 넣은 한 사람의 모습을 가만히 비출 뿐입니다.</p>
+<p>우리의 일상 속에서도 이유를 알 수 없는 고난과 도무지 답을 찾을 수 없는 억울한 순간들이 찾아옵니다. 그때 우리는 더 이상 "도대체 왜 나에게 이런 일이 생기느냐"고 묻는 데에만 머물러서는 안 됩니다. 진정한 성경적 사고와 성숙한 인격은, 아무런 답이 오지 않는 그 캄캄한 빈칸 속에서 타인의 책임을 묻고 원망하는 대신 "내가 그 짐을 지겠습니다"라고 묵묵히 주소란을 고쳐 쓰는 자리에서 빚어집니다.</p>
+<p>누군가를 위해 기꺼이 나의 자리를 내어주는 것, 타인의 고통을 내 몫으로 껴안는 것. 꽉 쥔 두 손을 풀고 온몸으로 그 무게를 감당해 내려 할 때, 비로소 우리의 삶은 세상을 살리는 가장 감동적이고 강력한 기도가 될 것입니다. 텅 빈 해답의 자리를 희생의 사랑으로 채우는 것, 그것이 바로 성경이 우리에게 보여주는 가장 온전한 인격의 완성입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 10월 09일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
