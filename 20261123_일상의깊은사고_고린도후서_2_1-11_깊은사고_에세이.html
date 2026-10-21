@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>법정의 저울을 내려놓고 그리스도의 얼굴 앞에 남겨 둔 한 뼘의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 23일 &middot; 고린도후서 2:1-11</span>
+      <h1>법정의 저울을 내려놓고 그리스도의 얼굴 앞에 남겨 둔 한 뼘의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>누군가의 잘못으로 공동체에 깊은 상처가 남았을 때, 우리는 본능적으로 정확한 시시비비와 합당한 징계의 절차를 먼저 떠올립니다. 누가 무슨 잘못을 저질렀는지 실명을 기록하고, 그 죄의 무게에 상응하는 처벌이 충분히 이루어졌는지 법정의 저울로 달아보려 하는 것입니다. 그러나 고린도후서 2장 1절부터 11절까지 이어지는 사도 바울의 편지는 상처 입은 공동체를 다루는 전혀 다른 문법을 보여줍니다. 바울은 먼저 다시는 근심 중에 너희에게 나아가지 않기로 스스로 결심했다며 <strong>자신이 걸어가려던 추궁의 발걸음부터 조용히 거두어들입니다</strong>. 많은 눈물로 편지를 썼던 이유 또한 상대를 아프게 하려는 데 있지 않고, 오직 넘치는 사랑이 있음을 알게 하려는 데 있었다고 고백하며 마음의 문을 엽니다.</p>
+<h3>명령을 입지 않은 용서와 은혜에서 태어난 한 단어</h3>
+<p>이 열한 절의 말씀 속에서 가장 놀라운 대목은 다섯째 절부터 등장하는 한 사람을 부르는 성경의 방식입니다. 공동체 전체를 근심하게 만들었던 장본인이 등장하는데, 본문에는 <strong>그 사람의 이름도 적혀 있지 않고 그가 구체적으로 무슨 잘못을 저질렀는지 죄목을 가리키는 단어조차 단 하나도 나오지 않습니다</strong>. 성경은 그를 오직 이러한 사람이라는 대명사로만 조심스럽게 부릅니다. 심지어 헬라어 원문 판본의 문단 시작 표지와 우리말 성경의 소제목조차 단락의 맨 처음인 1절이 아니라 이 사람이 등장하는 5절 안쪽을 가리키고 있어서, 어디서부터가 사도의 개인 안부이고 어디서부터가 공동체의 문제인지 경계선조차 모호하게 흐려 놓았습니다.</p>
+<p>더욱 깊은 울림을 주는 것은 7절과 10절에 걸쳐 네 번이나 쏟아지는 용서라는 단어의 생김새입니다. 특히 10절 한 절에만 용서한다는 동사가 세 번이나 연달아 놓이는데, 신약 성경 스물일곱 권 전체에서 이 동사가 한 절에 세 번 등장하는 곳은 오직 여기뿐입니다. 그런데 그토록 간절하게 용서를 말하면서도, <strong>이 단락에는 상대방에게 용서하라고 강제로 지시하는 명령형 동사가 단 하나도 쓰이지 않았습니다</strong>. 바울이 사용한 유일한 본동사는 내가 너희에게 권한다는 일인칭의 부드러운 호소뿐입니다. 게다가 바울은 신약 성경에서 빚을 탕감해 주거나 법적 죄를 사면할 때 흔히 쓰는 다섯 가지 표준적인 용서 어휘를 고린도후서 전체에서 단 한 번도 쓰지 않습니다. 대신 그가 선택한 단어는 카리조마이, 곧 <strong>은혜를 뜻하는 카리스와 똑같은 뿌리에서 태어나 자기 마음에서 우러나오는 호의를 거저 건넨다는 뜻의 동사뿐</strong>입니다. 용서는 법정의 사면 절차를 집행하는 일이 아니라, 내가 먼저 받은 은혜와 똑같은 이름을 가진 선물을 내 안에서 꺼내어 건네는 일이기 때문입니다.</p>
+<h3>비어 있는 세 자리와 그리스도의 얼굴 앞이라는 좌표</h3>
+<p>본문은 우리가 습관적으로 채워 넣으려는 판단의 칸들을 세 군데나 의도적으로 비워 둡니다. 첫째로, 이러한 사람은 많은 사람에게서 벌 받는 것이 마땅하다는 6절 원문에는 동사가 아예 없고 오직 충분한이라는 단어 하나만 서술어로 놓여 있습니다. 그래서 개역한글은 벌 받은 것이 족하도다라고 과거의 완료로 옮겼고, 개역개정은 벌 받는 것이 마땅하도다라고 현재의 당위로 옮겼습니다. <strong>처벌이 이미 충분했는지 아니면 마땅한 것인지 성경이 일부러 동사를 비워 두어, 사람의 손으로 벌의 양을 재는 저울질을 멈추게 하신 것</strong>입니다.</p>
+<p>둘째로, 7절에서 그 사람이 너무 많은 근심에 잠겨 삼켜질까 두렵다고 할 때, 그를 삼키는 행위자의 자리가 텅 비어 있습니다. 무엇이 그를 무너지게 했는지 원인을 지목하지 않는 것입니다. 셋째로, 6절과 7절과 8절에서 용서하고 위로하며 사랑을 확정해야 할 대상은 원문에서 줄곧 단수, 곧 그 한 사람을 가리키는데, 우리말 번역은 8절을 그들에게라는 복수로 옮겨 놓았습니다. 한 사람의 아픔을 집단의 범주로 뭉뚱그리지 않고 끝내 그 한 사람을 향해 시선을 맞추는 것이 원문의 마음입니다. 흥미롭게도 이 열한 절에는 하나님이라는 단어가 단 한 번도 등장하지 않지만, 10절 끝에 <strong>용서가 일어나는 단 하나의 정확한 좌표가 찍혀 있습니다. 바로 그리스도 앞에서, 원어의 뜻 그대로 그리스도의 얼굴 앞에서</strong>입니다. 사탄의 계책은 거창한 분열이 아니라 바로 이 한 사람의 자리를 셈에서 지워 버리고 끝없는 정죄의 근심 속에 삼켜지게 만드는 데서 작동합니다.</p>
+<h3>두 손 사이에 남겨 두는 한 뼘의 여백</h3>
+<p>그러니 혹시 지금 누군가를 용서할 자리가 아니라, 잘못을 저지르고 할 말을 잃어 스스로를 변호할 문장조차 남지 않은 채 용서를 기다리는 자리에 서 계신 분이 있다면 이 본문의 침묵에 귀를 기울여 보십시오. 성경은 당신에게 너의 잘못을 해명하라고 어떤 명령도 내리지 않습니다. 오늘 당신이 할 수 있는 일은 두 손을 맞붙여 무언가를 억지로 담아내려 애쓰는 대신, <strong>두 손 사이를 한 뼘쯤 가만히 벌려 둔 채 그대로 두는 것</strong>입니다. 그 비어 있는 한 뼘의 간격이 아직 건네받지 못한 은혜의 크기이며, 주님은 그 빈자리를 당신의 변명으로 채우라고 다그치지 않으십니다.</p>
+<p>공동체를 돌보는 목회 현장에서는 한 사람의 몫을 집단의 범주로 쉽게 넘겨 버리지 않는 세심함이 필요합니다. 원문이 그들에게가 아니라 그 한 사람에게 사랑을 확정하라고 적었듯, 이번 주 예배당에서 회중을 바라볼 때 줄을 빽빽하게 좁혀 앉히는 대신 <strong>나란히 앉은 두 사람 사이에 빈자리 하나를 일부러 남겨 두어 보십시오</strong>. 이름도 죄목도 적히지 않은 그 한 사람을 위해 비워 둔 그 자리가 바로 사탄의 계책을 무너뜨리는 은혜의 자리입니다. 또한 숫자의 오차를 다루는 세무와 회계의 일터에서는, 두 숫자의 차이를 설명 없이 억지로 붙여 맞추려는 유혹을 이겨내야 합니다. 장부를 닫기 전에 두 줄을 하나로 합치는 대신 <strong>일부러 한 줄을 비워 띄워 두고, 그 빈 줄에 차액과 날짜를 있는 그대로 정직하게 적어 두십시오</strong>. 돈과 기한은 누군가 몸으로 치러야 하는 물질이기에, 비어 있는 차이를 말로 가리지 않는 정직함이 곧 사람을 살리는 길입니다.</p>
+<p>마지막으로 가정과 일상의 자리에서 가족 중 누군가가 깊은 근심에 잠겨 있을 때, 도대체 무엇 때문에 저러는지 원인을 지목하여 빈칸을 채우려는 조급함을 내려놓으시기 바랍니다. 오늘 집 안의 가구를 정리할 때 침대를 벽에 바짝 밀어붙여 틈을 없애는 대신, <strong>침대와 벽 사이에 손 하나가 들어갈 만큼의 틈을 그대로 남겨 두어 보십시오</strong>. 그 틈새로 손을 집어넣어 무엇이 떨어져 있는지 기어이 확인하지 않는 연습이, 곧 타인의 아픔에 함부로 원인의 이름을 붙여 정죄하지 않는 연습입니다. 열한 절을 다 읽고 난 뒤 우리 손에 남는 것은 정죄의 칼도 법정의 저울도 아닌 따뜻한 한 뼘의 여백입니다. <strong>오늘 우리가 비워 둔 그 한 뼘의 자리를 내 판단으로 채우지 않을 때, 우리는 비로소 그리스도의 얼굴 앞에서 서로를 살리는 은혜의 통로로 서게 됩니다</strong>.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 23일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

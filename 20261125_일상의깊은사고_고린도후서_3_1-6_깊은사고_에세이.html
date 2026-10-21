@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>종이 추천서 대신 살의 마음판에 새겨진 당신이라는 편지</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 25일 &middot; 고린도후서 3:1-6</span>
+      <h1>종이 추천서 대신 살의 마음판에 새겨진 당신이라는 편지</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>먹과 돌판이 아닌, 살아 계신 영으로 마음판에 쓰인 삶</h3>
+<p>세상은 끊임없이 우리에게 종이로 된 증빙을 요구합니다. 내가 누구인지, 그동안 어떤 성과를 거두었는지, 얼마나 쓸모 있는 사람인지를 증명할 추천서와 경력 기술서를 내밀라고 다그칩니다. 고린도후서 3장이 열릴 때 사도 바울 역시 두 번의 물음표를 던지며 이야기를 시작합니다. 우리가 다시 자천하기를 시작하겠느냐고, 어찌 어떤 사람들처럼 추천서를 너희에게 부치거나 받을 필요가 있겠느냐고 묻습니다. 놀랍게도 성경은 그 물음 뒤에 또 다른 종이 문서나 화려한 이력서를 내놓지 않습니다. 대신 <strong>증빙의 자리에 문서가 아닌 살아 있는 사람</strong>을 조용히 올려놓습니다. <strong>너희는 우리의 편지라</strong>는 선언이 바로 그것입니다.</p>
+<p>더욱 눈여겨볼 대목은 이 여섯 절 안에 책이나 성경, 혹은 예언자를 가리키는 단어가 단 한 번도 등장하지 않는다는 사실입니다. 문서를 인용할 때 쓰는 상투적인 표현조차 전혀 없는데도, 본문은 분명히 <strong>뭇 사람이 알고 읽는 바</strong>라고 말하며 읽는다는 동사를 사용합니다. 세상이 읽고 있는 대상이 종이 위 활자가 아니라 바로 당신이라는 사람 자체라는 뜻입니다. 그렇다면 도대체 누가, 무엇으로 그 인생이라는 편지에 글자를 새겨 넣었을까요. 원문의 문법은 수단과 바탕을 가리키는 아홉 개의 격 표현을 오직 2절과 3절 두 구절에 전부 모아 두면서, <strong>무엇을 재료로 삼고 무엇을 바탕으로 삼았는가</strong>라는 단 하나의 질문으로 우리의 시선을 이끕니다.</p>
+<p>먹은 마르면 차가운 글자를 남기고, 돌은 한 번 패인 자국을 단단하게 품은 채 변하지 않습니다. 그러나 바울은 차가운 먹(멜란)이 아니라 <strong>살아 계신 하나님의 영</strong>으로 썼고, 굳어버린 돌판(플락스)이 아니라 <strong>육의 마음판, 곧 살결처럼 부드러운 마음판</strong>에 썼다고 고백합니다. 우리말 성경은 쓴 것이라는 말을 네 번이나 되풀이하며 나누어 옮겼지만, 헬라어 원문은 단 하나의 분사 형태(새겨져 있는)로 그 네 구절을 한꺼번에 묶어 냅니다. 먹이 아니라 영으로, 돌판이 아니라 살의 마음판에 새겨진 그 일이 조각조각 쪼개진 사건이 아니라 <strong>하나님의 영이 단번에 이루신 하나의 통전적인 사건</strong>임을 문법의 결로 보여 주는 것입니다.</p>
+<h3>죽이는 조문과 살리는 영, 사람의 손에서 떠난 생명의 주권</h3>
+<p>지금 몸이 굳어 움직임이 더디고, 내 손으로 무언가를 해 보일 수 없어 작아지는 분들에게 이 본문은 유독 따뜻한 위로로 다가옵니다. 2절과 3절에 등장하는 상태의 표현들이 모두 <strong>능동이 아닌 받음의 형태(수동태)</strong>로 놓여 있고, 스스로 움직이는 능동의 자리는 오직 <strong>살아 계신 하나님</strong>을 수식할 때만 쓰이기 때문입니다. 하나님 앞에서 우리의 증빙은 우리가 땀 흘려 제출한 실적표가 아니라, 하나님의 영이 글을 써 내려가신 우리 존재 자체입니다. 오늘 손발이 무거운 분이라면 무거운 쇠 문진을 굳이 손으로 들어 올리려 애쓰지 않고 <strong>쇠 문진의 무게를 눈으로만 가늠해 보는 일</strong>로 충분합니다. 무게를 헤아리는 데에는 굳은 손의 힘이 필요하지 않듯, 경력을 적은 종이를 봉투에 챙기는 목회 현장에서도 종이를 더 모으는 대신 <strong>녹이 앉은 경첩에 기름 한 방울을 떨어뜨리는 일</strong>처럼 증빙의 주인이 내가 아님을 기억하는 숨 고르기가 먼저입니다.</p>
+<p>사도가 이 단락에서 우리가라는 1인칭 동사로 문장을 끝맺는 곳은 모두 네 번뿐입니다. 그중 세 번은 의문문이나 부정어 아래에 놓여 스스로를 내세우는 길을 닫아 버리고, 오직 4절 단 한 곳에서만 부정어도 물음표도 없는 온전한 긍정 서술이 등장합니다. 그런데 사도가 유일하게 긍정으로 내놓는 주장의 목적어는 놀랍게도 사역의 성과나 자격이나 머릿수가 아니라 <strong>그리스도로 말미암아 하나님을 향하여 가진 이같은 확신(페포이테신)</strong>입니다. 앞 절에서 우리를 <strong>그리스도의 편지</strong>라고 부른 본문은, 곧바로 우리의 확신이 흘러가는 통로 역시 오직 그리스도이심을 분명히 못 박습니다.</p>
+<p>이어지는 5절과 6절에서는 신약성경 스물일곱 권 전체를 통틀어 오직 고린도후서 3장에서만 볼 수 있는 독특한 언어의 조화가 펼쳐집니다. 충분하다, 혹은 만족하다는 한 뿌리에서 나온 <strong>형용사와 명사와 동사 세 품사가 단 두 절 안에 나란히 모이는 유일한 자리</strong>이기 때문입니다. 형용사는 우리에게서 난 것이 아니라고 부정되고, 명사는 우리의 넉넉함이 오직 하나님으로부터 난다고 출처를 밝히며, 과거 시제로 적힌 동사는 그분이 이미 <strong>우리를 새 언약의 일꾼 되기에 만족하게 하셨다</strong>고 선언합니다. 월말 보고서의 숫자를 채우며 거래 건수를 지난달과 비교하느라 지친 일터에서, 성경은 열매나 수치를 더하라고 다그치지 않고 수를 채우시는 손의 주인을 바꾸어 놓습니다. 영수증 스무 장을 쇠 집게에 물리며 그 두께가 돈의 액수가 아니라 내가 살아낸 한 달의 시간임을 가만히 바라볼 때, 우리의 넉넉함은 내 안의 자원이 아니라 하나님께로부터 흘러옵니다.</p>
+<h3>내 안의 자격 심사표를 내려놓고 하나님이 주신 확신에 머물기</h3>
+<p>이 단락의 절정인 6절 후반부는 신약성경 전체에서 유일하게 <strong>죽인다와 살린다라는 두 동사가 한 절에 나란히 놓이는 구절</strong>입니다. 율법 조문(토 그람마)은 죽이는 것이요 영(토 프뉴마)은 살리는 것이라는 이 말씀에서, 원어는 율법을 뜻하는 공식 명칭(노모스)을 쓰지 않고 단수를 가리키는 중성 명사 문자를 주어로 세웁니다. 이는 어떤 특정 민족이나 신앙 전통을 정죄하려는 시도를 문법 자체로 막아 서는 동시에, <strong>죽이고 살리는 일의 주권이 사람의 손에서 완전히 떠나 있음</strong>을 보여 줍니다. 굳은 돌을 깨뜨려 부드러운 살로 바꾸고 죽은 숨을 다시 살려내는 일은 내가 나를 다그쳐서 이룰 수 있는 과업이 아니라, 오직 살리는 주어로 서 계신 하나님의 영이 지금 행하시는 일입니다.</p>
+<p>밤마다 내가 과연 성도로서, 부모로서, 일꾼으로서 자격이 있는지 스스로에게 되묻는 시간에도 본문은 까다로운 자격 심사표를 내밀지 않습니다. 대신 돌절구에 굵은 소금을 으깨듯 내 안의 굳은 자만과 자책을 부수어 내며, 누가 이미 나를 통과시켜 주셨는지만을 조용히 일깨웁니다. 이 여섯 절에는 감사나 찬양을 뜻하는 어휘가 단 한 번도 등장하지 않고, 오직 살리시는 영을 제외하면 하나님의 이름이 문장의 직접적인 주어로 나서지도 않습니다. 그것은 우리가 성급한 감사의 구호로 내면의 빈곤을 덮어 버리기보다, 내 손으로 만든 증빙을 앞세우고 내 안에서 자격의 출처를 찾으려 했던 헛된 수고를 정직하게 고백하라는 초대입니다. 오늘 하루, 내 자격을 헤아리는 고단한 셈을 멈추고 <strong>우리를 능히 새 언약의 일꾼으로 통과시켜 주신 분의 이름</strong> 앞에, 그리고 굳어 더딘 손으로도 세상이 읽는 그리스도의 편지가 되게 하시는 살리는 영 앞에 조용히 머무는 복된 날이 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 25일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

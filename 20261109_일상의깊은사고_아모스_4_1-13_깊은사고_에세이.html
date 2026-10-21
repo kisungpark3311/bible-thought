@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>다섯 번이나 바뀐 상황 앞에서도 변하지 않은 대답, 그 침묵 끝에 찍힌 말씀의 도장</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 09일 &middot; 아모스 4:1-13</span>
+      <h1>다섯 번이나 바뀐 상황 앞에서도 변하지 않은 대답, 그 침묵 끝에 찍힌 말씀의 도장</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 흔히 삶에 더 큰 흔들림이나 위기가 찾아오면 사람이 저절로 정신을 차리고 하나님께로 돌아설 것이라 생각합니다. 작은 경고에는 귀를 막더라도, 살림이 기울고 건강이 흔들리며 세워 둔 계획이 무너져 내리면 그제야 무릎을 꿇게 될 것이라 셈하는 것입니다. 그러나 아모스 4장 1절부터 13절은 그러한 우리의 통념이 얼마나 헛된 기대인지를 한 장의 서늘한 기록표를 통해 보여 줍니다. 상황 칸은 다섯 번이나 숨 가쁘게 바뀌었지만, 사람의 대답을 적은 결론 칸은 단 한 글자도 바뀌지 않은 채 끝까지 고정되어 있는 문서가 바로 오늘의 본문입니다.</p>
+<p>말씀은 사마리아 산에 있는 바산의 암소들을 불러 세우는 것으로 시작됩니다. 가난한 자를 학대하고 궁핍한 자를 압제하면서 자기들의 남편, 곧 원문의 표현대로라면 여러 주인들에게 술을 가져다가 우리로 마시게 하라고 소리치는 부요한 계층의 목소리가 그대로 채록됩니다. 놀랍게도 이 열세 절 전체에서 <strong>우리</strong>라는 복수 일인칭으로 하나가 되어 외치는 목소리는 오직 이 탐욕스러운 잔치 자리에서만 들려옵니다. 그들은 벧엘과 길갈로 몰려가 아침마다 희생을 드리고 삼 일마다 십일조를 바치며 수없는 감사제와 낙헌제를 사람들에게 자랑삼아 전파했지만, 하나님은 그 화려한 종교적 열심의 목록을 고스란히 고발장으로 돌려놓으십니다. <strong>약자의 눈물을 짜내어 차린 잔치와 성소의 분주한 제사가 한 몸처럼 얽혀 있던 현실</strong>을 주님은 외면하지 않으셨습니다.</p>
+<h3>한 글자도 달라지지 않은 다섯 번의 무응답과 말씀의 출처</h3>
+<p>이어지는 6절부터 11절까지, 하나님께서는 그들의 걸음을 돌이키시기 위해 다섯 번에 걸쳐 전혀 다른 손길을 펴십니다. 모든 성읍에서 양식이 떨어지게 하셨고, 추수하기 석 달 전에 비를 멈추어 한 성읍에만 비가 내리게 하셨으며, 풍재와 깜부기 재앙과 팥종이로 정원과 포도원을 치셨습니다. 애굽에서처럼 전염병을 보내어 장정들을 칼에 엎드러지게 하셨고, 마침내 소돔과 고모라가 무너지듯 성읍을 뒤집으셨습니다. 기근과 가뭄, 병충해와 전쟁, 그리고 성읍의 붕괴에 이르기까지 하나님이 행하신 일은 다섯 번이나 자리를 바꾸었습니다. 그러나 그 다섯 단락의 끝에 적힌 인간의 반응은 <strong>너희가 내게로 돌아오지 아니하였느니라</strong>는 한 문장으로 똑같습니다.</p>
+<p>히브리어 원문으로 이 결어는 <strong>로 샤브템 아다이</strong>인데, 다섯 번 모두 접속사와 부정어, 동사의 형태와 어미, 심지어 단어 사이를 잇는 작은 이음표 하나까지 완벽하게 동일한 형태로 적혀 있습니다. 요엘 선지자가 마음을 다하여 내게로 돌아오라고 외칠 때 썼던 바로 그 단어들이, 아모스 4장에서는 다섯 번 연속으로 끝내 돌아오지 않았다는 완료된 부정의 기록으로 굳어져 버렸습니다. <strong>바뀐 쪽은 끊임없이 방법을 달리하며 부르신 하나님의 손길이었고, 끝내 바뀌지 않은 쪽은 완고하게 굳어 버린 사람의 대답</strong>이었습니다. 사건의 강도나 시련의 크기가 사람의 회개를 저절로 만들어 내지 못한다는 사실이 이 다섯 번의 똑같은 문장 앞에 선명하게 드러납니다.</p>
+<h3>불에서 빼내어진 나무 조각, 그리고 만나기를 예비하라는 부름</h3>
+<p>더욱 가슴을 치는 것은 그 대답 없던 다섯 번의 침묵 직후마다 어김없이 찍혀 있는 <strong>이는 여호와의 말씀이니라</strong>는 표지입니다. 본문 단락 전체에 일곱 번이나 몰려 있는 이 표지는 히브리어로 <strong>네움 야웨</strong>로서, 단순히 말씀하신다는 동작을 나타내는 동사가 아니라 <strong>여호와의 선언이라는 명사 묶음</strong>으로 서 있습니다. 고대 그리스어 역본은 이를 모두 동사로 풀어서 옮겼지만, 원문은 명사 형태를 고집함으로써 그 말의 분명한 출처를 도장처럼 찍어 둡니다. 사람이 끝내 입을 닫고 발걸음을 돌리지 않았던 그 다섯 번의 빈자리마다, 말씀하시는 분은 결코 침묵하지 않으셨다는 출처의 도장이 깊게 눌려 있는 것입니다.</p>
+<p>다섯 번째 무응답이 기록된 11절에서, 본문은 그 완고한 사람들을 가리켜 <strong>불 붙는 가운데서 빼낸 나무 조각</strong> 같이 되었다고 부릅니다. 여기서 '빼낸'으로 번역된 히브리어 <strong>무차르</strong>는 스스로의 힘으로 불길에서 걸어 나온 것이 아니라, 누군가의 손에 의해 밖으로 건져내어졌음을 뜻하는 수동 분사형입니다. 구약 전체에서 오직 스가랴 3장 2절의 그슬린 나무와 여기 두 곳에만 쓰인 이 특별한 단어는, 빼낸 주체의 이름을 굳이 문장 안에 밝히지 않은 채 <strong>너희는 이미 불에서 건져내어진 존재다</strong>라는 사실만을 조용히 선언합니다. 그리고 그토록 긴 무응답의 기록 끝에서 하나님은 절교의 통고 대신 <strong>이스라엘아 너는 네 하나님 만나기를 예비하라</strong>는 명령을 내리시며, 산들을 지으시고 바람을 창조하시며 자기 뜻을 사람에게 알리시는 만군의 하나님 여호와의 장엄한 송영으로 문을 닫으십니다.</p>
+<p>물론 본문은 이미 불에서 빼내어진 나무 조각이라는 수동의 상태(11절)와 이제 하나님 만나기를 예비하라는 능동의 명령(12절) 사이에, 구체적으로 무엇을 어떻게 준비해야 하는지 그 목록이나 날짜를 적어 두지 않는 긴장을 남깁니다. 우리가 스스로 예비의 조건과 목록을 만들어 그것을 구원의 자격으로 삼으려는 길을 원천적으로 막아 두신 것입니다. <strong>다섯 번의 거절 아래서도 말씀을 거두지 않으신 주님의 오래 참으심</strong>만이, 무너진 자리에서 다시 하나님을 마주하게 하는 유일한 다리가 됩니다.</p>
+<h3>쥐었던 손을 펴고 이름을 부르며 손가락으로 책임을 짚는 일상</h3>
+<p>이 말씀 앞에서 오늘 아파서 몸을 일으키기 어렵거나, 끝없는 돌봄과 생계의 무게로 단 한 시간도 내 마음대로 쓸 수 없는 분들에게 성경은 또 다른 짐을 지우지 않습니다. 불에서 빼내어진 나무 조각이 자기 힘으로 불길을 나온 것이 아니듯, 오늘은 누운 자리나 앉은 자리에서 <strong>두 손을 힘주어 모으는 대신 손바닥을 하늘을 향해 가만히 위로 펴 두고 아무 말 없이 머물러 보십시오</strong>. 내 힘으로 쥐는 손이 아니라 오직 주님의 긍휼을 받는 손으로 놓여 있는 것, 그것이 오늘 당신에게 허락된 온전한 예배입니다. 그리고 목회의 자리에서는 기도 명단을 눈으로만 빠르게 훑어 내리는 대신, 교우들의 이름을 한 사람씩 소리 내어 부르고 그 이름 뒤에 짧은 문장 하나를 덧붙여 보십시오. 소리를 내어 이름을 부를 때 비로소 한 영혼을 집단의 통계로 묶지 않고 인격으로 마주하게 됩니다.</p>
+<p>일터의 현장에서는 급여 대장이나 외주 거래 내역서를 펼쳐 놓고, 화면을 마우스로 빠르게 밀어 넘기는 대신 <strong>이름 칸을 손가락으로 한 줄씩 직접 짚어 내려가며 지급 기일과 단가를 눈으로 맞추어 보십시오</strong>. 아모스 4장 1절의 주인들이 복수형으로 적혀 있듯, 여러 사람이 얽힌 거래에서 책임이 흐려지는 변명을 내 손가락의 멈춤으로 막아 세우는 일입니다. 저녁이 되면 거실에 둘러앉아 가족들 앞에서 아모스 4장 6절부터 11절까지의 여섯 절을 눈이 아닌 입으로 소리 내어 끝까지 읽어 보십시오. 다섯 번이나 똑같이 혀끝에 걸리는 <strong>너희가 내게로 돌아오지 아니하였느니라</strong>는 말씀의 무게가 우리 가족의 귀에 길게 남을 때, 더 큰 시련을 기다리지 않고 오늘 당장 주님께로 방향을 틀어 만군의 하나님을 만나는 복된 하루가 열릴 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 09일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

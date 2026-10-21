@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>깨지기 쉬운 질그릇의 금 사이로, 그릇에서 나오지 않은 보배의 생명이 비칩니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 28일 &middot; 고린도후서 4:7-15</span>
+      <h1>깨지기 쉬운 질그릇의 금 사이로, 그릇에서 나오지 않은 보배의 생명이 비칩니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>당하여도 망하지 않는 네 번의 반전, 명령 대신 소속을 말하다</h3>
+<p>투박하게 구워 낸 질그릇은 자기 안에 담긴 귀한 보배를 스스로의 힘으로 지켜 내지 못합니다. 조금만 부딪혀도 금이 가고, 바닥에 떨어지면 산산이 깨어져 쓸모를 잃어버리는 것이 질그릇의 본성입니다. 그런데 고린도후서 4장 7절은 우리의 이 깨지기 쉬운 연약함을 부끄러운 결함으로 다루지 않고, 오히려 <strong>심히 큰 능력은 하나님께 있고 우리에게 있지 아니함을 알게 하려는 표지</strong>로 당당히 내세웁니다. 놀랍게도 7절부터 15절에 이르는 아홉 절 전체에는 너희가 더 단단해지라거나 끝까지 참고 견디라는 식의 <strong>명령형 동사가 단 하나도 등장하지 않습니다.</strong> 이 편지가 시작된 1장부터 4장 전체를 통틀어도 명령하는 말투는 전혀 쓰이지 않습니다. 성경의 중심은 고난을 버텨 내는 처세술이나 인내의 기술에 있지 않고, <strong>깨질 그릇에 담긴 보배가 결코 그릇 자체에서 나오지 않았다는 소속의 진실</strong>에 있기 때문입니다.</p>
+<p>이어지는 8절과 9절은 우리 삶의 고단한 현실을 여덟 개의 분사로 엮어 네 쌍의 대구로 펼쳐 놓습니다. 사방으로 욱여쌈을 당하여도 싸이지 아니하며, 답답한 일을 당하여도 낙심하지 아니하며, 박해를 받아도 버린 바 되지 아니하며, 거꾸러뜨림을 당하여도 망하지 아니한다는 고백입니다. 분사와 역접 접속사, 부정어와 분사가 나란히 맞물려 돌아가는 이 독특한 문법 연쇄는 <strong>신약성경 스물일곱 권 전체를 통틀어 오직 이 두 구절에 나오는 네 번이 전부</strong>입니다. 원문에서 답답한 일을 당한다는 말과 낙심하지 않는다는 말은 같은 뿌리에서 나온 두 단어가 맞부딪히며 길이 막힌 자리에서도 아주 끝장나지는 않는다는 생생한 울림을 주는데, 우리말 번역에서는 그 한 뿌리의 묘미가 아쉽게 가려져 있습니다.</p>
+<p>무엇보다 눈여겨볼 점은 이 여덟 번의 표현 가운데 앞선 네 번은 밖으로부터 고난을 당하는 현실을 있는 그대로 인정하고, 뒤따르는 네 번은 <strong>그러나 끝까지 파멸(아포뤼메노이)에 이르지는 않는다</strong>고 선을 긋는다는 사실입니다. 본문은 우리 삶에서 고난을 마술처럼 치워 버리지도 않고, 왜 이런 아픔이 찾아왔는지 철학적인 이유를 설명해 주지도 않습니다. 다만 <strong>고난이 우리의 끝이 되지 못하도록 그 마지막 낭떠러지를 가로막아 설 뿐</strong>입니다. 그리고 그 막아 서는 힘에는 만약 네가 이만큼 잘 버티면이라는 조건절(에이)이 단 하나도 붙어 있지 않습니다. 한 마디 말을 끝내려면 숨이 가빠 몇 번이나 호흡을 끊어야 하는 병상 위의 성도에게, 본문은 이만큼 견뎌야 버림받지 않는다는 조건을 걸지 않습니다. 오늘 그분께 필요한 일은 억지로 호흡을 바꾸려 애쓰는 것이 아니라, 그저 <strong>한 마디를 끝내려면 내 숨이 몇 번 드는지 조용히 가늠해 보는 일</strong> 하나로 충분합니다.</p>
+<h3>내 체험이 아닌 기록된 말씀에 기대어, 날숨 하나에 한 마디를 얹다</h3>
+<p>그렇다면 우리를 파멸의 끝에서 막아 세우는 그 생명력은 도대체 어디에서 움직이고 있을까요. 이 단락에 등장하는 네 번의 목적 구문을 들여다보면, 그 목적절을 이끄는 문법적 주어가 단 한 번도 우리로 적혀 있지 않습니다. 7절의 주어는 <strong>심히 큰 능력</strong>이고, 10절과 11절의 주어는 <strong>예수의 생명(조에)</strong>이며, 15절의 주어는 <strong>은혜</strong>입니다. 특히 10절과 11절에서 우리가 항상 예수의 죽음을 몸에 짊어짐은 예수의 생명이 또한 우리 몸에 나타나게 하려 함이라고 할 때, 나타난다는 동사는 둘 다 수동태로 적혀 있습니다. 내가 내 의지로 예수의 생명을 세상에 과시하며 드러내는 것이 아니라, 우리의 죽을 육체는 오직 <strong>예수의 생명이 밖으로 드러나는 무대이자 통로</strong>로만 놓여 있는 것입니다.</p>
+<p>심지어 12절은 <strong>사망은 우리 안에서 역사하고 생명은 너희 안에서 역사하느니라</strong>고 선언하며, 우리 교회는 무조건 흥왕하고 남들은 망한다는 식의 승리주의 도식을 정반대로 뒤집어 놓습니다. 세무와 회계의 마감 기한에 쫓겨 숫자가 맞을 때까지 책상 앞을 떠나지 못하고, 밥 먹을 시간과 잠잘 시간과 약값까지 깎아 먹으며 몸이 닳아 가는 직장인들에게 10절의 말씀은 묵직한 위로를 건넵니다. 성경은 우리가 삶의 무게에 닳아 가는 현실을 외면하지 않되, 우리가 몸에 짊어지고 다니는 그 고단한 짐의 이름을 <strong>예수의 죽음</strong>이라 부르며 그 소속을 주님께로 옮겨 놓습니다. 짐의 무게가 당장 줄어들지 않아도 소속이 바뀌었기에, 오늘 책상 앞에서는 내 말을 숨보다 길게 늘이지 않고 <strong>내쉬는 날숨 하나에 짧은 한 마디만 얹는 호흡</strong>으로 하루를 건너갈 수 있습니다.</p>
+<p>말문이 막히는 순간은 목회 현장의 심방 자리나 상가에서도 찾아옵니다. 슬픔에 잠긴 유가족 앞에서 무슨 위로의 말을 건네야 할지 몰라 문장이 중간에 뚝 끊어질 때, 13절은 말의 출처를 전혀 다른 곳에서 찾아 줍니다. 이 단락에 나오는 여섯 번의 1인칭 동사 가운데 단수로 내가라고 말하는 두 번(내가 믿었으므로 말하였다 — 에피스테우사)은 전부 사도 자신의 말이 아니라 <strong>시편 116편 10절의 인용문 안</strong>에 들어 있습니다. 바울은 자기 내면의 화려한 영적 체험에서 말의 재료를 길어 올리지 않고, 이미 오래전에 기록된 성경의 한 줄을 빌려 와 <strong>우리도 믿었으므로 또한 말하노라</strong>는 공동체의 현재 고백으로 이어 받습니다. 그러므로 심방 자리에서 말이 끊겼을 때 우리가 할 일은 억지 미사여구를 짜내는 것이 아니라, 다음 한 마디가 기록된 말씀으로부터 우러나올 만큼 <strong>조용히 숨을 고르는 일</strong>입니다.</p>
+<h3>질그릇을 지키는 힘은 그릇이 아니라 주 예수를 다시 살리신 이에게 있습니다</h3>
+<p>내내 현재의 고난과 짊어짐을 묵묵히 서술하던 본문은 14절에 이르러 비로소 처음으로 미래의 시간을 열어젖힙니다. 그리고 이 단락 전체에서 오직 이 한 구절에서만 하나님이 문장을 끝맺는 두 동사의 당당한 주어로 등장하십니다. 그런데 성경은 그 주어를 하나님이라는 추상적인 명사 하나로만 부르지 않고, <strong>주 예수를 다시 살리신 이</strong>라는 이미 일어난 구원의 사건으로 호명합니다. <strong>주 예수를 다시 살리신 이가 예수와 함께 우리도 다시 살리사 너희와 함께 그 앞에 서게 하실 줄을 아노라</strong>는 이 확신이야말로, 금이 간 질그릇이 끝내 버려지지 않는 유일하고도 단단한 근거입니다.</p>
+<p>질그릇의 금 사이로 새어 나오는 빛은 그 보배가 그릇의 소유가 아님을 더욱 선명하게 증명합니다. 홀로 남겨진 저녁, 숨이 가빠 짧은 한 문장을 세 번에 나누어 내뱉어야 하는 고독한 밤이라 할지라도 우리 몸의 깨어짐이 하나님의 소속을 바꾸지는 못합니다. 앞선 다른 묵상 본문들과 달리 이 단락에서는 하나님께서 14절의 두 미래 동사를 친히 이끄시는 주어로 서 계시기에, 우리는 비로소 마음껏 감사의 기도를 올려 드릴 수 있습니다. 오늘도 주 예수를 다시 살리신 그 한 사건에 우리의 감사를 걸어 두고, 깨질 그릇의 힘으로 보배를 지키려 했던 어리석음을 내려놓으며, 마침내 우리를 주님 앞에 나란히 서게 하실 그날까지 <strong>예수의 생명이 나타나는 거룩한 소속</strong> 안에 평안히 머무르기를 축복합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 28일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

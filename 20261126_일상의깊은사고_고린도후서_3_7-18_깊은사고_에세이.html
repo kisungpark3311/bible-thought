@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>판은 스스로 홈을 파지 못하고, 수건이 벗겨진 자리에 주의 영이 자유를 두십니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 26일 &middot; 고린도후서 3:7-18</span>
+      <h1>판은 스스로 홈을 파지 못하고, 수건이 벗겨진 자리에 주의 영이 자유를 두십니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>돌에 깊이 패인 영광과 사람의 이름을 비워 둔 자리</h3>
+<p>단단한 돌판은 스스로 자기 몸에 홈을 파지 못합니다. 끌과 망치가 표면을 깎아 내어 글자의 획이 깊어지는 동안 판이 스스로 하는 일은 아무것도 없으며, 끝내 판 위에 남는 것은 오직 밖으로부터 받아들인 그 홈의 깊이뿐입니다. 고린도후서 3장 7절부터 18절에 이르는 열두 절을 천천히 읽어 내려가다 보면, 문장의 생김새 자체가 바로 그 돌판의 원리를 닮아 있다는 사실에 놀라게 됩니다. 첫 다섯 절 동안 문장의 주어 자리에 사람이 단 한 번도 등장하지 않기 때문입니다. 그 자리를 채우는 것은 직분이며, 영광되었던 것이며, 없어질 것과 길이 머무는 것입니다. 심지어 이 열두 절 전체에는 무엇을 하라고 다그치는 <strong>명령형 동사가 단 하나도 쓰이지 않고, 너희를 가리키는 말조차 한 번도 등장하지 않습니다.</strong> 성경은 우리에게 무언가를 해내라고 요구하기에 앞서, 우리가 이미 <strong>받은 무게와 깊이가 어떠한지</strong>를 먼저 보여 줍니다.</p>
+<p>7절에서 돌에 써서 새긴 죽게 하는 직분도 영광이 있었다고 말할 때, 새긴에 해당하는 원어(엔튀포오)는 신약성경 스물일곱 권 전체에서 오직 이 한 구절에만 쓰인 귀한 단어입니다. 그 형태 역시 능동이 아니라 <strong>밖으로부터 새김을 받았다는 수동의 꼴</strong>로 적혀 있으며, 정작 누가 그 돌판에 글자를 새겼는지 행위자의 이름은 본문에 보이지 않습니다. 또한 이 단락은 열두 절이라는 짧은 공간 안에 <strong>영광(독사)이라는 단어를 무려 열한 번이나 쏟아부으며</strong> 신약성경 전체에서 가장 높은 밀도로 영광을 노래합니다. 없어질 옛 직분에도 눈부신 영광이 머물렀다면, 하물며 <strong>영의 직분은 더욱 영광 가운데 있지 아니하겠느냐</strong>는 것입니다.</p>
+<p>흥미롭게도 10절과 11절에서 우리말 성경은 더 큰이라거나 길이 있을 것이라는 부사와 수식어를 보충해 넣었지만, 헬라어 원문에는 길이라는 뜻의 부사도, 끝맺는 정동사도 없이 오직 관사를 받은 분사 형태(머무는 것)만이 조용히 서 있습니다. 본문이 영원한 머무름을 화려한 수식어로 설명하는 대신 <strong>지금도 변함없이 머물러 있는 상태 그 자체</strong>로만 적어 두었다는 사실은, 우리의 신앙이 내가 내일의 영속성을 억지로 보증해야 하는 불안한 줄타기가 아니라 이미 주어져 머무는 영광의 자리에 기대어 사는 것임을 일깨워 줍니다.</p>
+<h3>열네 번의 받음 속에 숨겨진 은혜, 정죄의 주어 칸을 비워 두다</h3>
+<p>이 열두 절에 쓰인 스물아홉 개의 동사 형태 가운데 무려 열네 개가 <strong>밖으로부터 영향을 받는 수동의 꼴</strong>로 이루어져 있습니다. 절반에 가까운 동작이 모두 받음으로 적혀 있는데, 놀랍게도 그 열네 번의 수동태 문장 어디에도 <strong>누구에 의해서라는 행위자 전치사구</strong>가 단 한 번도 등장하지 않습니다. 사도 바울이 다른 대목에서는 흔하게 사용하던 그 전치사를 여기서는 철저히 비워 둔 것입니다. 특히 14절에서 그들의 마음이 완고하여졌다고 말할 때, 완고해짐을 뜻하는 동사(에포로테) 역시 수동태로 적혀 있어 누가 그들의 마음을 굳어지게 했는지 문법적인 가해자가 비어 있습니다.</p>
+<p>문장에 행위자의 칸이 비어 있으면, 사람의 마음은 본능적으로 그 빈칸을 누군가의 이름이나 탓으로 채우려 듭니다. 강단에서나 일상의 대화 속에서 저들이 완악하여 스스로 저 모양이 되었다는 식의 손쉬운 판정이 얼마나 자주 쏟아져 나오는지 모릅니다. 그러나 성경은 누군가의 마음이 굳어진 책임을 물어 특정 집단이나 개인을 난도질하는 대신, 그 빈칸을 끝내 비워 둔 채 오직 <strong>그 수건이 멈추고 사라지는 유일한 장소인 그리스도 안에서</strong>만을 선명하게 제시합니다. 심지어 14절이 읽는 대상으로 언급하는 옛 언약 역시 단순한 종이 문서 묶음이 아니라 하나님과 맺은 관계의 언약을 가리키며, 수건이 벗겨지는 16절에서도 <strong>언제든지 주께로 돌아가면</strong>이라는 단수형 동사를 사용하여 집단적인 정죄가 아니라 <strong>길 잃은 형제 한 사람이 회복되는 은혜의 길</strong>을 열어 둡니다.</p>
+<p>그러므로 오늘 우리의 삶과 사역의 자리에서도 본문이 비워 둔 칸을 내 섣부른 판단으로 메우지 않는 절제가 필요합니다. 손이 떨려 글씨의 획이 자꾸만 칸을 벗어나고 내 이름 한 자조차 곧게 내려 적기 힘겨운 분에게는, 이 본문이 단 하나의 명령도 걸지 않는다는 사실 자체가 큰 안식이 됩니다. 오늘 그분께 필요한 동작은 새 글씨를 똑바로 쓰려 애쓰는 것이 아니라, <strong>이미 깊게 새겨져 있는 글자 하나를 골라 그 홈이 얼마나 깊은지를 손대지 않고 눈으로만 가늠해 보는 일</strong>입니다. 또한 강단과 심방의 현장을 지키는 이들이라면, 이번 주에는 교우 한 사람의 이름을 공책 면에 손으로 천천히 베껴 적되 <strong>그 이름 앞뒤에 평가하거나 판정하는 말을 단 한 글자도 붙이지 않는 연습</strong>을 해 보아야 합니다. 누군가의 굳어짐을 설명하려 들 때 성경이 비워 둔 주체 칸을 내 설명으로 채워 넣지는 않았는지 돌아보는 것입니다.</p>
+<h3>수련이 아닌 비침으로, 수건이 벗겨진 얼굴에 머무는 자유</h3>
+<p>일터에서 장부와 전표의 숫자를 다루는 이들에게도 이 본문의 결은 묵직한 지혜를 건넵니다. 숫자 하나가 어긋났을 때 종이 위의 원래 칸을 날카롭게 긁어 내고 그 위에 새 숫자를 덮어쓰면 지나간 흔적은 사라지지만, 원래의 줄을 그대로 둔 채 <strong>아래 줄로 바로잡은 숫자를 이어 가면 두 수가 모두 정직하게 남습니다.</strong> 이번 신고 기한 안에 바로잡아야 할 수치가 있다면, 지난 잘못을 지워 없애려 하기보다 한 줄의 품과 하루의 시간을 들여 아래 줄로 이어 가 보십시오. 우리가 지나온 삶의 어긋남조차 긁어 내어 숨길 필요가 없는 까닭은, 수건이 벗겨지는 방향이 <strong>주께로 향하는 돌이킴</strong>에 걸려 있고 모든 변화의 출처가 <strong>주의 영으로부터</strong> 흘러나오기 때문입니다.</p>
+<p>단락의 마지막인 18절은 우리가 다 수건을 벗은 얼굴로 <strong>거울을 보는 것 같이 주의 영광을 보며 그와 같은 형상으로 변화하여 간다</strong>고 고백합니다. 여기서 거울을 본다는 단어(카톱트리조메노이) 역시 신약성경에 오직 한 번만 쓰인 단어이며, 고린도후서 전체에는 스스로를 갈고닦는 수련이나 연단을 뜻하는 어휘가 단 한 번도 등장하지 않습니다. 변화는 내가 내 얼굴을 문질러 광을 내는 도덕적 수련의 결과물이 아니라, <strong>주는 영이시니 주의 영이 계신 곳에는 자유가 있느니라</strong>는 선언 아래서 주의 영광의 빛을 고스란히 받아들일 때 일어나는 은혜의 사건입니다. 오늘도 내 손이 만들지 못한 그 깊은 새김의 은혜 앞에 서서, 본문이 비워 둔 자리에 남을 정죄하는 이름을 적어 넣지 않고, 떨리는 손으로 획 하나를 곧게 긋지 못하는 이에게도 아낌없이 자유를 허락하시는 주의 영 안에 온전히 쉬어 가기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 26일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

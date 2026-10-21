@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>명령 하나 없는 열 절의 침묵 끝에, 그리스도의 사랑이 우리를 붙드십니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 30일 &middot; 고린도후서 5:6-15</span>
+      <h1>명령 하나 없는 열 절의 침묵 끝에, 그리스도의 사랑이 우리를 붙드십니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>몸에 있든지 떠나든지, 두 자리를 모두 열어 두신 채 기쁨이 되기를 힘쓰다</h3>
+<p>고린도후서 1장 1절부터 5장 15절에 이르는 아흔두 절의 긴 본문을 원문으로 읽어 내려가다 보면, 독자의 마음을 멈춰 세우는 놀라운 침묵 하나와 마주치게 됩니다. 그 아흔두 절 안에 상대방에게 무엇을 하라고 지시하는 <strong>명령형 동사가 단 한 번도 등장하지 않는다</strong>는 사실입니다. 이 책의 첫 번째 명령형은 5장 20절에 가서야 비로소 모습을 드러냅니다. 오늘 우리가 마주하는 5장 6절부터 15절까지의 열 절 역시 단 하나의 명령도 걸지 않은 채, 거듭해서 <strong>우리</strong>라는 1인칭 복수 주어로 조용한 고백을 이어 갑니다. 심지어 6절과 8절에 두 번 등장하는 <strong>담대하여</strong>라는 말조차 담대하라는 명령이 아니라, 우리가 이미 담대함 가운데 서 있다는 분사와 평서형 동사로만 적혀 있습니다.</p>
+<p>재판 날짜를 받아 놓고도 몇 달째 기약 없는 시간을 보내는 분이나, 까다로운 심사 결과를 기다리며 똑같은 서류를 두 번 세 번 다시 제출하다가 이제는 달력의 날짜조차 세지 않게 된 분에게 성경은 흔들리지 말고 담대해지라고 다그치지 않습니다. 대신 6절과 8절, 그리고 9절에 걸쳐 <strong>몸 안에 머물러 있음(엔데메오)과 몸 밖으로 떠남(엑데메오)</strong>이라는 반대 쌍의 단어를 여섯 번이나 나란히 놓습니다. 신약성경 스물일곱 권 전체에서 이 두 단어가 쓰인 여섯 번 전부가 바로 이 열 절 안에 들어 있습니다. 6절은 몸으로 있을 때 주와 따로 있는 줄을 안다고 말하고, 8절은 차라리 몸을 떠나 주와 함께 있는 것을 더 원한다고 고백하더니, 마침내 9절에 이르러서는 <strong>몸으로 있든지 떠나든지 주를 기쁘시게 하는 자가 되기를 힘쓰노라</strong>며 두 조건을 동등하게 하나로 묶어 냅니다.</p>
+<p>본문은 우리에게 두 자리 가운데 어느 한쪽을 억지로 고르라고 강요하지 않고, 이 땅에 남아 있는 오늘과 주님께로 떠나는 내일을 모두 활짝 열어 둡니다. 그러므로 오랜 심사와 재판의 결과를 기다리며 마음이 타들어 가는 분이라면, 오늘 억지로 용기를 짜내려 애쓰는 대신 손은 내려놓고 오직 눈으로만 <strong>내 손에 들린 번호표의 숫자와 전광판에 떠 있는 숫자 사이가 몇 칸이나 남았는지 가만히 헤아려 보는 동작</strong> 하나면 충분합니다. 헤아려 본 숫자의 간격이 당장 줄어들지 않아도 괜찮습니다. 있든지 떠나든지 우리의 자리를 모두 품으시는 분 앞에서, 차례를 기다리는 그 시간조차 이미 주님 앞에 놓여 있기 때문입니다.</p>
+<h3>미쳤어도 하나님께, 온전하여도 너희에게: 동사를 비워 둔 자리의 진실</h3>
+<p>이 열 절의 문장들을 이끌어 가는 스무 개의 정동사 가운데 절반인 열 개가 우리라는 1인칭 복수 형태이고, 그중 현재 시제로 적힌 일곱 개는 놀랍게도 일곱 번 모두 서로 다른 단어로 이루어져 있습니다. 떠나 있다, 행한다, 담대하다, 더 좋게 여긴다, 권한다, 추천한다, 정신이 온전하다는 일곱 동사가 이 특정한 문법 형태로는 <strong>신약성경 전체에서 각각 단 한 번씩만 등장하는 유일한 표현들</strong>입니다. 더욱 흥미로운 점은 이 열 절 안에 하나님과 그리스도를 가리키는 명사가 일곱 번 들어오는데, 그 일곱 번 모두가 소유격이나 여격, 혹은 목적격으로만 쓰일 뿐 <strong>문장의 주어 자리에는 단 한 번도 올라서지 않는다(서술자 층위 부재)</strong>는 사실입니다. 하나님께서 문장의 뒤편에서 모든 삶의 자리를 받쳐 주시는 동안, 문장의 전면에는 부름받은 우리가 서서 주님의 두려우심을 알므로 사람들을 권면합니다.</p>
+<p>특히 11절은 <strong>우리가 하나님 앞에 알리어졌으니 또 너희의 양심에도 알리어지기를 바라노라</strong>고 말하며, 알리어졌다는 완료 수동태 동사를 한 절 안에 두 번이나 겹쳐 씁니다. 신약 전체에 다섯 번뿐인 이 형태가 한 구절에 두 번 나란히 놓인 유일한 자리입니다. 이어지는 12절이 우리는 다시 너희에게 자천하는 것이 아니요라고 선을 긋듯, 우리의 진실함이 드러나는 일은 밖으로부터 받는 은혜의 결과이지 내 입으로 나를 홍보하여 얻어 내는 전리품이 아닙니다. 그러므로 누가 진실한 일꾼인지를 가려야 하는 당회와 교회의 회의 자리에서는, 나를 앞세우는 추천의 말을 멈추고 <strong>호명을 기다리는 줄에서 반 걸음 옆으로 조용히 비켜서서 뒷사람을 먼저 보내는 동작</strong>을 연습해 보아야 합니다. 내가 반 걸음 비켜선 일을 아무도 장부에 적어 주지 않아도 내 차례는 결코 사라지지 않습니다.</p>
+<p>나아가 13절에 이르면 문법의 여백은 더욱 깊어집니다. 우리말 성경은 <strong>우리가 만일 미쳤어도 하나님을 위한 것이요 정신이 온전하여도 너희를 위한 것이니</strong>라고 매끄럽게 문장을 맺었지만, 헬라어 원문에는 이 구절의 뒷부분에 동사도 없고 위하여라는 전치사도 아예 적혀 있지 않습니다. 원문이 적어 둔 것은 오직 <strong>하나님에게(테오)</strong>와 <strong>너희에게(휘민)</strong>라는 여격 명사 두 토막뿐입니다. 우리말로 문장을 완성하려면 번역자가 어쩔 수 없이 위한 것이니라는 말을 보충해 넣어야만 했던 자리입니다. 사도는 열정에 사로잡혔던 지난 순간도, 차분히 정신을 가다듬은 지금의 순간도 그저 하나님 앞에, 그리고 성도들 앞에 아무런 변명이나 동사 없이 있는 그대로 내려놓았을 뿐입니다.</p>
+<h3>그리스도의 사랑에 붙들린 우리가 내리는 단 하나의 판단</h3>
+<p>많은 이들이 10절의 <strong>우리가 다 반드시 그리스도의 심판대 앞에 나타나게 되어 각각 선악간에 그 몸으로 행한 것을 따라 받으려 함이라</strong>는 구절 앞에서 두려움을 느낍니다. 그러나 놀랍게도 이 열 절 안에는 정죄나 형벌, 심판을 뜻하는 열세 가지 신약 어휘가 단 한 번도 쓰이지 않았으며, 무게를 다는 저울이라는 단어조차 등장하지 않습니다. 오히려 이 열 절 전체에서 판단하다(크리난타스)라는 동사가 등장하는 유일한 자리는 14절이며, 그 판단을 내리는 주체는 우리를 벌하시는 하나님이 아니라 <strong>그리스도의 사랑에 강권함을 받은 우리 자신</strong>입니다. 세무와 회계 업무에서 과세표준과 가산세 비율, 증빙 보존 연한이라는 엄격한 눈금을 다루는 이들은 내가 쥔 눈금이 언젠가 다른 눈금 앞에 놓인다는 사실을 잘 압니다. 저울의 어휘 없이도 우리를 그 앞에 세우시는 주님을 기억하며, 일터에서는 내가 숫자를 골라잡을 수 없는 <strong>민원실 발급기에서 번호표를 하나 뽑아 들고 내 차례가 불리기를 기다리는 정직함</strong>이 필요합니다.</p>
+<p>마침내 열 절의 모든 흐름은 14절과 15절의 뜨거운 고백 하나로 모입니다. <strong>그리스도의 사랑이 우리를 강권하시는도다 우리가 생각하건대 한 사람이 모든 사람을 대신하여 죽었은즉 모든 사람이 죽은 것이라.</strong> 우리말 성경 각주가 강권하시는도다 옆에 <strong>또는 끄는도다</strong>라는 다른 읽기를 나란히 남겨 두었듯, 그리스도의 사랑은 우리를 사방에서 단단히 붙드는 동시에 주님께로 부드럽게 이끌어 갑니다. 그리고 그 사랑에 붙들린 우리가 내리는 단 하나의 판단은, 한 분이 모든 사람을 대신하여 죽으셨으니 이제 산 자들은 다시는 <strong>그들 자신을 위하여(12절의 자천하다와 같은 뿌리의 대명사)</strong> 살지 않고 오직 <strong>우리를 대신하여 죽었다가 다시 살아나신 이를 위하여</strong> 살게 되었다는 결론입니다. 이 열 절에는 감사의 어휘도, 하나님을 주어로 세운 정동사도 없기에 오늘 밤 집에서 드리는 기도는 화려한 미사여구 대신 <strong>상 위의 작은 저울 접시에 동전 한 개를 보태어 그 달 남은 생활비의 무게만큼 바늘이 움직이는 폭을 가만히 받아 보는 정직한 고백</strong>으로 채워집니다. 내 눈금으로 나와 남을 달아 보려 했던 교만을 내려놓고, 명령 하나 없이도 우리를 끝까지 붙드시는 그리스도의 사랑에 이끌려 오늘 내게 주어진 삶의 차례를 묵묵히 살아내기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 30일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

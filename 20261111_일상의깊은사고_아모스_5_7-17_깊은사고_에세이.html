@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>바꾸는 두 손이 쥔 서로 다른 목적어, 그리고 성문에서 세우는 혹시의 신앙</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 11일 &middot; 아모스 5:7-17</span>
+      <h1>바꾸는 두 손이 쥔 서로 다른 목적어, 그리고 성문에서 세우는 혹시의 신앙</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 날마다 무언가를 바꾸며 살아갑니다. 거친 땅을 일구어 집을 짓고, 포도원을 가꾸어 열매를 얻으며, 서류와 숫자를 다루어 어제와 다른 오늘의 결과를 만들어 냅니다. 무언가를 변화시키고 뒤집는 능력은 인간에게 주어진 놀라운 재능처럼 보입니다. 그러나 아모스 5장 7절부터 17절은 우리가 일상과 법정, 그리고 일터에서 무언가를 바꾸고 있을 때, 과연 우리의 손이 무엇을 붙잡고 어디를 향해 그것을 뒤집고 있는지를 날카롭게 물으며 우리를 하나님의 법정 앞으로 데려갑니다.</p>
+<p>본문이 열리는 7절과 8절은 놀라운 대조를 이루며 나란히 서 있습니다. 7절은 공법을 인진 곧 쓴 쑥으로 변하게 하며 정의를 땅에 던지는 사람들을 고발하고, 바로 이어지는 8절은 묘성과 삼성을 만드시며 사망의 그늘로 아침이 되게 하시고 낮을 어두운 밤으로 바꾸시는 창조주 여호와를 노래합니다. 설명 한 줄 없이 맞붙어 있는 이 고발과 송영을 원문으로 읽어 보면 숨이 멎을 듯한 단어의 일치를 발견하게 됩니다. 사람이 공법을 쓴 쑥으로 '바꾸는' 것과 하나님께서 사망의 그늘을 아침으로 '바꾸시는' 자리에, 히브리어 <strong>하파크라는 똑같은 어근과 똑같은 칼 분사 형태</strong>가 나란히 쓰인 것입니다.</p>
+<h3>공법을 쓴 쑥으로 바꾸는 손과 사망의 그늘을 아침으로 바꾸시는 손</h3>
+<p>구약 성경 전체에서 이 '하파크'라는 단어가 칼 분사 형태로 등장하는 곳은 단 세 구절뿐인데, 그중 두 구절이 바로 여기 아모스 5장 7절과 8절에 나란히 붙어 있습니다. 문법의 모양만 놓고 보면 바꾸는 행위 자체는 사람도 하고 하나님도 하십니다. 그렇다면 이 두 손을 하늘과 땅 차이로 갈라놓는 것은 무엇일까요. 바로 그 동사가 거느리고 있는 <strong>목적어</strong>입니다. 사람들의 손은 마땅히 이웃을 살려야 할 공법 곧 <strong>미쉬파트</strong>를 움켜쥐고 그것을 삼키기 고통스러운 쓴 쑥으로 뒤집어 놓았지만, 하나님의 손은 인생을 짓누르는 <strong>사망의 그늘</strong>을 붙잡아 찬란한 아침 빛으로 뒤집어 놓으십니다. <strong>바꾸는 능력 자체가 선악을 결정하는 것이 아니라, 오늘 내 손이 무엇을 목적어로 삼아 바꾸고 있는가가 우리의 정체를 결정합니다.</strong></p>
+<p>시선을 단락 전체로 넓혀 보면 더욱 독특한 문법의 배치가 눈에 들어옵니다. 7절부터 15절까지 아홉 절이 이어지는 동안에는 선지서에서 흔히 볼 수 있는 '여호와께서 이같이 말씀하시되'라는 공식이 단 한 번도 등장하지 않습니다. 심지어 이 열한 절 전체에서 하나님께서 당신의 행위를 일인칭으로 말씀하시는 동사는 오직 두 번뿐이며, 그마저도 '~이기 때문에'라는 종속절 안에 조용히 자리 잡고 있습니다. 12절의 <strong>내가 너희의 허물이 많고 죄악이 중함을 아노라</strong>는 말씀(야다티)과 17절의 <strong>내가 너희 중으로 지나갈 것임이니라</strong>는 말씀(에에보르)이 전부입니다. 대신 본문의 문법적 중심을 가득 채우는 것은 말씀을 들어야 할 사람들의 행위를 가리키는 열한 번의 이인칭 동사들입니다.</p>
+<h3>자기 행위를 앞세우지 않으시는 하나님과 혹시라는 겸손한 자리</h3>
+<p>하나님께서는 내가 너희에게 무엇을 해 주었는지 당신의 업적 목록을 앞세우지 않으십니다. 그 대신 힘없는 자를 밟고 부당한 밀을 거두어들이며, 성문에서 의인을 학대하고 뇌물을 받으며 궁핍한 자를 억울하게 만든 사람들의 행위를 열한 번에 걸쳐 거울처럼 비추십니다. 아름다운 다듬은 돌로 집을 건축하였으나 거기 거주하지 못하고, 가꾼 포도원의 포도주를 마시지 못하게 될 것이라는 선언은 그들의 뒤틀린 행위가 빚어낸 필연적인 귀결입니다. 그리고 마침내 16절에 이르러 단 한 번 등장하는 하나님의 말씀 공식(아마르)은 동사조차 생략된 채 <strong>모든 광장에 애곡</strong>이라는 두 단어의 명사 묶음으로 터져 나옵니다. 원문에는 울다라는 동사 대신 오직 <strong>미스페드 곧 통곡이라는 명사</strong>만이 광장과 거리와 포도원을 가득 채웁니다.</p>
+<p>이 엄중한 심판의 예고 한가운데서 본문은 우리가 쉽게 풀 수 없는 깊은 긴장을 남겨 둡니다. 13절은 그러므로 이런 때에 지혜자가 잠잠하나니 이는 악한 때임이니라고 기록하고, 불과 두 절 뒤인 15절은 너희는 악을 미워하고 선을 사랑하며 성문에서 공의를 세울지어다라고 명령합니다. 13절의 잠잠하다는 표현은 침묵하라는 명령어가 아니라 악한 시대의 풍경을 묘사한 평서문입니다. 성경은 지혜자의 탄식 어린 침묵과 성문에서 공의를 세우라는 준엄한 명령을 한자리에 나란히 놓아둘 뿐, 침묵을 비겁함으로 꾸짖거나 공의의 명령을 취소하지 않습니다. 더욱 놀라운 것은 15절의 명령 뒤에 붙은 <strong>만군의 하나님 여호와께서 혹시 요셉의 남은 자를 긍휼히 여기시리라</strong>는 구절입니다. 여기서 '혹시'에 해당하는 히브리어 <strong>울라이</strong>는 우리의 선행이 하나님의 긍휼을 자동으로 구매하는 거래표가 아님을 분명히 보여 줍니다. <strong>보장을 내 손에 쥐지 않고도 마땅히 해야 할 공의를 성문에서 행하며, 긍휼의 주권은 온전히 하나님께 맡겨 드리는 태도</strong>가 바로 성경이 말하는 경건입니다.</p>
+<h3>아신다는 말씀에 기대어 적고, 세어 보고, 물어보는 일상</h3>
+<p>이 말씀 앞에서 오늘 병중에 있거나 고된 돌봄에 매여 도무지 성문에 나가 정의를 외칠 힘이 없는 분들에게, 성경은 무거운 행동 강령을 내밀지 않습니다. 12절에서 주님이 먼저 건네신 일인칭 동사 하나를 기억하며, 오늘 계신 자리에서 <strong>주께서 아십니다</strong>라는 한 문장만 소리 내어 말해 보십시오. 마음속으로만 되뇌는 것과 입술을 움직여 소리로 내뱉는 것은 다릅니다. 소리를 낼 힘조차 없다면 입모양으로만 그 고백을 올려 드려도 충분합니다. 우리의 무거운 아픔과 허물을 주님이 아신다는 그 한마디가 우리를 버티게 하는 가장 단단한 땅입니다.</p>
+<p>억울함을 호소하는 이들을 만나는 목회의 자리에서는, 내 손에 판결의 권한이나 당장 문제를 해결해 줄 힘이 없을지라도 <strong>그가 쏟아내는 말을 내 언어로 요약하지 않고 그 자리에서 그의 말 그대로 받아 적어 보십시오</strong>. 그리고 다 적은 뒤에는 그것을 소리 내어 읽어 주어 틀린 곳이 없는지 확인받는 과정이 필요합니다. 누군가의 아픈 말이 허공에 흩어지지 않고 그대로 기록되어 남았다는 사실만으로도 성문은 다시 세워지기 시작합니다. 또한 물질을 다루는 일터에서는 이번 달에 들어온 수입을 단순히 총액으로만 확인하는 대신, <strong>정당한 수고의 대가로 온 돈과 누군가의 편의를 봐주고 받은 돈 두 갈래로 나누어 한 줄에 나란히 세어 보십시오</strong>. 그리고 저녁 식탁에서는 가족 한 사람에게 <strong>오늘 내가 바꾼 것 하나가 당신 눈에는 무엇으로 보였느냐</strong>고 소리 내어 물어보시기 바랍니다. 가족의 대답을 통해 오늘 내 손이 쥔 목적어가 무엇이었는지를 돌아보고, 보장을 셈하지 않은 채 묵묵히 선을 행할 때, 사망의 그늘을 아침으로 바꾸시는 주님의 손길이 우리의 일상을 환하게 밝히실 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 11일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>비어 있는 구원의 빈칸을 지탱하는 단 하나의 이름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 21일 &middot; 고린도후서 1:8-14</span>
+      <h1>비어 있는 구원의 빈칸을 지탱하는 단 하나의 이름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>인생의 감당 못 할 폭풍을 한 번쯤 지나온 사람들은 무의식중에 안전의 공식을 찾으려 애씁니다. 과거에 이만큼 큰 위기에서 살아남았으니 현재에도 아무 탈이 없을 것이고, 앞으로도 똑같은 방식으로 무사히 빠져나갈 수 있을 것이라는 확률적 보장을 손에 쥐고 싶어 하는 것입니다. 그러나 고린도후서 1장 8절부터 14절까지 이어지는 사도 바울의 고백은 그렇게 횟수를 세어 안도하려는 우리의 계산법을 조용히 내려놓게 만듭니다. 아시아에서 당한 환난이 얼마나 무거웠던지 <strong>힘에 겹도록 심한 고난을 당하여 살 소망까지 끊어졌다고 털어놓는 이 일곱 절의 중심은 구출의 공식이 아니라, 죽음의 문턱에서 마주한 한 분에 대한 정직한 알림</strong>이기 때문입니다.</p>
+<h3>세 번의 건지심 속에 남겨진 비어 있는 칸</h3>
+<p>바울은 9절에서 당시의 절박했던 내면을 신약 성경 전체에 오직 한 번만 등장하는 희귀한 단어로 기록합니다. 바로 우리 자신이 사형 선고를 받은 줄 알았다는 고백입니다. 어떤 변명이나 재심의 여지도 남아 있지 않은 막다른 골목에서, 바울은 신뢰의 유무가 아니라 신뢰의 수신자가 바뀌는 경험을 합니다. 자기를 의지하지 말고 <strong>오직 죽은 자를 다시 살리시는 하나님만 의지하게 하려 하심이라는 목적절이 절망의 바닥에서 새로운 방향을 열어젖힙니다</strong>. 이어지는 10절에는 건지신다는 동사가 한 절 안에 세 번이나 몰아치듯 등장하는데, 신약 성경 스물일곱 권을 통틀어 이 건짐의 동사가 한 절에 두 번 이상 놓인 곳은 오직 이 한 절뿐입니다.</p>
+<p>그런데 원어의 문법을 자세히 들여다보면, 우리가 흔히 설교에서 쉽게 말하듯 과거와 현재와 미래에 언제나 건지신다는 매끄러운 삼단 공식이 여기에는 들어 있지 않습니다. 세 번의 건지심에 쓰인 시제의 형태는 세 가지가 아니라 과거와 미래 두 가지뿐이고, 지금 당장 건지신다고 말하는 현재형은 아예 등장하지 않습니다. 무엇보다 <strong>이같이 큰 사망에서라는 구체적인 구출의 범위가 오직 첫 번째 과거의 건지심에만 붙어 있고, 두 번째와 세 번째 건지심에는 무엇으로부터 건지시는지 그 목적어의 칸이 텅 비어 있습니다</strong>. 성경은 앞으로 우리에게 닥칠 환난이 무엇인지, 어떤 종류의 아픔에서 건져 주실 것인지 그 빈칸을 미리 채워 주지 않습니다. <strong>우리의 소망이 흔들리지 않는 근거는 건져 주신 횟수나 미래의 안전 보장에 있는 것이 아니라, 오직 죽은 자를 다시 살리시는 하나님이라는 단 하나의 수식어에 걸려 있기 때문</strong>입니다.</p>
+<h3>부분적인 앎의 한계와 은사가 올리는 감사</h3>
+<p>흥미롭게도 이 단락에서 과거와 현재와 미래라는 세 가지 시간을 모두 품고 있는 동사는 하나님의 건지심이 아니라 사람의 알아봄입니다. 13절과 14절에서 바울은 고린도 교인들이 지금 읽고 아는 현재와, 장차 완전히 알게 될 미래와, 이미 부분적으로 알았던 과거를 차례로 언급합니다. 시간 순서조차 현재에서 미래로, 다시 과거로 교차하며 놓인 이 앎의 주어는 모두 성도들입니다. 바울은 지금 우리가 서로를 알고 삶을 이해하는 수준에 부분적이라는 명확한 한계를 그어 둡니다. <strong>지금은 우리가 서로의 아픔도, 하나님의 뜻도 일부분밖에 알지 못하지만, 우리 주 예수의 날에 이르러서야 그 제한이 풀리며 서로가 서로의 자랑이 될 것임을 약속</strong>하는 것입니다.</p>
+<p>그날에 이르기까지 건지심의 은혜가 지금 이곳에서 맺는 열매는 11절이 보여주듯 바로 감사입니다. 많은 사람의 기도로 얻은 은사로 말미암아 많은 얼굴에게서 감사가 올라가게 하려 함이라는 이 문장에서, 놀랍게도 <strong>감사를 올리는 수동태 문장의 주어 자리에 서 있는 것은 사람이 아니라 하나님께로부터 받은 은사</strong>입니다. 사람들은 그 은사가 감사를 피워 올리는 통로로 참여할 뿐입니다. 이 일곱 절 내내 하나님이라는 이름은 문장의 직접적인 주어로 한 번도 나서지 않고 오직 죽은 자를 다시 살리시는 분이라는 수식어로만 조용히 자리를 지키지만, 그분이 주신 구원의 은사가 스스로 주어가 되어 수많은 사람의 얼굴에서 감사의 고백을 터뜨리게 만듭니다. <strong>내가 내 힘으로 감사를 짜내는 것이 아니라, 내게 임한 건지심의 은혜가 나를 통해 감사를 올려 드리는 것</strong>입니다.</p>
+<h3>끊어진 끈을 바꿔 꿰고 실 한 올을 감아쥐는 하루</h3>
+<p>이 깊은 통찰은 오늘 우리가 서 있는 삶의 현장에서 위로의 방식을 완전히 바꾸어 놓습니다. 고린도후서 1장 전체에는 상대방에게 무언가를 강요하는 명령형 동사가 단 하나도 없고, 상이나 면류관이나 마땅히 견뎌야 한다는 도덕적 채찍의 어휘도 책 전체에 비어 있습니다. 그러니 고통받는 성도를 찾아가 고난을 잘 견디면 상이 있을 것이라며 섣부른 명령을 내릴 수 없습니다. 심방의 자리에서 우리가 할 일은 화려한 위로의 문장을 길게 적어 주는 것이 아니라, <strong>성도의 집에서 끊어진 끈 하나를 조용히 새 끈으로 바꿔 꿰어 주는 구체적인 돌봄의 손길</strong>입니다. 함께 간구하며 곁을 지키는 그 작은 거듦이 백 마디 말보다 먼저입니다.</p>
+<p>실적과 결산을 숫자로 증명해야 하는 세무와 회계의 일터에서도 마찬가지입니다. 신고서 한 건이 무사히 통과한 횟수를 세어 가며 다음 건도 내 실력으로 문제없이 통과할 것이라 장담하는 태도는, 10절의 세 번의 건지심을 횟수의 보장으로 오독하는 것과 꼭 닮았습니다. 자랑의 근거를 육체의 지혜가 아니라 하나님의 은혜에 둔 사람은, 한 건의 업무를 마쳤을 때 수치를 내세워 자기를 증명하는 대신 <strong>다 끝난 서류 묶음을 끈으로 단단히 묶어 조용히 한쪽에 옮겨 두는 절제</strong>를 배웁니다. 또한 가정에서 법원 봉투나 세무 경정 통지서, 혹은 병원의 무거운 소견서처럼 가슴이 철렁 내려앉는 종이 한 장을 받아 든 날에는, 그 종이의 내용을 가족들에게 일일이 다 설명하며 불안을 쏟아내기보다 <strong>옷이나 가방의 해진 자리 하나를 바늘로 묵묵히 기워 두는 시간</strong>을 가져 보십시오. 종이가 사라지지 않은 채로도 우리가 기대는 방향이 나 자신에게서 하나님께로 옮겨졌음을 몸으로 새기는 연습입니다.</p>
+<p>그리고 무엇보다 이미 폭풍을 지나온 사람이 아니라, 지금 바로 이 순간 살 소망이 끊어진 그 막막한 자리에 주저앉아 계신 분께 마지막 한 마디를 건네고 싶습니다. 바울이 자신의 절망을 적어 내려간 두 단어는 신약 성경 어디에도 비교할 다른 용례가 없을 만큼 유일하고도 외로운 단어였습니다. 그러니 지금 당신이 겪고 있는 그 고통이 무엇인지 남들에게 조리 있게 설명해 보이라는 요구는 성경 어디에도 없습니다. 오늘 당신이 할 수 있는 전부가 그저 <strong>가느다란 실 한 올을 손가락에 가만히 감아 두는 일뿐이어도 괜찮습니다</strong>. 내 손가락을 움직일 힘조차 없다면 곁에 있는 이의 손을 빌려 그 실 한 올이 손끝에 닿게만 해 두십시오. 끊어진 끈은 매듭을 아무리 여러 번 묶어도 원래의 길이가 돌아오지 않지만, <strong>그 끈의 반대편 끝을 쥐고 계신 분이 죽은 자를 다시 살리시는 하나님이시기에, 비어 있는 내일의 칸은 여전히 그분의 손안에 안전하게 열려 있습니다</strong>.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 21일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

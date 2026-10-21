@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>양손으로 밀어낸 날의 이름, 그리고 가장 앞자리에서 걸어가신 분</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 13일 &middot; 아모스 6:1-7</span>
+      <h1>양손으로 밀어낸 날의 이름, 그리고 가장 앞자리에서 걸어가신 분</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>아모스 6장 1절부터 7절까지의 본문은 <strong>여섯 절의 긴 호명과 단 한 절의 짧은 선고</strong>로 이루어져 있습니다. 화 있을진저라는 탄식으로 문을 연 본문은 무려 여섯 절에 걸쳐 사람들의 모습을 숨 가쁘게 불러 모읍니다. 시온에서 평안히 머무는 자들, 사마리아 산에서 스스로 안전하다고 믿는 자들, 상아로 장식된 침상에 눕고 침상 위에서 길게 몸을 뻗는 자들, 양 떼에서 어린양을 골라 먹고 비파 소리에 맞추어 노래를 고안해 내며 대접으로 포도주를 마시고 귀한 기름을 몸에 바르는 자들입니다. 본문은 여섯 절 내내 어떤 결론도 내리지 않은 채 그들이 누리는 몸의 조건들을 차곡차곡 쌓아 올립니다. 잠자고 먹고 마시고 바르는 일, 곧 사람이 자기 몸을 위해 행하는 여덟 가지 동작이 화려하게 나열되는데, 정작 그 목록의 맨 끝에서 <strong>오직 한 가지 동작만이 일어나지 않은 일로 부정</strong>됩니다. 바로 요셉의 환난을 보면서도 결코 아파하지 않았다는 사실입니다.</p>
+<p>이토록 길게 호명된 사람들의 목록 한복판에는 우리가 쉽게 지나치기 어려운 아픈 낱말 하나가 박혀 있습니다. 6장 3절은 그들을 가리켜 <strong>흉한 날을 멀리 밀어내는 자들</strong>이라고 부릅니다. 여기서 흉한 날이라고 번역된 히브리어 낱말은 바로 앞 장인 아모스 5장 15절에서 너희는 악을 미워하고 선을 사랑하라고 명령할 때 쓰인 바로 그 악이라는 단어와 똑같은 말입니다. 하나님께서는 분명히 악을 미워하라고 명하셨는데, 사람들은 그 말씀을 삶의 자리에서 마주하기를 거부하자 그 악이라는 낱말이 흉한 날이라는 심판의 이름으로 되돌아온 것입니다. 원어 동사가 그려내는 밀어냄의 몸짓은 그저 살짝 옆으로 치워 두는 정도가 아니라 <strong>양손에 힘을 주어 자기 시야 밖으로 멀리 밀어 버리는 완강한 동작</strong>입니다. 무언가를 미워하려면 싫더라도 그 대상을 정면으로 마주 보아야 하지만, 밀어내는 일은 상아 침상에 누워 등을 돌린 채로도 얼마든지 할 수 있기 때문입니다.</p>
+<h3>악을 미워하는 대신 흉한 날을 밀어낸 자리에서</h3>
+<p>흥미로운 점은 본문 6장 2절이 침상에 누운 사람들을 향해 건너가고, 가고, 내려가 보라며 <strong>네 번이나 거듭해서 몸을 일으켜 다른 성읍들을 가 보라고 명령</strong>한다는 사실입니다. 그러나 본문 어디에도 그들이 그 명령을 듣고 자리에서 일어나 가 보았다거나, 혹은 끝내 가지 않았다는 응답이 적혀 있지 않습니다. 성경은 그 질문과 명령의 결말을 빈칸으로 남겨 둔 채, 곧장 그들이 누워 있는 침상과 식탁의 풍경으로 시선을 옮겨 버립니다. 심지어 똑같은 도시 이름들이 이사야 10장 9절에서는 교만한 침략자의 입에서 자랑의 재료로 불려 나오는 긴장까지 정경 안에 그대로 남아 있습니다. 설교하고 묵상하는 자리에서 우리는 본문이 비워 둔 이 침묵을 우리의 상상으로 메우려 하기 쉽지만, 본문은 그 빈자리를 설명으로 채우는 대신 <strong>몸의 조건이 사람을 어디까지 무감각하게 데려갔는가</strong>를 조용히 비추어 줄 뿐입니다.</p>
+<p>더 나아가 우리가 읽는 번역 성경의 매끄러운 문장 뒤에는 원문이 품고 있던 정교한 문법적 대칭과 낯선 여백이 숨어 있습니다. 일곱 절의 처음인 1절과 정중앙인 4절, 그리고 마지막인 7절에는 <strong>스스로 행하는 능동의 꼴과 남에게 이끌리는 수동의 꼴이 한 절 안에 나란히 짝을 이루어</strong> 서 있습니다. 특히 선고가 떨어지는 7절에서는 침상에서 팔다리를 뻗으며 기지개를 켜던 자들이 이제는 포로가 되어 끌려가는 무리의 가장 앞머리에 서게 될 것이라는 서늘한 역전이 같은 어근의 두 형태로 맞물려 나타납니다. 또한 번역본들이 악기를 제조한다거나 마음에 여긴다고 매끄럽게 보충해 넣은 자리들도 원문에는 만들다는 말이나 마음이라는 명사 없이 오직 <strong>다윗의 이름을 빌려 자기들의 흥을 셈하고 고안해 낸다</strong>는 동사만 놓여 있습니다. 그러다 마침내 7절 끝에 이르면, 구약 전체에 단 한 번만 등장해 그 정확한 뜻조차 다 확정할 수 없는 그들의 익숙하고 소란스러운 잔치 소리가 단번에 떠나가 버린다는 선고로 모든 문장이 닫힙니다.</p>
+<h3>다윗의 이름을 빌려 셈하는 손과 익숙한 소리가 떠나는 날</h3>
+<p>이 낯선 원어의 결을 따라가다 보면 우리의 일상과 신앙이 기댄 안락한 의자가 흔들리는 것을 느끼게 됩니다. 가정과 교회에서 우리가 지키는 경건 속에서 가장 자라기 쉬운 착각은 <strong>오래 앉아 온 익숙한 의자와 늘 듣던 소리, 해마다 반복되는 절기가 우리의 안전을 보증해 준다는 셈법</strong>입니다. 일터에서 장부와 서류를 다루며 숫자를 셈하는 일 또한 마찬가지입니다. 세무와 회계의 현장에서 하루 종일 숫자를 맞추다 보면, 한 조항과 한 관행을 누구를 위하여 셈하느냐에 따라 숫자의 방향이 완전히 달라집니다. 여기에 다윗처럼이라는 전통과 선례의 외양까지 덧입히면, 그 그럴듯한 명분이 셈의 기울어진 방향을 교묘하게 가려 주기도 합니다. 그러나 본문은 우리가 스스로 고안해 낸 익숙한 소리와 계산이 어느 날 한순간에 떠나갈 수 있음을 경고하며, <strong>도장을 찍기 전에 그 셈이 누구 쪽으로 기울어져 있는지</strong>를 두려운 마음으로 다시 확인하게 만듭니다.</p>
+<p>그렇다면 이 본문 앞에서 우리의 몸과 손은 어디로 움직여야 하겠습니까. 본문이 꾸짖는 것은 잠자고 먹고 기름을 바르는 몸의 조건 자체가 아니라, <strong>귀한 기름을 바르는 그 손이 오직 자기 몸에서만 멈추어 버렸다는 사실</strong>입니다. 오늘 하루가 아픈 가족이나 이웃을 돌보는 일로 남김없이 쓰여 정작 자기 입에 물 한 모금 넣을 겨를도 없었던 분이 계신다면, 오늘 하루에 한 번은 남에게 떠다 주는 동작이 아니라 <strong>자기 입에 물 한 컵을 천천히 마시는 일</strong>부터 시작하시기를 권합니다. 돌보는 사람의 몸도 돌봄을 받아야 타인의 아픔에 공명할 힘이 남기 때문입니다. 반대로 잘 자고 잘 먹은 평안한 주간을 보낸 목회자와 성도라면, 이번 주에는 기도만 하고 돌아오는 심방이 아니라 아파 누운 이의 손이나 발에 <strong>직접 약이나 연고를 발라 주는 손길</strong>로 나아가야 합니다. 내 손끝이 타인의 거친 피부에 직접 닿아 거리가 좁혀진 뒤에야 비로소 요셉의 환난이 남의 일이 아닌 내 아픔의 무게로 들려오기 시작합니다.</p>
+<h3>침상에서 몸을 뻗던 자들의 끝, 머리 둘 곳 없이 앞장서신 주님</h3>
+<p>이 일곱 절의 말씀을 끝까지 읽어 내려가면 한 가지 놀라운 사실을 발견하게 됩니다. 이 단락에는 하나님께서 문장의 주어로 직접 등장하시는 자리나 여호와께서 말씀하신다는 선언 공식이 단 한 토막도 나오지 않습니다. 오직 자기 몸의 안락함을 쌓아 올리는 사람들의 긴 명단과, 그들이 마침내 끌려가며 잔치 소리가 떠나간다는 선고만이 마주 서 있을 뿐입니다. 그래서 오늘 이 본문 앞에서는 본문이 주지 않은 근거로 섣불리 감사의 말을 지어내는 대신, <strong>명단에 이름이 올라가는 안락한 자리에 익숙했던 우리의 모습을 정직하게 고백하며 결단하는 자리</strong>에 머물러야 합니다. 잘 갖추어진 침상과 식탁 위에서 타인의 깨어짐이 멀게만 들렸던 무감각함을 꾸미지 않고 인정하는 것이 말씀 앞에 서는 첫걸음입니다.</p>
+<p>그러나 성경 전체의 큰 이야기는 이 서늘한 선고의 자리에서 우리를 홀로 버려두지 않고 한 분의 발걸음을 조용히 비추어 줍니다. 사람들은 미워해야 할 악을 마주 보지 않으려고 양손으로 흉한 날을 멀리 밀어냈지만, <strong>그 고난의 날을 결코 밀어내지 않으신 한 분</strong>이 복음서에 계십니다. 여우도 굴이 있고 공중의 새도 집이 있으되 인자는 머리 둘 곳이 없다 하신 예수님께서는, 상아 침상에 누워 몸을 뻗던 자들과 정반대의 자리에서 예루살렘을 향하여 올라가기로 굳게 결심하셨습니다. 사람의 계산과 셈법 밖에서 무너진 다윗의 천막을 친히 일으키시는 주님께서는, 끌려가는 포로들의 가장 앞머리에 서서 십자가의 길로 먼저 걸어가셨습니다. 오늘 내 입에 물 한 컵을 넣고, 누운 이의 손에 약을 바르며, 서류에 도장을 찍기 전에 한 번 더 멈추어 확인하는 그 작은 몸짓으로 <strong>성문 밖으로 먼저 걸어가신 주님의 뒤를 따르는 하루</strong>가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 13일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

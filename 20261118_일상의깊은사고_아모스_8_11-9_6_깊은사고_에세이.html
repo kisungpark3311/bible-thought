@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>말씀이 들리지 않는 기갈의 계절에도 하늘에 오름길을 쌓으시는 분</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 18일 &middot; 아모스 8:11~9:6</span>
+      <h1>말씀이 들리지 않는 기갈의 계절에도 하늘에 오름길을 쌓으시는 분</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>아모스 8장 11절부터 9장 6절까지의 말씀은 하나님께서 땅에 기근을 보내신다는 선언으로 문을 엽니다. 그런데 본문은 하나님께서 보내시는 그 기근의 정체를 설명하면서 <strong>두 번 먼저 부정하고 마지막 한 번으로 그 본질을 바꾸어</strong> 놓습니다. 내가 기근을 땅에 보내리니 양식이 없어 주림이 아니며 물이 없어 갈함이 아니요 오직 여호와의 말씀을 듣지 못한 기갈이라는 것입니다. 이어지는 12절에서는 말씀을 찾아 헤매는 사람들의 세 가지 애처로운 몸짓이 그려집니다. 사람들이 이 바다에서 저 바다까지, 북쪽에서 동쪽까지 비틀거리고 부지런히 돌아다니며 여호와의 말씀을 구하지만, 그 모든 걸음의 끝은 <strong>얻지 못하리니라는 단 한마디의 절망</strong>으로 닫힙니다. 젊고 아름다운 처녀들과 장정들조차 그 목마름에 쓰러지는 기갈의 풍경 뒤로, 9장 1절부터 4절까지는 하나님의 일인칭 심판 선고가 일곱 번이나 몰아치다가, 마지막 5절과 6절에 이르면 갑자기 모든 일인칭이 멈추면서 온 우주를 창조하신 여호와의 이름을 부르는 장엄한 찬송이 울려 퍼집니다.</p>
+<p>우리가 읽는 우리말 성경 8장 11절을 보면 기근과 주림과 기갈이라는 세 개의 서로 다른 단어가 쓰인 것처럼 보이지만, 히브리어 원문을 들여다보면 놀라운 문법적 전환이 숨어 있습니다. 원문에는 <strong>라압이라는 기근을 뜻하는 한 단어가 앞뒤로 딱 두 번만 쓰였고, 오히려라는 전환어 뒤에는 기갈이라는 명사가 아예 없이 여호와의 말씀을 듣는다는 동사 원형</strong>이 곧바로 이어집니다. 하나님께서 땅에 보내시는 것은 배고픔이나 목마름이라는 결핍의 상태 이전에, 바로 여호와의 말씀을 듣는 일 그 자체를 향한 깊은 굶주림이라는 뜻입니다. 여기서 우리 신앙이 자주 빠지곤 하는 아픈 오해 하나가 멈추어 섭니다. 말씀이 도무지 들리지 않는 메마른 계절을 지날 때 우리는 흔히 내 열심과 믿음의 눈금으로 그 원인을 재며 자책하기 쉽지만, 본문은 분명히 <strong>기갈의 종류를 사람이 고르는 것이 아니라 보내시는 분이 친히 고르신다</strong>고 말씀하십니다. 듣지 못하는 처지를 무조건 개인의 게으름이나 불신앙으로만 정죄하지 않고, 주께서 보내신 기갈의 시간으로 바라보게 하는 깊은 위로가 이 문법 안에 담겨 있습니다.</p>
+<h3>숨는 자를 찾으시는 주님의 손과 눈, 그리고 그들의 끝을 향한 선고</h3>
+<p>9장으로 넘어가는 본문의 흐름 속에서 가장 눈에 띄는 문법적 특징은 나 혹은 내 것이라는 일인칭 표현들이 두 개의 거대한 덩어리로 몰려 있다가 마지막 찬송 두 절에서 일제히 사라진다는 점입니다. 이 열 절 안에서 나를 가리키는 실질적인 명사 형태는 <strong>내 손 하나와 내 눈 둘</strong>로 압축됩니다. 스올 깊은 곳까지 땅을 파고 들어갈지라도 내 손이 거기에서 붙잡아 낼 것이며, 바다 밑에 숨을지라도 내 눈을 피하지 못하리라는 9장 2절과 3절의 말씀은 피할 곳 없는 하나님의 현존을 보여 줍니다. 특히 3절에서는 숨는 자들이 피하려는 기준으로 두 눈을 뜻하는 쌍수 형태가 쓰인 반면, 4절에서는 내가 그들에게 주목하여 화를 내리고 복을 내리지 아니하리라며 주님의 시선 하나를 가리키는 단수 형태가 쓰여 그 집중된 눈길의 엄중함을 더합니다. 흥미롭게도 <strong>내가 눈을 두어 주목한다는 이 네 단어의 원어 연쇄는 구약 전체에서 예레미야 24장 6절과 이곳 딱 두 번만 등장</strong>하는데, 예레미야에서는 복을 주기 위해 눈을 두신다는 정반대의 약속으로 쓰여 성경 안에 깊은 긴장을 남깁니다.</p>
+<p>또한 우리말 성경 9장 1절은 내가 그 남은 자를 칼로 죽이리니라고 번역하여 마치 구원받을 남은 자마저 모두 사라지는 것처럼 읽히기 쉽지만, 원문의 정확한 표현은 다릅니다. 이 열 절 안에는 남은 자를 뜻하는 히브리어 단어가 단 한 번도 등장하지 않으며, 원문이 적은 목적어는 아하리탐, 곧 <strong>남은 자가 아니라 그들의 끝 혹은 그들의 마지막</strong>입니다. 이어지는 동사들 역시 영혼의 구원을 잃어버린다는 단어가 아니라 칼날 앞에서 도망하고 피한다는 단어들로만 채워져 있습니다. 그러므로 우리는 이 본문을 읽을 때 하나님께서 구원의 약속마저 폐기하셨다고 절망해서도 안 되고, 반대로 뒤에 회복이 오니 심판은 가벼운 것이라고 섣불리 덮어 버려서도 안 됩니다. 본문이 보여주는 것은 오직 도망할 길이 완전히 막혀 버린 인간의 끝자리입니다. 그리고 신약 성경 히브리서 6장 19절과 20절은 바로 그 막다른 끝자리 너머에서, <strong>도망하여 피하는 길이 아니라 우리를 위해 앞서 휘장 안으로 들어가신 예수 그리스도께 매여 있는 영혼의 닻 같은 소망</strong>을 조용히 비추어 줍니다.</p>
+<h3>복을 부정하는 선고 끝에 갑자기 솟아오르는 하늘의 오름길</h3>
+<p>오늘 본문에서 가장 신비로운 대목은 9장 4절과 5절 사이의 아득한 침묵과 전환입니다. 4절 끝에서 내가 그들에게 주목하여 화를 내리고 복을 내리지 아니하리라며 일곱 번이나 몰아치던 하나님의 일인칭 심판 선언이 끝나자마자, 아무런 이유나 접속사도 없이 5절과 6절의 창조 찬송이 시작됩니다. 일인칭 동사는 단 하나도 없이 오직 <strong>땅을 만져 녹게 하시는 이, 그의 궁전을 하늘에 세우시며 그 궁창의 기초를 땅에 두시며 바닷물을 불러 지면에 쏟으시는 이</strong>라는 분사형 호칭들이 잇달아 솟아오르고, 그 이름은 여호와시니라라는 고백이 마침표를 찍습니다. 심판을 행하셨기 때문에 찬송이 나온다거나 찬송이 있으니 심판이 취소된다는 식의 인과관계가 아닙니다. 모든 말이 막히고 모든 도망길이 끊어진 바로 그 자리에서, 성경은 그저 <strong>하늘과 땅의 기초를 놓으신 주권자의 이름을 부르는 송영</strong>을 나란히 세워 둘 뿐입니다.</p>
+<p>더욱 놀라운 것은 6절에서 우리말 성경이 하늘에 세우신 그의 궁전이라고 번역한 단어를 원어 형태 자료와 옛 그리스어 역본으로 읽으면 <strong>하늘에 쌓아 올리신 그의 오름길, 곧 하늘로 오르는 계단</strong>이라는 뜻이 된다는 사실입니다. 본문의 첫 구절인 8장 11절에서는 땅에 여호와의 말씀을 듣지 못하는 기갈을 보내신다고 하셨는데, 불과 여섯 절 뒤인 9장 6절에서는 바로 그 말씀의 주인이 하늘에 오름길을 쌓아 올리시고 땅 위에 창공의 기초를 놓으시는 분으로 불립니다. 땅에서는 말씀을 찾아 이 바다에서 저 바다로 비틀거리며 쓰러지던 기갈의 시대가, 마침내 말씀이 육신이 되어 하늘과 땅을 잇는 살아 있는 오름길로 우리에게 찾아오신 예수 그리스도 안에서 영원한 해갈의 길을 만나게 되는 것입니다.</p>
+<h3>숨 한 박자의 멈춤, 모른다는 고백, 입 밖으로 읽는 기초 숫자와 이름</h3>
+<p>말씀의 기갈과 창조주의 송영이 한데 맞닿아 있는 이 열 절의 말씀 앞에서 오늘 우리의 일상과 몸은 어떻게 응답할 수 있겠습니까. 먼저 오랜 병간호와 돌봄으로 몸과 마음이 지쳐 말씀조차 귀에 들어오지 않는 긴 기갈의 터널을 지나는 분들에게 따뜻한 위로를 건넵니다. 오늘 본문은 말씀이 들리지 않는 그 막막한 처지를 결코 당신의 게으름이나 믿음 없음 때문이라고 꾸짖지 않으며, 보내진 기갈의 시간으로 감싸 안습니다. 오늘은 긴 기도문을 입으로 소리 내어 읽으려 애쓰지 마시고, <strong>그저 있는 자리에서 숨을 한 박자 조용히 멈추어 보는 것</strong>으로 주님 앞에 서십시오. 그 한 박자의 숨 고르기만으로도 하늘에 오름길을 두신 주님께서는 당신의 모든 탄식을 들으십니다.</p>
+<p>목회 현장과 일터, 그리고 가정의 식탁에서 오늘 우리가 입술로 실천할 세 가지 작은 동작도 함께 나눕니다. 성도가 9장 1절부터 4절까지의 무서운 심판 본문을 들고 와서 우리 가정은 어디까지 이 말씀에 걸려 있느냐고 물을 때, 목회자는 본문이 대답하지 않은 것을 억지로 지어내어 설명하려 하지 말고 <strong>저도 모릅니다라는 한마디를 정직하게 입으로 말하십시오</strong>. 9장 1절에서 기둥 머리를 치라는 명령을 받은 이가 누구인지 성경조차 이름을 적지 않았듯, 모른다고 말하는 정직함이 오히려 하나님의 주권을 존중하는 경건입니다. 또한 일터에서 결산서와 세무 신고서를 올리기 직전에는, 땅에 기초를 두시는 주님을 기억하며 <strong>그 서류 전체를 떠받치고 있는 가장 기초가 된 숫자 하나를 눈으로만 보지 말고 입 밖으로 소리 내어 읽어 확인</strong>하십시오. 마지막으로 오늘 저녁 가족과 마주 앉는 식탁에서는, 끼니와 물과 잠이 걸린 삶의 현장에서 쓰러져 가는 이들을 기억하며 <strong>내가 돌보고 사랑해야 할 한 사람의 이름을 입술로 따뜻하게 불러 보시기를</strong> 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 18일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

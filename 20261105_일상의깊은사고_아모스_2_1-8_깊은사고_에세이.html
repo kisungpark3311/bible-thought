@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>남을 향하던 심판의 틀에 내 이름이 불릴 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 05일 &middot; 아모스 2:1-8</span>
+      <h1>남을 향하던 심판의 틀에 내 이름이 불릴 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>고유명사 하나만 바꾸어 우리 심장 한복판에 멈추어 선 선고</h3>
+<p>아모스 1장과 2장을 차례로 읽어 내려가다 보면, 독자는 마치 일정한 박자로 내리치는 거대한 종소리를 듣는 듯한 인상을 받게 됩니다. 여호와께서 이와 같이 말씀하시되 어느 나라의 서너 가지 죄로 말미암아 내가 그 벌을 돌이키지 아니하리니라는 똑같은 문장이 한 글자도 틀리지 않고 여덟 번이나 되풀이되기 때문입니다. 처음 다메섹과 가사, 두로와 에돔과 암몬, 그리고 오늘 본문의 첫머리에 서 있는 여섯 번째 나라 모압의 이름이 불릴 때까지, 이 말씀을 듣는 언약 백성의 마음 한구석에는 은밀한 안도감이 자리 잡고 있었을지 모릅니다. 모압이 에돔 왕의 뼈를 불살라 회와 재로 만든 패륜적인 범죄를 꾸짖으실 때까지만 해도, 이 심판의 틀은 철저히 <strong>우리를 괴롭히던 바깥세상 이방 나라들을 향한 하나님의 징벌</strong>처럼 들렸기 때문입니다.</p>
+<p>원문의 동사 쓰임새를 자세히 들여다보면, 모압이 에돔 왕의 뼈를 태웠다고 할 때 쓰인 단어와 하나님께서 보내신 불이 그리오스 궁궐들을 삼킨다고 할 때 쓰인 단어는 서로 다른 어근을 가지고 있습니다. 우리말 성경은 둘 다 불사르다와 사르리라로 비슷하게 옮겼지만, 히브리어 원문은 인간이 증오심으로 죽은 자의 뼈까지 태워 버린 행위와 하나님께서 보내신 심판의 불이 교만한 성채를 <strong>집어삼키고 먹어 치우는 행위</strong>를 명확하게 구분하여 적습니다. 그런데 이방의 잔혹함을 삼키던 그 불길이 모압의 경계를 넘자마자, 일곱 번째와 여덟 번째 신탁에 이르러 전혀 예상치 못한 방향으로 방향을 틉니다. 앞선 여섯 번의 신탁과 문법도, 어순도, 서두도 완전히 똑같은 그 틀 안에 <strong>유다와 이스라엘이라는 고유명사 하나만 그대로 교체되어 들어앉은 것</strong>입니다.</p>
+<p>하나님께서는 언약 백성의 죄를 꾸짖기 위해 새로운 문장이나 특별한 예외 조항을 만들지 않으셨습니다. 이방 나라들을 심판하던 바로 그 문법의 틀을 한 치도 바꾸지 않은 채, 모압이 섰던 그 피고석 자리에 유다를 세우시고 곧바로 이스라엘을 세우십니다. 열방을 치시는 말씀이니 우리는 안전하다는 오랜 착각이 깨어지는 순간입니다. 남을 정죄하고 심판하는 말씀을 들을 때만 해도 통쾌하게 고개를 끄덕이던 귀가, 단 두 절 만에 <strong>똑같은 문구 속에서 내 이름을 듣게 되는 이 서늘한 자리바꿈</strong>이야말로 아모스 2장이 우리에게 안겨 주는 가장 첫 번째 영적 충격입니다.</p>
+<h3>면제부가 아니라 고발의 척도가 된 은혜의 말씀</h3>
+<p>일곱 번째로 호명된 유다의 고발장을 열어 보면, 고발의 사유가 앞선 여섯 이방 나라들과 근본적으로 달라진 것을 발견하게 됩니다. 앞선 신탁들이 전쟁터의 학살이나 인신매매, 무덤을 파헤친 패륜처럼 눈에 보이는 외적 폭력을 고발했다면, 유다를 향한 고발은 그들이 하나님께로부터 받은 두 가지 선물, 곧 <strong>여호와의 율법을 멸시하며 그 율례를 지키지 아니하였다</strong>는 사실에 맞춰져 있습니다. 구약성경 전체를 통틀어 수백 번이나 등장하는 율법과 율례라는 이 친숙한 두 단어가, 아모스서 전체에서는 오직 유다의 죄를 고발하는 이 한 절에만 나란히 등장합니다.</p>
+<p>하나님의 말씀을 먼저 받았다는 특권은 결코 심판을 피해 가는 면제부가 될 수 없습니다. 은혜 언약 안에서 주신 율법은 하나님 백성이 주님과 어떤 관계 속에서 살아가야 하는지를 보여 주는 거룩한 삶의 형식인데, 유다는 그 말씀을 멸시하고 조상들이 따라가던 헛된 거짓 것들에 미혹되어 길을 잃었습니다. 원문의 문장 결을 살려 읽으면 그들이 만들어 낸 거짓 것들이 도리어 주인이 되어 그들을 그릇된 길로 끌고 갔다는 뜻이 됩니다. 참된 진리의 말씀을 가볍게 여기는 자리에는 언제나 거짓된 우상들이 들어앉아 우리의 걸음을 지배하게 마련입니다. 그러므로 오늘 말씀을 읽고 가르치는 자리에 선 우리는, 본문이 그들이라고 적은 이 대명사를 남의 이야기가 아니라 <strong>은혜의 말씀을 맡고도 삶으로 지켜 내지 못한 우리의 고백</strong>으로 바꾸어 소리 내어 읽어야 합니다.</p>
+<p>이어지는 여덟 번째 이스라엘의 신탁으로 넘어가면, 본문의 호흡은 갑자기 길어지며 이전과는 전혀 다른 긴장감을 만들어 냅니다. 아모스 1장부터 2장 5절까지 이어진 서론과 일곱 번의 신탁 끝에는 모두 히브리어 원문의 문단 구분 기호가 빠짐없이 찍혀 있어 각 단락의 판결이 완결되었음을 표시합니다. 그러나 여덟 번째인 이스라엘의 신탁은 여덟 번째 절이 끝나도록 심판의 선고도 내리지 않고 문단 구분 기호조차 찍지 않은 채, 끝없이 이어지는 죄악의 목록만을 숨 가쁘게 쏟아 놓습니다. <strong>닫히지 않는 문단 속에서 판결이 유보된 채 고발만 길어지는 이 침묵의 구조</strong>는, 지금도 우리 삶을 향해 말씀을 멈추지 않으시는 하나님의 애타는 시선을 느끼게 합니다.</p>
+<h3>장부 안의 합법적 거래가 하나님의 거룩한 이름을 더럽힐 때</h3>
+<p>그 닫히지 않은 고발장 안에 적힌 이스라엘의 죄목들은 놀랍게도 길거리의 무법한 폭동이 아니라, 모두 정상적인 장부와 서식 안에서 이루어진 거래들이었습니다. 그들은 <strong>은을 받고 의인을 팔며 신 한 켤레 값을 받고 가난한 자를 팔아넘겼습니다</strong>. 또한 가난한 자의 머리 위에 있는 티끌까지 탐내어 힘없는 자의 길을 굽게 만들었고, 모든 제단 옆에서 <strong>전당 잡은 옷 위에 누우며 벌금으로 거두어들인 포도주를 그들의 신의 집에서 마셨습니다</strong>. 은과 신 한 켤레라는 매매 대금, 담보로 잡은 겉옷, 그리고 과료로 징수한 포도주에 이르기까지, 이 네 가지 물건은 모두 채권과 채무, 법정과 세무의 장부 위에 합법적인 항목으로 기록되던 것들입니다.</p>
+<p>신명기 율법이 가난한 자의 겉옷을 밤이 지나도록 전당 잡지 말라고 엄히 금했음에도 불구하고, 그들은 장부의 규정과 절차라는 이름 아래 약자의 마지막 생존 수단을 빼앗아 자기들의 안락한 자리와 종교적 축제의 도구로 삼았습니다. 더욱이 일곱 번째 절 끝에는 나의 거룩한 이름이라는 하나님의 소유격이 놓여 있고, 여덟 번째 절 끝에는 그들의 신이라는 사람들의 소유격이 나란히 놓여 있습니다. 입으로는 여호와를 부르면서도 약자의 피눈물이 배어 있는 담보물 위에서 평안을 누릴 때, 그 예배 처소는 이미 하나님의 성소가 아니라 그들의 탐욕이 만든 그들의 신전으로 변질되고 만다는 준엄한 지적입니다. 오늘 우리가 다루는 회계 장부와 계약서 안에서도, 법적인 하자가 없다는 이유만으로 <strong>누군가의 삶을 신 한 켤레 값처럼 가볍게 처분하고 있는 항목은 없는지</strong> 세밀히 세어 보아야 합니다.</p>
+<p>무엇보다 가슴 아픈 문법적 사실은, 육절과 칠절에 등장하는 의인과 궁핍한 자, 가난한 자와 힘없는 자라는 네 부류의 약자들이 문장 속에서 단 하나의 능동태 동사도 가지지 못한다는 점입니다. 팔아넘기고, 탐내고, 길을 굽게 만드는 모든 동사는 오직 가진 자들의 몫이었고, 약자들은 자기 처지를 바꿀 동사 하나 없이 목적어로만 놓여 있었습니다. 그러나 스스로는 아무 동사도 걸 수 없는 그 무력한 자리에, 마침내 부요하신 분으로서 우리를 위해 가난하게 되신 예수 그리스도께서 친히 동사를 가진 구원자로 찾아오셨습니다. 오늘 내 삶을 바꿀 힘이 없어 막막한 자리에 서 있다면 <strong>내 이름을 피해자의 목록에서 빠짐없이 읽어 주시는 주님의 음성에 귀를 기울이고</strong>, 내 손에 장부와 권한이 들려 있다면 받은 말씀을 거울삼아 <strong>열려 있는 고발장 앞에서 두려움으로 옷깃을 여미는 하루</strong>가 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 05일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>낡아지는 장막 집에서 터져 나오는 탄식까지도 생명이 삼키실 날을 기다립니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 29일 &middot; 고린도후서 4:16~5:5</span>
+      <h1>낡아지는 장막 집에서 터져 나오는 탄식까지도 생명이 삼키실 날을 기다립니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>겉사람은 후패하나 날로 새로워지는 속, 둘로 갈라 버리지 않는 은혜</h3>
+<p>고린도후서 4장 16절부터 5장 5절에 이르는 여덟 절은 우리의 지친 몸의 현실에서 이야기를 시작합니다. <strong>그러므로 우리가 낙심하지 아니하노니 우리의 겉사람은 낡아지나 우리의 속사람은 날로 새로워지도다</strong>라는 유명한 선언이 그 첫머리입니다. 여기서 우리가 먼저 귀 기울여야 할 문법의 결은, 백서른두 개의 헬라어 단어로 이루어진 이 단락 전체에 무엇을 하라고 다그치는 <strong>명령형 동사나 2인칭 동사, 심지어 너희라는 대명사조차 단 한 번도 등장하지 않는다</strong>는 사실입니다. 겉이 낡아지고 허물어지는 일도, 속이 날마다 새로워지는 일도 모두 내가 내 힘으로 해내는 능동이 아니라 <strong>그저 겪고 받아들이는 수동의 형태</strong>로 적혀 있으며, 이 모든 일을 이루시는 분의 이름은 단락의 맨 마지막 구절인 5장 5절에 가서야 비로소 조용히 모습을 드러냅니다.</p>
+<p>우리말 개역개정 성경은 4장 16절을 겉사람과 속사람이라는 대칭 구조로 옮겼지만, 옛 번역인 개역한글은 겉사람은 후패하나 우리의 속은 날로 새롭도다라고 옮겨 속에는 사람이라는 명사를 넣지 않았습니다. 실제로 헬라어 원문을 들여다보면 겉(엑소)에는 사람을 뜻하는 명사가 한 번 놓여 있는 반면, 속(에소)에는 관사와 부사와 소유대명사만 있을 뿐 사람이라는 명사가 비어 있습니다. 성경은 한 사람을 겉사람과 속사람이라는 두 개의 분리된 실체로 쪼개어 놓고 겉사람을 미워하거나 죽이라고 명령하지 않습니다. 오히려 <strong>한 사람의 인생 안에서 동시에 벌어지는 두 방향의 진행</strong>을 있는 그대로 적어 내려갈 뿐입니다.</p>
+<p>그러므로 하루 종일 병실의 같은 자리에 누워 몸을 돌릴 수 있는 폭이 고작 한 뼘밖에 되지 않는 분에게, 이 본문은 몸이 허물어지는 일을 신앙의 적이나 패배로 규정하지 않는 따뜻한 안식처가 됩니다. 힘내어 일어나라는 명령형 동사가 단 하나도 없기에, 오늘 병상에 계신 분이 하실 수 있는 몫은 벽 너머의 먼 세상을 건너다보려 애쓰는 것이 아니라 <strong>지금 누워 있는 자리에서 이 방의 벽 가운데 눈에 들어오는 한 면만 가만히 올려다보는 일</strong>이어도 충분합니다. 날마다 속을 새롭게 하시는 일이 사람의 숙제로 맡겨지지 않았고, 오직 마지막 절에 서 계신 하나님의 손에 들려 있기 때문입니다.</p>
+<h3>잠깐 보이는 것과 영원한 집, 탄식을 믿음 없음으로 꾸짖지 않는 성경</h3>
+<p>시선을 조금 옮겨 4장 18절에 이르면, 열여덟 단어로 이루어진 짧은 한 구절 안에 <strong>보이는(블레포메나)이라는 수동태 분사가 똑같은 모양으로 네 번이나 연달아 등장</strong>합니다. 신약성경 스물일곱 권 전체를 통틀어 이 동사가 한 절에 네 번 몰려 나오는 곳은 오직 여기뿐입니다. 그런데 본문이 보이는 것과 보이지 않는 것을 가르는 기준은 놀랍게도 선과 악이나 영과 육이라는 도덕적 우열이 아닙니다. 술어로 놓인 두 형용사는 오직 <strong>잠깐(잠시의)</strong>과 <strong>영원함</strong>이라는 기간의 차이만을 말합니다. 따라서 이 구절은 눈에 보이는 현실의 삶을 악한 것으로 정죄하며 억지로 눈을 감으라는 명령이 아니라, 오래 가는 것과 잠시 머물다 지나가는 것의 시간표를 조용히 일러 주는 위로입니다.</p>
+<p>이어지는 5장 1절은 우리말 성경에서 새로운 장이 시작되며 앞 절과 끊어진 것처럼 보이지만, 원문에는 문장 둘째 자리에 <strong>왜냐하면(가르)</strong>이라는 접속사가 놓여 있어 4장 18절의 근거로 단단히 이어져 있습니다. 게다가 5장 1절부터 4절까지는 신약에서 몸을 뜻하는 가장 흔한 단어를 단 한 번도 쓰지 않고, 그 자리를 <strong>땅에 있는 우리의 장막 집</strong>과 <strong>하늘에 있는 영원한 집</strong>, 그리고 처소와 죽을 것이라는 단어들로 채웁니다. 흥미로운 점은 그 두 집을 나란히 세워 둔 뒤 이어지는 구절들에서 하나님의 이름이 잠시 자취를 감춘 채, <strong>우리의 깊은 탄식이 두 번이나 터져 나오고 무거운 짐이 얹혀 눌리는 상태(바루메노이)가 여과 없이 기록된다</strong>는 사실입니다.</p>
+<p>성경은 땅의 장막 집에서 터져 나오는 그 무거운 한숨과 탄식을 믿음이 모자란 탓이라며 꾸짖거나 당장 고치라고 다그치지 않습니다. 그러므로 목회의 현장에서 삶의 무게에 눌려 숨을 몰아쉬며 앉아 있는 교우를 만날 때, 설교와 심방은 그 가쁜 숨을 당장 고르라고 재촉하거나 아직 눈에 보이지 않는 미래의 집을 성급히 약속하는 순서로 짜여서는 안 됩니다. 이번 주 심방에서는 아픔이 머문 그 집을 서둘러 나오기보다, <strong>그 집의 방 한가운데 서서 두 팔을 양옆으로 뻗어 양쪽 벽까지 거리가 얼마나 남는지 내 몸으로 먼저 가늠해 보는 일</strong>부터 시작해 보십시오. 탄식이 머무는 방의 폭을 몸으로 함께 아는 것이 성경이 보여 주는 동행의 방식입니다.</p>
+<h3>죽을 것이 생명에 삼킨 바 되게 하시며 성령을 보증으로 주신 하나님</h3>
+<p>우리가 장막 집에서 탄식하며 바라는 바는 몸을 훌훌 벗어 버리는 것이 아니라 그 위에 하늘의 처소를 덧입는 것이며, 마침내 5장 4절이 선언하듯 <strong>죽을 것이 생명에 삼킨 바 되게 하려 함(카타포테 휘포 테스 조에스)</strong>입니다. 여기서 삼킨 바 된다는 헬라어 단어(카타포테)는 신약성경 전체에서 똑같은 형태로 딱 두 번 쓰였는데, 두 번 모두 고린도후서에 들어 있습니다. 다른 한 곳은 2장 7절에서 누군가 너무 많은 근심에 잠길까 두려워한다는 구절입니다. 우리말 성경은 2장 7절을 잠길까로, 5장 4절을 삼킨 바 되게로 서로 다른 단어로 갈라 옮겨서 두 구절의 연결 고리가 번역본 줄에서는 보이지 않게 되었지만, 원문은 토씨 하나 다르지 않은 똑같은 단어를 사용합니다. 한쪽에서는 사람이 <strong>근심에 삼켜질까</strong> 염려하고, 다른 쪽에서는 우리의 죽을 것이 마침내 <strong>생명에게 삼켜지기를</strong> 소망합니다. 삼킨다는 동사는 그대로인데, 우리를 삼키는 주체가 근심에서 생명으로 역전된 것입니다.</p>
+<p>세무와 회계 현장에서 가장 흔히 발생하는 손실은 똑같은 항목 하나를 서로 다른 두 이름으로 두 장부에 올려 두어 어긋남이 눈에 보이지 않게 될 때 일어납니다. 칸과 시간과 수수료는 결국 누군가 몸으로 치러야 하는 물질이기에, 이번 신고 기간에는 두 장부를 억지로 한 이름으로 합쳐 덮어 버리는 대신 <strong>자료실에서 그 두 장부가 꽂힌 칸을 서로 한 칸 비켜 두어 두 이름이 같은 항목이라는 사실을 눈으로 볼 수 있게 남겨 두십시오.</strong> 그리고 마침내 단락의 끝인 5장 5절은 <strong>곧 이것을 우리에게 이루게 하시고 보증으로 성령을 우리에게 주신 이는 하나님이시니라</strong>고 선언하며 긴 탄식의 여정을 갈무리합니다. 이루게 하셨다는 분사와 성령을 보증으로 주셨다는 분사 두 개가 하나의 관사 아래 나란히 묶여 있어, 구원을 준비하신 일과 성령의 보증을 주신 일을 시간적 단계로 쪼개어 의심할 여지를 남기지 않습니다. 오늘 저녁 집으로 돌아가거든 가장 오래 살아온 방의 바닥을 새것으로 갈아 치우려 하기보다, <strong>오래 산 방의 바닥 한 자리를 내 발바닥으로 가만히 한 번 문질러 보십시오.</strong> 허물어지는 장막을 적으로 삼지 않고, 이루신 분과 성령의 보증을 주신 분이 바로 한 분 하나님이심을 믿으며 오늘 내가 선 한 칸의 자리를 평안히 디디고 서기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 29일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

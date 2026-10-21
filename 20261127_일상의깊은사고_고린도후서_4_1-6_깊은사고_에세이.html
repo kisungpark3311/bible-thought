@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내가 만든 불빛이 아니라, 어둠 속에서 빛을 부르신 분이 마음에 비추실 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 27일 &middot; 고린도후서 4:1-6</span>
+      <h1>내가 만든 불빛이 아니라, 어둠 속에서 빛을 부르신 분이 마음에 비추실 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<h3>긍휼하심을 입은 자리에서 속임을 버리고 하나님 앞에 서다</h3>
+<p>고린도후서 4장 1절부터 6절까지의 말씀은 직분을 맡은 이가 어째서 주저앉지 않을 수 있는지를 조용히 들려주며 문을 엽니다. <strong>우리가 이 직분을 받아 긍휼하심을 입은 대로 낙심하지 아니하고</strong>라는 첫 문장에서, 긍휼하심을 입었다는 동사는 내가 자격을 갖추어 따낸 것이 아니라 <strong>밖으로부터 불쌍히 여김을 받았다는 수동의 형태</strong>로 적혀 있습니다. 심지어 원문은 그 긍휼을 베푸신 분의 이름조차 문장의 표면에서 한 걸음 뒤로 물려 비워 둠으로써, 은혜를 받은 자가 마땅히 품어야 할 경외의 여백을 남깁니다. 우리가 삶의 자리에서 쉽게 무너지지 않는 까닭은 내 의지가 단단해서가 아니라, 나를 불쌍히 여기신 그 먼저 온 은혜가 내 등 뒤를 받치고 있기 때문입니다.</p>
+<p>긍휼을 입은 사람은 세상 한복판에서 일하는 방식부터 달라집니다. 사도는 2절에서 버린 것 하나와 하지 않는 것 둘, 그리고 힘써 행하는 것 하나를 차례로 늘어놓습니다. 숨은 부끄러움의 일을 버리고, 교묘한 속임수로 행하지 않으며, 하나님의 말씀을 혼잡하게 물타기하지 않는 대신 <strong>오직 진리를 나타냄으로 하나님 앞에서 각 사람의 양심에 대하여 스스로 추천한다</strong>는 것입니다. 거래처에 까다로운 일 처리를 설명해야 하거나 세무조사 현장에서 장부의 근거를 소명해야 할 때, 우리는 흔히 눈앞의 상대방만 그럴듯하게 납득시키면 모든 일이 끝난다고 생각하기 쉽습니다. 그러나 성경은 우리의 설명과 노동이 향하는 과녁을 <strong>각 사람의 양심</strong>과 <strong>하나님 앞</strong>이라는 두 겹의 자리에 동시에 세워 둡니다.</p>
+<p>이어지는 3절과 4절, 그리고 6절을 나란히 놓고 원문의 글자를 들여다보면 참으로 놀라운 문법적 대조가 드러납니다. 우리말 성경은 4절에서 사람들의 마음을 혼미하게 한 존재를 <strong>이 세상의 신</strong>으로 옮기고, 6절에서 우리 마음에 빛을 비추신 분을 <strong>그 하나님</strong>으로 갈라 옮겼습니다. 그러나 헬라어 원문에서 이 두 단어(호 테오스)는 표제어부터 여덟 글자의 철자와 품사, 심지어 앞에 붙은 관사까지 한 글자도 틀리지 않고 완벽하게 똑같습니다. 그 둘을 가르는 유일한 재료는 오직 그 뒤에 달라붙는 수식어 하나뿐입니다. 한쪽은 이 세대의라는 수식어에 묶여 복음의 광채를 가리는 자리에 서고, 다른 한쪽은 <strong>어두운 데에 빛이 비치라 말씀하셨던 분</strong>이라는 창조의 선언과 함께 우리를 살리는 자리에 섭니다.</p>
+<h3>더 잘 보려는 애씀을 넘어, 어둠을 가르고 찾아오는 비침의 은혜</h3>
+<p>더욱 깊은 위로는 본문이 복음을 깨닫지 못하는 이들을 대하는 태도에 숨어 있습니다. 3절에서 복음이 가리었으면이라는 말은 완료 수동태로 상태만을 묘사할 뿐이고, 이 책 전체를 통틀어 누군가를 미리 버려두었다는 예정이나 유기, 심판을 뜻하는 삼엄한 단어들은 단 한 번도 등장하지 않습니다. 몇 번 권면했는데도 귀를 닫는 이를 보며 교회 안에서조차 저 사람은 마음이 혼미하게 된 사람이라며 쉽게 분류하고 판정해 버리는 일이 얼마나 많습니까. 그러나 성경은 본문이 이름 붙이지 않은 자리에 우리가 섣부른 낙인을 찍는 일을 허락하지 않습니다. 대신 6절 한 구절 안에 <strong>어둠과 빛, 비추다(람포)와 비침(포티스모스)이라는 빛과 어둠의 어휘 네 가지를 한꺼번에 쏟아부으며</strong> 신약성경 스물일곱 권 전체에서 유일무이한 빛의 밀도를 만들어 냅니다.</p>
+<p>여기서 우리의 마음을 가장 따뜻하게 어루만지는 통찰은, 이 단락이 빛을 만나는 사건을 <strong>사람이 눈을 부릅뜨고 본다는 동사로 적지 않고 오직 빛이 비친다는 말과 안다는 말로만 적는다</strong>는 사실입니다. 우리말 개역개정 본문에도 눈이라는 단어는 아예 들어오지 않습니다. 시력이 약해져 글자가 흐릿하게 뭉개져 보이는 분에게 본문을 더 자세히 들여다보라는 말은 위로가 아니라 폭력이 될 수 있습니다. 어두운 방에 서 있는 사람이 해야 할 일은 내 눈의 힘으로 어둠 속에서 밝기를 만들어 내는 것이 아닙니다. <strong>어두운 데에 빛이 비치라 말씀하셨던 그 하나님께서 우리 마음에 직접 빛을 비추셨기 때문</strong>에, 밝기를 스스로 만들어 낼 수 없는 연약한 사람에게도 은혜가 머무는 자리가 온전히 남겨져 있는 것입니다.</p>
+<p>사도는 5절에서 우리는 우리 자신을 전파하는 것이 아니라 <strong>오직 그리스도 예수의 주 되신 것과 예수를 위하여 우리가 너희의 종 된 것을 전파한다</strong>고 고백합니다. 그리고 6절에서 하나님의 영광을 아는 빛이 머무는 장소를 가리켜 <strong>그리스도의 얼굴에 있는 빛</strong>이라고 부릅니다. 원문은 그 얼굴의 주인을 그리스도라는 한 이름으로만 적고 우리말 성경은 앞 절의 여운을 이어 예수 그리스도라고 두 이름을 포개어 불렀는데, 흥미롭게도 6절은 빛을 비추신 하나님을 문장의 주어 자리에 세워 놓고도 그 주어에 직접 끝맺는 동사를 붙이지 않습니다. 말씀하셨던 그 하나님이라 부른 뒤 관계대명사를 한 겹 거쳐 우리 마음에 비추셨다고 이어 감으로써, 창조의 첫날 어둠을 가르신 하나님과 오늘 내 어두운 마음에 찾아오신 하나님이 한 분이심을 경건한 떨림 속에 증언합니다.</p>
+<h3>그리스도의 얼굴에 머문 빛, 바람이 살에 닿듯 조용히 받아들이는 하루</h3>
+<p>그러므로 오늘 우리가 일상의 자리에서 감당할 몫은 내 손으로 인공적인 불빛을 만들어 내는 일이 아니라, 빛이 스며드는 자리에 조용히 머무는 일입니다. 눈이 침침하여 활자가 뭉개져 보이는 분이라면 억지로 글씨를 읽으려 애쓰는 대신, <strong>방 안의 공기가 전과 달라졌는지 코로 조용히 가늠해 보는 동작</strong> 하나면 충분합니다. 무슨 방인지 판정하려는 것이 아니라 그저 공기의 결이 바뀐 폭을 느껴 보는 것입니다. 예배실 문간에서 성도들을 맞이하는 목회자라면 상대를 분류하는 셈을 멈추고 <strong>예배실 문간에서 그 방에 지금 머물러 있는 냄새를 있는 그대로 맡아 보는 일</strong>부터 시작하고, 치열한 상담과 소명의 자리를 지키는 직업인이라면 상대를 굴복시키려는 조바심을 내려놓고 <strong>상담 자리의 공기와 냄새가 어느 틈으로 들어오는지 코로 가만히 좇아 보는 여유</strong>를 가져 보십시오.</p>
+<p>유독 집 안이 어둡고 무겁게 느껴져 그 어떤 설명도 들어갈 틈이 없는 저녁이 찾아올 때가 있습니다. 그런 밤에는 긴 말을 보태려 하지 말고 창문을 조금 열어 <strong>팔을 바깥 바람 쪽에 내어 두고 그 바람을 가만히 쐬어 보십시오.</strong> 바깥의 서늘한 바람이 내 살결에 닿아 피부의 온도가 달라지는 데 걸리는 그 짧은 시간, 바로 그 손에 잡히는 분량만큼이 오늘 내가 감당할 전부입니다. 이 여섯 절은 참되신 하나님을 끝맺는 동사의 직접 주어로 내세우지 않고 감사의 어휘도 아껴 둔 채, 우리를 정직한 고백과 결단의 자리로 초대합니다. 내가 스스로 밝기를 만들 수 있다고 착각하며 보지 못하는 이들을 속으로 분류했던 교만을 내려놓고, 오늘 하루 <strong>그리스도의 얼굴에 있는 하나님의 영광을 아는 빛</strong>이 내 마음에 들어오는 그 한 자리를 묵묵히 지키는 평안이 함께하기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 27일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

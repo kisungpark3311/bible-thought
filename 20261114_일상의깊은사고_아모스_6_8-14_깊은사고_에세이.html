@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>자기를 담보로 내놓은 손이 성을 넘기실 때</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 14일 &middot; 아모스 6:8-14</span>
+      <h1>자기를 담보로 내놓은 손이 성을 넘기실 때</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>아모스 6장 8절부터 14절까지의 말씀은 하나님께서 <strong>자기 자신을 담보로 걸고 하시는 무거운 맹세</strong>로 문을 엽니다. 만군의 하나님 여호와께서 자기를 가리켜, 곧 원어의 표현대로라면 자기 생명과 영혼을 걸고 맹세하십니다. 아모스서 안에는 하나님의 맹세가 네 차례 등장하는데, 그 가운데 담보가 다른 무엇이 아니라 하나님 자신인 자리는 오직 이곳 한 군데뿐입니다. 그토록 무거운 담보를 걸고 선포하시는 말씀의 내용은 야곱의 영광을 싫어하며 그 궁궐들을 미워하므로 이 성읍과 거기 가득한 것을 대적의 손에 넘기시겠다는 선언입니다. 맹세가 먼저 오고 넘김이 뒤에 따르는 이 한 문장 안에서, <strong>성읍을 넘기시는 손은 바로 그 성읍 앞에서 먼저 자기 자신을 담보로 내놓은 손</strong>이라는 사실이 선명하게 드러납니다.</p>
+<p>구약 성경 전체를 통틀어 <strong>내가 넘긴다라는 일인칭 사역형 동사가 주님의 입에서 직접 선포되는 자리는 본문 6장 8절 단 한 곳뿐</strong>입니다. 같은 어근에 일인칭이 걸린 다른 네 자리에서는 모두 사람이 주님께 나를 대적의 손에 넘기지 마소서라고 탄원하거나 나를 넘기셨다며 아파하는 목적어로 등장할 뿐, 하나님께서 친히 내가 넘긴다고 주체로 서신 자리는 여기밖에 없습니다. 이어지는 9절부터 11절까지는 그렇게 넘겨진 성읍 안의 한 집을 조용히 비춥니다. 한 집에 열 사람이 남아도 다 죽고, 친척이 시체의 뼈를 집 밖으로 들어내며 내실 구석에 숨어 있는 사람에게 아직 누가 더 남아 있느냐고 물으면 <strong>없다라는 짧은 대답과 함께 잠잠하라, 여호와의 이름을 부르지 말라</strong>는 속삭임이 그 참혹한 장면을 닫아 버립니다. 놀랍게도 본문은 이 집의 비극을 기록하면서 날짜도, 왕의 이름도, 전염병이나 전쟁이라는 단어도, 심지어 앗수르라는 제국의 이름이나 기도라는 낱말조차 단 한 번도 적지 않습니다.</p>
+<h3>말이 끊긴 집의 침묵과 단수와 복수로 갈라지는 두 입술</h3>
+<p>역사적 배경이나 질병의 이름, 기도의 요청마저 모두 비워 둔 본문의 침묵 앞에서 독자는 오히려 두 개의 뚜렷한 목소리와 마주하게 됩니다. 본문 안에서 나를 가리키는 일인칭 표현은 모두 여덟 번 등장하는데, <strong>단수와 복수라는 문법적 수가 말하는 이의 정체를 한 치의 어긋남도 없이 갈라놓습니다</strong>. 단수로 적힌 다섯 번은 모두 8절과 14절에서 말씀하시는 하나님의 음성이고, 복수로 적힌 세 번은 모두 13절 한 절에 모여 있는 사람들의 자랑입니다. 사람들은 13절에서 <strong>우리가 우리 힘으로 우리에게 뿔을 취하지 아니하였느냐</strong>라며 복수의 일인칭을 세 번이나 겹쳐 쌓아 올립니다. 그러나 그 자랑의 문장이 채 끝나기도 전에 14절은 보라 내가 한 나라를 일으키리라는 하나님의 단수 일인칭 선언으로 그 자랑을 정면으로 받아칩니다.</p>
+<p>바로 그 자랑의 앞절인 12절에서 아모스 선지자는 세상에 결코 일어날 수 없는 두 가지 일을 물음으로 던집니다. 달리는 말이 어찌 바위 위에서 달리겠으며, 사람이 어찌 소를 몰아 바위를 밭 갈듯 갈 수 있겠느냐는 것입니다. 자연의 이치상 도무지 불가능한 그 두 가지 질문을 던진 직후, 본문은 질문이 아니라 <strong>너희가 이미 뒤집었다라는 완료형 고발</strong>을 내려놓습니다. 너희가 공법을 독초의 쓸개로 바꾸고 정의의 열매를 쓴 쑥으로 뒤집어 놓았다는 것입니다. 흥미롭게도 이 일곱 절 안에는 뒤집다라는 완료형 동사만 있을 뿐, 그것을 다시 원래대로 되돌린다는 동사는 단 한 번도 등장하지 않습니다. 또한 13절 끝에서 사람들이 자랑하는 두 낱말 역시 전쟁에서 빼앗은 두 성읍의 고유명사로 읽을 수도 있고 허무한 것과 뿔이라는 보통명사로 읽을 수도 있어서, 본문은 <strong>그들이 붙잡은 승리의 이름 자체가 실상은 아무것도 아닌 허무와 겹쳐 있음</strong>을 열린 긴장으로 남겨 둡니다.</p>
+<h3>바위를 갈아엎듯 뒤집힌 장부와 되돌리시는 다른 손</h3>
+<p>한 번 뒤집힌 것을 다시 제자리로 되돌리는 일이 얼마나 무겁고 어려운지는 일터에서 장부와 서류를 다루어 본 사람이라면 누구나 뼈저리게 압니다. 장부의 숫자 한 줄, 계약서의 문구 하나, 영수증의 날짜 하나를 <strong>뒤집는 데는 한 번의 손길이면 충분하지만, 이미 뒤집혀 굳어 버린 것을 바로잡아 되돌리는 데는 한 사람의 손으로 모자랍니다</strong>. 잘못 처리된 세무 서류 하나를 바로잡기 위해 수정신고를 내어 본 사람은 뒤집힌 계산이 굳어지는 속도와 그것을 되돌리는 데 걸리는 시간이 결코 같지 않음을 압니다. 우리말 성경은 공법과 정의라는 익숙한 단어로 옮기지만, 원어에서는 서로 다른 두 단어가 역본마다 교차되어 번역될 만큼 인간의 언어와 계산은 늘 불완전하고 쉽게 뒤틀립니다.</p>
+<p>그러나 우리가 뒤집어 놓은 채 스스로 되돌릴 수 없는 그 절망의 자리에서 성경 전체의 복음은 놀라운 한 분의 손을 가리킵니다. 아모스 6장 8절에서 자기보다 더 큰 이가 없으므로 자기 자신을 담보로 걸고 성읍을 넘기신다고 선언하셨던 바로 그 하나님께서, 신약 히브리서와 고린도후서의 증언에 이르면 <strong>단번에 자기를 제물로 드려 친히 대적의 손에 넘겨지는 몸</strong>이 되셨습니다. 넘김의 주체로 서셨던 그 손과, 우리를 대신하여 죄가 되시어 십자가에 넘겨지신 예수 그리스도의 몸이 실은 한 분이셨던 것입니다. 또한 사람들이 우리 힘으로 우리에게 뿔을 취하였다고 헛된 자랑을 쌓던 그 무너진 다윗의 집에, 하나님께서는 누가복음 1장 69절의 노래처럼 <strong>우리를 위하여 구원의 뿔을 친히 일으켜</strong> 세우셨습니다. 뒤집는 손은 사람의 손이었으나, 되돌리는 손은 자기를 담보로 내어주신 주님의 손이었습니다.</p>
+<h3>물 한 모금의 시간, 손끝으로 짚는 장부, 한 번 굽히는 무릎</h3>
+<p>이 깊고 엄위한 말씀 앞에서 오늘 우리의 몸은 어떻게 응답할 수 있겠습니까. 먼저 병상에 누워 몸을 일으키지 못하는 분이나, 아픈 가족을 돌보느라 하루가 조각나 자기 시간이 단 십 분도 남아 있지 않은 분께 마음을 담아 권합니다. 6장 9절부터 11절까지의 무너진 집 풍경 속에는 기도하라는 낱말이 단 한 번도 나오지 않으며, 본문은 지친 이들에게 말을 더 만들어 내라고 다그치지 않습니다. 오늘은 머리로 긴 기도문을 떠올리려 애쓰지 마시고, <strong>다만 물 한 모금을 입에 넣고 목으로 삼키는 그 짧은 동안만 주님 앞에 머물러</strong> 보십시오. 물 한 모금이 목을 타고 넘어가는 그 한 번의 동작이면 오늘 그분의 몫은 주님 앞에서 온전히 충분합니다.</p>
+<p>일터와 강단에 서는 이들에게도 오늘 몸으로 드릴 작은 동작이 있습니다. 이번 달 장부나 통장 내역에서 들어온 금액 한 줄을 골라, 화면을 빠르게 쓸어내리는 대신 <strong>왼쪽에서 오른쪽 끝까지 손가락 끝으로 천천히 짚어 가며</strong> 그 돈이 거쳐 온 사람들의 얼굴을 떠올려 보십시오. 우리 힘으로 우리에게 취하였다는 오만한 계산에서 늘 지워지곤 하는 타인의 땀과 체온은 오직 손끝이 멈추는 자리에서만 되살아납니다. 그리고 말씀을 전하기 위해 강단에 오르는 분이라면, 강단에 서기 직전 <strong>그 자리에서 실제로 무릎의 각도를 꺾어 한 번 굽히는 동작</strong>을 해 보시기를 권합니다. 설교자가 지는 책임은 내 확신으로 하나님의 말씀을 보증하려는 것이 아니라, 오직 자기 자신을 담보로 내놓으신 주님의 손을 겸손히 가리키는 일이기 때문입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 14일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

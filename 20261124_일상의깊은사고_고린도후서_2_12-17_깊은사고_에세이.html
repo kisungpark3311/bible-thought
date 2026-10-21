@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>바칠 제물이 없는 자리에서 우리 자신이 되어 번져 가는 그리스도의 향기</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 2026년 11월 24일 &middot; 고린도후서 2:12-17</span>
+      <h1>바칠 제물이 없는 자리에서 우리 자신이 되어 번져 가는 그리스도의 향기</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리는 흔히 사역의 성공과 실패를 눈앞에 열린 기회의 문으로 판단하곤 합니다. 오랫동안 기도하던 전도의 문이 활짝 열렸다면 당연히 그곳에 남아 열매를 거두는 것이 하나님의 뜻이라고 생각하기 쉽습니다. 그러나 고린도후서 2장 12절부터 17절까지 이어지는 여섯 절의 말씀은 우리의 익숙한 성공 공식을 단숨에 흔들어 놓는 뜻밖의 이동 보고로 시작됩니다. 바울이 복음을 위하여 드로아에 이르렀을 때 주 안에서 분명히 문이 열렸지만, <strong>그 열린 문을 적어 놓은 바로 다음 절에서 바울은 그곳에 머물지 않고 작별 인사를 건넨 뒤 마게도냐로 떠나버렸다고 고백하기 때문</strong>입니다.</p>
+<h3>열린 문 앞에서 돌아선 발걸음과 제물 없는 향기</h3>
+<p>드로아의 열린 문과 마게도냐로의 떠남을 이어 주는 접속사는 그러나라는 짧은 단어 하나뿐입니다. 왜 열린 문을 뒤로하고 떠나야 했는지 그 신학적 인과관계를 설명하는 말은 없고, 오직 내 형제 디도를 만나지 못하여 내 심령이 편하지 못했다는 정직한 내면의 고백만 완료형으로 적혀 있습니다. 아무리 사역의 문이 활짝 열려 있어도 함께 눈물을 나누던 한 형제의 안부가 확인되지 않아 마음이 쉬지 못할 때, 과감히 사역의 현장을 떠날 수 있었던 사도의 인간적인 아픔과 진실함이 그대로 노출되어 있습니다. 그런데 바로 그 불안과 이동의 한복판인 14절에서, 문장은 갑자기 <strong>항상 우리를 그리스도 안에서 이기게 하시고 각처에서 그리스도를 아는 냄새를 나타내시는 하나님께 감사하노라는 벅찬 송축</strong>으로 방향을 틉니다.</p>
+<p>이 여섯 절 안에는 냄새를 뜻하는 오스메가 세 번, 향기를 뜻하는 유오디아가 한 번 등장하여 고린도후서 전체에 나오는 향기 어휘 네 번이 모두 이곳에 모여 있습니다. 에베소서나 빌립보서 같은 다른 서신에서 이 두 단어가 함께 쓰일 때는 언제나 하나님께 바치는 향기로운 제물과 예물이라는 한 구절로 묶여 등장합니다. 그러나 놀랍게도 고린도후서 전체를 아무리 뒤져 보아도 <strong>제물, 바칠 예물, 제단, 제사장, 대제사장, 피, 향, 유향, 향유, 기름 바름이라는 열 가지 제사 어휘가 단 한 번도 등장하지 않습니다</strong>. 바울은 향기를 우리가 손에 들고 바치는 헌신이나 예물에 얹지 않습니다. 대신 신약 성경 전체에서 오직 15절 이 한 곳에서만 향기라는 단어가 수식어의 자리를 벗어나 문장의 당당한 주격 보어로 올라섭니다. <strong>하나님 앞에 드려지는 몫에 어떤 물건이나 실적이 놓이지 않고, 심령이 편하지 못해 길을 떠나던 연약한 우리 자신이 곧 그리스도의 향기라는 단 하나의 수식 아래 놓이는 것</strong>입니다.</p>
+<h3>한 냄새가 닿는 두 갈래의 끝과 말하는 사람의 좌표</h3>
+<p>더욱 엄숙한 사실은 16절에서 이 하나의 냄새가 두 갈래의 전혀 다른 결말로 갈라진다는 점입니다. 이 사람에게는 사망으로부터 사망에 이르는 냄새가 되고, 저 사람에게는 생명으로부터 생명에 이르는 냄새가 된다는 이 긴 문장 속에는 정작 동사가 단 하나도 들어 있지 않습니다. 우리말 성경은 향기니, 냄새요, 냄새라 하고 세 번이나 서로 다른 어미로 문장을 맺어 주었지만, 원문에서 본동사는 15절의 우리는 그리스도의 향기다라는 현재형 하나뿐이고 16절은 동사 없이 전치사 구절만 겹겹이 이어집니다. <strong>왜 똑같은 그리스도의 냄새가 누구에게는 사망에 이르고 누구에게는 생명에 이르는지 성경은 그 갈림의 기준을 우리 손에 쥐여 주지 않으며</strong>, 대신 누가 이 일을 감당하리요라는 묵직한 질문 하나로 문장을 닫습니다.</p>
+<p>고린도후서의 서른한 개 단락 가운데 문장을 끝맺는 다섯 개의 본동사가 예외 없이 전부 나 혹은 우리라는 일인칭으로만 적힌 단락은 오직 이 여섯 절뿐입니다. 너희를 부르는 이인칭 동사도, 대명사도, 상대방을 가르치고 채찍질하는 명령형도 완전히 비어 있습니다. 그러니 이 본문을 가지고 성도들을 향해 향기로운 제물이 되라고 다그치거나, 하나님의 말씀을 혼잡하게 섞지 말라고 남을 정죄하는 지시문으로 바꿀 수 없습니다. 17절에서 수많은 사람처럼 말씀을 혼잡하게 하지 않고 순전함으로 말한다는 고백 역시 내 설교의 솜씨나 도덕적 우월감을 자랑하는 말이 아닙니다. 그것은 <strong>내 입에서 나가는 말의 자격을 내 실력에 두지 않고, 오직 하나님 앞에서와 그리스도 안에서라는 두 개의 전치사 좌표 위에 내 삶을 묶어 두겠다는 사도의 자기 고백</strong>입니다.</p>
+<h3>빈 자루의 아귀를 오므리고 상한 영수증 한 장을 솎아 내는 손</h3>
+<p>이 여섯 절이 사람에게 부과하는 의무와 명령이 완전히 비어 있다는 사실은, 오늘 물건 하나 들어 올릴 힘조차 남아 있지 않은 지친 이들에게 더할 나위 없는 위로가 됩니다. 성경이 우리를 그리스도의 향기라고 부를 때, 그것은 무언가 대단한 업적을 해낸 사람에게 주는 상장이 아닙니다. 오늘 당신이 할 수 있는 첫 번째 동작은 무거운 짐을 들어 올리는 일이 아니라, 그저 <strong>바닥에 놓인 빈 자루의 아귀를 한 손으로 가만히 오므려 쥐는 일 하나면 충분합니다</strong>. 자루 밑바닥을 무겁게 받쳐 드는 일과 달리, 손가락 셋만으로 빈 자루의 입구를 오므리는 그 작은 몸짓에는 어떤 무게도 실리지 않기 때문입니다.</p>
+<p>강단에서 말씀을 전하는 목회자의 자리에서도 무게중심은 완전히 달라져야 합니다. 우리는 그리스도의 향기입니다라고 선포할 때 가장 손쉬운 유혹은 성도들에게 더 많은 헌신과 제물을 바치라고 요구하는 것입니다. 그러나 본문에 제물 어휘가 하나도 없듯, 설교의 무게를 성도들의 헌신에 괴지 말고 오직 그리스도의라는 단 하나의 수식어에 괴어야 합니다. 그것은 자루 안의 내용물을 뒤져 상한 알곡을 골라내는 일이 아니라, <strong>자루 안에 담긴 것은 그대로 둔 채 자루 밑바닥에 튼튼한 널빤지 하나를 조용히 괴어 밑에서부터 무게를 버텨 주는 목양의 손길</strong>입니다.</p>
+<p>누가 감당할 만한 자격이 있는지를 날마다 평가해야 하는 세무와 회계의 일터에서는 16절의 질문이 우리 손을 멈추게 합니다. 거래처의 자금 사정을 보고 수임 여부를 가르고, 세무 조사 대상의 등급을 매겨 대응을 달리하는 일상의 분주함 속에서, 우리는 자칫 말씀의 기준을 남을 등급으로 가려내는 잣대로 쓰기 쉽습니다. 그러나 솎아 내야 할 손은 남을 향한 심판의 손이 아니라 내 삶을 살피는 손이어야 합니다. <strong>영수증이 가득 담긴 자루에서 찢어지고 상해 쓸 수 없는 영수증 한 장을 내 손으로 조용히 솎아 내되, 그 영수증을 가져온 사람의 인격과 존재까지 등급으로 매겨 버리지 않는 절제</strong>가 필요합니다. 그리고 몸이 버티지 못해 주저앉은 주간이나, 물질이 끊기고 거리가 멀어 열린 문 앞에서도 발길을 돌려야 했던 허탈한 날에는, 비어 있는 현실을 억지로 영적인 의미로 포장하려 애쓰지 마십시오. 그저 <strong>빈 자루를 바닥에 넓게 펴서 깔아 두듯, 열린 문이 머물 이유가 되지 못했던 그 빈자리를 하나님 앞에 있는 그대로 펼쳐 두시기 바랍니다</strong>. 누가 이 일을 감당하리요 묻는 그 열린 질문 앞에서 내 자격을 내려놓을 때, 이미 우리를 그리스도의 향기로 부르신 하나님의 은혜가 우리의 빈 자루 위로 조용히 번져 갈 것입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      2026년 11월 24일
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
