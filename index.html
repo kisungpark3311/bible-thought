@@ -1483,43 +1483,43 @@
             for (let i = 1; i <= 31; i++) {
                 const dateStr = `202610${String(i).padStart(2, '0')}`;
                 
+                const linkBlog = document.createElement('a');
+                linkBlog.href = `./${dateStr}_블로그.html`;
+                linkBlog.className = 'list-item';
+                linkBlog.innerHTML = `
+                    <div class="item-info">
+                        <h3 style="color:#2c5530">10월 ${i}일 블로그 버전 (${newEssays[i] ? newEssays[i].ref : ''})</h3>
+                        <p>10월 묵상 블로그</p>
+                    </div>
+                    <div class="arrow" style="color:#2c5530">→</div>
+                `;
+                octContainer.appendChild(linkBlog);
+
                 if (newEssays[i]) {
                     const linkNew = document.createElement('a');
                     linkNew.href = `./${newEssays[i].file}`;
                     linkNew.className = 'list-item';
                     linkNew.innerHTML = `
                         <div class="item-info">
-                            <h3>일상의 깊은 사고 (${i}일)</h3>
-                            <p>${newEssays[i].ref}</p>
+                            <h3>10월 ${i}일 일상의 깊은 사고 (${newEssays[i].ref})</h3>
+                            <p>10월 일상의 깊은 사고 에세이</p>
                         </div>
                         <div class="arrow">→</div>
                     `;
                     octContainer.appendChild(linkNew);
                 }
                 
-                const linkOrig = document.createElement('a');
-                linkOrig.href = `./${dateStr}_깊은사고_에세이(codex).html`;
-                linkOrig.className = 'list-item';
-                linkOrig.innerHTML = `
+                const linkCharEssay = document.createElement('a');
+                linkCharEssay.href = `./${dateStr}_인격만들기_에세이.html`;
+                linkCharEssay.className = 'list-item';
+                linkCharEssay.innerHTML = `
                     <div class="item-info">
-                        <h3 style="color:#777">성경적 사고와 인격 만들기 · Codex (${i}일)</h3>
-                        <p>10월 묵상 에세이 · Codex</p>
+                        <h3 style="color:#b7863c">10월 ${i}일 인격 만들기 에세이 (${newEssays[i] ? newEssays[i].ref : ''})</h3>
+                        <p>성경적 사고와 인격 만들기 에세이</p>
                     </div>
-                    <div class="arrow" style="color:#777">→</div>
+                    <div class="arrow" style="color:#b7863c">→</div>
                 `;
-                octContainer.appendChild(linkOrig);
-                
-                const linkBlog = document.createElement('a');
-                linkBlog.href = `./${dateStr}_블로그.html`;
-                linkBlog.className = 'list-item';
-                linkBlog.innerHTML = `
-                    <div class="item-info">
-                        <h3 style="color:#2c5530">블로그 버전 (${i}일)</h3>
-                        <p>10월 묵상 블로그</p>
-                    </div>
-                    <div class="arrow" style="color:#2c5530">→</div>
-                `;
-                octContainer.appendChild(linkBlog);
+                octContainer.appendChild(linkCharEssay);
             }
 // 역대상 9월 13일~30일
         const recentContainer = document.getElementById('recent-list');
