@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두셨다는 고백 위에 선 어찌하여와 그물 앞에 걸린 물음표</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 하박국 제 03편 &middot; 하박국 1:12-17</span>
+      <h1>두셨다는 고백 위에 선 어찌하여와 그물 앞에 걸린 물음표</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<blockquote>"여호와여 주께서 심판하기 위하여 그를 두셨나이다 반석이시여 주께서 경계하기 위하여 그를 세우셨나이다 … 그가 그물을 떨고는 연하여 늘 열국을 살륙함이 옳으니이까" (하박국 1:12, 17)</blockquote>
+<p>1장 11절까지 이방 세력을 줄곧 3인칭으로 그리던 말이 1장 12절에 이르러 하나님을 직접 부르는 말로 바뀝니다. 개역한글은 그 앞에 "선지가 가로되"를 넣지만, 히브리어 원문에는 화자를 알리는 표지가 없습니다. 탄원자는 "주께서는 만세 전부터 계시지 아니하시니이까"라고 부른 뒤, 그 세력을 하나님께서 심판하기 위하여 두셨고 경계하기 위하여 세우셨다고 고백합니다. 그다음에야 비로소 물음이 나옵니다. "어찌하여 … 악인이 자기보다 의로운 사람을 삼키되 잠잠하시나이까"(1:13). 이어 1장 14절은 사람을 '바다의 어족'과 '주권자 없는 곤충'에 견주고, 그렇게 만드신 주어를 '주께서'로 둡니다.</p>
+<p>1장 15절에서는 마침내 그물 주인이 등장합니다. 그가 낚시로 모두 취하며 그물로 잡으며 초망으로 모으고 인하여 기뻐하고 즐거워하며, 1장 16절에서는 그물에 제사하고, 1장 17절에서는 그 사슬의 셋째 고리에 물음 표지가 붙습니다. 여섯 절은 하나님의 응답 없이 닫힙니다. 이 단락의 중심은 분명합니다. 하나님의 두심을 고백하는 믿음은 물음을 없애지 않고, 물음을 그분께 가져가며, 폭력의 사슬 끝에 물음표를 답니다.</p>
+<h3>주께 잇던 여섯 동사의 끝, 바타아세</h3>
+<p>1장 12절부터 14절까지 개역한글은 줄곧 '주께서'를 주어로 둡니다. 그러다 1장 15절에 오면 주어가 '그가'로 바뀌고, 낚시와 그물은 그 '그'의 손에 들려 있습니다. 히브리어 원문에서 하나님을 '주'로 부르며 잇는 동사는 모두 여섯입니다(1장 12절에 둘, 13절에 셋, 14절에 하나). 그 마지막 하나인 1장 14절의 '바타아세'(וַתַּעֲשֶׂה, 만드시다)는 하박국에 열다섯 번 나오는 이야기 잇는 꼴(바브 연속형) 가운데 2인칭으로 놓인 유일한 자리입니다. 그 뒤 1장 15-17절의 정동사 아홉은 전부 3인칭이고, 하나님을 부르는 말은 단락 끝까지 다시 나오지 않습니다. 개역한글 1장 14절의 "어찌하여"는 번역이 보충한 말입니다. 원문에는 의문사가 없어서 이 절이 물음인지 진술인지는 정하지 않으나, 정해지는 것은 주어입니다.</p>
+<p>그물이 등장하기 전에 사람을 물고기처럼 만드는 일이 먼저 하나님께 돌려집니다. 탄원자는 하나님을 이 그림 밖으로 빼내지 않습니다. "다스리는 자가 그 위에 없는 기는 것"이라는 견줌도 하나님의 통치가 없다는 말이 아닙니다. 그 절의 주동사 주어가 하나님이시고, '없음'은 견줌 안의 꾸밈입니다. 보호자 없는 처지를 하나님 앞에 그대로 그려 올리되, 그 그림의 첫 동사 주어 자리에 하나님을 둡니다. 설교자와 읽는 이는 이 '없음'을 서둘러 무엇으로 채우고 싶어지지만, 본문은 그 자리를 이 단락 안에서 채우지 않습니다.</p>
+<h3>이름 없는 신이 된 그물과 셋째 고리에 붙은 물음표</h3>
+<p>1장 16절에서 그물 주인은 그물에 제사하고 초망 앞에 분향합니다. 이유도 숨기지 않습니다. 그것들 덕에 소득이 풍부하고 먹을 것이 풍성하다는 이유입니다. 구약에서 '제사하다'와 '분향하다'가 한 절에 함께 놓인 절은 열다섯인데, 대부분은 산당이나 푸른 나무 아래처럼 어디서 했는지를 답니다. 받는 이를 전치사 '르'(לְ)로 단 절은 셋뿐이고, 열왕기상 11장 8절은 '그들의 신들'을, 호세아 11장 2절은 바알들과 새긴 우상들을 받는 이로 둡니다. 그런데 하박국 1장 16절의 받는 이는 '그의 그물'(르헤르모, לְחֶרְמוֹ)과 '그의 초망'입니다. 이유절의 '그것'은 두 도구를 함께 받는 복수 대명사이고, 술어는 '기름지다(샤멘)'와 '살지다' 둘입니다. 같은 전치사 '르'가 1장 12절에서는 하나님이 그 세력을 두신 목적(심판하기 위하여, 경계하기 위하여)을 달았습니다.</p>
+<p>그물 주인에게는 신 이름이 하나도 붙지 않습니다. 그 대신 그물이 세 번 놓이며 구실을 바꿉니다. 1장 15절에서 수단, 1장 16절에서 제사를 받는 이, 1장 17절에서 비워지는 목적어입니다. 섬김의 받는 이가 신의 이름에서 먹을 것을 대는 도구로 옮겨 간 셈입니다. 그렇다고 모든 도구 사용이 우상숭배인 것은 아닙니다. 본문이 그리는 일은 도구를 부리는 일이 아니라, 내 몫을 불려 준 것에게 섬김이 돌아가 그 도구가 이름 없는 신이 되는 일입니다.</p>
+<p>이어지는 1장 15-17절을 개역한글로 읽으면 15절은 "인하여 기뻐하고", 16절에는 이어 주는 말이 없고, 17절은 "…함이 옳으니이까"로 끝나 세 절이 한 사슬이라는 것이 잘 보이지 않습니다. 그러나 원문은 세 절을 같은 결과 접속사로 묶습니다. '알 켄'(עַל־כֵּן), '알 켄'(עַל־כֵּן), '하알 켄'(הַעַל כֵּן). 셋째에만 물음 표지 '하'(הַ)가 붙습니다. 두 낱말이 이어 놓인 구약 155곳 가운데 물음 표지가 붙은 자리는 이 하나뿐입니다. 원문을 그대로 풀면 "이러므로 그가 그물을 비우겠습니까"이고, 개역한글의 "옳으니이까"는 번역이 보충한 말입니다. '이러므로'는 하박국에 다섯 번 나오는데, 1장 4절의 둘은 율법과 공의가 결과이고 이 단락의 셋은 그물 주인의 행위가 결과입니다. 그 뒤에 이어지는 "늘 열국을 죽이며 아끼지 않음"(라하로그 고임)이라는 둘째 행까지 물음에 드는지는 정하지 않으며, 2인칭이 없는 이 연에서 그 물음이 누구에게 향하는지, 사슬이 멈췄는지도 본문은 말하지 않습니다. 대상은 한 사람이 아니라 '열국'이고 부사는 '늘'이어서 이 무게는 제국의 폭력이며, 집안이나 교회 안의 다툼으로 줄여 읽을 자리가 아닙니다. 본문이 그물 주인의 이름을 대지 않으므로 오늘의 어느 나라나 지도자를 그 자리에 앉히지도 않습니다. 다만 믿음의 탄원은 폭력의 사슬을 끝까지 진술로 따라가지 않고, 그 셋째 고리에 물음표를 답니다.</p>
+<h3>들었다 내리는 발뒤꿈치와 책상 위에 엎어 두는 계산기</h3>
+<p>1장 12절의 고백 "두셨나이다"와 1장 13절의 물음 "어찌하여"는 같은 2인칭 주어에 붙습니다. 정경은 둘을 한 절씩 나란히 놓고, 어느 쪽이 다른 쪽을 흡수하게 두지 않습니다. 물음을 고백으로 덮으면 1장 13절이 지워지고, 고백을 물음으로 무르면 1장 12절이 지워집니다. 하나님의 응답은 2장 2절에 놓이고 2장 1절은 망대에 선 장면입니다. 2장 4절을 이 자리로 끌어와 1장 17절의 물음을 미리 풀어 버리면, 하박국이 여섯 절 동안 견딘 물음표가 사라집니다. 그러므로 우리도 그 물음표가 열린 채로 오늘의 자리를 마주합니다.</p>
+<p>야간 교대와 긴 출퇴근으로 기도 시간도 심방도 낼 수 없는 분이 있다면, 엘리베이터 문이 닫히는 몇 초 동안 발뒤꿈치를 한 번 들었다 내리며 "주는 만세 전부터 계신 나의 하나님" 한 마디를 속으로 드리십시오. 따로 시간을 떼어 드리는 긴 기도와는 다른 길입니다. 발뒤꿈치가 바닥에 다시 닿는 그 짧은 순간에도, 고백이 물음보다 먼저 놓일 수 있다는 것이 종아리에 남습니다. 목회 현장에서 1장 13절의 물음을 가장 자주 듣는 목회자는 해명하려는 말이 먼저 나오면 성도의 물음이 거기서 닫힌다는 것을 기억해야 합니다. 이번 주 사별이나 투병 중인 성도 한 사람의 집 앞까지 가서 초인종을 누르십시오. 전화로 안부를 묻는 것과는 다릅니다. 문이 열리기를 기다리는 그 몇 초 동안, 내가 가져갈 것은 답이 아니라 함께 올릴 '어찌하여'라는 것이 손가락 끝에 남습니다.</p>
+<p>세무와 회계 일터에서는 절세 구조 하나, 단골 고객 명단 하나가 몫을 불려 줄 때 고마움이 그 구조와 명단으로 향하기 쉽습니다. 1장 16절이 묻는 것은 그 도구가 합법인가가 아니라 그것에게 '이러므로 제사한다'가 붙었는가이며, 그 몫이 누구의 손실로 불었는가도 함께 걸립니다. 다음 상담에 들어가기 전, 책상 위 계산기를 엎어 두고 고객의 사정부터 들으십시오. 엎어진 계산기 뒷면이 보이는 동안, 앞에 앉은 사람이 숫자보다 먼저라는 것이 눈에 머뭅니다. 내일 아침 머리맡의 휴대폰을 화면이 아래로 가게 뒤집어 두고 첫 문장을 "주께서는 만세 전부터 계시지 아니하시니이까"라는 고백으로 드린 뒤 그날의 물음을 올리십시오. 이 단락에서 하나님은 탄원자가 '주'라고 불러 드리는 2인칭으로만 계시기에 감사 대신 고백과 결단과 헌신으로 나아갑니다. 만세 전부터 계신 나의 하나님께 '어찌하여'를 감추지 않고 드리며, 내 몫을 불려 준 그물에 마음을 바치지 않고, 답을 듣기 전에도 주를 부르는 자리를 떠나지 않기를 간구합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      하박국 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

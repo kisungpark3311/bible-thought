@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>열리지 않은 문 앞에서 오시는 분을 이야기하다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 하박국 제 10편 &middot; 하박국 3:1-7</span>
+      <h1>열리지 않은 문 앞에서 오시는 분을 이야기하다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<blockquote>여호와여 내가 주께 대한 소문을 듣고 놀랐나이다 여호와여 주는 주의 일을 이 수년 내에 부흥케 하옵소서 이 수년 내에 나타내시옵소서 진노 중에라도 긍휼을 잊지 마옵소서 하나님이 데만에서부터 오시며 거룩한 자가 바란산에서부터 오시도다 (합 3:2-3)</blockquote>
+<p>오래도록 문을 두드렸으나 아직 문고리가 돌아가지 않은 문 앞에 서 본 사람은 안다. 손등에는 문짝의 차가운 감촉만 남아 있고, 문 너머에서는 아직 대답 소리가 들려오지 않는 그 고요하고도 아득한 시간 말이다. 하박국 3장은 바로 그렇게 열리지 않은 문 앞에 선 한 사람의 노래로 문을 연다. 선지자 하박국의 기도라는 새로운 표제 아래 놓인 첫마디는 화려한 수사나 정돈된 신학 명제가 아니다. 히브리어 원문 그대로 읽으면 들었습니다라는 뜻의 샤마티와 두려웠습니다라는 뜻의 야레티, 단 두 마디의 고백이 앞선다. 기도하는 이는 자기가 왜 그토록 두려운지 길게 변명하거나 설명하지 않는다. 다만 들려온 소문의 무게를 온몸으로 받아 안은 채 곧바로 세 가지 간구를 쏟아 낸다. 주의 일을 해들 한가운데 살리소서, 해들 한가운데 알게 하소서, 진노 가운데라도 긍휼히 여기기를 기억하소서.</p>
+<p>놀라운 일은 그다음에 일어난다. 하박국 3장 1절부터 7절까지 이어지는 이 일곱 절의 단락 어디에도, 그가 그토록 간절히 아뢴 세 가지 청에 대한 하나님의 응답은 기록되어 있지 않다. 내가 네 기도를 들었다거나, 이제 네 뜻대로 일을 이루겠다는 대답의 문장은 찾아볼 수 없다. 그러나 응답이 주어지지 않는 바로 그 기도의 자리 안에서, 하박국의 입술은 멈추지 않고 오시는 하나님을 이야기하기 시작한다. 응답의 부재가 기도를 침묵으로 몰아넣는 대신, 부르던 목소리를 돌려 그분의 행차를 증언하는 목소리로 바꾸어 놓은 것이다.</p>
+<h3>부르던 당신에서 이야기되는 그분으로</h3>
+<p>본문의 결을 따라가다 보면 3장 2절과 3절 사이에서 말의 방향이 조용히, 그러나 단호하게 바뀌는 경계선을 만나게 된다. 2절 한 절 안에는 당신을 향한 2인칭의 부름이 다섯 번이나 겹쳐 놓인다. 당신에 대한 들음, 당신의 일, 그리고 당신께 드리는 세 번의 청이 숨 가쁘게 이어진다. 그러다 3절로 넘어서는 순간, 6절에 이르기까지 당신이라는 부름은 단 한 번도 나오지 않는다. 하나님이 데만에서부터 오시며 거룩한 자가 바란산에서부터 오신다는 진술 속에서, 애타게 부르던 당신은 이제 장엄하게 이야기되는 그분이 된다. 그리고 7절에 이르러서야 기도하는 이는 아웬 아래 구산의 장막을 내가 보았다며 다시 자기 눈의 자리를 말한다.</p>
+<p>히브리어 원어는 이 인칭의 전환 자리에 이름의 변화까지 더해 준다. 2절에서 부르던 이름은 여호와였으나, 3절에서 이야기되는 이름은 엘로아흐와 거룩한 이다. 엘로아흐라는 이름은 하박국 전체에서 오직 이 한 자리에만 등장하는 특별한 이름이다. 우리말 개역한글 성경은 이 드문 이름과 흔히 쓰이는 엘로힘을 모두 같은 하나님으로 번역했기에 우리 눈에는 이름이 바뀐 흔적이 잘 보이지 않는다. 그러나 원문의 자리에서 두 이름을 한 분으로 읽을 때, 우리는 기도가 단지 내 소원을 아뢰고 답을 받아 내는 청구서에 그치지 않음을 깨닫는다. 기도는 당신이라 부르던 입술이 그분의 거룩한 행차를 그분으로 이야기하는 입술로 옮겨 가는 자리이기도 하다. 물론 그 행차의 이야기가 지난날 출애굽과 광야의 기억을 되살리는 회상인지, 아니면 지금 눈앞에 펼쳐지는 광경인지는 히브리어 동사 야보의 형태만으로는 하나로 닫히지 않는다. 본문이 열어 둔 그 시점의 여백 위에서, 오시는 하나님은 과거의 유물에 갇히지도 않고 막연한 미래로 밀려나지도 않은 채 기도의 현재 안으로 걸어 들어오신다.</p>
+<h3>임자 없던 일에 당신의 이름을 달아 돌려 드리는 기도</h3>
+<p>이 기도가 붙들고 있는 또 하나의 깊은 울림은 일이라는 낱말의 이동에 있다. 하박국에서 일이라는 뜻의 히브리어 포알은 책 전체를 통틀어 단 두 번 등장한다. 첫 번째 자리는 1장 5절이다. 거기서 그 일은 너희에게 예고되면서도, 누가 일러 주어도 너희가 도무지 믿지 못하리라는 막막한 말씀과 함께 놓여 있었다. 더구나 1장 5절의 원문에는 그 일의 임자를 가리키는 표지가 전혀 없다. 우리말 성경의 내가 한 일을 행할 것이라는 표현에서 내가는 번역을 돕기 위해 보충한 말일 뿐, 원문은 임자 없는 낯선 일의 예고로 서 있다. 그런데 3장 2절에 이르러 같은 낱말이 다시 불릴 때, 그 끝에는 당신의라는 소유 표지가 처음으로 달라붙어 파올레카가 된다. 1장 5절의 그 일과 3장 2절의 일이 동일한 사건인지, 1장의 너희 가운데 3장의 나가 포함되어 있는지, 심지어 살리소서라는 첫 번째 청에 붙은 그것을이라는 목적어가 주의 일을 가리키는지도 문법 형태만으로는 완전히 확정되지 않는다. 그럼에도 분명한 사실 하나는, 기도하는 이가 믿기 어렵다던 그 두려운 낱말 앞에 당신의라는 꼬리표 하나를 정성껏 달아 여호와께 돌려 드리고 있다는 점이다. 내 계획이나 내 뜻이 아니라 당신의 일을 살리시라고 청하는 것이다.</p>
+<p>이 단락 전체에서 하나님이 문법 형태와 명사로 확정된 동사의 주어로 서는 자리는 3장 3절의 오시며 단 하나뿐이다. 6절에 나오는 네 개의 3인칭 동사들, 곧 서시고 보시고 흔드시며 흩으신다는 동작들도 문맥에 따라 하나님으로 읽을 수 있지만, 바로 앞 절인 5절에 등장하는 역병 데베르와 불덩이 레셰프 역시 문법적으로는 주어의 자리에서 완전히 배제되지 않는다. 개역한글은 이를 땅이, 열국이로 옮겨 그 아슬아슬한 긴장을 덮어 두었으나, 원문은 하나님의 행차 앞뒤에 놓인 역병과 불덩이의 무거운 그림자를 가볍게 지우지 않는다. 그러므로 응답의 진술이 아직 없는 이 일곱 절의 자리에서 우리가 감사를 드릴 수 있다면, 그 감사의 근거는 내 청을 들어주셨다는 결과가 아니라 오직 데만에서부터 오시는 하나님 그분 한 분뿐이다. 응답이 비어 있는 자리에서 감사의 조건은 하나로 줄어들지만, 결코 사라지지는 않는다.</p>
+<h3>설명을 멈춘 손으로 삶의 셔터를 함께 밀어 올리며</h3>
+<p>본문이 역병과 불덩이의 정체를 섣불리 규정하지 않고, 구산과 미디안의 떨림을 오늘날의 특정 집단으로 곧장 대입하지 않는 이 엄격한 절제는 우리의 일상과 목회, 그리고 일터의 태도를 근본에서부터 다시 빚어 준다. 지금 병상에 홀로 누워 있거나 아픈 가족의 곁을 밤새워 지키느라 온전한 기도 문장 하나를 끝까지 맺을 힘조차 남아 있지 않은 이들에게, 이 본문은 유창한 언어를 요구하지 않는다. 하박국 역시 들었습니다, 두려웠습니다라는 두 마디의 숨결로 기도를 열었다. 그저 가슴 위에 한 손을 가만히 얹고, 손바닥 아래에서 요동치는 심장의 박동이 그대로 주님 앞에 드리는 두려웠습니다의 고백이 되게 하는 것만으로도 기도는 이미 시작된 것이다.</p>
+<p>목회의 현장에서도 마찬가지다. 전염병이 돌거나 재난이 닥치는 계절이면 강단은 쉽게 3장 5절을 끌어와 이 병에는 이런 영적 뜻이 있다며 섣부른 해설을 앞세우고 싶어 한다. 그러나 본문이 닫지 않은 역병의 무게를 말로 가볍게 풀어 버리는 대신, 목회자가 이번 주 교회 입구의 손 소독기에 용액이 떨어지지 않았는지 직접 살피고 채워 넣는 일이야말로 본문의 긴장을 몸으로 받아 내는 정직한 태도다. 세무 업무를 보며 숫자와 장부 너머에 있는 고객의 고단한 사정을 마주하는 일터에서도 이 절제는 살아 움직인다. 3장 7절의 내가 보았다는 고백을 삶으로 옮기는 길은 신고서의 숫자만으로 고객의 형편을 재단하는 데 있지 않다. 영업이 기울어 한숨짓는 고객의 가게를 찾아간 아침, 무거운 철제 셔터를 고객과 함께 두 팔로 힘껏 밀어 올리는 그 손길이 곧 내가 보았다는 목격을 기도의 자리로 이어 주는 통로가 된다. 그리고 하루를 마감하는 저녁, 아이와 함께 마른 빨래를 개면서 데만에서부터 오시는 하나님의 이야기를 나지막이 들려주자. 손이 묵묵히 일하는 동안 입술이 당신을 부르던 자리에서 그분을 이야기하는 자리로 건너갈 때, 아직 열리지 않은 문 앞에서도 우리의 밤은 오시는 하나님으로 인해 결코 비어 있지 않게 된다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      하박국 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

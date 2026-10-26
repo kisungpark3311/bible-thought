@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>비워 둔 대답의 자리에 새겨진 판, 읽는 이의 발걸음이 시작되다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 하박국 제 04편 &middot; 하박국 2:1-5</span>
+      <h1>비워 둔 대답의 자리에 새겨진 판, 읽는 이의 발걸음이 시작되다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<blockquote>내가 내 파수하는 곳에 서며 성루에 서리라 그가 내게 무엇이라 말씀하실는지 기다리고 바라보며 나의 질문에 대하여 어떻게 대답하실는지 보리라 그리하였더니 여호와께서 내게 대답하여 가라사대 너는 이 묵시를 기록하여 판에 명백히 새기되 달려 가면서도 읽을 수 있게 하라 (하박국 2:1-2)</blockquote>
+<p>사람은 대답을 먼저 손에 쥐어야만 비로소 서 있을 수 있다고 믿곤 합니다. 부조리한 현실 앞에서도 내가 내놓을 해명 한 줄, 상황을 정리할 논리 한 자락을 마련해 두어야 마음이 놓입니다. 하박국 2장 1절에서 파수하는 곳과 성루에 올라선 예언자 역시 두 가지를 보겠다고 말합니다. 그분이 내게 무엇이라 말씀하실지, 그리고 나의 책망에 대하여 어떻게 대답할지입니다. 개역한글은 뒤의 문장을 그분께서 어떻게 대답하실지 보리라고 옮겼으나, 히브리어 원문 동사 아시브는 일인칭 미완료형으로 내가 무엇이라 대답할지를 뜻합니다. 예언자는 하나님의 말씀뿐 아니라 그 앞에 내놓을 자기 대답까지 가늠하며 망대 위에 섰던 것입니다.</p>
+<p>그러나 이 단락이 끝나는 5절까지 예언자가 자기 책망에 무엇이라 대답했는지는 한 글자도 적히지 않습니다. 사람의 대답 자리는 끝내 빈칸으로 남고, 그 자리에 2절의 다른 동사가 들어섭니다. 여호와께서 내게 대답하여 가라사대. 성벽 위 파수꾼이 들고 선 것은 준비된 변론이 아니라 비워진 자리였고, 바로 그 빈자리에 여호와의 대답이 임했습니다. 그 대답 안에는 쓰라, 판들 위에 분명히 하라, 더딜지라도 기다리라라는 세 명령이 단단히 놓입니다.</p>
+<h3>달리면서 곁눈질하는 글자가 아니라, 먼저 읽고 그다음에 내딛는 걸음</h3>
+<p>판들 위에 분명히 하라는 명령에 쓰인 히브리어 바에르는 구약 전체에 단 세 번만 등장합니다. 모세가 율법을 풀기 시작할 때(신 1:5), 돌들 위에 율법의 말씀을 명백히 기록하라고 명할 때(신 27:8), 그리고 하박국에서 묵시를 판들 위에 새기라고 할 때입니다. 쓰라는 동사와 한 절에 함께 놓인 곳은 신명기 27장 8절과 하박국 2장 2절 두 자리뿐입니다. 어느 쪽이 어느 쪽을 받았는지 정하지 않더라도, 분명히 새기는 일이 쓰는 이의 만족이 아니라 읽는 사람을 위함이라는 사실은 선명합니다.</p>
+<p>이어지는 목적절의 결도 주목해야 합니다. 개역한글은 달려가면서도 읽을 수 있게 하라고 번역해, 뛰어가는 이가 곁눈질로 읽는 그림을 떠올리게 합니다. 그러나 히브리어 레마안 야루츠 코레 보는 그것을 읽는 자가 달리도록이라는 뜻입니다. 동사는 달리다 하나이고 주어가 읽는 사람입니다. 먼저 읽고 그다음 달리는 그림입니다. 무엇을 위해 달리는지, 전하러인지 피하러인지는 본문이 말하지 않습니다. 읽기가 먼저이고 걸음이 그다음이라는 이 순서가 본문 전체를 꿰는 실입니다.</p>
+<h3>두 줄로 겹쳐 들리는 에무나와, 한 사람에게 떨어진 기다림의 무게</h3>
+<p>4절은 두 반절을 맞놓습니다. 앞 반절은 그의 영혼을 주어로 한 완료형 동사 둘로 그가 곧지 않음을 진술하고, 뒤 반절은 의인을 주어로 삼아 그가 그의 에무나로 살리라고 선언합니다. 앞 반절 첫 동사는 그 뜻 갈래로 구약에 한 번뿐이어서 개역한글의 교만하며를 뜻의 근거로 삼기 어렵고, 5절은 다시 그의 영혼을 반복하며 스올처럼 넓혀 죽음같이 배부르지 않은 채 모든 민족과 백성을 자기에게 모으고 자기에게 거두는 모습을 그립니다. 개역한글은 앞을 마음, 뒤를 욕심으로 달리 옮기고 자기에게도 한 번만 번역했지만, 원문은 끝없이 자기에게로 모으고도 채워지지 않는 영혼을 거듭 비춥니다.</p>
+<p>그 곁에 놓인 의인은 그의 에무나로 살리라라는 한 줄은 깊은 폭을 품고 있습니다. 개역한글은 에무나를 믿음으로, ESV 난외주는 신실함으로 풉니다. 출애굽기 17장 12절에서는 모세의 손이 해가 지도록 내려오지 아니한 상태를 이 낱말로 불렀고, 시편 96편 13절에서는 여호와의 진실하심에 같은 꼴이 쓰였습니다. 이 용례들로 하박국의 뜻을 하나로 좁히거나 신약 세 곳의 서로 다른 인칭 문면을 억지로 화해시키지 않습니다. 대신 의인은 그의 믿음으로, 의인은 그의 신실함으로 두 줄을 함께 소리 내어 읽어 보면, 내가 붙들고 있는 것과 나를 붙들고 해 질 때까지 버티게 하는 것이 한 낱말 안에서 겹쳐 들립니다.</p>
+<p>3절의 비록 더딜지라도 기다리라 지체되지 않고 정녕 응하리라라는 명령도 마찬가지입니다. 더디다는 말과 늦지 않다는 말이 다른 어근으로 나란히 서서 날짜 계산으로 풀 수 없는 긴장을 남기는데, 기다리라는 단수 명령은 판을 새기라는 명령을 받은 그 한 사람에게 떨어집니다. 본문은 5절에서 자기에게로 모아지는 모든 민족과 백성에게 기다리라고 하지 않습니다. 월세 날이 임금보다 먼저 오는 일용직, 수술 대기 순번을 세는 환자, 구호 트럭을 기다리는 이들에게 참고 기다리라고 짐을 지우지 않는다는 뜻입니다.</p>
+<h3>잘린 시간의 틈새와 장부의 맨 윗자리에서 먼저 읽는 말씀</h3>
+<p>파수꾼은 소식을 만들지 않고 비워 둔 자리로 오는 대답을 기다려 새깁니다. 교대 근무와 두 일자리 사이에서 망대에 설 시간이 잘린 분이라면, 휴대전화 시계 숫자가 한 번 바뀌는 일 분 동안 화면을 켠 채 아무것도 누르지 마십시오. 잘린 하루에도 서서 기다리는 일 분이 들어갈 틈이 있다는 사실이 엄지 끝으로 전해집니다. 장례식장의 물음과 회의실의 반대 앞에서 날마다 대답을 요구받는 목회자라면, 오늘 받은 어려운 질문 하나를 수첩 왼쪽 면에 적고 오른쪽 면은 날짜만 쓰고 비워 두십시오. 내 대답이 아직 적히지 않은 면을 들고 서 있다는 무게가 두 면에 남습니다.</p>
+<p>세무 현장에서 남의 몫을 자기 운전자금으로 묶어 두는 장부는 5절의 그림을 작게 축소한 장면과 닮았습니다. 결산 마감 전 미지급 급여 계정이 남은 고객 파일 하나를 책상 맨 위로 올려 오늘 첫 업무로 다루십시오. 순서를 바꾸는 손이 물질의 층위에서 자기에게의 반대 방향을 냅니다. 가족 단체 대화방 공지에 비록 더딜지라도 기다리라 한 줄을 고정해 두고 하루를 열듯, 대답을 미리 쥐려던 손을 거두고 분명히 새긴 말씀을 먼저 읽은 뒤 그다음 걸음을 내딛는 우리가 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      하박국 제 04편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

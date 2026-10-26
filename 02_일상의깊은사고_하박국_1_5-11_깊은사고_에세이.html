@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>한 번의 일으키심과 자기 힘을 신으로 삼은 도끼의 끝</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 하박국 제 02편 &middot; 하박국 1:5-11</span>
+      <h1>한 번의 일으키심과 자기 힘을 신으로 삼은 도끼의 끝</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<blockquote>"보라 내가 사납고 성급한 백성 곧 땅의 넓은 곳으로 다니며 자기의 소유 아닌 거할 곳들을 점령하는 갈대아 사람을 일으켰나니 … 그들은 그 힘으로 자기 신을 삼는 자라 이에 바람 같이 급히 몰아 지나치게 행하여 득죄하리라" (하박국 1:6, 11)</blockquote>
+<p>하박국 1장 5절은 듣는 이들을 향해 네 개의 거침없는 명령을 연달아 던집니다. "너희는 열국을 보고 또 보고 놀라고 또 놀랄찌어다." 그리고 같은 절 끝을 "혹이 너희에게 고할찌라도 너희가 믿지 아니하리라"라는 서늘한 말로 맺습니다. 도대체 무엇을 보라는 것인지는 1장 6절이 밝혀 줍니다. "보라 내가 … 갈대아 사람을 일으켰나니." 그 뒤로 일으켜진 한 민족의 거센 행보가 숨 가쁘게 그려집니다. 그는 땅의 넓은 곳으로 다니며 자기의 소유가 아닌 거할 곳들을 점령하는 자이고(1:6), 사람을 사로잡아 모으기를 모래같이 많이 할 자이며(1:9), 흉벽을 쌓아 그것을 취할 자입니다(1:10).</p>
+<p>그러다 1장 11절에 이르러 본문은 그를 "그 힘으로 자기 신을 삼는 자"라고 부르고 "득죄하리라"고 판정합니다. 일곱 절의 호흡 안에서 하나님은 1장 6절에서 단 한 번 말씀하시고, 남은 자리는 일으켜진 자가 가득 차지하며, 그 끝에서 그는 마침내 자기 힘을 자기 신으로 삼습니다.</p>
+<h3>힌니 메킴, 대상이 적히지 않은 단 한 번의 일으키심</h3>
+<p>이 일곱 절 어디에도 하나님이 정동사의 주어로 놓이는 자리는 없습니다. 하나님의 목소리는 오직 1장 6절의 "보라 내가 일으킨다"에 모입니다. 개역한글은 1장 5절 머리에 "여호와께서 가라사대"를 두지만, 그 말은 원문에 없고 번역이 보충한 것입니다. "보라 내가 일으킨다"는 히브리어로 '힌니 메킴'(הִנְנִי מֵקִים)입니다. 히브리어 본문의 표기로 세면 1장 5-11절과 2장 2-20절에서 하나님을 가리키는 1인칭 '나'는 1장 6절의 이 한 자리뿐입니다. 1장 7절 '자기로'의 인칭 하나는 판정을 미루며, 그리스어 역본과 사도행전 13장 41절, 그리고 개역한글은 1장 5절에 이미 '내가'를 두고 있으므로 '한 번'이라는 사실은 히브리어 본문에서만 성립합니다. 무엇보다 같은 꼴을 쓰는 구약의 다른 자리들과 달리, 1장 6절에는 "누구를 치려고"라는 대상이 절 안에 없습니다.</p>
+<p>하나님은 일으킴의 목적과 대상을 이 절 안에 적지 않으십니다. 우리는 그 빈칸을 "모두를 치는 심판"으로 함부로 채우지 말아야 합니다. 예언자는 바로 다음 단락인 1장 12절에서 그것을 "심판하기 위하여"로 받지만, 우리는 그 받음이 1장 6절의 문면 자체가 아니라 예언자의 고백임을 기억해야 합니다.</p>
+<p>아울러 1장 5절의 "고할찌라도"는 히브리어 '예수파르'(יְסֻפָּר, 전해지다)로, 누가 전하는지, 누구에게 전하는지가 어형에 없습니다. 개역한글의 "혹이 너희에게"라는 두 말은 그리스어 쪽 문면에 대응합니다. 구약에서 드문 이 '전해지다' 꼴이 '믿다'와 한 절 안팎으로 맞붙는 자리는 하박국 1장 5절과 이사야 52장 15절-53장 1절("이는 그들이 아직 전파되지 않은 것을 볼 것이요 … 우리의 전한 것을 누가 믿었느뇨")입니다. 두 단락의 선후나 인용 관계는 판정하지 않더라도, 보라고 명하고 전해져도 믿지 않으리라 하는 하박국과 전해지지 않은 것을 보리라 하고 누가 믿었느냐고 묻는 이사야는 '보다, 민족들, 전해지다, 믿다'를 함께 놓되 방향이 반대입니다. 로마서 10장 16절이 이사야 53장 1절을 받아 복음을 향한 불신에 두는 것은 정경이 뒤에 더한 말이며, 하박국 1장 5절에서 전해져도 믿기지 않는다 한 그 일은 위로가 아니라 덮쳐 올 심판의 경고로 옵니다.</p>
+<h3>그의 것 아닌 거처를 빼앗아 자기 힘을 신으로 삼다</h3>
+<p>개역한글은 일으켜진 민족을 1장 7절, 9절, 11절에서 세 번이나 복수인 "그들은"으로 받지만, 히브리어 원문은 그를 처음부터 끝까지 한 사람처럼 단수 '그'로 부릅니다. 복수는 오직 그의 말과 기병과 얼굴에만 붙습니다. 그리고 그 단수에게 '그에게, 그의'라는 접미사가 붙은 구가 셋입니다. 1장 6절의 "자기의 소유 아닌 거할 곳들"은 원문이 '미쉬카노트 로-로'(מִשְׁכָּנוֹת לֹּא־לוֹ), 곧 "그의 것이 아닌 거처들"입니다. 1장 10절의 "방백을 치소하며"는 원문이 "방백들은 그에게 웃음거리"이고, 1장 11절은 '코호 레로호'(כֹחוֹ לֵאלֹהוֹ), 곧 "그의 힘이 그의 신에게"입니다. 이 '신'은 갈대아의 자기 신이어서 참 하나님을 가리키지 않습니다. "그의 것 아닌"은 1장 6절에, "그의 신에게"는 1장 11절에 놓입니다.</p>
+<p>그 위치 자체에서 과도한 뜻을 끌어내지 않고 사실로만 두더라도, 남의 거처를 차지한 자가 끝내 자기 힘을 신의 자리에 둔다는 사실은 무겁게 다가옵니다. 특히 "그의 것 아닌 거처들"에는 거기서 쫓겨난 주인이 있었습니다. 본문은 그 주인의 이름을 적지 않지만, "그의 것이 아니다"라는 말 자체가 주인이 따로 있었음을 증언합니다. 그리고 그의 것 아닌 거처를 차지한 힘이 자기를 신으로 삼을 때, 1장 11절은 "득죄하리라"로 엄중히 판정합니다.</p>
+<p>여기서 본문이 남겨 둔 깊은 긴장이 드러납니다. 1장 6절에서 갈대아 사람을 일으키시는 분과, 1장 13절에서 눈이 정결하시므로 악을 참아 보지 못하시는 분은 한 분이십니다. 예언자는 바로 다음 단락에서 그 물음을 그대로 올리며, 1장 5-11절은 이 물음에 답하지 않습니다. 같은 단락 안에서도 1장 6절의 "내가 일으킨다"와 1장 11절의 "득죄하리라"가 한 주어에 겹치고, 본문은 그 둘을 풀지 않습니다. 정경은 이 긴장을 하박국 한 사람의 입에 그대로 맡겨 두었기에, 우리는 일으킴을 단순한 허용으로, 죄책을 도구의 면책으로 바꾸어 서둘러 화해시키지 않습니다. "도끼가 그것으로 찍는 이에게 스스로 뽐내겠느냐"(직역)라는 이사야 10장 15절의 물음이 그 긴장 곁에 놓일 뿐, 그것을 닫아 주지는 않습니다.</p>
+<h3>물수건을 짜는 손과 따로 걸어 두는 금고 열쇠</h3>
+<p>이 단락은 한 자루의 도끼를 보여 줍니다. 도끼를 드신 분은 1장 6절에서 한 번 '내가'라고 말씀하시고, 도끼는 1장 11절에서 제 날을 자기 신으로 삼습니다. 그 날 아래에는 이름도 수도 적히지 않은 사람들이 모래처럼 놓였습니다. 이 무거운 말씀 앞에서, 지금 가족의 병상 곁을 지키느라 예배도 묵상도 자리를 잃은 분이 있다면 환자의 이마를 닦을 물수건을 짤 때 손에 힘이 들어가는 그 한 번을 하나님 앞에 드려 보십시오. 대충 적셔 건네는 것과 다릅니다. 물이 빠져나가는 동안, 1장 5절의 경고를 오늘 깊이 붙들 수 없는 자리에서도 그 손이 하나님께 숨겨지지 않는다는 사실이 손바닥에 남습니다.</p>
+<p>목회 현장에서 전세 보증금을 떼여 거처를 잃은 성도 가정을 심방할 때에는, 준비한 위로의 말을 적던 볼펜을 필통에 꽂고 들어가 보십시오. 할 말을 손에 들고 들어가는 것과 다릅니다. 1장 6절의 "그의 것 아닌 거처들"에서 쫓겨난 주인처럼, 그 가정에게 먼저 필요한 일이 설명이 아니라 그 자리를 함께 보는 일임이 드러납니다. 또한 세무와 회계 사무실에는 원천징수한 세금이나 고객이 맡긴 예수금처럼 내 계정 안에 있으나 내 것이 아닌 돈이 있습니다. 열쇠고리에서 고객 자금 금고 열쇠를 빼서 내 차 열쇠와 한 꾸러미로 들고 다니지 말고 따로 걸어 두어 보십시오. 따로 걸린 열쇠 하나가 '그의 것 아닌' 몫을 손으로 갈라 놓습니다.</p>
+<p>가정에서는 거실 벽의 가족사진 액자 유리를 마른 천으로 한 번 닦아 보십시오. 지나가며 눈으로만 스치는 것과 다릅니다. 우리 집의 얼굴들을 닦는 그 손이 1장 6절의 빼앗긴 거처마다 걸려 있었을 얼굴들과 1장 9절의 '모래같이' 끌려간 사람들을 떠올리게 합니다. 본문은 '모래같이'까지만 말하고 우리 집의 평온은 그들의 무게를 덜어 주지 못하니, 이번 주 장바구니에서 한 품목 값을 떼어 피난민과 거처 잃은 이웃을 돕는 곳에 보내는 데까지 손을 옮겨 보십시오. 하나님이 '내가'로 서신 한 자리마저 덮쳐 올 심판의 예고이기에 기도를 감사로 열지 않고 고백과 결단으로 드립니다. 들은 경고를 설마로 넘기고 맡기신 힘과 숫자를 내 신처럼 섬겨 온 자리를 고백하며, 이름 없이 셈해진 사람들을 숫자로 지나치지 않고 정결하신 주님 앞에서 묻기를 멈추지 않는 오늘을 주님께 드립니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      하박국 제 02편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

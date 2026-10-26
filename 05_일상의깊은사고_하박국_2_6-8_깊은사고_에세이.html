@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>빼앗은 손에 되돌아오는 같은 동사, 그리고 끝내 비워 둔 심판의 손</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 하박국 제 05편 &middot; 하박국 2:6-8</span>
+      <h1>빼앗은 손에 되돌아오는 같은 동사, 그리고 끝내 비워 둔 심판의 손</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+
+<blockquote>네가 여러 나라를 노략하였으므로 그 모든 민족의 남은 자가 너를 노략하리니 이는 네가 사람의 피를 흘렸음이요 또 땅에, 성읍에, 그 안의 모든 거민에게 강포를 행하였음이니라 하리라 (하박국 2:8)</blockquote>
+<p>하박국 2장 6절부터 8절까지의 단락은 선언보다 물음을 먼저 둡니다. 이들 모두가 그를 향해 노래를 들어 올리지 않겠느냐고 묻고, 삼인칭 단수로 말하기를 하고서야 화 있을진저가 열립니다. 7절 역시 연속되는 물음입니다. 너를 물 자들이 홀연히 일어나지 않겠느냐, 너를 괴롭게 할 자들이 깨지 않겠느냐, 네가 그들에게 노략을 당하지 않겠느냐. 8절에 와서야 마침내 선언이 내려지고, 그 근거가 동사 없이 늘어섭니다. 사람의 피, 그리고 땅과 성읍과 그 모든 주민에게 행한 강포입니다.</p>
+<p>이 세 절을 읽다 보면 한 가지 뚜렷한 부재를 마주합니다. 세 절 어디에도 하나님의 이름이 없고, 하나님을 주어로 한 동사도 없습니다. 노략을 되갚는 손은 사람 편에 놓입니다. 빼앗은 너에게 같은 동사가 되돌아오되, 그 손이 누구의 손인지 본문은 끝까지 정하지 않습니다. 이 엄격한 절제 안에 우리가 일상에서 마주하는 죄와 무게, 그리고 되갚음의 질서가 담겨 있습니다.</p>
+<h3>샬로타에서 예샬루카로, 행하던 네가 당하는 너로 내려앉는 자리</h3>
+<p>8절 상반절은 한 줄 안에 노략하다를 두 번 놓습니다. 처음에는 네가 여러 나라를 노략하고, 다음에는 민족들의 남은 자가 너를 노략합니다. 벌이 다른 모양으로 오지 않고 그가 하던 바로 그 일의 모양으로 옵니다. 원어에서 네가 노략하였다는 뜻의 샬로타는 너가 동사 끝에 붙어 행하는 쪽에 서고, 앞의 대명사 아타가 그것을 한 번 더 짚습니다. 이어지는 예샬루카, 그들이 너를 노략하리라에서는 너가 동사 끝의 목적 접미로 내려갑니다. 구약에서 이 동사가 네가 노략하였다 꼴로 놓인 곳은 이 한 절뿐입니다. 에스겔 39장 10절에도 행하는 이와 당하는 이의 교환이 있어 이 그림 자체를 하박국만의 것으로 부르지는 않으나, 내가 오늘 고르는 동사가 언젠가 내가 받을 동사와 떨어져 있지 않음을 선명히 보여 줍니다.</p>
+<p>앞선 6절의 화 선언은 그가 무엇을 했는지보다 그가 누구인지를 두 이름으로 먼저 부릅니다. 첫째 이름 하마르베는 관사가 붙은 늘리는 자입니다. 많게 만드는 일이 그의 이름이 되었고, 그가 늘린 것은 그의 소유가 아닌 것입니다. 둘째 이름 마크비드 알라우는 제 위에 무겁게 지우는 자입니다. 개역이 볼모로 옮긴 낱말은 구약에 한 번뿐이어서 빚과 담보의 이야기로 읽을 근거로 삼지 않습니다. 본문이 분명히 적는 것은 두 이름과 그 사이에 동사 없이 끼어든 언제까지, 그리고 무게가 향하는 자리를 가리키는 알라우, 곧 제 위에입니다. 남의 어깨를 빌려 늘린 무게는 끝내 제 위로 내려앉습니다.</p>
+<h3>깨달아야 할 지혜의 말이 조롱의 노래로 돌아오고, 빈칸은 남는다</h3>
+<p>6절에서 무리가 드는 노래의 세 낱말, 마샬과 멜리차와 히도트가 한 절에 함께 놓인 곳은 구약에 잠언 1장 6절과 하박국 2장 6절 두 자리뿐입니다. 잠언 1장은 이 말들을 깨달아야 할 지혜로 두면서, 곧이어 피를 노리고 빼앗은 것으로 집을 채우려는 자들이 자기의 피를 흘릴 뿐이라는 훈계(잠 1:11-19)로 이어집니다. 어느 쪽이 어느 쪽을 받았는지는 정하지 않고 나란히 두더라도, 배우지 않은 지혜의 말이 결국 그를 겨누는 심판의 노래로 되돌아온다는 사실이 드러납니다.</p>
+<p>그러면서도 세 절은 적어도 네 자리를 열어 둔 채 닫힙니다. 첫째로 노략당한 여러 나라와 되갚는 민족들의 남은 자는 원문에서 서로 다른 낱말로 적혀 같은 무리인지 정해지지 않습니다. 둘째로 6절의 이들 모두가 누구인지, 셋째로 말하기를로 열린 말이 어디서 닫히는지, 넷째로 8절의 이유 접속사가 어디에 걸리는지도 열려 있으며, 복수로 노래를 들고 단수로 말하는 까닭도 밝히지 않습니다. 빈칸을 서둘러 메워 피해자가 직접 복수한다고 말하고 싶어지지만, 본문은 되갚음이 같은 동사로 온다는 데까지만 말합니다.</p>
+<h3>이불 위를 두드리는 손끝과, 내 손에 늘어난 남의 몫을 가려내는 매듭</h3>
+<p>본문이 빼앗긴 이에게 무엇을 하라고 명하지 않는다는 사실은 고통의 자리에 깊은 위로를 줍니다. 지금 병상에 누워 몸을 움직이기 어려운 분, 그리고 그 곁에서 밤을 지키는 분께는 따로 할 일을 드리지 않습니다. 누운 채로, 혹은 환자의 손 곁에서 이불 위를 손가락 끝으로 한 번 두드리시면 됩니다. 긴 기도 문장을 소리 내어 이어 가는 것과 다릅니다. 그 한 번의 두드림으로, 오늘 들은 빼앗긴 이웃의 일을 8절이 적어 둔 사람의 피와 성읍의 강포라는 근거 곁에 함께 올립니다. 보증금이나 임금을 잃은 교인 가정을 만날 때도 해결책을 먼저 내밀기보다 예배 뒤 그 가장과 두 손으로 감싸 잡는 악수를 나누어 보십시오. 그가 겪은 일이 말씀 안에 근거로 적혀 있다는 것을 손의 온기로 먼저 전하는 일입니다.</p>
+<p>반면 일터와 가정에서는 내 손을 살펴야 합니다. 세무 상담 중에 고객이 이 정도는 다들 한다며 무리한 처리를 원할 때, 서류 여백에 경고 문구만 남기는 대신 그 무게는 결국 누구 위에 얹힙니까라고 소리 내어 물어보십시오. 제 위로 내려앉는 무게를 고객과 나 자신에게 함께 묻는 질문입니다. 오늘 집 안에서 빌려 와 아직 돌려주지 않은 책이나 공구, 우산 하나를 찾아 쇼핑백에 담고 손잡이를 한 번 묶어 내일 들고 나갈 가방 곁에 두십시오. 세 절에 하나님을 주어로 한 동사가 하나도 없기에 감사 대신 고백으로 나아가며, 내 것이 아닌 것으로 제 몫을 늘려 온 자리를 돌이켜 오늘 내 손이 고르는 동사를 정직하게 살피기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      하박국 제 05편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
