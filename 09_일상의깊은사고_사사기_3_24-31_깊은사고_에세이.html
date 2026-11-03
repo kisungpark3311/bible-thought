@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>나팔 소리 너머 그 땅에 내려앉은 팔십 년의 쉼</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 09편 &middot; 사사기 3:24-31</span>
+      <h1>나팔 소리 너머 그 땅에 내려앉은 팔십 년의 쉼</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>에훗이 다락문을 잠그고 빠져나간 뒤, 사사기 3장 24절부터 31절까지의 여덟 절은 잠긴 문 앞에서 서성이는 신하들의 머뭇거림으로 시작됩니다. 신하들이 부끄러워하기까지 오래 기다리다가 마침내 열쇠를 가져다 문을 열어 보았을 때 그들의 주인은 이미 땅에 엎드러져 죽어 있었고, 성경은 신하들의 비명이나 혼란을 적는 대신 그들이 기다리는 동안에 에훗이 돌 뜨는 곳을 지나 스이라로 피했다는 사실로 시선을 옮깁니다. 에브라임 산지에서 울려 퍼진 나팔 소리와 함께 이스라엘 자손이 산지에서 내려와 요단 나루를 장악하고 모압의 건장한 용사 일만 명가량을 쳐서 한 사람도 피하지 못하게 한 사건, 그리고 그 날에 모압이 이스라엘의 수하에 굴복하여 그 땅이 팔십 년 동안 태평하였다는 맺음과 삼갈의 짧은 구원 기사까지가 이 단락의 풍경입니다.</p>
+<p>이 여덟 절을 찬찬히 읽어 내려가다 보면 두 가지 놀라운 문법적 사실과 마주하게 됩니다. 하나는 이 여덟 절 안에서 여호와의 이름이 단 한 번 등장하는데, 그것이 서술자의 설명문이 아니라 28절 에훗이 무리에게 외친 말 속에 들어 있다는 점이고, 다른 하나는 마침내 찾아온 팔십 년의 태평이 이스라엘 사람들의 성취가 아니라 그 땅의 일로 적혀 있다는 점입니다. 나팔 소리와 칼날의 긴박한 움직임 너머로 성경이 누구의 입에 어떤 말을 두었으며 마지막 쉼의 자리를 어디에 배정했는지를 살피는 일은, 승리의 함성 속에서 우리가 쉽게 놓치곤 하는 말씀의 엄중한 경계를 다시 보게 해 줍니다.</p>
+<h3>굴복의 방향이 뒤집힌 날, 그 땅이 얻은 태평</h3>
+<p>앞서 3장 14절에서 이스라엘 자손이 모압 왕 에글론을 열여덟 해 동안 섬겼다고 적었던 성경은, 30절에 이르러 그 굴복의 방향이 완전히 뒤집혀 모압이 이스라엘의 손 아래로 들어갔음을 선언합니다. 그런데 정작 뒤이어 나오는 태평하였다는 동사의 주어 자리에는 승리한 이스라엘이나 에훗이 아니라 그 땅이라는 낱말, 하아레츠가 조용히 들어섭니다. 땅이 태평하였다는 뜻의 바티쉬코트 하아레츠는 사사기 전체에서 네 번 나오는데, 그 가운데 햇수가 팔십 년으로 적힌 곳은 이곳 하나뿐이며 굴복하다는 동사 카나가 태평과 한 절에 나란히 짝지어진 곳은 이곳과 기드온 이야기의 끝자락 둘뿐입니다.</p>
+<p>우리말 개역 성경은 똑같은 원문을 11절에서는 태평한지 사십 년에로, 30절에서는 팔십 년 동안 태평하였더라로 조금 다르게 옮겼고, 11절이 태평 뒤에 옷니엘의 죽음을 한 절에 이어 적은 것과 달리 30절은 에훗의 죽음을 말하지 않은 채 단락 표지로 조용히 문을 닫습니다. 성경은 열여덟 해 동안 모압에 바치던 공물이 그날 이후 어디로 갔는지 말하지 않으며, 왜 이곳만 사십 년의 두 배인 팔십 년인지에 대해서도 아무런 풀이를 달지 않습니다. 우리는 팔십이라는 숫자에 특별한 영적 상징을 얹거나 이 태평을 이스라엘의 신앙적 성숙 상태로 단정하지 않고, 굴복한 쪽은 모압으로, 쉰 쪽은 땅으로 적어 둔 본문의 담백한 결산 앞에 멈추어 섭니다.</p>
+<h3>에훗의 입에 놓인 한 문장과 피함의 엇갈림</h3>
+<p>28절에서 에훗은 백성들을 향해 나를 따르라 여호와께서 너희 대적 모압 사람을 너희의 손에 붙이셨느니라 하고 외칩니다. 원문에는 나를 뒤쫓으라는 명령과 여호와께서 주셨다는 선언 사이에 키라는 짧은 낱말이 놓여 있는데, 우리말 번역에서 생략된 이 낱말이 왜냐하면이라는 까닭을 대는 말인지 참으로라는 강조의 말인지는 원문도 열어 두고 있습니다. 무엇보다 이 여덟 절의 서술자 문장에는 하나님의 이름이 한 번도 나오지 않으며, 오직 앞선 12절과 15절에서 서술자가 여호와의 행동을 직접 적었을 뿐입니다. 따라서 28절은 영감된 성경 안에 정확히 기록된 에훗 개인의 발화로서 서술자의 직접 판정과는 층위가 다르며, 28절의 너희 손에와 30절의 이스라엘의 수하에를 성급히 하나로 묶어 말씀대로 그대로 성취되었다고 단정하는 다리 역시 본문은 직접 놓지 않습니다.</p>
+<p>또한 이 단락 안에는 피하다를 뜻하는 말라트라는 동사가 세 번 등장하여 뚜렷한 대조를 보여 줍니다. 26절에서 신하들이 부끄러워 머뭇거리는 동안 에훗은 두 번이나 이 동사와 함께 돌 뜨는 곳을 지나 스이라로 무사히 피하지만, 29절에서 요단 나루가 막힌 모압 사람 일만 명은 다 역사요 용사였으나 한 사람도 피하지 못하였더라로 끝을 맺습니다. 우리는 이 대칭을 두고 행한 대로 돌려받았다는 인과응보의 교훈으로 묶지 않으며, 에훗의 도망을 처세의 지혜로 삼거나 모압 용사 일만 명과 블레셋 사람 육백 명의 죽음을 통쾌한 승전가로 소비하지도 않습니다. 28절의 외침 바로 뒤에 나루터의 일만 명 살육이 놓여 있기에, 그 문장을 인용하는 사람은 그것을 말한 사람과 그 뒤에 이어진 무거운 장면까지 함께 들고 가야 함을 기억해야 합니다.</p>
+<h3>받을 셈을 늘리지 않는 손과 고백으로 닫는 기도</h3>
+<p>본문이 남겨 둔 이 엄중한 긴장은 우리가 성경 구절을 삶의 현장에 가져올 때 깊은 성찰을 요구합니다. 그동안 28절의 여호와께서 대적을 너희 손에 붙이셨다는 구절을 우리 편 승리의 보증수표처럼 쉽게 인용해 오다가, 그 말이 서술자의 판정이 아니라 에훗의 입에 놓인 말이며 그 직후에 일만 명의 죽음이 이어진다는 사실을 알고 나서 더 이상 예전처럼 쉽게 꺼낼 수 없게 된 분이 있을지 모릅니다. 그 조심스러운 멈춤은 하나님이 그 역사에 계시지 않았다는 불신앙의 결론이 결코 아니니, 15절에서 여호와께서 구원자를 세우셨다고 적은 서술자의 문장을 붙든 채 28절을 다시 어떻게 꺼낼지는 지금 서둘러 정하지 않아도 괜찮습니다.</p>
+<p>이 절제는 세무와 일상의 현장에서도 구체적인 삶의 태도로 열매 맺습니다. 오랜 세월 한 원청 업체에 매여 힘겹게 일감을 받아 오던 고객이 그 원청의 회생 절차 개시로 마침내 채권자 자리에 서게 된 날, 채권 신고서에는 실제로 받을 물품 대금만 정확히 적고 그동안 겪은 설움이나 분통을 값으로 매긴 항목은 덧붙이지 않습니다. 30절이 굴복의 방향이 뒤집혔다고만 적고 열여덟 해 바치던 공물의 행방을 침묵으로 덮어 두었듯, 원청을 모압 자리에 두어 미워하지 않고 받을 셈을 정직한 대금에만 묶어 두는 것입니다. 가정예배에서 아이들이 에글론의 비둔한 몸을 두고 웃음을 터뜨릴 때에도 함께 웃는 대신 성경은 그 사람들의 몸을 놀리지 않는단다라고 한 문장을 건네며, 오늘 우리의 기도를 섣부른 감사 대신 한 사람의 말을 주님의 판정처럼 가져다 썼던 입술의 고백과 결단으로 조용히 여미어 봅니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 09편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

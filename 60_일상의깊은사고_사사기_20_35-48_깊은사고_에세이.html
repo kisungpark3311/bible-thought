@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두 번 세어 용사라 부른 기록 앞에서 빈칸을 채우지 않고 읽는 마음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 60편 &middot; 사사기 20:35-48</span>
+      <h1>두 번 세어 용사라 부른 기록 앞에서 빈칸을 채우지 않고 읽는 마음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 20장 35절에서 48절은 기브아 전투의 셋째 날에 일어난 일을 두 번에 걸쳐 서술합니다. 서술자는 먼저 35절 한 절로 그날의 일을 요약합니다. 여호와께서 이스라엘 앞에서 베냐민을 치셨고, 당일에 이스라엘 자손이 베냐민 사람 이만 오천 일백을 죽였으니 다 칼을 빼는 자였더라. 이 요약은 36절 첫 마디인 베냐민 자손이 자기가 패한 것을 깨달았으니에서 일단락되고, 곧이어 같은 절 둘째 마디부터 그날의 전투가 처음부터 다시 풀려 나옵니다. 이스라엘이 매복을 믿고 자리를 내주자 매복이 성읍을 치고 약속한 연기 기둥이 하늘로 오르며, 베냐민이 돌아보고 광야 길로 도망하다가 추격 끝에 일만 팔천과 오천과 이천, 모두 이만 오천 명이 엎드러졌으니 다 용사였다는 셈으로 닫힙니다. 그 뒤 육백 명이 림몬 바위로 도망하여 넉 달을 지내고, 이스라엘 사람이 돌아와 성읍과 가축과 만나는 자를 칼날로 치고 닥치는 성읍마다 불사르는 것으로 스무 번째 장이 끝납니다.</p>
+<p>이 열네 절의 기록은 두 번 쓴 전투 일지와 같아서, 첫 장에는 짧은 요약이 적혀 있고 둘째 장에는 매복과 연기와 추격의 세부가 적혀 있으며 마지막 줄에는 칼날과 불이 적혀 있습니다. 그러나 어느 장을 펼쳐 보아도 기록자의 평가 칸은 채워져 있지 않습니다. 서술자가 한 일은 그날의 일을 여호와께 돌리고, 땅에 엎드러진 진 쪽의 사람들을 두 번 세어 다 용사라 부른 것뿐입니다. 통쾌한 승전의 환호도, 참혹한 불길에 대한 도덕적 단죄도 적히지 않은 이 기록 앞에서, 우리의 몫은 본문이 비워 둔 칸을 섣부른 해설로 채우지 않고 끝까지 정직하게 읽어 내는 것입니다.</p>
+<h3>말씀하신 여호와를 다시 적은 바이고프와 세 목소리를 섞지 않는 정직</h3>
+<p>앞선 20장 28절에서 내일은 내가 그를 네 손에 붙이리라 하신 말씀이 여호와의 일인칭 약속이었다면, 35절 첫머리의 여호와께서 이스라엘 앞에서 베냐민을 치셨다는 문장은 서술자가 그날의 일을 여호와께 돌리는 삼인칭 기록입니다. 이 열네 절 안에서 서술자가 여호와를 일을 행하시는 주어로 적은 문장은 35절 하나뿐이며, 이만 오천 일백이라는 숫자는 둘째 문장인 이스라엘 자손의 행위에 붙어 있습니다. 히브리 원문 바이고프는 치셨다는 한 낱말인데, 개역한글은 쳐서 파하게 하시매라고 옮기며 사역의 표현과 인과의 어미를 덧대어 여호와가 치셨으므로 이스라엘이 죽였다는 다리를 놓았습니다. 그러나 원문에는 그 다리가 없으며 두 문장이 나란히 놓여 있을 뿐입니다. 그렇다고 해서 숫자가 이스라엘 쪽에 붙어 있다는 배치만을 근거로 하나님은 죽이지 않으셨다는 명제를 세울 수도 없습니다.</p>
+<p>나아가 치다라는 뜻의 원어 나가프는 35절 뒤로 맞다라는 수동의 꼴로만 등장합니다. 특히 39절에서 베냐민은 이스라엘 사람 삼십 명가량을 치기 시작하며 그가 우리 앞에서 정녕 맞는다라고 말하는데, 서술자가 35절에서 베냐민이 이스라엘 앞에서 맞았다고 적은 문장과는 맞는 쪽이 서로 뒤바뀌어 있습니다. 한 전투 안에 여호와의 약속하시는 말씀과 서술자의 기록, 그리고 베냐민의 오판 섞인 말이 함께 들어 있으며 서술자는 이 엇갈림에도 아무런 평가를 붙이지 않습니다. 이 세 목소리를 하나로 섞지 않는 것이 본문을 읽는 첫 번째 정직이며, 따라서 35절은 오늘날 누군가의 재난이나 몰락에 하나님이 치셨다는 판정을 붙일 근거가 되지 못하고 원수가 마땅히 벌을 받아야 한다는 근거도 되지 못합니다.</p>
+<h3>자리를 내주었다로 다시 열리는 전투와 맞추지 않은 채 남겨 둔 두 셈</h3>
+<p>36절 둘째 마디에서 전투가 처음부터 다시 시작될 때 원문을 여는 낱말은 바이텐누, 곧 이스라엘 사람이 베냐민에게 자리를 내주었다입니다. 개역한글은 이 대목을 이는 이스라엘 사람이 매복한 군사를 믿고 잠간 피하매 쳤음이더라로 묶어, 마치 앞 마디인 베냐민이 패한 것을 깨달았으니의 까닭처럼 읽히게 만들었습니다. 그 바람에 한 전투를 요약과 상술로 두 번 적는 원문의 짜임이 우리말에서는 가려지고 말았습니다. 상술 대목의 끝에서 서술자는 일만 팔천과 오천과 이천을 더해 이만 오천이라는 합계를 내놓는데, 이는 35절 요약의 이만 오천 일백과 백 명의 차이가 납니다. 앞서 15절에 계수된 이만 육천과 칠백, 그리고 살아남은 육백 사이의 차이 또한 원문은 설명하지 않으며, 엎드러진 이들을 가리켜 사사기에서 오직 44절과 46절 두 곳에서만 안셰 하일, 곧 다 용사더라라고 두 번 부릅니다.</p>
+<p>백 명의 차이를 어림수로 맞추려 하거나 기록의 오류로 판정하는 순간 우리는 본문이 비워 둔 자리를 임의로 채우게 되며, 다 용사라는 호칭에 서술자가 애도를 담았는지 존중을 담았는지도 본문이 말하지 않으므로 우리 역시 정하지 않고 그대로 둡니다. 이어지는 47절은 45절과 첫 여섯 낱말이 글자까지 겹치는데, 한 도망을 두 번 말한 것인지 다른 무리인지 본문은 가르지 않은 채 육백 명이 림몬 바위에서 지낸 넉 달을 적습니다. 마지막 48절에서 성읍들을 불에 보냈다는 쉴레후 바에쉬는 사사기 1장 8절의 예루살렘과 이곳 두 군데에만 나오고, 성읍 곁의 메톰이라는 낱말도 온 성읍과 성읍의 사람 두 가지로 읽혀 어느 한쪽을 택하지 않습니다. 육백 명을 거룩한 남은 자로 부르거나 성읍의 불을 의로운 심판으로 부르는 일은 본문이 하지 않으니, 우리도 48절을 빼고 읽거나 통쾌한 승전으로 읽지 않는 데까지만 나아갑니다.</p>
+<h3>탄식을 허락하는 빈자리와 성경을 탁자에 내려놓았다가 다시 드는 손</h3>
+<p>28절의 내가 그를 네 손에 붙이리라는 약속이 앞에 놓이고 35절의 서술이 뒤에 놓였다는 것은 분명한 사실이나, 여호와의 치심과 이스라엘의 멸함이 원인과 결과인지, 한 일의 두 면인지 원문은 진술하지 않습니다. 그 빈자리를 신정론으로도 원수 처벌의 논리로도 메우지 않고 남겨 둘 때, 지금 감사를 드릴 수 없는 이들을 향한 조용한 숨통이 트입니다. 여호와께서 치셨다는 문장 앞에서 마땅히 감사를 드려야 할 것 같지만, 동족 이만 오천 명이 엎드러지는 참혹한 풍경 앞에서 도무지 감사의 말이 나오지 않는 분이 계십니다. 서술자가 엎드러진 이들을 두 번 세고 두 번 다 용사라 불렀다는 사실을 기억한다면, 이 장면 앞에서 먼저 나오는 말이 탄식이어도 본문은 결코 그것을 막지 않습니다. 그러니 그분께는 감사를 강요하는 할 일을 얹지 않습니다.</p>
+<p>성경공부를 인도하는 자리와 세무 일터에서는 이 두 번 서술의 짜임을 몸과 말로 정직하게 옮겨 볼 수 있습니다. 모임에서 35절부터 48절을 함께 읽을 때 인도자는 36절 첫 마디인 베냐민 자손이 자기가 패한 것을 깨달았으니까지 읽고 성경을 탁자 위에 내려놓습니다. 숨을 한 번 고른 뒤 성경을 다시 들어 둘째 마디부터 46절까지 읽음으로써, 요약이 끝나고 같은 전투가 처음부터 다시 시작된다는 짜임을 손의 동작으로 보여 주고 두 셈의 차이를 맞추는 해설은 덧붙이지 않습니다. 세무 일터에서 조사 결과나 처분 안내를 고객에게 풀어 드릴 때에도, 요약 문단과 세부 문단이 같은 일을 두 번 말한다면 그 사이에 이는 무엇 때문이라는 이음말을 덧대지 않고 각 문단이 말한 것만 차례로 전합니다. 말씀하신 주님을 그날의 일 앞에 다시 적어 둔 기록을 읽으며, 이긴 쪽의 기쁨이나 남의 몰락에 대한 판정으로 말씀을 끌어 쓰던 입술을 고백하고 본문이 비워 둔 자리를 비워 둔 채 읽고 가르치는 우리가 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 60편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

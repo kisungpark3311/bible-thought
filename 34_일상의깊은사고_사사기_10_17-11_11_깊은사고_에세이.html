@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두 이름이 한 문패에 새겨지기까지, 여호와 앞에 가져간 말들</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 34편 &middot; 사사기 10:17~11:11</span>
+      <h1>두 이름이 한 문패에 새겨지기까지, 여호와 앞에 가져간 말들</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>암몬 자손이 모여 길르앗에 진을 치고, 이스라엘 자손도 모여 미스바에 진을 칩니다. 두 진영이 마주 선 급박한 대치 앞에서 정작 싸움을 시작할 사람은 아직 보이지 않는데, 미스바에 모인 이들의 입에서는 자리를 거는 말부터 먼저 나옵니다. 누가 먼저 나가서 암몬 자손과 싸움을 시작할까, 그가 길르앗 모든 거민의 머리가 되리라는 선언입니다. 사람이 서기도 전에 이름표가 먼저 걸리는 이 장면은, 위기가 닥칠 때마다 책임을 맡길 사람을 찾으며 직함과 조건부터 꺼내 놓는 우리의 익숙한 풍경을 조용히 비추어 줍니다.</p>
+<p>미스바에서 시작된 그 부름은 돕 땅으로 이어집니다. 길르앗 장로들이 일찍이 쫓겨났던 입다를 찾아가 우리의 장관이 되라고 청하고, 오랜 문답 끝에 백성은 마침내 그를 자기들의 머리와 장관으로 삼습니다. 그리고 그 자리를 맡은 입다는 미스바에서 자기의 말을 다 여호와 앞에 아룁니다. 열세 절에 걸친 이 짧은 단락은 한 자리를 두고 입마다 다르게 부르던 이름들이 어떻게 백성의 행위로 한 줄에 모이는지, 그리고 그 끝에 남는 침묵과 여백이 오늘 우리의 약속과 직분을 어떻게 돌아보게 하는지를 깊이 일깨웁니다.</p>
+<h3>입마다 다르게 불리던 이름이 한 줄에 모이기까지</h3>
+<p>본문에서 입다가 맡게 될 자리는 다섯 번에 걸쳐 불립니다. 미스바에 모인 이들은 머리라 부르고, 돕 땅으로 찾아간 장로들은 장관이라 부르며, 입다의 되물음 앞에서는 다시 길르앗 모든 거민의 머리를 내놓습니다. 히브리어 원문에서 머리는 로쉬이고 장관은 카친인데, 성경은 두 이름 사이에 어떤 서열이나 차례도 매기지 않습니다. 장로들이 길르앗 모든 거민의 머리라는 네 낱말을 내밀었을 때 입다는 그 가운데 앞 두 낱말인 너희 머리만 자기 입으로 받아 말하고, 마침내 열한째 절에 이르러 백성은 그를 머리와 장관이라는 두 이름으로 함께 삼습니다. 교회와 일터에서도 한 자리를 부르는 호칭은 사람마다 다르지만, 본문은 어느 이름이 더 높은지를 가리기보다 두 이름을 하나로 묶어 세운 주체가 백성이었다는 사실 하나를 뚜렷이 남깁니다.</p>
+<p>그 협상의 한가운데서 우리가 놓치지 말아야 할 것은, 조건을 말하기 전에 먼저 터져 나온 밀려난 이의 물음입니다. 입다는 장로들에게 너희가 전에 나를 미워하여 내 아버지 집에서 쫓아내지 아니하였느냐고 묻습니다. 미워함과 쫓아냄이라는 아픈 기억을 자기 말로 먼저 부른 것입니다. 장로들은 그 두 낱말을 다시 꺼내지 않은 채 우리가 당신에게로 돌이켰다는 뜻의 샤브누로 답하고, 입다는 너희가 나를 돌이켜 데려간다면이라는 뜻의 메쉬빔으로 조건을 겁니다. 개역성경은 이를 찾아온 것과 본향으로 데리고 돌아가는 것으로 나누어 옮겼으나, 원문은 같은 뿌리의 두 낱말을 나란히 두어 장로들의 움직임과 입다를 데려가는 움직임을 잇습니다. 본문은 장로들이 왜 지난 일을 사과하지 않았는지, 그들의 돌이킴이 발걸음인지 마음인지를 섣불리 판정하지 않으면서도, 밀려난 이의 물음이 협상 테이블 위에서 결코 지워지지 않았다는 차례를 고스란히 보여 줍니다.</p>
+<h3>듣는 이로 불린 이름과 본문이 비워 둔 대답의 자리</h3>
+<p>이 단락에서 여호와의 이름은 세 번 불리는데, 세 번 모두 서술자의 설명이 아니라 사람의 말 안이거나 사람이 말하는 자리에서 등장합니다. 입다는 여호와께서 그들을 내 앞에 내주시면이라는 조건 속에서 그 이름을 부르고, 장로들은 여호와는 우리 사이의 증인이시니 당신의 말대로 우리가 반드시 행하리이다라고 다짐하며 그 이름을 부릅니다. 여기서 증인으로 번역된 히브리어 쇼메아는 본래 듣는 이라는 뜻입니다. 사람들은 저마다 자기들의 협상과 약속을 여호와의 이름 아래 두며 그분을 우리 사이의 듣는 이로 호명하지만, 정작 그 약속에 대해 여호와께서 어떻게 답하셨는지는 본문 어디에도 적혀 있지 않습니다.</p>
+<p>열한째 절에서 입다가 미스바에서 자기의 말을 다 여호와 앞에 고하였다고 할 때에도 긴장은 그대로 남습니다. 아홉째 절의 문장이 내가 과연 너희 머리가 되겠느냐는 되물음인지 내가 너희에게 머리가 되리라는 다짐인지 원문 표지로는 가려지지 않듯, 미스바에서 입다가 무엇을 아뢰었는지와 여호와께서 그 말에 어떻게 응답하셨는지도 본문 밖에 머물러 있습니다. 성경은 이 빈칸을 하나님의 승인으로도, 냉담한 부재로도 채우지 않고 아뢴 말의 내용 없이 단락을 멈춥니다. 이 거룩한 여백은 오늘 우리가 누군가에게 직분을 맡기거나 약속을 주고받을 때, 우리의 필요와 다짐에 하나님의 이름을 손쉬운 도장처럼 끌어다 찍지 말아야 할 이유를 무겁게 일러 줍니다.</p>
+<h3>대답 없는 시간을 재촉하지 않고 감당할 숨을 남겨 두는 일</h3>
+<p>본문이 지우지 않고 남겨 둔 입다의 물음과 여백은 오늘 우리의 관계와 공동체 안에서도 깊은 울림이 됩니다. 예전에 상처 입고 밀려났던 곳에서 다시 와 달라는 부탁을 받았지만, 지난날의 기억 때문에 지금은 아무 대답도 나오지 않는 사람이 있습니다. 성경이 입다의 물음을 지우지 않고 그 자리에 두었듯이, 지금 대답할 수 없는 사람에게는 수락하라고도 거절하라고도 다그치지 말아야 합니다. 교회가 오랫동안 떨어져 있던 성도에게 직분을 부탁했다면, 조건을 거는 말이 맡는 이의 입에서 나올 때까지 두 주간을 정해 두고 재촉하는 연락을 멈추는 기다림이 필요합니다. 날마다 안부를 빙자해 답을 독촉하는 일은 상대가 자기 말을 고를 숨구멍마저 막아 버리기 때문입니다.</p>
+<p>일터에서도 마찬가지입니다. 세무 결산철처럼 바쁜 시기에 급히 다시 부른 경력 직원에게 무거운 실무를 맡겼다면, 당신의 말대로 반드시 행하겠다는 약속은 명함의 직함만이 아니라 그의 몸이 감당할 수 있는 시간에도 걸려 있음을 기억해야 합니다. 함께 밤을 새우며 불을 켜 두는 것보다, 첫날 주간 야근 상한 시간을 정하고 그 시각이 되면 대표가 직접 찾아가 그 사람 자리의 불을 꺼 주는 것이 진짜 약속을 지키는 일입니다. 급한 자리마다 이름을 바꿔 부르며 사람을 찾고, 밀려난 이의 물음을 지우고 싶어 하며, 내 약속에 주님의 이름을 도장처럼 찍어 왔던 우리의 조급함을 고백합니다. 부탁한 뒤에는 잠잠히 기다리고, 맡긴 뒤에는 그 사람의 몸이 감당할 시간을 지켜 주며, 주님 앞에 드릴 내 말은 내가 직접 가지고 나아가는 정직한 일상이 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 34편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

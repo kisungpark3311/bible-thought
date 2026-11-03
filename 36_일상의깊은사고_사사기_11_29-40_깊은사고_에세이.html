@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>판정을 멈춘 자리에서, 이름 없는 딸을 두고 해마다 길을 나서다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 36편 &middot; 사사기 11:29-40</span>
+      <h1>판정을 멈춘 자리에서, 이름 없는 딸을 두고 해마다 길을 나서다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>입다는 암몬 자손과 싸우러 나아가며 여호와께 서원합니다. 주께서 과연 암몬 자손을 내 손에 붙이시면, 누구든지 내 집 문에서 나와서 나를 영접하는 그는 여호와께 돌릴 것이니 내가 그를 번제로 드리겠나이다라는 말이었습니다. 여호와께서 그들을 그 손에 붙이시매 서원의 앞마디 조건이 차고, 승리를 거둔 입다가 미스바의 집으로 돌아올 때 소고를 잡고 춤추며 가장 먼저 문밖으로 나온 이는 다름 아닌 그의 딸, 그에게 하나뿐인 외동딸이었습니다. 기쁨의 영접이 참담한 옷 찢음으로 바뀌는 이 장면 앞에서 독자의 마음은 무겁게 내려앉습니다.</p>
+<p>이어지는 대화에서 아버지와 딸은 똑같이 여호와를 향하여 입을 열었다는 한 구절을 말하지만, 아버지는 그 끝에 능히 돌이키지 못하리로다를 붙이고 딸은 아버지 입에서 낸 말씀대로 내게 행하소서를 붙입니다. 딸은 두 달의 말미를 청하여 동무들과 함께 산으로 내려가 자기의 처녀됨을 두고 울고, 두 달 뒤 성경은 아비가 그 서원한 대로 딸에게 행하였다고만 적을 뿐 그 행함의 구체적인 내용을 되풀이하지 않습니다. 입다도 딸도 평가하지 않은 채, 이스라엘의 딸들이 해마다 나흘씩 그 딸을 두고 길을 나서는 걸음으로 멈추는 본문의 침묵 앞에 조용히 다가갑니다.</p>
+<h3>여호와를 향하여 열린 입과 두 갈래로 갈라진 말의 끝</h3>
+<p>서른다섯째 절과 서른여섯째 절은 여호와를 향하여 입을 열었다는 뜻의 히브리어 파차 페 구문을 나란히 놓습니다. 구약 전체에서 파차 페에 여호와를 향하여가 함께 붙은 모양은 오직 이 두 절뿐입니다. 아버지와 딸 두 사람 모두 입을 연 주체를 아버지로 두지만, 한 사람은 그 말 뒤에 돌이킬 수 없다는 자기의 한계를 붙이고 다른 한 사람은 내게 행하라는 명령을 붙입니다. 아버지가 말머리에 던진 너는 나로 참담케 하는 자요라는 탄식이 딸을 탓하는 원망인지 가슴이 무너지는 슬픔인지 원문은 가르지 않으며, 딸이 덧붙인 여호와께서 원수를 갚으셨다는 말 또한 개역성경은 이유로 옮겼으나 원문은 갚으신 뒤에라는 시간의 표현으로만 둡니다.</p>
+<p>무엇보다 주목해야 할 것은 서술자가 이 두 사람의 말 어디에도 칭찬이나 책망의 꼬리표를 붙이지 않는다는 사실입니다. 우리는 흔히 이 본문을 읽으며 아버지의 서원을 경솔함이나 신실함으로 판정하려 하거나, 딸의 대답을 본받아야 할 숭고한 순종의 덕목으로 포장하려 합니다. 그러나 성경은 딸의 말을 후대의 교훈으로 바꾸지 않고 오직 그 상황에 놓인 그녀 자신의 말로만 옮겨 놓습니다. 우리가 이 본문 앞에서 해야 할 일은 성급하게 도덕적 교훈을 추출하는 것이 아니라, 서술자가 비워 둔 평가의 자리를 존중하며 그녀의 말을 그녀의 말로 끝까지 듣는 데까지입니다.</p>
+<h3>되풀이되지 않은 행함의 내용과 이스라엘의 딸들이 나선 걸음</h3>
+<p>이 단락은 서른째 절에서 서원을 서원했다는 말로 열고, 서른아홉째 절에서 그가 서원한 그의 서원대로 행했다는 말로 닫습니다. 그 사이에 누구에게 행하다는 표현이 네 번 거듭되는데, 정작 마지막 서른아홉째 절은 아비가 그 서원한 대로 딸에게 행하니라고만 적을 뿐 서른한째 절의 번제라는 낱말도, 개역성경이 보충해 넣은 죽음이나 죽으니라라는 낱말도 원문에서 쓰지 않습니다. 이 침묵 위에서 오랜 해석의 갈래가 나뉩니다. 한 읽기는 그 서원이 번제를 가리킨다는 점과 아버지의 옷 찢음을 잇고, 다른 읽기는 서원의 뒷마디를 잇는 접속사 와우의 여지와 딸이 처녀됨을 두고 운 두 달, 그리고 행하니 바로 곁에 놓인 남자를 알지 못하였다는 구절을 잇습니다. 원문은 두 읽기 모두에 같은 여백을 남기며, 우리는 역어의 보충으로 한쪽을 확정하거나 다른 쪽을 닫지 않은 채 본문이 남겨 둔 긴장을 그대로 둡니다.</p>
+<p>그 긴장 끝에 단락의 마지막을 채우는 것은 가다라는 동사의 이동입니다. 딸이 가겠다고 청하고, 아버지가 가라 허락하고, 딸이 동무들과 함께 산으로 내려갔던 세 번의 걸음 뒤에, 마지막 마흔째 절에서는 길을 나서는 주어가 이스라엘의 딸들로 바뀝니다. 개역성경이 여자들로 옮긴 베노트는 원문에서 딸들입니다. 그들은 해마다 한 해에 나흘씩 길르앗 사람 입다의 딸을 두고 레타노트하러 길을 나섭니다. 구약에 두 번만 쓰여 애곡인지 노래하며 기념하는 일인지 뜻이 하나로 굳지 않은 이 레타노트의 걸음 속에서, 끝내 이름이 기록되지 않은 한 딸의 생애는 해마다 찾아가는 다른 딸들의 발걸음 속에 기억으로 남습니다.</p>
+<h3>설명으로 덮지 않고 본인에게 길을 돌려주며 곁에 서는 일</h3>
+<p>본문이 판정을 멈추고 남겨 둔 이 자리는, 오늘 어른들의 말과 결정에 삶이 묶인 이들을 대하는 우리의 태도를 근본에서부터 돌아보게 합니다. 부모가 해 둔 말이나 결정에 인생이 묶여 아직 그 아픔을 입 밖으로 꺼낼 수조차 없는 사람에게는, 그 말을 지켜야 하는지 부모를 어떻게 보아야 하는지 섣부른 조언이나 할 일을 얹지 말아야 합니다. 또한 어른들의 결정으로 앞날의 기회를 잃은 자매가 교회 안에 있어서 다시 공부나 일을 시작하려 한다면, 위로 모임을 열어 그 사연을 사람들의 이야깃거리나 간증 교훈으로 소비하지 말고 교회 구제비에서 비용 일부를 그 자매 본인 이름의 계좌로 조용히 보내 주는 실제적인 걸음이 필요합니다.</p>
+<p>세무 상담 현장에서 아버지가 딸의 명의로 낸 사업자에 고액의 세금이 고지되어 찾아온 경우를 마주할 때도 마찬가지입니다. 물론 한 사람의 생애가 걸린 사사기 본문의 무게와 세금 고지는 결코 단순 비교할 수 없지만, 아버지의 말은 돌이킬 수 없고 그 값은 딸이 진다는 구도를 당연시해서는 안 됩니다. 세법에는 실질과세의 원칙이 있어 서명 하나로 다툴 길이 닫히지 않음을 알려 주고, 그 자리에서 딸과 함께 국세청 누리집 화면을 열어 고지 안내 알림 번호를 아버지 번호에서 딸 본인의 휴대전화 번호로 직접 바꾸어 주는 일부터 시작할 수 있습니다. 울 자리를 찾는 친구가 있다면 내가 장소를 고르거나 울음을 그치게 하려고 말을 거는 대신, 그가 고른 곳까지 함께 걸어가 곁에 말없이 서 있는 것, 남의 생애를 쉽게 판정하던 입을 멈추고 이름 없이 남은 이를 잊지 않는 것이 오늘 우리가 걸어야 할 나흘의 길입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 36편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

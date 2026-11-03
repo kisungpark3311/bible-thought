@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>세 번의 물음 끝에도 알려지지 않은 힘, 판정 없이 남겨진 밤과 베틀의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 46편 &middot; 사사기 16:1-14</span>
+      <h1>세 번의 물음 끝에도 알려지지 않은 힘, 판정 없이 남겨진 밤과 베틀의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>누군가의 삶을 향해 같은 물음이 집요하게 되풀이될 때가 있습니다. 사람들은 저마다의 이유를 품은 채 무엇 때문에 그러하냐고 묻고, 어떻게든 그 내막을 알아내어 자기들의 손아귀에 넣으려 애씁니다. 사사기 16장 1절부터 14절까지의 말씀은 가사의 어두운 밤과 들릴라의 집에서 벌어진 일들을 따라가며, 한 사람의 큰 힘을 둘러싸고 오가는 집요한 물음과 결박의 소란을 비추어 줍니다. 가사 사람들은 삼손이 성안에 들어왔다는 소식을 듣고 밤새도록 성문에 매복하며 새벽이 오면 그를 죽이겠다고 다짐하지만, 정작 그 죽임은 그들의 입술 안에만 머물 뿐입니다. 삼손은 한밤중에 일어나 성문짝들과 두 설주와 빗장을 통째로 빼어 어깨에 메고 헤브론 앞산 꼭대기로 걸어 올라갑니다.</p>
+<p>장면이 바뀌어 소렉 골짜기 들릴라의 집에 이르면, 블레셋 방백들이 건넨 물음이 들릴라의 입을 거쳐 삼손에게 세 번이나 되풀이됩니다. 마르지 아니한 푸른 칡 일곱 가닥으로, 한 번도 쓰지 아니한 새 줄로, 그리고 머리털 일곱 가닥을 베틀의 씨줄에 섞어 짜는 일로 이어지는 세 번의 대답과 세 번의 결박이 숨 가쁘게 돌아갑니다. 놀라운 것은 이 열네 절의 긴 이야기 동안 하나님의 이름이 단 한 번도 불리지 않으며, 하나님께서 무엇을 행하셨다고 알려 주는 문장조차 전혀 등장하지 않는다는 사실입니다. 성경은 사람들이 한 사람의 힘을 캐묻고 묶고 소리치는 풍경을 있는 그대로 보여 줄 뿐, 그 깊은 침묵과 빈자리를 섣부른 도덕적 판정이나 해설로 채우지 않습니다.</p>
+<h3>입술을 건너며 주인을 지운 물음과 알려지지 않은 힘</h3>
+<p>블레셋 방백들은 들릴라를 찾아와 삼손의 큰 힘이 무엇으로 말미암아 있는지, 또 우리가 어떻게 하면 그를 이겨 결박하여 곤고하게 할 수 있을지 알아보라고 청합니다. 히브리어 원문에서 방백들의 물음인 바메 코호 가돌, 곧 무엇으로 그의 힘이 큰가라는 문장은 들릴라의 입으로 건너가며 바메 코하카 가돌, 곧 무엇으로 당신의 힘이 큰가라는 말로 끝소리 하나만 바뀝니다. 그러나 두 번째 마디로 눈길을 옮기면 훨씬 더 중대한 변화가 눈에 들어옵니다. 방백들의 말 속에 분명히 들어 있던 우리가 어떻게 그를 이기며 우리가 그를 묶으리라는 일인칭 복수의 주어가, 들릴라의 입에서는 묶는 손을 전혀 밝히지 않는 수동태 문장으로 바뀌며 감쪽같이 사라져 버린 것입니다.</p>
+<p>물음이 다른 사람의 입으로 건너갈 때 정작 그 물음을 처음 꺼낸 주인이 문장 속에서 지워지는 이 서늘한 풍경 끝에, 첫 번째 결박이 불탄 삼실처럼 끊어지자 서술자는 로 노다 코호, 곧 그의 힘은 알려지지 않았다고 조용히 기록합니다. 우리말 성경에 보태어진 근본이나 여전히라는 단어 없이, 원문은 그저 그의 힘이 알려지지 않았다는 사실만을 간결하게 적어 내려갑니다. 세 번이나 같은 물음이 오갔음에도 끝내 알아내지 못한 쪽은 대답을 요구받은 삼손이 아니라 집요하게 캐묻던 사람들이었습니다. 본문은 그 물음이 힘의 출처를 묻는 것인지 크기의 까닭을 묻는 것인지조차 굳이 하나로 못 박지 않은 채, 알려지지 않은 그 시간을 판정 없이 남겨 둡니다.</p>
+<h3>넷으로 갈라진 묶는 손들과 승리를 말하지 않는 뽑아냄</h3>
+<p>이 단락에서 묶다를 뜻하는 히브리어 아사르는 아홉 번에 걸쳐 등장하지만, 정작 그 줄을 쥐고 묶는 손은 넷으로 갈라져 기록됩니다. 방백들이 말한 우리라는 손은 처음 한 번뿐이고, 들릴라의 세 번의 물음에는 묶는 주체가 없으며, 삼손의 대답 속에는 그들이 나를 묶으면이라는 말이, 그리고 실제 서술 속에는 들릴라가 묶었다는 손길이 첫째와 둘째 순환에만 나타납니다. 그러다 세 번째 대답에 이르면 묶다는 말 대신 그대가 내 머리털 일곱 가닥을 씨줄에 섞어 짜면이라는 타아르기라는 단어가 등장하고, 다른 사람과 같이 약해지리라는 결과절도 없이 문장이 멈추어 섭니다. 삼손이 거짓말을 했다는 규정 역시 들릴라의 대사 안에만 있을 뿐 서술자는 삼손의 대답을 거짓이라 부르지 않으며, 여인이 남자를 묶는다는 교훈이나 유혹을 이기라는 훈계로 어느 한 손에 책임을 지우지도 않습니다.</p>
+<p>더불어 이 단락의 양 끝에는 박힌 것을 뽑아낸다는 뜻의 히브리어 나사가 사사기 전체에서 오직 두 번, 정확히 마주 보며 자리하고 있습니다. 가사의 밤에 성문짝과 두 설주와 빗장을 빼어 메고 간 일과, 들릴라의 집에서 잠을 깨어 직조틀의 바디와 씨줄을 다 빼어낸 일입니다. 가사의 밤에는 밤새도록, 새벽이 되거든, 밤중까지, 그 밤중에라는 네 번의 시간 표지가 촘촘히 놓여 있는 반면, 마지막 베틀 앞에서는 삼손이 잠드는 과정이나 내실에 사람이 매복했다는 언급조차 생략된 채 말뚝으로 박았다는 거친 서술과 잠에서 깨어 뽑아내는 장면만이 이어집니다. 성경은 그가 성문과 베틀을 뽑아냈다는 사실만 담담히 적을 뿐, 그것이 영웅적인 승리라거나 부활의 예표라는 식의 찬사를 덧붙이지 않고, 들릴라의 속마음이나 생략된 빈칸들을 동기와 각본으로 메우지 않은 채 다음 장면으로 넘깁니다.</p>
+<h3>맡겨진 물음을 내려놓고 빵 한 봉지를 건네는 걸음</h3>
+<p>본문이 남겨 둔 이 정직한 여백은 오늘 우리의 일상과 일터, 그리고 목회의 현장에서 타인의 삶을 대하는 태도를 깊이 돌아보게 합니다. 집안 식구나 교우들로부터 요즘 무슨 일이 있느냐는 물음을 거듭 받으면서도, 지금은 도무지 대답할 말도 기력도 남아 있지 않은 분들이 계십니다. 우리는 그분들을 섣불리 삼손의 자리에 세우거나 묻는 이들을 들릴라와 방백의 자리에 대입하지 않으면서, 성경에 세 번의 물음 끝에도 알려지지 않은 채 판정 없이 기록된 시간이 있다는 사실만을 조용히 전합니다. 대답할지 말지조차 정하기 버거운 분들에게 또 다른 해야 할 일을 얹어 드리지 않고, 본문이 멈춘 자리에서 함께 멈추어 서는 것이 오늘 우리가 배울 첫 번째 절제입니다.</p>
+<p>나아가 세무 상담 현장에서 고객이 세금이 얼마나 나오느냐고 물을 때, 한 문장의 물음이 두 갈래의 뜻을 품을 수 있음을 기억하며 세액이 얼마인지를 물으시는 것인지 아니면 왜 그만큼 나오는지를 물으시는 것인지 소리 내어 두 갈래를 나누어 드릴 수 있습니다. 또한 교우들이 요즘 보이지 않는 성도의 안부를 대신 물어봐 달라고 목회자에게 물음을 맡길 때, 입술을 건너며 우리가 사라졌던 본문의 장면을 떠올리며 남의 물음을 대신 들고 가지 않기를 결단합니다. 대신 그 집 현관 앞에 서서 따뜻한 빵 한 봉지만 두 손으로 건네고 아무런 물음 없이 돌아오며, 물음을 맡긴 이들에게는 직접 하실 물음이면 직접 물으실 수 있도록 돕겠다고 말씀드리는 것입니다. 주님, 남의 물음을 옮기며 주인을 지우고 본문이 비워 둔 자리를 제 판정으로 채웠던 조급함을 고백하오니, 대답할 수 없는 이의 곁에서 물음을 거두고 묵묵히 같은 걸음으로 동행하게 하옵소서.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 46편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

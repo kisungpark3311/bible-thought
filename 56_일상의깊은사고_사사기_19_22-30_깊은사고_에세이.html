@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>판정하지 않고 끝까지 적은 밤, 정해지지 않은 채 남은 세 마디 앞에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 56편 &middot; 사사기 19:22-30</span>
+      <h1>판정하지 않고 끝까지 적은 밤, 정해지지 않은 채 남은 세 마디 앞에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 19장 22절부터 30절까지의 아홉 절은 기브아의 노인 집에서 그들이 마음을 즐겁게 할 때에라는 문장으로 열립니다. 성읍의 무리가 집을 에워싸고 손님을 내보내라 다그치자, 집 주인은 손님에게 이 망령된 일을 행하지 말라 금하면서 자기 딸과 손님의 첩을 내놓겠다고 말합니다. 무리가 듣기를 원치 않자 그 사람이 자기 첩을 붙잡아 밖으로 내보내고, 본문은 그 밤의 일을 짧게 적은 뒤 새벽에 무리가 그를 놓아 보냈다고 기록합니다. 아침이 틀 무렵 그 여자는 주인이 있는 집 문간에 이르러 밝을 때까지 엎드러지고, 아침에 문을 연 그 사람이 일어나라 우리가 가자고 말했으나 대답하는 이가 없었습니다. 자기 집에 이른 그 사람은 그 여자를 열두 덩이로 나누어 이스라엘 온 경계에 보냅니다.</p>
+<p>숨이 멎을 듯한 이 아홉 절에는 하나님의 이름이 단 한 번도 불리지 않으며, 서술자는 어느 인물에게도 평가하는 문장을 붙이지 않습니다. 심지어 19장의 이 아홉 절 안에는 죽음을 직접 말하는 낱말도, 몸을 가리키는 시체 같은 다른 명사도 등장하지 않습니다. 그 여자가 숨을 거두었다는 말은 이 단락 바깥인 20장에 가서야 서술자의 표현과 그 사람 자신의 입을 통해 나옵니다. 정경은 대답하는 이가 없었다는 19장의 서술과 그들이 내 첩을 욕보였고 그가 죽었다는 20장의 증언을 나란히 배치할 뿐, 둘 사이의 차이를 풀어 주지 않으며 언제 무엇 때문이었는지 어느 쪽도 정하지 않습니다. 본문은 그 밤을 섣불리 판정하지 않은 채 끝까지 적고, 읽는 이 역시 그 사이의 긴장을 열린 채로 마주하게 합니다.</p>
+<h3>보는 자마다, 그리고 너희를 향한 세 마디 — 시무 라켐 알레하, 우추, 웨답베루</h3>
+<p>단락의 마지막인 30절은 보는 자마다 말하였다로 열립니다. 그들은 그 일을 가늠할 잣대로 이스라엘 자손이 애굽 땅에서 올라온 날부터 오늘까지라는 긴 시간을 불러내고, 이와 같은 일은 일어나지도 않았고 보이지도 않았다고 말합니다. 개역한글은 원문이 행한 주체를 앞세우지 않은 채 일어나지도 보이지도 않았다고 한 말을 행치도 아니하였고 보지도 못하였도다로 옮겼습니다. 그리고 그 말 끝에 시무 라켐 알레하, 우추, 웨답베루, 곧 너희는 그 위에 두라, 의논하라, 말하라라는 세 마디가 나란히 붙습니다.</p>
+<p>원어 본문을 깊이 들여다보면 이 세 마디는 모두 복수인 너희를 향하고 있습니다. 그런데 앞선 진술과 이 세 명령 사이에 가로되 같은 새로운 말머리가 전혀 없어서, 이 세 마디를 입에 담은 쪽이 그것을 본 자들인지 아니면 다른 목소리인지 원문은 밝히지 않습니다. 그 위에를 뜻하는 알레하의 대명사 역시 여성 단수 형태여서 앞 문장의 이런 일을 받는지 아니면 그 여자를 받는지 하나로 정해지지 않습니다. 개역한글은 마지막 말을 말하자라는 청유형으로 옮겨 우리 쪽의 권유처럼 읽히게 만들었지만, 정작 무엇을 말했는지는 이 단락 안에 나오지 않습니다. 이 세 마디를 오늘날의 섣부른 행동 구호로 바꾸어 버리면 원문이 정하지 않은 화자와 대상을 독자가 임의로 정하게 되므로, 본문이 열어 둔 것을 정해지지 않은 채 들고 서는 읽기가 요청됩니다.</p>
+<h3>두 번 놓인 한 문장과 바뀌는 보내다의 손 — 와야하제크 베필라그쇼, 와예샬레후하, 와예샬레헤하</h3>
+<p>25절과 29절을 나란히 놓으면 와야하제크 베필라그쇼, 곧 자기 첩을 붙잡아라는 한 문장이 두 번 되풀이되는 것이 보입니다. 히브리 원문에서 이 두 문장은 동사의 모양도 붙잡힌 대상도 글자 하나 다르지 않습니다. 개역한글은 25절을 자기 첩을 무리에게로 붙들어내매로 옮기고 29절을 첩의 시체를 붙들어로 옮겨 두 번째 자리에만 시체라는 낱말을 보태었지만, 원문은 두 번 모두 똑같이 그의 첩이라고만 적습니다. 보내다라는 동사도 두 번 이어지는데, 새벽에 그 여자를 놓아 보낸 와예샬레후하의 손은 성읍의 무리이고, 열두 덩이로 나누어 이스라엘 온 경계에 보낸 와예샬레헤하의 손은 그 사람입니다. 이때도 원문은 여자를 가리키는 대명사를 쓰지만 개역한글은 그것을로 옮겼습니다.</p>
+<p>서술자는 자기 첩을 두 번 붙잡고 온 경계로 보낸 그 사람의 어느 행위에도 옳다거나 그르다는 평가의 문장을 붙이지 않습니다. 뒤이어 오는 20장 5절과 6절에서 그 사람이 스스로 진술할 때에는 19장과 다른 낱말을 쓰고 이스라엘 온 경계 대신 이스라엘 기업의 온 들을 말하지만, 성경은 두 서술을 나란히 놓아둘 뿐 그의 말이 거짓인지 혹은 어떤 동기에서 비롯되었는지 판정하지 않습니다. 그러므로 읽는 우리 또한 본문을 넘어선 단죄나 변호를 보태지 않고, 똑같은 모양의 붙잡음이 두 번 놓이고 보내는 손이 무리에서 그 사람으로 바뀐다는 문장의 사실까지를 정직하게 읽어 내야 합니다.</p>
+<h3>그 여자에게 놓인 움직임 셋과 대답 없음, 형광펜을 내려놓는 손의 몸가짐</h3>
+<p>이 아홉 절 안에서 그 여자가 주어가 되어 움직인 동작은 아침이 틀 무렵 왔다, 문간에 엎드러졌다, 그리고 밝을 때까지 문간에 엎드러져 있었다는 세 가지뿐입니다. 그 곁에 그의 두 손이 문지방 위에라는 짧은 묘사가 놓입니다. 일어나다라는 동사는 그의 주인과 그 여자에게 건넨 말과 그 사람에게 차례로 주어질 뿐, 정작 그 여자에게 놓인 것은 쿠미, 곧 일어나라라고 바깥에서 건넨 명령 한 마디뿐입니다. 그리고 그 뒤를 잇는 웨엔 오네, 곧 대답하는 이가 없었다는 담담한 문장은 그 여자가 언제 숨을 거두었는지조차 정하지 않습니다. 19장 전체에 나오는 열일곱 번의 말하기 동사 가운데 그 여자의 몫은 하나도 없고 이름조차 주어지지 않았으나, 우리는 그 무응답에 상징을 덧대거나 그 여자를 순종과 희생의 교훈으로 세우지 않고 오직 적힌 순서 그대로 그 밤을 남깁니다.</p>
+<p>닫힌 결말 대신 펼쳐진 채 남은 이 본문 앞에서 우리는 극도로 조심스러운 발걸음을 배웁니다. 이 본문을 펴는 순간 숨이 가빠져 25절 앞에서 책을 덮어야 하는 분이 있다면, 이 단락은 그분께 이해도 용서도 말하기도 청하지 않으며 그 위에 두라라는 말조차 한 사람의 짐으로 지우지 않기에 아무런 할 일을 얹지 않습니다. 현장 실사를 나간 세무사무소 직원이 고객사 직원이 사장에게 당한 일을 조용히 털어놓는 말을 혼자 듣고 돌아왔을 때에도, 사사기 19장의 밤과 사무소의 하루를 함부로 견주지 않고 의논하라를 사무소의 행동 지침으로 옮기지 않으며, 털어놓은 사람의 뜻 없이 아는 이가 늘어나는 일을 피하고 세무사법상 비밀 엄수의 자리에서 멈춥니다. 다만 이 본문으로 설교를 준비하는 목회자의 책상에서는, 그 여자의 밤에서 설교에 쓸 그럴듯한 문장을 고르지 않기 위해 형광펜과 펜을 책상 한쪽에 내려놓고 밑줄이나 동그라미 하나 남기지 않은 채 아홉 절을 처음부터 끝까지 읽습니다. 주님께서 하신 일로 적힌 문장이 없는 이 아홉 절 앞에서, 그 여자의 밤을 교훈으로 바꾸려던 조급함을 고백하며 정해지지 않은 물음을 들고 조용히 탄식할 뿐입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 56편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>물음 안에 이름만 남은 일흔 형제와 서둘러 붙이지 않은 판정</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 27편 &middot; 사사기 9:1-5</span>
+      <h1>물음 안에 이름만 남은 일흔 형제와 서둘러 붙이지 않은 판정</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>기드온이 세상을 떠난 뒤, 세겜에 있던 첩의 아들 아비멜렉이 외가로 찾아가 어머니의 형제들과 외조부의 온 가족에게 말을 건넵니다. 그는 세겜 사람들의 귀에 이 말을 전해 달라고 청합니다. 여룹바알의 아들 칠십 명이 다 너희를 다스리는 것과 한 사람이 너희를 다스리는 것 중에 어느 것이 너희에게 나으냐, 또 나는 너희의 골육지친임을 생각하라는 말이었습니다. 외가 사람들이 그 말을 세겜 사람들의 귀에 그대로 옮기자, 그들은 그는 우리 형제라 말하며 아비멜렉에게로 마음이 기울었습니다. 바알브릿 신전에서 나온 은 칠십 개가 아비멜렉에게 건너갔고, 그 은으로 고용된 사람들이 그의 뒤를 따라가 오브라 아버지 집에서 형제 칠십 명을 한 반석 위에서 죽였으되 오직 막내아들 요담만 숨어 남았습니다.</p>
+<p>숨 가쁘게 이어지는 이 다섯 절의 기록에는 하나님의 이름이 한 번도 등장하지 않습니다. 그러나 그 이름이 보이지 않는다고 해서 하나님이 이 비극을 외면하셨거나 판정을 포기하신 것은 아닙니다. 서술자는 구장 이십삼절과 오십육절에 이르러서야 하나님을 문장의 주어로 세워 아비멜렉과 세겜 사람들의 악을 어떻게 갚으셨는지 분명히 판정합니다. 다만 이 첫 다섯 절에서는 물음 안에 이름만 불린 채 끝내 말할 자리를 얻지 못한 일흔 명의 형제를 담담히 기록하고, 홀로 살아남은 한 사람에게도 섣부른 평가를 붙이지 않은 채 판정과 사건 사이의 거리를 조용히 유지할 뿐입니다.</p>
+<h3>사람에서 돌로 옮겨 간 하나라는 수사와 입 없는 칠십</h3>
+<p>아비멜렉이 던진 구절 이절의 물음과 오절의 결말을 원어로 나란히 읽어 보면 하나라는 수사가 옮겨 가는 서늘한 궤적이 보입니다. 이절의 물음 앞항에는 칠십과 여룹바알의 아들이라는 뚜렷한 이름표가 붙어 있는 반면, 뒤항의 한 사람에는 아비멜렉이라는 이름조차 없이 남성형 수사 에하드만 사람이라는 명사에 붙어 있습니다. 그리고 오절에서 칠십 명이 다시 불릴 때, 그 하나라는 수사는 여성형 에하트로 옷을 갈아입고 사람 대신 차가운 돌, 곧 한 반석을 꾸미는 말로 나타납니다. 원문은 한 사람과 한 돌을 억지로 잇는 설명을 덧붙이지 않지만, 물음의 한 항으로 불렸던 칠십 명이 그 물음을 듣는 장면도 대답하는 문장도 받지 못한 채 이 다섯 절 내내 단 한 번도 동사의 주어로 서지 못했다는 사실만큼은 뼈아프게 남습니다.</p>
+<p>동시에 이 본문은 우리가 계산기로 쉽게 맞추려 드는 빈칸들을 열린 채로 남겨 둡니다. 팔장 삼십절은 기드온의 아들을 칠십 명으로 세었는데, 구장 오절은 칠십 명을 죽인 뒤에도 막내 요담이 남았다고 적습니다. 칠십이 어림수인지 아니면 다른 셈법인지 원문은 풀지 않으며, 사절에서 바알브릿 묘에서 은 칠십 개를 내어 준 주체 역시 이름 없는 삼인칭 복수로만 적혀 있습니다. 우리는 흔히 맞지 않는 숫자를 억지로 꿰맞추거나 이름 없는 주어를 앞절의 세겜 사람들로 단정해 빈칸을 메우려 하지만, 본문이 비워 둔 자리를 모르는 채로 정직하게 남겨 두는 것 또한 성경을 깊이 읽는 소중한 태도입니다.</p>
+<h3>네 번 지나가는 형제라는 낱말과 아비멜렉의 빈 입</h3>
+<p>이 짧은 단락을 관통하는 또 하나의 핵심 어휘는 히브리어 아흐, 곧 형제입니다. 일절과 삼절의 그 어미의 형제들, 삼절의 그는 우리 형제라, 그리고 오절의 자기 형제 칠십인까지 이 낱말은 본문을 네 번이나 가로질러 지나갑니다. 놀랍게도 형제라는 똑같은 한 낱말이 아비멜렉을 발 벗고 돕는 외가 사람들에게도, 세겜 사람들이 그를 받아들이는 이유에도, 그리고 마침내 그의 손에 죽임을 당하는 아버지 집의 아들들에게도 모두 걸려 있습니다. 그런데 정작 이 모든 일을 일으킨 이절의 아비멜렉 자신의 입에는 형제라는 낱말이 없습니다.</p>
+<p>원문 이절에서 아비멜렉은 형제라는 말 대신 아츠메켐 우브사르켐 아니, 곧 너희의 뼈와 너희의 살이 나다라고 말합니다. 개역한글은 이 두 명사를 골육지친이라는 한자어 하나로 합쳤고, 이어지는 삼절에서 세겜 사람들의 마음이 기울어진 이유를 밝히는 접속사 키를 지운 채 말하기를로만 이어 놓았습니다. 원문이 세겜 사람들의 마음이 기운 까닭으로 적은 것은 칠십이 나으냐 하나가 나으냐는 정치적 물음에 대한 숙고의 대답이 아니라, 오직 그는 우리 형제다라는 한 마디뿐이었습니다. 본문은 그 말이 틀렸다고 논평하지 않으나, 바로 그 한 마디만 적혀 있다는 사실이 오늘 우리가 누군가에게 표를 던지고 사람을 세우는 이유를 날카롭게 비추어 봅니다.</p>
+<h3>남으니라 뒤에 멈추어 서는 위로와 정직한 실무</h3>
+<p>단락의 마지막 문장은 여룹바알의 말째 아들 요담이 숨었으므로 남았다는 한 줄로 끝납니다. 숨었다에 해당하는 원어 니흐바는 니팔형 동사여서 스스로 몸을 숨겼는지 아니면 다른 누군가의 손이 그를 숨겨 주었는지 형태만으로는 정해지지 않습니다. 개역한글은 스스로라는 말을 보태었지만, 원문은 요담의 남음을 비겁하다고도 지혜롭다고도 판정하지 않고 오직 남으니라라는 동사로 문장을 맺습니다. 혹시 여럿이 큰 해를 입은 자리에서 홀로 남아 왜 그때 아무것도 하지 못했는가 하며 오랜 세월 자신을 책망하는 분이 계십니까. 그 물음이 다시 치밀어 오를 때면 자신의 지난날에 가혹한 판결문을 한 줄씩 이어 쓰는 대신, 아무 판정도 붙이지 않고 남으니라에서 멈춘 성경의 끝 문장과 함께 조용히 멈추어 서시기를 권합니다.</p>
+<p>본문이 적은 만큼만 보고 멈추는 이 절제는 목회와 세무 실무의 자리에서도 분명한 걸음이 됩니다. 교회 안에서 의견이 둘로 갈린 회의를 주재하는 목회자라면, 어느 한쪽도 아비멜렉으로 재단하지 말고 처음부터 끝까지 양쪽 모두를 똑같은 호칭으로 불러 형제라는 말이 특정한 편의 표가 되지 않게 지켜야 합니다. 또한 세무 실무에서 장부에 출처가 적히지 않은 가족 간 입금이 보일 때에는, 가족 돈이겠지요 하고 어림짐작으로 칸을 메우는 대신 의뢰인과 함께 직접 은행 창구까지 찾아가 거래 내역을 떼어 보아야 합니다. 의뢰인을 의심해서가 아니라 본문이 이름 없는 주어를 추정으로 채우지 않았듯 모르는 것을 모른다고 남기는 정직을 지키기 위함입니다. 사건과 판정 사이의 거리 안에서 우리의 성급한 판단을 내려놓는 겸손이 우리 일상에 깃들기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 27편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

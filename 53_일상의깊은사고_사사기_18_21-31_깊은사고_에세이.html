@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>칼날과 돌아섬을 적은 기록지 위에서, 비어 있는 판정란 앞에 서다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 53편 &middot; 사사기 18:21-31</span>
+      <h1>칼날과 돌아섬을 적은 기록지 위에서, 비어 있는 판정란 앞에 서다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 18장 21절부터 31절은 단 자손이 발걸음을 돌이켜 어린 아이들과 가축과 물품을 앞에 두고 행진하는 장면으로 시작합니다. 왜 아이들과 짐을 대열 앞에 두었는지 원문은 그 까닭을 설명하지 않습니다. 뒤따라 붙은 미가가 "나의 지은 신들과 제사장을 취하여 갔으니 내게 오히려 있는 것이 무엇이냐"고 항변하자, 단 자손은 목소리를 우리에게 들리게 하지 말라고 경고하고 미가는 그들이 자기보다 강한 것을 보고 돌이켜 집으로 돌아갑니다. 이어 단 자손은 라이스에 이르러 한가하고 평안한 백성을 칼날로 치고 성읍을 불사른 뒤, 성읍을 다시 지어 단이라 부르고 미가가 만든 새긴 신상을 자기들을 위해 세웁니다.</p>
+<p>숨 가쁘게 이어지는 이 열한 절의 기록은 마치 맨 아래 판정란이 비어 있는 한 장의 기록지 같습니다. 칼날과 불길, 애타는 항변과 발길을 돌리는 돌아섬, 새로 붙인 이름과 처음의 본래 이름이 모두 또렷이 적혀 있는데, 정작 이 일들을 두고 누가 옳고 그른지 매기는 서술자의 평가어는 한 글자도 보이지 않습니다. 하나님을 행위자로 세운 문장조차 없는 이 본문 앞에서, 빈칸에 내 말을 먼저 적어 넣고 싶어 하는 성급한 손을 거두는 데서부터 오늘의 깊은 묵상이 시작됩니다.</p>
+<h3>한가하고 평안한 백성, 한 글자도 바뀌지 않은 두 낱말</h3>
+<p>18장 7절에서 정탐꾼 다섯이 라이스에 가서 보았던 "한가하고 평안한" 백성의 모습은, 18장 27절에서 단 자손이 이르러 만난 백성에게도 똑같이 붙어 있습니다. 히브리어 원어로 '쇼케트 우보테아흐'라 적힌 이 두 분사가 나란히 선 자리는 구약 성경 전체를 통틀어 오직 이 두 구절뿐이며, 두 자리에서 철자 한 글자도 바뀌지 않았습니다. 사사기 안의 다른 네 곳에서는 같은 뿌리의 낱말이 모두 "그 땅이 태평하였다"는 정형구로 쓰였으나, 유독 18장의 이 두 절만은 땅이 아니라 한 백성을 꾸미고 있습니다.</p>
+<p>두 낱말은 그대로인데 그 앞뒤를 둘러싼 문장의 자리가 바뀌었습니다. 7절에서는 정탐꾼들이 "보았다"는 동사 곁에 서서 그 뒤로 공격이나 행동의 말이 이어지지 않았지만, 27절에서는 단 자손이 "이르렀다"는 말 곁에 서고 곧바로 "칼날로 그들을 치며"라는 서술이 뒤따릅니다. 28절이 전하는 "시돈과 상거가 멀고 상종하는 사람도 없음"이라는 이유 역시 "구원할 자가 없었으니"라는 구절에만 걸릴 뿐, 그들이 공격당한 이유나 도덕적 탓을 설명하지 않습니다. 서술자는 라이스 백성을 안일함의 경고판으로도, 무고한 피해의 상징으로도 만들지 않은 채, 같은 두 낱말이 '보았다' 곁에서 '이르렀다' 곁으로 옮겨 섰다는 사실 하나만을 묵묵히 남깁니다.</p>
+<h3>내가 만든 것에서 미가의 지은 것으로, 지워지지 않는 두 이름</h3>
+<p>24절에서 미가는 단 자손을 향해 "나의 지은('아시티') 신들과 제사장을 취하여 갔으니"라며 입을 엽니다. 사사기 17장과 18장에서 '만들다'('아사')라는 동사는 열두 번 나오지만, 1인칭으로 "내가 만들었다"고 말하는 것은 미가 자신의 입에서 나온 이 한 번뿐입니다. 개역한글은 이를 복수형인 "신들"로 옮겼으나 원문은 그것이 하나를 가리키는지 여럿을 가리키는지조차 가르지 않습니다. 그 뒤로 이 물건을 부르는 목소리는 미가에게서 서술자에게로 넘어갑니다. 서술자는 27절에서 단 자손이 "미가의 지은 것"을 취했다고 적고, 31절에서도 다시 "미가의 지은바 새긴 신상"이라 부릅니다.</p>
+<p>물건의 주인이 바뀌고 자리가 옮겨졌는데도 한 물건에 '만든 이'의 이름이 세 번이나 거듭 붙습니다. 더 나아가 31절 원문은 개역한글의 "단 자손에게 있었더라"보다 훨씬 분명하게 '바야시무 라헴', 곧 "그들이 자기들을 위해 두었다"고 적음으로써 한 문장 안에 '미가가 만든 것'과 '단 자손이 둔 것'을 나란히 갈라 세웁니다. 우리는 이 기록을 미가의 죄를 들추는 낙인으로도, 빼앗긴 자를 위로하는 애도로도 읽지 않습니다. 서술자는 "하나님의 집이 실로에 있을 동안"이라는 시한을 곁에 적으면서도 두 집을 비교하는 평가는 덧붙이지 않은 채, 만든 이의 이름과 둔 이의 이름을 둘 다 지우지 않고 남겨 두었습니다.</p>
+<h3>한 절에 세 번 선 목숨과 비워 둔 시한, 그리고 일상의 걸음</h3>
+<p>미가의 항변에 돌아온 단 자손의 경고에는 목숨을 뜻하는 히브리어 '네페쉬'가 한 절 안에 세 번이나 겹쳐 섭니다. "마음이 쓴 사람들"('마레 네페쉬')이 너희를 쳐서 "네 목숨"과 "네 집의 목숨"을 거두게 하지 말라는 말입니다. 18장 전체에서 '네페쉬'는 오직 이 세 번뿐이며, 원문은 개역한글의 "잃게 할까"와 달리 미가 자신이 자기 목숨과 가족의 목숨을 거두는 일이 없게 하라는 매서운 문장으로 적혀 있습니다. 그 말을 들은 미가는 단 자손이 자기보다 강한 것을 "보고", "돌이켜", "집으로 돌아갔더라"는 세 동작을 끝으로 이야기에서 퇴장합니다. 서술자는 그 돌아섬을 지혜로운 물러섬으로도, 비겁한 굴복으로도 매기지 않습니다. 이어지는 30절과 31절에서도 '므낫세'와 '모세' 사이에 매달린 한 글자의 비밀이나 "사로잡히는 날까지"와 "실로에 있을 동안"이라는 두 시한의 관계를 억지로 하나로 합치지 않고 열린 채로 둡니다.</p>
+<p>판정을 비워 둔 이 서술의 결은 오늘 우리의 일상과 목회 현장에 따뜻한 배려와 정직한 손길을 남깁니다. 혹시 지금 자기보다 강한 쪽 앞에서 어쩔 수 없이 물러섰고 다시 나설 길이 없는 분이 계시다면, 본문이 미가의 돌아섬에 아무런 꾸짖음도 할 일도 얹지 않았듯 우리 또한 그분께 옳고 그름을 묻거나 무거운 짐을 얹지 않고 조용히 곁에 머뭅니다. 세무 실무에서 상호가 바뀐 고객의 파일철을 정리할 때는 새 이름 '단' 곁에 본래 이름 '라이스'를 함께 적은 29절의 문장 꼴을 기억하며, 파일철 등에 새 상호와 옛 상호를 두 줄로 뽑은 라벨을 함께 붙여 옛 서류의 길을 잃지 않게 합니다. 또한 손수 짠 책장이나 선반을 이사하며 이웃에게 넘길 때는 뒤판에 만든 해와 이름을 적은 뒤 현관 앞에 내려놓지 않고 이웃과 둘이 양 끝을 들고 그 집 안 놓일 자리까지 함께 옮겨 줍니다. 평가가 없는 이야기를 견디지 못해 동정이나 단죄로 서둘러 채워 왔던 손을 거두고, 본문이 비워 둔 자리는 비워 두기를 조용히 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 53편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

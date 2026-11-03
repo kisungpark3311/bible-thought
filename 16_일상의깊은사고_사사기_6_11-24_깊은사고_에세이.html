@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>지워지지 않은 물음 곁에 세워진 평안의 단, 여호와살롬</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 16편 &middot; 사사기 6:11-24</span>
+      <h1>지워지지 않은 물음 곁에 세워진 평안의 단, 여호와살롬</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 6장 11절은 사뭇 다른 두 장면을 한 절 안에 나란히 놓습니다. 한쪽에는 오브라에 있는 상수리나무 아래에 여호와의 사자가 앉아 있고, 다른 한쪽에는 기드온이 포도주 틀에서 밀을 털고 있습니다. 서술자가 기드온의 그 고단한 손길에 덧붙인 까닭은 미디안 사람에게서 피하려 했다는 설명 하나뿐입니다. 추수철에 농사짓는 교우의 집을 찾아가 이미 거두어 말린 들깨 단을 손에 쥔 막대로 내리쳐 알곡을 자루에 받아 내는 일을 한나절만 거들어 보아도, 좁은 포도주 틀 안에서 막대를 휘두르며 곡식을 터는 숨소리가 얼마나 무겁고 답답한지 몸으로 짐작하게 됩니다. 바로 그 좁고 낮은 타작의 자리에서 뜻밖의 대화가 시작됩니다.</p>
+<p>그날 상수리나무 아래에서 오간 대화 속에는 함께라는 작은 낱말이 세 사람의 입을 거치며 세 번 등장합니다. 한국어 성경으로 읽으면 세 문장이 모두 비슷한 말을 되풀이하는 것처럼 들리지만, 히브리어 원문의 결을 따라가 보면 말하는 이가 바뀔 때마다 그 낱말이 놓인 문장의 꼴과 말을 받는 대상이 선명하게 달라집니다. 나아가 사자가 떠나 보이지 않게 된 자리에서 들려온 평안이라는 말씀은 기드온이 쌓은 단의 이름에 다시 새겨져 오늘까지 오브라에 남게 됩니다. 성경이 설명 없이 나란히 적어 둔 이 말씀의 결을 천천히 따라가다 보면, 우리가 쉽게 건네던 위로의 말과 성급히 닫아 버리던 질문들을 다시 돌아보게 됩니다.</p>
+<h3>세 입을 지나며 꼴과 받는 이가 달라지는 함께라는 말</h3>
+<p>먼저 12절에서 여호와의 사자는 기드온에게 큰 용사여 여호와께서 너와 함께 계시도다라고 말합니다. 흥미롭게도 원문에는 계시도다에 해당하는 동사가 아예 없고, 여호와, 너와 함께라는 임므카 두 마디만 놓여 있습니다. 그러자 13절에서 기드온은 그 빈자리에 있다라는 뜻의 존재사 예쉬를 집어넣고, 사자가 건넨 단수 너를 복수 우리인 임마누로 바꾸어 받습니다. 나의 주여 여호와께서 우리와 함께 계시면 어찌하여 이 모든 일이 우리에게 미쳤나이까라고 되묻는 그 한 절 안에 기드온은 우리라는 말을 일곱 번이나 쏟아 냅니다. 이어지는 16절에 이르면 서술자가 여호와라 부른 화자가 내가 반드시 너와 함께 하리니라고 말씀하시는데, 여기서는 내가 있겠다라는 에흐예가 쓰이며 다시 한 사람 너인 임마크를 향합니다. 동사 없는 문장에서 시작해 있다를 넣은 우리의 물음으로, 다시 내가 있겠다는 말씀으로 옮겨 가는 것입니다.</p>
+<p>원문은 12절의 말이 사실을 알리는 선언인지 인사인지, 또 13절의 계시면을 조건으로 읽어야 하는지 정해 주지 않습니다. 더구나 기드온이 어찌하여 이 모든 일이 미쳤으며 조상들이 들려준 출애굽의 이적이 어디 있느냐고, 이제 여호와께서 우리를 버리사 미디안의 손에 붙이셨다고 탄식할 때 서술자는 그 말을 믿음 없음으로 꾸짖지도 않고 정직한 질문이라 칭찬하지도 않습니다. 그저 14절에서 여호와께서 그를 돌아보아 너는 이 네 힘을 의지하고 가서 이스라엘을 미디안의 손에서 구원하라 내가 너를 보낸 것이 아니냐라고 말씀하셨음을 이어 적을 뿐입니다. 본문은 물음과 보냄 사이에 그러므로도 그러나도 두지 않았기에, 우리가 14절을 물음에 대한 해답으로 읽으면 기드온의 아픈 물음이 닫히고, 물음을 무시한 것으로 읽으면 여호와의 말씀이 닫히고 맙니다. 본문이 열어 둔 이 팽팽한 긴장을 화해시키려 하지 않고 차이 그대로 들고 있는 것이 말씀을 대하는 정직한 태도입니다.</p>
+<h3>이름을 바꾸어 부르는 서술자와 떠난 뒤에 들려온 평안</h3>
+<p>이 단락을 더욱 깊이 읽게 만드는 또 하나의 특징은 서술자가 기드온의 대화 상대를 부르는 호칭의 변화입니다. 11절과 12절, 그리고 21절에서는 여호와의 사자라 부르고, 20절에서는 이 범위에서 단 한 번 하나님의 사자인 말아크 하엘로힘이라 부르며, 14절과 16절과 23절에서는 여호와께서 말씀하셨다고 적습니다. 심지어 18절에서 내가 너 돌아오기를 기다리리라고 말한 이에게는 아무런 이름도 붙이지 않습니다. 개역한글 성경은 이 호칭의 이동을 따라 이르되와 가라사대라는 높임말을 구별해 골라 썼지만, 원문 자체는 두 호칭이 어떤 관계인지 끝내 설명하지 않습니다. 설명이 없는 자리에 우리의 추측을 채우지 않을 때, 독자의 손에는 호칭이 바뀌는 구절들의 묵직한 목록과 사자가 떠난 뒤에도 말씀이 이어진다는 놀라운 사실이 남습니다.</p>
+<p>기드온이 준비해 온 고기와 무교전병이 반석에서 솟아오른 불에 다 사라지고 여호와의 사자는 떠나서 보이지 않게 됩니다. 그때 기드온은 슬프도소이다 주 여호와여 내가 여호와의 사자를 대면하여 보았나이다라고 외칩니다. 원문은 그 외침이 무엇을 탄식한 것인지 설명하지 않으나, 사자가 이미 떠난 뒤인 23절에 여호와께서 그에게 이르시되 너는 안심하라 두려워 말라 죽지 아니하리라 하셨다는 말씀이 분명하게 적힙니다. 여기서 안심하라로 번역된 원문은 명령형이 아니라 네게 평안이라는 뜻의 샬롬 레카입니다. 그리고 기드온이 그 자리에 단을 쌓고 부른 이름 여호와살롬의 둘째 낱말이 바로 이 샬롬과 똑같습니다. 우리말 번역이 하나는 안심으로, 다른 하나는 소리 나는 대로 살롬이라 옮겨 놓아 한눈에 보이지 않던 그 평안의 낱말이, 두려운 외침과 죽지 않으리라는 말씀 바로 뒤에서 단의 이름으로 다시 피어난 것입니다.</p>
+<h3>남의 우리를 서둘러 너로 고치지 않고 곁에 서는 시간</h3>
+<p>오늘 우리의 삶과 사역의 자리에서도 하나님이 함께하십니다라는 인사에 선뜻 아멘이 나오지 않는 이웃을 만날 때가 있습니다. 삶의 무거운 짐 아래 놓여 어찌하여 우리에게 이런 일이 미쳤느냐고 묻는 사람에게, 사자의 첫 마디를 다시 들이밀어 억지로 아멘을 받아 내거나 그가 붙든 우리라는 말과 어찌하여라는 탄식을 불신앙으로 판정해서는 안 됩니다. 세무 상담을 하는 자리에서도 마찬가지입니다. 기드온이 말한 이 네 힘이나 자신의 작은 족속과 처지를 성경 서술자가 평가하지 않았듯, 제가 무엇으로 이 무거운 세무 신고와 부담을 감당하겠습니까라고 묻는 고객에게 사장님 정도면 충분합니다라는 섣부른 평가 문장을 먼저 건네지 않는 절제가 필요합니다. 그분이 털어놓은 막막한 형편을 그분의 말 그대로 존중해 남겨 두고, 다만 다음에 밟아야 할 실무의 절차를 차분히 함께 정하는 것이 상대의 자리를 빼앗지 않는 배려입니다.</p>
+<p>6장 24절의 단은 오늘까지 오브라에 서 있었다고 기록됩니다. 그 단의 이름인 여호와살롬 안에는 사자가 떠난 뒤에 들려온 네게 평안이라는 말씀의 낱말이 고스란히 들어 있고, 그 말씀 앞에는 어찌하여라고 물었던 기드온의 고통스러운 질문이 지워지지 않은 채 나란히 남아 있습니다. 물음이 지워지지 않은 자리에 평안이라는 이름이 붙었다는 사실 앞에서 우리의 조급한 입술을 멈춥니다. 어찌하여라고 물은 기드온에게 돌아서서 내가 너와 함께 있겠다고 말씀하시고, 사자가 떠난 뒤에도 네게 평안이라 말씀하신 하나님을 기억하며, 이제는 이웃의 아픈 우리를 서둘러 너로 고쳐 말하지 않고 본문이 열어 둔 물음 곁에 조용히 머무는 깊고 따뜻한 사람이 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 16편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

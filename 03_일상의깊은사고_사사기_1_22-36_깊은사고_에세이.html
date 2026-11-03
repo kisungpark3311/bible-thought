@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>판결문이 아닌 목록 앞에서, 지워진 이름 하나를 되살려 읽다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 03편 &middot; 사사기 1:22-36</span>
+      <h1>판결문이 아닌 목록 앞에서, 지워진 이름 하나를 되살려 읽다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 1장의 후반부인 22절부터 36절까지는 요셉 족속이 벧엘을 치러 올라가는 장면으로 문을 열며, 서술자는 여호와가 그들과 함께라는 짧은 한마디를 덧붙입니다. 정탐꾼들은 성읍에서 나오는 한 사람에게 이 성읍의 입구를 우리에게 가르치라 그리하면 너를 선대하리라고 말하고, 그가 입구를 보여 주자 성읍은 칼날에 쓰러지지만 그와 온 가족은 놓여나 헷 사람의 땅으로 가서 성읍을 짓고 옛 이름대로 루스라 부릅니다. 이어 27절부터는 므낫세와 에브라임, 스불론과 아셀과 납달리의 줄이 차례로 놓이며 줄마다 쫓아냄이 없었다는 같은 꼴의 문장이 일곱 번 되풀이됩니다. 이스라엘이 강성한 후에야 가나안 사람에게 사역을 시켰다는 기록과 아모리 사람이 단 자손을 산지로 누르고 골짜기로 내려오지 못하게 했다는 기록이 그 뒤를 잇습니다.</p>
+<p>놀랍게도 이 열다섯 절 안에는 서술자의 직접적인 평가 문장이 단 한 줄도 없고, 22절의 동반 표현 이후로는 하나님이 무엇을 하셨다고 말하는 문장조차 등장하지 않습니다. 이 단락에서 성경 본문이 우리 앞에 내놓는 것은 누군가를 정죄하는 판결문이 아니라 담담한 목록이며, 판결의 자리는 다음 단락인 2장으로 남겨 둡니다. 일곱 번 반복되는 쫓아냄이 없었다를 무엇이라 불러야 하는지, 강해짐과 쫓아냄 없음이 어떻게 이어지는지, 그리고 거했다는 네 절의 맞섬이 무엇을 뜻하는지는 이 열다섯 절 안에서 닫히지 않으며, 본문의 가나안과 아모리나 노역 역시 오늘날의 특정 집단이나 노동 및 조세 문제로 곧장 옮겨지지 않습니다.</p>
+<h3>가운데의 주인이 맞서는 네 절과 일곱 줄의 로 호리쉬</h3>
+<p>29절부터 33절까지를 자세히 들여다보면 거했다는 동사가 네 번 나오고, 네 번 모두 가운데를 뜻하는 히브리어 케레브를 데리고 다닙니다. 그런데 앞의 두 절인 29절과 30절에서는 가나안 사람이 에브라임과 스불론 지파의 가운데 거하고, 뒤의 두 절인 32절과 33절에서는 아셀과 납달리 지파가 가나안 사람의 가운데 거하여 두 절 대 두 절로 정확히 맞섭니다. 원문은 네 자리 모두 같은 낱말 케레브를 쓰지만, 개역한글은 앞의 둘을 그들 중에로, 뒤의 둘을 가운데로 갈라 옮겼고, 더욱이 32절 첫머리에 원문이 또렷이 다시 세운 아셀 사람이라는 주어를 번역에서 지워 버렸습니다. 30절과 31절 사이에서 단 한 번 일어나는 이 자리바꿈에 대해 서술자는 아무런 해석도 덧붙이지 않으므로, 이를 두고 이스라엘이 점점 가나안에 물들어 갔다는 이야기로 꾸밀 근거는 본문에 없으며, 우리말 독자가 이 맞섬을 온전히 보려면 지워진 아셀 사람 한 낱말을 되살려 읽어야 합니다.</p>
+<p>27절부터 33절까지 일곱 줄로 늘어선 쫓아냄이 없었다는 히브리어 로 호리쉬 또한 판결이 아니라 목록의 문장입니다. 로 호리쉬는 쫓아내다라는 동사 앞에 없음을 표시하는 짧은 부정어 로 하나만 둔 꼴이어서, 우리말의 쫓아내지 않았다와 쫓아내지 못했다가 모두 번역자가 고른 말일 뿐 원문에는 할 수 있다는 능력 동사 야콜이 한 번도 나오지 않습니다. 여호수아 17장 12절 상반절은 야콜을 쓰면서 뒷마디인 가나안이 이 땅에 거하기를 작정했다는 바요엘 구절과 글자대로 일치하지만, 본문은 두 책의 선후를 정하지 않으며 28절의 강해졌을 때라는 시간의 틀이 쫓아냄 없음과 어떤 인과를 맺는지도 풀지 않습니다. 그러므로 믿음이 없어서 못 했다는 책망도, 힘이 있었는데 안 했다는 정죄도 이 일곱 줄에서 나오지 않으며, 원문이 고르지 않은 말을 우리도 고르지 않는 절제만이 남습니다.</p>
+<h3>라아의 사슬과 번역 한 낱말 뒤에 숨은 원문의 결</h3>
+<p>번역의 한 낱말 뒤에 숨어 있는 원문의 결을 갈라 읽을 때 본문의 입체적인 무늬는 더욱 선명해집니다. 벧엘 일화인 24절과 25절에서 정탐꾼들이 보았고, 보여 달라고 청했고, 그 사람이 보여 주었다는 세 동사는 원문에서 모두 보다를 뜻하는 라아의 사슬로 이어져 있는데, 개역한글은 둘째와 셋째를 가르치라와 가르친지라로 옮겨 그 시선의 사슬을 끊어 놓았습니다. 목록의 끝에서도 개역한글은 28절과 35절을 똑같이 강성으로 옮겼으나, 28절은 강해졌다는 뜻의 하자크인 반면 35절은 요셉 족속의 손이 무거워졌다는 뜻의 카베드이며 번역 과정에서 손이라는 주어가 생략되었습니다. 34절에서 아모리 사람이 단 자손을 산지로 쫓아들이고라고 한 것 역시 원문으로는 눌렀다는 뜻의 라하츠로서 땅 위에서 벌어진 물질적 사건을 가리킬 뿐, 본문은 그 신학적 뜻을 덧붙이지도 않고 사사기 18장의 단 지파 이주와 인과로 묶지도 않습니다.</p>
+<p>벧엘 성읍에서 나온 사람에 관한 긴장도 열린 채로 남아 있습니다. 24절에는 너와 함께 인애, 곧 헤세드를 행하리라는 정탐꾼들의 약속이 있고 25절에는 그 사람과 그 온 가족을 놓아 보냈다는 서술이 있으나, 원문은 이 보냄을 약속의 신실한 이행이라 부르는 낱말을 두지 않습니다. 그 사람의 내면적 동기나 신앙도 적히지 않고, 그가 가서 옛 이름 루스를 다시 세운 헷 사람의 땅이 어디인지도 밝히지 않습니다. 정경은 이 일화를 어떤 도덕적 판정도 없이 일곱 줄의 목록 앞에 배치하여 그를 배신자로도 은혜를 입은 의인으로도 부르지 않으며, 32절에서만 유독 아셀 사람이라는 족속명으로 주어를 다시 세운 까닭 역시 열린 물음으로 남겨 둡니다.</p>
+<h3>묶인 고무줄을 풀어 묻는 손과 아셀 사람을 되살리는 낭독</h3>
+<p>원문이 판결을 내리지 않고 열어 둔 이 자리는, 오늘 오랜 책임을 맡아 애써 왔으나 지금은 손쓸 길이 막혀 그것을 할 수 없는 사람에게 무거운 짐을 덜어 줍니다. 그런 분이 27절을 펴면 그 줄에서 자기 인생의 실패 판결을 읽기 쉽지만, 27절의 목적어는 다섯 성읍과 마을들이고 원문은 안과 못을 가르지 않으며 28절 또한 힘이 생기면 마침내 해내게 된다는 약속이나 힘이 있었는데 안 했다는 판정을 내리지 않습니다. 따라서 우리는 그분에게 언제 다시 시작하라는 날짜나 동작을 얹지 않습니다. 대신 목회 현장의 공예배에서 29절부터 33절까지를 낭독할 때는 32절 첫머리에 아셀 사람이를 넣어 소리 내어 읽고 33절은 본문대로 읽은 뒤, 갈림의 뜻을 따로 풀이하거나 우리 안의 가나안 같은 비유를 꺼내지 않고 다음 순서로 넘어감으로써 회중이 귀로 직접 본문의 맞섬을 듣게 할 수 있습니다.</p>
+<p>세무 일터의 책상 위에서도 한 이름에 묶인 것을 손으로 풀어 보는 실천이 가능합니다. 강성이라는 한 단어 뒤에 하자크와 카베드가 숨어 있었듯, 의뢰인이 다 같은 경비라며 고무줄로 묶어 건넨 영수증 뭉치를 받으면 두 해의 서류를 좌우에 펴고 견주는 일과 달리 고무줄을 직접 풀어 책상 위에 성격대로 나누어 놓고 각각의 실제 쓰임을 의뢰인에게 묻는 일입니다. 이 열다섯 절에는 하나님이 무엇을 하셨다고 말하는 문장이 없어 오늘 우리의 기도는 감사를 억지로 꾸미는 대신 고백과 결단으로만 드립니다. 원문이 쓰지 않은 판결을 내 입으로 먼저 쓰려 했던 버릇과 번역 낱말 하나로 남의 형편에 성급히 이름을 붙였던 일을 고백하며, 본문이 열어 둔 물음을 닫지 않고 조용히 들고 가는 하루가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 03편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

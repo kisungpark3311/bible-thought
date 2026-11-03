@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>다섯 번 불린 마음과 한 번도 들리지 않은 임자의 목소리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 54편 &middot; 사사기 19:1-9</span>
+      <h1>다섯 번 불린 마음과 한 번도 들리지 않은 임자의 목소리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>에브라임 산지 구석에 사는 한 레위 사람이 유다 베들레헴에서 첩을 맞이하지만, 그 여자는 남편을 떠나 아버지의 집으로 돌아가 넉 달을 지냅니다. 개역한글은 19장 2절을 "그 첩이 행음하고"라고 옮기지만, 원문의 그 낱말이 정확히 무엇을 뜻하는지 본문은 설명하지 않으며, 다만 여자가 떠난 일과 머문 기간만 적을 뿐 그 까닭은 밝혀 두지 않습니다. 이윽고 남편이 일어나 하인 하나와 나귀 두 필을 데리고 그 여자를 따라 나섭니다. 서술자는 그 걸음의 목적을 "그 여자의 마음에 말하려고"라고 적지만, 정작 그가 도착해서 무슨 말을 건넸는지는 한 글자도 싣지 않습니다.</p>
+<p>베들레헴 집에 이른 뒤로 사흘이 흐르고, 나흘째와 다섯째 날 아침마다 사위가 떠나려고 일어설 때면 여자의 아버지인 장인이 그를 붙들며 거듭 말을 건넵니다. "떡을 조금 먹어 그대의 기력을 도운 후에 그대의 길을 행하라", "청하노니 그대의 기력을 돕고 해가 기울도록 머물라." 놀랍게도 사사기 19장 1절부터 9절에 이르는 이 아홉 절 안에서 직접 입을 열어 말하는 사람은 오직 장인 한 사람뿐입니다. 길을 찾아 나선 레위인도, 넉 달을 머문 그 여자도 직접 한 말이 단 한 마디도 실리지 않은 채, 원문은 '마음'이라는 낱말을 다섯 번이나 부르면서도 언제나 남의 문장 안에만 그 마음을 두고 있습니다.</p>
+<h3>다섯 갈래 번역 뒤에 숨은 다섯 번의 마음</h3>
+<p>히브리어 원문은 이 짧은 아홉 절 안에서 마음을 뜻하는 '레브'와 '레바브'를 다섯 번 거듭 씁니다. 3절의 "그 여자의 마음에 말하려고", 5절과 8절의 "네 마음을 떠받치라", 그리고 6절과 9절의 "네 마음이 좋으리라(혹은 네 마음을 좋게 하라)"가 그것입니다. 그런데 개역한글로 이 대목을 읽으면 이 다섯 번의 되풀이가 눈에 잘 띄지 않습니다. 번역자들이 3절은 "다정히 말하고"로, 5절과 8절은 "기력을 도운 후에"와 "기력을 돕고"로, 6절과 9절만 "마음을 즐겁게 하라"로 나누어 옮겼기 때문입니다. 관용구 전체의 결을 살린 '다정히'나 떡과 짝을 이룬 몸 쪽의 뜻을 살린 '기력' 모두 충분히 변호할 수 있는 번역이지만, 그 결과 다섯 번이나 거듭 울리는 '마음'의 메아리는 우리말 문면 뒤로 가려졌습니다.</p>
+<p>원어의 되풀이를 복원해 놓고 보면 한 가지 서늘한 사실이 드러납니다. 마음이 다섯 번이나 불리는데도, 그 마음의 임자가 자기 입으로 자기 마음을 말하는 문장은 단 하나도 없다는 점입니다. 여자의 마음은 남편의 걸음을 설명하는 서술자의 문장 안에 있고, 사위의 마음은 붙잡는 장인의 네 번의 말 안에만 들어 있습니다. 그렇기에 우리는 개역한글의 "다정히"라는 한 단어를 근거로 레위인을 자상하고 좋은 남편으로 그려 내지도 않고, 반대로 그의 걸음 뒤에 숨은 목적을 미리 의심하지도 않습니다. 본문이 마음을 늘 남의 문장 안에만 두었다는 이 사실 앞에서, 말하지 않은 사람의 속내를 내 짐작으로 먼저 확정하려는 손을 조용히 멈추게 됩니다.</p>
+<h3>떡 한 조각으로 마음을 떠받치라는 거듭된 권유</h3>
+<p>넷째 날 아침과 다섯째 날 아침, 길을 떠나려 일어서는 사위에게 장인은 먹고 가라는 권유를 거듭 내놓습니다. 서술자는 6절과 8절에서 "두 사람이" 함께 먹었다고 적으면서도 그 두 사람이 누구인지조차 따로 설명하지 않습니다. 이때 장인이 건넨 말을 원문 그대로 옮기면 '사아드 립베카 팟 레헴', 곧 "떡 한 조각으로 네 마음을 떠받치라"입니다. '떠받치다'를 뜻하는 히브리어 '사아드'는 무너지려는 몸을 버티게 해 주는 동작인데, 본문은 그 떠받침의 대상 자리에 몸이 아니라 '마음'을 놓았습니다. 다섯째 날 아침인 8절에서는 그 명령과 마음 사이에 "부디"를 뜻하는 '나'라는 작은 낱말이 하나 더 끼어듭니다.</p>
+<p>성경은 이처럼 떡 한 조각을 먹는 몸의 일과 마음을 떠받치는 일을 한 문장 안에 단단히 묶어 두었습니다. 다만 장인의 이 거듭된 권유가 사위를 향한 따뜻한 환대였는지, 아니면 길을 가로막는 집요한 붙듦이었는지는 본문이 말하지 않습니다. 따라서 이 묵상 역시 장인의 태도를 본받아야 할 모범으로도, 경계해야 할 본보기로도 세우지 않습니다. 한 끼의 떡이 사람의 마음에 닿는다는 사실, 그리고 그 거듭된 권유 앞에서 사위가 무엇이라 대답했는지 끝내 실리지 않았다는 사실까지가 이 구절이 우리에게 남기는 온전한 무게입니다.</p>
+<h3>기우는 날들과 열린 갈래, 그리고 일상의 절제</h3>
+<p>서술자는 사흘(4절), 넷째 날(5절), 다섯째 날(8절)로 이어지는 장인 집의 날들을 하나씩 세어 나가고, 사위가 떠나고자 일어선 걸음도 네 번(5, 7, 8, 9절)이나 또렷이 적습니다. 개역한글이 "해가 기울도록", "해가 저물어가니", "해가 기울었느니라"로 옮긴 세 자리에서도 원문은 모두 해가 아니라 '날'('하욤')이 기운다고 표현합니다. 날은 오직 장인의 말 안에서 저물어 갑니다. 더욱이 6절과 9절의 장인의 말은 원문에서 "묵으라, 네 마음이 좋으리라"는 내다봄으로도, "묵으라, 네 마음을 좋게 하라"는 권유로도 읽힙니다. 정경은 이 두 갈래의 읽기를 하나로 닫지 않았고, 떠나려는 걸음과 붙드는 말 중 어느 쪽에도 평가를 붙이지 않은 채 아홉 절을 마무리합니다.</p>
+<p>대답과 평가를 싣지 않은 이 본문의 빈자리는 오늘 우리의 일상과 사역 현장에서 타인의 사정을 대하는 사려 깊은 태도로 이어집니다. 수술 뒤 회복이 더뎌 문병 오는 이마다 "먹어야 낫지"라는 말을 듣지만 정작 음식을 넘기지 못하는 분께는, 먹으라는 말도 먹지 못하는 사정을 설명하라는 요구도 얹지 않고 그저 곁을 지킵니다. 결산 마감 사흘째가 되어 "한 술 뜨고 하세요"라는 말만 오가고 아무도 자리에서 일어나지 못하는 세무 사무실에서는, 대표가 식대용 법인카드를 탕비실 서랍에 조용히 넣어 두되 그것을 쓸지 말지는 묻지도 확인하지도 않음으로써 끼니의 시간을 각자의 몫으로 남겨 둡니다. 또한 주일학교 교사 회의에서 교재가 19장 3절을 남편이 아내를 달래어 데려온 아름다운 화해 이야기로 풀어 놓았을 때는, 인도자가 정답을 먼저 말하기보다 그 문단을 함께 읽은 뒤 "이 말이 본문에 실려 있습니까" 한 가지만 묻고 교사들의 대답을 기다려 줍니다. 하나님의 이름조차 적히지 않은 이 아홉 절의 식탁 앞에서, 들리지 않는 맞은편의 목소리를 내 짐작으로 지어내지 않고 실리지 않은 말 앞에서 겸손히 손을 멈추기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 54편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

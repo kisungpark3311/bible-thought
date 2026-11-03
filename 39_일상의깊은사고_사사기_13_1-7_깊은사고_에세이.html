@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>시작하리라로 맺힌 약속과 고치지 않은 두 입의 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 39편 &middot; 사사기 13:1-7</span>
+      <h1>시작하리라로 맺힌 약속과 고치지 않은 두 입의 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 13장 1절부터 7절까지의 말씀은 이스라엘 자손이 다시 여호와의 목전에 악을 행하였으므로 여호와께서 그들을 사십 년 동안 블레셋 사람의 손에 붙이시니라라는 한 절의 틀로 시작됩니다. 이 일곱 절 전체에서 하나님이 직접 행하신 일로 적힌 문장은 이 붙이시니라 단 하나뿐입니다. 이어 서술의 시선은 소라 땅 단 지파의 마노아와 그의 아내에게로 조용히 옮겨 가며, 성경은 그녀를 불임이고 낳은 적이 없는 사람으로 부를 뿐 그 고통의 원인은 한마디도 적지 않습니다.</p>
+<p>그 여인에게 여호와의 사자가 나타나 그녀의 처지를 있는 그대로 부른 뒤, 이제 잉태하여 아들을 낳으리라는 수태의 소식을 전합니다. 사자는 여인에게 포도주와 독주와 부정한 것을 금하면서 그 이유를 태어날 아이에게 걸어 설명하고, 그가 블레셋 사람의 손에서 이스라엘을 구원하기 시작하리라는 말로 선언을 맺습니다. 여인은 즉시 남편에게로 가서 들은 말을 옮기는데, 그녀의 입을 통해 전해진 말은 사자의 원래 말과 몇 군데가 다릅니다. 정경은 이 일곱 절 안에 사자의 말과 여인의 말을 나란히 세워 두고, 두 말의 차이도 약속의 끝도 닫지 않은 채 다음 단락으로 넘깁니다.</p>
+<h3>구원하기 시작하리라에 걸린 약속과 아침의 통화</h3>
+<p>5절에서 사자가 남긴 마지막 문장은 그가로 일어서서 시작하리라로 맺힙니다. 1절에서 여호와께서 그들을 넘기신 곳이 블레셋 사람의 손이었고 5절의 약속 또한 블레셋 사람의 손에서를 말하지만, 본문은 그 처분의 문장과 약속의 문장이 한 단락 안에 놓여 있다는 사실까지만 보여 줄 뿐입니다. 원어에서 시작하리라를 뜻하는 야헬 뒤에 구원하다를 뜻하는 레호쉬아가 붙는데, 모음까지 똑같은 야헬은 구약 전체에서 10장 18절의 길르앗 방백들의 물음과 이 13장 5절 두 번뿐입니다. 두 절이 같은 어형을 나눌 뿐 13장 5절이 10장 18절의 대답이라고 할 근거는 없으며, 레호쉬아가 사사기에서 이 동사가 나오는 마지막 자리라는 점 역시 순서의 사실일 뿐 특별한 무게의 근거는 아닙니다.</p>
+<p>무엇보다 중요한 것은 약속의 문장이 시작하다에 걸려 있고, 그 시작이 어디서 어떻게 멈추는지 이 일곱 절은 말하지 않는다는 사실입니다. 설교자는 흔히 그 끝을 미리 정해 주고 싶어지지만, 끝을 말하지 않는 바로 그 열린 상태가 본문이 회중에게 건네는 몫입니다. 한편 6절에서 소식을 들은 여인이 그 말을 품고 가서 가족에게 전하는 모습은, 무거운 결과를 고객에게 알려야 하는 세무사의 실무에도 사려 깊은 걸음을 일깨웁니다. 세무조사 추징 결정처럼 무거운 결과를 알리는 통화는 퇴근 무렵이 아니라 오전 시간으로 잡아, 소식을 들은 고객이 그날 집에 돌아가 가족에게 차분히 말할 시간과 마음의 여백을 남겨 주어야 합니다.</p>
+<h3>어머니에게 건네진 금지와 아이에게 걸린 이유</h3>
+<p>4절과 5절을 보면 포도주와 독주를 마시지 말고 부정한 것을 먹지 말라는 세 가지 금지는 모두 여인에게 건네지지만, 그 금지의 이유는 여인 자신이 아니라 아직 태어나지 않은 아이에게 걸려 있습니다. 원어 히샤메리는 여인 한 사람을 향한 너는 삼가라라는 명령인 반면, 이어지는 머리털 문장은 삭도가 그의 머리에 오르지 않으리라라는 꼴로 되어 있어 여인에게 직접 명령하는 형태가 아니며 그것이 앞날의 예고인지 규정인지도 원문은 가르지 않습니다. 그 모든 이유는 키 네지르 엘로힘, 곧 그 아이가 태에서부터 하나님의 나실인이 된다는 데 걸려 있습니다.</p>
+<p>이를 민수기 6장의 나실인 법과 견주어 보면 포도주와 독주와 나실인이라는 낱말은 공유하지만, 삭도를 가리키는 원어 낱말이 서로 다르고 부정한 것을 먹지 말라는 조항은 민수기에 없으며, 민수기의 금지가 서원한 본인에게 일정 기한을 두고 걸리는 것과 달리 여기서는 태어나기 전 어머니의 몸에 먼저 걸립니다. 따라서 이 규정은 그 한 아이를 두고 주신 말씀이기에 오늘날의 일반적 음주나 식생활 규범으로 옮기거나 임산부를 향한 보편 규칙으로 넓히지 않습니다. 본문이 보여 주는 것은 오직 한 아이에게 걸린 부르심 때문에 그 몸을 품은 사람의 먹고 마심에 삼감이 먼저 놓였다는 경이로운 배치입니다.</p>
+<h3>고치지 않은 두 서술과 경계를 건네는 한 문장</h3>
+<p>3절에서 서술자는 여호와의 사자가 나타났다고 적고, 6절에서 여인은 남편에게 하나님의 사람이 내게 왔는데 그 용모가 하나님의 사자의 용모 같아서 심히 두려웠다고 말합니다. 원문에서 여인이 방문자를 직접 부른 호칭은 사람을 뜻하는 이쉬이고 하나님의 사자는 같다는 비유 아래에만 놓여 있으며, 심히 두려운이라는 말도 여인의 내면 심리가 아니라 방문자의 외모를 가리키는 표현입니다. 더욱이 여인이 7절에서 옮긴 말에는 불임에 대한 진술과 삭도와 구원하기 시작하리라가 빠져 있고, 사자의 말에는 없던 죽을 날까지를 뜻하는 아드 욤 모토가 구약에서 유일한 꼴로 더해져 있습니다.</p>
+<p>그러나 서술자는 여인의 보고를 틀렸다고 고치지 않으며, 우리는 그 차이로 그녀의 기억력이나 믿음을 재거나 남편 마노아와 비교하지 않습니다. 정경이 한 만남을 두 입으로 전하며 방문자를 여호와의 사자, 하나님의 사람, 하나님의 사자의 모습 같은이라는 세 말로 남겨 둔 채 하나로 고정하지 않는 이 태도는, 오늘 우리의 목회와 상담에도 깊은 지혜를 줍니다. 무거운 소식을 듣고도 아직 누구에게도 입을 뗄 수 없는 분에게는 본문이 가지 못하는 이를 재지 않듯 어떤 행동의 요구도 얹지 말아야 하며, 자신이 겪은 신비한 체험의 정체를 묻는 성도에게는 침묵으로 피하거나 섣불리 단정하는 대신 그분이 누구였는지는 제가 정해 드리지 않겠습니다라는 한 문장으로 정직한 경계를 건네는 우리가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 39편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

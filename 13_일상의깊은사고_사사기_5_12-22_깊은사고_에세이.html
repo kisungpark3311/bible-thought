@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>대답을 적지 않은 두 물음과 말굽 소리로 멈춘 노래의 빈자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 13편 &middot; 사사기 5:12-22</span>
+      <h1>대답을 적지 않은 두 물음과 말굽 소리로 멈춘 노래의 빈자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 5장 12절에서 22절로 이어지는 노래는 다급하고도 선명한 부름으로 문을 엽니다. 깰찌어다 깰찌어다 드보라여 깰찌어다 깰찌어다 너는 노래할찌어다 일어날찌어다 바락이여 아비노암의 아들이여 네 사로잡은 자를 끌고 갈찌어다라는 외침 속에서 한 절 안에 부름을 받는 사람이 바뀝니다. 원어에서 깨어라라는 네 번의 부름인 우리와 노래를 말하라는 명령은 여성 단수인 드보라에게 맞추어져 있고, 일어나라는 쿰과 사로잡으라는 명령은 남성 단수인 바락에게 맞추어져 있습니다. 이어 13절에서 여호와께서 강림하셨다는 고백이 한 번 등장하는데, 개역성경이 보탠 치시려고라는 말은 원문에 없으며 그 문장의 핵심 낱말조차 내려오셨다와 다스리셨다라는 두 갈래의 읽기로 열려 있습니다.</p>
+<p>지파들의 이름이 차례로 불려 나오는 가운데, 스불론은 죽음을 무릅쓰고 생명을 아끼지 아니한 백성, 곧 원문 그대로 자기 목숨을 죽기까지 업신여긴 백성이라는 한마디로 불립니다. 그러나 노래는 영웅적인 전투의 상세한 모양을 그리지 않습니다. 오히려 지파들을 향해 물음을 던지고는 그 대답을 적지 않으며, 싸우는 주체가 땅의 왕들에서 하늘의 별들로 옮겨 가는 순간을 부르다가 힘찬 말굽들이 땅을 두드리는 소리에서 대목을 멈춥니다. 본문이 메우지 않고 남겨 둔 이 빈자리들은 오늘 말씀을 읽는 우리에게 섣부른 짐작을 내려놓고 적힌 만큼만 정직하게 마주하라는 깊은 초대를 건넵니다.</p>
+<h3>마주 보며 부른 너와 이름을 앞세운 그, 대답 없이 남겨진 어찌하여</h3>
+<p>노래의 한복판인 16절과 17절에는 히브리어 의문사 라마, 곧 어찌하여라는 물음이 사사기 5장 전체에서 오직 이 두 번만 등장합니다. 개역성경은 두 구절 모두 어찜이뇨라는 비슷한 우리말로 옮겨 그 차이가 잘 보이지 않으나, 원문이 두 지파를 부르는 자리는 분명히 갈립니다. 르우벤을 향해서는 네가 양의 우리 가운데 앉아서 목자의 저 부는 소리를 들음은 어찜이뇨라며 마주 보고 너라는 2인칭으로 직접 묻습니다. 반면 단을 향해서는 단이라는 이름을 먼저 세운 뒤 그가 어찌하여 배들에 머무느냐라는 3인칭의 꼴로 묻고, 그 곁의 길르앗과 아셀은 물음 없이 요단 저편과 바다들의 해안에 앉아 머물렀다고만 서술합니다.</p>
+<p>더욱이 개역성경이 보탠 조사들을 걷어 내면 양의 우리와 피리 소리, 그리고 아셀의 자기 시냇가로 옮긴 원어들은 그 뜻이 하나로 정해지지 않은 채 남아 있습니다. 무엇보다 중요한 사실은 노래가 이 두 번의 어찌하여 뒤에 아무런 대답도 적지 않는다는 점입니다. 이 물음이 날카로운 꾸짖음인지, 안타까운 탄식인지, 혹은 조롱인지 본문은 끝내 드러내지 않으며 머문 자리는 말하되 머문 까닭은 말하지 않습니다. 이 대목에서 읽는 이가 받는 몫은 마주 부름과 떨어져 부름이라는 차이, 그리고 적히지 않은 대답이라는 빈칸뿐입니다.</p>
+<h3>드보라와 바락을 부른 목소리에서 하늘의 별들과 기손 시내의 싸움으로</h3>
+<p>이 범위 안에서 상대를 너로 부르는 자리는 다섯 군데입니다. 12절의 드보라와 바락, 14절의 너의 뒤에와 너의 백성들 가운데, 16절의 르우벤, 그리고 21절에서 노래하는 이가 자기 영혼을 향해 내 영혼아 네가 힘 있는 자를 밟았도다라고 부르는 자리입니다. 그러나 정작 부르는 목소리의 주인은 끝내 밝혀지지 않고, 14절의 너가 누구를 가리키는지도, 포로가 이미 잡힌 이들인지도, 21절 끝 행이 밟았다인지 밟아라인지도 정해지지 않습니다. 이어 19절과 20절에서는 싸웠다를 뜻하는 히브리어 닐하무가 네 번 거듭되며 싸우는 쪽이 가나안 왕들에서 하늘의 별들로 바뀝니다.</p>
+<p>가나안 왕들이 다아낙에서 싸웠으나 은의 이득을 얻지 못했다는 기록 뒤로, 별들이 하늘에서부터 싸우되 그 다니는 길에서 시스라와 싸웠도다라는 외침과 옛강 기손 시내의 일이 이어집니다. 앞서 4장의 산문 서사는 같은 날을 여호와께서 시스라를 어지럽게 하신 일로 말했지만, 노래의 이 대목은 하나님의 이름 없이 별들과 기손 시내를 싸우는 쪽으로 세웁니다. 정경이 나란히 놓아 둔 두 목소리를 억지로 합쳐 별들은 여호와의 군대였다고 묶거나 자연 현상이나 신화로 풀지 않고 두면, 싸우는 쪽이 왕들에서 별들로 바뀐다는 사실과 같은 날을 들려주는 두 목소리가 나란히 남습니다.</p>
+<h3>빈칸을 제 짐작으로 채우지 않고 일터와 강단에서 멈추어 서는 기도</h3>
+<p>본문이 남겨 둔 이 빈칸들은 우리의 목회와 일상을 돌아보게 합니다. 12절을 읽으며 드보라처럼 노래로 앞에 설 수도, 바락처럼 일어나 앞장설 수도 없는 자기 형편을 먼저 떠올리는 사람이 있습니다. 우리는 깨어라나 일어나라를 그 사람에게 돌려 건네지 않고 두 몫 가운데 어느 쪽을 그 사람의 것으로 정해 주지도 않은 채, 그날 두 사람이 이름으로 불린 기록으로 남겨 둡니다. 성경공부와 주일학교에서도 네 지파를 오늘의 교인이나 교회에 빗대어 모임에 오지 않는 이들을 향한 꾸짖음으로 바꾸지 않으며, 아이가 별이 어떻게 싸우느냐고 물으면 큰비 이야기도 옛 신화 이야기도 정답으로 건네지 않고 노래는 그 모양을 그리지 않았단다까지 말합니다.</p>
+<p>세무 일터에서 결산 상담 중에 받지 못한 대금 한 건을 만날 때도 마찬가지입니다. 19절의 은의 이득이 약탈의 실패인지 보수가 없었다는 말인지 본문이 정하지 않듯, 고객이 사정을 말하기 전에 그것을 회수 실패로도 애초에 대가 없는 일로도 단정하지 않습니다. 13절에서 여호와께서 하신 일을 우리말 한 낱말로 적는 순간 원문이 열어 둔 두 읽기 가운데 하나를 닫게 되므로, 우리는 이 기도를 감사로 열지 않습니다. 치시려고를 원문의 말처럼 인용해 온 저와 노래가 적지 않은 까닭을 제 짐작으로 채워 읽어 온 저를 고백하며, 뜻이 나뉜다는 사실을 함께 말하고 이름으로 불린 이들을 오늘의 얼굴로 바꾸어 부르지 않기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 13편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

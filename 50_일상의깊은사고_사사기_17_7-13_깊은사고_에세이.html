@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>문이 열린 채 끝나는 방과 사람의 입에 머문 확신</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 50편 &middot; 사사기 17:7-13</span>
+      <h1>문이 열린 채 끝나는 방과 사람의 입에 머문 확신</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 17장 7절부터 13절까지의 이야기는 마치 문이 활짝 열린 채 끝나는 한 칸의 방과 같습니다. 유다 베들레헴에 우거하던 한 레위 소년이 거할 곳을 찾으러 길을 떠났다가 에브라임 산지 미가의 집에 이르고, 미가의 청을 받아들여 그 집에 머물며 그의 제사장이 됩니다. 그리고 마지막 절에서 집주인 미가가 이제 여호와께서 내게 복 주실 줄을 아노라고 확신에 찬 목소리로 외치자마자, 서술자는 그 말 뒤에 단 한 줄의 논평도 덧붙이지 않은 채 조용히 17장의 막을 내립니다.</p>
+<p>우리는 누군가의 입에서 터져 나오는 굳건한 확신의 말을 들을 때나, 정처 없이 떠돌던 이가 한자리에 멈추어 서는 장면을 볼 때 서둘러 그 결말에 점수를 매기고 싶어집니다. 그러나 성경 본문은 소년이 왜 길을 떠났는지, 왜 미가의 제안에 응했는지, 그리고 미가의 확신이 실제로 이루어졌는지에 대해 끝까지 입을 다뭅니다. 하나님이 하시는 일이 오직 미가의 단언 안에만 들어 있는 이 일곱 절의 여백을 따라가며, 우리는 남의 확신과 처지를 내 언어로 재단하던 성급한 습관을 내려놓게 됩니다.</p>
+<h3>아타 야다티, 서술자가 확인하지 않은 한 사람의 앎</h3>
+<p>17장의 대미를 장식하는 미가의 말은 히브리어 원문에서 아타 야다티, 곧 이제 내가 안다라는 강렬한 선언으로 시작됩니다. 개역한글은 레위인이 내 제사장이 되었으니라는 까닭을 문장 앞으로 끌어왔지만, 원문은 이제 내가 안다, 여호와께서 내게 잘되게 하시리라는 것을, 레위인이 내게 제사장이 되었으니라는 순서로 펼쳐집니다. 앞서 2절에서 어머니가 아들에게 빌어 준 복이 바라크였다면, 여기서 미가가 장담하는 복은 야타브, 곧 나를 잘되게 하시리라는 뜻의 다른 낱말입니다. 무엇보다 이 문장에 붙은 까닭이 내가 안다의 근거인지, 아니면 여호와께서 잘되게 하실 근거인지도 원문은 양쪽을 다 열어 둔 채 고정하지 않습니다.</p>
+<p>우리는 종종 성경 인물이 내뱉은 확신의 뒷구절만 떼어 내어 신앙의 표어처럼 쓰곤 합니다. 하지만 정경은 이 말을 서술자의 보증이 없는 미가 개인의 입술에, 그것도 그가 스스로 세운 조건과 함께 묶어 두었습니다. 바로 앞 절에서 소년이 제사장이 된 사건을 자기 문장으로 적었던 서술자가 정작 여호와께서 복 주실 줄을 안다는 미가의 단언 뒤에는 아무런 확인 도장도 찍어 주지 않는 것입니다. 그러므로 이 본문을 읽는 사람은 미가의 앎이 맞았다거나 틀렸다고 섣불리 판정하는 대신, 화자와 까닭이 한 절 안에 묶여 있는 그 문장을 미가의 문장 그대로 듣는 자리에서 멈추어야 합니다.</p>
+<h3>내게 제사장이라는 되풀이와 나그네의 낱말</h3>
+<p>본문을 조금 더 깊이 들여다보면, 미가의 청이 실제 사건이 되고 다시 확신의 근거가 되는 과정 속에서 리 레코헨, 곧 내게 혹은 그에게 제사장이 되다는 표현이 17장 전체에 걸쳐 네 번이나 되풀이되는 것을 보게 됩니다. 미가가 레위 소년을 거룩히 구별하였다는 12절의 원문 역시 5절에서 자기 아들 중 하나를 제사장으로 세울 때와 똑같이 손을 채웠다는 표현을 씁니다. 본문은 먼저 세웠던 아들이 물러났는지 함께 있었는지 설명하지 않은 채, 다만 이 일곱 절에서 제사장이 언제나 미가에게 속한 제사장으로 불리고 있다는 사실만을 담담히 보여 줍니다.</p>
+<p>동시에 소년의 거처를 가리키는 동사의 변화는 더욱 섬세한 울림을 줍니다. 우리말 성경은 8절부터 12절까지 다섯 번 모두 거하다라는 한 낱말로 옮겼지만, 원문에서 서술자와 소년 자신은 나그네로 임시 머문다는 뜻의 구르를 쓰고, 미가는 10절의 청에서 비로소 앉아 살라는 뜻의 야샤브를 꺼냅니다. 소년이 이 단락에서 남긴 유일한 말은 나는 찾게 되는 대로 머물려고 가는 중이라는 대답뿐이었고, 그 뒤 10절부터 13절 끝까지 소년은 단 한마디도 하지 않습니다. 서술자는 그의 응낙과 침묵에 정착의 안식이라는 칭찬도, 소명을 팔았다는 비난도 붙이지 않은 채 누가 어떤 낱말을 썼는지만을 고스란히 남겨 둡니다.</p>
+<h3>상대의 낱말을 덮지 않고 내 시간을 맞추는 환대</h3>
+<p>본문이 지켜 낸 이 빈칸과 낱말의 구분은 오늘 우리가 만나는 이웃의 삶을 대하는 태도를 바꾸어 놓습니다. 살던 곳을 떠나 다음 거처를 정하지 못한 채 어디로 가느냐는 물음에 찾는 대로요 말고는 내놓을 답이 없는 분들이 있습니다. 언제 자리 잡으느냐는 주변의 물음 앞에서 그럴듯한 대답을 지어내려 애쓰던 분이라면 이제 그 수고를 멈추셔도 됩니다. 성경은 거할 곳을 찾으러 가노라는 나그네의 대답을 조금도 꾸짖지 않으며, 당장 번듯한 계획표로 고쳐 쓰라고 다그치지도 않기 때문입니다.</p>
+<p>목회와 일터의 현장에서도 마찬가지입니다. 교회에 처음 찾아온 새가족을 맞이할 때, 모든 회중 앞에 불러 세워 박수를 받게 하거나 우리 교회에 꼭 정착하세요라고 말하는 대신, 그분이 앉은 자리 곁으로 다가가 허리를 굽혀 눈을 맞추고 이름을 묻는 것으로 충분합니다. 앉아 살라는 말이 미가의 낱말이었듯, 정착이라는 말 또한 나그네의 처지를 덮어 버리는 목회자만의 낱말일 수 있기 때문입니다. 현장을 따라 지역을 옮기며 일하느라 낮에는 도저히 세무 사무실에 올 수 없는 기술자 고객을 만날 때도, 사무실이 정한 낮 시간을 강요하는 대신 그분이 일과를 마치는 저녁 여덟 시로 상담을 옮기고 내 저녁 한 시간을 기꺼이 내어놓는 것, 그것이 상대의 삶과 낱말을 있는 그대로 존중하는 참된 환대입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 50편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

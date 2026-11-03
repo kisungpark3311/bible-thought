@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>접속사 없는 한 장의 종이 위에 나란히 놓인 고백과 올무</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 25편 &middot; 사사기 8:22-28</span>
+      <h1>접속사 없는 한 장의 종이 위에 나란히 놓인 고백과 올무</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>미디안과의 치열했던 싸움이 끝난 뒤, 이스라엘 사람들이 기드온 앞에 모여들었습니다. 그들은 자신들을 구원해 준 기드온을 향해 당신과 당신의 아들과 당신의 손자가 우리를 다스려 달라고 간청합니다. 한 시대의 불안을 한 가문의 영구한 통치에 기대어 풀고자 했던 그 거대한 요청 앞에서, 기드온은 단호한 세 문장으로 답을 건넵니다. 내가 너희를 다스리지 아니하겠고, 나의 아들도 너희를 다스리지 아니할 것이요, 오직 여호와께서 너희를 다스리시리라는 선언이었습니다. 그러나 숨을 고를 틈도 없이 기드온은 무리의 응답을 기다리지 않고 다시 입을 열어, 각기 탈취한 금 귀고리를 자신에게 달라고 청구합니다. 무리는 즐거이 겉옷 위에 귀고리를 던졌고, 기드온이 그것으로 만들어 자기 성읍 오브라에 둔 에봇은 끝내 기드온과 그 집에 올무가 되고 말았습니다.</p>
+<p>놀랍게도 성경은 이 급격한 굴곡 앞에서 기드온이라는 사람을 섣불리 칭찬하지도, 매섭게 정죄하지도 않습니다. 그저 다스림의 주어를 여호와로 높여 고백한 문장과, 그가 만든 에봇이 집안의 올무가 되었다는 서술자의 문장, 그리고 기드온이 사는 사십 년 동안 그 땅이 태평하였다는 문장을 아무런 접속 표지 없이 나란히 놓아둘 뿐입니다. 우리는 흔히 한 사람의 생애를 영웅담이나 위선의 경고문으로 깔끔하게 정리하고 싶어 하지만, 본문은 그 문장들 사이에 그러나나 그러므로 같은 다리를 놓지 않은 채 빈칸이 그대로 남은 한 장의 종이를 우리 손에 조용히 건네줍니다.</p>
+<h3>세대로 뻗은 청 앞에서 다스림의 주어를 옮기다</h3>
+<p>이스라엘 사람들의 청을 원어로 들여다보면 흥미로운 문법적 결이 드러납니다. 다스리소서에 해당하는 히브리어 동사 메숄은 기드온 한 사람에게 향하는 단수 명령형인데, 원문은 그 뒤에 감이라는 낱말을 세 번 거듭 붙여 너도, 네 아들도, 네 아들의 아들도를 길게 이어 놓습니다. 우리말 번역은 이 셋을 한 주어로 묶어 그 집요한 반복을 지웠지만, 원문은 한 사람을 향해 세 세대의 미래를 한꺼번에 얹는 무거운 요청을 생생하게 들려줍니다. 정작 그 청에도 대답에도 왕을 뜻하는 멜레크라는 낱말은 한 번도 등장하지 않습니다. 기드온은 청에 쓰인 바로 그 동사를 세 번 되받아 답하되 손자는 언급하지 않고, 오직 셋째 문장인 여호와 임숄 바켐에 이르러서야 접속사 없이 여호와라는 주어를 동사보다 앞세워 선언합니다.</p>
+<p>구약 전체에서 이 동사의 기본형 명령과 일인칭 단수 미완료가 나란히 맞부딪치는 자리는 이 두 절뿐입니다. 세대로 뻗어 나간 사람들의 청 앞에서, 대답은 셋째 문장에 이르러 다스림의 주어를 사람의 손에서 여호와께로 단번에 옮겨 놓습니다. 물론 이 대답이 기드온의 순전한 겸손에서 나왔는지 아니면 다른 속내에서 비롯되었는지 본문은 끝내 가르지 않습니다. 우리가 여기서 붙들 수 있는 것은 말한 이의 품성에 대한 판정이 아니라, 그 입을 통해 세상에 남겨진 고백의 내용 그 자체입니다. 구역 모임에서 이 구절을 읽을 때 세 사람이 한 문장씩 나누어 읽고 마지막 셋째 문장만 모두가 함께 소리 내어 읽어 보십시오. 주어가 바뀌는 자리가 목소리의 두께로 들려오며, 한 사람의 입에서 시작된 고백이 오늘 함께 모인 우리의 고백으로 옮겨 오는 깊은 울림을 경험하게 됩니다.</p>
+<h3>사양한 입에서 곧바로 이어진 청과 올무의 결과</h3>
+<p>다스림을 사양한 이십삼절과 금 귀고리를 청구하는 이십사절은 기드온이 그들에게 이르되라는 똑같은 머리말로 시작하며, 두 말 사이에 무리의 대답이 끼어들 틈조차 없습니다. 거절의 말과 청구의 말이 한 사람의 입에서 끊김 없이 연달아 흘러나온 것입니다. 원문은 너희에게 청 하나를 청하겠다는 뜻의 에셰알라 미켐 셰엘라처럼 한 뿌리의 낱말을 두 번 겹쳐 쓰고, 주라는 기드온의 명령 우테누를 무리가 꼭 주겠다는 나톤 니텐이라는 같은 동사로 되받습니다. 이 단락에 나오는 두 번의 명령 가운데 하나는 무리가 기드온에게 다스리라 한 것이고, 다른 하나는 기드온이 무리에게 주라 한 것입니다. 본문은 이 둘째 청을 나무라지 않으며, 세겔 같은 단위를 번역이 보태었을 뿐 기드온을 사양의 본보기로도 욕심의 표본으로도 세우지 않습니다.</p>
+<p>이어지는 이십칠절은 에봇을 만들고, 오브라에 두고, 온 이스라엘이 그것을 따라 음행하고, 그것이 기드온과 그 집에 올무가 되었다는 네 개의 동사를 오직 그리고라는 접속사로만 담담히 이어 놓습니다. 원문의 아하라우, 곧 그것을 따라 음행했다는 표현 앞뒤에는 기드온이 무엇을 바라고 에봇을 만들었는지 그 동기가 완전히 비워져 있습니다. 본문이 판정의 낱말로 분명히 적는 것은 레모케시, 곧 올무가 되었다는 서글픈 결과뿐입니다. 이 기록은 기드온의 내면을 단죄하는 데로도, 오늘의 어느 교회나 인물이나 물건을 그 음행에 섣불리 겹쳐 읽는 데로도 나아가지 않습니다. 다만 한 사람이 남긴 결과가 그 자신에게만 머물지 않고 그 집에까지 길게 닿았다는 사실만을 묵직하게 증언할 따름입니다.</p>
+<h3>빈칸을 메우지 않고 들은 그대로 마주하는 정직</h3>
+<p>정경이 남겨 둔 이 서늘한 긴장은 오늘 우리의 일상과 목회, 그리고 일터의 자리를 돌아보게 합니다. 혹시 부모가 오래전에 시작한 일이 집안의 무거운 걸림으로 남았는데, 자녀인 자신에게는 그것을 거두어낼 권한도 힘도 없어 홀로 속을 태우는 분이 계십니까. 본문은 올무가 기드온 한 사람뿐 아니라 그 집에도 드리웠음을 분명히 적으면서도, 끝내 누구도 그것을 거두었다고 쓰지 않습니다. 뒤이어 나오는 사십 년의 태평 역시 그 주어가 그 땅이어서, 한 집안이 떠안은 아픔을 쉽게 덮어 주지 않습니다. 그러므로 우리는 오랜 집안의 걸림을 떠안은 이웃 앞에서 섣부른 위로의 말을 꾸며 내거나 마땅히 해야 할 과제를 지우지 않고, 본문이 멈춘 자리에서 그 아픔의 무게를 있는 그대로 존중하며 곁에 서야 합니다.</p>
+<p>이러한 정직은 세무 상담의 자리에서도 귀한 태도가 됩니다. 평생 일군 가업을 아들과 손주에게까지 잇고 싶다며 상담을 청하는 대표를 만날 때, 조언을 꺼내기 전에 내가 정리한 승계 건이라는 한 마디로 그 청을 납작하게 접어 버리지 마십시오. 대신 대표님과 아드님, 손주분까지 세 분 말씀이시지요 하고 그 청에 담긴 사람들을 한 사람씩 이름으로 되짚어 부르는 것입니다. 본문이 기드온의 대답 이유를 적지 않았기에 그것을 가업 승계를 반대하는 근거로 삼을 수는 없지만, 청의 범위를 낱말 그대로 남긴 성경의 결을 따라 우리도 상대의 말을 들은 그대로 대할 수는 있습니다. 다스리시는 이가 오직 여호와이심을 감사하며, 사람의 복잡한 삶을 손쉬운 공식으로 재단하지 않고 본문이 비워 둔 자리에 겸손히 머무는 지혜가 우리에게 있기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 25편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

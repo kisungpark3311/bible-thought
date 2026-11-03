@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>들보를 얹지 않은 채 나란히 서 있는 두 기둥 사이에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 33편 &middot; 사사기 10:6-16</span>
+      <h1>들보를 얹지 않은 채 나란히 서 있는 두 기둥 사이에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 10장 6절은 이스라엘 자손이 다시 여호와의 목전에 악을 행하여 바알들과 아스다롯과 아람과 시돈과 모압과 암몬과 블레셋 사람의 신들을 섬기고, 여호와를 버려 그를 섬기지 아니하였다는 무거운 기록으로 문을 엽니다. 여호와께서 진노하사 그들을 블레셋과 암몬 자손의 손에 파시매, 요단 저편 길르앗에 있던 백성은 십팔 년 동안이나 모진 학대를 당했고 암몬 자손은 요단강까지 건너와 유다와 베냐민과 에브라임 족속을 쳐서 이스라엘의 곤고가 심해졌습니다. 오랜 짓눌림 끝에 백성이 여호와께 부르짖자, 하나님은 애굽과 아모리 사람과 암몬 자손과 블레셋 사람과 시돈과 아말렉과 마온 사람의 압제에서 건져 주셨던 지난 구원의 역사를 친히 되짚어 주십니다.</p>
+<p>그러나 그 회고 끝에 이어지는 하나님의 말씀은 전례 없이 단호합니다. 너희가 나를 버리고 다른 신들을 섬기니 그러므로 내가 다시는 너희를 구원치 아니하리라 하시며, 가서 너희가 택한 신들에게 부르짖어 너희 환난 때에 그들로 구원하게 하라고 말씀하십니다. 그러자 백성은 다시 한 번 범죄를 고백하며 자기 가운데서 이방 신들을 제하여 버리고 여호와를 섬기며, 본문은 여호와께서 이스라엘의 곤고를 인하여 마음에 근심하시니라는 문장으로 끝을 맺습니다. 이 단락은 다시는 구원하지 않겠다는 하나님의 말씀과 그 뒤에 이어지는 서술을 한 마당 안에 나란히 세워 둘 뿐, 그 두 문장 사이를 매끄러운 해설이나 설명으로 메우지 않습니다.</p>
+<h3>한 낱말 야사프가 놓인 두 입과 법칙으로 늘리지 않는 절제</h3>
+<p>개역한글 성경은 6절을 이스라엘 자손이 다시 악을 행하여로 옮기고, 13절을 내가 다시는 너희를 구원치 아니하리라로 옮겨 두 구절의 고리를 우리말에서도 선명하게 살려 두었습니다. 중간의 9절과 12절에 나오는 또라는 말은 원문에서 전혀 다른 낱말이지만, 6절의 다시와 13절의 다시는은 히브리어 원문에서 더하다라는 뜻을 가진 야사프 한 낱말입니다. 직역하면 6절은 이스라엘이 악을 행하기를 더했다는 뜻이고, 13절은 내가 너희를 구원하기를 더하지 않겠다는 뜻입니다. 이 두 문장 사이에서 원문의 문단이 한 번 나뉘어, 앞의 야사프는 서술자가 이스라엘의 행위를 기록하는 문단에 놓이고 뒤의 야사프는 하나님이 당신 자신에 대해 말씀하시는 문단에 놓입니다.</p>
+<p>본문이 우리에게 보여 주는 사실은 더하다라는 똑같은 한 낱말이 서술자의 입과 하나님의 입에 각각 한 번씩 놓여 서로 맞서 있다는 점까지입니다. 우리는 이 짝을 보고 죄가 일정 수준까지 쌓이면 하나님의 은혜도 자동으로 끊긴다는 식의 일반 법칙으로 늘리지 말아야 합니다. 단락의 마지막 절은 그러한 법칙을 확정해 닫는 문장으로 오지도 않고, 반대로 13절의 말씀을 공식적으로 거두어들이는 하나님의 새 선언으로 오지도 않습니다. 앞선 사사기 2장 21절에도 다시는 쫓아내지 않겠다는 하나님의 말씀이 나오지만, 본문은 그 말씀과 13절의 말씀이 서로 어떤 관계인지도 정해 주지 않은 채 말씀이 선 자리를 그대로 남겨 둡니다.</p>
+<h3>세 입이 말한 버림과 이유를 달지 않은 두 번째 고백</h3>
+<p>이 단락에서 버리다라는 동사 아자브는 세 번 등장하는데, 6절에서는 서술자의 입에서, 10절에서는 백성의 입에서, 13절에서는 하나님의 입에서 각각 말해집니다. 백성이 10절에서 우리가 우리 하나님을 버리고 바알들을 섬김으로 주께 범죄하였나이다라고 고백할 때, 그들은 서술자와 하나님이 쓰신 바로 그 낱말을 자기 입으로 받아 자기 죄를 부릅니다. 섬기다라는 동사 아바드 역시 다섯 번 반복되며 바알들에서 시작해 16절의 여호와로 그 대상이 바뀝니다. 특히 6절의 바알들을 섬기고와 16절의 여호와를 섬기매는 원문에서 철자 하나 다르지 않은 똑같은 어형이며, 오직 그 뒤에 붙은 섬김의 대상만 달라졌을 뿐입니다.</p>
+<p>한편 백성의 입에서 터져 나온 두 번의 범죄 고백은 그 문장의 짜임이 서로 다릅니다. 10절의 첫 번째 고백은 하나님을 버리고 바알들을 섬김으로라는 이유를 달았지만, 13절의 엄중한 거절 말씀을 들은 뒤에 드린 15절의 두 번째 고백은 아무런 이유도 달지 않은 채 우리가 범죄하였사오니 주의 보시기에 좋은 대로 행하시려니와 오늘날 우리를 건져내옵소서라는 간청으로 곧장 나아갑니다. 원문에서 구원하다라는 낱말 야샤는 모두 하나님의 말씀 안에만 쓰였고, 백성은 15절에서 건져내다라는 다른 낱말 나찰로 청합니다. 그러나 두 번째 고백 뒤에는 하나님의 대답이 적혀 있지 않기에, 이유를 달지 않은 고백이 하나님의 마음을 움직여 응답을 끌어냈다는 식의 인과 공식을 원문 위에 덧씌울 수는 없습니다.</p>
+<h3>화해시키지 않은 두 문장 사이에서 치우고 섬기는 걸음</h3>
+<p>13절의 내가 다시는 너희를 구원치 아니하리라는 말씀과 16절의 마지막 문장은 한 단락 안에 나란히 서 있습니다. 개역한글은 16절을 여호와를 섬기매 여호와께서 이스라엘의 곤고를 인하여 마음에 근심하시니라로 옮겼지만, 여호와께서와 근심이라는 말은 번역이 뜻을 보충해 넣은 것이고 섬기매라는 인과적 연결 또한 번역의 선택입니다. 원문은 단지 그리고 그의 네페쉬가 이스라엘의 고생으로 짧아졌다라고만 적고 있어서, 그의가 하나님을 가리키는지 이스라엘을 가리키는지도, 짧아졌다가 참지 못함인지 근심인지도 확정하지 않습니다. 한 마당에 세워진 두 기둥처럼 한쪽에는 다시는이, 다른 쪽에는 그의 마음이 짧아졌다가 새겨져 있는데, 본문은 그 두 기둥을 하나로 잇는 들보를 우리에게 주지 않습니다.</p>
+<p>그러므로 오랜 짓눌림 끝에 이제는 하나님도 안 도우신다는 생각에 빠져 잘못의 이유조차 줄줄이 엮어 기도할 힘이 없는 분이 계시다면, 그분에게 무거운 행동 지침을 얹는 대신 다시는이라는 말씀 뒤에도 이유를 달지 않은 짧은 고백 하나가 성경에 놓여 있다는 사실만을 조용히 건넵니다. 오래 투병 중인 성도가 병상에서 제가 지은 죄 때문이냐고 물을 때에도, 목회자는 서서 기도하고 나오는 대신 병상 옆 의자를 침대 높이까지 낮추어 앉아 눈을 맞추며 7절은 그때 이스라엘에 대해 적힌 문장일 뿐이라고 답해야 합니다. 또한 우상 숭배와 업무상의 일은 같은 범주가 아니라는 경계를 분명히 지키되 자기 가운데서 치웠다는 한 점을 빌려 와, 사무실 경비로 처리해 온 개인 지출이 있다면 다음 결산 때까지 미루지 않고 이번 달 장부에서 직접 빼내어 개인 통장에서 사무실 통장으로 그 금액을 옮겨 놓는 실천을 할 수 있습니다. 그렇게 한다고 해서 무엇이 보장된다고 본문은 약속하지 않지만, 부르짖는 백성에게 말씀하시고 지난 구원을 되짚어 주신 하나님께 감사하며 우리는 결과를 알기 전에 우리 가운데 있는 것을 치우고 주를 섬깁니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 33편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

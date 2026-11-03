@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>사유 칸이 비어 있는 장부 위에 적힌 두 세대의 이름과 괴로움</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 05편 &middot; 사사기 2:6-15</span>
+      <h1>사유 칸이 비어 있는 장부 위에 적힌 두 세대의 이름과 괴로움</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>여호수아가 백성을 보내자 이스라엘 자손은 그 땅을 차지하려고 각기 자기 기업으로 걸어갔습니다. 우리말 개역성경은 사사기 이장 육절에 전에라는 말과 차지하였고라는 완료형 표현을 덧붙여 마치 지난날의 정복이 다 끝난 뒤의 회상처럼 읽히게 하지만, 원문은 그저 그들이 땅을 차지하러 각자 자기 기업으로 갔다고 담담히 시작할 뿐입니다. 백성은 여호수아의 모든 날 동안, 그리고 여호수아 뒤에 날을 길게 한 장로들의 모든 날 동안 여호와를 섬겼습니다. 칠절은 그 장로들을 가리켜 여호와께서 이스라엘을 위하여 행하신 모든 큰 일을 본 자들이라고 부릅니다. 그러나 여호수아가 백십 세에 죽어 자기 기업의 경계 안에 묻히고 그 세대 사람들도 모두 조상들에게로 모여졌을 때, 그들 뒤에 일어난 다른 세대를 향해 십절은 서늘한 한 문장을 적어 내려갑니다. 그들은 여호와를 알지 못하며, 여호와께서 이스라엘을 위하여 행하신 일도 알지 못하였다는 것입니다.</p>
+<p>이 두 세대의 기록을 나란히 펼쳐 놓으면 마치 일이라는 같은 항목 아래 두 줄로 기입된 오래된 장부 한 페이지를 마주하는 듯합니다. 칠절의 장로들과 십절의 다른 세대는 이스라엘을 위하여 행하신 일이라는 똑같은 문구를 공유하고 있지만, 장로들에게는 보았다는 동사 라우가 붙고 다른 세대에게는 알지 못했다는 동사 로 야데우가 붙습니다. 더욱이 히브리어 원문 십절에서 알지 못했다는 동사는 단 한 번만 나오고, 그 목적어로 여호와를이라는 에트 아도나이가 맨 먼저 놓인 뒤에야 또한 그 일을이라는 구절이 뒤따릅니다. 그 세대가 알지 못한 첫 번째 대상은 하나님의 기적이나 사건이 아니라 여호와 그분의 이름이었습니다. 다만 그 알지 못함이 전해 들은 지식이 없었다는 뜻인지 인격적인 관계가 없었다는 뜻인지, 그리고 왜 그들이 알지 못하게 되었는지 사유를 적는 칸은 본문 안에서 끝내 비어 있습니다.</p>
+<h3>같은 동사가 방향을 바꿀 때 비워진 까닭의 자리</h3>
+<p>사유 칸이 비어 있는 그 자리 위로 십일절부터 십삼절까지는 같은 동사들이 대상과 방향만 바꾼 채 숨 가쁘게 이어집니다. 원문은 칠절에서 여호와를 섬겼다고 할 때 쓴 바야아브두라는 똑같은 동사를 십일절에서는 바알들을 섬겼다는 자리에, 십삼절에서는 바알과 아스다롯을 섬겼다는 자리에 그대로 다시 가져다 놓습니다. 육절에서 각자 자기 기업으로 갔다고 할 때 쓴 바옐레쿠라는 동사 역시 십이절에서는 다른 신들 뒤로 따라갔다는 자리에 똑같이 쓰입니다. 우리말 성경이 앞은 가서로, 뒤는 좇아로 다르게 번역해 가려졌던 그 반복의 결이 원문에서는 고스란히 드러나는 것입니다. 그 걸음의 방향 전환 사이로 조상들의 하나님 여호와를 버리고, 다른 신들에게 절하며, 여호와를 노엽게 했다는 낱말들이 겹쳐집니다.</p>
+<p>흔히 우리는 이 대목을 읽으며 부모 세대가 신앙 교육을 게을리했기 때문에 다음 세대가 우상을 택했다는 식의 매끄러운 인과응보나, 은혜를 원수로 갚았다는 도덕적 명제를 손쉽게 끌어내곤 합니다. 그러나 본문은 십절의 다른 세대와 십일절의 이스라엘 자손 사이에 그러므로나 그래서 같은 인과의 접속사를 전혀 두지 않습니다. 여호수아서 이십사장 삼십일절이 같은 장로들을 두고 알았다고 기록한 반면 사사기 이장 칠절은 보았다고 기록한 그 미묘한 차이 역시 어느 책이 먼저인지, 왜 다르게 적혔는지 본문 스스로 해명하지 않습니다. 서술자는 그저 같은 섬기다와 가다라는 말이 여호와에서 바알로, 자기 기업에서 다른 신들 뒤로 방향을 틀었다는 사실까지만 정확히 적어 놓고, 그 내면의 이유를 넘겨짚는 우리의 입술을 멈추게 합니다.</p>
+<h3>코와 손과 노략자들, 그리고 말씀하신 대로 남는 괴로움</h3>
+<p>이어지는 십사절과 십오절의 풍경 또한 우리가 습관적으로 뭉뚱그려 읽던 것보다 훨씬 섬세한 결을 지니고 있습니다. 개역성경은 여호와께서 진노하사 노략을 당케 하시며 재앙을 내리시매라고 옮겨, 모든 행위의 주어를 여호와 한 분으로 통일해 버렸습니다. 그러나 원문에서 불타오른 것은 여호와의 코, 곧 아프이고, 실제로 노략질을 행한 주체는 바야쇼수, 노략하는 자들로 따로 적혀 있으며, 그들이 어디로 가든지 해가 된 것은 여호와의 손, 야드라고 기록됩니다. 정작 여호와라는 이름이 직접 주어로 걸리는 동작은 여호와께서 말씀하신 대로, 그리고 여호와께서 그들에게 맹세하신 대로라는 두 마디뿐입니다.</p>
+<p>이 여러 층위의 문장들을 하나님이 불순종한 백성을 이렇게 무섭게 벌하신다는 한 줄로 압축해 버리면, 본문이 남겨 둔 신비와 무게가 동시에 사라집니다. 원문은 그 말씀과 맹세가 앞선 성경의 어느 본문을 가리키는지조차 친절하게 밝혀 주지 않으며, 하나님의 진노를 변덕스러운 인간의 감정처럼 풀어 설명하지도 않습니다. 이 단락의 맨 끝에 남는 것은 오직 이스라엘 쪽에 적힌 두 마디, 그들이 더는 원수들 앞에 설 수 없었다는 무력함과 그들의 괴로움이 심하였다는 아픈 진술뿐입니다. 다음 구절인 십육절부터 사사를 일으키시는 이야기가 시작되지만, 이 단락은 섣불리 다음 장면을 끌어와 아픔을 덮지 않고 그저 그들의 괴로움이 심하였더라라는 문장 위에서 무겁게 멈추어 섭니다.</p>
+<h3>까닭을 묻지 않는 곁자리와 잃은 것을 정확히 적는 손</h3>
+<p>본문이 이처럼 까닭을 비워 두고 괴로움을 괴로움 그대로 남겨 두었다는 사실은, 오늘 삶의 한복판에서 신음하는 이들을 만날 때 우리에게 깊은 목회적 절제를 가르쳐 줍니다. 오랜 시련 끝에 지금은 차마 하나님을 안다는 말을 입 밖에 낼 수 없는 사람을 만날 때, 우리는 십절의 서술자가 그 세대를 향해 꾸짖는 말도, 이유를 추궁하는 말도 덧붙이지 않았다는 사실을 기억합니다. 왜 믿음이 식었느냐고 원인을 캐묻거나 당장 해야 할 신앙의 과제를 얹어 주는 대신, 그 말밖에 할 수 없는 사람의 자리를 조용히 지켜 주는 것입니다. 가게를 잃거나 오랜 버팀 끝에 지쳐 제가 하나님께 벌을 받는 겁니까라고 묻는 성도 곁에서도, 십사절의 넘기심을 들이대어 정죄하거나 다음 단락의 구원을 미리 꺼내어 값싸게 위로하지 않고, 이 두 절은 그들의 괴로움을 그저 괴로움으로 적었습니다라는 한 문장을 건넨 뒤 그의 말이 다 나올 때까지 귀를 기울입니다.</p>
+<p>나아가 십사절이 노략한 주체를 노략자들로 또렷이 분리해 적은 관찰은, 사기로 사업 자금을 빼앗긴 고객과 마주 앉아 피해 신고서를 작성하는 세무와 법률의 일터에서도 정직한 기준이 됩니다. 물론 고객이 겪은 금전적 피해를 성경의 진노나 넘김에 대입하는 어리석은 일은 결코 하지 않습니다. 우리가 본문에서 빌려 오는 것은 빼앗은 쪽의 행위가 두루뭉술한 운명 속에 가려지지 않고 따로 적혀 있다는 기록의 태도 하나입니다. 그래서 피해 신고서의 첫 문장을 쓸 때에도 막연하게 자금이 손실되었다고 적는 대신, 어느 업체가 몇 년 몇 월에 대금 얼마를 가져갔는지를 주체와 숫자로 명확히 박아 적습니다. 빈칸으로 남겨 둘 이웃의 아픔과 또렷한 글자로 밝혀 적어야 할 불의의 내역을 분별하는 것, 그것이 말씀 앞에서 배운 정직한 손길입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 05편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

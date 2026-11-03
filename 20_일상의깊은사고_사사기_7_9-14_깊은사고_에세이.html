@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>손이 강해지기 전에 놓인 말씀과 그 사이의 들음</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 20편 &middot; 사사기 7:9-14</span>
+      <h1>손이 강해지기 전에 놓인 말씀과 그 사이의 들음</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>칠흑 같은 밤, 골짜기 아래에는 메뚜기의 중다함 같고 해변의 모래처럼 셀 수 없는 미디안 진영이 끝없이 펼쳐져 있습니다. 삼만 이천 명에서 삼백 명으로 줄어든 기드온의 쪽만 작아졌을 뿐, 눈앞의 적진은 조금도 줄어들지 않았고 기드온의 손은 아직 강해지지 않았습니다. 바로 그 밤에 여호와께서 기드온에게 찾아오셔서 일어나 내려가서 적진을 치라 내가 그것을 네 손에 붙였느니라고 먼저 말씀하십니다.</p>
+<p>놀라운 것은 그 직후에 곧바로 열리는 두 번째 길입니다. 만일 네가 내려가기를 두려워하거든 네 부하 부라를 데리고 그 진으로 내려가서 그들의 하는 말을 들으라 그 후에 네 손이 강하여져서 능히 내려가서 그 진을 치리라고 하십니다. 기드온은 아무 대답 없이 부라를 데리고 군대가 있는 진 가로 내려가고, 진 끝에서 어떤 사람이 동무에게 보리떡 꿈 이야기를 하는 소리와 동무가 그것을 기드온의 칼날로 풀어내는 대답을 듣습니다. 기드온이 실제로 진 안으로 들어가 싸우는 장면은 아직 나오지 않은 채 단락이 닫힙니다. 이 여섯 절이 세우는 중심은 하나님의 말씀이 기드온의 손보다 앞에 놓였고, 들음은 그 말씀과 아직 약한 손 사이에 놓였다는 사실입니다.</p>
+<h3>쳐라가 아니라 내려가라 하시는 은혜의 순서</h3>
+<p>개역한글 성경은 9절에 치라를, 11절에 능히 치리라를 넣어 번역했기 때문에 우리말로 읽으면 기드온에게 당장 싸움이 맡겨진 것처럼 들립니다. 그러나 히브리어 원문을 보면 이 단락을 이끄는 동사는 내려가다는 뜻의 야라드이며, 여섯 절 안에 다섯 번이나 나옵니다. 9절의 명령도 원문에는 레드, 곧 내려가라 한 낱말뿐이고 치다에 맞는 동사는 원문에 없습니다. 진으로라는 말이 붙은 두 토막은 명령과 약속이고, 실제로 서술된 기드온과 부라의 내려감은 엘 크체, 곧 진의 끝으로입니다. 이때 진으로에 쓰인 전치사가 안으로인지 거슬러인지는 여기서 가르지 않습니다.</p>
+<p>무엇보다 11절의 네 손이 강하여져서라는 구절은 원어로 테헤자크나 야데이카, 곧 네 두 손이 강해지리라는 뜻으로 명령형이 아닙니다. 본문 어디에도 당장 강하라는 명령은 없습니다. 손이 강해지는 일은 그 뒤에 놓인 약속이고, 그 앞에는 먼저 내려가서 들으라는 들음의 자리가 놓여 있습니다. 약한 손을 보며 스스로를 다그치고 몰아붙이는 명령문을 이 본문은 결코 쓰지 않습니다.</p>
+<h3>들음보다 앞선 완료형 말씀과 세 번의 보라</h3>
+<p>9절의 내가 그것을 네 손에 붙였느니라는 여호와께서 일인칭으로 하신 말씀이고, 14절의 하나님이 미디안과 그 모든 군대를 그의 손에 붙이셨느니라는 진 안 동무의 입에서 나온 삼인칭 문장입니다. 두 문장에 주다와 손이 겹치지만 화자와 인칭과 신명은 갈립니다. 9절의 키 느탓티브는 근거를 대는 키에 완료 동사가 붙은 꼴인데, 이 완료가 이미 된 일인지 확정된 장래인지는 판정하지 않습니다. 또한 14절의 동무는 여호와라는 이름 대신 하엘로힘을 쓰는데, 그가 왜 그 이름을 쓰는지, 그 풀이를 무엇으로 아는지도 본문은 대지 않습니다. 분명한 것은 기드온이 무엇을 듣기 전에 여호와의 말씀이 먼저 놓였고, 진 안의 대화가 그 말씀을 새로 지어내지 않는다는 점입니다. 그러므로 이 대화를 원수도 하나님을 안다는 식으로 넓히는 것은 본문이 주지 않은 정보를 쓰는 일입니다.</p>
+<p>13절의 꿈 이야기에는 해석하는 낱말이 하나도 없으며, 떡이 무엇이고 장막이 무엇인지 꿈꾼 사람은 말하지 않습니다. 원문에는 이 절에 보라를 뜻하는 힌네가 세 번 나오는데, 첫째는 서술자가 장면을 여는 말이고 둘째와 셋째는 꿈꾼 사람의 입에서 나옵니다. 개역은 셋 다 옮기지 않아 이 목소리의 겹이 사라졌습니다. 두 사람은 사람과 그의 동무로만 불리고 민족 이름이 없으며, 쓰러진 것이 장막인지 떡인지도 문법만으로 정해지지 않습니다. 웨스트민스터 신앙고백 1장 1항이 하나님께서 이전에 그 뜻을 계시하시던 방식들이 이제 그쳤다고 고백하듯, 이 단락은 꿈을 기드온이 들은 일로 서술할 뿐 오늘 우리에게 꿈으로 하나님의 뜻을 아는 길을 가르치지 않습니다.</p>
+<h3>열려 있는 두려움의 빈칸과 곁에서 함께 걷는 걸음</h3>
+<p>본문은 10절에서 두려워하거든 부라와 함께 내려가라는 조건을 걸고, 11절 끝에서 기드온이 실제로 부라와 함께 내려갔다고 적습니다. 그는 두려워했던 것일까요. 서술자는 끝내 기드온의 속마음을 말하지 않고 그의 걸음만 적어 두었습니다. 동행이 조건 귀결의 낱말을 그대로 받았다는 데까지가 본문이고, 그 이행이 두려움의 고백인지는 열려 있습니다. 내가 붙였느니라가 이미 된 일이라면 둘째 길은 무엇을 위한 것인지, 확정된 장래라면 들음은 무엇을 보태는지도 본문은 풀어 주지 않습니다. 그러므로 설교자는 기드온을 겁쟁이로도 영웅으로도 세울 수 없습니다.</p>
+<p>이 따뜻한 여백 앞에서, 말씀은 들었는데 손이 아직 그 일을 붙잡지 못하는 분이 계신다면 이 본문은 그분에게 아무런 숙제를 내지 않습니다. 그 일을 붙잡으려 이를 악무는 대신, 그 일이 떠오를 때마다 숨을 한 번 길게 내쉬고 네 손에라는 세 마디만 조용히 떠올려 보십시오. 또한 결산철 사무실에서 야근으로 지친 직원에게 힘내자는 말만 건네기보다, 강하라 대신 그 후에 네 손이 강하여져서라고 하신 말씀을 기억하며 이번 주 하루는 그 직원의 퇴근 시각을 한 시간 앞당겨 줄어든 노동 시간이 그 손에 실제로 닿게 해 주십시오. 첫 공과를 앞두고 망설이는 새 교사에게도 담대하라는 한마디로 등을 떠밀거나 다른 사람을 동행으로 붙여 주는 대신, 주일 아침 그 교사와 교실 문 앞까지 내가 직접 함께 걸어가 주는 것, 그것이 먼저 놓인 말씀과 약한 손 사이를 지나는 은혜의 발걸음입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 20편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

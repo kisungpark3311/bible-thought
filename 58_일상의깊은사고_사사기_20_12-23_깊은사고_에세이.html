@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두 낱말로 닫힌 편지 앞에서 우리가 비워 두어야 할 자리</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 58편 &middot; 사사기 20:12-23</span>
+      <h1>두 낱말로 닫힌 편지 앞에서 우리가 비워 두어야 할 자리</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 20장 12절에서 23절은 기브아에서 일어난 참혹한 일 뒤, 이스라엘 지파들이 베냐민 지파에게 사람을 보내어 너희 가운데 일어난 이 악이 무엇이냐 묻고 기브아의 비류를 내놓으라고 요구하는 장면으로 문을 엽니다. 그러나 베냐민 자손은 그 형제 이스라엘 자손의 말을 듣지 않고 성읍들에서 기브아로 모여들며, 이스라엘 백성 또한 칼을 빼는 자들을 계수하고 일어나 벧엘로 올라갑니다. 그들은 거기서 하나님께 우리 중에 누가 먼저 올라가서 베냐민 자손과 싸우리이까 묻고, 여호와께서는 유다가 먼저일찌니라 답하십니다. 첫째 날 전투에서 베냐민 자손이 이스라엘 가운데 이만 이천 명을 쓰러뜨린 뒤, 백성은 스스로 힘을 내어 첫날 진을 벌였던 그곳에서 다시 진을 벌이고 여호와 앞에서 저물도록 울며 나의 형제 베냐민 자손과 다시 싸울지를 묻습니다. 여호와께서는 그에게로 올라가라고 답하십니다. 이 열두 절의 기록 속에서 하나님은 오직 두 번 말씀하시며, 두 번 모두 백성의 물음에 대한 짧은 답으로만 자리합니다.</p>
+<p>우리는 흔히 성경의 응답 장면을 읽을 때 그 답 뒤에 숨겨진 하나님의 속마음이나 승리의 보증을 함께 읽어 내고 싶어 합니다. 응답하셨으니 당연히 이기게 하실 것이라 기대하거나, 반대로 참혹한 패배가 뒤따랐으니 처음부터 하나님이 거절하신 싸움이었다고 단정 짓곤 합니다. 그러나 오늘 본문의 서술자는 백성이 물었을 때 여호와께서 답하셨다는 사실과, 그 답에 어떠한 승리의 약속도 붙지 않았다는 사실을 아무런 설명 없이 나란히 적어 둘 뿐입니다. 마치 같은 머리글을 단 두 통의 편지 가운데 첫 편지에는 약속의 한 줄이 덧붙어 있고 둘째 편지는 오직 두 낱말로만 닫혀 있을 때, 그 짧은 편지 끝에 내 바람대로 한 줄을 더 보태지 않고 받은 만큼만 정직하게 읽어 내는 자리로 오늘 본문은 우리를 초대합니다.</p>
+<h3>같은 물음의 머리 아래에서 조용히 갈라지는 네 갈래의 길</h3>
+<p>사사기의 문을 여는 1장 1절과 오늘 본문인 20장 18절은 우리를 위하여 누가 먼저 올라가서 싸우리이까라는, 히브리 원어로 미 야알레 라누 바테힐라라는 같은 물음의 머리를 나누어 씁니다. 두 장면 모두 여호와께서 답하시고, 그 답의 첫머리에 놓인 이름 또한 유다로 똑같습니다. 그러나 이 겹치는 물음의 머리 아래를 가만히 들여다보면 네 가지가 선명하게 갈라집니다. 첫째로 묻는 이름인데, 1장 1절은 여호와께 묻고 20장 18절은 베엘로힘 곧 하나님께 묻습니다. 둘째로 싸움의 상대가 가나안 사람에서 베냐민 자손으로 바뀝니다. 셋째로 답이 받는 물음의 말인데, 1장 2절은 물음의 동사인 야알레 곧 올라가리이까를 받아 유다가 올라갈 것이다라고 답하지만, 20장 18절은 물음의 부사인 바테힐라 곧 먼저를 받아 예후다 바테힐라, 유다가 먼저라는 두 낱말로만 답합니다. 넷째로 약속의 유무인데, 1장 2절에는 보라 내가 그 땅을 그의 손에 주었다는 약속이 붙지만, 20장 18절에는 아무것도 붙지 않습니다.</p>
+<p>두 장면을 그저 같다는 인상으로 묶어 버리면 이 네 갈래의 차이는 보이지 않습니다. 더욱 눈여겨보아야 할 것은 서술자가 이 네 갈래의 차이 어디에도 왜 그렇게 달라졌는지 설명을 달지 않는다는 점입니다. 하나님을 부르는 이름이 바뀐 데에 임의로 뜻을 얹지 않고, 약속이 없다는 사실을 거절이나 징계로 읽지도 않으며, 그렇다고 승인으로 읽지도 않는 절제가 여기서 요청됩니다. 약속 없는 답을 거절로 읽으면 첫날 이만 이천 명이 쓰러진 패배가 그 증명처럼 보이고, 승인으로 읽으면 그 패배가 설명되지 않지만, 두 읽기 모두 본문이 비워 둔 자리를 사람의 생각으로 메우는 일입니다. 정경은 1장 머리와 20장 한가운데에 두 장면을 멀리 떨어뜨려 놓았을 뿐 둘을 잇는 해설을 싣지 않았으니, 우리에게 남는 것은 물었을 때 여호와께서 답하셨다는 서술과 그 답에 약속이 붙지 않았다는 서술이 나란히 있다는 데까지입니다.</p>
+<h3>듣기를 원하지 않던 거절의 자리와 다시 물은 기도에 들어선 형제라는 이름</h3>
+<p>전쟁이 시작되기 전 지파들이 보낸 전언을 받은 베냐민의 반응을 적으며, 서술자는 베냐민 자손이 그 형제 이스라엘 자손의 말을 듣지 아니하였다고 기록합니다. 히브리 원문 로 아부 리쉬모아는 단순히 듣지 않았다가 아니라 듣기를 원하지 않았다는 뜻입니다. 개역한글 번역의 듣지 아니하고에는 원하다라는 결이 옮겨지지 않았으나, 원문은 그들의 거절을 분명하게 적으면서도 바로 그 거절의 문장에서 이스라엘을 베냐민의 형제, 아헤헴이라 부릅니다. 이 열두 절의 범위 안에서 서술자가 자기 목소리로 쓰는 형제라는 말은 이 하나뿐입니다. 서술자는 베냐민이 왜 듣기를 원하지 않았는지 적지 않고 그 거절을 평가하지도 않으므로, 우리 또한 베냐민을 말 안 듣는 쪽으로 단죄하지 않고 이스라엘의 요구를 옳은 처분으로 변호하지도 않은 채, 거절의 자리에서 서술자가 상대를 형제라 불렀다는 사실까지를 그대로 받습니다.</p>
+<p>첫날의 패배 뒤 백성은 첫날 진을 벌였던 그곳에서 다시 진을 벌이고, 여호와 앞에서 저물도록 울며 다시 묻습니다. 원문은 22절의 다시 벌인 진과 23절의 물음 가운데 어느 것이 앞선 일인지 표시하지 않기에, 묻기 전에 움직인 사람들이라 정하지도 않고 물은 뒤에 움직인 사람들이라 정하지도 않은 채 본문이 둔 그대로 둡니다. 다만 두 번째 물음에서는 첫 물음에 없던 아히, 곧 나의 형제라는 부름이 베냐민 자손 앞에 들어섭니다. 내가 다시 나아가 나의 형제 베냐민 자손과 싸우리이까라는 물음에 여호와께서는 알루 엘라브, 그에게로 올라가라고 답하십니다. 그에게로는 한 사람을 가리키는 꼴이어서 나의 형제와 맞물리지만, 개역한글의 치라는 말은 원문에 없고 이기게 하리라는 약속도 화해의 처방도 없습니다. 나의 형제가 왜 둘째 물음에 붙었는지 원문은 말하지 않으나, 하나님께 드린 물음 안에 상대가 나의 형제로 들어 있다는 그 꼴 하나만을 우리는 조용히 마음에 담아 둡니다.</p>
+<h3>빈자리를 메우지 않는 설교자의 절제와 달라진 칸을 먼저 짚는 일터의 손길</h3>
+<p>본문이 남겨 둔 이 빈자리는 오늘 우리의 목회와 삶의 자리에서도 고스란히 지켜져야 합니다. 살다 보면 정해야 할 중대한 일을 앞에 두고도 하나님께 무엇을 여쭈어야 할지 단 한 문장도 서지 않는 분이 있습니다. 우리는 그분을 본문의 묻는 이들에게 견주지 않으며, 물을 말을 대신 지어 드리지도 않고 묻지 못함을 탓하지도 않습니다. 말이 서지 않는 분께 기도의 문장이나 순서를 얹지 않기 위해 그 자리에는 아무런 동작도 두지 않고 말을 아낍니다. 20장 18절과 23절로 설교하거나 가르치는 이의 자리 또한 같습니다. 하나님이 이미 거절하신 싸움이라는 줄이나, 올라가서 치라 하셨으니 이기게 하신다는 줄을 덧붙이고 싶지만 원문은 둘 다 주지 않습니다. 설교자의 몫은 그 빈자리를 다른 판정으로 다시 채우지 않고 비워 두는 데 있습니다.</p>
+<p>한편 같아 보이는 두 해의 일 앞에서 일하는 세무 일터에서는 몸을 움직여 갈라진 데를 살피는 정직함이 요구됩니다. 작년과 같은 물음처럼 보이는 의뢰가 들어오면 작년의 답을 그대로 옮기고 싶어지지만, 그 전에 두 해의 서류를 책상 왼쪽과 오른쪽에 나란히 펴 놓습니다. 같은 칸이 아니라 달라진 칸부터 손가락으로 짚어 세며, 의뢰인 이름과 거래 상대, 묻는 항목이 같은지 하나씩 짚고 나서야 비로소 답을 씁니다. 남의 두 해 서류에서 갈리는 데를 먼저 찾는 이 손길은, 성경의 두 장면에서 갈리는 네 칸을 살피는 눈과 닿아 있습니다. 벧엘에서 물었을 때 답하신 하나님께 감사드리며, 짧은 답에 내 바람대로 약속이나 판정을 덧붙이지 않고 답하신 말씀을 답하신 만큼만 받으며, 내가 보탠 말을 주의 말씀이라 부르지 않는 정직한 하루가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 58편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

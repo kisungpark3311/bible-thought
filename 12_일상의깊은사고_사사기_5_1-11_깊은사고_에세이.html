@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>끊긴 대로를 품은 승전가 앞에서 굽은 출근길의 분 수를 홀로 재어 보다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 12편 &middot; 사사기 5:1-11</span>
+      <h1>끊긴 대로를 품은 승전가 앞에서 굽은 출근길의 분 수를 홀로 재어 보다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 5장 1절에서 11절에 울려 퍼지는 드보라와 바락의 노래는 우리가 흔히 기대하는 매끈하고 빈틈없는 승전가와는 사뭇 다른 결을 지니고 있습니다. 노래는 뜻이 하나로 정해지지 않은 첫 마디와 백성이 자원함에라는 구절 뒤에 여호와를 송축하라는 외침을 두며 시작되고, 곧이어 왕들과 방백들을 향해 들으라고 부른 뒤 나 곧 내가 여호와께 노래하겠다는 화자의 다짐으로 이어집니다. 화자는 주께서 세일에서 나오시고 에돔 들에서 행진하실 때에 땅이 진동하고 하늘과 구름이 물을 내렸다고 여호와께 직접 아뢰며 그분의 행하심을 높입니다.</p>
+<p>그러나 그 장엄한 아룀 바로 뒤에는 삼갈의 날과 야엘의 날에 길들이 그치고 행인들이 굽은 소로로 다녔으며 이스라엘에서 마을들이 그쳤다는 어두운 날들의 기억이 지워지지 않은 채 자리하고 있습니다. 나아가 5장 8절은 새 신들을 택하였다는 읽기와 하나님이 새로운 것을 택하셨다는 읽기가 갈리는 난제 끝에 이스라엘 사만 명 중에 방패와 창이 보였던고라는 물음을 던진 채 닫히고, 노래는 아무런 설명 없이 다시 백성 가운데 자원하는 이들과 여호와를 송축하라는 외침으로 넘어갑니다. 끊긴 길과 풀리지 않는 물음을 제 안에 그대로 품은 이 노래 앞에서, 우리의 읽기는 비어 있는 이음매를 내 말로 성급히 메우려던 손을 거두는 법을 배웁니다.</p>
+<h3>자원함 곁에 나란히 놓인 두 번의 송축과 사라진 이음말</h3>
+<p>이 단락의 가장 눈에 띄는 짜임은 5장 2절과 9절에서 히트나데브, 곧 자원하다라는 낱말과 바르쿠 여호와, 곧 여호와를 송축하라라는 명령이 두 번 나란히 짝을 이루는 대목입니다. 우리말 개역성경은 2절을 백성이 즐거이 헌신하였으니로, 9절을 즐거이 헌신하였음이라로 옮겨 백성의 자원함을 여호와를 찬송해야 할 분명한 이유나 조건으로 묶어 두었습니다. 또한 9절 앞마디에는 내 마음이 이스라엘의 방백을 사모함은이라는 말을 넣어 감정의 고리까지 보태어 놓았습니다.</p>
+<p>하지만 히브리어 원문은 5장 2절의 백성이 자원함에라는 일의 표현과 5장 9절의 백성 가운데 자원하는 이들이라는 사람의 표현 바로 뒤에 여호와를 송축하라는 명령을 둘 뿐, 그 사이에 까닭을 나타내는 어떤 접속사도 두지 않습니다. 9절 앞마디 역시 내 마음은 이스라엘의 방백들에게라는 동사 없는 명사절일 뿐 사모한다는 말이 없으며, 송축하라는 명령을 듣는 수신자가 누구인지도 노래 안에서 끝내 밝혀지지 않습니다. 결국 자원했으니 하나님을 찬송하자는 익숙한 인과의 공식은 원문이 아니라 우리의 번역과 통념이 놓은 다리이며, 그 다리를 거두어 내면 사람이 스스로 내어놓은 일과 사람 바로 곁에 여호와를 향한 송축이 두 번 나란히 놓여 있다는 정직한 배치만이 남습니다.</p>
+<h3>듣는 이와 노래하는 나의 다짐, 그리고 그들의 입으로 옮겨 간 되뇔 말</h3>
+<p>노래 안에서 부르는 이와 듣는 이의 자리 또한 우리말 번역이 하나로 덮어 둔 것보다 훨씬 섬세하게 나뉘어 있습니다. 개역성경은 5장 2절과 9절의 바르쿠와 5장 3절 끝의 아잠메르를 모두 찬송이라는 한 단어로 옮겼지만, 원문에서 이름으로 불린 왕들과 방백들이 받은 명령은 오직 들으라와 귀를 기울이라 두 가지뿐입니다. 정작 노래하고 읊는 일은 나 곧 내가라는 일인칭 대명사를 두 번이나 거듭 세운 화자 자신의 다짐으로 놓여 있으며, 화자는 여호와를 제삼자로 부르는 데 그치지 않고 5장 4절에서 주께서라고 직접 부르며 땅의 흔들림과 구름의 물 내림을 아룁니다.</p>
+<p>이 목소리의 이동은 단락의 끝인 5장 10절과 11절에서도 다시 한번 놀라운 전환을 이룹니다. 10절에서 나귀를 탄 자들과 자리에 앉은 자들과 길을 걷는 자들을 향해 말하라 혹은 깊이 생각하라고 부른 뒤, 11절에 이르면 개역성경은 여호와의 의로우신 일을 칭술하라라고 다시 두 번의 명령형으로 옮겨 놓았습니다. 그러나 원문의 예탄누는 너희는 칭술하라는 이인칭 명령이 아니라 그들이 되뇐다 혹은 그들이 되뇌게 하라라는 삼인칭 어형이며, 그 대상도 단수가 아니라 여호와의 의로운 일들이라는 복수 명사입니다. 노래는 직접 부르던 명령의 자리에서 이름 모를 그들이 물길는 소리와 마주한 자리에서 여호와의 의로운 일들을 되뇌는 풍경으로 조용히 물러서며, 그 그들이 누구인지조차 확정하지 않은 채 여호와의 백성이 성문에 내려갔다는 문장으로 단락을 맺습니다.</p>
+<h3>노래를 재촉하지 않는 침묵과 퇴근 뒤 홀로 걸어 재어 보는 굽은 소로</h3>
+<p>이처럼 본문이 5장 8절의 난제와 11절의 삼인칭을 감사의 직접적인 근거로 삼지 못하게 막아 설 때, 우리가 이 단락에서 안심하고 감사를 묶을 수 있는 자리는 화자가 여호와께 직접 아뢴 5장 4절의 그 한 자리뿐입니다. 비록 새 신들을 택하여 전쟁이 났으나 백성이 자원했으니 찬송하라는 매끄러운 한 줄 요약으로 노래의 빈칸들을 메우면 설교하기는 편하겠지만, 그 대가로 정경이 열어 둔 세 개의 깊은 물음은 닫히고 맙니다. 설교자와 인도자가 할 일은 회중에게 다 함께 찬송합시다라고 본문의 명령을 곧장 덮어씌우거나 일어설지 앉을지의 규칙을 만드는 것이 아니라, 원문이 두 가지 찬송을 구별하고 이음말을 비워 두었다고 정직하게 일러 주는 데까지입니다.</p>
+<p>더 나아가 이 승전가가 길이 끊기고 마을이 그쳤던 날들을 지우지 않고 제 품에 안고 있다는 사실은, 오늘 삶의 자리에서 노래를 잃어버린 이들과 고단한 길을 걷는 이들을 향한 깊은 배려로 이어집니다. 오늘 마음과 형편이 무너져 도무지 찬송이 입에서 나오지 않는 사람에게 우리는 다시 노래를 부르라고 재촉하지 않으며, 곧 다시 일어서게 될 것이라는 섣부른 약속으로 본문의 빈자리를 채우지도 않습니다. 다만 5장 6절이 대로가 비어 행인들이 굽은 소로로 다녔다는 바깥 형편을 사실로 적어 두었듯, 버스 노선이 사라져 굽은 길로 멀리 돌아 출근하는 직원이 있다면 사무소 대표는 근무표 이야기를 꺼내기 전에 퇴근 뒤 혼자 그 굽은 출근길을 직접 걸어 보며 몇 분이 걸리는지를 제 다리로 재어 적어 둡니다. 직원과 함께 걸으며 생색을 내는 일과는 다른 그 조용한 걸음으로, 오늘 우리는 본문이 비워 둔 그러니를 내 손으로 채우던 습관을 고백하며 타인의 굽은 길의 길이를 내 발걸음으로 헤아리는 사람이 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 12편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

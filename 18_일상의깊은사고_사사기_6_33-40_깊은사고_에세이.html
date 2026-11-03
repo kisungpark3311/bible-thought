@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>내 손으로 이스라엘을 담아 건넨 말과 그 밤의 이슬</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 18편 &middot; 사사기 6:33-40</span>
+      <h1>내 손으로 이스라엘을 담아 건넨 말과 그 밤의 이슬</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 6장 33절은 미디안 사람과 아말렉 사람과 동방 사람들이 다 모여 건너와서 이스르엘 골짜기에 진을 쳤다는 거대한 위협의 풍경으로 문을 엽니다. 개역한글 성경에는 요단을 건너왔다고 되어 있으나 원문에는 요단이라는 말이 없이 그저 그들이 건너와 골짜기를 가득 메우고 진을 쳤다는 무거운 사실만 놓여 있습니다. 그때 여호와의 영이 기드온에게 임하시는데, 원문에서 강림하셨다는 동사는 옷을 입다라는 뜻의 낱말입니다. 여호와의 영이 기드온을 옷처럼 입으셨고, 그가 나팔을 불자 아비에셀 사람들이 그의 뒤로 모였으며, 그는 므낫세와 아셀과 스불론과 납달리에 전령들을 보냅니다.</p>
+<p>바로 그 긴박한 소집의 한복판에서 서술은 기드온이 하나님께 건넨 두 번의 양털 요청으로 조용히 옮겨 갑니다. 우리는 흔히 이 양털 시험 장면을 두고 기드온의 의심 많은 불신앙을 책망하거나, 반대로 하나님의 뜻을 확실히 확인하는 지혜로운 기도법으로 추어올리곤 합니다. 그러나 기드온의 입에 담긴 낱말들의 원어적 결을 살피고 서술자가 마지막 절에 남긴 단 한 줄의 행하심을 따라가 보면, 본문은 기드온의 말에도 그 밤의 일에도 옳고 그름의 판정을 달지 않은 채 공동체의 무게를 짊어진 한 사람의 떨리는 손과 하나님의 행하심을 나란히 보여 줍니다.</p>
+<h3>당신의 코가 타지 마소서, 인물의 입에 놓인 두 낱말</h3>
+<p>기드온은 첫째 청이 그대로 이루어진 뒤 39절에서 주여 내게 진노하지 마옵소서 내가 이번만 말하리이다 구하옵나니 나로 다시 한번 양털로 시험하게 하소서라고 두 번째 청을 올립니다. 여기서 내게 진노하지 마옵소서에 해당하는 원문 알 이하르 아프카 비는 직역하면 당신의 코가 내게 타지 마소서입니다. 사사기 전체에서 코가 타다라는 표현은 일곱 번 나오는데, 앞선 여섯 번은 모두 서술자가 여호와나 사람의 진노를 제삼자의 시선으로 적는 이야기 문장에 쓰였고, 오직 이 6장 39절 한 곳에서만 말라라는 부정어와 함께 인물의 입에 놓였습니다. 창세기 18장 32절에서 아브라함이 내가 이번만 말하리이다라고 아뢰었던 와아다브라 악 합파암과 거의 같은 공손한 말투입니다.</p>
+<p>이어지는 아낫세 나, 곧 시험하다라는 낱말 역시 사사기 전체에 네 번 등장합니다. 2장 22절과 3장 1절과 3장 4절의 세 자리는 모두 여호와께서 남겨 두신 이방 민족들을 통해 이스라엘을 시험하신다는 문장에 놓여 있는 반면, 6장 39절에서만 기드온이 자기 일로 이 낱말을 입에 올립니다. 원문의 형태만으로는 이 말이 내가 이번만 양털로 시험하겠습니다라는 결의인지, 시험하게 해 주십시오라는 청원인지 하나로 갈리지 않으며 개역한글은 청원 쪽을 택했습니다. 아브라함과의 말투 겹침이 기드온의 시험을 옳다고 승인해 주지 않듯, 여호와께서 시험하신다는 앞선 구절들과의 나란함 역시 기드온을 꾸짖는 근거로 단정되지 않습니다. 본문은 그저 이 두 낱말이 기드온의 입에 놓였다는 사실을 판정 없이 적을 뿐입니다.</p>
+<h3>신명 없이 당신이라 부른 말과 그 밤에 그렇게 행하신 하나님</h3>
+<p>이 단락에서 또 하나 깊이 멈추어 보게 되는 것은 기드온이 하나님을 부르는 호칭입니다. 서술자는 36절과 39절에서 분명히 기드온이 하나님께 말했다고 적고, 개역한글은 기드온의 말 안에 주께서와 주여라는 높임의 부름말을 넣어 주었습니다. 하지만 원문 속 기드온의 발화 안에는 여호와라는 이름도 하나님이라는 호칭도, 주여라는 말도 전혀 없습니다. 상대는 오직 이인칭 단수 당신으로만 불립니다. 당신이 말씀하신 대로라는 뜻의 카아셰르 딥바르타가 36절과 37절에 거듭 나오고, 그 안에 내 손으로 이스라엘을 구원하려 하시거든이라는 조건과 내 손으로 이스라엘을 구원하실 줄 내가 알겠나이다라는 맺음이 담깁니다. 우리는 이 당신이라는 부름을 섣불리 친밀함으로도 거리감으로도 해석하지 않고, 그저 공동체의 구원이 내 손에 걸려 있다는 무거운 조건 속에서 건네진 말 그대로 받아 안습니다.</p>
+<p>마침내 40절은 와야아스 엘로힘 켄 발라일라 하후, 곧 하나님이 그 밤에 그렇게 하셨다라는 한 문장으로 장면을 닫습니다. 놀랍게도 첫째 양털이 젖었던 38절에서는 그대로 된지라라고만 적어 행하신 분을 밝히지 않던 서술자가, 마지막 40절에서 단 한 번 하나님을 행하신 주어로 분명히 세웁니다. 그러면서도 그 문장에는 하나님이 기드온의 청을 기뻐하셨다는 말도, 마지못해 허락하셨다는 말도, 노하셨다는 말도 없습니다. 정경은 기드온의 청과 하나님의 행하심을 평가 문장 하나 없이 바로 붙여 놓았기에, 불신앙을 참아 주셨다거나 믿음의 확인을 기뻐하셨다고 풀면 본문이 비워 둔 자리를 우리의 말로 채우게 됩니다.</p>
+<h3>만일 없이는 말할 수 없는 이웃과 골목의 짐을 함께 나르는 손</h3>
+<p>오늘 우리의 목회와 삶의 자리에는 교회나 마을 같은 한 공동체가 실제로 무너질 위협 앞에 서 있고, 그 막중한 무게의 한 몫이 자기 손에 맡겨진 사람이 있습니다. 그가 지금 하나님께서 내 손으로 우리를 건지신다는 말을 만일이라는 조건 없이는 도무지 입 밖에 낼 수 없을 때, 성경은 그를 연약하다거나 믿음이 없다고 정죄하지 않으며 만일을 빼고 말하라고 다그치지도 않습니다. 진로나 결혼을 앞둔 청년이 기드온처럼 조건을 걸고 기도해도 되느냐고 물어올 때에도, 목회자는 이 본문을 양털 기도를 권하거나 막는 규범의 근거로 쓰지 않고 다만 본문이 적은 데까지만 청년과 함께 읽으며 그의 무거운 물음 곁에 머뭅니다.</p>
+<p>더 나아가 기드온의 조건과 맺음에 모두 내 손으로 이스라엘을이라는 공동체의 이름이 들어 있었음을 기억하며 우리의 일터를 돌아봅니다. 세무 사무소가 장부를 맡아 온 전통 시장 골목이 큰 공사로 인해 손님의 발길이 끊길 위기에 처했을 때, 상인회가 살길을 찾으려 공동 배송을 시작한 주간에 사무소 직원들이 오후 한 시간씩 밖으로 나가 손수레로 배송 상자를 함께 날라 주는 일은 시원한 상담실에서 세무 대책을 말해 주는 일과 전혀 다릅니다. 기드온의 내 손이 개인의 안위가 아니라 이스라엘 전체에 걸려 있었듯, 무너질 위협 앞에 선 골목 전체의 몫을 내 손의 땀으로 함께 지는 것이기 때문입니다. 판정 없는 밤에 친히 행하시어 양털은 마르고 온 땅에 이슬이 내리게 하신 하나님께 감사하며, 이웃의 떨리는 내 손을 함부로 판정하지 않고 내게 맡겨진 공동체의 몫을 묵묵히 손으로 지는 우리가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 18편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

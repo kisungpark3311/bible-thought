@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>한 낱말이 치는 무리와 맞는 무리를 함께 부를 때 우리는 멈춰 서서 이름을 가릅니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 30편 &middot; 사사기 9:34-45</span>
+      <h1>한 낱말이 치는 무리와 맞는 무리를 함께 부를 때 우리는 멈춰 서서 이름을 가릅니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 9장 34절부터 45절까지의 이야기는 밤의 매복이 끝난 아침, 세겜 성문 어귀에서 시작됩니다. 에벳의 아들 가알이 나와 성문 입구에 설 때 아비멜렉과 그를 따르는 무리가 매복했던 곳에서 일어납니다. 가알이 산꼭대기에서 내려오는 무리를 보고 성읍 장관 스불에게 말하자, 스불은 네가 산 그림자를 사람으로 보았느니라고 맞받습니다. 가알이 다시 바위 가운데로 내려오는 무리와 엘론모레 길로 오는 무리를 가리키자, 스불은 그제야 가알이 지난날 잔치 자리에서 했던 말을 꺼내어 네 입이 이제 어디 있느냐고 물으며 나가서 싸우라고 다그칩니다. 가알은 말로 답하지 못한 채 세겜 사람들보다 앞서 나가 싸우다가 쫓겨 도망하고, 스불은 그를 성읍에서 쫓아냅니다.</p>
+<p>그러나 싸움은 가알이 쫓겨난 것으로 끝나지 않습니다. 이튿날 성읍 백성이 밭으로 나오자, 아비멜렉은 무리를 세 떼로 나누어 매복했다가 성문을 막아선 채 밭에 있는 자들을 치고, 마침내 성을 함락해 거기 있는 백성을 죽이며 성을 헐고 소금을 뿌립니다. 서술자는 이 참혹한 전말에 옳고 그름의 평가를 붙이지 않으며, 이 열두 절 안에는 하나님의 이름이 단 한 번도 불리지 않습니다. 가알이 이미 쫓겨난 뒤 이튿날 아비멜렉이 왜 성을 쳤는지, 마지막에 뿌린 소금이 무엇을 뜻하는지도 본문은 설명하지 않습니다. 이 침묵의 단락은 오늘의 어떤 보복도 정당화하는 근거가 되지 못하며, 오직 한 낱말이 서로 다른 무리를 부르는 문장 앞에서 멈추어 가르는 읽기만을 우리에게 남깁니다.</p>
+<h3>네 입이 이제 어디 있느냐는 물음과 돌아온 말의 무게</h3>
+<p>9장 28절의 신당 잔치 자리에서 가알은 아비멜렉은 누구며 세겜은 누구기에 우리가 아비멜렉을 섬기리요라고 기세등등하게 외쳤습니다. 그때 스불은 가알의 말 속에서 그 장관은 스불이 아니냐라며 제삼자로 불리던 사람이었습니다. 그런데 38절 성문 앞에서는 바로 그 스불이 말하는 이가 되어 가알의 지난 말을 그대로 꺼내 놓습니다. 히브리 원문에서 두 절에는 미 아비멜렉 키 나아브덴누, 곧 아비멜렉이 누구냐 우리가 그를 섬기다니라는 똑같은 어구가 놓여 있습니다. 개역한글은 앞을 누구기에로, 뒤를 누구관대로 달리 옮기고 전에라는 말을 보태어 우리말 독자의 눈에는 이 생생한 겹침이 잘 보이지 않습니다.</p>
+<p>스불이 그 말을 되받을 때 세겜은 누구냐라는 한 구절은 빠지고, 그 자리에 아예 에포 피카, 곧 네 입이 이제 어디 있느냐라는 새 물음이 가알의 입을 향해 꽂힙니다. 또한 29절에서 가알이 아비멜렉을 향해 군대를 더하고 나오라고 외쳤던 동사 체가 38절에서는 스불의 입을 통해 이제 나가서 그들과 싸우라는 명령으로 가알 자신에게 떨어집니다. 본문은 그 말 앞에서 입을 다문 가알의 침묵을 탓하지도 기리지도 않으며, 스불을 지혜로운 모략가로 판정하지도 않습니다. 오래전 화가 난 날 내뱉은 말을 누군가 다시 꺼내어 그때 그 입은 지금 어디 있느냐고 되물을 때, 차마 아무 말도 하지 못하고 서 있는 분이 계신다면, 이 본문은 그분께 해명을 요구하지도 않고 오늘 해야 할 어떤 짐도 얹지 않습니다.</p>
+<h3>두 번의 봄과 한 낱말 속에 뒤섞인 치는 무리와 맞는 무리</h3>
+<p>본문에는 와야르, 곧 그가 보았다는 동사가 두 사람의 눈을 통해 나란히 놓입니다. 36절에서 가알은 산에서 내려오는 무리를 보고 스불에게 말하며, 산 그림자를 사람으로 보았다는 반박을 받고도 37절에서 다시 본 것을 말합니다. 반면 43절에서 아비멜렉은 성에서 나오는 무리를 보고 아무 말 없이 일어나 칩니다. 같은 봄이 한 사람에게서는 거듭된 말을 부르고 다른 사람에게서는 말 없는 공격을 부르지만, 아비멜렉의 행동은 사람을 치는 일이기에 결코 신속한 실행력의 모범이 될 수 없고, 스불의 산 그림자 발언도 속내가 적혀 있지 않아 경청의 교훈으로 삼을 수 없습니다. 본문은 두 번의 봄을 평가 없이 나란히 둘 뿐입니다.</p>
+<p>더욱 눈여겨보아야 할 대목은 43절 한 절 안에 백성이라는 낱말 하암이 두 번 나오는 장면입니다. 앞의 하암은 아비멜렉이 세 떼로 나누어 밭에 매복시킨 무리이고, 뒤의 하암은 아무것도 모른 채 성에서 나오는 무리입니다. 개역한글은 앞에 자기라는 말을 보태어 구별했지만, 원문은 치는 무리와 맞는 무리를 똑같이 하암이라는 한 낱말로 부르며 누구의 편인지 표시를 붙이지 않습니다. 이 열두 절에서 하암은 열 번 나오는데, 일곱 번은 아비멜렉의 무리이고 두 번은 성읍의 무리이며 42절의 한 번은 문맥으로 미루어 성읍 무리로 읽힙니다. 독자는 하암이라는 한 낱말을 만날 때마다 걸음을 멈추고 앞뒤의 행위를 살펴 지금 이 낱말이 어느 무리를 가리키는지 일일이 갈라 읽어야 합니다.</p>
+<h3>뭉뚱그린 우리라는 말을 멈추고 시간과 몸의 자리를 가르는 일</h3>
+<p>9장 23절과 56절에서 서술자는 하나님을 주어로 세우지만, 그 사이에 놓인 이 열두 절에서는 하나님의 이름을 한 번도 부르지 않습니다. 우리는 이 침묵을 하나님이 손을 떼셨다는 절망으로도, 하나님이 이 학살을 뒤에서 이끄셨다는 섭리 공식으로도 채우지 않습니다. 신명기 29장의 소금 구절을 끌어와 저주의 성취로 단정하지도 않고, 파괴의 숫자를 부풀리지도 않습니다. 이 단락이 오늘 우리에게 요구하는 유일한 실천은, 한 낱말 속에 여러 사람을 뭉뚱그려 넣지 않고 멈춰 서서 무리를 가르는 일입니다.</p>
+<p>주일학교 교사 회의에서 우리 아이들이라는 한마디를 쓸 때, 그 낱말 안에는 매주 밝은 얼굴로 나오는 아이와 몇 주째 보이지 않는 아이가 함께 섞여 있습니다. 이번 회의에서는 순서를 두 칸으로 나누어 매주 오는 아이 이야기 십 분과 몇 주째 보이지 않는 아이 이야기 십 분을 시계로 재어 따로 다뤄 보십시오. 또한 사무실이나 사업장에서 전 직원 건강검진 날을 하루로 묶어 잡으면, 야간 근무자는 밤을 꼬박 새운 몸으로 아침 검진 줄에 서야 합니다. 주간 근무자와 야간 근무자의 검진 날을 각자의 근무 시간에 맞춰 따로 잡고, 야간 근무자 몫의 검진 시간은 근무로 인정해 주십시오. 회의의 시간을 가르고 몸이 쉬는 날을 가르는 그 멈춤 속에서, 우리는 우리라는 한 낱말 뒤에 가려졌던 이웃의 얼굴을 비로소 마주하게 됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 30편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

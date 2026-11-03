@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두려운 밤의 순종과 닫히지 않은 이름, 여룹바알</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 17편 &middot; 사사기 6:25-32</span>
+      <h1>두려운 밤의 순종과 닫히지 않은 이름, 여룹바알</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 6장 25절부터 32절까지의 이야기는 깊은 밤에 시작하여 소란스러운 아침을 지나 그날에라는 시간 표지에서 조용히 멈추어 섭니다. 그 밤에 여호와께서는 그에게 말씀하시며 자신을 네 하나님 여호와라 부르시고, 네 아비의 수소와 네 아비의 바알의 단을 헐며 그 곁의 아세라 상을 찍고 규례대로 번제를 드리라고 명하십니다. 명령을 받은 기드온은 그의 종들 가운데서 열 사람을 데리고 그 일을 수행하는데, 성경은 그 밤의 광경을 참으로 독특하고도 정직한 한 문장으로 기록해 두었습니다.</p>
+<p>우리는 흔히 순종의 이야기를 읽을 때 두려움을 완전히 떨쳐 낸 영웅의 담대함을 기대하거나, 반대로 밤에 숨어 일한 모습을 부끄러운 한계로 지적하고 싶어 합니다. 또 이야기의 끝에서 붙여진 여룹바알이라는 이름을 두고 통쾌한 승리의 판결문처럼 마침표를 찍으려 합니다. 그러나 히브리어 원문이 한 절 안에 나란히 놓아둔 두려움과 순종의 배치, 그리고 마지막 절에 열린 채로 남겨 둔 이름 풀이의 문법을 찬찬히 들여다보면, 성경은 우리가 서둘러 닫아걸려는 결론 대신 훨씬 깊고 넓은 침묵의 창을 열어 두고 있음을 발견하게 됩니다.</p>
+<h3>두려움과 말씀하신 대로를 한 줄에 나란히 적는 성경의 잣대</h3>
+<p>6장 27절은 기드온이 종 열을 데리고 여호와의 말씀하신 대로 행하되 아비의 가족과 그 성읍 사람들을 두려워하므로 이 일을 감히 백주에 행하지 못하고 밤에 행하니라라고 적습니다. 원문을 살피면 그가 행했다라는 뜻의 히브리어 동사 바야아스가 한 절 안에 두 번 쓰였습니다. 앞의 행함은 여호와께서 그에게 말씀하신 대로에 묶여 있고, 뒤의 행함은 밤에라는 시간에 묶여 있으며, 그 두 행함 한가운데에 아버지의 집안과 성읍 사람들을 두려워했다는 사실이 놓여 있습니다. 개역한글이 넣은 감히라는 말이나 이 일을이라는 말은 원문에 없고, 두려워하므로의 연결어 카아셰르 역시 까닭으로도 읽히고 그때라는 시간으로도 읽히는 말이어서 어느 하나로 단정되지 않습니다.</p>
+<p>놀라운 것은 서술자가 이 두려움을 믿음 없는 겁쟁이의 태도라고 꾸짖지도 않고, 밤을 택한 것을 지혜로운 전략이었다고 칭찬하지도 않는다는 점입니다. 단을 헐고 나무를 찍고 다시 단을 쌓은 낱낱의 행동을 되풀이해 묘사하는 대신, 서술자는 오직 여호와께서 그에게 말씀하신 대로라는 단 하나의 잣대를 문장 맨 앞에 세워 두고 그 곁에 두려움과 밤을 지우지 않은 채 함께 적어 놓았습니다. 두려움과 말씀하신 대로가 한 절 안에서 서로를 밀어내지 않고 나란히 놓여 있다는 이 사실 자체가, 말씀을 따라 걷는 인간의 실제 걸음을 바라보는 성경의 눈길입니다.</p>
+<h3>아침의 무거운 추궁과 열린 요청으로 남은 여룹바알의 이름</h3>
+<p>날이 밝아 아침 일찍 일어난 성읍 사람들은 바알의 단이 헐리고 아세라가 찍혔으며 그 지어진 단 위에 둘째 수소가 드려진 광경을 목격합니다. 그들은 이것이 누구의 소위인고 서로 묻고 캐고 찾은 끝에 요아스의 아들 기드온이 행했다는 답에 이르자, 아버지 요아스에게 네 아들을 끌어내라 그가 죽게 하라라고 베야모트의 요구를 들이밉니다. 이 요구는 단순한 언짢음이나 항의가 아니라 목숨을 내놓으라는 무거운 죽음의 요구입니다. 서술자는 이 거센 요구를 낮추어 적지 않으면서도 성읍 사람들을 악역으로 판정하지 않고, 기드온이 실제로 끌려 나왔는지 그 결말조차 비워 둔 채 요아스의 대답으로 시선을 옮깁니다.</p>
+<p>요아스는 자기를 둘러선 이들에게 너희가 바알을 위하여 다투느냐, 그를 위하여 다투는 자는 아침까지 죽임을 당하리라, 그가 신이라면 그의 제단을 헐었으니 그가 그를 위하여 다투게 하라라고 말합니다. 이어지는 32절은 그날에 그에게 여룹바알이라 불렀으니 말하기를 그의 제단을 헐었으니 그 바알이 그와 다투게 하라 함이었더라라고 맺습니다. 두 절에 네 번 거듭되는 쟁론은 원문에서 모두 다투다라는 뜻의 리브이고, 요아스의 말 끝과 이름 풀이 끝은 다투게 하라라는 지시형으로 똑같이 끝납니다. 이름을 부른 주어가 누구인지도 적혀 있지 않고, 풀이 전체가 말하기를이라는 뜻의 레모르로 묶인 인용일 뿐이며, 이 여덟 절 어디에도 바알이 실제로 다투었는지 다투지 못했는지 결과는 적혀 있지 않습니다. 여룹바알은 이미 끝난 승리의 증명이 아니라 열린 요청을 품은 이름입니다.</p>
+<h3>남의 밤과 말을 섣불리 판정하지 않고 뒤끝을 함께 지는 몸</h3>
+<p>이 본문의 여백은 오늘 우리의 목회와 일터에 깊은 절제를 가르쳐 줍니다. 하나님께서 말씀하셨다고 믿는 일을 마음에 받았으나 두려운 채로 남이 보지 않는 밤 시간에 그 일을 감당하고 있는 사람, 지금 형편으로는 도무지 낮에 할 수 없는 사람에게 이 본문은 겁내지 말라는 재촉도 밤이 지혜라는 처방도 건네지 않습니다. 그저 말씀하신 대로 행하되라는 구절과 두려운 밤이 한 줄에 함께 적혀 있음을 조용히 보여 줄 뿐입니다. 또한 교회 갈등 한가운데서 오랫동안 반대편에 서 있던 집안 어른이 문득 자녀 편을 드는 말을 할 때에도, 6장 31절이 요아스의 속마음이나 동기를 적지 않았듯 목회자는 이제 믿음이 생기셨군요라거나 회심한 아버지라는 성급한 이름을 붙이지 않고 들은 말을 들은 말 그대로 남겨 두어야 합니다.</p>
+<p>나아가 27절이 그 밤의 일을 기드온 혼자가 아니라 그의 종들 가운데 열 사람과 함께한 일로 기록했다는 사실을 세무 일터의 자리에서 기억해 봅니다. 큰 세무 신고 마감 전날 밤에 직원 몇 사람이 사무실에 함께 남아 밤일을 치렀다면, 다음 날 아침 대표가 누구보다 앞서 출근해 사무실 쓰레기통을 비우고 분리수거 봉투를 두 손에 들고 내려가 내놓는 것, 그것은 수당을 얹어 주는 일과는 결이 다른 책임입니다. 함께 치른 밤일의 뒤끝 하나를 대표의 몸으로 직접 받는 일이기 때문입니다. 그 밤에 그에게 말씀하시고 말씀하신 대로라는 잣대를 남겨 주신 하나님 앞에서, 남의 두려움을 함부로 꾸짖거나 열린 이름을 내 결론으로 닫지 않고 맡겨진 밤일의 무게를 정직하게 나누어 지는 삶이 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 17편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>같은 이름으로 불린 문간에서, 적히지 않은 대답의 자리를 비워 두다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 52편 &middot; 사사기 18:14-20</span>
+      <h1>같은 이름으로 불린 문간에서, 적히지 않은 대답의 자리를 비워 두다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>라이스를 탐지하러 갔던 다섯 사람이 미가의 집 앞에서 형제들에게 말을 건네며 사사기 18장 14절부터 20절의 장면이 열립니다. 개역한글은 "이 집에 에봇과 드라빔과 새긴 신상과 부어만든 신상이 있는줄을 너희가 아느냐 그런즉 이제 너희는 마땅히 행할 것을 생각하라"고 옮기지만, 원문은 단수인 이 집이 아니라 여럿을 가리키는 "이 집들에"라고 적고 있으며, "마땅히"라는 당위의 덧칠도 없이 그저 "이제 너희가 무엇을 할지 알라"고만 말합니다. 그들이 레위인 소년의 집에 이르러 문안할 때 병기를 띤 단 자손 육백 명은 문 입구에 서고, 다섯 사람이 안으로 들어가 제의물을 취하는 동안 제사장 또한 그 무장한 육백 명과 함께 같은 문 입구에 섭니다.</p>
+<p>소란스러운 문간에서 제사장이 던진 말은 "너희가 무엇을 하느냐"라는 짧은 물음 하나뿐입니다. 이 단락 전체를 통틀어 그가 입을 열어 한 말은 이것이 전부입니다. 그러나 돌아온 것은 행위에 대한 해명이 아니라 "잠잠하라 네 손을 입에 대라 우리와 함께 가서 우리의 아비와 제사장이 되라"는 다그침과 어느 쪽이 낫겠느냐는 비교의 물음이었습니다. 그리고 그 물음 뒤에 제사장의 대답은 한 글자도 적히지 않은 채, 그의 마음과 손과 걸음만이 조용히 기록되며 일곱 절의 이야기가 멈춥니다. 같은 직함이 다른 입과 다른 둘레로 다시 건네지고, 물음 뒤에 말 대신 행동만이 적힌 이 문간의 풍경이 오늘 우리의 읽기를 붙잡습니다.</p>
+<h3>끝소리 하나로 갈린 부름, 나에게서 우리에게로</h3>
+<p>"아비와 제사장이 되라"는 청은 사사기 17장 10절과 18장 19절 두 자리에서 한 글자도 다르지 않게 되풀이됩니다. 구약 성경 전체에서 아비와 제사장이라는 두 낱말이 '레아브 울레코헨'으로 나란히 붙어 선 곳은 오직 이 두 절뿐입니다. 히브리어 원어로 읽으면 앞선 17장 10절은 나에게 되어 달라는 '베흐예 리'이고, 18장 19절은 우리에게 되어 달라는 '베흐예 라누'입니다. 개역한글은 이를 "나를 위하여"와 "우리의"로 다르게 번역하여 원문에 없는 갈림을 만들었지만, 정작 원문이 보여 주는 차이는 '나에게'와 '우리에게'를 가르는 끝소리 하나뿐입니다.</p>
+<p>그러나 똑같은 직함을 둘러싼 바깥의 둘레는 네 가지나 달라졌습니다. 앞선 자리에서는 미가라는 한 사람이 자기 이름을 걸고 "나와 함께 살라"고 청하며 해마다 은 열과 의복 한 벌과 식물을 주겠다는 구체적인 약속을 내놓았지만, 뒤의 자리에서는 이름조차 따로 적히지 않은 "그들이" 입을 열어 "우리와 함께 가라"고 요구하며 약속의 자리에 비교의 물음을 놓습니다. 이 묵상은 두 청 가운데 어느 쪽이 더 나았는지 매기지 않으며, 뒤의 말이 앞의 말을 의도적으로 고쳐 쓴 것인지도 단정하지 않습니다. 다만 똑같은 이름으로 불리는 일이라 할지라도 그 직함이 누구의 입에서, 누구에게, 무엇과 함께 건네지는지 그 둘레까지 함께 읽어야 비로소 그 말이 온전히 보인다는 사실만을 마음에 새깁니다.</p>
+<h3>물음 뒤에 놓인 물음, 그리고 비워 둔 대답의 칸</h3>
+<p>이 일곱 절 안에서 "하다"라는 동사는 두 번 등장하며, 두 번 모두 "무엇"을 묻는 말 안에 들어 있습니다. 다섯 사람이 형제들에게 "무엇을 할지 알라"고 말한 뒤, 제사장은 제의물을 가지고 나오는 그들을 향해 "마 아템 오심", 곧 "너희가 무엇을 하느냐"고 묻습니다. 하지만 18장 19절 어디에도 "우리가 무엇을 하고 있다"는 대답은 없습니다. 그 자리에 놓인 것은 네 마디의 요구와 "하토브 … 오", 곧 "좋으냐 … 아니면"으로 두 갈래 가운데 하나를 묻는 비교 물음 하나입니다. 한 절에 제사장이라는 낱말이 세 번이나 거듭 서고, 두 항 모두 "네가 되는 것"이라며 듣는 그 사람을 직접 부르는 동안, 첫 항인 "한 사람의 집"에서 미가의 이름은 조용히 빠져 있습니다.</p>
+<p>원문은 그들이 쏟아낸 네 마디와 비교 물음이 제사장의 물음에 대한 답인지 표시하지 않습니다. 또한 이 묵상은 그들의 물음을 달콤하게 꾀는 유혹의 말로도, 더 넓은 자리를 권하는 정당한 제안으로도 판정하지 않습니다. 18장 19절의 물음과 20절의 서술 사이에는 제사장의 말이 한 마디도 없으며, 정경은 물음과 행동 사이를 그대로 비워 두었습니다. 오늘 우리 곁에도 자신이 머물 곳을 스스로 고를 수도 없고 선뜻 대답할 수도 없는 막막한 형편에 놓인 분이 계실지 모릅니다. 본문이 물음 뒤에 그의 말을 적지 않았듯, 우리 또한 그런 분에게 섣부른 대답이나 동작을 청하지 않고, 다만 물음이 그 사람을 향해 건네졌다는 사실 하나를 조용히 함께 두려 합니다.</p>
+<h3>문 입구에 섰던 사람에게로 넘어간 손과 우리의 멈춤</h3>
+<p>단락을 따라 읽다 보면 "취하다"를 뜻하는 히브리어 '라카흐'의 손이 세 번 바뀌는 흐름이 선명하게 드러납니다. 17절에서는 다섯 사람이 취하고, 18절에서는 제사장이 "이들이" 취하는 것을 보더니, 마침내 20절에서는 병기를 띤 육백 명과 함께 문 입구에 섰던('니차브') 제사장 자신이 에봇과 드라빔과 새긴 우상을 취하는 손이 됩니다. "들어가다"라는 걸음 역시 앞의 세 번은 미가의 집으로 들어가는 걸음이었으나 마지막 한 번은 제사장이 "그 백성 중으로" 들어가는 걸음으로 바뀝니다. 원문은 "제사장이 마음에 기뻐하여"를 "바이이타브 레브 하코헨", 곧 "제사장의 마음이 좋았다"로 적을 뿐, 그 마음이 직함을 좋게 여겼는지, 둘째 항을 좋게 여겼는지, 그가 왜 문 입구에 섰었는지 아무런 동기의 이름도 붙이지 않습니다.</p>
+<p>본문이 남겨 둔 이 절제의 경계는 목회와 일상의 자리에서 우리가 어떻게 손과 말을 다루어야 하는지 구체적인 지혜를 줍니다. 장례를 마친 뒤 유품을 정리하는 집에 심방할 때, 목회자는 손이 바뀐다는 본문의 꼴 하나만 기억하며 장롱이나 책장처럼 무거운 가구를 옮기는 일만 몸으로 맡고, 작은 물건은 유족의 손이 먼저 집어 들게 기다렸다가 유족이 집어 든 물건에 대해서만 말을 받아야 합니다. 또한 양도 상담에서 고객이 "집 한 채뿐"이라고 말할 때 세무사는 18장 14절 원문이 단수 "이 집에"가 아니라 복수 "이 집들에"를 썼던 것을 떠올리며, 세액부터 계산하기에 앞서 "지금 이름이 올라 있는 집이 몇 채입니까, 그 집마다 어느 분이 살고 있습니까"라는 두 물음을 먼저 소리 내어 여쭈어야 합니다. 주께서 행하신 일로 적힌 문장이 하나도 없는 이 일곱 절 앞에서, 적히지 않은 남의 대답을 제 짐작으로 채워 판정해 온 지난날을 고백하며 본문이 비워 둔 자리는 끝까지 비워 두기를 결단합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 52편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>세 번 적힌 한 사람같이라는 말, 판정의 붉은 줄을 긋지 않은 자리에서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 57편 &middot; 사사기 20:1-11</span>
+      <h1>세 번 적힌 한 사람같이라는 말, 판정의 붉은 줄을 긋지 않은 자리에서</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 20장 1절부터 11절까지의 열한 절은 단에서부터 브엘세바까지와 길르앗 땅에서 나온 모든 이스라엘 자손이 미스바에 모이는 장면으로 시작됩니다. 2절은 온 지파의 어른들이 선 그 자리를 하나님 백성의 총회라 부르며 칼을 빼는 보병이 사십만이었다고 적고, 3절은 이스라엘 자손이 미스바에 올라간 것을 베냐민 자손이 들었다고 짧게 기록한 뒤 이 악한 일의 정형을 우리에게 고하라는 물음으로 넘어갑니다. 이어 죽임을 당한 여인의 남편인 레위 사람이 4절부터 7절까지 기브아에서 겪은 일을 진술하며 의견과 방책을 내라고 청하자, 모든 백성이 일어나 장막과 집으로 돌아가지 않겠다고 결의하고 양식을 예비할 몫을 정한 뒤 11절에서 그 성읍을 향해 다시 모입니다.</p>
+<p>거대한 무리가 움직이는 이 열한 절 안에서 하나님께서 말씀하시거나 행하시는 자리는 단 한 곳도 없습니다. 서술자는 같은 말을 세 번 거듭 적어 모임을 묶어 주지만, 그 놀라운 일치에도 레위 사람의 진술에도 옳다거나 그르다는 판정을 붙이지 않습니다. 더욱이 온 무리가 하나처럼 모인 자리 곁에는 베냐민 자손이 들었다는 3절의 짧은 한 줄이 나란히 놓여 있습니다. 이 열한 절 동안 베냐민 자손의 말은 한마디도 실리지 않고, 그들이 왜 그 자리에 없었는지, 소식을 들은 뒤 무엇을 했는지 원문은 끝내 채우지 않습니다. 2절에서 그 모임을 하나님 백성의 총회라 부른 것 역시 이름이 붙었다는 사실일 뿐 그 결의를 승인하거나 물리치는 판정이 아니기에, 우리는 온 무리의 일치와 한 지파의 침묵이 나란히 놓인 긴장을 섣불리 풀지 않은 채 본문 앞에 섭니다.</p>
+<h3>케아이쉬 에하드 — 한 말 아래에서 세 번 바뀌는 이름과 일</h3>
+<p>이 단락의 1절과 8절과 11절 세 곳을 개역한글 성경은 일제히, 일제히, 하나 같이로 나누어 옮겼지만, 히브리 원문에서 이 세 자리는 글자 하나 다르지 않은 똑같은 한 말, 케아이쉬 에하드, 곧 한 사람같이입니다. 그런데 똑같은 이 한 말 앞에 서는 무리의 이름은 1절에서 회중, 8절에서 모든 백성, 11절에서 이스라엘 모든 사람으로 세 번 다 다릅니다. 무리가 하는 일 또한 1절에서는 모이다, 8절에서는 일어나다, 11절에서는 모여들다로 세 번 모두 다르게 적혀 있습니다.</p>
+<p>무리가 향하는 방향을 보아도 분명한 차가 드러납니다. 1절에서는 여호와께, 미스바로 향하고 11절에서는 그 성읍으로 향하는데, 원문에서는 두 곳에 똑같이 향함을 뜻하는 짧은 전치사 엘이 서고 그 뒤의 목적지만 여호와와 그 성읍으로 바뀝니다. 개역한글이 1절을 여호와 앞에로 옮기고 11절에 원문에 없는 치려고라는 말을 보탠 것과 달리, 원문은 방향의 바뀜만을 담담히 보여 주며 8절에는 아예 향하는 곳을 적지 않습니다. 서술자는 이 세 번의 일치를 칭찬하지도 책망하지도 않으므로, 오늘 우리는 이 본문을 교회 연합의 모범으로 삼지도 않고 성난 군중의 경고로 삼지도 않은 채 한 말 아래에서 무리의 이름과 일이 세 번 바뀐다는 사실만을 무겁게 받아들입니다.</p>
+<h3>바타모트 — 19장의 서술과 20장 레위인의 진술, 겹침과 갈림</h3>
+<p>4절에서 7절까지 이어지는 레위인의 일인칭 진술을 19장의 서술과 나란히 놓으면 겹치는 자리와 갈리는 자리가 동시에 드러납니다. 밤에 집을 에워싼 일은 19장 22절과 20장 5절에 모두 있고, 그 여자를 나누어 이스라엘에 보낸 일과 망령된 일이라는 낱말도 두 장에 모두 나타납니다. 원문을 보면 서술자는 4절에서 레위인을 하니르짜하, 곧 죽임을 당한 여인의 남편이라 부르고, 레위인은 5절에서 바타모트, 곧 그 여자가 죽었다고 말합니다. 개역한글이 5절을 그로 죽게 한지라로 옮겨 그 여자가 주어인 문장을 기브아 사람들이 주어인 문장으로 바꾸고 6절에 원문에 없는 시체라는 말을 넣은 대목은 원어와 결이 다릅니다.</p>
+<p>갈리는 대목도 뚜렷이 세 가지입니다. 19장의 서술에는 죽음을 직접 말하는 낱말이 없었고, 19장 25절에서 레위인이 자기 첩을 붙잡아 밖으로 내보낸 일은 20장의 진술에서 찾아볼 수 없으며, 19장 22절에서 성읍 비류들이 상관하리라라고 했던 말은 20장 5절에서 나를 죽이려 하고로 바뀌어 나옵니다. 그러나 서술자는 이 겹침에도 갈림에도 아무런 논평을 덧붙이지 않으며, 레위인의 말이 얼마나 맞는지나 5절의 일이 어느 시점의 일인지 정해 주지 않습니다. 그 여자는 두 장 어디에서도 한마디 말을 남기지 못했기에, 우리는 그 여자의 일을 설교의 교훈 거리로 소비하지 않고 겹침과 갈림이 판정 없이 나란히 놓인 자리를 있는 그대로 읽습니다.</p>
+<h3>나발라와 라아소트 — 진술에서 결의로 이어진 낱말과 이름을 바꾸지 않는 정직</h3>
+<p>6절에서 레위인이 그들이 이스라엘 중에서 음행과 망령된 일을 행하였음이라 하며 진술을 닫자, 9절에서 백성은 우리가 기브아 사람에게 이렇게 행하리니라며 결의를 엽니다. 행하다라는 동사는 이 단락에 네 번 나오는데 레위인의 입에 한 번, 백성의 입에 세 번 놓이며, 사사기에 네 번 쓰인 망령된 일, 곧 나발라는 네 번 모두 행하다와 한 절에 섭니다. 또한 원문 9절에는 그것을 거슬러 제비로라는 베고랄만 있을 뿐 개역한글의 치되는 번역이 보탠 말이며, 10절에서 백에 열, 천에 백, 만에 천을 뽑아 양식을 예비하게 한 뒤 붙은 징계하게라는 말 역시 원문에서는 단순히 행하려고를 뜻하는 라아소트입니다. 결의가 진술의 낱말을 다시 쓰고 있으나 본문은 그 이어짐에 대해 어떤 판정도 내리지 않습니다.</p>
+<p>서술자가 어디에도 판정의 붉은 줄을 긋지 않은 이 열한 절 앞에서 일상의 걸음을 멈추어 봅니다. 지금 기도할 말도 무엇을 할 힘도 서지 않는 분이 계시다면, 이 단락이 하나님의 말씀이나 독자를 향한 요구를 두지 않듯 아무런 할 일을 만들어 드리지 않고 그 자리에 함께 멈춥니다. 성경공부 모임에서 4절부터 7절을 읽을 때에는 인도자가 4절 앞마디인 레위 사람 곧 죽임을 당한 여인의 남편이 대답하여 가로되까지만 자기 목소리로 읽고, 내가 내 첩으로 더불어부터 7절 끝까지는 다른 한 사람에게 건네 읽게 하여 서술자의 말과 당사자의 진술이 갈리는 경계를 귀로 듣게 하되 그 진술을 평가하는 물음은 던지지 않습니다. 세무 일터에서는 10절의 행하려고가 번역에서 징계하게라는 무거운 말로 바뀐 것을 거울삼아, 가산세 고지서를 고객에게 설명할 때 벌금이라는 말로 바꾸어 부르지 않고 고지서에 적힌 가산세라는 이름 그대로 금액과 근거 조문을 전하고자 합니다. 본문이 말하지 않은 판정을 서둘러 내리고 한쪽의 말을 내 생각으로 채우던 습관을 고백하며, 들은 말은 말한 이의 말로 두고 문서의 이름은 적힌 그대로 부르는 정직을 결단합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 57편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

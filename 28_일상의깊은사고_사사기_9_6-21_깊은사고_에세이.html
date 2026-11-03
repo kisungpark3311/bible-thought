@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이미 찍힌 가결 도장 위에도 진실과 온전함이라는 물음은 남습니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 28편 &middot; 사사기 9:6-21</span>
+      <h1>이미 찍힌 가결 도장 위에도 진실과 온전함이라는 물음은 남습니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>세겜의 모든 사람과 밀로의 모든 족속이 한자리에 모여 아비멜렉을 왕으로 삼았습니다. 이미 결의는 끝났고 사람들의 손으로 세운 권력이 성읍 한가운데 자리를 잡았습니다. 바로 그때 기드온의 막내아들 요담이 그리심산 꼭대기로 올라가 서서 소리를 높여 외칩니다. 세겜 사람들아 나를 들으라 그리하여야 하나님이 너희를 들으시리라 하는 그의 외침 속에서, 원문의 동사는 하나님이 들으시리라는 기대로도, 들으시기를 바란다는 소원으로도 읽힙니다. 사사기 9장 6절부터 21절까지의 이 본문에서 하나님이 주어로 등장하는 유일한 자리는 서술자가 전하는 사건이 아니라 이처럼 요담의 입술에 놓인 간절한 기대 혹은 소원 하나뿐입니다.</p>
+<p>요담은 나무들이 왕을 구하러 나선 우화를 들려준 뒤, 이미 아비멜렉을 왕으로 세운 사람들을 향해 조건의 문장을 다시 겁니다. 우화 속 가시나무가 내건 조건이 요담 자신의 목소리로 옮겨지면서, 끝난 줄 알았던 결정 위에 피할 수 없는 물음이 포개집니다. 말을 마친 요담은 달려 도망하여 브엘로 가서 거기 머물렀고, 본문은 세겜 사람들의 대답을 적지 않은 채 장면을 닫습니다. 그러나 그리심산 꼭대기에서 울려 퍼진 그 목소리는 오늘 우리에게도 또렷한 명제 하나를 남깁니다. 이미 내린 결정에도 진실과 온전함으로 했다면이라는 조건이 걸리고, 그 조건의 두 결말은 결정한 모두를 함께 붙든다는 사실입니다.</p>
+<h3>끝난 결정 위에 다시 걸리는 진실과 온전함의 조건</h3>
+<p>우화 속 가시나무는 지금 기름을 부으려는 나무들에게 너희가 참으로 내게 기름을 부어 너희 왕을 삼겠거든 와서 내 그늘에 피하라고 말합니다. 반면 요담은 이미 아비멜렉을 왕으로 세운 사람들에게 말합니다. 원문에서 15절과 16절, 그리고 19절의 조건은 모두 임 베에메트, 곧 참으로 한다면이라는 같은 말로 열리며, 요담은 거기에 우베타밈이라는 온전함의 조건을 더합니다. 개역한글은 이 한 낱말을 참으로, 과연 진실하고, 진실과로 달리 옮기고 온전함을 의로움으로 번역하며 16절을 물음꼴로 바꾸었으나, 원문의 16절은 물음이 아니라 결말 없이 멈춘 조건문입니다. 그 조건은 너희가 오늘날 일어나 우리 아버지의 집을 쳐서 그를 왕으로 삼았다는 17절과 18절의 직설적 고발을 지나 19절에서 다시 세워집니다.</p>
+<p>가시나무의 조건은 지금 하려는 일을 묻고 불을 가시나무에서 레바논의 백향목으로 한 방향에만 보내지만, 요담의 조건은 이미 한 일을 묻고 아비멜렉에게서도 불이 나오고 세겜 사람들과 밀로 족속에게서도 불이 나와 서로를 사를 것이라며 양쪽 모두에게 결말을 돌려줍니다. 회의록에 가결이 적혔다고 해서 물음이 끝나지 않습니다. 만약 어떤 결정을 두고 교회가 두 편으로 나뉘었다면, 목회자는 같은 주간에 양쪽 모임에 한 번씩 찾아가 이 일이 진실과 온전함으로 되지 않았다면 불은 서로에게서 나옵니다라는 똑같은 한 문장만 말하고 오십시오. 한쪽 모임에서만 듣고 오는 것과 달리, 같은 문장이 두 방에 놓이는 동안 어느 편도 상대방만 불이 나오는 쪽으로 세울 수 없게 됩니다.</p>
+<h3>나의 열매를 부르는 나무들과 먼저 헤아려야 할 손의 수고</h3>
+<p>왕이 되어 달라는 청을 받은 감람나무와 무화과나무와 포도나무는 나의 기름, 나의 단것과 아름다운 실과, 나의 새 술이라며 저마다 자기 열매의 이름을 부릅니다. 그리고 왕이 되는 일을 라누아 알 하에침, 곧 나무들 위에서 흔들리고 떠도는 일로 부르며 사양합니다. 반면 가시나무는 자기 열매를 하나도 대지 않은 채 너희를 주어로 삼아 내 그늘에 피하라는 하수 베칠리로 답합니다. 원문에는 아래라는 낱말이 없으며, 그 그늘에 백향목이 정말 피할 수 있는지나 청에 들지도 않은 백향목이 왜 불의 대상이 되는지는 원문이 풀지 않습니다. 요담의 적용도 세 나무가 누구인지 말하지 않으므로, 우리는 선출된 사람을 가시나무로 읽거나 자리를 사양한 사람을 감람나무로 높이지 않고, 자리의 이름보다 자기 열매의 이름을 먼저 부른 세 나무의 말투만을 마음에 새깁니다.</p>
+<p>이어 요담은 이것이 여룹바알과 그 집을 선대함이냐 이것이 그 행한 대로 그에게 보답함이냐고 조건을 걸며 대상을 여룹바알과 그 집으로 함께 묶습니다. 동업자가 세상을 떠났을 때 남은 동업자들이 유족의 지분을 장부가액으로만 낮게 정산하자고 세무사에게 의뢰해 오는 경우가 있습니다. 영업권 평가를 빼면 그 차액은 고스란히 유족의 생활비와 상속세 재원에서 빠지게 됩니다. 정산을 시작하기 전에, 떠난 동업자가 처음 데려온 거래처 수와 그가 함께 버틴 적자 연도 수를 유족 대리인 앞에서 숫자로 먼저 말해 주십시오. 장부가액부터 읽어 내려가는 것과 전혀 다릅니다. 본문은 구체적인 계산법을 주지 않지만, 계산하기 전에 그 손이 행한 일의 숫자들이 먼저 회의실에 놓이게 합니다.</p>
+<h3>말을 마치고 떠난 자리와 열린 채로 남겨진 침묵</h3>
+<p>요담은 7절에서 산 꼭대기로 가서 서서 소리를 높여 외쳤고, 21절에서는 바야나스, 곧 달려 도망하여 브엘로 가서 거기 머물렀습니다. 이 두 동작 묶음 사이에 세겜 사람들이 그 말을 들었다거나 대답했다는 동사는 하나도 없습니다. 개역한글에 나오는 두려워하여라는 말도 원문에는 없는 동사이며, 원문은 미프네 아비멜렉 아히우, 곧 그 형제 아비멜렉 앞에서라는 말만 붙입니다. 요담의 속마음이 두려움이었는지 용기였는지 이 문장으로는 알 수 없고, 서술자는 요담을 예언자로도 영웅으로도 부르지 않습니다. 뒤에 57절에서 서술자가 이 연설을 요담의 저주라 부르지만 16절부터 20절 안에는 저주라는 낱말이 없으며, 두 갈래의 결말 중 어느 쪽이 이루어졌는지도 이 범위는 말하지 않은 채 열린 긴장으로 남겨 둡니다.</p>
+<p>살다 보면 결정의 자리에서 문제를 보았지만 그때도 지금도 입을 열 수 없는 형편에 놓인 분이 있습니다. 이 본문은 말하지 못한 사람을 다루지 않으며, 말을 하고 떠난 요담도 영웅으로 부르지 않았습니다. 그러니 요담을 잣대로 삼아 자신의 침묵을 재지 않으셔도 괜찮고, 오늘 억지로 하실 일도 없습니다. 이 단락에는 서술자가 전하는 하나님의 행위가 없기에 우리는 감사 대신 고백으로 기도의 자리를 엽니다. 이미 정한 일을 다시 묻지 않으려 했던 마음을 내려놓고, 불이 한쪽에서만 나온다고 말하며 상대만 가리키던 입을 닫으며, 떠난 이와 남은 이 모두를 진실과 온전함이라는 한 조건 앞에 정직하게 세우는 우리가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 28편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

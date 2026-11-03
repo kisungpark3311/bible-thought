@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>두 기둥 사이의 일곱 날, 판결을 멈추고 빈자리 곁에 서다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 43편 &middot; 사사기 14:5-19</span>
+      <h1>두 기둥 사이의 일곱 날, 판결을 멈추고 빈자리 곁에 서다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 14장 5절부터 19절까지의 열다섯 절은 마치 똑같은 문장을 양 끝에 하나씩 세워 둔 두 개의 기둥과 같습니다. 딤나로 내려가는 포도원에서 젊은 사자가 소리를 지르며 마주 나왔을 때와 칠 일 잔치의 수수께끼가 풀린 뒤 아스글론으로 내려갈 때, 히브리 원문은 글자 하나 다르지 않은 똑같은 네 낱말, 와티츨라흐 알라우 루아흐 야훼 곧 여호와의 신이 그에게 내렸다는 문장으로 장면을 엽니다. 그 두 기둥 사이로 알리다라는 뜻을 가진 히브리어 나가드 한 마디가 일곱 날 동안 이 손에서 저 손으로 숨 가쁘게 건너갑니다.</p>
+<p>삼손은 손에 아무것도 없이 사자를 염소 새끼 찢듯 찢었으나 그 행한 일을 부모에게 알리지 않았고, 며칠 뒤 사자의 주검에서 꿀을 떠먹고 부모에게 주면서도 그 꿀을 사자의 몸에서 취하였다고는 알리지 않았습니다. 그가 끝내 말하지 않은 그 두 가지 비밀이 잔치의 수수께끼가 되었고, 일곱째 날 해가 지기 전까지 그것을 알리느냐 알리지 못하느냐를 두고 협박과 눈물과 발설이 이어집니다. 놀라운 것은 이 숨 막히는 일곱 날의 걸음 위 어디에도 성경 서술자가 옳고 그름의 판결 표지를 세우지 않는다는 사실입니다.</p>
+<h3>여호와의 신이 내린 자리와 그 뒤의 침묵</h3>
+<p>개역한글 성경으로 읽으면 14장 6절은 삼손이 문장을 이끌며 여호와의 신에게 크게 감동되어 움직이는 것처럼 보이고, 19절은 여호와의 신이 문장 앞에 서서 삼손에게 크게 임하시매로 이어지는 것처럼 보입니다. 그러나 원문 두 절에는 삼손의 이름도 없고 크게에 해당하는 낱말도 없으며, 오직 여호와의 신이 그에게 내렸다는 동일한 네 낱말만 서 있습니다. 다만 그 뒤에 따라오는 풍경이 극명하게 갈립니다. 6절은 사자를 찢는 행위 하나 뒤에 손에 아무것도 없었다는 상황과 부모에게도 알리지 않았다는 침묵이 붙어 장면이 멈추지만, 19절은 아스글론으로 내려감과 삼십 명을 침, 옷을 취함과 수수께끼를 알린 자들에게 줌, 그의 코가 불타오름과 아비 집으로 올라감이 끊김 없이 몰아칩니다.</p>
+<p>더욱 무거운 사실은 원문이 여호와의 신이 내린 일과 그 뒤의 행위 사이에 까닭도 목적도 잇지 않는다는 점입니다. 첫 문장이 말하는 것은 여호와의 신이 그에게 내렸다는 일이고, 사자를 찢거나 아스글론 사람 삼십 명을 친 이는 다음 문장의 그입니다. 본문은 아스글론의 죽음이 내림의 결과인지 순서인지 승인인지 말하지 않으며, 사자의 주검에서 긁어 낸 꿀이 어떤 규정에 걸리는지도 적지 않습니다. 그렇기에 우리는 이 본문을 내가 더 간절히 구하면 같은 힘이 난다는 공식으로 읽지 않으며, 지금 아무 힘도 나지 않는 이웃에게 기도의 과제를 얹지 않고 조용히 그 곁에 머뭅니다.</p>
+<h3>열세 번 건너간 알림과 눈물 앞의 유보</h3>
+<p>두 번의 강림 기둥 사이를 채우는 것은 히브리어 나가드 곧 알리다가 열세 번이나 사람 사이를 옮겨 다니는 소리입니다. 우리말 성경에는 고하다, 풀다, 이르다가 섞여 나와 한 줄기로 보이지 않지만, 원문에서는 내기 조건도 알리면과 알리지 못하면이고, 삼 일이 되도록 풀지 못했다는 말도 알리지 못했다이며, 삼손이 아내에게 일러 주고 아내가 자기 백성의 아들들에게 고한 일도 모두 똑같은 알리다입니다. 부모에게조차 알리지 않은 비밀이 아내의 눈물을 거쳐 성읍 사람들의 입으로 건너가고, 마침내 19절에서 그들은 그 수수께끼를 알린 자들이라 불립니다.</p>
+<p>이 과정에서 본문은 삼 일 동안 알리지 못했다는 기록과 제 칠일에 내려진 위협, 그리고 칠 일 잔치할 동안 아내가 울며 조였다는 기록을 매끄러운 한 줄의 날짜표로 고치지 않고 나란히 세워 둡니다. 서술자는 삼손이 부모에게 알리지 않은 침묵을 감춤의 죄로 읽지 않고, 위협 앞에서 울며 매달린 아내를 어느 한쪽으로 판정하지도 않으며, 그 여자가 그를 조였으므로라는 이유 설명조차 잘잘못을 나누는 문장으로 쓰지 않습니다. 읽는 이의 몫은 울던 이와 버티던 이와 알린 이를 서둘러 판정하던 손을 거두고, 본문이 비워 둔 자리를 내 설명으로 메우지 않는 데까지입니다.</p>
+<h3>두 팔을 내린 강단과 창고로 향하는 걸음</h3>
+<p>삼손이 낸 수수께끼는 사자도 꿀도 이름으로 부르지 않은 채 먹는 자에게서 먹는 것이 나오고 강한 자에게서 단 것이 나왔느니라 하고 두 진술을 던집니다. 성읍 사람들이 해 지기 전에 가져온 답은 달다와 강하다의 순서를 뒤바꾼 두 물음이었고, 무엇이 꿀보다 달겠으며 무엇이 사자보다 강하겠느냐는 그 물음에서 비로소 꿀과 사자가 처음 제 이름으로 불립니다. 독자는 이미 앞선 자리에서 삼손이 걸으며 먹고 부모가 받아먹은 꿀의 출처를 보았기에 답을 알고 있지만, 본문은 이 수수께끼를 그리스도와 복음의 암호로 풀거나 암송아지 비유를 더 넓은 뜻으로 늘리지 않습니다.</p>
+<p>본문이 이토록 엄격하게 판결과 짐작을 멈추고 있기에 우리의 설교와 일터의 몸짓 또한 달라져야 합니다. 강단에서 14장 19절의 아스글론 장면을 말할 때 주먹을 쥐거나 팔을 휘두르는 대신 두 팔을 몸 옆에 내린 채 그 절을 끝까지 읽어 냄으로써, 본문이 평가를 붙이지 않았다는 사실을 설교자의 몸이 함께 지키는 것입니다. 또한 내기 품목이었던 베옷과 겉옷 중 19절에 베옷이 빠진 까닭을 본문이 적지 않듯, 고객의 거래 기록에서 계약서의 두 품목 중 하나만 넘어간 흔적이 보이면 짐작으로 장부를 맞추지 말고 직접 차를 몰아 거래처 창고까지 가서 눈으로 확인해야 합니다. 이 단락에는 여호와께서 직접 하시는 일로 적힌 문장이 없고 강림 뒤에 맨손의 찢음과 아스글론의 죽음이 이어지기에, 우리는 섣부른 감사 대신 본문이 붙이지 않은 판결을 내 입으로 붙이지 않겠다고 고백하며 조용히 두 손을 모읍니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 43편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

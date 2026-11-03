@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>은이 건너간 손길과 사람의 입에 머문 이름</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 49편 &middot; 사사기 17:1-6</span>
+      <h1>은이 건너간 손길과 사람의 입에 머문 이름</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>우리가 일상에서 주고받는 수많은 말들 속에는 종종 사건의 주인이 지워진 빈칸이 놓이곤 합니다. 누군가의 손에서 벌어진 일인데도 마치 저절로 일어난 일인 것처럼 행위자를 가린 채 이야기가 시작되다가, 어느 순간에 이르러서야 비로소 내가 그 일을 행노라고 주어가 모습을 드러냅니다. 사사기 17장 1절부터 6절까지의 짧은 이야기는 에브라임 산지에 살던 미가라는 사람과 그의 어머니 사이에서 오간 은 천백 세겔의 행로를 따라가며, 사람의 입에서 나오는 고백과 축복과 봉헌의 언어가 어떻게 한 자리에서 뒤엉키는지를 서늘하리만치 담담한 시선으로 보여 줍니다.</p>
+<p>이 여섯 절의 본문을 천천히 읽어 내려가다 보면, 거룩하신 하나님의 이름이 오직 사람의 입술 위에서만 불리고 있다는 사실을 마주하게 됩니다. 서술자는 미가가 왜 은을 돌려주었는지 그 속마음을 헤아리지 않고, 어머니가 아들에게 빌어 준 복과 여호와께 거룩히 드린다는 선언에 대해서도 하나님이 받으셨다거나 물리치셨다는 어떠한 확인의 문장도 덧붙이지 않습니다. 다만 누구의 입에서 어떤 말이 나왔고, 누구의 손에서 누구의 손으로 은이 건너가 마침내 무엇이 되었는지를 끝까지 따라가며 기록할 뿐입니다. 그 절제된 침묵 앞에서 우리는 우리 자신의 언어와 행동을 조용히 비추어 보게 됩니다.</p>
+<h3>빈칸으로 열려 내가로 채워지는 말의 자리</h3>
+<p>미가가 어머니에게 은 천백 세겔의 행방을 밝히는 대목은 독특한 원어의 결을 품고 있습니다. 우리말 개역한글 성경은 어머니께서 은을 잃어버리셨으므로 저주하셨다고 옮겨 자연스러운 인과의 사슬을 만들어 내지만, 히브리어 원문의 첫머리는 네게서 취해진 그 은이라는 수동형 어구로 열립니다. 가져간 사람이 누구인지 밝히지 않은 채 빈칸으로 시작된 그 말은, 어머니가 전에 내뱉었던 저주 혹은 맹세의 말과 내 귀에도 말씀하셨다는 구절을 지나, 마침내 보소서 그 은이 내게 있나이다 내가 그것을 취하였나이다라는 대명사 강조형 고백으로 닫힙니다. 한 사람의 한 발화 안에 행위자를 비워 둔 자리와 내가라는 주어로 채운 자리가 나란히 놓여 있는 것입니다.</p>
+<p>놀라운 것은 성경의 서술자가 미가의 이 고백에 아무런 점수도 매기지 않는다는 점입니다. 어머니의 말이 두려워 털어놓은 것인지, 양심의 가책을 느낀 것인지 원문은 까닭을 적어 두지 않으며, 그 말을 정직한 회개라고 칭찬하지도 않고 뒤늦은 변명이라고 꾸짖지도 않습니다. 우리 주변에는 소중한 것을 빼앗기고도 끝내 내가 그것을 취하였나이다라는 말을 듣지 못한 채 깊은 상실감 속에 살아가는 이들이 있습니다. 본문이 빈칸을 빈칸으로 보여 주듯, 끝내 사과의 주어를 듣지 못한 분은 오늘 제게서 가져간 사람을 저는 아직 모릅니다라는 그 빈자리 그대로를 하나님 앞에 아뢰는 데서 멈추어도 괜찮습니다.</p>
+<h3>어머니의 입술에 놓인 여호와께라는 이름</h3>
+<p>아들의 말을 들은 어머니는 곧바로 내 아들이 여호와께 복 받은 자라고 선언하며, 아들이 돌려준 은을 받아 들고 내 손에서 이 은을 여호와께 거룩히 드리노라고 힘주어 말합니다. 원문에서 거룩히 드렸다는 표현은 같은 어근을 겹쳐 써서 구약 전체에서 오직 이 자리에서만 나타날 만큼 강한 어조를 띱니다. 그러나 이 여섯 절 안에서 여호와께라는 말은 두 번 모두 그의 어머니가 말했다는 테두리 안에만 머물러 있습니다. 더욱이 여호와께 거룩히 드린다는 그 문장 한가운데에는 한 신상을 새기며 한 신상을 부어 만들 차로라는 목적이 한 호흡으로 나란히 묶여 있습니다.</p>
+<p>서술자는 어머니의 이 간절한 축복이나 강렬한 봉헌의 다짐이 하늘에 닿았는지 여부를 한마디도 확인해 주지 않습니다. 어머니의 속마음이 진실했는지 혹은 겉말에 불과했는지 단죄하거나 감싸지도 않은 채, 하나님의 이름이 얹힌 말이 온전히 화자의 말로 남아 있는 자리를 그대로 보여 줍니다. 목회 현장에서 심방을 하다 보면 부모가 자녀를 두고 이 아이는 하나님께 드린 아이예요라고 말할 때가 있습니다. 그때 목회자는 그 말을 하나님이 받으셨습니다라고 성급히 확정하지도 않고 매정하게 바로잡지도 않은 채, 다만 그 아이 앞으로 몸을 돌려 다정히 이름을 부르고 손을 잡아 인사를 건넵니다. 부모의 입에 담긴 말을 하나님의 응답처럼 굳히는 대신, 지금 눈앞에 서 있는 한 인격을 마주하는 일입니다.</p>
+<h3>손에서 손으로 건너간 은과 내 시간으로 메우는 책임</h3>
+<p>이어지는 기록은 말의 영역을 떠나 손에서 손으로 옮겨 가는 물질의 궤적을 또렷하게 뒤쫓습니다. 미가가 그 은을 어머니에게 돌려주었다는 문장은 받는 이가 누구인지를 분명하게 박아 넣으며 거듭 등장하고, 어머니는 그 가운데 은 이백을 취하여 은장색에게 넘겨줍니다. 말 속에 담겨 있던 신상을 새기며 부어 만들겠다는 목적은 은장색의 손을 거쳐 실제 사건이 되고, 만들어진 신상은 미가의 집에 자리 잡습니다. 이어 미가에게는 엘로힘의 집이 있고 에봇과 드라빔을 만들어 한 아들의 손을 채워 자기 제사장으로 삼았다는 기록 끝에, 그때에는 이스라엘에 왕이 없었고 사람마다 자기 소견에 옳은 대로 행하였다는 구절이 인과 표지 없이 나란히 놓입니다.</p>
+<p>신명기의 율법은 새긴 상과 부은 상을 만드는 일을 엄히 금하지만, 사사기 서술자는 이 본문 안에서 율법의 조문을 끌어와 판결문을 쓰지 않고 은이 누구의 손을 거쳐 어디에 놓였는지만을 정확히 기록합니다. 이 서늘한 기록 방식은 오늘 일터와 일상을 살아가는 우리에게 책임의 자리가 어디인지를 묵직하게 일깨웁니다. 세무나 행정 업무에서 신고 정정 건이 생겼을 때, 단순히 정정이 필요합니다라는 공지 한 줄로 직원들의 야근에 일을 떠넘기기 전에 그 건을 최종 승인한 사람이 누구인지 먼저 살펴야 합니다. 내가 승인한 건이라면 내 일정표에서 두 시간을 비우고 내 자리에 앉아 직접 정정 작업을 마치는 것, 그렇게 내 손이 닿은 일에 내 몸과 시간을 직접 내놓는 것이야말로 그저 그렇게 되었다는 말 뒤에 숨지 않는 정직한 삶의 걸음입니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 49편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

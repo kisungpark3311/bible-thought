@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이름표 없는 기차 칸 사이에서 부르는 두 자리의 감사</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 07편 &middot; 사사기 3:7-11</span>
+      <h1>이름표 없는 기차 칸 사이에서 부르는 두 자리의 감사</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 3장 7절부터 11절까지의 다섯 절은 연결 고리에 까닭이나 때를 적은 이름표가 붙지 않은 다섯 칸짜리 열차와 같습니다. 이스라엘 자손이 여호와의 목전에 악을 행하여 자기들의 하나님 여호와를 잊어버리고 바알들과 아세라들을 섬긴 일에서 출발한 이 짧은 기록은, 여호와의 진노와 아람 나하라임 왕 구산 리사다임의 손에 팔려 여덟 해를 섬긴 시간을 지나 여호와께 부르짖는 소리로 이어집니다. 그리고 여호와께서 갈렙의 아우 그나스의 아들 옷니엘을 구원자로 일으키시고, 여호와의 영이 그에게 임하여 이스라엘을 다스리며 싸움에 나갈 때 원수를 그의 손에 주신 일과, 마침내 그 땅이 사십 년 동안 잠잠하고 옷니엘이 죽은 일까지 열여섯 마디의 사건이 숨 가쁘게 이어집니다.</p>
+<p>놀라운 점은 히브리 원문이 첫 낱말인 그들이 행했다는 뜻의 바야아수부터 마지막 낱말인 그가 죽었다는 뜻의 바야마트에 이르기까지, 사건들을 차례대로 이어 붙일 뿐 그 사이에 그러므로라든지 그때라는 인과나 시간의 표지를 따로 적지 않는다는 사실입니다. 우리말 성경에 익숙한 파셨으므로나 임하셨으므로, 혹은 사십 년에 같은 표현들은 원문이 열어 둔 빈자리에 번역자들이 하나의 해석을 골라 달아 놓은 이름표입니다. 본문이 비워 둔 이음새를 가만히 들여다볼 때, 우리는 일어난 일들을 성급히 하나의 공식이나 되풀이되는 역사 법칙으로 굳히는 대신 성경이 실제로 이름을 걸어 들려주는 구원의 자리 앞에 겸허히 멈추어 서게 됩니다.</p>
+<h3>차례만 적힌 열여섯 걸음과 일으키심의 고비</h3>
+<p>앞선 사사기 2장이 이름 없는 일반적인 흐름을 들려주었다면, 이 다섯 절은 옷니엘이라는 한 사람과 구산 리사다임이라는 한 원수의 이름을 또렷이 부르며 절마다 한 가지씩의 무거운 자리를 채워 나갑니다. 이 흐름 속에서 이스라엘 자손이 주어가 되어 행하는 일은 악을 행하고, 잊어버리고, 바알들을 섬기고, 구산을 섬기며, 부르짖는 다섯 가지뿐이며 모두 7절부터 9절 앞머리에 몰려 있습니다. 이 다섯 절에서 뽑아낸 요소들이 다섯 절 안에 다 들어 있는 것은 당연한 결과이기에, 이를 두고 특별한 희소성의 근거로 삼거나 뒷부분의 이야기들을 재는 잣대나 오늘날 교회와 민족사의 반복 법칙으로 옮겨 붙이지 않는 절제가 필요합니다.</p>
+<p>이야기의 흐름을 바꾸는 결정적인 고비는 9절의 여호와께서 일으키셨다는 뜻의 바야켐이라는 한 낱말입니다. 이미 8절에서 그들을 팔았다는 말씀으로 시작된 수동의 자리는 이 일으키심의 고비를 지나면서 더욱 선명해져서, 이후로 이스라엘은 오직 구원을 받고 다스림을 받는 자리로만 등장합니다. 원문은 그들을 구원했다는 뜻의 바요시엠에 주어를 따로 적지 않아 앞에서 일으키신 여호와를 가리키는지 방금 세워진 구원자를 가리키는지 두 갈래의 읽기를 모두 열어 두며, 11절에서도 땅의 잠잠함과 옷니엘의 죽음을 나란히 놓을 뿐 사십 년이 끝나는 바로 그때 죽었는지를 확정하지 않습니다. 우리는 옷니엘의 이름이 두 번만 나오는 것을 겸손의 평가로 바꾸거나 구원은 사람의 일이 아니라는 교리 문장을 성급히 끌어내는 대신, 여호와의 이름이 분명하게 걸려 있는 일으키심과 손에 주심이라는 두 가지 일 앞에서 마땅한 감사를 올려 드립니다.</p>
+<h3>두 마디로 적힌 여덟 해의 여백</h3>
+<p>8절이 들려주는 예속의 시간은 여호와께서 그들을 파셨다는 말과 이스라엘 자손이 구산 리사다임을 여덟 해 섬겼다는 단 두 마디로만 간결하게 적혀 있습니다. 바로 뒤이어 나오는 에훗의 이야기가 모압 왕 에글론이 강성해지고 암몬과 아말렉이 모이며 종려나무 성읍을 빼앗기고 열여덟 해를 섬기는 과정을 세 절에 걸쳐 상세히 싣는 것과 견주어 보면, 이 여덟 해의 기록은 유난히 짧고 고요합니다. 원문은 7절에서 바알들을 섬겼다고 할 때 쓴 바야아브두라는 똑같은 동사를 8절에서 이방 왕을 섬기는 자리에 다시 쓰면서도, 두 섬김 사이의 인과 관계를 따로 설명하거나 여덟 해라는 일상적인 셈법에 숨은 상징을 덧붙이지 않습니다.</p>
+<p>먼 아람 나하라임 왕에게 매여 있던 그 여덟 해 동안 이스라엘이 무엇을 바쳤고 무엇을 잃었는지, 또 그 끝에 터져 나온 부르짖음이 참된 회개였는지 아니면 여덟 해의 무게와 어떻게 이어지는지에 대해서도 성경은 침묵합니다. 우리는 이 짧음을 서술자의 특별한 의도로 판정하지 않고, 본문이 비워 둔 자리를 짐작으로 채워 넣지도 않은 채 그 여백을 있는 그대로 존중합니다. 여덟 해의 섬김과 부르짖음 사이에 원문이 아무런 조건의 표지도 두지 않았다는 사실은, 오늘 우리의 삶과 공동체 안에서 고난의 시간을 지나는 이들을 대할 때 얼마나 조심스러운 시선이 필요한지를 일깨워 줍니다.</p>
+<h3>조건을 거두는 입술과 함께 지는 짐 한 칸</h3>
+<p>공동체가 함께 모여 부르짖자고 마음을 모으는 자리에서도, 정작 아픔이 너무 깊어 부르짖을 말 한 마디조차 내뱉지 못하는 이웃이 우리 곁에 있습니다. 9절은 부르짖음을 만일 부르짖으면 구원해 주겠다는 조건문으로 두지 않고 그저 일어난 사건의 차례로 적고 있기에, 우리는 말 못 하는 이웃에게 먼저 부르짖어야 한다는 기준을 들이대거나 사십 년의 태평을 끌어와 그의 아픔이 언제 끝날지 섣불리 약속하지 않습니다. 세무 현장에서 몇 해를 끌어오던 불복이나 분쟁 사건이 마침내 풀린 날에도, 고객 앞에서 버티셔서 해결되었다거나 정성이 통했다는 식의 인과를 말버릇처럼 덧붙이지 않고, 영과 다스림과 출전과 승리를 까닭의 표지 없이 나란히 적은 10절의 절제를 따라 설명을 멈추는 자리를 지킵니다.</p>
+<p>말의 층위에서 불필요한 까닭과 조건을 거두어들이는 이 조심스러움은, 가정 안에서 몇 해째 무거운 시간을 건너고 있는 식구의 짐을 나누어 지는 조용한 손길로 이어집니다. 본문이 여덟 해의 섬김 안에 담긴 구체적인 사연을 캐묻지 않고 비워 두었듯이, 식구 가운데 몇 해째 학자금 대출을 갚아 나가고 있는 사람이 있다면 그 속사정을 다시 말하게 하지 않고 이번 달 한 회분을 가족 생활비 통장에서 조용히 대신 넣어 줄 수 있습니다. 그 대출을 본문의 이방 왕에 빗대거나 고마움의 표시로 생색을 내는 것이 아니라, 본문이 비워 둔 칸마다 내 설명을 채워 넣던 습관을 내려놓고 여호와께서 일으키시고 주신 은혜를 기억하며 사랑하는 이의 무거운 짐 한 칸을 묵묵히 함께 지는 하루가 되기를 소망합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 07편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>이름 없는 손의 빈칸을 남겨 둔 채 장날 아침의 천막 끈을 함께 묶다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 10편 &middot; 사사기 4:1-12</span>
+      <h1>이름 없는 손의 빈칸을 남겨 둔 채 장날 아침의 천막 끈을 함께 묶다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 4장 1절에서 12절까지의 말씀은 아직 기재되지 않은 칸이 여럿 남아 있는 오래된 장부와도 같습니다. 에훗이 죽었다는 짧은 배경과 함께 이스라엘 자손이 다시 여호와의 눈에 악을 행하자, 서술자는 여호와께서 하솔에 도읍한 가나안 왕 야빈의 손에 그들을 파셨다고 기록합니다. 철 병거 구백 대와 이십 년 동안의 세찬 짓눌림이 이어지는 가운데 이스라엘 자손이 여호와께 부르짖었지만, 이전의 사사 이야기들과 달리 부르짖음 바로 뒤에 여호와께서 구원자를 세우셨다는 응답의 문장이 곧바로 뒤따르지 않습니다.</p>
+<p>그 자리에 본문은 드보라가 에브라임 산지 종려나무 아래에서 이스라엘을 재판하고 있었다는 일상의 배경을 조용히 놓아둡니다. 백성이 재판을 받으러 올라갔다는 말은 늘 있던 일을 그리는 배경일 뿐 부르짖음에 곧장 잇는 응답의 문장이 아니며, 정경은 그 한 줄의 빈자리를 응답으로도 무응답으로도 성급히 메우지 않은 채 이야기를 열어 갑니다. 세무사가 증빙 없는 장부의 칸을 짐작으로 채워 넣지 않듯, 성경을 읽는 우리의 눈길도 본문이 적어 둔 줄에서 멈추어 서서 그 침묵의 결을 가만히 들여다보아야 합니다.</p>
+<h3>이름 있는 왕의 손에서 이름 없는 여인의 손으로 옮겨 가는 말씀</h3>
+<p>이 단락을 관통하는 첫 번째 울림은 히브리어 마카르, 곧 팔다라는 동사가 두 번 마주 서는 자리에서 들려옵니다. 4장 2절과 9절은 둘 다 여호와께서 누군가의 손에 파신다는 같은 뼈대를 공유하지만, 그 안을 채우는 네 가지 요소는 뚜렷이 갈라집니다. 4장 2절은 서술자가 이미 지나간 사건으로 확정해 적은 문장이며, 팔리는 쪽은 이스라엘이고 넘겨진 손은 하솔에 도읍한 가나안 왕 야빈이라는 이름 있는 왕의 손입니다. 반면 4장 9절은 사사기에 다섯 번 나오는 손에 팔다라는 표현 가운데 유일하게 등장인물인 드보라의 입에 담긴 앞일의 예고이며, 팔릴 쪽이 시스라로 바뀌고 그 손은 여인의 손으로 나타납니다.</p>
+<p>더욱이 원문 4장 9절은 한 여자의 손에라는 구절을 동사보다 맨 앞에 내세우면서도, 정작 그 여자를 가리키는 관사나 이름을 전혀 붙이지 않습니다. 우리말 개역성경은 시스라를 여인의 손에라는 순서로 옮겨 원문의 그 강렬한 앞세움이 눈에 띄지 않게 되었지만, 본문은 분명히 이름 없는 손의 빈칸을 독자 앞에 내어놓습니다. 우리는 이 두 문장을 판 쪽을 되사신다는 매끄러운 명제로 묶어 버리거나, 아직 열리지 않은 뒷장의 이름을 미리 끌어와 4장 9절의 빈칸에 써 넣지 말아야 합니다. 같은 여호와의 팔다가 두 번 울리되 둘째 것은 아직 드보라의 말 안에 머물러 있다는 사실과 그 손에 이름이 없다는 사실을 있는 그대로 대조하는 데까지가 이 단락이 우리에게 허락한 몫입니다.</p>
+<h3>다볼산에서 기손강으로 이어지는 이끎과 여섯 번의 동행</h3>
+<p>사건이 본격적으로 열리는 4장 6절과 7절에서 드보라는 바락을 불러 여호와께서 명하지 않으셨느냐는 물음으로 말씀을 전합니다. 그 물음 안에서 바락에게 다볼산에서 일만 명을 이끌어 나가라고 명하시는 말씀과, 여호와께서 직접 시스라와 그 병거들과 무리를 기손 시내로 이끌어 네게 이르게 하시겠다는 약속이 나란히 놓입니다. 원문은 두 문장 모두에 마샤크라는 똑같은 동사를 사용하여 바락의 이끎과 여호와의 이끎을 한 호흡 안에 나란히 세웁니다. 비록 우리말 번역에서는 앞의 말이 거느리고 가라로 풀어져 두 낱말의 되풀이가 지워졌으나, 원문은 한 낱말로 바락과 여호와를 차례로 세우면서도 두 이끎의 관계를 인간과 신의 협력이나 분업 같은 판박이 공식으로 정하지 않습니다.</p>
+<p>이 부르심 앞에서 바락은 당신이 나와 함께 가면 가려니와 함께 가지 아니하면 가지 않겠다고 대답합니다. 원문 로 엘레크는 갈 수 없다는 무능력의 호소가 아니라 가지 않겠다는 뜻의 표현이지만, 본문은 바락이 왜 그런 조건을 걸었는지 까닭을 설명하지 않고 서술자 또한 어떤 평가도 덧붙이지 않습니다. 대신 4장 6절부터 10절까지 네 절의 짧은 문맥 안에 임, 곧 함께라는 낱말이 여섯 번이나 겹쳐 놓이며, 명령 속에서의 바락과 일만 명의 동행이 조건과 대답을 거쳐 바락과 드보라의 동행으로 이어지고 서술자의 문장에서 두 번 확정됩니다. 드보라가 반드시 함께 가겠다고 약속하면서도 네가 가는 그 길에서 너의 영광은 없을 것이라는 한정을 한 숨에 붙여 둔 것처럼, 본문은 이 말씀을 조건에 대한 벌인지 앞일의 단순한 진술인지 가르지 않은 채 동행과 한정을 함께 품어 안습니다.</p>
+<h3>빈칸을 내 말로 메우지 않는 절제와 장날 아침에 함께 묶는 천막 끈</h3>
+<p>본문이 끝내 비워 둔 자리들을 존중하는 읽기는 오늘 우리의 일상과 목회, 그리고 일터의 현장에서 타인의 삶을 함부로 재단하지 않는 따뜻한 절제로 이어집니다. 지금 몸이나 형편이 단단히 묶여 있어 마땅히 감당해야 할 일을 도무지 할 수 없는 분이 계신다면, 우리는 할 수 없다는 그분의 오늘을 의지가 약하다는 이름으로 바꾸어 부르지 않으며 무엇을 더 하라고 요구하지도 않습니다. 교회에서 4장 9절을 가르치거나 소그룹을 인도할 때에도 아직 이루어지지 않은 앞일의 말을 이미 끝난 일처럼 앞당겨 말하지 않고, 여자에게 진 장군이나 남자보다 용감한 여자라는 틀로 이야기를 끌고 가지 않으며, 바락에게 믿음이 없었느냐는 물음 앞에서도 원문이 칭찬도 꾸중도 붙이지 않았다는 사실까지만 정직하게 지킵니다.</p>
+<p>동시에 우리의 눈길은 4장 3절이 가장 먼저 기록한 물질의 무게, 곧 철 병거 구백 대와 이십 년 동안 이어진 세찬 짓눌림의 현실을 지나치지 않습니다. 만약 여러 해째 무거운 빚에 눌려 힘겹게 장사하는 시장 상인 고객을 만나러 가는 바람 부는 장날 아침이라면, 세무사로서 서류를 펼치기 전에 그분 곁에 서서 흔들리는 좌판의 천막 끈을 두 손으로 함께 묶습니다. 그것은 단순히 상담료를 받지 않는 호의와는 결이 다른 몸의 자리이며, 그렇다고 해서 그 작은 손길을 부르짖음에 대한 하늘의 응답이라 부르거나 짓누른 쪽을 오늘의 어느 집단으로 지목하지도 않는 조심스러운 동행입니다. 드보라의 말을 서술자가 확정한 일처럼 말해 오고 본문이 비워 둔 손에 내 이름을 먼저 써 넣으며 눌린 이웃의 빈자리를 내 말로 성급히 메워 왔던 지난날을 고백하며, 오늘 우리는 적힌 줄까지만 읽고 남은 빈칸은 빈칸으로 조용히 남겨 두기를 결단합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 10편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

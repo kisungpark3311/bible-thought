@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>손은 지우지 않으시고 문장의 주어만 맡으시는 하나님</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 19편 &middot; 사사기 7:1-8</span>
+      <h1>손은 지우지 않으시고 문장의 주어만 맡으시는 하나님</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 7장 1절에서 8절의 이야기는 적의 자리에서 시작하여 적의 자리에서 끝납니다. 원문을 직역하면 미디안 진이 모레 언덕에서부터 북쪽 골짜기에 있었고, 단락의 마지막 문장 역시 미디안 진이 아래 골짜기에 있다고 기록합니다. 이야기가 시작될 때나 끝날 때나 눈앞의 적진은 처음 자리에 그대로 머물러 있고, 오직 이스라엘의 숫자만 줄어들 뿐입니다. 삼만 이천 명에서 두려워 떠는 이만 이천 명이 떠나고, 다시 물가에서 아홉천칠백 명이 각자의 장막으로 돌아가 마침내 삼백 명만 남습니다. 그러나 하나님께서 이 감축을 통해 겨누신 과녁은 군대의 크기가 아니라 구원 뒤에 남을 한 문장의 주어 자리입니다.</p>
+<p>여호와께서는 기드온에게 백성이 너무 많아 미디안 사람을 그들의 손에 붙이지 않겠다고 먼저 판정하십니다. 그 이유는 오직 한 가지, 이스라엘이 하나님을 거슬러 자긍하며 내 손이 나를 구원하였다고 말할까 함입니다. 두 번의 걸러냄이 끝난 뒤 7절에 이르러 여호와께서는 마침내 일인칭으로 선언하십니다. 내가 이 물을 핥아 먹은 삼백 명으로 너희를 구원하며 미디안 사람을 네 손에 붙이리라 하십니다. 2절과 7절은 모두 구원하다는 같은 동사를 쓰지만, 2절에서 그 동사 앞에 앉으려던 내 손은 물러나고 7절에서는 여호와의 내가가 주어 자리에 서며 삼백 명은 빠지지 않고 수단의 자리에 남습니다.</p>
+<h3>막힌 자랑의 문장과 열린 구원의 문장</h3>
+<p>개역성경이 자긍하기를이라고 옮긴 원어 이트파에르는 스스로 빛내다라는 뜻을 지닌 재귀 동사입니다. 구약에서 일곱 번 나오는 이 형태는 이사야 44장 23절과 49장 3절에서 여호와께서 이스라엘 안에서 스스로 빛나시는 주어로 서실 때 쓰이고, 이사야 10장 15절에서는 도끼가 그것으로 나무를 찍는 이를 거슬러 스스로 빛내겠느냐는 물음으로 쓰입니다. 물론 이 분포만으로 어느 본문이 어느 본문을 내다보았는지는 세우지 않습니다. 다만 사사기 7장 2절은 이스라엘이 하나님을 거슬러 그 동사의 주어가 되려는 꼴을 보여 주며, 사사기 6장부터 8장까지 구원하다는 동사가 여덟 번 나오는 동안 하나님께서 친히 내가 구원하겠다고 일인칭으로 말씀하시는 곳은 오직 7장 7절 한 자리뿐입니다.</p>
+<p>이 대조가 우리에게 남기는 바는 선명합니다. 하나님께서 가로막으신 대상은 사람 손의 수고 자체가 아니라, 손이 구원의 주어 자리에 앉으려는 그 한 문장입니다. 일한 사람의 땀과 수고는 삼백 명으로라는 수단의 자리에 그대로 두시되, 그 땀을 말하는 문장의 순서를 바꾸시는 것입니다. 그러므로 이 본문을 근거로 교회는 작아야 한다거나 수가 적을수록 더 거룩하다는 식의 구호를 세울 수는 없습니다. 본문이 겨누는 것은 사람의 머릿수가 아니라 일을 마친 뒤 우리가 쓰는 보고의 주어이기 때문입니다.</p>
+<h3>덕목의 빈칸을 메우지 않는 말씀의 잣대</h3>
+<p>백성이 아직도 많다는 둘째 판정 뒤, 여호와께서는 물가로 내려가라 하시며 거기서 내가 너를 위하여 그들을 시험하리라고 말씀하십니다. 여기서 시험하다는 동사 차라프는 금속을 녹여 가려내는 단련의 말이며, 백성을 단수 한 덩어리로 받습니다. 앞서 6장 39절에서 기드온이 양털로 시험하게 하소서라고 구할 때 쓴 나사와는 어근이 다르나, 두 낱말 사이의 관계는 본문이 따로 정하지 않습니다. 물가에서 혀로 물을 핥는 자와 무릎을 꿇고 마시는 자가 나뉘지만, 5절의 둘째 무리 문장은 원문에서 동사 없이 끝나고 6절의 손으로 입에라는 표현이 어느 무리의 몸짓을 그리는지도 두 독법이 있어 여기서 가르지 않습니다.</p>
+<p>무엇보다 여덟 절 어디에도 어느 몸짓이 어떤 뛰어난 품성이나 자격을 드러내는지 풀어 주는 문장이 없으며, 8절 뒤로는 핥음이라는 말이 다시 불리지도 않습니다. 우리는 본문이 침묵하는 빈칸을 삼백 명의 남다른 경계심이나 영적 덕목에 대한 칭찬으로 메우고 싶어지지만, 본문은 그 근거를 전혀 주지 않습니다. 함께 갈 사람과 가지 않을 사람은 오직 내가 누구를 가리켜 이르기를 이가 너와 함께 가리라 하면 그는 너와 함께 갈 것이요라는 여호와의 말씀으로만 갈립니다. 신비로 부풀릴 근거도, 사람의 덕목으로 메울 근거도 없이 하나님이 고르시는 잣대는 오직 그분의 말씀 안에만 있습니다.</p>
+<h3>비워 드린 주어 자리와 지워지지 않는 손</h3>
+<p>여호와의 담화는 2절의 그들의 손에 붙이지 않겠다는 말씀으로 열려 7절의 네 손에 붙이겠다는 말씀으로 고리를 맺습니다. 원문에서 삼백 명이라는 구절은 7절에서 구원하시는 수단으로, 8절에서는 붙들린 대상으로 연달아 동사 앞에 놓입니다. 또한 8절은 이스라엘 모든 사람은 장막으로 보냈고 삼백은 붙들었다는 두 완료형 동사를 짝으로 두는데, 원문은 두 동사에 주어 이름을 대지 않으며 양식과 나팔을 손에 든 이가 누구인지도 두 갈래로 읽혀 가르지 않습니다. 다만 받는 손은 바뀌어도 손 자체는 끝까지 지워지지 않고 네 손에라는 말씀으로 다시 불리며, 각자의 처소로 돌아간 이들에게도 꾸짖는 말이 붙지 않습니다. 물론 6장 14절에서 기드온을 구원의 주어로 부르신 말씀과 6장 36절 이하의 양털 조건문, 그리고 7장 20절의 나란한 함성과 8장 22절에서 백성이 기드온을 구원의 주어로 부르는 칭송 사이의 긴장은 본문이 정하지 않으므로 우리도 풀지 않고 열린 채로 둡니다.</p>
+<p>이 말씀 앞에서 오늘 어떤 일에 낄 수 없게 되어 처소로 돌아가는 분이 계신다면, 본문이 떠나는 백성에게 아무런 책망을 붙이지 않듯 이 자리에서도 어떤 할 일을 드리지 않으니 그저 평안히 쉬시기를 바랍니다. 반면 현장에 남은 우리는 아무도 보지 않는 새벽 자리에서 사역자 명단을 펴 놓고 무릎을 꿇은 채 이름마다 손을 얹어 하나님께서 이 손을 쓰셨습니다 하고 기도할 수 있습니다. 결산 시즌이 끝난 뒤 실무 직원의 근무기록표에 적힌 야근 시간을 수당 명세와 한 줄씩 맞대어 보며 남아서 일한 손의 시간에 정당한 값이 치러졌는지 돈으로 확인하는 일이나, 성경책 7절의 내가에 동그라미를 치고 삼백 명으로에 밑줄을 그으며 이미 쓰인 본문 위에서 주어와 수단을 손으로 갈라 보는 일도 같은 고백입니다. 골짜기의 미디안 진은 그대로일지라도, 오늘 내 손을 내려놓지 않고 그 손이 앉으려던 주어 자리만 주님께 비워 드릴 때 우리의 문장은 비로소 구원의 은혜로 열립니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 19편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

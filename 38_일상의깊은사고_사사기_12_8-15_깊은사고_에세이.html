@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>앞사람이 묻힌 자리 너머에 고요히 이어지는 그의 뒤에</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 38편 &middot; 사사기 12:8-15</span>
+      <h1>앞사람이 묻힌 자리 너머에 고요히 이어지는 그의 뒤에</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>입다의 기록이 장사로 닫힌 뒤, 사사기 12장 8절부터 15절에는 베들레헴 사람 입산과 스불론 사람 엘론, 그리고 비라돈 사람 힐렐의 아들 압돈까지 세 사람의 짧은 기록이 연달아 놓입니다. 그의 뒤에는 베들레헴 입산이 이스라엘의 사사이었더라로 시작된 첫 기록은 아들 삼십과 딸들을 보내고 들인 일, 칠 년의 다스림을 거쳐 베들레헴에 장사되었더라로 닫힙니다. 이어 엘론은 한 절 안에서 사사로 열리고 십 년의 햇수를 받은 뒤 스불론 땅 아얄론에 묻히고, 압돈은 아들 사십과 손자 삼십이 어린 나귀 칠십 필을 탔다는 기록과 팔 년의 세월 뒤에 비라돈에 장사됩니다.</p>
+<p>세 사람의 기록은 모두 다스림과 햇수, 죽음과 묻힘이라는 똑같은 차례를 밟아 나갑니다. 놀랍게도 이 여덟 절 안에는 하나님의 이름도, 사람이 입을 열어 한 말도, 구원이나 악행이나 땅의 평온을 일컫는 문장도 전혀 등장하지 않습니다. 성경 원문은 이 세 사람의 생애를 칭찬하거나 꾸짖어 평가하지 않은 채, 한 사람의 끝과 다음 사람의 시작을 그의 뒤에라는 짧은 이음매로 조용히 맞물려 적어 내려갈 뿐입니다.</p>
+<h3>묻힘 다음에야 열리는 다스림과 서 있는 자리의 예의</h3>
+<p>세 기록의 맞물림을 자세히 들여다보면 앞 기록은 언제나 장사로 닫히고, 바로 다음 절이 그의 뒤에는으로 문을 엽니다. 이 똑같은 맞물림이 8절과 11절과 13절에서 세 번 되풀이되는 동안, 앞사람과 다음 사람이 한 문장 안에 나란히 함께 서는 자리는 단 한 번도 나타나지 않습니다. 개역 성경은 이름을 앞으로 당겨 입산이 사사이었더라로 옮겼으나, 원문의 어순은 다스렸다, 그의 뒤에, 이스라엘을, 입산이의 차례로 서며, 첫 두 마디인 와이쉬폿 아하라우가 나란히 붙어 놓인 절은 구약 전체에서 오직 이 세 절뿐입니다.</p>
+<p>여기서 그의라는 말은 매번 바로 앞 절에서 묻힌 사람을 가리킵니다. 원문은 앞사람이 다음 사람에게 무엇을 물려주었는지, 두 사람이 어떤 말을 나누었는지 적지 않고, 오직 묻힘이 먼저 오고 그다음에 다스림이 온다는 차례만 남깁니다. 내가 오늘 선 자리의 첫 문장 안에도 이미 끝난 누군가의 기록이 들어 있다는 이 사실은, 자리를 물려준 앞사람에게도 깊은 위로와 몸가짐을 건넵니다. 자리를 내려놓은 뒤 사정이 있어 후임이 처음 서는 날에 갈 수 없는 분이 계신다면, 나중에 영상으로 돌려 보는 대신 그 시각이 되었을 때 지금 있는 곳에서 의자에서 일어나 순서가 끝날 때까지 서 계시며 후임의 이름을 한 번 부른 뒤 잠잠히 머무르시기를 권합니다.</p>
+<h3>밖으로와 밖에서를 같은 낱말로 부르는 손길</h3>
+<p>9절을 개역한글로 읽으면 입산이 딸들을 타국으로 시집보내고 아들들을 위하여 타국에서 여자 삼십을 데려온 이야기로 읽히며, 그 직후 문장은 아무런 평가 없이 곧장 칠 년의 다스림으로 넘어갑니다. 그러나 원문을 살피면 첫 딸 삼십이 자녀 목록에 함께 드는지 보냄의 대상으로만 앞에 선 것인지조차 가르지 않으며, 문장이 실제로 적고 있는 것은 밖으로를 뜻하는 하후차로 보냈다는 말과 밖에서를 뜻하는 민 하후츠로 들였다는 말까지입니다. 타국과 시집과 여자라는 단어는 모두 번역자가 보탠 말이고, 이 여덟 절에는 혼인이나 아내나 이방을 가리키는 낱말이 전혀 없습니다.</p>
+<p>오히려 원문은 밖으로 보낸 무리와 밖에서 들인 무리를 똑같이 딸들을 뜻하는 바놋이라는 한 낱말로 부르고 같은 수 삼십으로 셉니다. 번역자가 말을 보탠 데는 나름의 이유가 있었겠으나 그것은 원문이 아니기에, 우리는 이 절을 다른 민족과의 혼인을 찬성하거나 반대하는 근거로 삼지 않으며 짧은 기록일수록 전하는 이의 사정이 쉽게 덧붙는다는 사실을 내 입술 앞에 경계로 세웁니다. 나아가 보낸 무리와 들인 무리를 같은 이름으로 부르는 원문의 시선을 따라, 이사로 인해 다른 교회로 떠나는 가정이 있을 때 악수만 건네지 말고 마지막 주일 예배 뒤 새가족에게 주는 환영 꾸러미와 똑같은 꾸러미를 목회자가 그 가정의 손에 따뜻하게 들려 보내면 좋겠습니다.</p>
+<h3>처음 부른 땅 이름으로 묻히는 기록과 첫해의 숫자</h3>
+<p>세 기록의 마지막 행위는 언제나 그가 묻혔다를 뜻하는 와이카베르이며, 문장의 맨 끝에는 장사지 이름이 놓입니다. 압돈을 처음 소개할 때 붙였던 비라돈 사람 힐렐의 아들이라는 이름 꼬리가 죽음의 절에 그대로 다시 놓이듯, 베들레헴 입산은 베들레헴에 묻히고 스불론 사람 엘론은 스불론 땅에 묻힙니다. 장사지 이름이 입산은 하나, 엘론은 둘, 압돈은 에브라임 땅, 아말렉 사람의 산, 비라돈으로 셋까지 늘어나고 11절 한 절 안에 다스렸다가 두 번 놓이지만, 원문은 그 이유나 강조점을 말하지 않으며 한 사람의 생애를 기록의 길이로 재지 않습니다.</p>
+<p>단락 표지 하나를 사이에 두고 장사되었더라와 그의 뒤에는이 맞닿아 있는 이 고요한 기록은, 세상을 떠난 동료 세무사의 고객을 넘겨받는 일터의 자리에도 정직한 멈춤을 일깨웁니다. 고객을 인수한 첫해에는 기장료를 앞선 동료가 받던 금액 그대로 두고, 미리 준비해 둔 요율 인상안은 한 해 동안 서랍에서 꺼내지 마십시오. 인수 기념으로 새 요율표부터 내미는 대신 앞사람의 숫자가 내 첫해의 숫자 안에 고스란히 들어 있게 할 때, 우리는 빈 사이에 섣부른 평가나 욕심을 채우지 않고 앞사람이 묻힌 자리 다음에 서 있는 자신의 자리를 겸손히 고백하게 됩니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 38편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>맞추지 않은 두 문장 사이, 여호와께서 함께 계셨다는 그 한 줄에 서다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 02편 &middot; 사사기 1:8-21</span>
+      <h1>맞추지 않은 두 문장 사이, 여호와께서 함께 계셨다는 그 한 줄에 서다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>사사기 1장 8절은 유다 자손이 예루살렘과 싸워 그 성을 취하고 칼날로 쳤으며 그 성읍을 불에 보냈다는 단호한 문장으로 시작됩니다. 이어 그들은 산지와 남방과 평지의 가나안 사람에게로 내려가고, 헤브론에서 세새와 아히만과 달매를 치며 드빌로 나아갑니다. 갈렙이 기럇 세벨을 취하는 이에게 딸 악사를 주겠다고 선언하자 옷니엘이 그 성을 취하고, 악사는 남방 땅에 더해 물 샘들도 달라고 청하여 갈렙에게서 윗샘과 아랫샘을 받습니다. 모세의 장인 겐 사람의 자손이 종려나무 성읍에서 유다 자손과 함께 올라와 그 백성과 함께 살았다는 기록에 이어, 유다는 시므온과 함께 스밧을 치고 가사와 아스글론과 에그론을 취합니다. 그리고 19절은 여호와께서 유다와 함께 계셨다고 말하면서, 같은 절 안에 골짜기 주민은 쫓아냄이 없었다는 사실을 나란히 적습니다.</p>
+<p>그런데 이 단락이 끝나는 21절에 이르면 예루살렘이라는 이름이 다시 한번 등장합니다. 이번에는 예루살렘에 사는 그 여부스 사람을 베냐민 자손은 쫓아내지 않았고, 여부스 사람이 베냐민 자손과 함께 오늘까지 예루살렘에 산다는 문장입니다. 한 장 안에서 같은 예루살렘 성을 두고 8절에는 유다 자손이 취하여 불에 보냈다는 문장이 서고, 21절에는 베냐민 자손이 쫓아내지 않았다는 문장이 섭니다. 서술자는 한 성에 관한 이 두 문장을 서로 다른 이름 앞에 세워 함께 두면서도, 그 사이에 시기를 맞추는 이음말이나 앞의 말을 고치는 설명을 한 줄도 넣지 않습니다.</p>
+<h3>예루살렘 앞에 선 두 이름과 고치지 않은 여백</h3>
+<p>예루살렘을 둘러싼 본문들을 나란히 놓으면 세 문장이 마주 섭니다. 사사기 1장 8절은 유다 자손이 그 성읍을 불에 보냈다 하고, 21절은 베냐민 자손이 여부스 사람을 쫓아내지 않았다 하며, 여호수아 15장 63절은 같은 여부스 사람을 두고 유다 자손이 쫓아낼 수 없었다고 적습니다. 흥미롭게도 사사기 1장 8절과 21절은 히브리어 원문의 문장 꼴이 똑같습니다. 둘 다 목적어가 되는 대상을 문장 맨 앞에 먼저 세우고 그 뒤에 행한 일을 붙이는 구조인데, 8절은 불에 보냈다는 뜻의 쉴레후 바에쉬이고 21절은 쫓아내지 않았다는 뜻의 로 호리슈입니다. 다만 여호수아 15장 63절에는 할 수 있다는 능력을 뜻하는 동사 야콜이 들어 있는 반면, 사사기 1장 21절에는 야콜이 없이 부정어 로 하나만 놓여 있어 우리말의 않았다와 못했다가 모두 번역자의 선택임을 보여 줍니다.</p>
+<p>15절 끝에서 마소라 본문의 단락이 나뉘기 때문에 두 문장은 한 단락의 처음과 끝을 묶는 장치도 아닙니다. 무엇보다 서술자는 8절과 21절 사이에 시간의 선후를 조율하는 말을 두지 않았습니다. 성의 일부만 불탔다거나 유다가 불사른 뒤 여부스 사람이 다시 차지했다는 식의 설명은 모두 본문 밖에서 가져온 화해의 시도일 뿐입니다. 세 문장을 하나의 매끄러운 연대표로 억지로 맞추려 하지 않고 어느 한쪽을 틀렸다고 판정하지도 않을 때, 우리 손에 남는 것은 한 성 앞에 선 이름이 갈린다는 정직한 본문의 사실 하나입니다.</p>
+<h3>함께 계셨다는 동반의 문장과 이름의 있고 없음</h3>
+<p>이 범위 전체에서 하나님의 이름이 등장하는 유일한 문장인 19절 또한 깊은 긴장을 품고 있습니다. 개역한글은 여호와께서 유다와 함께 하신 고로 그가 산지 거민을 쫓아내었으나 골짜기의 거민들은 철병거가 있으므로 그들을 쫓아내지 못하였으며라고 옮겼지만, 원문에서 하나님의 이름 곁에 선 동사는 바예히, 곧 계셨다 하나뿐입니다. 산지를 차지했다는 바요레쉬에는 행위자의 이름이 적혀 있지 않아 앞선 두 이름 어디에도 걸릴 수 있고, 골짜기에 대해서는 쫓아냄이 없었다는 키 로 레호리시만 있을 뿐 사사기 1장 전체에 능력 동사 야콜은 한 번도 나오지 않습니다. 두 문장은 오직 키라는 짧은 접속사로만 이어져 있어서, 개역한글의 고로와 있으므로와 못하였으며는 인과와 능력을 번역이 채워 넣은 말입니다. 따라서 함께 계셨으니 쫓아내셨다거나 철병거 앞에서 믿음이 꺾였다고 읽을 근거는 본문에 없으며, 우리가 감사할 수 있는 자리는 오직 여호와께서 유다와 함께 계셨다는 그 사실까지입니다.</p>
+<p>11절부터 15절까지 이어지는 갈렙과 악사의 일화는 여호수아 15장 15절부터 19절까지와 거의 같은 말로 겹치면서도 드빌로 갔다와 올라갔다를 비롯해 일곱 자리가 미세하게 갈립니다. 악사가 말한 네타타니는 당신이 나를 남방 땅에 두었으니로도 내게 남방 땅을 주었으니로도 읽히는데, 개역한글은 아버지께서라는 호칭을 넣고 보내시니로 바꾸었습니다. 옷니엘과 그나스 가운데 누가 그보다 작은 자인지도 원문 어순은 열려 있으며, 헤브론의 세 사람을 두고도 10절은 유다가 쳤다 하고 20절은 이름 없는 그들이 헤브론을 갈렙에게 준 뒤 이름 없는 그가 쫓아냈다고 적는 반면 여호수아 15장 14절은 갈렙이라는 이름을 명시합니다. 어느 책이 다른 책을 고쳤는지 정하지 않고 악사와 갈렙을 본받을 모범이나 혼인의 교훈으로 삼지 않을 때, 본문이 남기는 것은 15절은 샘을 주는 이의 이름을 적고 20절은 성을 주는 이의 이름을 적지 않았다는 단정한 기록의 대조입니다.</p>
+<h3>끝나지 않은 고랑 끝까지 성도의 걸음으로 함께 걷다</h3>
+<p>차지한 산지와 남은 골짜기를 한 절에 나란히 두고도 남은 까닭을 설명하지 않는 19절의 침묵은, 오늘 해야 할 일 가운데 한 부분이 아직 끝나지 않은 사람에게 따뜻한 숨구멍이 됩니다. 병든 몸으로 인해, 줄어든 수입 때문에, 혹은 일할 사람이 모자라서 마땅히 해야 할 일을 다 끝내지 못한 이에게 우리는 하나님이 함께하셨다면 다 끝났어야 한다는 가혹한 문장을 들이밀지 말아야 합니다. 남은 부분을 향해 무언가를 해내라는 동작조차 얹지 않는 것은, 섣부른 권면이 원문이 열어 둔 두 키의 관계와 않았다 및 못했다의 여백을 한쪽으로 메워 버리기 때문입니다. 투병 중인 성도를 심방한 집에서 성도가 짓다 만 텃밭을 가리킬 때, 목회자는 혼자 그 자리에 다녀오는 대신 성도의 느린 걸음에 발을 맞추어 그 고랑 끝까지 함께 걸어가 서서 바라봅니다. 언제 마치시겠어요라는 채근도 다 뜻이 있습니다라는 섣부른 풀이도 붙이지 않은 채, 본문이 까닭을 달지 않은 자리를 목회자의 말로 채우지 않으려는 몸가짐입니다.</p>
+<p>세무 일터에서 날마다 소득의 귀속을 가리는 실무자 역시 헤브론의 세 사람을 두고 결국 누구의 공로로 돌아가는지를 깔끔히 정리하고 싶어지지만, 본문은 쳤다와 쫓아냈다를 갈라 두고 행위자도 유다와 이름 없는 그와 갈렙으로 열어 두었습니다. 그러므로 우리는 이 본문을 귀속을 가리는 선례로 쓰지 않으며, 비어 있는 이름을 내 쪽 사람으로 채우려는 정리의 동작도 멈춥니다. 한 장 안에 예루살렘에 관한 두 문장이 지우개 자국 없이 나란히 놓여 있고 남은 골짜기 맨 앞에 여호와께서 유다와 함께 계셨다는 문장이 서 있듯, 본문이 열어 둔 자리를 그대로 열어 둔 채 끝나지 않은 일 곁에 선 사람에게 함부로 점수를 매기지 않는 우리가 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 02편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>

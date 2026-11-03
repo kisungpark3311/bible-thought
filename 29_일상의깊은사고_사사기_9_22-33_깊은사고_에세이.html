@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <title>칼을 휘두른 손과 그 손목을 굳게 잡아 준 손이 한 문장 위에 나란히 적힙니다</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/font-kopub/1.0/KoPubBatang.css');
+    :root {
+      --ink: #24302c;
+      --muted: #68736f;
+      --paper: #fffdf8;
+      --canvas: #eef2ed;
+      --green: #173f35;
+      --green-soft: #e8f0eb;
+      --gold: #b7863c;
+      --gold-soft: #f7efdf;
+      --line: #d9dfda;
+      --body-size: 18px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0;
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: 'KoPub Batang', 'KoPubWorldBatang', serif;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    main {
+      max-width: 600px; margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.03);
+    }
+    header {
+      background: var(--green);
+      color: var(--gold-soft);
+      padding: 30px 24px 40px;
+      text-align: left;
+    }
+    .label {
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    h1 {
+      margin: 0; font-size: 26px; font-weight: 700;
+      line-height: 1.4; letter-spacing: -0.5px;
+    }
+    .toolbar {
+      display: flex; gap: 8px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      overflow-x: auto;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    button {
+      flex: 1; min-width: max-content;
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: var(--muted);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    button.primary {
+      background: var(--green);
+      color: #fff; border-color: var(--green);
+    }
+    button:active { transform: scale(0.96); }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .content {
+      padding: 40px 24px;
+      font-size: var(--body-size);
+      transition: font-size 0.3s ease;
+    }
+    .content p { margin: 0 0 24px 0; }
+    .content h2, .content h3 {
+      color: var(--green);
+      font-size: 1.15em;
+      font-weight: 700;
+      margin: 44px 0 18px;
+      padding: 10px 14px 10px 16px;
+      background: var(--green-soft);
+      border-left: 4px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+    }
+    .content strong, .content b {
+      font-weight: 700;
+      color: var(--green);
+      background: linear-gradient(transparent 52%, #fef08a 52%);
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+    /* 서브 타이틀 또는 섹션 타이틀이 흰색 본문에 묻히지 않도록 강제 색상 지정 */
+    .content .subtitle, .content .section-title {
+      display: block;
+      color: var(--muted) !important;
+      font-size: 16px !important;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .content hr {
+      border: 0; height: 1px; background: var(--line);
+      margin: 40px 0;
+    }
+    .content blockquote {
+      margin: 0 0 24px; padding: 16px 20px;
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      color: var(--green);
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95em;
+    }
+    .content th, .content td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .content th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .content tr:nth-child(even) td {
+      background: #fafcf9;
+    }
+    .content code {
+      background: var(--green-soft);
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: Consolas, monospace;
+    }
+    .content pre {
+      background: #f4f6f4;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+    .content a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .content a:hover {
+      color: var(--gold);
+    }
+    footer {
+      padding: 40px 24px; text-align: center;
+      background: var(--canvas); color: var(--muted);
+      font-size: 13px; border-top: 1px solid var(--line);
+    }
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(36, 48, 44, 0.9); color: #fff;
+      padding: 12px 24px; border-radius: 30px;
+      font-size: 14px; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; z-index: 100;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0); opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="label">일상의 깊은 사고 &middot; 사사기 제 29편 &middot; 사사기 9:22-33</span>
+      <h1>칼을 휘두른 손과 그 손목을 굳게 잡아 준 손이 한 문장 위에 나란히 적힙니다</h1>
+    </header>
+
+    <div class="toolbar">
+      <button class="primary" onclick="shareSermon()">공유하기</button>
+      <button onclick="copySermon()">텍스트 복사</button>
+      <button onclick="resizeText(1)">크게</button>
+      <button onclick="resizeText(-1)">작게</button>
+    </div>
+
+    <article id="sermon" class="content">
+      
+<p>아비멜렉이 이스라엘 위에서 삼 년을 지낸 뒤, 사사기 9장 23절의 서술자는 사건의 첫 동사를 하나님께 돌립니다. 하나님이 아비멜렉과 세겜 사람들 사이에 악한 영을 보내시매 세겜 사람들이 아비멜렉을 배반하였다는 기록입니다. 이어지는 24절은 정동사 없이 두 개의 부정사로 그 목적을 적으면서, 피가 놓일 대상으로 형제를 죽인 아비멜렉과 그의 손을 굳게 하여 형제를 죽이게 한 세겜 사람들을 함께 지목합니다. 그 뒤의 이야기는 온통 사람들의 동사로 흘러갑니다. 세겜 사람들은 산꼭대기에 매복을 두어 길 가는 자를 털고, 가알이 오자 그를 의뢰하며, 그들이 섬기는 신당에 들어가 먹고 마시며 아비멜렉을 저주합니다. 성읍 장관 스불은 가알의 말을 듣고 노하여 아비멜렉에게 사자를 보내 밤의 매복과 아침의 공격을 일러 줍니다.</p>
+<p>이 열두 절의 단락은 산꼭대기에 매복이 놓인 험한 길과 같습니다. 어제의 동맹이 오늘의 원수가 되어 서로를 노리는 동안, 정작 그 아래 길을 지나던 애꿎은 사람들이 털립니다. 서술자는 그 모든 소란의 맨 위에 하나님의 첫 동사를 적었고, 피가 놓일 자리에 칼을 휘두른 손과 그 손을 굳게 한 손을 나란히 적었습니다. 그러나 우리가 가장 궁금해하는 그 둘 사이의 연결 설명은 끝내 적지 않았습니다. 이 단락이 우리에게 남기는 중심 명제는 분명합니다. 서술자는 피가 놓일 자리에 휘두른 손과 그 손을 굳게 한 손을 함께 적되, 그것을 하나님의 갚으심이라고도 아니라고도 성급히 못 박지 않는다는 것입니다.</p>
+<h3>갚는다는 동사 없이 나란히 적힌 두 손의 이름</h3>
+<p>개역한글로 9장 24절을 읽으면 하나님이 여룹바알의 아들 칠십 인에게 행한 포학한 일을 갚으시려고 피 흘린 죄를 아비멜렉과 세겜 사람에게로 돌아가게 하심이라 하여, 마치 하나님의 응보 선언처럼 들립니다. 그러나 히브리 원문에는 갚다라는 동사가 아예 없고, 하나님을 주어로 높이는 하심이라라는 말도 번역자가 보탠 것입니다. 원문은 다만 칠십의 폭력이 오도록이라는 라보와, 그들의 피를 그 위에 두도록이라는 라숨, 이 두 부정사만 씁니다. 죄라고 번역된 말도 원문에서는 그들의 피이며, 손을 도와서라고 옮긴 말은 히즈쿠, 곧 그의 손을 굳게 했다는 뜻입니다.</p>
+<p>더욱이 이 두 목적 동사가 앞 절의 하나님이 보내셨다는 동사에 걸리는지, 아니면 세겜 사람들이 배반했다는 동사에 걸리는지 원문은 표시하지 않습니다. 따라서 이 절을 근거로 하나님이 갚으려고 악한 영을 보내셨다는 결론을 세울 수도 없고, 반대로 사람의 배반이 스스로 피를 불렀다는 자연적 인과로 닫을 수도 없습니다. 웨스트민스터 신앙고백 5장이 하나님은 모든 것을 다스리시되 죄의 조성자가 아니시라고 고백하지만, 그 고백을 이 절의 해설 공식으로 덮어 버리지도 않습니다. 흔들리지 않는 확실한 사실은 오직 하나, 성경은 직접 칼을 휘두른 자와 옆에서 그 손에 힘을 보태 굳게 한 자를 한 문장 안에 이름으로 나란히 적어 넣었다는 것입니다.</p>
+<h3>산꼭대기의 매복과 길 위에서 몫을 잃은 길손들</h3>
+<p>24절에서 피를 두도록이라는 라숨이 나온 바로 다음 절인 25절 첫머리에 그들이 매복을 두었다는 바야시무가 이어집니다. 같은 뿌리의 동사가 앞에서는 서술자의 목적 진술로, 뒤에서는 사람의 사건으로 연달아 놓이지만, 원문은 세겜 사람들의 매복이 곧 그 목적을 이루는 수단이라고 말하지 않습니다. 또한 개역한글은 길로 지나는 자를 다 겁탈하게 하니라며 시킨 일로 옮겼으나 원문은 바이그즐루, 곧 그들이 직접 털었다입니다. 23절에서 아비멜렉을 배반했다는 동사와 26절에서 가알을 의뢰했다는 바이브테후는 주어와 어형과 전치사가 똑같고 오직 대상만 아비멜렉에서 가알로 바뀔 뿐입니다.</p>
+<p>서술자는 세겜 사람들이 왜 그렇게 쉽게 신뢰를 옮겼는지 그 속마음이나 동기를 설명하지 않습니다. 대신 본문이 또렷하게 적어 두는 것은, 아비멜렉과 세겜이라는 두 편이 서로 다투는 사이에 정작 털린 이로 기록된 사람들은 그 길을 지나가던 길손들이었다는 사실입니다. 교회 안에서도 두 편의 갈등 회의가 밤늦게까지 길어지면, 다툼과 상관없이 마지막에 문을 잠그고 퇴근해야 하는 관리집사의 노동 시간이 그만큼 늘어납니다. 회의를 여는 사람은 첫 말로 오늘은 아홉 시에 멈춥니다라고 정하고, 안건이 남아도 아홉 시에 멈추십시오. 다툼의 시간이 다툼 밖 사람의 몸에 얹히지 않게 하는 멈춤입니다.</p>
+<h3>두 번의 보냄 사이에서 그어지지 않은 선을 지키는 절제</h3>
+<p>이 단락에는 바이쉴라흐, 곧 그가 보냈다는 똑같은 꼴의 동사가 두 번 등장합니다. 한 번은 23절에서 하나님이 아비멜렉과 세겜 사람들 사이에 악한 영을 보내신 일이고, 다른 한 번은 31절에서 성읍 장관 스불이 아비멜렉에게 사자들을 보낸 일입니다. 스불이 사자를 보낸 자리에는 밤에 밭에 매복하였다가 아침에 해 뜰 때 성을 치고 네 손이 찾는 대로 행하라는 구체적인 전갈이 실려 있고, 첫째 보냄 뒤에는 말 대신 서술자의 목적 진술이 놓입니다. 본문은 이 두 번의 보냄을 한 단락 안에 나란히 배치할 뿐, 하나님의 보냄이 스불의 보냄을 통해 이루어졌다고 선을 긋지 않습니다. 우리는 누군가의 행동을 보며 하나님이 저 사람을 보내 갚으신다고 쉽게 말하곤 하지만, 성경은 본문이 잇지 않은 선을 우리의 입으로 긋지 않는 서술자의 깊은 절제를 가르쳐 줍니다.</p>
+<p>혹시 오래전 누군가를 내모는 결정에 힘을 보탰고, 그 사람이 이미 떠났거나 세상을 떠나 이제 되돌릴 길이 없는 분이 계십니까. 오늘 그 일을 바로잡으러 억지로 나서지 않아도 되고 스스로 벌을 정하지 않아도 됩니다. 다만 9장 24절을 아비멜렉의 손을 도와서라는 대목까지 조용히 읽고 성경을 덮으십시오. 서류철을 무심히 덮는 손과 달리, 그 문장이 이미 손을 보탠 이를 이름으로 적어 두었다는 사실 앞에서 멈춰 서는 것입니다. 그리고 세무사 사무실에 신입 직원이 들어온 첫 주에는, 장부를 사실과 다르게 맞추라는 지시가 내려오면 손을 보태지 않고 대표에게 바로 말해도 된다는 경우 하나를 입으로 꼭 일러 주십시오. 하나님께서 악한 영을 보내셨다는 한 구절 앞에서 섣부른 감사 대신 고백으로 서며, 남의 손을 굳게 해 준 내 손을 정직히 돌아보는 오늘이 되기를 기도합니다.</p>
+
+    </article>
+
+    <footer>
+      #말씀과묵상 #성경적사고 #인격형성 #기독교에세이<br>
+      사사기 제 29편
+    </footer>
+  </main>
+
+  <div id="toast"></div>
+
+  <script>
+    let currentSize = 18;
+    
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function sermonText() {
+      const title = document.querySelector('h1').innerText;
+      const content = document.getElementById('sermon').innerText;
+      return `[${title}]\n\n${content}`;
+    }
+
+    async function copySermon() {
+      try {
+        await navigator.clipboard.writeText(sermonText());
+        showToast('본문 텍스트가 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 기능을 지원하지 않습니다.');
+      }
+    }
+
+    async function shareSermon() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('페이지 링크가 복사되었습니다.');
+      } catch (e) {
+        showToast('공유 기능을 지원하지 않는 환경입니다.');
+      }
+    }
+
+    function resizeText(delta) {
+      currentSize = Math.min(23, Math.max(16, currentSize + delta));
+      document.documentElement.style.setProperty('--body-size', `${currentSize}px`);
+      showToast(`본문 글씨 크기 ${currentSize}px`);
+    }
+  </script>
+</body>
+</html>
